@@ -1,0 +1,57 @@
+body {
+  font-family: 'Lato', sans-serif;
+}
+
+h1, h2 {
+  font-size: 200%;
+  font-weight: bold;
+  margin: .5rem 0 1.5rem;
+}
+
+h3 {
+  font-size: 150%;
+  font-weight: bold;
+  margin: .5rem 0 1.5rem;
+}
+
+h4 {
+  font-size: 120%;
+  font-weight: bold;
+  margin: .5rem 0 1rem;
+}
+
+h5 {
+  font-size: 120%;
+  margin: .5rem 0 1rem;
+}
+
+h6 {
+  margin: .5rem 0 .5rem;
+}
+
+p {
+  margin-bottom: 0.3rem;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.muted {
+  color: #999;
+}
+
+.small {
+  font-size: 80%;
+}
+
+.disclaimer {
+  @extend .muted;
+  @extend .small;
+}
+
+%ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

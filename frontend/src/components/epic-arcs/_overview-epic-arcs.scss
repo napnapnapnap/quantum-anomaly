@@ -1,0 +1,85 @@
+.overview-arcs {
+  &__item {
+    margin-bottom: 1.5rem;
+  }
+}
+
+.arc {
+  &__inner-wrapper {
+    display: flex;
+  }
+  
+  &__race-logo {
+    @include flex-grid(64px, 128px, 128px);
+    img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+
+  &__short-description {
+    flex-grow: 1;
+  }
+
+  &__missions {
+    display: none;
+    &--active {
+      display: block;
+    }
+  }
+
+  &__list-wrapper {
+    display: flex;
+    padding-bottom: 0.4rem;
+  }
+  
+  &__list {
+    padding-left: 0.3rem;
+  }
+
+  &__mission-wrapper {
+    padding: 1rem 0;
+  }
+  
+  &__mission-inner-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    @include media-breakpoint-up(lg) {
+      flex-wrap: nowrap;
+    }
+  }
+
+  &__mission-info-wrapper {
+    @include flex-grid(100%, 100%, 500px);
+  }
+  
+  &__mission-info-item {
+    display: flex;
+  }
+  
+  &__mission-pockets {
+    flex-grow: 1;
+    @include media-breakpoint-up(lg) {
+      padding-left: 1rem;
+    }
+  }
+
+  &__mission-label {
+    flex: 0 0 6rem;
+    font-weight: bold;
+  }
+
+  &__mission-value {
+    flex-grow: 1;
+  }
+
+  &__wave {
+    padding: 0.3rem 0 0.3rem 0.7rem;
+    margin: 0.2rem 0 0;
+    background: rgba(grey, 0.2);
+  }
+
+  &__enemies {
+    padding: 0.5rem 0.5rem 0.5rem 1rem;
+  }
+}

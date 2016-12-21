@@ -1,0 +1,40 @@
+@mixin flex($value) {
+  flex: 0 0 $value;
+  @include ie-flex-fix($value)
+}
+
+@mixin flex-grid($sm, $md, $lg) {
+  flex: 0 0 $sm;
+  @include ie-flex-fix($sm);
+  @include media-breakpoint-up(md) {
+    flex: 0 0 $md;
+    @include ie-flex-fix($md);
+  }
+  @include media-breakpoint-up(lg) {
+    flex: 0 0 $lg;
+    @include ie-flex-fix($lg);
+  }
+}
+
+@mixin ie-flex-fix($flex-number) {
+  @media all and (-ms-high-contrast: none) {
+    max-width: $flex-number;
+  }
+}
+
+@mixin position($top, $right, $bottom, $left) {
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}
+
+@mixin fixed($top, $right, $bottom, $left) {
+  position: fixed;
+  @include position($top, $right, $bottom, $left);
+}
+
+@mixin absolute($top, $right, $bottom, $left) {
+  position: absolute;
+  @include position($top, $right, $bottom, $left);
+}

@@ -1,0 +1,62 @@
+%overviewBorder {
+  border-bottom: 1px solid;
+  border-color: rgba(#666, 0.6);
+}
+
+%overviewBorderPadded {
+  padding-bottom: 0.2rem;
+  @extend %overviewBorder;
+}
+
+%spacer{
+  margin-bottom: 0.5rem;
+}
+
+
+%small-spacer{
+  padding-bottom: 0.1rem;
+}
+
+.tanking {
+  display: inline-block;
+  position: relative;
+  height: 7px;
+  width: 1.0rem;
+  margin-right: 0.1rem;
+  
+  &:nth-child(4) {
+    margin-right: 0;
+  }
+  
+  &--em {
+    background: #253642;
+  }
+  &--thermal {
+    background: #442929;
+  }
+  &--kinetic {
+    background: #442929;
+  }
+  &--explosive {
+    background: #443A29;
+  }
+  
+  &__active {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    &--em {
+      background: #187CBC;
+    }
+    &--thermal {
+      background: #BD1E19;
+    }
+    &--kinetic {
+      background: #787878;
+    }
+    &--explosive {
+      background: #BB7C0D;
+    }
+  }
+}

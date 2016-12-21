@@ -1,0 +1,65 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+a:hover, a:visited, a:link, a:active {
+  text-decoration: none;
+}
+
+button:focus {
+  outline: 0;
+}
+
+body {
+  max-width: $base-max-width;
+  min-width: 320px;
+  position: relative;
+  background: lightgrey;
+  margin: 0 auto;
+  font-family: "Helvetica", "Arial", sans-serif;
+  font-size: $base-font-size;
+}
+
+.page-content-main {
+  max-width: $base-max-width;
+  background: $base-background;
+  min-height: calc(100vh - #{$base-padding-v} * 2);
+  position: relative;
+  padding: calc(#{$navbar-height} + #{$base-padding-v}) $base-padding-h $base-padding-v;
+}
+
+form {
+  width: 100%;
+  input {
+    width: 100%;
+    margin: 0.3rem 0;
+    padding: 0.3rem;
+  }
+  input[type="submit"] {
+    width: auto;
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+.btn {
+  &--link-padded {
+    padding: 0.3rem 0;
+    border: 0;
+    background: none;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.long-text {
+  max-width: 600px;
+}

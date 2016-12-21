@@ -1,0 +1,117 @@
+@import "common";
+
+.overview-ships {
+  font-size: small;
+  
+  &__class {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__title {
+    @include flex(100%);
+  }
+
+  &__item {
+    @include flex(300px);
+    margin: 0.3rem;
+    padding: 0.3rem;
+  }
+}
+
+.overview-ship {
+  &--amarr {
+    background-color: rgba(#7D622E, 0.5);
+  }
+  &--caldari {
+    background-color: rgba(#41566A, 0.5);
+  }
+  &--gallente {
+    background-color: rgba(#336356, 0.5);
+  }
+  &--minmatar {
+    background-color: rgba(#644636, 0.5);
+  }
+  &--jove {
+    background-color: rgba(#644636, 0.5);
+  }
+  &--pirate {
+    background-color: rgba(#7D622E, 0.5);
+  }
+  &--ore {
+    background-color: rgba(#726E16, 0.5);
+  }
+
+  &__name {
+    font-weight: bold;
+    margin-top: 0;
+    @extend %ellipsis;
+    @extend %overviewBorder;
+  }
+
+  &__basics, &__slots, &__tank, &__velocity, &__sensors {
+    display: flex;
+    @extend %spacer;
+  }
+
+  &__drones {
+    @extend %spacer;
+  }
+
+  &__stat {
+    display: flex;
+    padding-bottom: 0.1rem;
+  }
+
+  &__stat-label {
+    font-weight: bold;
+  }
+
+  &__stat-value {
+    flex: 1 0 auto;
+    text-align: right;
+  }
+  
+  &__traits {
+    @extend %spacer;
+  }
+  
+  &__trait {
+    display: flex;
+    margin-left: 0.3rem;
+    @extend %small-spacer;
+  }
+
+  &__trait-label {
+    font-weight: bold;
+    @extend %spacer;
+  }
+
+  &__trait-value {
+    @include flex(2.5rem);
+    text-align: right;
+  }
+  
+  &__trait-text {
+    flex-grow: 1;
+    padding-left: 0.3rem;
+  }
+
+  &__column {
+    &:nth-of-type(odd) {
+      padding-right: 0.4rem;
+    }
+    &:nth-of-type(even) {
+      padding-left: 0.4rem;
+    }
+    &--auto {
+      flex: 0 0 auto;
+    }
+    &--grow {
+      flex: 1 0 auto;
+    }
+    &--half {
+      @include flex(50%);
+    }
+  }
+}
