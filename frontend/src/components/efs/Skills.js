@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-// import * as helpers from './helpers-fitting-manager';
+// import * as helpers from './helpers-efs';
 
 export default class Ships extends Component {
   constructor(props) {

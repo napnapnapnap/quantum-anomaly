@@ -7,7 +7,7 @@
   z-index: 999;
   min-height: $message-height;
   border: 1px solid currentColor;
-  padding: calc(#{$base-padding-v}/2) 3rem;
+  padding: calc(#{$base-padding-v} / 2) 3rem;
   cursor: pointer;
   margin: 0 10%;
   text-align: center;
@@ -36,4 +36,26 @@
 .ui-messages--error {
   display: block;
   background-color: $message-error-bg-color;
+}
+
+.loading-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  font-size: large;
+  animation: fadeInFromNone 1.2s ease-out;
+  animation-iteration-count: infinite;
+}
+
+@keyframes fadeInFromNone {
+  0% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.2;
+  }
 }

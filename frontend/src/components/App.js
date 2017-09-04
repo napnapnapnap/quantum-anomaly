@@ -6,12 +6,12 @@ import Footer from './header-footer/Footer';
 
 import Home from './pages/Home';
 import Old from './pages/Old';
+import UnderConstruction from './pages/UnderConstruction';
+import NotFound from './pages/NotFound';
 
-import OverviewShips from './fitting-manager/OverviewShips';
-import Skills from './fitting-manager/Skills';
+import EfsShips from './efs/OverviewShips';
+import Skills from './efs/Skills';
 import OverviewEpicArcs from './epic-arcs/OverviewEpicArcs';
-
-import NotFound from './NotFound';
 
 const App = () => (
   <div>
@@ -19,7 +19,8 @@ const App = () => (
     <main className="page-content-main">
       <Switch>
         <Route exact path='/' component={Home}/>
-        <Route path='/ships' component={OverviewShips}/>
+        <Route path='/efs-ships' component={EfsShips}/>
+        <Route path='/efs-fitting-screen/:shipID' component={UnderConstruction}/>
         <Route path='/skills' component={Skills}/>
         <Route path='/epic-arcs/:faction' component={OverviewEpicArcs}/>
         <Route path='/epic-arcs/' component={OverviewEpicArcs}/>

@@ -2,20 +2,33 @@
 
 .overview-ships {
   font-size: small;
-  
-  &__class {
+
+  &__group {
     display: flex;
     flex-wrap: wrap;
+    &--hidden {
+      display: none;
+    }
   }
 
   &__title {
     @include flex(100%);
+    margin-bottom: 0;
+    span {
+      cursor: pointer;
+    }
   }
 
   &__item {
     @include flex(300px);
     margin: 0.3rem;
     padding: 0.3rem;
+  }
+
+  &__toggle {
+    padding: 2px 5px;
+    margin-right: .3rem;
+    cursor: pointer;
   }
 }
 
@@ -42,11 +55,24 @@
     background-color: rgba(#726E16, 0.5);
   }
 
+  &__simulate-link {
+    position: absolute;
+    padding: 0.1rem;
+    top: -0.3rem;
+    right: -0.3rem;
+    color: inherit;
+    background: rgba(white, 1);
+    border: 1px solid black;
+    display: inline-block;
+    float: right;
+    font-size: inherit;
+  }
+
   &__name {
     font-weight: bold;
     margin-top: 0;
-    @extend %ellipsis;
     @extend %overviewBorder;
+    position: relative;
   }
 
   &__basics, &__slots, &__tank, &__velocity, &__sensors {
@@ -71,11 +97,11 @@
     flex: 1 0 auto;
     text-align: right;
   }
-  
+
   &__traits {
     @extend %spacer;
   }
-  
+
   &__trait {
     display: flex;
     margin-left: 0.3rem;
@@ -91,7 +117,7 @@
     @include flex(2.5rem);
     text-align: right;
   }
-  
+
   &__trait-text {
     flex-grow: 1;
     padding-left: 0.3rem;

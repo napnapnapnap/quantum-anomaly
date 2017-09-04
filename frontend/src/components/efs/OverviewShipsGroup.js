@@ -81,8 +81,10 @@ function tankingProfileBlock(profile) {
 function shipComponent(ship, index) {
   return (
     <article className={`overview-ships__item overview-ship overview-ship--${ship.raceName.toLowerCase()}`} key={index}>
-      <h6 className="overview-ship__name">{ship.typeName}</h6>
-
+      <h6 className="overview-ship__name">
+        <span>{ship.typeName}</span>
+        <a className="overview-ship__simulate-link" href={`/efs-fitting-screen/${ship.typeID}`}>Simulate this ship</a>
+      </h6>
       <section className="overview-ship__basics">
         <div className="overview-ship__column overview-ship__column--auto">
           <img src={`https://image.eveonline.com/Render/${ship.typeID}_64.png`} alt="ship"/>
@@ -93,7 +95,6 @@ function shipComponent(ship, index) {
             {statsBlock(ship, 'cpuOutput')}
             {statsBlock(ship, 'powerOutput')}
             {statsBlock(ship, 'capacitorCapacity')}
-            {statsBlock(ship, 'capacity')}
           </ul>
         </div>
       </section>
@@ -153,6 +154,7 @@ function shipComponent(ship, index) {
         <ul>
           {statsBlock(ship, 'droneBandwidth')}
           {statsBlock(ship, 'droneCapacity')}
+          {statsBlock(ship, 'capacity')}
         </ul>
       </section>
 
@@ -162,38 +164,34 @@ function shipComponent(ship, index) {
   );
 }
 
+
 export default class Ships extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      ships: []
+    this.state         = {
+      visible: false
     };
+    this.toggleVisible = this.toggleVisible.bind(this);
   }
 
-  componentWillMount() {
-    fetch('/api/get-all-ships')
-      .then(response => response.json())
-      .then(response => {
-        this.setState({
-          ships: response
-        });
-        // console.log(response.Battleship.Minmatar[3]);
-      });
+  toggleVisible() {
+    this.setState({visible: !this.state.visible});
   }
 
   render() {
     return (
-      <section className="overview-ships">
-        {Object.keys(this.state.ships).map((type, index) => {
-          return (
-            <section key={index} className="overview-ships__class">
-              <h5 className="overview-ships__title">{type}</h5>
-              {Object.keys(this.state.ships[type]).map((race) => {
-                return this.state.ships[type][race].map((ship, index) => shipComponent(ship, index));
-              })}
-            </section>
-          );
-        })}
+      <section key={this.props.index}>
+        <h6 className="overview-ships__title">
+          <button className="btn overview-ships__toggle" onClick={this.toggleVisible}>
+            {!this.state.visible ? ('+') : ('-')}
+          </button>
+          <span onClick={this.toggleVisible}>{this.props.group}</span>
+        </h6>
+        <div className={'overview-ships__group ' + (this.state.visible ? '' : 'overview-ships__group--hidden')}>
+          {Object.keys(this.props.ships).map((race) => {
+            return this.props.ships[race].map((ship, index) => shipComponent(ship, index));
+          })}
+        </div>
       </section>
     );
   }

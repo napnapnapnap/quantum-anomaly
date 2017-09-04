@@ -27,7 +27,7 @@ export default class Header extends Component {
           <div className="navigation__title"><a href="/">Quantum Anomaly</a>
           </div>
           <ul className="navigation__content">
-            <li className="navigation__link"><a href="/ships">Ships</a></li>
+            <li className="navigation__link"><a href="/efs-ships">Fitting simulator</a></li>
             {/*<li className="navigation__link"><a href="/skills">Skills</a></li>*/}
             <li className="navigation__link">
               <a href="/incursion-manager">Incursion Manager</a></li>

@@ -41,6 +41,7 @@ export default function () {
         if (!shipsFormatted[ship.groupName][ship.raceName]) {
           shipsFormatted[ship.groupName][ship.raceName] = [];
         }
+        ship.typeName = ship.typeName.replace('Edition', '');
         shipsFormatted[ship.groupName][ship.raceName].push(ship);
       }
     });
