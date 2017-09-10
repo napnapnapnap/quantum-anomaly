@@ -74,11 +74,16 @@ function cleanExtraKeysAndReformatProperties(ships) {
     delete ship.iconID;
     delete ship.portionSize;
     delete ship.published;
-    delete ship.raceID;
     delete ship.description;
     delete ship.shortDescription;
     delete ship.soundID;
     delete ship.useBasePrice;
+
+    if (ship.raceID === null) {
+      ship.raceName = 'Concord';
+    }
+    
+    delete ship.raceID;
 
     ship.shieldProfile = {
       em:        percentagize(ship.shieldEmDamageResonance),
@@ -152,7 +157,7 @@ export default function (sequelize) {
   const query = 'SELECT * FROM "invTypes" ' +
     'JOIN "invGroups" ON "invTypes"."groupID" = "invGroups"."groupID" ' +
     'JOIN "invCategories" ON "invGroups"."categoryID" = "invCategories"."categoryID" ' +
-    'JOIN "chrRaces" ON "invTypes"."raceID" = "chrRaces"."raceID" ' +
+    'LEFT JOIN "chrRaces" ON "invTypes"."raceID" = "chrRaces"."raceID" ' +
     'WHERE "invCategories"."categoryID"=6 AND "invTypes"."published"=true';
 
   return sequelize.query(query, {type: sequelize.QueryTypes.SELECT})
