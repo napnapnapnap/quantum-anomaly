@@ -1,8 +1,8 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import Header from './header-footer/Header';
-import Footer from './header-footer/Footer';
+import Header from './ux/Header';
+import Footer from './ux/Footer';
 
 import Home from './pages/Home';
 import Old from './pages/Old';
@@ -25,11 +25,11 @@ const App = () => (
         <Route path='/epic-arcs/:faction' component={OverviewEpicArcs}/>
         <Route path='/epic-arcs/' component={OverviewEpicArcs}/>
         <Route path='/incursion-manager' component={Old}/>
-        <Route path="*" component={NotFound} />
+        <Route path="*" component={NotFound}/>
       </Switch>
     </main>
     <Footer />
   </div>
 );
 
-export default App
+export default App;

@@ -1,6 +1,6 @@
 'use strict';
 
-const uiMessages = require('../ux/messages');
+const uiMessages = require('../js/ux/messages');
 
 const genericErrorMessage = (message) => {
   message = message || 'Something went wrong';
