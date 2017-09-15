@@ -1,8 +1,11 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
+import * as cookies from '../helpers/cookies';
+
 import Header from './ux/Header';
 import Footer from './ux/Footer';
+import Cookies from './ux/Cookies';
 
 import Home from './pages/Home';
 import Old from './pages/Old';
@@ -27,6 +30,7 @@ const App = () => (
         <Route path='/incursion-manager' component={Old}/>
         <Route path="*" component={NotFound}/>
       </Switch>
+      {cookies.getCookie('cookiesAgree') !== 'true' ? <Cookies /> : ''}
     </main>
     <Footer />
   </div>
