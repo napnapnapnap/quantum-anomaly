@@ -5,12 +5,13 @@
 .btn {
   min-width: 100px;
   @extend .press;
-  @extend .press-ghost;
   @extend .press-sm;
   &--cta {
     @extend .press-green;
+    @extend .press-ghost;
   }
   &--cancel {
     @extend .press-deeporange;
+    @extend .press-ghost;
   }
 }

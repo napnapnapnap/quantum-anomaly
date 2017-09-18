@@ -2,6 +2,7 @@
 
 .overview-ships {
   font-size: small;
+  line-height: 1.25;
 
   &__group {
     display: flex;
@@ -26,9 +27,10 @@
   }
 
   &__toggle {
-    padding: 2px 5px;
     margin-right: .3rem;
-    cursor: pointer;
+    min-width: initial;
+    @extend .press-grey;
+    @extend .press-sm;
   }
 }
 
@@ -61,14 +63,15 @@
   &__simulate-link {
     position: absolute;
     padding: 0.1rem;
-    top: -0.3rem;
+    top: -0.2rem;
     right: -0.3rem;
-    color: inherit;
-    background: rgba(white, 1);
-    border: 1px solid black;
     display: inline-block;
+    background: white;
     float: right;
-    font-size: inherit;
+    @extend .press;
+    @extend .press-black;
+    @extend .press-sm;
+    @extend .press-ghost;
   }
 
   &__name {
