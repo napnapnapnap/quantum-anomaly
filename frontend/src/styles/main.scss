@@ -2,10 +2,16 @@
 @import "variables";
 
 @import "mixins/index";
+@import "vendor/press/press.scss";
 
 @import "base-layout";
 @import "base-ui-messages";
 @import "base-typography";
 @import "base-buttons";
 
-@import "../components/index";
+@import "../components/ux/header";
+@import "../components/ux/footer";
+@import "../components/ux/cookies";
+
+@import "../components/efs/overview-ships";
+@import "../components/epic-arcs/overview-epic-arcs";
