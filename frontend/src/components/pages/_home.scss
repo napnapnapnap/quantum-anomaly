@@ -1,0 +1,35 @@
+.home {
+  display: flex;
+  flex-wrap: wrap;
+  
+  &__title {
+    @include flex(100%);
+  }
+  
+  &__intro {
+    @include flex-grid(100%, 60%, 60%);
+  }
+  
+  &__images {
+    @include flex-grid(100%, 40%, 40%);
+    padding: 0 3rem;
+    margin-top: 1rem;
+    display: none;
+    @include media-breakpoint-up(md) {
+      margin-top: 0;
+      display: block;
+    }
+  }
+  
+  &__corp {
+    display: flex;
+    margin-bottom: 1rem;
+  }
+  
+  &__image {
+    max-width: 100%;
+    max-height: 100%;
+    box-shadow: 3px 3px 5px 0 rgba(#666, 0.6);
+    margin-right: 1.5rem;
+  }
+}
