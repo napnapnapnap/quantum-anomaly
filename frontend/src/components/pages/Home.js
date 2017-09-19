@@ -3,10 +3,10 @@ import React, {Component} from 'react';
 export default class Home extends Component {
   render() {
     return (
-      <section className="home">
+      <article className="home">
         <h3 className="home__title">Welcome to Quantum Anomaly website</h3>
 
-        <article className="home__intro">
+        <section className="home__intro">
           <p>Quantum Anomaly (QSNA) is an&nbsp;
             <a href="http://secure.eveonline.com/signup/?invc=ce57303e-b9f4-4d78-86ea-df33e1d853ca&action=buddy">
               EVE Online
@@ -33,45 +33,45 @@ export default class Home extends Component {
             about a year (both shield and armor fits at same time due to dual OGB's). Later we switched to exclusively Vargur fleet.
             We had a good run for 5 years and honed our characters into perfect subcapital monsters.</p>
 
-          <p>As corporation, we always had our base of operation in Highsec, due to it being easy to do stuff when other people are
-            not offline and beacuse we didn't had to depend on others. We did had our fair deal of PVP thanks to Bombers Bar, in which
-            several pilots were active back from the days of camping HED-GP and killing THEST and AAA (who were always great sport). We
-            remained active in Bombers bar also for several years. </p>
+          <p>As corporation, we always had our base of operation in Highsec. Main reason for this is the fact that it is easier
+            with lower number of people to do things. You need some ISK, you can easily do missions, you want some PVP, jump clone
+            somewhere. If there is more poeple online, join up and do something. We did had our fair deal of PVP thanks to Bombers Bar,
+            in which several pilots were active back from the days of camping HED-GP and killing THEST and AAA (who were always great sport).
+            We remained active in Bombers bar also for several years. </p>
 
-          <p>We also formed Quantum Syndicate channel for like minded people which had people from other alliances and corporation
-            who could enjoy our company and experience (and we could enjoy theirs). </p>
+          <p>We also formed Quantum Syndicate channel for like minded people which has people from other alliances and corporation
+            so that we can share experience and tips about the game. </p>
 
           <p>We tried few times to join some alliances, but always found them not to be exactly what we are looking for.
-            We are still open for alliance search.</p>
-
+            We are still open for an alliance if we find terms that we like.</p>
 
           <p>Our moto has always been that quality is better than quantity and skills can be trained, personality can't.</p>
-        </article>
+        </section>
 
-        <article className="home__images">
-          <p className="home__corp">
+        <aside className="home__images">
+          <figure className="home__corp">
             <img className="home__image" src="https://image.eveonline.com/Corporation/98217943_128.png" alt="corp logo"/>
-            <span className="home__label">
-              Name: Quantum Anomaly<br/>
+            <figcaption className="home__label">
+              Quantum Anomaly<br/>
               Ticker: QSNA
-            </span>
-          </p>
-          <p className="home__corp">
+            </figcaption>
+          </figure>
+          <figure className="home__corp">
             <img className="home__image" src="https://image.eveonline.com/Character/90178002_128.jpg" alt="corp logo"/>
-            <span className="home__label">
-              Name: Sentenced 1989<br/>
-              Title: CEO
-            </span>
-          </p>
-          <p className="home__corp">
+            <figcaption className="home__label">
+              Sentenced 1989<br/>
+              CEO
+            </figcaption>
+          </figure>
+          <figure className="home__corp">
             <img className="home__image" src="https://image.eveonline.com/Character/92311085_128.jpg" alt="corp logo"/>
-            <span className="home__label">
-              Name: Callsys<br/>
-              Title: Executive officer
-            </span>
-          </p>
-        </article>
-      </section>
+            <figcaption className="home__label">
+              Callsys<br/>
+              Executive officer
+            </figcaption>
+          </figure>
+        </aside>
+      </article>
     );
   }
 }

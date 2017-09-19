@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 function createList(label, values) {
   return (
     <div className="arc__list-wrapper">
-      <p className="bold">{label}:</p>
+      <span className="bold">{label}:</span>
       <ul className="arc__list">
         {values.map((value, index) => {
           return (
@@ -18,10 +18,10 @@ function createList(label, values) {
 function missionWave(wave) {
   return wave.enemies.map((enemies, index) => {
     return (
-      <p key={index}>
+      <div key={index}>
         <span>{enemies.number}x {enemies.name}</span>
         <span className="disclaimer"> {enemies.effect}</span>
-      </p>
+      </div>
     );
   });
 }
@@ -29,15 +29,15 @@ function missionWave(wave) {
 function missionPocket(pocket) {
   return pocket.map((wave, index) => {
     return (
-      <div className="arc__wave" key={index}>
-        <p>
+      <section className="arc__wave" key={index}>
+        <div>
           <span>{index === 0 ? ('Initial wave') : (`Wave ${index}`)} at {wave.range}</span>
           <span className="disclaimer"> {wave.note}</span>
-        </p>
+        </div>
         <div className="arc__enemies">
           {missionWave(wave)}
         </div>
-      </div>
+      </section>
     );
   })
 }
@@ -58,10 +58,10 @@ function missionPockets(pockets) {
 function missionInfoItem(label, value) {
   if (value) {
     return (
-      <p className="arc__mission-info-item">
+      <div className="arc__mission-info-item">
         <span className="arc__mission-label">{label}: </span>
         <span className="arc__mission-value">{value}</span>
-      </p>
+      </div>
     );
   }
 }
@@ -72,7 +72,7 @@ function missions(missions) {
       <section className="arc__mission-wrapper" key={index}>
         <h5>{index + 1}. {mission.name}</h5>
         <div className="arc__mission-inner-wrapper">
-          <div className="arc__mission-info-wrapper">
+          <section className="arc__mission-info-wrapper">
             {missionInfoItem('Agent', mission.agent)}
             {missionInfoItem('Location', mission.agentLocation)}
             {missionInfoItem('Type', mission.type)}
@@ -80,11 +80,11 @@ function missions(missions) {
             {missionInfoItem('Destination', mission.destination)}
             {missionInfoItem('Objective', mission.completed)}
             {missionInfoItem('Tips', mission.tip)}
-          </div>
-          <div className="arc__mission-pockets">
+          </section>
+          <section className="arc__mission-pockets">
             {missionInfoItem('Enemy', mission.enemy)}
             {missionPockets(mission.pockets)}
-          </div>
+          </section>
         </div>
       </section>
     );
@@ -94,30 +94,30 @@ function missions(missions) {
 export default class EpicArc extends Component {
   render() {
     return (
-      <div className="arc">
-        <div className="arc__inner-wrapper">
-          <div className="arc__race-logo">
+      <article className="arc">
+        <section className="arc__inner-wrapper">
+          <figure className="arc__race-logo">
             <img src={`https://image.eveonline.com/Alliance/${this.props.arc.iconID}_128.png`} alt="arc logo"/>
-          </div>
+          </figure>
           <div className="arc__short-description">
             <h5 onClick={this.props.setActiveArc}>{this.props.arc.name}</h5>
-            <p>
+            <div>
               <span className="bold">Starting agent: </span> 
               <span>{this.props.arc.starter}</span>
-            </p>
+            </div>
             {createList('Rewards', this.props.arc.rewards)}
             {!this.props.active ? (
               <a href={`/epic-arcs/${this.props.arc.race}`}>Show more</a>
             ) : null}
           </div>
-        </div>
-        <div className={'arc__missions ' + (this.props.active ? 'arc__missions--active' : '')}>
+        </section>
+        <section className={'arc__missions ' + (this.props.active ? 'arc__missions--active' : '')}>
           <p className="long-text">{this.props.arc.global}</p>
           <p className="long-text">{this.props.arc.description}</p>
           {createList('Notes', this.props.arc.notes)}
           {missions(this.props.arc.missions)}
-        </div>
-      </div>
+        </section>
+      </article>
     );
   }
 }
