@@ -1,8 +1,8 @@
 {
   "name": "quantum_anomaly",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "",
-  "main": "index.js",
+  "main": "./server/index.js",
   "scripts": {
     "start": "nodemon ./server/index.js --exec babel-node --presets es2017-node7 --ignore 'frontend/*'",
     "build": "babel server -d build --presets es2017-node7",
@@ -17,8 +17,8 @@
     "type": "git",
     "url": "git+https://github.com/msaracevic/quantum_anomaly.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Miroslav Saracevic",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/msaracevic/quantum_anomaly/issues"
   },
