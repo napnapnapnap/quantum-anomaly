@@ -17,7 +17,7 @@ function getDynamicModel() {
 function init(sequelize) {
   /* 
      Because this is dynamically created from another database, we need to load
-     model from a file which was created by app/fitting-manager/assets-manager/shipsGet.js
+     model from a file which was created by tasks/assets-manager/shipsGet.js
   */
   Ships = sequelize.define('Ships', getDynamicModel());
   return Ships;

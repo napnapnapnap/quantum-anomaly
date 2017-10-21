@@ -2,15 +2,15 @@
 
 import Sequelize from 'sequelize';
 
-import * as logger from '../../../helpers/logger';
+import * as logger from '../../helpers/logger';
 
 function saveSkills(Skills, skills) {
   let promiseArray = [];
-  skills.forEach(ship => {
+  skills.forEach(skill => {
     promiseArray.push(
       Skills.create({
-        typeID: ship.typeID,
-        value:  ship
+        typeID: skill.typeID,
+        value:  skill
       })
     );
   });

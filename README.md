@@ -1,4 +1,4 @@
-# Quantum Anomaly Boiler Plate
+# Quantum Anomaly Website
 
 ## Prerequesites to run locally and develop
 
@@ -6,7 +6,7 @@
 Node version min `6.11.x`  
 NPM version min `5.3.x`
 
-On your local, you need to create `.env` file in root of project. Content of the file is supposed to be
+On your local, you need to create `.env` file in `server` folder of project. Content of the file is supposed to be
 
 ```
 DATABASE_URL=postgres://USERNAME:PASSWORD@HOST:PORT/DB-NAME
@@ -15,7 +15,7 @@ PORT=HERE-GOES-YOUR-PORT
 USER_AGENT={'User-Agent': 'YOUR USER AGENT FOR SERVER TO SERVER CALLS'}
 GOOGLE_CLIENT_ID=HERE-GOES-YOUR-CLIENT-ID
 GOOGLE_CLIENT_SECRET=HERE-GOES-YOUR-SECRET
-GOOGLE_CALLBACK_URL=HERE-GOES-YOUR-URL
+GOOGLE_CALLBACK_URL=HERE-GOES-YOUR-URL(for local development it should be your localhost of node server)
 REGISTRATION=true
 ```
 

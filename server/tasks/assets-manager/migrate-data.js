@@ -7,11 +7,13 @@ if (env === 'development') dotenv.config();
 
 import Sequelize from 'sequelize';
 
-import getShips from './shipsGet';
-import saveShips from './shipsSet';
-import getSkills from './skillsGet';
-import saveSkills from './skillsSet';
-import * as logger from '../../../helpers/logger';
+import getShips from './_ships-get';
+import saveShips from './_ships-set';
+import getSkills from './_skills-get';
+import saveSkills from './_skills-set';
+import getIncursionMap from './_incursion-map-get';
+import saveIncursionMap from './_incursion-map-set';
+import * as logger from '../../helpers/logger';
 
 function startMigration() {
   let rowsAdded = 0;
@@ -45,6 +47,11 @@ function startMigration() {
   }).then((skills) => {
     rowsAdded += skills.length;
     return saveSkills(sequelize, skills);
+  }).then(() => {
+    return getIncursionMap(eveSequelize);
+  }).then((mapData) => {
+    rowsAdded += mapData.length;
+    return saveIncursionMap(sequelize, mapData);
   }).then(() => {
     logger.action('Number of rows added: ' + rowsAdded, ['access'], 'yellow');
     process.exit(0);

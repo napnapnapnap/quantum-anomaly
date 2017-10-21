@@ -1,4 +1,4 @@
-import * as logger from '../../../helpers/logger';
+import * as logger from '../../helpers/logger';
 
 function addPropertiesToSkills(skills, sequelize) {
   const query = 'SELECT * FROM "dgmTypeAttributes" ' +
@@ -29,7 +29,8 @@ function addPropertiesToSkills(skills, sequelize) {
 export default function (sequelize) {
   let skills;
 
-  const query = 'SELECT "typeID", "typeName", "description", "invTypes"."groupID", "groupName" FROM "invTypes" ' +
+  const query = 'SELECT "typeID", "typeName", "description", "invTypes"."groupID", "groupName" ' +  
+    'FROM "invTypes" ' +
     'JOIN "invGroups" ON "invTypes"."groupID" = "invGroups"."groupID" ' +
     'JOIN "invCategories" ON "invGroups"."categoryID" = "invCategories"."categoryID" ' +
     'WHERE "invCategories"."categoryID"=16 AND "invTypes"."published"=true;';

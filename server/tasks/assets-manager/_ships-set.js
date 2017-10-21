@@ -2,11 +2,11 @@
 
 import Sequelize from 'sequelize';
 import fs from 'fs';
-import util from 'util';
 import path from 'path';
 
-import * as logger from '../../../helpers/logger';
-import {log} from '../../../helpers/logger';
+import * as logger from '../../helpers/logger';
+
+const shipsDynamicModelFilePath = path.join(__dirname, '..', '..', 'models', 'dynamic-models', 'ships-dynamic-model.js');
 
 function saveShips(Ships, ships) {
   let promiseArray = [];
@@ -60,9 +60,6 @@ export default function (sequelize, ships) {
     logger.action('Aborting process at saving ships', ['error']);
     process.exit(1);
   } else {
-    // Save this model so that main app can reuse it
-    const shipsDynamicModelFilePath = path.join(__dirname, '..', '..', '..', 'models', 'dynamic-models', 'ships-dynamic-model.js');
-
     const data = 'export default function () { return ' + JSON.stringify(modelShips.mainAppModel) + '};';
     
     fs.closeSync(fs.openSync(shipsDynamicModelFilePath, 'w'));

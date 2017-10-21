@@ -1,6 +1,6 @@
 'use strict';
 
-import * as logger from '../../../helpers/logger';
+import * as logger from '../../helpers/logger';
 
 function addTraitsToShips(ships, sequelize) {
   const query = 'SELECT * FROM "invTraits"';
