@@ -378,7 +378,7 @@ export default function () {
           'name':   'Battlecruisers'
         }]
       }, {
-        'range':   '85 kilometers',
+        'range':   '25 kilometers',
         'enemies': [{
           'number': '3',
           'name':   'Elite Frigates',
