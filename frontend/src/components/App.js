@@ -14,7 +14,7 @@ import NotFound from './pages/NotFound';
 
 import EfsShips from './efs/OverviewShips';
 import Skills from './efs/Skills';
-import OverviewEpicArcs from './epic-arcs/OverviewEpicArcs';
+import OverviewEpicArcs from './epic-arcs/EpicArcsOverview';
 
 const App = () => (
   <div>

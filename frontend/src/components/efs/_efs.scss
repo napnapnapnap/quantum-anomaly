@@ -68,7 +68,7 @@
     display: inline-block;
     background: white;
     float: right;
-    @extend .press;
+    @extend .btn;
     @extend .press-black;
     @extend .press-sm;
     @extend .press-ghost;
