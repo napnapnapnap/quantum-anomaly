@@ -1,22 +1,29 @@
 'use strict';
 
 const remoteRequest = require('request'),
-      moment        = require('moment'),
-      util          = require('util');
+      moment        = require('moment');
+
+import * as logger from './logger';
 
 const request = (options, callback, args) => {
-  options.headers = {'User-Agent': 'Quantum Anomaly'};
+  options.headers = {
+    'User-Agent': process.env.USER_AGENT
+  };
   if (!args) {
     args = {
       options: options
     };
   }
-
+  
   remoteRequest(options, (error, response, body) => {
     if (!error) {
-      callback(response, args);
+      logger.action(`Request for ${options.url} got response`, [], 'gray');
+      callback(null, response, args);
     } else {
-      throw error;
+      logger.action(`Failed to retrieve ${options.url}`, ['error']);
+      logger.inspect(error);
+      logger.action(`-----------------------`, ['error']);
+      callback(error, response, args);
     }
   });
 };

@@ -6,16 +6,22 @@ import * as userModel from './models/users';
 import * as shipsModel from './models/ships';
 import * as skillsModel from './models/skills';
 import * as countersModel from './models/counters';
+import * as incursionMapModel from './models/incursion-map';
+import * as incursionsModel from './models/incursions';
 
 let modelsCollection = {};
 
-function setDefaults () {
+function setDefaults() {
   modelsCollection.Counters.findOrCreate({
-    where: {page: 'epic-arcs'},
+    where:    {page: 'epic-arcs'},
     defaults: {value: 0}
   });
   modelsCollection.Counters.findOrCreate({
-    where: {page: 'overview-ships'},
+    where:    {page: 'overview-ships'},
+    defaults: {value: 0}
+  });
+  modelsCollection.Counters.findOrCreate({
+    where:    {page: 'incursions'},
     defaults: {value: 0}
   });
 }
@@ -23,11 +29,13 @@ function setDefaults () {
 function init(connection, silent) {
   return new Promise((resolve, reject) => {
     modelsCollection = {
-      'Sessions': sessionsModel.init(connection),
-      'Users':    userModel.init(connection),
-      'Ships':    shipsModel.init(connection),
-      'Skills':   skillsModel.init(connection),
-      'Counters': countersModel.init(connection)
+      'Sessions':     sessionsModel.init(connection),
+      'Users':        userModel.init(connection),
+      'Ships':        shipsModel.init(connection),
+      'Skills':       skillsModel.init(connection),
+      'Counters':     countersModel.init(connection),
+      'IncursionMap': incursionMapModel.init(connection),
+      'Incursions':   incursionsModel.init(connection)
     };
 
     Promise.all([
@@ -35,7 +43,9 @@ function init(connection, silent) {
         modelsCollection.Users.sync(),
         modelsCollection.Ships.sync(),
         modelsCollection.Skills.sync(),
-        modelsCollection.Counters.sync()
+        modelsCollection.Counters.sync(),
+        modelsCollection.IncursionMap.sync(),
+        modelsCollection.Incursions.sync()
       ])
       .then(() => {
         if (!silent) {

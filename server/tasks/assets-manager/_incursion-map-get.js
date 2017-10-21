@@ -80,7 +80,7 @@ export default function (sequelize) {
   const query = 'SELECT "mapConstellations"."constellationID", "mapConstellations"."constellationName", ' +
     '"chrFactions"."factionName", "chrFactions"."factionID" ' +
     'FROM "mapConstellations" ' +
-    'JOIN "chrFactions" ON "mapConstellations"."factionID" = "chrFactions"."factionID";';
+    'LEFT JOIN "chrFactions" ON "mapConstellations"."factionID" = "chrFactions"."factionID";';
 
   return sequelize.query(query, {type: sequelize.QueryTypes.SELECT})
     .then(mapData => {
