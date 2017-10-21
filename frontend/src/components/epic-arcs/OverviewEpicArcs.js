@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import EpicArc from './OverviewEpicArc';
+import EpicArc from './EpicArc';
 
 export default class EpicArcs extends Component {
   constructor(props) {

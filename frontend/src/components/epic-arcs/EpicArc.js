@@ -31,7 +31,9 @@ function missionPocket(pocket) {
     return (
       <section className="arc__wave" key={index}>
         <div>
-          <span>{index === 0 ? ('Initial wave') : (`Wave ${index}`)} at {wave.range}</span>
+          <span>{index === 0 ? ('Initial wave') : (`Wave ${index}`)} at {wave.range}
+            {wave.lastTrigger ? <span className="disclaimer"> (Last one is trigger) </span> : ''}
+          </span>
           <span className="disclaimer"> {wave.note}</span>
         </div>
         <div className="arc__enemies">

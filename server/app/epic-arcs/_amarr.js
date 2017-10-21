@@ -55,7 +55,8 @@ export default function () {
           'effect': 'Tracking disruptor'
         }, {
           'number': '4',
-          'name':   'Battleships'
+          'name':   'Battleships',
+          'effect': 'Tracking disruptor'
         }]
       }, {
         'range':   '40 kilometers',
