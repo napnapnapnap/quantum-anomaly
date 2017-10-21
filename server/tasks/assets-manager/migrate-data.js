@@ -30,6 +30,12 @@ function startMigration() {
       protocol:       'postgres',
       dialectOptions: {
         ssl: true
+      },
+      pool: {
+        max: 5,
+        min: 0,
+        idle: 20000,
+        acquire: 20000
       }
     });
     logger.init('Database connection established');
