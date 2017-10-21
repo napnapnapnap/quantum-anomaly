@@ -20,20 +20,21 @@ REGISTRATION=true
 ```
 
 #### NPM tasks
-Currently there are 2 `package.json` files. 
+Currently there are 3 `package.json` files because this is technically 2 projects. 
 
-The one in the root of the project handles `node` code. It has following scripts:
+One is located in `/server` folder and handles `node` code. It has following scripts:
 - `npm run start` runs `express` server which starts your backend (uses `Nodemon`)
 - `npm run build` builds files in `server` with babel and outputs to `/build` folder (production task)
-- `npm run heroku-postbuild` this is Heroku script to build both backend and frontend (production task)
 - `npm run migrate-eve-data` this is a task which imports all needed information from EVE Online database dump (please refer to next section for details)
 
-Second one is located in `/frontend` folder and handles `react` code. It has following scripts:
+One is located in `/frontend` folder and handles `react` code. It has following scripts:
 - `npm run start` starts react dev server and compiles assets, also starts `sass` watchers
 - `npm run build` builds react file for production ready environment and outputs to `/frontend/build`
 
-To run project, you need to `npm run start` in root of the project to start the server and `npm run start` in `/frontend` folder to get frontend running.  
-Keep in mind that `react` frontend is running inside webpack development server which is set to proxy to port 3000. If you are using some other port for your server you will need to update `package.json` in `/frontend` folder
+To run project you need to run both `npm run start` scripts.  
+Keep in mind that `react` frontend is running inside webpack development server which is set to proxy to port 3000. If you are using some other port for your server you will need to update `package.json` in `/frontend` folder.  
+
+Last `package.json` is there just for Heroku, it sets the proper node and npm versions and triggers build tasks for both frontend and backend. It is located in root of the project.  
 
 ### Data migration from EVE online database
 If you choose to run this locally, you need to populate your database with EVE Online database data. In order to do that you need to add to your `.env` variables following

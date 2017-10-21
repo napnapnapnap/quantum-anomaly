@@ -9,23 +9,19 @@
     "react-router-dom": "^4.1.2",
     "react-scripts": "1.0.11"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/msaracevic/quantum_anomaly.git"
-  },
   "author": "Miroslav Saracevic",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/msaracevic/quantum_anomaly/issues"
   },
-  "homepage": "https://github.com/msaracevic/quantum_anomaly#readme",
   "proxy": "http://localhost:3000/",
   "scripts": {
     "start-js": "react-scripts start",
     "start": "npm-run-all -p watch-css start-js",
-    "build": "npm run build-css && react-scripts build",
+    "build": "npm run build-css-production && react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
+    "build-css-production": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o public/ --output-style compressed",
     "build-css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o public/",
     "watch-css": "npm run build-css && node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o public/ --watch --recursive"
   }

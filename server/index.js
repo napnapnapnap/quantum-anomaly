@@ -25,6 +25,9 @@ import forceHttps from './middleware/force-https';
 const PORT = process.env.PORT || 3000;
 const app  = express();
 
+let frontendPublicPath = path.join(__dirname, '..', 'frontend', 'build');
+if (process.env.NODE_ENV === 'production') frontendPublicPath = path.join(__dirname, '..', '..' ,'frontend', 'build');
+
 app.use(forceHttps);
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
@@ -40,17 +43,17 @@ database().then(() => {
   app.use(cors);
   logger.init('CORS module activated');
 
-  app.use('/', serveStatic(path.join(__dirname, '..', 'frontend', 'build')));
-  logger.init('React build files loaded on `/` route');
+  app.use('/', serveStatic(frontendPublicPath));
+  logger.init(`React build files from ${frontendPublicPath} loaded on '/' route`);
 
   auth(app);
-  logger.init('Auth module activated');
+  logger.init('Auth module loaded');
 
   routes(app);
-  logger.init('Express routing actived');
+  logger.init('Express routing loaded');
 
-  app.use('*', serveStatic(path.join(__dirname, '..', 'frontend', 'build')));
-  logger.init('React build files loaded on `*` route');
+  app.use('*', serveStatic(frontendPublicPath));
+  logger.init(`React build files from ${frontendPublicPath} loaded on '*' route`);
 
   app.listen(PORT);
   logger.init('App started');
