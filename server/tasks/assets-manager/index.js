@@ -7,12 +7,12 @@ if (env === 'development') dotenv.config();
 
 import Sequelize from 'sequelize';
 
-import getShips from './_ships-get';
-import saveShips from './_ships-set';
-import getSkills from './_skills-get';
-import saveSkills from './_skills-set';
-import getIncursionMap from './_incursion-map-get';
-import saveIncursionMap from './_incursion-map-set';
+import getShips from './ships-get';
+import saveShips from './ships-set';
+import getSkills from './skills-get';
+import saveSkills from './skills-set';
+import getIncursionMap from './incursion-map-get';
+import saveIncursionMap from './incursion-map-set';
 import * as logger from '../../helpers/logger';
 
 function startMigration() {
@@ -32,9 +32,9 @@ function startMigration() {
         ssl: true
       },
       pool: {
-        max: 5,
-        min: 0,
-        idle: 20000,
+        max: 10,
+        min: 1,
+        idle: 50000,
         acquire: 20000
       }
     });

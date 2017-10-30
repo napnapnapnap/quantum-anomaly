@@ -85,7 +85,7 @@ Backend is running on [node express](https://www.npmjs.com/package/express) serv
 used for Postgres database management. Authentication is being done with `('passport-google-oauth').OAuth2Strategy;`  
 Config file: `server/config.js`  
 Main database file: `server/database.js`  
-Main routes file: `routes/routes.js`
+Main routes file: `routes/_routes.js`
 
 ### Frontend
 

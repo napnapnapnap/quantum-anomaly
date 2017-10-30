@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import * as helpers from './helpers';
+import * as helpers from '../../helpers';
 
 function traitsBlock(ship) {
   if (ship.traits) {

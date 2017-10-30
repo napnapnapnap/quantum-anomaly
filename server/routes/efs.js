@@ -3,8 +3,8 @@
 import express from 'express';
 
 import * as logger from '../helpers/logger';
-import ships from '../app/fitting-manager/ships/ships';
-import skills from '../app/fitting-manager/skills/skills';
+import ships from '../app/efs/ships/ships';
+import skills from '../app/efs/skills/skills';
 
 const router = express.Router();
 

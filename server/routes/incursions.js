@@ -2,7 +2,7 @@
 
 import express from 'express';
 
-import incursions from '../app/incursions/incursions';
+import incursions from '../app/incursions';
 import * as logger from '../helpers/logger';
 
 const router = express.Router();

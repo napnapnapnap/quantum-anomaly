@@ -2,7 +2,7 @@
 
 import express from 'express';
 
-import epicArcs from '../app/epic-arcs/epic-arcs';
+import epicArcs from '../app/epic-arcs';
 import * as logger from '../helpers/logger';
 
 const router = express.Router();

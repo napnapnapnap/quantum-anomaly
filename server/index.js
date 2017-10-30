@@ -15,7 +15,7 @@ import path from 'path';
 import serveStatic from 'serve-static';
 
 import * as logger from './helpers/logger';
-import routes from './routes/routes';
+import routes from './routes';
 import database from './database';
 
 import auth from './middleware/auth';

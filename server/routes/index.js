@@ -1,8 +1,8 @@
 'use strict';
 
-import apiEpicArcs from './apiEpicArcs';
-import apiFittingManager from './apiFittingManager';
-import apiIncursions from './apiIncursions';
+import apiEpicArcs from './epicArcs';
+import apiFittingManager from './incursions';
+import apiIncursions from './efs';
 
 import * as logger from '../helpers/logger';
 

@@ -8,13 +8,13 @@ import Footer from './ux/Footer';
 import Cookies from './ux/Cookies';
 
 import Home from './pages/Home';
-import Old from './pages/Old';
 import UnderConstruction from './pages/UnderConstruction';
 import NotFound from './pages/NotFound';
 
-import EfsShips from './efs/OverviewShips';
-import Skills from './efs/Skills';
-import OverviewEpicArcs from './epic-arcs/EpicArcsOverview';
+import EfsShips from './Efs/Ships';
+import Skills from './Efs/Skills';
+import OverviewEpicArcs from './EpicArcs';
+import Incursions from './Incursions';
 
 const App = () => (
   <div>
@@ -27,7 +27,7 @@ const App = () => (
         <Route path='/skills' component={Skills}/>
         <Route path='/epic-arcs/:faction' component={OverviewEpicArcs}/>
         <Route path='/epic-arcs/' component={OverviewEpicArcs}/>
-        <Route path='/incursion-manager' component={Old}/>
+        <Route path='/incursion-manager' component={Incursions}/>
         <Route path="*" component={NotFound}/>
       </Switch>
       {cookies.getCookie('cookiesAgree') !== 'true' ? <Cookies /> : ''}
