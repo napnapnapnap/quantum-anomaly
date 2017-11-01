@@ -61,7 +61,6 @@ function dynamicSortMultiple() {
   };
 }
 
-
 function clone(obj) {
   if (obj === null || typeof(obj) !== 'object') return obj;
   let temp = new obj.constructor();

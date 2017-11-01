@@ -5,7 +5,7 @@ function systemsLayout(systems) {
   return systems.map(system => {
     return (
       <div style={{paddingLeft: 3 + 'em'}} key={system.solarSystemID}>
-        {system.solarSystemName} {system.incursionType}
+        {system.solarSystemName} {system.incursionType} {system.radius}
       </div>
     );
   });
