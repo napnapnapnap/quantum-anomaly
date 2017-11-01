@@ -1,6 +1,8 @@
 import * as IncursionMap from '../../models/incursion-map';
 import * as Incursions from '../../models/incursions';
 
+import * as helpers from '../../helpers'
+
 function getIncursionData(activeIncursions) {
   let promiseArray = activeIncursions.map(incursion =>
     IncursionMap.findById(incursion.constellation.id).then(constellation => {

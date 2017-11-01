@@ -1,20 +1,11 @@
-'use strict';
-
-const remoteRequest = require('request'),
-      moment        = require('moment');
+import remoteRequest from 'request';
+import moment from 'moment';
 
 import * as logger from './logger';
 
-const request = (options, callback, args) => {
-  options.headers = {
-    'User-Agent': process.env.USER_AGENT
-  };
-  if (!args) {
-    args = {
-      options: options
-    };
-  }
-  
+function request(options, callback, args) {
+  options.headers = {'User-Agent': process.env.USER_AGENT};
+  if (!args) args = {options: options};
   remoteRequest(options, (error, response, body) => {
     if (!error) {
       logger.action(`Request for ${options.url} got response`, [], 'gray');
@@ -26,32 +17,28 @@ const request = (options, callback, args) => {
       callback(error, response, args);
     }
   });
-};
+}
 
-const repeat = (callback, timer) => {
+function repeat(callback, minutes) {
   let updateInterval = 3 * 60 * 1000;
-  if (timer) {
-    updateInterval = timer * 60 * 1000;
-  }
+  if (minutes) updateInterval = minutes * 60 * 1000;
   return setInterval(callback, updateInterval);
-};
+}
 
-
-const howLong = (arg) => {
+function howLong(arg) {
   arg = moment(arg).fromNow();
-  if (arg === 'Invalid date') {
-    arg = '';
-  }
+  if (arg === 'Invalid date') arg = '';
   return arg;
-};
+}
 
-const dynamicSort = (property, caseInsensitive) => {
+
+function dynamicSort(property, caseInsensitive) {
   let sortOrder = 1;
   if (property[0] === '-') {
     sortOrder = -1;
     property  = property.substr(1);
   }
-  return function (a, b) {
+  return (a, b) => {
     let result;
     if (caseInsensitive) {
       result = (a[property].toLocaleLowerCase() < b[property].toLocaleLowerCase()) ? -1 : (a[property].toLocaleLowerCase() > b[property].toLocaleLowerCase()) ? 1 : 0;
@@ -59,23 +46,34 @@ const dynamicSort = (property, caseInsensitive) => {
       result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
     }
     return result * sortOrder;
-  }
-};
+  };
+}
 
-const clone = (obj) => {
-  if (obj == null || typeof(obj) != 'object')
-    return obj;
+function dynamicSortMultiple() {
+  const props = arguments;
+  return (obj1, obj2) => {
+    let index,
+        result = 0;
+    for (index = 0; result === 0 && index < props.length; index++) {
+      result = dynamicSort(props[index])(obj1, obj2);
+    }
+    return result;
+  };
+}
+
+
+function clone(obj) {
+  if (obj === null || typeof(obj) !== 'object') return obj;
   let temp = new obj.constructor();
-  for (let key in obj)
-    if (obj.hasOwnProperty(key))
-      temp[key] = clone(obj[key]);
+  for (let key in obj) if (obj.hasOwnProperty(key)) temp[key] = clone(obj[key]);
   return temp;
-};
+}
 
-module.exports = {
-  request:     request,
-  repeat:      repeat,
-  dynamicSort: dynamicSort,
-  clone:       clone,
-  howLong:     howLong
+export {
+  request,
+  repeat,
+  howLong,
+  dynamicSort,
+  dynamicSortMultiple,
+  clone
 };

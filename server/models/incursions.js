@@ -1,7 +1,7 @@
 'use strict';
 
 import Sequelize from 'sequelize';
-import * as helpers from '../helpers/helpers';
+import * as helpers from '../helpers';
 
 let Incursions;
 
