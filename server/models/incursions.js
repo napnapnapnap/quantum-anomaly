@@ -33,7 +33,7 @@ function createIncursionsEntry(error, response) {
     Incursions.destroy({
       where: {
         id: {
-          $ne: incursion.get('id')
+          [Sequelize.Op.ne]: incursion.get('id')
         }
       }
     });

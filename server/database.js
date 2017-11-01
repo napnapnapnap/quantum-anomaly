@@ -11,6 +11,7 @@ export default function () {
     dialectOptions: {
       timeout: 30
     },
+    operatorsAliases: Sequelize.Op,
     pool:           {
       max:            5,
       min:            0,
