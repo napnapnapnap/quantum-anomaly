@@ -90,3 +90,15 @@ table {
     }
   }
 }
+
+.box {
+  @include box;
+}
+
+.box__label {
+  @include box__label(100px);
+}
+
+.box__value {
+  @include box__value;
+}

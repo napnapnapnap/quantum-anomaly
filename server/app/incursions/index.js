@@ -1,15 +1,20 @@
 import * as IncursionMap from '../../models/incursion-map';
 import * as Incursions from '../../models/incursions';
 
-import * as helpers from '../../helpers'
+import * as helpers from '../../helpers';
 
 function getIncursionData(activeIncursions) {
   let promiseArray = activeIncursions.map(incursion =>
     IncursionMap.findById(incursion.constellation.id).then(constellation => {
-      incursion.info = constellation.dataValues.value;
-      delete incursion.infestedSolarSystems;
+      constellation = constellation.dataValues.value;
+      incursion.factionID = constellation.factionID;
+      incursion.factionName = constellation.factionName;
+      incursion.constellationName = constellation.constellationName;
+      incursion.constellationID = incursion.constellation.id_str;
+      incursion.systems = constellation.systems;
+      incursion.influence  = Math.round(incursion.influence * 100);
       
-      let systems = incursion.info.systems;
+      let systems          = incursion.systems;
       systems.forEach(system => {
         if (system.incursionType === 'HQ') system.typeSort = 0;
         else if (system.incursionType === 'AS') system.typeSort = 1;
@@ -21,6 +26,8 @@ function getIncursionData(activeIncursions) {
       });
       systems.sort(helpers.dynamicSortMultiple('typeSort', 'radius'));
       
+      delete incursion.infestedSolarSystems;
+      delete incursion.constellation;
       return incursion;
     })
   );

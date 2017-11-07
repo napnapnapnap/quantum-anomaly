@@ -1,0 +1,69 @@
+.incursions {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.incursion {
+  @include flex-padding(1rem);
+  flex: 0 0 100%;
+  @include media-breakpoint-up(md) {
+    flex: 0 0 50%;
+  }
+  margin-bottom: 2rem;
+}
+
+.incursion__header {
+  display: flex;
+  align-content: center;
+  @include paddless-header;
+}
+
+.incursion__header-image {
+  flex: 0 0 48px;
+  margin-right: 0.7rem;
+}
+
+.incursion-info {
+  @include box;
+}
+
+.incursion-info__label {
+  @include box__label (80px);
+}
+
+.incursion-info__value {
+  @include box__value;
+}
+
+.incursion-info__sansha {
+  background-image: url(https://image.eveonline.com/Alliance/500019_128.png);
+  background-repeat: no-repeat;
+  background-position: top -5px left 7rem;
+  background-size: 2.7rem;
+}
+
+.incursion__systems {
+  padding-left: 0.3rem;
+  margin-top: 0.7rem;
+  font-size: 0.9rem;
+}
+
+.incursion__stations {
+  font-size: smaller;
+  padding: 0.3rem;
+  &--hidden {
+    display: none;
+  }
+}
+
+.incursion__station {
+  margin-bottom: 0;
+}
+
+.incursion__system-name {
+  width: 90%;
+}
+
+.incursion__toggle {
+  float: right;
+}

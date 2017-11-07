@@ -7,11 +7,19 @@
   @extend .press;
   @extend .press-sm;
   &--cta {
-    @extend .press-green;
+    background: white;
+    @extend .btn;
+    @extend .press-black;
+    @extend .press-sm;
     @extend .press-ghost;
   }
   &--cancel {
     @extend .press-deeporange;
     @extend .press-ghost;
+  }
+  &--small {
+    padding: 0 0.3rem;
+    margin-left: 0.3rem;
+    min-width: inherit;
   }
 }
