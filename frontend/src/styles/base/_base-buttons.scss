@@ -6,6 +6,7 @@
   min-width: 100px;
   @extend .press;
   @extend .press-sm;
+
   &--cta {
     background: white;
     @extend .btn;
@@ -13,10 +14,12 @@
     @extend .press-sm;
     @extend .press-ghost;
   }
+
   &--cancel {
     @extend .press-deeporange;
     @extend .press-ghost;
   }
+
   &--small {
     padding: 0 0.3rem;
     margin-left: 0.3rem;

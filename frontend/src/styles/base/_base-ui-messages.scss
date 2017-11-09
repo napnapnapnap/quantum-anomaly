@@ -11,9 +11,11 @@
   cursor: pointer;
   margin: 0 10%;
   text-align: center;
+
   @include media-breakpoint-up(lg) {
     margin: 0 30%;
   }
+
   &:after {
     position: absolute;
     top: 0;
@@ -23,19 +25,19 @@
     content: '\2715';
     color: currentColor;
   }
-}
 
-.ui-messages--success {
-  display: block;
-  background-color: $message-success-bg-color;
-  a {
-    text-decoration: underline;
+  &--success {
+    display: block;
+    background-color: $message-success-bg-color;
+    a {
+      text-decoration: underline;
+    }
   }
-}
 
-.ui-messages--error {
-  display: block;
-  background-color: $message-error-bg-color;
+  &--error {
+    display: block;
+    background-color: $message-error-bg-color;
+  }
 }
 
 .loading-screen {
