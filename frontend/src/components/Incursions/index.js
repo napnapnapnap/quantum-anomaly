@@ -31,15 +31,14 @@ export default class Incursions extends Component {
 
   expandStationsButton(systemId) {
     return (
-      <button className="btn btn--cta btn--small incursion__toggle" onClick={() => this.expandStations(systemId)}>
-        Stations
-      </button>
+      <button className="btn btn--cta btn--small incursion__toggle"
+              onClick={() => this.expandStations(systemId)}
+              title="Toggle stations">S</button>
     );
   }
 
   stationsClassName(systemId) {
-    return !this.state.expanded[systemId] ?
-      'incursion__stations incursion__stations--hidden' : 'incursion__stations';
+    return !this.state.expanded[systemId] ? 'systems__cell--hidden' : 'systems__cell systems__cell--stations';
   }
 
   static stationRows(stations) {
@@ -49,7 +48,7 @@ export default class Incursions extends Component {
          stationName: name,
          hasRepairs
        }) => (
-        <p className="incursion__station" key={id}>
+        <p className="systems__station" key={id}>
           {name} {hasRepairs ? '+' : ''}
         </p>
       )
@@ -66,17 +65,17 @@ export default class Incursions extends Component {
          security,
          radius
        }) => (
-        <tr key={systemId}>
-          <td>{type}</td>
-          <td className="incursion__system-name">
+        <div className="systems__row" key={systemId}>
+          <span className="systems__cell">{type}</span>
+          <span className="systems__cell systems__cell--name">
             {name} {stations.length > 0 ? this.expandStationsButton(systemId) : ''}
-            <div className={this.stationsClassName(systemId)}>
-              {Incursions.stationRows(stations)}
-            </div>
-          </td>
-          <td className="center">{security}</td>
-          <td className="center">{radius}</td>
-        </tr>
+          </span>
+          <span className="systems__cell">{security}</span>
+          <span className="systems__cell">{radius}</span>
+          <span className={this.stationsClassName(systemId)}>
+            {Incursions.stationRows(stations)}
+          </span>
+        </div>
       )
     );
   }
@@ -98,7 +97,7 @@ export default class Incursions extends Component {
         <article className="incursion" key={incursion['constellationID']}>
           <header className="incursion__header">
             <div className="incursion__header-image">
-              <img className="responsive" src={constImg} alt={constellation}/>
+              <img className="responsive" src={constImg} alt={constellation} />
             </div>
             <div className="incursion__header-text">
               <h4>{constellation}</h4>
@@ -117,17 +116,17 @@ export default class Incursions extends Component {
             <span className="box__label">Enemy: </span>
             <span className="box__value incursion-info__sansha">{aggressor}</span>
           </section>
-          <table className="incursion__systems">
-            <thead>
-            <tr>
-              <th>Type</th>
-              <th>System</th>
-              <th className="center">Security</th>
-              <th className="center">Radius</th>
-            </tr>
-            </thead>
-            <tbody>{this.systemsRows(systems)}</tbody>
-          </table>
+          <article className="systems">
+            <header className="systems__header">
+              <span className="systems__cell">Type</span>
+              <span className="systems__cell systems__cell--name">System</span>
+              <span className="systems__cell">Security</span>
+              <span className="systems__cell">Radius</span>
+            </header>
+            <section className="systems-rows">
+              {this.systemsRows(systems)}
+            </section>
+          </article>
         </article>
       );
     });
@@ -135,7 +134,7 @@ export default class Incursions extends Component {
 
   render() {
     if (Object.keys(this.state.incursions).length === 0) {
-      return <LoadingScreen/>;
+      return <LoadingScreen />;
     } else {
       return (
         <article className="incursions">

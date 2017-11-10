@@ -4,66 +4,95 @@
 }
 
 .incursion {
-  @include flex-padding(1rem);
+  margin-bottom: 2rem;
   flex: 0 0 100%;
+  @include flex-padding(1rem);
   @include media-breakpoint-up(md) {
     flex: 0 0 50%;
   }
-  margin-bottom: 2rem;
-}
 
-.incursion__header {
-  display: flex;
-  align-content: center;
-  @include paddless-header;
-}
+  &__header {
+    display: flex;
+    align-content: center;
+    @include paddless-header;
+  }
 
-.incursion__header-image {
-  flex: 0 0 48px;
-  margin-right: 0.7rem;
+  &__header-image {
+    flex: 0 0 48px;
+    margin-right: 0.7rem;
+  }
+
+  &__toggle {
+    float: right;
+  }
 }
 
 .incursion-info {
   @include box;
-}
 
-.incursion-info__label {
-  @include box__label (80px);
-}
+  &__label {
+    @include box__label (80px);
+  }
 
-.incursion-info__value {
-  @include box__value;
-}
+  &__value {
+    @include box__value;
+  }
 
-.incursion-info__sansha {
-  background-image: url(https://image.eveonline.com/Alliance/500019_128.png);
-  background-repeat: no-repeat;
-  background-position: top -5px left 7rem;
-  background-size: 2.7rem;
-}
-
-.incursion__systems {
-  padding-left: 0.3rem;
-  margin-top: 0.7rem;
-  font-size: 0.9rem;
-}
-
-.incursion__stations {
-  font-size: smaller;
-  padding: 0.3rem;
-  &--hidden {
-    display: none;
+  &__sansha {
+    background-image: url(https://image.eveonline.com/Alliance/500019_128.png);
+    background-repeat: no-repeat;
+    background-position: top -5px left 7rem;
+    background-size: 2.7rem;
   }
 }
 
-.incursion__station {
-  margin-bottom: 0;
-}
+$base-cell-width: 3.5rem;
+.systems {
+  font-size: smaller;
 
-.incursion__system-name {
-  width: 90%;
-}
+  &__header {
+    background-color: rgba(200, 200, 200, 0.4);
+    font-weight: bold;
+    display: flex;
+  }
 
-.incursion__toggle {
-  float: right;
+  &__row {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #FFFFFF;
+    &:nth-of-type(even) {
+      background-color: rgba(200, 200, 200, 0.2);
+    }
+  }
+
+  &__cell {
+    margin: 0.3rem;
+    flex: 0 0 $base-cell-width;
+    text-align: center;
+
+    &--name {
+      text-align: left;
+      flex: 1 0 auto;
+    }
+
+    &--stations {
+      font-size: smaller;
+      flex: 0 0 100%;
+      text-align: left;
+      padding: 0 0 0.3rem 4.8rem;
+      margin: 0;
+      &--hidden {
+        display: none;
+      }
+    }
+
+    &--hidden {
+      display: none;
+    }
+  }
+
+  &__station {
+    margin: 0 0;
+    padding: 0.1rem 0.3rem;
+  }
 }
