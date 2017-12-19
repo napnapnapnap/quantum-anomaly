@@ -1,15 +1,17 @@
-let Skills;
-
-function init(sequelize) {
-  Skills = sequelize.define('Skills', {
+export default function (sequelize) {
+  let Skills = sequelize.define('Skills', {
     typeID: sequelize.Sequelize.INTEGER,
     value:  sequelize.Sequelize.JSON
   });
+
+  Skills.getSkillsIdNamesPair = getSkillsIdNamesPair.bind(Skills);
+  Skills.findById             = findById.bind(Skills);
+  Skills.getAllSkills         = getAllSkills.bind(Skills);
   return Skills;
 }
 
 function findById(typeID) {
-  return Skills.findOne({
+  return this.findOne({
     where: {
       typeID: typeID
     }
@@ -17,7 +19,7 @@ function findById(typeID) {
 }
 
 function getSkillsIdNamesPair() {
-  return Skills.findAll().then(skills => {
+  return this.findAll().then(skills => {
     const skillsCollection = {};
     skills.map(skill => {
       skillsCollection[skill.dataValues.value.typeID] = skill.dataValues.value.typeName;
@@ -27,12 +29,5 @@ function getSkillsIdNamesPair() {
 }
 
 function getAllSkills() {
-  return Skills.findAll().then(skills => skills.map(skill => skill.dataValues.value));
+  return this.findAll().then(skills => skills.map(skill => skill.dataValues.value));
 }
-
-export {
-  init,
-  findById,
-  getSkillsIdNamesPair,
-  getAllSkills
-};

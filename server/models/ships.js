@@ -1,6 +1,14 @@
 import shipsDynamicModel from './dynamic-models/ships-dynamic-model';
 
-let Ships;
+export default function (sequelize) {
+  /* Because this is dynamically created from another database, we need to load
+     model from a file which was created by tasks/assets-manager/shipsGet.js */
+  let Ships = sequelize.define('Ships', getDynamicModel(sequelize));
+  
+  Ships.findById = findById.bind(Ships);
+  Ships.getAllShips = getAllShips.bind(Ships);
+  return Ships;
+}
 
 function getDynamicModel(sequelize) {
   let model = shipsDynamicModel(),
@@ -11,17 +19,8 @@ function getDynamicModel(sequelize) {
   return sequelizeModel;
 }
 
-function init(sequelize) {
-  /* 
-     Because this is dynamically created from another database, we need to load
-     model from a file which was created by tasks/assets-manager/shipsGet.js
-  */
-  Ships = sequelize.define('Ships', getDynamicModel(sequelize));
-  return Ships;
-}
-
 function findById(typeID) {
-  return Ships.findOne({
+  return this.findOne({
     where: {
       typeID: typeID
     }
@@ -29,11 +28,5 @@ function findById(typeID) {
 }
 
 function getAllShips() {
-  return Ships.findAll().then(ships => ships.map(ship => ship.dataValues));
+  return this.findAll().then(ships => ships.map(ship => ship.dataValues));
 }
-
-export {
-  init,
-  findById,
-  getAllShips
-};

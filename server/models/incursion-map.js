@@ -1,22 +1,17 @@
-let IncursionMap;
-
-function init(sequelize) {
-  IncursionMap = sequelize.define('IncursionMap', {
+export default function (sequelize) {
+  let IncursionMap = sequelize.define('IncursionMap', {
     constellationID: sequelize.Sequelize.INTEGER,
     value:           sequelize.Sequelize.JSON
   });
+  
+  IncursionMap.findById = findById.bind(IncursionMap);
   return IncursionMap;
 }
 
 function findById(constellationID) {
-  return IncursionMap.findOne({
+  return this.findOne({
     where: {
       constellationID: constellationID
     }
   });
 }
-
-export {
-  init,
-  findById
-};

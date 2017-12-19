@@ -25,7 +25,7 @@ const PORT = process.env.PORT || 3000;
 const app  = express();
 
 let frontendPublicPath = path.join(__dirname, '..', 'frontend', 'build');
-if (process.env.NODE_ENV === 'production') frontendPublicPath = path.join(__dirname, '..', '..' ,'frontend', 'build');
+if (process.env.NODE_ENV === 'production') frontendPublicPath = path.join(__dirname, '..', '..', 'frontend', 'build');
 
 app.use(forceHttps);
 app.use(bodyParser.urlencoded({extended: true}));
@@ -36,6 +36,7 @@ app.use(cookieParser());
 app.use(methodOverride());
 
 const sequelize = database();
+
 models(sequelize).then(() => {
   app.use(forceHttps);
   if (process.env.NODE_ENV === 'production') logger.init('HTTPS module activated');

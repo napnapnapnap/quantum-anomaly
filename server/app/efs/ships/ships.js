@@ -1,16 +1,13 @@
-import * as Ships from '../../../models/ships';
-import * as Skills from '../../../models/skills';
-
-import {increaseCounter} from '../../../models/counters';
+import {models} from '../../../models';
 
 export default function () {
   let shipsFormatted       = {'Special Ships': {}},
       shipsFormattedSorted = {},
       shipsCollection;
 
-  return Ships.getAllShips().then(ships => {
+  return models.Ships.getAllShips().then(ships => {
     shipsCollection = ships;
-    return Skills.getSkillsIdNamesPair();
+    return models.Skills.getSkillsIdNamesPair();
   }).then(skills => {
     shipsCollection.forEach(ship => {
       if (ship.traits) {
@@ -47,7 +44,7 @@ export default function () {
       shipsFormattedSorted[key] = shipsFormatted[key];
       delete shipsFormatted[key];
     });
-    increaseCounter('overview-ships');
+    models.Counters.increaseCounter('overview-ships');
     return shipsFormattedSorted;
   });
 };

@@ -2,14 +2,14 @@ import Sequelize from 'sequelize';
 import * as helpers from '../helpers';
 
 import * as logger from '../helpers/logger';
-import * as sessionsModel from './sessions';
-import * as usersModel from './users';
-import * as shipsModel from './ships';
-import * as skillsModel from './skills';
-import * as countersModel from './counters';
-import * as incursionMapModel from './incursion-map';
-import * as incursionsModel from './incursions';
-import * as warframeStatusModel from './warframe-status';
+import sessionsModel from './sessions';
+import usersModel from './users';
+import shipsModel from './ships';
+import skillsModel from './skills';
+import countersModel from './counters';
+import incursionMapModel from './incursion-map';
+import incursionsModel from './incursions';
+import warframeStatusModel from './warframe-status';
 
 function overwriteEntry(error, response, Model) {
   if (error) return;
@@ -27,12 +27,12 @@ function overwriteEntry(error, response, Model) {
   });
 }
 
-function updateEntry (Model, modelName, timer) {
+function updateEntry(Model, modelName, timer) {
   const urls = {
-    incursions: 'https://crest.eveonline.com/incursions/',
+    incursions:     'https://crest.eveonline.com/incursions/',
     warframeStatus: 'http://content.warframe.com/dynamic/worldState.php'
   };
-  
+
   helpers.request({url: urls[modelName]}, overwriteEntry, Model);
   setInterval(function () {
     helpers.request({url: urls[modelName]}, overwriteEntry, Model);
@@ -40,20 +40,27 @@ function updateEntry (Model, modelName, timer) {
   logger.init(`Model ${modelName} started autoupdate every ${timer} minutes`, 'gray');
 }
 
+let models = {};
+
 export default function (sequelize, silent) {
-  const Sessions       = sessionsModel.init(sequelize),
-        Users          = usersModel.init(sequelize),
-        Ships          = shipsModel.init(sequelize),
-        Skills         = skillsModel.init(sequelize),
-        Counters       = countersModel.init(sequelize),
-        IncursionMaps  = incursionMapModel.init(sequelize),
-        Incursions     = incursionsModel.init(sequelize),
-        WarframeStatus = warframeStatusModel.init(sequelize);
+  models = {
+    Sessions:       sessionsModel(sequelize),
+    Users:          usersModel(sequelize),
+    Ships:          shipsModel(sequelize),
+    Skills:         skillsModel(sequelize),
+    Counters:       countersModel(sequelize),
+    IncursionMaps:  incursionMapModel(sequelize),
+    Incursions:     incursionsModel(sequelize),
+    WarframeStatus: warframeStatusModel(sequelize)
+  };
 
   return sequelize.sync().then(() => {
     if (!silent) logger.init('Database models synced');
-    updateEntry(Incursions, 'incursions', 15);
-    updateEntry(WarframeStatus, 'warframeStatus', 5);
-    countersModel.setDefaults();
+    updateEntry(models.Incursions, 'incursions', 15);
+    updateEntry(models.WarframeStatus, 'warframeStatus', 5);
+    models.Counters.setDefaults();
+    return models;
   });
-}
+};
+
+export {models};

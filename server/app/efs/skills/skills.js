@@ -1,7 +1,7 @@
-import * as Skills from '../../../models/skills';
+import {models} from '../../../models';
 
 export default function () {
-  return Skills.getAllSkills().then(skills => {
+  return models.Skills.getAllSkills().then(skills => {
     let skillsFormatted = {};
 
     skills.forEach(skill => {

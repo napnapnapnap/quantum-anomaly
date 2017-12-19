@@ -1,18 +1,20 @@
 import * as logger from '../helpers/logger';
 
-let Users;
-
-function init(sequelize) {
-  Users = sequelize.define('Users', {
+export default function (sequelize) {
+  let Users = sequelize.define('Users', {
     name:      sequelize.Sequelize.STRING,
     userGroup: sequelize.Sequelize.JSON,
     email:     sequelize.Sequelize.STRING
   });
+
+  Users.register    = register.bind(Users);
+  Users.findByEmail = findByEmail.bind(Users);
+  Users.login       = login.bind(Users);
   return Users;
 }
 
 const register = (user) => {
-  return Users.create({
+  return this.create({
     name:      user.email.split('@')[0],
     userGroup: ['guest'],
     email:     user.email
@@ -20,7 +22,7 @@ const register = (user) => {
 };
 
 function findByEmail(email) {
-  return Users.findOne({
+  return this.findOne({
     where: {
       email: email
     }
@@ -39,7 +41,7 @@ function login(user) {
     }
   });
 
-  return findByEmail(user.email)
+  return this.findByEmail(user.email)
     .then((userRecord) => {
       if (userRecord) {
         logger.action(userRecord.email + ' logged in (group: ' + userRecord.userGroup + ')', ['access']);
@@ -47,7 +49,7 @@ function login(user) {
       } else {
         if (process.env.REGISTRATION === 'true') {
           logger.action('Registering new user ' + user.email, ['userAction']);
-          return register(user);
+          return this.register(user);
         } else {
           logger.action('Unauthorized login attempt - registrations are disabled', ['error']);
           return {err: 'unauthorized'};
@@ -55,8 +57,3 @@ function login(user) {
       }
     });
 }
-
-export {
-  init,
-  login
-};

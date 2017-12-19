@@ -1,10 +1,12 @@
-let Counters;
-
-function init(sequelize) {
-  Counters = sequelize.define('Counters', {
+export default function (sequelize) {
+  let Counters = sequelize.define('Counters', {
     page:  sequelize.Sequelize.STRING,
     value: sequelize.Sequelize.INTEGER
   });
+
+  Counters.setDefaults     = setDefaults.bind(Counters);
+  Counters.increaseCounter = increaseCounter.bind(Counters);
+  Counters.returnCounters  = returnCounters.bind(Counters);
   return Counters;
 }
 
@@ -16,7 +18,7 @@ function setDefaults() {
   ];
 
   pages.forEach(page => {
-    Counters.findOrCreate({
+    this.findOrCreate({
       where:    {page: page},
       defaults: {value: 0}
     });
@@ -24,7 +26,7 @@ function setDefaults() {
 }
 
 function increaseCounter(page) {
-  return Counters.findOne({
+  return this.findOne({
     where: {
       page: page
     }
@@ -34,13 +36,5 @@ function increaseCounter(page) {
 }
 
 function returnCounters() {
-  return Counters.findAll().then(counter => counter.map(counter => counter.dataValues.value));
+  return this.findAll().then(counter => counter.map(counter => counter.dataValues.value));
 }
-
-
-export {
-  init,
-  increaseCounter,
-  setDefaults,
-  returnCounters
-};

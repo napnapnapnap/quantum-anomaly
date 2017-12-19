@@ -3,7 +3,7 @@ import caldari from './caldari';
 import gallente from './gallente';
 import minmatar from './minmatar';
 
-import {increaseCounter} from '../../models/counters';
+import {models} from '../../models';
 
 function globalInfo() {
   return 'For those who will attempt this on first try. It is recommended to have ship that is cap stable with around 1000 dps tank. If your skills permit, usage of Marauders is recommended since they can easily reach more then 1000dps tank and they have immunity towards EWAR.';
@@ -22,7 +22,7 @@ export default function () {
   epicArcs.gallente.global = globalInfo();
   epicArcs.minmatar.global = globalInfo();
 
-  increaseCounter('epic-arcs');
+  models.Counters.increaseCounter('epic-arcs');
 
   return epicArcs;
 };

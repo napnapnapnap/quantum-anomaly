@@ -1,4 +1,4 @@
-const init = (sequelize) => {
+export default function (sequelize) {
   return sequelize.define('Sessions', {
     sid:       {
       type:       sequelize.Sequelize.STRING(255),
@@ -19,5 +19,3 @@ const init = (sequelize) => {
     }
   });
 };
-
-export {init};

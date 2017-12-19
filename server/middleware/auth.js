@@ -4,7 +4,7 @@ import connectPgSimple from 'connect-pg-simple';
 import googleAuth from 'passport-google-oauth';
 
 import * as logger from '../helpers/logger';
-import * as User from '../models/users';
+import {models} from '../models/index';
 
 const googleStrategy = googleAuth.OAuth2Strategy;
 
@@ -23,7 +23,7 @@ function setupPassport() {
       callbackURL:  process.env.GOOGLE_CALLBACK_URL
     }, function (accessToken, refreshToken, profile, done) {
       process.nextTick(() => {
-        User.login(profile)
+        models.Users.login(profile)
           .then((userRecord) => {
             if (!userRecord.err) {
               return done(null, userRecord);

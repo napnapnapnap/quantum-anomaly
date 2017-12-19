@@ -4351,6 +4351,10 @@ export default function (arg) {
     'MT_SURVIVAL': 'Survival',
     'MT_TERRITORY': 'Interception'
   };
+
+  let result = translations[arg];
+  if (!result) result = translations[arg.toLowerCase()];
+  if (!result) result = arg;
   
-  return translations[arg] || arg;
+  return result;
 }
