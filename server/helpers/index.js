@@ -31,7 +31,6 @@ function howLong(arg) {
   return arg;
 }
 
-
 function dynamicSort(property, caseInsensitive) {
   let sortOrder = 1;
   if (property[0] === '-') {
@@ -68,9 +67,14 @@ function clone(obj) {
   return temp;
 }
 
+function capitalize(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 export {
   request,
   repeat,
+  capitalize,
   howLong,
   dynamicSort,
   dynamicSortMultiple,
