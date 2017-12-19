@@ -21,21 +21,38 @@ export default class WarframeStatus extends Component {
   }
 
   static alerts(alerts) {
-    return alerts.map(alert => {
+    return alerts.map((alert, index) => {
       return (
-        <section>
-          <div>Starts: {alert.start}</div>
-          <div>Ends: {alert.end}</div>
-          <div>Level: {alert.level}</div>
-          <div>Faction: {alert.faction}</div>
-          {alert.rewards.map(reward => {
-            return (
-              <div>{reward}</div>
-            );
-          })}
+        <article className="warframe__alert" key={index}>
+          <header className="warframe__header">
+            <section className="box">
+              <span className="box__label">Start: </span>
+              <span className="box__value">{alert.start}</span>
+            </section>
+            <section className="box">
+              <span className="box__label">End: </span>
+              <span className="box__value">{alert.end}</span>
+            </section>
+          </header>
+          <section className="box">
+            <span className="box__label">Enemy: </span>
+            <span className="box__value">{alert.faction} (Level {alert.level})</span>
+          </section>
+          <section className="box">
+            <span className="box__label">Rewards: </span>
+            <span className="box__value">
+              <ul>
+                {alert.rewards.map((reward, index) => {
+                  return (
+                    <li className="warframe__reward" key={index}>{reward}</li>
+                  );
+                })}
+              </ul>
+            </span>
+          </section>
           <br/>
           <br/>
-        </section>
+        </article>
       );
     });
   }
@@ -45,7 +62,7 @@ export default class WarframeStatus extends Component {
       return <LoadingScreen/>;
     } else {
       return (
-        <article className="overview-arcs">
+        <article className="warframe">
           <h2>Alerts</h2>
           {WarframeStatus.alerts(this.state.status.alerts)}
         </article>

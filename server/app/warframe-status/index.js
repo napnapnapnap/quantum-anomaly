@@ -16,16 +16,16 @@ function normalizeDate(arg) {
 }
 
 function rewards(data) {
-  const rewards = [data.credits + ' credits'];
+  const rewards = [
+    data.credits.toLocaleString('de-DE', {
+      style:                 'decimal',
+      minimumFractionDigits: 0
+    }) + ' credits'
+  ];
 
   if (data.items) {
     data.items.forEach(item => {
-      // if (item.indexOf('Upgrades/Mods') !== -1) {
-      //   const modStringArray = item.split('/');
-      //   rewards.push(modStringArray[modStringArray.length - 1].replace('Mod', ''));
-      // } else {
       rewards.push(translations(item));
-      // }
     });
   }
 
@@ -36,7 +36,7 @@ function normalizeData(data) {
   const result = {
     alerts: []
   };
-  
+
   data['Alerts'].forEach(alert => {
     result.alerts.push({
       start:   normalizeDate(alert['Activation']['$date']['$numberLong']),
@@ -48,7 +48,7 @@ function normalizeData(data) {
     });
   });
 
-  inspect(result);
+  //inspect(result);
   return result;
 }
 

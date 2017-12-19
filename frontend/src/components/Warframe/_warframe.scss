@@ -1,0 +1,21 @@
+.warframe {
+  display: flex;
+  flex-wrap: wrap;
+  
+  &__alert {
+    flex: 0 0 100%;
+    @include flex-padding(1rem);
+    @include media-breakpoint-up(md) {
+      flex: 0 0 50%;
+    }
+  }
+
+  &__label {
+    width: 4rem;
+  }
+  
+  &__reward {
+    margin-left: 1rem;
+    list-style-type: disc;
+  }
+}
