@@ -1,5 +1,3 @@
-'use strict';
-
 import * as logger from './helpers/logger';
 import * as sessionsModel from './models/sessions';
 import * as userModel from './models/users';

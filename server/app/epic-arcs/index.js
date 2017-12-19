@@ -1,5 +1,3 @@
-'use strict';
-
 import amarr from './amarr';
 import caldari from './caldari';
 import gallente from './gallente';

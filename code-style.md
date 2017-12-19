@@ -6,9 +6,6 @@ All keys, tokens, database credentials should be inside `.env` file. This file s
 
 ### Javascript code stlye
 
-#### General
-Each JS file starts with `'use strict';` and ends with new line at the bottom.
-
 #### Imports
 We are using import statements. Group import statements into two groups which are separated by new line. First group should contain external modules (this will most likely be NPM modules). Second group is our own modules.
 

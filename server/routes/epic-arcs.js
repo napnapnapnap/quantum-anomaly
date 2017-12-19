@@ -1,5 +1,3 @@
-'use strict';
-
 import express from 'express';
 
 import epicArcs from '../app/epic-arcs';

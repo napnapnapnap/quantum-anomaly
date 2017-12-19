@@ -1,5 +1,3 @@
-'use strict';
-
 import * as Skills from '../../../models/skills';
 
 export default function () {

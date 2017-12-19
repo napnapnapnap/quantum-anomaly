@@ -1,5 +1,3 @@
-'use strict';
-
 import * as Ships from '../../../models/ships';
 import * as Skills from '../../../models/skills';
 

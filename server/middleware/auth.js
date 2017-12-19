@@ -1,5 +1,3 @@
-'use strict';
-
 import passport from 'passport';
 import expressSession from 'express-session';
 import connectPgSimple from 'connect-pg-simple';

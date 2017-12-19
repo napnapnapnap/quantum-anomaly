@@ -1,5 +1,3 @@
-'use strict';
-
 const env = process.env.NODE_ENV || 'development';
 import dotenv from 'dotenv';
 

@@ -1,5 +1,3 @@
-'use strict';
-
 import * as logger from '../../helpers/logger';
 
 function addTraitsToShips(ships, sequelize) {

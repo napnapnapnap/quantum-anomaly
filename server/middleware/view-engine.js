@@ -1,5 +1,3 @@
-'use strict';
-
 import expressHandlebars from 'express-handlebars';
 import handlebarsHelpers from '../helpers/handelbars-helpers';
 

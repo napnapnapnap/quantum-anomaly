@@ -1,9 +1,5 @@
-'use strict';
-
 import Sequelize from 'sequelize';
-import moment from 'moment';
 import * as helpers from '../helpers';
-import {inspect} from '../helpers/logger';
 
 let WarframeStatus;
 

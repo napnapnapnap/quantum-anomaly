@@ -1,5 +1,3 @@
-'use strict';
-
 import apiEpicArcs from './epic-arcs';
 import apiFittingManager from './incursions';
 import apiIncursions from './efs';
