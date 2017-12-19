@@ -1,15 +1,13 @@
-import express from 'express';
-
-import incursions from '../app/incursions';
 import * as logger from '../helpers/logger';
+import incursions from '../app/incursions';
 
-const router = express.Router();
-
-router.use('/get-incursions', (req, res) => {
-  logger.access(req.user, 'Request incursions status');
-  incursions().then(data => {
-    res.json(data);
+export default function (router) {
+  router.use('/get-incursions', (req, res) => {
+    logger.access(req.user, 'Request incursions status');
+    incursions().then(data => {
+      res.json(data);
+    });
   });
-});
 
-module.exports = router;
+  return router;
+}
