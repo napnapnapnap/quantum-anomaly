@@ -11,7 +11,7 @@ export default class WarframeStatus extends Component {
   };
 
   componentWillMount() {
-    fetch('api/get-warframe-status')
+    fetch('/api/get-warframe-status')
       .then(response => response.json())
       .then(response => {
         this.setState({
