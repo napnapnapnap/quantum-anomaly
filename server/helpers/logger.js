@@ -51,9 +51,9 @@ function action(message, type, color) {
   log(message, type, color);
 }
 
-function init(message) {
+function init(message, color) {
   message = 'Init: ' + message;
-  log(message, ['Init']);
+  log(message, ['Init'], color);
 }
 
 function access(user, message, err) {

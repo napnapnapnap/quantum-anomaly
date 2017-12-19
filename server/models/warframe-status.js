@@ -1,5 +1,4 @@
 import Sequelize from 'sequelize';
-import * as helpers from '../helpers';
 
 let WarframeStatus;
 
@@ -7,36 +6,7 @@ function init(sequelize) {
   WarframeStatus = sequelize.define('WarframeStatus', {
     data: Sequelize.JSON
   });
-
-  updateWarframeStatus(WarframeStatus);
-  setInterval(function () {
-    updateWarframeStatus(WarframeStatus);
-  }, 15 * 60 * 1000);
-
   return WarframeStatus;
-}
-
-function updateWarframeStatus() {
-  const options = {url: 'http://content.warframe.com/dynamic/worldState.php'};
-  helpers.request(options, createWarframeStatusEntry);
-}
-
-function createWarframeStatusEntry(error, response) {
-  if (error) {
-    return;
-  }
-
-  WarframeStatus.create({
-    data: JSON.parse(response.body)
-  }).then(function (warframeStatus) {
-    WarframeStatus.destroy({
-      where: {
-        id: {
-          [Sequelize.Op.ne]: warframeStatus.get('id')
-        }
-      }
-    });
-  });
 }
 
 function getWarframeStatus() {
