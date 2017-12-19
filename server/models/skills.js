@@ -1,11 +1,9 @@
-import Sequelize from 'sequelize';
-
 let Skills;
 
 function init(sequelize) {
   Skills = sequelize.define('Skills', {
-    typeID: Sequelize.INTEGER,
-    value:  Sequelize.JSON
+    typeID: sequelize.Sequelize.INTEGER,
+    value:  sequelize.Sequelize.JSON
   });
   return Skills;
 }

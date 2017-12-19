@@ -1,14 +1,12 @@
-import Sequelize from 'sequelize';
-
 import * as logger from '../helpers/logger';
 
 let Users;
 
 function init(sequelize) {
   Users = sequelize.define('Users', {
-    name:      Sequelize.STRING,
-    userGroup: Sequelize.JSON,
-    email:     Sequelize.STRING
+    name:      sequelize.Sequelize.STRING,
+    userGroup: sequelize.Sequelize.JSON,
+    email:     sequelize.Sequelize.STRING
   });
   return Users;
 }

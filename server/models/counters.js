@@ -1,28 +1,25 @@
-import Sequelize from 'sequelize';
-
 let Counters;
 
 function init(sequelize) {
   Counters = sequelize.define('Counters', {
-    page:  Sequelize.STRING,
-    value: Sequelize.INTEGER
+    page:  sequelize.Sequelize.STRING,
+    value: sequelize.Sequelize.INTEGER
   });
-  setDefaults();
   return Counters;
 }
 
 function setDefaults() {
-  Counters.findOrCreate({
-    where:    {page: 'epic-arcs'},
-    defaults: {value: 0}
-  });
-  Counters.findOrCreate({
-    where:    {page: 'overview-ships'},
-    defaults: {value: 0}
-  });
-  Counters.findOrCreate({
-    where:    {page: 'incursions'},
-    defaults: {value: 0}
+  const pages = [
+    'epic-arcs',
+    'overview-ships',
+    'incursions'
+  ];
+
+  pages.forEach(page => {
+    Counters.findOrCreate({
+      where:    {page: page},
+      defaults: {value: 0}
+    });
   });
 }
 
@@ -44,5 +41,6 @@ function returnCounters() {
 export {
   init,
   increaseCounter,
+  setDefaults,
   returnCounters
 };

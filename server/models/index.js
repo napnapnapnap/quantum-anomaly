@@ -54,5 +54,6 @@ export default function (sequelize, silent) {
     if (!silent) logger.init('Database models synced');
     updateEntry(Incursions, 'incursions', 15);
     updateEntry(WarframeStatus, 'warframeStatus', 5);
+    countersModel.setDefaults();
   });
 }

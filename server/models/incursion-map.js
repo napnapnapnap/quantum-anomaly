@@ -1,11 +1,9 @@
-import Sequelize from 'sequelize';
-
 let IncursionMap;
 
 function init(sequelize) {
   IncursionMap = sequelize.define('IncursionMap', {
-    constellationID: Sequelize.INTEGER,
-    value:           Sequelize.JSON
+    constellationID: sequelize.Sequelize.INTEGER,
+    value:           sequelize.Sequelize.JSON
   });
   return IncursionMap;
 }

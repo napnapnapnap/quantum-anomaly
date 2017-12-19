@@ -1,22 +1,20 @@
-import Sequelize from 'sequelize';
-
 const init = (sequelize) => {
   return sequelize.define('Sessions', {
     sid:       {
-      type:       Sequelize.STRING(255),
+      type:       sequelize.Sequelize.STRING(255),
       primaryKey: true
     },
     expire:    {
-      type:      Sequelize.DATE,
+      type:      sequelize.Sequelize.DATE,
       allowNull: true
     },
-    sess:      Sequelize.JSON,
+    sess:      sequelize.Sequelize.JSON,
     createdAt: {
-      type:      Sequelize.DATE,
+      type:      sequelize.Sequelize.DATE,
       allowNull: true
     },
     updatedAt: {
-      type:      Sequelize.DATE,
+      type:      sequelize.Sequelize.DATE,
       allowNull: true
     }
   });

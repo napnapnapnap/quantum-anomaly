@@ -1,13 +1,12 @@
-import Sequelize from 'sequelize';
 import shipsDynamicModel from './dynamic-models/ships-dynamic-model';
 
 let Ships;
 
-function getDynamicModel() {
+function getDynamicModel(sequelize) {
   let model = shipsDynamicModel(),
       sequelizeModel = {};
   Object.keys(model).map(attribute => {
-    sequelizeModel[attribute] = Sequelize[model[attribute]];
+    sequelizeModel[attribute] = sequelize.Sequelize[model[attribute]];
   });
   return sequelizeModel;
 }
@@ -17,7 +16,7 @@ function init(sequelize) {
      Because this is dynamically created from another database, we need to load
      model from a file which was created by tasks/assets-manager/shipsGet.js
   */
-  Ships = sequelize.define('Ships', getDynamicModel());
+  Ships = sequelize.define('Ships', getDynamicModel(sequelize));
   return Ships;
 }
 

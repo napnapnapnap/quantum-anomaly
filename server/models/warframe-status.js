@@ -1,10 +1,8 @@
-import Sequelize from 'sequelize';
-
 let WarframeStatus;
 
 function init(sequelize) {
   WarframeStatus = sequelize.define('WarframeStatus', {
-    data: Sequelize.JSON
+    data: sequelize.Sequelize.JSON
   });
   return WarframeStatus;
 }

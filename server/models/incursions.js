@@ -1,10 +1,8 @@
-import Sequelize from 'sequelize';
-
 let Incursions;
 
 function init(sequelize) {
   Incursions = sequelize.define('Incursions', {
-    data: Sequelize.JSON
+    data: sequelize.Sequelize.JSON
   });
   return Incursions;
 }
