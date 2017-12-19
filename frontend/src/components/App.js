@@ -16,6 +16,8 @@ import Skills from './Efs/Skills';
 import OverviewEpicArcs from './EpicArcs';
 import Incursions from './Incursions';
 
+import WarframeStatus from './Warframe';
+
 const App = () => (
   <div>
     <Header />
@@ -28,6 +30,7 @@ const App = () => (
         <Route path='/epic-arcs/:faction' component={OverviewEpicArcs}/>
         <Route path='/epic-arcs/' component={OverviewEpicArcs}/>
         <Route path='/incursion-manager' component={Incursions}/>
+        <Route path='/warframe-status' component={WarframeStatus}/>
         <Route path="*" component={NotFound}/>
       </Switch>
       {cookies.getCookie('cookiesAgree') !== 'true' ? <Cookies /> : ''}

@@ -27,11 +27,17 @@ export default class Header extends Component {
           <div className="navigation__title"><a href="/">Quantum Anomaly</a>
           </div>
           <ul className="navigation__content">
-            <li className="navigation__link"><a href="/efs-ships">Fitting simulator</a></li>
-            {/*<li className="navigation__link"><a href="/skills">Skills</a></li>*/}
             <li className="navigation__link">
-              <a href="/incursion-manager">Incursion Manager</a></li>
-            <li className="navigation__link"><a href="/epic-arcs">Epic arcs</a>
+              <a href="/efs-ships" title="EVE Fitting Simulator">EVE Fit</a>
+            </li>
+            <li className="navigation__link">
+              <a href="/incursion-manager" title="EVE Incursions Manager">EVE Incursions</a>
+            </li>
+            <li className="navigation__link">
+              <a href="/epic-arcs" title="EVE Epic Arcs">EVE Epic arcs</a>
+            </li>
+            <li className="navigation__link">
+              <a href="/warframe-status">WarFrame Status</a>
             </li>
             {this.userLoggedIn() ? (
               <li className="navigation__link"><a href="/auth/google">Login</a></li>
