@@ -15,6 +15,7 @@ import serveStatic from 'serve-static';
 import * as logger from './helpers/logger';
 import routes from './routes';
 import database from './database';
+import models from './models';
 
 import auth from './middleware/auth';
 import cors from './middleware/cors';
@@ -34,7 +35,8 @@ app.use(compression());
 app.use(cookieParser());
 app.use(methodOverride());
 
-database().then(() => {
+const sequelize = database();
+models(sequelize).then(() => {
   app.use(forceHttps);
   if (process.env.NODE_ENV === 'production') logger.init('HTTPS module activated');
 

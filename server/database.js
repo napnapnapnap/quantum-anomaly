@@ -1,7 +1,6 @@
 import Sequelize from 'sequelize';
 
 import configuration from './config';
-import modelsCollection from './model-collection'
 import * as logger from './helpers/logger';
 
 export default function () {
@@ -20,5 +19,5 @@ export default function () {
     logging:        configuration.database.logging
   });
   logger.init('Database connection established');
-  return modelsCollection(sequelize);
+  return sequelize;
 };
