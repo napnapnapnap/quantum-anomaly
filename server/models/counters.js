@@ -9,7 +9,23 @@ function init(sequelize) {
     page:  Sequelize.STRING,
     value: Sequelize.INTEGER
   });
+  setDefaults();
   return Counters;
+}
+
+function setDefaults() {
+  Counters.findOrCreate({
+    where:    {page: 'epic-arcs'},
+    defaults: {value: 0}
+  });
+  Counters.findOrCreate({
+    where:    {page: 'overview-ships'},
+    defaults: {value: 0}
+  });
+  Counters.findOrCreate({
+    where:    {page: 'incursions'},
+    defaults: {value: 0}
+  });
 }
 
 function increaseCounter(page) {

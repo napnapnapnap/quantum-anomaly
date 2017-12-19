@@ -3,14 +3,13 @@
 import Sequelize from 'sequelize';
 
 import configuration from './config';
-import * as modelsCollection from './model-collection'
+import modelsCollection from './model-collection'
 import * as logger from './helpers/logger';
 
 export default function () {
   const sequelize = new Sequelize(process.env.DATABASE_URL, {
     dialectOptions: {
-      timeout: 30,
-      ssl: true
+      timeout: 30
     },
     operatorsAliases: Sequelize.Op,
     pool:           {
@@ -23,5 +22,5 @@ export default function () {
     logging:        configuration.database.logging
   });
   logger.init('Database connection established');
-  return modelsCollection.init(sequelize);
+  return modelsCollection(sequelize);
 };
