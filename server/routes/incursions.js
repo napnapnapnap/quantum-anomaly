@@ -14,5 +14,4 @@ router.use('/get-incursions', (req, res) => {
   });
 });
 
-
 module.exports = router;
