@@ -27,9 +27,9 @@ body {
 .page-content-main {
   max-width: $base-max-width;
   background: $base-background;
-  min-height: calc(100vh - #{$base-padding-v} * 2);
+  min-height: calc(100vh - calc(#{$navbar-height} + #{$base-padding-v} * 2));
   position: relative;
-  padding: calc(#{$navbar-height} + #{$base-padding-v}) $base-padding-h $base-padding-v;
+  padding: $base-padding-v $base-padding-h ;
 }
 
 form {

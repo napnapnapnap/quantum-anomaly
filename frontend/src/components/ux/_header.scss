@@ -1,7 +1,5 @@
 .page-content-header {
-  position: fixed;
-  top: 0;
-  width: 100%;
+  position: relative;
   max-width: $base-max-width;
   z-index: 10;
 }
@@ -72,7 +70,7 @@
         display: block;
         border-top: 1px solid $navbar-color;
         padding: 0.5rem $base-padding-h;
-        background: rgba($navbar-background, 0.75);
+        background: rgba($navbar-background, 0.90);
         .navigation__link {
           padding: 0.5rem $base-padding-h;
         }
