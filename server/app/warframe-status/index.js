@@ -41,10 +41,14 @@ function rewards(data) {
   return rewards;
 }
 
+function nodeName(arg) {
+  let planet = ` (${planetName(arg)})`;
+  return arg.value.replace(planet,'');
+}
+
 function planetName(arg) {
-  let planetRegexp = /\((.*?)\)/g,
-      planet       = planetRegexp.exec(arg.value)[1];
-  return planet;
+  let planetRegexp = /\((.*?)\)/g;
+  return planetRegexp.exec(arg.value)[1];
 }
 
 function normalizeData(data) {
@@ -55,7 +59,9 @@ function normalizeData(data) {
   };
 
   data['Alerts'].forEach(alert => {
+    let node = nodeName(nodes(alert['MissionInfo']['location']));
     result.alerts.push({
+      id:       `${node} -> ${alert['Expiry']['$date']['$numberLong']}`,
       start:    normalizeDate(alert['Activation']['$date']['$numberLong']),
       end:      normalizeDate(alert['Expiry']['$date']['$numberLong']),
       faction:  faction(alert['MissionInfo']['faction']),
@@ -104,8 +110,8 @@ function normalizeData(data) {
   const sortieMissions = data['Sorties'][0]['Variants'];
   sortieMissions.forEach(sortie => {
     result.sortie.missions.push({
-      type: translations(sortie['missionType']),
-      node: nodes(sortie['node']),
+      type:   translations(sortie['missionType']),
+      node:   nodes(sortie['node']),
       effect: translations(sortie['modifierType'])
     });
   });

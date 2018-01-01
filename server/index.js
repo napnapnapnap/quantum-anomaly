@@ -21,6 +21,8 @@ import auth from './middleware/auth';
 import cors from './middleware/cors';
 import forceHttps from './middleware/force-https';
 
+import warframeAlerts from './app/mailer/warframe-alert-mailer';
+
 const PORT = process.env.PORT || 3000;
 const app  = express();
 
@@ -58,4 +60,9 @@ models(sequelize).then(() => {
 
   app.listen(PORT);
   logger.init('App started');
+
+  if (process.env.NODE_ENV === 'production') {
+    warframeAlerts();
+    logger.init('Warframe alerts mail module started', 'gray');
+  }
 });

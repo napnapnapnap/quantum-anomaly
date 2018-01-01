@@ -11,12 +11,19 @@ On your local, you need to create `.env` file in `server` folder of project. Con
 ```
 DATABASE_URL=postgres://USERNAME:PASSWORD@HOST:PORT/DB-NAME
 DATABASE_SECRET=YOUR-SECRET
+
 PORT=HERE-GOES-YOUR-PORT
 USER_AGENT={'User-Agent': 'YOUR USER AGENT FOR SERVER TO SERVER CALLS'}
 GOOGLE_CLIENT_ID=HERE-GOES-YOUR-CLIENT-ID
 GOOGLE_CLIENT_SECRET=HERE-GOES-YOUR-SECRET
-GOOGLE_CALLBACK_URL=HERE-GOES-YOUR-URL(for local development it should be your localhost of node server)
+GOOGLE_CALLBACK_URL=HERE-GOES-YOUR-URL
 REGISTRATION=true
+
+// optional if you want to use mailer (mailers are by default disabled in dev mode)
+EMAIL_CLIENT_ID=GOOGLE-SMTP-USERNAME
+EMAIL_CLIENT_PASS=GOOGLE-SMTP-PASSWORD
+
+WARFRAME_EMAILS=STRING-OF-CS-EMAILS
 ```
 
 #### NPM tasks
@@ -85,7 +92,7 @@ Backend is running on [node express](https://www.npmjs.com/package/express) serv
 used for Postgres database management. Authentication is being done with `('passport-google-oauth').OAuth2Strategy;`  
 Config file: `server/config.js`  
 Main database file: `server/database.js`  
-Main routes file: `routes/_routes.js`
+Main routes file: `routes/index.js`
 
 ### Frontend
 
