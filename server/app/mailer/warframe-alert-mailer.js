@@ -32,8 +32,6 @@ function buildMessage() {
 
 function warframeAlerts() {
   warframeStatus().then(data => {
-    cleanExpired();
-
     data.alerts.forEach(alert => {
       alert.rewards.forEach(reward => {
         if (reward.indexOf('Nitain') !== -1 || reward.indexOf('Orokin Reactor') !== -1 || reward.indexOf('Orokin Catalyst') !== -1) {
@@ -51,6 +49,7 @@ function warframeAlerts() {
         html:    message
       }, 'Warframe Alert email sent out');
     }
+    cleanExpired();
   });
 }
 

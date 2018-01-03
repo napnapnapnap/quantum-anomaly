@@ -24,7 +24,8 @@ import forceHttps from './middleware/force-https';
 import warframeAlerts from './app/mailer/warframe-alert-mailer';
 
 const PORT = process.env.PORT || 3000;
-const app  = express();
+const app  = express(),
+      router = express.Router();
 
 let frontendPublicPath = path.join(__dirname, '..', 'frontend', 'build');
 if (process.env.NODE_ENV === 'production') frontendPublicPath = path.join(__dirname, '..', '..', 'frontend', 'build');
@@ -52,7 +53,7 @@ models(sequelize).then(() => {
   auth(app);
   logger.init('Auth module loaded');
 
-  routes(app);
+  app.use('/', routes(router));
   logger.init('Express routing loaded');
 
   app.use('*', serveStatic(frontendPublicPath));
