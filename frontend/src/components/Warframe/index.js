@@ -94,6 +94,10 @@ export default class WarframeStatus extends Component {
             <span className="box__value">{alert.faction} (Level {alert.level})</span>
           </section>
           <section className="box">
+            <span className="box__label">Type: </span>
+            <span className="box__value">{alert.type}</span>
+          </section>
+          <section className="box">
             <span className="box__label">Rewards: </span>
             <span className="box__value">
               <ul>

@@ -5,6 +5,14 @@ const notableAlerts = [];
 
 function cleanExpired() {
   notableAlerts.forEach((notableAlert, index) => {
+    /* Delay removing alerts from mailed list for 10 minutes after expiry
+       Reasons:
+         This is held in global array, so we want to remove them eventually
+         However, here and there it happens we remove alert from the array
+         but it is still available on API so gets send again because we are
+         checking custom ID, not the read expiry date from API
+     */
+    const timeOffset = Date.now() + (10  * 60 * 1000);
     if (Date.now() > notableAlert.id.split(' -> ')[1]) {
       notableAlerts.splice(index, 1);
     }

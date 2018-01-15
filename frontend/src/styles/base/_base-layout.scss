@@ -29,7 +29,7 @@ body {
   background: $base-background;
   min-height: calc(100vh - calc(#{$navbar-height} + #{$base-padding-v} * 2));
   position: relative;
-  padding: $base-padding-v $base-padding-h ;
+  padding: $base-padding-v $base-padding-h;
 }
 
 form {
@@ -48,6 +48,13 @@ form {
 
 .long-text {
   max-width: 600px;
+}
+
+.spacer {
+  width: 100%;
+  flex: 0 0 100%;
+  border: none;
+  padding: 1rem;
 }
 
 img {
@@ -70,7 +77,7 @@ table {
   }
   thead {
     tr {
-    background-color: rgba(200, 200, 200, 0.4);
+      background-color: rgba(200, 200, 200, 0.4);
     }
     th {
       text-align: left;
