@@ -3,9 +3,12 @@
   @include ie-flex-fix($value)
 }
 
-@mixin flex-grid($sm, $md, $lg) {
-  flex: 0 0 $sm;
-  @include ie-flex-fix($sm);
+@mixin flex-grid($sm, $md, $lg, $base:100%) {
+  flex: 0 0 $base;
+  @include media-breakpoint-up(sm) {
+    flex: 0 0 $sm;
+    @include ie-flex-fix($sm);
+  }
   @include media-breakpoint-up(md) {
     flex: 0 0 $md;
     @include ie-flex-fix($md);

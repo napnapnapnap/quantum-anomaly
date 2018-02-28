@@ -1,11 +1,3 @@
-%status-item {
-  flex: 0 0 100%;
-  @include media-breakpoint-up(md) {
-    flex: 0 0 50%;
-  }
-  margin-bottom: 2rem;
-}
-
 @mixin racial-colors {
   &--grineer {
     background: #CC0000;
@@ -19,78 +11,87 @@
 }
 
 .warframe {
-  &__section {
+  &__alerts, &__invasions, &__sortie_missions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 1rem;
+  }
+
+  &__cetus, &__sortie {
+    margin: 1rem 0;
+    padding-bottom: 2rem;
+
+  }
+  
+  &__seperator {
+    background: linear-gradient(to right, #fff 0%, #f0f0f3 50%, #fff 100%);
+    padding-top: 1rem;
+  }
+  
+  &__alerts {
     display: flex;
     flex-wrap: wrap;
   }
-
+  
   &__alert, &__invasion {
-    @extend %status-item;
-    @include flex-padding(5%);
-  }
-
-  &__invasion {
+    @include flex-grid(100%, 45%, 45%);
     margin-bottom: 2rem;
   }
   
-  &__invasion-header {
+  &__header {
     font-size: large;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.3rem;
+    &--small {
+      margin-bottom: 0;
+    }
   }
   
-  &__label {
-    width: 4rem;
+  &__small {
+    font-size: 14px;
+    margin-bottom: 0.2rem;
   }
-
+  
   &__reward {
-    margin-left: 1rem;
     list-style-type: disc;
+    margin-left: 1.3rem;
+    font-size: 14px;
   }
   
-  &__invasion-status {
-    font-size: smaller;
-    padding: 0 5% 0.5rem 0;
-    @include media-breakpoint-up(sm) {
-      padding: 0 30% 0.5rem 0;
-    }
-    @include media-breakpoint-up(md) {
-      padding: 0 10% 0.5rem;
-    }
+  &__invasion-planet {
+    margin-top: 0.7rem;
   }
-
+  
   &__invasion-parties {
     display: flex;
-    position: relative;
-  }
-
-  &__planet-name {;
-    font-size: 1rem;
-    font-weight: bold;
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, -0.2rem);
+    justify-content: space-between;
+    font-size: 14px;
   }
 
   &__invasion-party {
-    flex: 0 0 50%;
     &--defender {
       text-align: right
+    }
+    &--planet {
+      font-size: 1rem;
+      font-weight: bold;
     }
   }
 
   &__invasion-total {
-    background: rgba(gray, 0.1);
-    border: 1px solid black;
     height: 1rem;
+    border: 1px solid black;
     position: relative;
+    background: rgba(gray, 0.1);
+    margin-bottom: 0.3rem;
     @include racial-colors;
   }
 
   &__invasion-current {
     height: 1rem;
     border: 1px solid black;
-    display: inline-block;
     position: absolute;
+    display: inline-block;
     left: 0;
     transform: translate(-1px, -1px);
     @include racial-colors;
@@ -105,7 +106,12 @@
     left: 50%;
   }
 
+  &__sortie_missions {
+    margin-top: 2rem;
+  }
+  
   &__sortie-mission {
-    margin: 0 0 2rem;
+    @include flex-grid(100%, 30%, 30%);
+    margin-bottom: 2rem;
   }
 }

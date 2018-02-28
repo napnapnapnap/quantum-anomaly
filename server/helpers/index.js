@@ -31,6 +31,28 @@ function howLong(arg) {
   return arg;
 }
 
+function formatTime(arg) {
+  let difference = new Date().getTime() - arg,
+      minutes,
+      hours,
+      days,
+      response   = '';
+  if (difference < 0) difference *= -1;
+  minutes = Math.ceil(difference / 1000 / 60);
+  if (minutes > 60 * 24) {
+    days    = Math.floor(minutes / 60 / 24);
+    minutes = minutes - (days * 60 * 24);
+    response += `${days} ${days === 1 ? `day` : `days` }`;
+  }
+  if (minutes > 60) {
+    hours   = Math.floor(minutes / 60);
+    minutes = minutes - (hours * 60);
+    response += `${hours} ${hours === 1 ? `hour` : `hours` } `;
+  }
+  response += `${minutes} ${minutes === 1 ? `minute` : `minutes` }`;
+  return response;
+}
+
 function dynamicSort(property, caseInsensitive) {
   let sortOrder = 1;
   if (property[0] === '-') {
@@ -74,6 +96,7 @@ function capitalize(string) {
 export {
   request,
   repeat,
+  formatTime,
   capitalize,
   howLong,
   dynamicSort,

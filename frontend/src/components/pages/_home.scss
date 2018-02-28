@@ -1,35 +1,37 @@
 .home {
+  padding-top: 2rem;
   &__links {
     display: flex;
     flex-wrap: wrap;
   }
 
   &__link-wrapper {
-    @include flex-grid(100%, 50%, 33%);
-    padding: 1rem;
+    flex: 0 0 100%;
+    @include flex-grid(50%, 50%, 25%);
     cursor: pointer;
     display: flex;
+    background: linear-gradient(to bottom right, #f0f0f3 0%, #fff 100%);
   }
 
   &__link {
-    flex: 0 0 100%;
-    display: flex;
-    align-items: center;
-    padding-bottom: 1.5rem;
-    box-shadow: #0d0d0d 1px 1px 2px 1px;
+    padding: 1rem;
+    color: black;
+    display: block;
+    width: 100%;
     &:hover {
       background: rgba(gray, 0.2);
     }
   }
 
   &__link-label {
-    padding-right: 1rem;
+    font-weight: bold;
+  }
+
+  &__link-content {
+
   }
 
   &__img {
-    @include flex-grid(100px, 120px, 120px);
-    margin: 0 1rem 0 0;
-    padding: 0.5rem;
     img {
       display: block;
     }

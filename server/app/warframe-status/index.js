@@ -1,6 +1,7 @@
 import * as helpers from '../../helpers';
 import translations from './translations';
 import nodes from './nodes';
+import modifiers from './modifiers';
 import {inspect} from '../../helpers/logger';
 import {models} from '../../models';
 
@@ -13,7 +14,7 @@ function level(min, max) {
 }
 
 function normalizeDate(arg) {
-  return helpers.howLong(parseInt(arg));
+  return helpers.formatTime(parseInt(arg));
 }
 
 function rewards(data) {
@@ -43,12 +44,36 @@ function rewards(data) {
 
 function nodeName(arg) {
   let planet = ` (${planetName(arg)})`;
-  return arg.value.replace(planet,'');
+  return arg.value.replace(planet, '');
 }
 
 function planetName(arg) {
   let planetRegexp = /\((.*?)\)/g;
   return planetRegexp.exec(arg.value)[1];
+}
+
+function cetusTime(cetusInfo) {
+  const end = cetusInfo['Expiry']['$date']['$numberLong'],
+        now = new Date();
+
+  let remainingTime    = (end - now.getTime()),
+      remainingMinutes = Math.floor(remainingTime / 1000 / 60),
+      dayNightStatus   = 'day',
+      bountyRefresh;
+
+  // cycle is 2 and half hours, night time is for the last 50 minutes of cycle
+  if (remainingMinutes < 50) {
+    dayNightStatus   = 'night';
+    remainingMinutes = normalizeDate(end);
+  }
+  else remainingMinutes = normalizeDate(end - (1000 * 60 * 50));
+  bountyRefresh = normalizeDate(end);
+
+  return {
+    remainingMinutes: remainingMinutes,
+    bountyRefresh:    bountyRefresh,
+    status:           dayNightStatus
+  };
 }
 
 function normalizeData(data) {
@@ -58,8 +83,11 @@ function normalizeData(data) {
     sortie:    {}
   };
 
+  let now = new Date();
+
   data['Alerts'].forEach(alert => {
     let node = nodeName(nodes(alert['MissionInfo']['location']));
+    let start = alert['Activation']['$date']['$numberLong'];
     result.alerts.push({
       id:       `${node} -> ${alert['Expiry']['$date']['$numberLong']}`,
       start:    normalizeDate(alert['Activation']['$date']['$numberLong']),
@@ -67,8 +95,9 @@ function normalizeData(data) {
       faction:  faction(alert['MissionInfo']['faction']),
       location: nodes(alert['MissionInfo']['location']).value,
       level:    level(alert['MissionInfo']['minEnemyLevel'], alert['MissionInfo']['maxEnemyLevel']),
-      type:     translations(alert['MissionInfo']['missionType']),
-      rewards:  rewards(alert['MissionInfo']['missionReward'])
+      type:     nodes(alert['MissionInfo']['missionType']).value,
+      rewards:  rewards(alert['MissionInfo']['missionReward']),
+      future:   alert['Activation']['$date']['$numberLong'] > now.getTime()
     });
   });
 
@@ -102,20 +131,38 @@ function normalizeData(data) {
     }
   });
 
-  result.sortie = {
+  const sortieMissions = data['Sorties'][0]['Variants'];
+  result.sortie        = {
     end:      normalizeDate(data['Sorties'][0]['Expiry']['$date']['$numberLong']),
-    missions: []
+    missions: [],
+    enemy:    nodes(data['Sorties'][0]['Boss']).faction,
+    boss:     nodes(data['Sorties'][0]['Boss']).name
   };
 
-  const sortieMissions = data['Sorties'][0]['Variants'];
-  sortieMissions.forEach(sortie => {
+  sortieMissions.forEach((sortie, index) => {
+    let level;
+    if (index === 0) level = '40-60';
+    else if (index === 1) level = '60-80';
+    else level = '80-100';
     result.sortie.missions.push({
-      type:   translations(sortie['missionType']),
+      type:   nodes(sortie['missionType']).value,
       node:   nodes(sortie['node']),
-      effect: translations(sortie['modifierType'])
+      effect: modifiers(sortie['modifierType']),
+      level:  level
     });
   });
 
+  // experimental cetus stuff
+  const syndicate = data['SyndicateMissions'];
+  syndicate.forEach(cetusInfo => {
+    if (cetusInfo['Tag'] === 'CetusSyndicate') {
+      result.cetus = {
+        start: normalizeDate(cetusInfo['Activation']['$date']['$numberLong']),
+        end:   Math.floor(parseInt(cetusInfo['Expiry']['$date']['$numberLong']) / 1000 / 60 / 60 / 60 / 60),
+        ...cetusTime(cetusInfo)
+      };
+    }
+  });
 
   return result;
 }
