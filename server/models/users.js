@@ -6,20 +6,11 @@ export default function (sequelize) {
     userGroup: sequelize.Sequelize.JSON,
     email:     sequelize.Sequelize.STRING
   });
-
-  Users.register    = register.bind(Users);
+  
   Users.findByEmail = findByEmail.bind(Users);
   Users.login       = login.bind(Users);
   return Users;
 }
-
-const register = (user) => {
-  return this.create({
-    name:      user.email.split('@')[0],
-    userGroup: ['guest'],
-    email:     user.email
-  });
-};
 
 function findByEmail(email) {
   return this.findOne({
@@ -40,7 +31,7 @@ function login(user) {
       user.email = email.value;
     }
   });
-
+  
   return this.findByEmail(user.email)
     .then((userRecord) => {
       if (userRecord) {
@@ -49,7 +40,11 @@ function login(user) {
       } else {
         if (process.env.REGISTRATION === 'true') {
           logger.action('Registering new user ' + user.email, ['userAction']);
-          return this.register(user);
+          return this.create({
+            name:      user.email.split('@')[0],
+            userGroup: ['guest'],
+            email:     user.email
+          });
         } else {
           logger.action('Unauthorized login attempt - registrations are disabled', ['error']);
           return {err: 'unauthorized'};
