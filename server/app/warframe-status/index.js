@@ -62,7 +62,7 @@ function cetusTime(cetusInfo) {
       bountyRefresh    = normalizeDate(end);
 
   // cycle is 2 and half hours, night time is for the last 50 minutes of cycle
-  if (remainingMinutes => 0 && remainingMinutes <= 50) {
+  if (remainingMinutes >= 0 && remainingMinutes <= 50) {
     dayNightStatus   = 'night';
     remainingMinutes = normalizeDate(end);
   } else if (remainingMinutes < 0) {
