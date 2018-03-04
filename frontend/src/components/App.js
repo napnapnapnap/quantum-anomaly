@@ -3,13 +3,13 @@ import { Switch, Route } from 'react-router-dom';
 
 import * as cookies from '../helpers/cookies';
 
-import Header from './ux/Header';
-import Footer from './ux/Footer';
-import Cookies from './ux/Cookies';
+import Header from './common/Header';
+import Footer from './common/Footer';
+import Cookies from './common/Cookies';
 
 import Home from './pages/Home';
-import UnderConstruction from './pages/UnderConstruction';
-import NotFound from './pages/NotFound';
+import UnderConstruction from './common/UnderConstruction';
+import NotFound from './common/NotFound';
 
 import EfsShips from './Efs/Ships';
 import Skills from './Efs/Skills';

@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 
+import Time from '../common/Time';
+
 let enemy;
 
 const renderMissions = (mission, index) => (
@@ -20,7 +22,7 @@ const renderSortieInfo = (sortie) => (
       {sortie.boss}, {sortie.enemy}
     </p>
     <p className="warframe__small">
-      Ends in <span className="bold">{sortie.end}</span>
+      Ends in <span className="bold"><Time time={sortie.timeEnd}/></span>
     </p>
     <article className="warframe__sortie_missions">
       {sortie.missions.map(renderMissions)}

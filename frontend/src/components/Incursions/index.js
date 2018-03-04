@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import LoadingScreen from '../pages/LoadingScreen';
+import LoadingScreen from '../common/LoadingScreen';
 
 export default class Incursions extends Component {
   constructor(props) {

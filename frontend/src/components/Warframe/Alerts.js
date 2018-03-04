@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 
+import Time from '../common/Time';
+
 const renderReward = (rewards) => (
   <ul>
     {rewards.map((reward, index) => (
@@ -8,15 +10,15 @@ const renderReward = (rewards) => (
   </ul>
 );
 
-const renderAlert = ({location, start, end, faction, level, type, rewards, future}, index) => (
+const renderAlert = ({location, timeStart, timeEnd, faction, level, type, rewards}, index) => (
   <section className="warframe__alert" key={index}>
     <h3 className="warframe__header">Alert on {location}</h3>
     <p className="warframe__small">
       <span className="bold">{type}</span> against {faction} (lvl. {level})
     </p>
     <p className="warframe__small">
-      {future ? 'Starts in' : 'Started'} {start} {future ? '' : 'ago'}, ends
-      in <span className="bold">{end}</span>
+      {timeStart.future ? 'Starts in' : 'Started'} <Time time={timeStart}/> {timeStart.future ? '' : 'ago'}
+      , ends in <span className="bold"><Time time={timeEnd}/></span>
     </p>
     {renderReward(rewards)}
   </section>

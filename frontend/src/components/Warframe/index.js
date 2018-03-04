@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import LoadingScreen from '../pages/LoadingScreen';
+import LoadingScreen from '../common/LoadingScreen';
 
-import Alerts from './alerts';
-import Sortie from './sortie';
-import Invasions from './invasions';
-import Cetus from './cetus';
+import Alerts from './Alerts';
+import Sortie from './Sortie';
+import Invasions from './Invasions';
+import Cetus from './Cetus';
 
 export default class WarframeStatus extends Component {
   constructor(props) {
@@ -25,20 +25,19 @@ export default class WarframeStatus extends Component {
         console.log(response);
       });
   }
-
   componentWillMount() {
     this.getData();
     setInterval(this.getData.bind(this), 1000 * 60);
   }
-  
+
   render() {
     if (Object.keys(this.state.status).length === 0) {
       return <LoadingScreen/>;
     } else {
       return (
         <section>
-          <Alerts alerts={this.state.status.alerts}/>
           <Cetus cetus={this.state.status.cetus}/>
+          <Alerts alerts={this.state.status.alerts}/>
           <Invasions invasions={this.state.status.invasions}/>
           <Sortie sortie={this.state.status.sortie}/>
         </section>
