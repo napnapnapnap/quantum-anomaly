@@ -59,15 +59,19 @@ function cetusTime(cetusInfo) {
   let remainingTime    = (end - now.getTime()),
       remainingMinutes = Math.floor(remainingTime / 1000 / 60),
       dayNightStatus   = 'day',
-      bountyRefresh;
+      bountyRefresh    = normalizeDate(end);
 
   // cycle is 2 and half hours, night time is for the last 50 minutes of cycle
-  if (remainingMinutes < 50) {
+  if (remainingMinutes => 0 && remainingMinutes <= 50) {
     dayNightStatus   = 'night';
     remainingMinutes = normalizeDate(end);
+  } else if (remainingMinutes < 0) {
+    // this is edge case when API hasn't updated with new time,
+    // just add 2.5 hours to end (whole cycle) and deduct 50 minutes for night
+    remainingMinutes = normalizeDate(end + (1000 * 60 * 150) - (1000 * 60 * 50));
+    bountyRefresh = normalizeDate(end + (1000 * 60 * 150));
   }
   else remainingMinutes = normalizeDate(end - (1000 * 60 * 50));
-  bountyRefresh = normalizeDate(end);
 
   return {
     remainingMinutes: remainingMinutes,
