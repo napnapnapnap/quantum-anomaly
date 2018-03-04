@@ -59,6 +59,11 @@
   &--concord {
     background-color: rgba(#AAAAAA, 0.5);
   }
+  
+  &__selector {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
 
   &__simulate-link {
     position: absolute;

@@ -166,32 +166,12 @@ function shipComponent(ship, index) {
 
 
 export default class Ships extends Component {
-  constructor(props) {
-    super(props);
-    this.state         = {
-      visible: false
-    };
-    this.toggleVisible = this.toggleVisible.bind(this);
-  }
-
-  toggleVisible() {
-    this.setState({visible: !this.state.visible});
-  }
-
   render() {
     return (
-      <section key={this.props.index}>
-        <h6 className="overview-ships__title">
-          <button className="btn overview-ships__toggle" onClick={this.toggleVisible}>
-            {!this.state.visible ? ('+') : ('-')}
-          </button>
-          <span onClick={this.toggleVisible}>{this.props.group}</span>
-        </h6>
-        <div className={'overview-ships__group ' + (this.state.visible ? '' : 'overview-ships__group--hidden')}>
-          {Object.keys(this.props.ships).map((race) => {
-            return this.props.ships[race].map((ship, index) => shipComponent(ship, index));
-          })}
-        </div>
+      <section className="overview-ships__group">
+        {Object.keys(this.props.ships).map((race) => {
+          return this.props.ships[race].map((ship, index) => shipComponent(ship, index));
+        })}
       </section>
     );
   }
