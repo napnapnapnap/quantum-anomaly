@@ -44,7 +44,6 @@ export default function () {
       shipsFormattedSorted[key] = shipsFormatted[key];
       delete shipsFormatted[key];
     });
-    models.Counters.increaseCounter('overview-ships');
     return shipsFormattedSorted;
   });
 };

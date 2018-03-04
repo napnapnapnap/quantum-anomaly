@@ -6,7 +6,6 @@ import sessionsModel from './sessions';
 import usersModel from './users';
 import shipsModel from './ships';
 import skillsModel from './skills';
-import countersModel from './counters';
 import incursionMapModel from './incursion-map';
 import incursionsModel from './incursions';
 import warframeStatusModel from './warframe-status';
@@ -48,7 +47,6 @@ export default function (sequelize, silent) {
     Users:          usersModel(sequelize),
     Ships:          shipsModel(sequelize),
     Skills:         skillsModel(sequelize),
-    Counters:       countersModel(sequelize),
     IncursionMaps:  incursionMapModel(sequelize),
     Incursions:     incursionsModel(sequelize),
     WarframeStatus: warframeStatusModel(sequelize)
@@ -58,7 +56,6 @@ export default function (sequelize, silent) {
     if (!silent) logger.init('Database models synced');
     updateEntry(models.Incursions, 'incursions', 15);
     updateEntry(models.WarframeStatus, 'warframeStatus', 5);
-    models.Counters.setDefaults();
     return models;
   });
 };
