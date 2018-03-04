@@ -140,7 +140,8 @@ function normalizeData(data) {
     end:      normalizeDate(data['Sorties'][0]['Expiry']['$date']['$numberLong']),
     missions: [],
     enemy:    nodes(data['Sorties'][0]['Boss']).faction,
-    boss:     nodes(data['Sorties'][0]['Boss']).name
+    boss:     nodes(data['Sorties'][0]['Boss']).name,
+    expired:  data['Sorties'][0]['Expiry']['$date']['$numberLong'] - now.getTime() < 0
   };
 
   sortieMissions.forEach((sortie, index) => {

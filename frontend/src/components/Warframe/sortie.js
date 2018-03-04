@@ -14,9 +14,8 @@ const renderMissions = (mission, index) => (
   </section>
 );
 
-const renderSortie = (sortie) => (
+const renderSortieInfo = (sortie) => (
   <section className="warframe__sortie warframe__seperator">
-    <h3 className="warframe__header">Sortie information</h3>
     <p className="warframe__small">
       {sortie.boss}, {sortie.enemy}
     </p>
@@ -26,6 +25,19 @@ const renderSortie = (sortie) => (
     <article className="warframe__sortie_missions">
       {sortie.missions.map(renderMissions)}
     </article>
+  </section>
+);
+
+const renderExpired = () => (
+  <p className="warframe__small">
+    Previous sortie just expired, new information coming in next few minutes
+  </p>
+);
+
+const renderSortie = (sortie) => (
+  <section className="warframe__sortie warframe__seperator">
+    <h3 className="warframe__header">Sortie information</h3>
+    {sortie.expired ? renderExpired() : renderSortieInfo(sortie)}
   </section>
 );
 
