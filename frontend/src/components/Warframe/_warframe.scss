@@ -69,12 +69,14 @@
   }
 
   &__invasion-party {
+    min-width: 70px;
     &--defender {
       text-align: right
     }
     &--planet {
       font-size: 1rem;
       font-weight: bold;
+      text-align: center;
     }
   }
 
