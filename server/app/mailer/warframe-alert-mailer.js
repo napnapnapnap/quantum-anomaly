@@ -27,11 +27,41 @@ function exists(alert) {
   return exists;
 }
 
+function time(arg) {
+  let days        = arg.days,
+      hours       = arg.hours,
+      minutes     = arg.minutes,
+      seconds     = arg.seconds,
+      showSeconds = this.props.showSeconds || false,
+      timeString  = '';
+
+  if (arg.days === 0 && arg.hours === 0 && arg.minutes < 5  && showSeconds) {
+    timeString += `${minutes}m ${seconds}s`;
+  } else {
+    days += ' day';
+    hours += ' hour';
+    minutes += ' minute';
+
+    if (arg.days > 1) days += 's';
+    if (arg.hours > 1) hours += 's';
+    if (arg.minutes > 1) minutes += 's';
+
+    if (arg.days !== 0) timeString += days;
+    if (arg.hours !== 0) timeString += ` ${hours}`;
+    timeString += ` ${minutes}`;
+
+    if (arg.days === 0 && arg.hours === 0 && arg.minutes === 0)
+      timeString = 'less than a minute'
+  }
+
+  return timeString;
+}
+
 function buildMessage() {
   let message = '';
   notableAlerts.forEach(notableAlert => {
     if (notableAlert.notified !== true) {
-      message += `Alert at ${notableAlert.location} which ends ${notableAlert.end} offers: ${notableAlert.rewards.join(', ')}<br/>`;
+      message += `Alert at ${notableAlert.location} which ends ${time(notableAlert.timeEnd)} offers: ${notableAlert.rewards.join(', ')}<br/>`;
       notableAlert.notified = true;
     }
   });
@@ -42,7 +72,7 @@ function warframeAlerts() {
   warframeStatus().then(data => {
     data.alerts.forEach(alert => {
       alert.rewards.forEach(reward => {
-        if (reward.indexOf('Nitain') !== -1 || reward.indexOf('Orokin Reactor') !== -1 || reward.indexOf('Orokin Catalyst') !== -1) {
+        if (reward.indexOf('Nitain') !== -1 || reward.indexOf('Orokin Reactor') !== -1 || reward.indexOf('Orokin Catalyst') !== -1 || reward.indexOf('Kavat') !== -1) {
           if (!exists(alert)) notableAlerts.push(alert);
         }
       });

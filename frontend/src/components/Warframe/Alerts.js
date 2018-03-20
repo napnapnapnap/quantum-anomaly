@@ -17,8 +17,7 @@ const renderAlert = ({location, timeStart, timeEnd, faction, level, type, reward
       <span className="bold">{type}</span> against {faction} (lvl. {level})
     </p>
     <p className="warframe__small">
-      {timeStart.future ? 'Starts in' : 'Started'} <Time time={timeStart}/> {timeStart.future ? '' : 'ago'}
-      , ends in <span className="bold"><Time time={timeEnd}/></span>
+      {timeStart.future ? 'Starts in' : 'Started'} <Time time={timeStart}/> {timeStart.future ? '' : 'ago'}, ends in <span className="bold"><Time time={timeEnd}/></span>
     </p>
     {renderReward(rewards)}
   </section>
