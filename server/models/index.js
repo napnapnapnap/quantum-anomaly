@@ -12,6 +12,11 @@ import warframeStatusModel from './warframe-status';
 
 function overwriteEntry(error, response, Model) {
   if (error) return;
+  let data = JSON.parse(response.body);
+  if (data.error) {
+    logger.action(`Request was successful, but incoming data has error:  ${data.error}`, ['error']);
+    return;
+  }
 
   Model.create({
     data: JSON.parse(response.body)
