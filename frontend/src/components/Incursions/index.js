@@ -81,11 +81,9 @@ export default class Incursions extends Component {
   }
 
   incursions(incursions) {
-    return Object.keys(incursions).map(key => {
-      const incursion     = incursions[key],
-            aggressor     = incursion['aggressorFactionID']['name'],
-            factionId     = incursion['factionID'],
-            factionName   = incursion['factionName'],
+    return incursions.map(incursion => {
+      const factionId     = incursion['factionID'],
+            factionName   = incursion['factionName']  || "Null security space",
             constellation = incursion['constellationName'],
             influence     = incursion['influence'],
             state         = incursion['state'],
@@ -111,10 +109,6 @@ export default class Incursions extends Component {
           <section className="box">
             <span className="box__label">State: </span>
             <span className="box__value">{state} {hasBoss ? '*' : ''}</span>
-          </section>
-          <section className="box">
-            <span className="box__label">Enemy: </span>
-            <span className="box__value incursion-info__sansha">{aggressor}</span>
           </section>
           <article className="systems">
             <header className="systems__header">

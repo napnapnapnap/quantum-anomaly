@@ -61,7 +61,6 @@ models(sequelize).then(() => {
 
   app.listen(PORT);
   logger.init('App started');
-
   if (process.env.NODE_ENV === 'production') {
     warframeAlerts();
     logger.init('Warframe alerts mail module started', 'gray');

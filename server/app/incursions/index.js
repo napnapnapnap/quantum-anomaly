@@ -3,12 +3,12 @@ import * as helpers from '../../helpers';
 
 function getIncursionData(activeIncursions) {
   let promiseArray = activeIncursions.map(incursion =>
-    models.IncursionMaps.findById(incursion.constellation.id).then(constellation => {
+    models.IncursionMaps.findById(incursion.constellation_id).then(constellation => {
       constellation               = constellation.dataValues.value;
       incursion.factionID         = constellation.factionID;
       incursion.factionName       = constellation.factionName;
       incursion.constellationName = constellation.constellationName;
-      incursion.constellationID   = incursion.constellation.id_str;
+      incursion.constellationID   = incursion.constellation_id;
       incursion.systems           = constellation.systems;
       incursion.influence         = Math.round(incursion.influence * 100);
 
@@ -34,6 +34,6 @@ function getIncursionData(activeIncursions) {
 
 export default function () {
   return models.Incursions.get().then(activeIncursions => {
-    return getIncursionData(activeIncursions.items);
+    return getIncursionData(activeIncursions);
   });
 };

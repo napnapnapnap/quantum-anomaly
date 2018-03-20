@@ -28,7 +28,7 @@ function overwriteEntry(error, response, Model) {
 
 function updateEntry(Model, modelName, timer) {
   const urls = {
-    incursions:     'https://crest.eveonline.com/incursions/',
+    incursions:     'https://esi.tech.ccp.is/latest/incursions/?datasource=tranquility',
     warframeStatus: 'http://content.warframe.com/dynamic/worldState.php'
   };
 

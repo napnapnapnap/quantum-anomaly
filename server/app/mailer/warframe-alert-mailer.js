@@ -32,7 +32,7 @@ function time(arg) {
       hours       = arg.hours,
       minutes     = arg.minutes,
       seconds     = arg.seconds,
-      showSeconds = this.props.showSeconds || false,
+      showSeconds = arg.showSeconds || false,
       timeString  = '';
 
   if (arg.days === 0 && arg.hours === 0 && arg.minutes < 5  && showSeconds) {
@@ -61,7 +61,7 @@ function buildMessage() {
   let message = '';
   notableAlerts.forEach(notableAlert => {
     if (notableAlert.notified !== true) {
-      message += `Alert at ${notableAlert.location} which ends ${time(notableAlert.timeEnd)} offers: ${notableAlert.rewards.join(', ')}<br/>`;
+      message += `Alert at ${notableAlert.location} which ends in ${time(notableAlert.timeEnd)} offers: ${notableAlert.rewards.join(', ')}<br/>`;
       notableAlert.notified = true;
     }
   });
