@@ -15,7 +15,7 @@
 
   &__link {
     padding: 1rem;
-    color: black;
+    color: black !important;
     display: block;
     width: 100%;
     &:hover {
@@ -26,12 +26,9 @@
   &__link-label {
     font-weight: bold;
   }
-
-  &__link-content {
-
-  }
-
+  
   &__img {
+    margin-bottom: 0.5rem;
     img {
       display: block;
     }

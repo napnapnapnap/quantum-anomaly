@@ -581,7 +581,8 @@ export default function () {
           'name':   'Battleships'
         }]
       }, {
-        'range':   '70 kilometers - reinforcement timed wave',
+        'range':   '70 kilometers',
+        'note':    'reinforcement timed wave',
         'enemies': [{
           'number': '6',
           'name':   'Elite Frigates',
@@ -757,7 +758,7 @@ export default function () {
       'enemy':         'Amarr Empire (Tank against: EM/Thermal, Best damage: EM/Thermal)',
       'pockets':       [[{
         'range':   '60 kilometers',
-        'note':    'Spawns after you place the beacon in structure',
+        'note':    'spawns after you place the beacon in structure',
         'enemies': [{
           'number': '3',
           'name':   'Cruisers',
@@ -814,7 +815,8 @@ export default function () {
           'name':   'Battleship'
         }]
       }, {
-        'range':   '40 kilometers - timed spawn',
+        'range':   '40 kilometers',
+        'note':    'timed spawn',
         'enemies': [{
           'number': '4',
           'name':   'Amarr Cruise Missile Batteries'
@@ -880,7 +882,7 @@ export default function () {
         }]
       }, {
         'range':   '10 kilometers',
-        'note':    'Timed spawn cca. one minute',
+        'note':    'timed spawn cca. one minute',
         'enemies': [{
           'number': '3',
           'name':   'Elite Frigates'
@@ -945,21 +947,24 @@ export default function () {
           'effect': 'Tracking disruptor'
         }]
       }, {
-        'range':   '1-40 kilometers - repeating wave',
+        'range':   '1-40 kilometers',
+        'note':    'repeating wave',
         'enemies': [{
           'number': '3',
           'name':   'Battlecruisers',
           'effect': 'Trigger next repeating wave'
         }]
       }, {
-        'range':   '1-40 kilometers - repeating wave',
+        'range':   '1-40 kilometers',
+        'note':    'repeating wave',
         'enemies': [{
           'number': '2',
           'name':   'Elite Frigates',
           'effect': 'Trigger next repeating wave'
         }]
       }, {
-        'range':   '1-40 kilometers - repeating wave',
+        'range':   '1-40 kilometers',
+        'note':    'repeating wave',
         'enemies': [{
           'number': '2',
           'name':   'Elite Frigates',

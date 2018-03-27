@@ -1,25 +1,29 @@
 .incursions {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .incursion {
   margin-bottom: 2rem;
   flex: 0 0 100%;
-  @include flex-padding(1rem);
   @include media-breakpoint-up(md) {
-    flex: 0 0 50%;
+    flex: 0 0 48%;
   }
 
   &__header {
     display: flex;
     align-content: center;
     @include paddless-header;
+    padding: 0.5rem 0;
   }
 
   &__header-image {
-    flex: 0 0 48px;
+    flex: 0 0 42px;
     margin-right: 0.7rem;
+    img {
+      display: block;
+    }
   }
 
   &__toggle {
@@ -37,19 +41,11 @@
   &__value {
     @include box__value;
   }
-
-  &__sansha {
-    background-image: url(https://image.eveonline.com/Alliance/500019_128.png);
-    background-repeat: no-repeat;
-    background-position: top -5px left 7rem;
-    background-size: 2.7rem;
-  }
 }
 
 $base-cell-width: 3.5rem;
 .systems {
-  font-size: smaller;
-
+  padding: 0.5rem 0;
   &__header {
     background-color: rgba(200, 200, 200, 0.4);
     font-weight: bold;

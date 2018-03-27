@@ -17,7 +17,7 @@ const renderMissions = (mission, index) => (
 );
 
 const renderSortieInfo = (sortie) => (
-  <section className="warframe__sortie warframe__seperator">
+  <section className="warframe__sortie">
     <p className="warframe__small">
       {sortie.boss}, {sortie.enemy}
     </p>

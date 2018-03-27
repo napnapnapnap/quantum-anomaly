@@ -21,7 +21,6 @@
   &__cetus, &__sortie {
     margin: 1rem 0;
     padding-bottom: 2rem;
-
   }
   
   &__seperator {
@@ -70,6 +69,7 @@
 
   &__invasion-party {
     min-width: 70px;
+    max-width: 48%;
     &--defender {
       text-align: right
     }
@@ -107,14 +107,13 @@
     transform: translate(-50%, 0.3rem);
     left: 50%;
   }
-
-  &__sortie_missions {
-    margin-top: 2rem;
-  }
   
   &__sortie-mission {
     @include flex-grid(100%, 30%, 30%);
     margin-bottom: 2rem;
+    @include media-breakpoint-up(md) {
+      margin-bottom: 0;
+    }
   }
   
   &__icons {

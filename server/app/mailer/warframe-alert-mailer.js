@@ -1,31 +1,7 @@
 import sendMail from './index';
 import warframeStatus from '../warframe-status';
 
-const notableAlerts = [];
-
-function cleanExpired() {
-  notableAlerts.forEach((notableAlert, index) => {
-    /* Delay removing alerts from mailed list for 10 minutes after expiry
-       Reasons:
-         This is held in global array, so we want to remove them eventually
-         However, here and there it happens we remove alert from the array
-         but it is still available on API so gets send again because we are
-         checking custom ID, not the read expiry date from API
-     */
-    const timeOffset = Date.now() + (10  * 60 * 1000);
-    if (Date.now() > notableAlert.id.split(' -> ')[1]) {
-      notableAlerts.splice(index, 1);
-    }
-  });
-}
-
-function exists(alert) {
-  let exists = false;
-  notableAlerts.forEach(notableAlert => {
-    if (alert.id === notableAlert.id) exists = true;
-  });
-  return exists;
-}
+const mailQueue = [];
 
 function time(arg) {
   let days        = arg.days,
@@ -35,7 +11,7 @@ function time(arg) {
       showSeconds = arg.showSeconds || false,
       timeString  = '';
 
-  if (arg.days === 0 && arg.hours === 0 && arg.minutes < 5  && showSeconds) {
+  if (arg.days === 0 && arg.hours === 0 && arg.minutes < 5 && showSeconds) {
     timeString += `${minutes}m ${seconds}s`;
   } else {
     days += ' day';
@@ -51,43 +27,81 @@ function time(arg) {
     timeString += ` ${minutes}`;
 
     if (arg.days === 0 && arg.hours === 0 && arg.minutes === 0)
-      timeString = 'less than a minute'
+      timeString = 'less than a minute';
   }
-
   return timeString;
 }
 
-function buildMessage() {
+function removeExpired() {
+  mailQueue.forEach((mailItem, index) => {
+    /* Delay removing sent alerts from array for 1 hour after expiry
+       Reasons:
+         This is held in global array, so we want to remove them eventually
+         However, here and there it happens we remove alert from the array
+         but it is still available on API so gets send again.
+     */
+    const timeOffsetEnd = parseInt(mailItem.end) + (60 * 60 * 1000);
+    if (Date.now() > timeOffsetEnd) mailQueue.splice(index, 1);
+  });
+}
+
+function getMailQueueMessages() {
   let message = '';
-  notableAlerts.forEach(notableAlert => {
-    if (notableAlert.notified !== true) {
-      message += `Alert at ${notableAlert.location} which ends in ${time(notableAlert.timeEnd)} offers: ${notableAlert.rewards.join(', ')}<br/>`;
-      notableAlert.notified = true;
+  mailQueue.forEach(mailItem => {
+    if (mailItem.notified !== true) {
+      message += `Alert at ${mailItem.location} which ends in ${time(mailItem.timeEnd)} offers: ${mailItem.rewards.join(', ')}<br/>`;
+      mailItem.notified = true;
     }
   });
   return message;
 }
 
+function checkMailQueue() {
+  let queueHasUnsent = false;
+  mailQueue.forEach(mailItem => {
+    if (mailItem.notified !== true) queueHasUnsent = true;
+  });
+
+  if (queueHasUnsent) {
+    let htmlBody = `Interesting alerts: <br/><br/>${getMailQueueMessages()}<br/>This message was auto generated, please do not reply`;
+    sendMail({
+      to:      process.env.WARFRAME_EMAILS,
+      subject: 'Warframe Alerts',
+      html:    htmlBody
+    }, 'Warframe Alert email sent out');
+  }
+}
+
+function hasInterestingRewards(rewards) {
+  let hasInterestingRewards = false;
+  rewards.forEach(reward => {
+    if (
+      reward.indexOf('Nitain') !== -1 ||
+      reward.indexOf('Orokin Reactor') !== -1 ||
+      reward.indexOf('Orokin Catalyst') !== -1 ||
+      reward.indexOf('Kavat') !== -1
+    ) hasInterestingRewards = true;
+  });
+  return hasInterestingRewards;
+}
+
 function warframeAlerts() {
   warframeStatus().then(data => {
     data.alerts.forEach(alert => {
-      alert.rewards.forEach(reward => {
-        if (reward.indexOf('Nitain') !== -1 || reward.indexOf('Orokin Reactor') !== -1 || reward.indexOf('Orokin Catalyst') !== -1 || reward.indexOf('Kavat') !== -1) {
-          if (!exists(alert)) notableAlerts.push(alert);
-        }
+      let shouldBeSent = true;
+      // already expired
+      if (Date.now() > parseInt(alert.end)) shouldBeSent = false;
+      // already sent out as mail
+      mailQueue.forEach(sentMail => {
+        if (sentMail.end === alert.end && sentMail.location === alert.location)
+          shouldBeSent = false;
       });
+      // don't send unless it contains one of these rewards
+      if (shouldBeSent) shouldBeSent = hasInterestingRewards(alert.rewards);
+      if (shouldBeSent) mailQueue.push(alert);
     });
-
-    let message = buildMessage();
-    if (message !== '') {
-      message = `Interesting alerts: <br/><br/>${message} <br/>This message was auto generated, please do not reply`;
-      sendMail({
-        to:      process.env.WARFRAME_EMAILS,
-        subject: 'Warframe Alerts',
-        html:    message
-      }, 'Warframe Alert email sent out');
-    }
-    cleanExpired();
+    checkMailQueue();
+    removeExpired();
   });
 }
 
@@ -95,5 +109,5 @@ export default function () {
   warframeAlerts();
   setInterval(function () {
     warframeAlerts();
-  }, 5 * 60 * 1000);
+  }, 3 * 60 * 1000);
 }

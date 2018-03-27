@@ -33,7 +33,8 @@ export default function () {
       'description':   'Fight Rogue Drones',
       'enemy':         'Rogue Drones (Tank against: Explosive/Thermal, Best damage: Explosive/Thermal)',
       'pockets':       [[{
-        'range':   '10 kilometers (Spawns when you get 10 kilometers from the accelation gate)',
+        'range':   '10 kilometers',
+        'note':    'spawns when you get 10 kilometers from the accelation gate',
         'enemies': [{
           'number': '6',
           'name':   'Frigates',
@@ -49,7 +50,8 @@ export default function () {
           'name':   'Battleships'
         }]
       }], [{
-        'range':   '160 kilometers (This wave warps off)',
+        'range':   '160 kilometers',
+        'note':    'this wave warps off',
         'enemies': [{
           'number': '6',
           'name':   'The Pator Six Cruisers'
@@ -88,7 +90,8 @@ export default function () {
           'name':   'Acceleration Gate'
         }]
       }], [{
-        'range':   '10 kilometers (Spawns when you get 10 kilometers from the accelation gate)',
+        'range':   '10 kilometers',
+        'note':    'spawns when you get 10 kilometers from the accelation gate',
         'enemies': [{
           'number': '6',
           'name':   'Frigates',
@@ -101,7 +104,8 @@ export default function () {
           'name':   'Battleships'
         }]
       }], [{
-        'range':   '50 kilometers (This wave warps off)',
+        'range':   '50 kilometers',
+        'note':    'this wave warps off',
         'enemies': [{
           'number': '6',
           'name':   'The Pator Six Cruisers'
@@ -234,13 +238,15 @@ export default function () {
           'name':   'Battleships'
         }]
       }, {
-        'range':   '10 kilometers (Triggers once everything else is dead)',
+        'range':   '10 kilometers',
+        'note':    'triggers once everything else is dead',
         'enemies': [{
           'number': '1',
           'name':   'Battleships'
         }]
       }, {
-        'range':   '10 kilometers (Triggers once everything else is dead)',
+        'range':   '10 kilometers',
+        'note':    'triggers once everything else is dead',
         'enemies': [{
           'number': '2',
           'name':   'Battleships'
@@ -282,7 +288,8 @@ export default function () {
           'effect': 'Triggers reinforcement spawn'
         }]
       }, {
-        'range':   '10 kilometers - reinforcement spawn',
+        'range':   '10 kilometers',
+        'note':    'reinforcement spawn',
         'enemies': [{
           'number': '3',
           'name':   'Cruisers'
@@ -298,7 +305,8 @@ export default function () {
           'effect': 'Triggers reinforcement spawn'
         }]
       }, {
-        'range':   '15 kilometers - reinforcement spawn',
+        'range':   '15 kilometers',
+        'note':    'reinforcement spawn',
         'enemies': [{
           'number': '3',
           'name':   'Cruisers'
@@ -307,7 +315,8 @@ export default function () {
           'name':   'Battleships'
         }]
       }, {
-        'range':   '15 kilometers - objective spawn',
+        'range':   '15 kilometers',
+        'note':    'objective spawn',
         'enemies': [{
           'number': '1',
           'name':   'The Elder',

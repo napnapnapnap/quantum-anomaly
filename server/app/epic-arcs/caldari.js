@@ -181,7 +181,7 @@ export default function () {
       'enemy':         'Gallente Navy (Tank against: Thermal/Kinetic/EM, Best damage: Thermal/Kinetic)',
       'pockets':       [[{
         'range':   '5 kilometers',
-        'note':    'Decloaks when your ship is 30 kilometers from Newly Constructed Acceleration Gate. Standings penalty towards Gallente Navy if you kill this wave',
+        'note':    'decloaks when your ship is 30 kilometers from Newly Constructed Acceleration Gate. Standings penalty towards Gallente Navy if you kill this wave',
         'enemies': [{
           'number': '5',
           'name':   'Frigates'
@@ -221,7 +221,7 @@ export default function () {
       'enemy':         'Gallente Navy (Tank against: Thermal/Kinetic/EM, Best damage: Thermal/Kinetic)',
       'pockets':       [[{
         'range':   '45 kilometers',
-        'note':    'Do not engage them at all. Standings penalty towards Gallente Navy if you kill this wave',
+        'note':    'do not engage them at all. Standings penalty towards Gallente Navy if you kill this wave',
         'enemies': [{
           'number': '8',
           'name':   'Frigates'
@@ -246,7 +246,7 @@ export default function () {
         }]
       }, {
         'range':   '80 kilometers',
-        'note':    'You have to kill them to be able to hack',
+        'note':    'you have to kill them to be able to hack',
         'enemies': [{
           'number': '1',
           'name':   'Elite Frigate',
@@ -272,7 +272,7 @@ export default function () {
       'enemy':         'Gallente Navy (Tank against: Thermal/Kinetic/EM, Best damage: Thermal/Kinetic)',
       'pockets':       [[{
         'range':   'unknown range',
-        'note':    'Only sometimes present, they will engage you',
+        'note':    'only sometimes present, they will engage you',
         'enemies': [{
           'number': '6',
           'name':   'Frigates'
@@ -295,7 +295,7 @@ export default function () {
         }]
       }, {
         'range':   '25 kilometers',
-        'note':    'They will not engage if you have 1 x FedNav F.O.F Identifier Tag AC-106V:FNSBR (1.0 m3) in your cargo hold',
+        'note':    'they will not engage if you have 1 x FedNav F.O.F Identifier Tag AC-106V:FNSBR (1.0 m3) in your cargo hold',
         'enemies': [{
           'number': '8',
           'name':   'Warden Frigates'
@@ -369,7 +369,7 @@ export default function () {
         }]
       }, {
         'range':   '120 kilometers',
-        'note':    'Triggered when you approach Office Facility within 120km, they span on top of the Office Facility',
+        'note':    'triggered when you approach Office Facility within 120km, they span on top of the Office Facility',
         'enemies': [{
           'number': '13',
           'name':   'Elite Frigates',

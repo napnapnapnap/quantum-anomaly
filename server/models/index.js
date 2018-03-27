@@ -59,8 +59,8 @@ export default function (sequelize, silent) {
 
   return sequelize.sync().then(() => {
     if (!silent) logger.init('Database models synced');
-    updateEntry(models.Incursions, 'incursions', 15);
-    updateEntry(models.WarframeStatus, 'warframeStatus', 5);
+    updateEntry(models.Incursions, 'incursions', 10);
+    updateEntry(models.WarframeStatus, 'warframeStatus', 3);
     return models;
   });
 };

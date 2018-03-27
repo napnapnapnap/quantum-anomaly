@@ -1,60 +1,63 @@
 import React, {Component} from 'react';
+import LoadingScreen from '../common/LoadingScreen';
 import EpicArc from './EpicArc';
+
+const renderArcOverview = (arc) => (
+  <section key={arc.iconID} className="arcs__item arcs__overview-item">
+    <a className="a arcs__header-link" href={`/epic-arcs/${arc.race}`}>
+      <div className="arcs__faction-logo">
+        <img src={`https://image.eveonline.com/Alliance/${arc.iconID}_128.png`} alt="faction logo"/>
+      </div>
+      <h2 className="arcs__title">{arc.name}</h2>
+    </a>
+    <ul className="arcs__rewards">
+      <li>Starting agent - {arc.starter}</li>
+      {arc.rewards.map((reward, index) => (
+        <li key={index}>{reward}</li>
+      ))}
+    </ul>
+    <p className="arcs__description">{arc.description}</p>
+    <p><a className="a" href={`/epic-arcs/${arc.race}`}>Link to guide</a></p>
+  </section>
+);
 
 export default class EpicArcs extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      epicArcs:  {},
-      activeArc: -1
+      epicArcs: {}
     };
-
-    this.getArcKeys = this.getArcKeys.bind(this);
   };
 
   componentWillMount() {
-    let activeArc = -1,
-        params    = this.props.match.params;
-
-    if (params) {
-      if (params.faction === 'amarr') activeArc = 0;
-      else if (params.faction === 'caldari') activeArc = 1;
-      else if (params.faction === 'gallente') activeArc = 2;
-      else if (params.faction === 'minmatar') activeArc = 3;
-    }
-
     fetch('/api/get-epic-arcs')
       .then(response => response.json())
       .then(response => {
         this.setState({
-          epicArcs:  response,
-          activeArc: activeArc
+          epicArcs: response
         });
       });
   }
 
-  getArcKeys() {
-    return Object.keys(this.state.epicArcs);
-  };
+  renderArc() {
+    let faction = this.props.match.params.faction || false;
+    if (!faction)
+      return Object.keys(this.state.epicArcs).map(arc =>
+        renderArcOverview(this.state.epicArcs[arc])
+      );
+    else return <EpicArc arc={this.state.epicArcs[faction]}/>;
+  }
 
   render() {
-    return (
-      <section className="overview-arcs">
-        {this.getArcKeys().length !== 0 ? (
-          this.getArcKeys().map((arc, index) => {
-            if (this.state.activeArc === -1 || this.state.activeArc === index) {
-              return (
-                <article key={index} className="overview-arcs__item">
-                  <EpicArc arc={this.state.epicArcs[arc]}
-                           active={this.state.activeArc === index}/>
-                </article>
-              );
-            } else {
-              return null;
-            }
-          })) : null}
-      </section>
-    );
+    if (Object.keys(this.state.epicArcs).length === 0) {
+      return <LoadingScreen/>;
+    } else {
+      return (
+        <article className="arcs">
+          {this.renderArc()}
+        </article>
+      );
+    }
   }
 }

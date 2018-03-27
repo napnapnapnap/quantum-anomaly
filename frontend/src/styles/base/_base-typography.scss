@@ -1,6 +1,6 @@
 body {
   font-family: 'Lato', 'Helvetica','Verdana','Arial' sans-serif;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1.4;
 }
 
@@ -37,7 +37,7 @@ h6 {
 }
 
 p {
-  margin-bottom: 0.7rem;
+  margin-bottom: 0.3rem;
 }
 
 .bold {
@@ -49,7 +49,7 @@ p {
 }
 
 .small {
-  font-size: 80%;
+  font-size: 85%;
 }
 
 .disclaimer {
@@ -62,3 +62,8 @@ p {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.a:link    { color: #00c }  /* unvisited links */
+.a:visited { color: #00c }  /* visited links   */
+.a:hover   { color: #06e }  /* user hovers     */
+.a:active  { color: #00c }  /* active links    */

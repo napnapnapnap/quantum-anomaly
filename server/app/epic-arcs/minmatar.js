@@ -21,7 +21,7 @@ export default function () {
       'enemy':         'Angel Cartel (Tank against: Explosive/Kinetic, Best damage: Explosive/Kinetic)',
       'pockets':       [[{
         'range':   'unknown range',
-        'note':    'No need to probe out site, just look on scanner for anomaly called A Demonstration',
+        'note':    'no need to probe out site, just look on scanner for anomaly called A Demonstration',
         'enemies': [{
           'number': '5',
           'name':   'Elite Frigates',
@@ -106,7 +106,7 @@ export default function () {
         }]
       }, {
         'range':   '30 kilometers',
-        'note':    'No standings hit on destroying these ships',
+        'note':    'no standings hit on destroying these ships',
         'enemies': [{
           'number': '2',
           'name':   'Elite Battlecruisers'
@@ -236,7 +236,7 @@ export default function () {
       'enemy':         'Minmatar Republic (Tank against: Explosive/Kinetic, Best damage: Explosive/Kinetic)',
       'pockets':       [[{
         'range':   '50 kilometers',
-        'note':    'Spawns in few seconds after you land',
+        'note':    'spawns in few seconds after you land',
         'enemies': [{
           'number': '1',
           'name':   'Lomar Vujik',
@@ -383,7 +383,7 @@ export default function () {
       'enemy':         'Amarr Empire (Tank against: EM/Thermal, Best damage: EM/Thermal)',
       'pockets':       [[{
         'range':   '25 kilometers',
-        'note':    'Triggered when approaching gate at 15km',
+        'note':    'triggered when approaching gate at 15km',
         'enemies': [{
           'number': '7',
           'name':   'Frigates',
