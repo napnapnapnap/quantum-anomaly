@@ -12,7 +12,6 @@ export default function (arg) {
   let alerts = [];
   arg.forEach(alert => {
     alerts.push({
-      id:        `${nodeName(nodes(alert['MissionInfo']['location']))} -> ${alert['Expiry']['$date']['$numberLong']}`,
       start:     alert['Activation']['$date']['$numberLong'],
       timeStart: time.timeFrom(alert['Activation']['$date']['$numberLong']),
       end:       alert['Expiry']['$date']['$numberLong'],

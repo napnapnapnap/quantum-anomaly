@@ -40,8 +40,14 @@ function removeExpired() {
          However, here and there it happens we remove alert from the array
          but it is still available on API so gets send again.
      */
-    const timeOffsetEnd = parseInt(mailItem.end) + (60 * 60 * 1000);
-    if (Date.now() > timeOffsetEnd) mailQueue.splice(index, 1);
+    if (mailItem.mailType === 'alert') {
+      const timeOffsetEnd = parseInt(mailItem.end) + (60 * 60 * 1000);
+      if (Date.now() > timeOffsetEnd) mailQueue.splice(index, 1);
+    }
+    if (mailItem.mailType === 'invasion') {
+      if (mailItem.status <= 0 || mailItem.status >= 100)
+        mailQueue.splice(index, 1);
+    }
   });
 }
 
@@ -49,7 +55,8 @@ function getMailQueueMessages() {
   let message = '';
   mailQueue.forEach(mailItem => {
     if (mailItem.notified !== true) {
-      message += `Alert at ${mailItem.location} which ends in ${time(mailItem.timeEnd)} offers: ${mailItem.rewards.join(', ')}<br/>`;
+      if (mailItem.mailType === 'alert') message += `Alert at ${mailItem.location} which ends in ${time(mailItem.timeEnd)} offers: ${mailItem.rewards.join(', ')}<br/>`;
+      if (mailItem.mailType === 'invasion') message += `Invasion at ${mailItem.node.value} offers ${mailItem.attackerRewards.join(', ')} for ${mailItem.attacker} and ${mailItem.defenderRewards.join(', ')} for ${mailItem.defender}<br/>`;
       mailItem.notified = true;
     }
   });
@@ -63,7 +70,7 @@ function checkMailQueue() {
   });
 
   if (queueHasUnsent) {
-    let htmlBody = `Interesting alerts: <br/><br/>${getMailQueueMessages()}<br/>This message was auto generated, please do not reply`;
+    let htmlBody = `Interesting activities: <br/><br/>${getMailQueueMessages()}<br/>This message was auto generated, please do not reply`;
     sendMail({
       to:      process.env.WARFRAME_EMAILS,
       subject: 'Warframe Alerts',
@@ -77,6 +84,7 @@ function hasInterestingRewards(rewards) {
   rewards.forEach(reward => {
     if (
       reward.indexOf('Nitain') !== -1 ||
+      reward.indexOf('Exilus') !== -1 ||
       reward.indexOf('Orokin Reactor') !== -1 ||
       reward.indexOf('Orokin Catalyst') !== -1 ||
       reward.indexOf('Kavat') !== -1
@@ -93,12 +101,28 @@ function warframeAlerts() {
       if (Date.now() > parseInt(alert.end)) shouldBeSent = false;
       // already sent out as mail
       mailQueue.forEach(sentMail => {
-        if (sentMail.end === alert.end && sentMail.location === alert.location)
-          shouldBeSent = false;
+        if (sentMail.mailType === 'alert')
+          if (sentMail.end === alert.end && sentMail.location === alert.location)
+            shouldBeSent = false;
       });
+      alert.mailType = 'alert';
       // don't send unless it contains one of these rewards
       if (shouldBeSent) shouldBeSent = hasInterestingRewards(alert.rewards);
       if (shouldBeSent) mailQueue.push(alert);
+    });
+    Object.keys(data.invasions).forEach(key => {
+      data.invasions[key].forEach(invasion => {
+        let shouldBeSent = true;
+        if (invasion.status <= 0 || invasion.status >= 100) shouldBeSent = false;
+        mailQueue.forEach(sentMail => {
+          if (sentMail.mailType === 'invasion')
+            if (sentMail.start === invasion.start && sentMail.node.value === invasion.node.value)
+              shouldBeSent = false;
+        });
+        invasion.mailType = 'invasion';
+        if (shouldBeSent) shouldBeSent = hasInterestingRewards(invasion.attackerRewards) || hasInterestingRewards(invasion.defenderRewards);
+        if (shouldBeSent) mailQueue.push(invasion);
+      });
     });
     checkMailQueue();
     removeExpired();
