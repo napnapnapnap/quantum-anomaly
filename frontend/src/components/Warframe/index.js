@@ -4,6 +4,7 @@ import LoadingScreen from '../common/LoadingScreen';
 import Alerts from './Alerts';
 import Sortie from './Sortie';
 import Invasions from './Invasions';
+import Fissures from './Fissures';
 import Cetus from './Cetus';
 
 export default class WarframeStatus extends Component {
@@ -38,6 +39,7 @@ export default class WarframeStatus extends Component {
         <section>
           <Cetus cetus={this.state.status.cetus}/>
           <Alerts alerts={this.state.status.alerts}/>
+          <Fissures fissures={this.state.status.fissures}/>
           <Invasions invasions={this.state.status.invasions}/>
           <Sortie sortie={this.state.status.sortie}/>
         </section>

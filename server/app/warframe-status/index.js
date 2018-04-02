@@ -2,6 +2,7 @@ import {models} from '../../models';
 
 import alerts from './alerts';
 import cetus from './cetus';
+import fissures from './fissures';
 import invasions from './invasions';
 import sortie from './sortie';
 
@@ -12,6 +13,7 @@ export default function () {
     result.invasions = invasions(data['Invasions']);
     result.sortie    = sortie(data['Sorties'][0]);
     result.cetus     = cetus(data['SyndicateMissions']);
+    result.fissures  = fissures(data['ActiveMissions']);
     return result;
   });
 };

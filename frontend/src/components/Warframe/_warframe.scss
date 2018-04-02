@@ -110,7 +110,6 @@
   
   &__sortie-mission {
     @include flex-grid(100%, 30%, 30%);
-    margin-bottom: 2rem;
     @include media-breakpoint-up(md) {
       margin-bottom: 0;
     }
