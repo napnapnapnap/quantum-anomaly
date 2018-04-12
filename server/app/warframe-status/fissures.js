@@ -1,10 +1,9 @@
 import * as time from '../../helpers/time';
 import * as helpers from '../../helpers';
 
-import * as common from './common';
 import nodes from './resources/nodes';
 
-function fissureLevel(arg) {
+function getFissureLevel(arg) {
   if (arg === 'VoidT1') return 'Lith';
   if (arg === 'VoidT2') return 'Meso';
   if (arg === 'VoidT3') return 'Neo';
@@ -12,9 +11,17 @@ function fissureLevel(arg) {
 }
 
 export default function (arg) {
-  let fissures = [];
+  let fissures = {
+    lith: [],
+    meso: [],
+    neo:  [],
+    axi:  []
+  };
+  
   arg.forEach(fissure => {
-    fissures.push({
+    const fissureLevel = getFissureLevel(fissure['Modifier']).toLowerCase();
+    
+    fissures[fissureLevel].push({
       start:        fissure['Activation']['$date']['$numberLong'],
       timeStart:    time.timeFrom(fissure['Activation']['$date']['$numberLong']),
       end:          fissure['Expiry']['$date']['$numberLong'],
@@ -22,10 +29,12 @@ export default function (arg) {
       node:         nodes(fissure['Node']),
       type:         nodes(fissure['MissionType']).value,
       sortModifier: fissure['Modifier'].replace('VoidT', ''),
-      level:        fissureLevel(fissure['Modifier']),
       region:       fissure['Region']
     });
   });
-  fissures.sort(helpers.dynamicSortMultiple('sortModifier', 'region'));
+  
+  Object.keys(fissures)
+    .forEach(key => fissures[key].sort(helpers.dynamicSort('region')));
+  
   return fissures;
 }

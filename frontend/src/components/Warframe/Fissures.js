@@ -1,24 +1,33 @@
 import React, {Component} from 'react';
 
-import Time from '../common/Time';
+import TimeBlock from './TimeBlock';
 
-const renderFissures = (fissure) => (
-  <section className="warframe__alert" key={fissure.node.value}>
-    <h3 className="warframe__header">{fissure.level} fissure on {fissure.node.value}</h3>
+const renderFissure = (fissure) => (
+  <section className="warframe__fissure" key={fissure.node.value}>
     <p className="warframe__small">
-      <span className="bold">{fissure.node.type}</span> against {fissure.node.enemy}
+      <span className="bold">{fissure.node.type}</span>
+      <span> at {fissure.node.value} against </span>
+      <span className="bold">{fissure.node.enemy}</span>
     </p>
-    <p className="warframe__small">
-      {fissure.timeStart.future ? 'Starts in' : 'Started'} <Time time={fissure.timeStart}/> {fissure.timeStart.future ? '' : 'ago'}, ends in <span className="bold"><Time time={fissure.timeEnd}/></span>
-    </p>
+    <TimeBlock timeStart={fissure.timeStart} 
+               timeEnd={fissure.timeEnd} 
+               className='warframe__small'/>
   </section>
+);
+
+const renderFissures = (label, fissures) => (
+  <div className="warframe__fissures" key={label}>
+    <h3 className="warframe__header">{label} fissures</h3>
+    {fissures.length !== 0 ? fissures.map(fissure => renderFissure(fissure)) : 'None at the moment'}
+  </div>
 );
 
 export default class Fissures extends Component {
   render() {
     return (
-      <section className="warframe__alerts warframe__seperator">
-        {this.props.fissures.map(fissure => renderFissures(fissure))}
+      <section className="warframe__column">
+        {Object.keys(this.props.fissures)
+          .map(key => renderFissures(key, this.props.fissures[key]))}
       </section>
     );
   }

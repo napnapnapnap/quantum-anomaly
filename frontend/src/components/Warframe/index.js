@@ -38,10 +38,14 @@ export default class WarframeStatus extends Component {
       return (
         <section>
           <Cetus cetus={this.state.status.cetus}/>
-          <Alerts alerts={this.state.status.alerts}/>
-          <Fissures fissures={this.state.status.fissures}/>
-          <Invasions invasions={this.state.status.invasions}/>
-          <Sortie sortie={this.state.status.sortie}/>
+          <section className="warframe__columns warframe__seperator">
+            <Alerts alerts={this.state.status.alerts}/>
+            <Fissures fissures={this.state.status.fissures}/>
+          </section>
+          <section className="warframe__columns warframe__seperator">
+            <Sortie sortie={this.state.status.sortie}/>
+            <Invasions invasions={this.state.status.invasions}/>
+          </section>
         </section>
       );
     }

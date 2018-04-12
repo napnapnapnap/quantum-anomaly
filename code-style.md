@@ -75,7 +75,7 @@ Use `=>` everywhere else (in consideration to `this`).
 * `/middlewares` - holds application wide middleware functions, like auth, forceHttps, etc...
 * `/models` - each file is one database model coupled with functions to use the model. Only use sequelize in there, then expose the functions to actually manipulate data from outside. User model is good example.
 * `/routes` - holds routes for the application. This is entry point from frontend. You should do only minimal needed stuff here and hand it to the `app` as soon as possible.
-* `/views` - at this point this holds handlebars views for quick dev debugging. Keep in mind these don't work unless the `process.env.NODE_ENV` is set to `developement`, otherwise it is not even being loaded as view engine.
+* `/tasks` - hold node scripts which can be ran on demand. They are not needed for the app, but might contain some maintanance or data update scripts.
 * `config.js` - holds config needed for application to run. Keep in mind this is an ES6 module so no dynimic values.
 * `database.js` - connects to database, initializes the models (and tables if needed)
 * `index.js` - server entry point
