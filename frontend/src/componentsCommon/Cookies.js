@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import * as cookies from '../../helpers/cookies';
+import * as cookies from '../helpers/cookies';
 
 function disableCookies() {
   cookies.deleteAllCookies();

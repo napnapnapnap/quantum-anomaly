@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
 import ShipsGroup from './Groups';
-import LoadingScreen from '../../common/LoadingScreen';
+import LoadingScreen from '../../../componentsCommon/LoadingScreen';
 
 export default class Ships extends Component {
   constructor(props) {

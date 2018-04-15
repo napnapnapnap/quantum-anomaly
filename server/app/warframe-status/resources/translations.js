@@ -3976,6 +3976,7 @@ export default function (arg) {
     '/lotus/types/recipes/weapons/karakwraithblueprint':                                                                  'Karak Wraith Blueprint',
     '/lotus/types/recipes/weapons/latronwraithblueprint':                                                                 'Latron Wraith Blueprint',
     '/lotus/types/recipes/weapons/snipetronvandalblueprint':                                                              'Snipetron Vandal Blueprint',
+    '/lotus/types/recipes/weapons/strunwraithblueprint':                                                                  'Strun Wraith Blueprint',
     '/lotus/types/recipes/weapons/twinviperswraithblueprint':                                                             'Wraith Twin Vipers Blueprint',
     '/lotus/types/recipes/weapons/weaponparts/deravandalbarrel':                                                          'Dera Vandal Barrel',
     '/lotus/types/recipes/weapons/weaponparts/deravandalreceiver':                                                        'Dera Vandal Receiver',
@@ -4660,8 +4661,13 @@ export default function (arg) {
   };
 
   let result = translations[arg];
+  // if no result, try looking under lowerCase key
   if (!result) result = translations[arg.toLowerCase()];
-  if (!result) result = arg;
+  // if still not result, just return the last part of the key
+  if (!result) {
+    result = arg.split('/');
+    if (result.length) result = result[result.length-1];
+  } 
 
   result.replace(/\b\w/g, l => l.toUpperCase());
 

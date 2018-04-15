@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import Time from '../common/Time';
+import Time from '../../componentsCommon/Time';
 
 const renderMissions = (mission, index) => (
   <section className="warframe__sortie-mission" key={index}>

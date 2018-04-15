@@ -1,22 +1,22 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import * as cookies from '../helpers/cookies';
+import * as cookies from './helpers/cookies';
 
-import Header from './common/Header';
-import Footer from './common/Footer';
-import Cookies from './common/Cookies';
+import Header from './componentsCommon/Header';
+import Footer from './componentsCommon/Footer';
+import Cookies from './componentsCommon/Cookies';
 
-import Home from './pages/Home';
-import UnderConstruction from './common/UnderConstruction';
-import NotFound from './common/NotFound';
+import Home from './components/pages/Home';
+import UnderConstruction from './componentsCommon/UnderConstruction';
+import NotFound from './componentsCommon/NotFound';
 
-import EfsShips from './Efs/Ships';
-import Skills from './Efs/Skills';
-import OverviewEpicArcs from './EpicArcs';
-import Incursions from './Incursions';
+import EfsShips from './components/Efs/Ships/index';
+import Skills from './components/Efs/Skills/index';
+import OverviewEpicArcs from './components/EpicArcs/index';
+import Incursions from './components/Incursions/index';
 
-import WarframeStatus from './Warframe';
+import WarframeStatus from './components/Warframe/index';
 
 const App = () => (
   <div>

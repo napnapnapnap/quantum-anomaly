@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import Time from '../common/Time';
+import Time from '../../componentsCommon/Time';
 
 export default class Common extends Component {
   render() {

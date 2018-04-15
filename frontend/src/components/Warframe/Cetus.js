@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import Time from '../common/Time';
+import Time from '../../componentsCommon/Time';
 
 const renderCetus = (cetus) => (
   <section className="warframe__cetus warframe__seperator">
