@@ -5,12 +5,9 @@ if (env === 'development') dotenv.config();
 
 import Sequelize from 'sequelize';
 
-import getShips from './ships-get';
-import saveShips from './ships-set';
-import getSkills from './skills-get';
-import saveSkills from './skills-set';
-import getIncursionMap from './incursion-map-get';
-import saveIncursionMap from './incursion-map-set';
+import ships from './ships';
+import skills from './skills';
+import incursion from './incursions';
 import * as logger from '../../helpers/logger';
 
 function startMigration() {
@@ -29,10 +26,10 @@ function startMigration() {
       dialectOptions: {
         ssl: true
       },
-      pool: {
-        max: 10,
-        min: 1,
-        idle: 50000,
+      pool:           {
+        max:     10,
+        min:     1,
+        idle:    50000,
         acquire: 20000
       }
     });
@@ -43,23 +40,16 @@ function startMigration() {
     logger.init('Database connection established');
   }
 
-  getShips(eveSequelize).then(ships => {
-    rowsAdded += ships.length;
-    return saveShips(sequelize, ships);
-  }).then(() => {
-    return getSkills(eveSequelize);
-  }).then((skills) => {
-    rowsAdded += skills.length;
-    return saveSkills(sequelize, skills);
-  }).then(() => {
-    return getIncursionMap(eveSequelize);
-  }).then((mapData) => {
-    rowsAdded += mapData.length;
-    return saveIncursionMap(sequelize, mapData);
-  }).then(() => {
-    logger.action('Number of rows added: ' + rowsAdded, ['access'], 'yellow');
-    process.exit(0);
-  });
+  ships(eveSequelize, sequelize)
+    .then(shipsNumber => rowsAdded += shipsNumber)
+    .then(() => skills(eveSequelize, sequelize))
+    .then(skillsNumber => rowsAdded += skillsNumber)
+    .then(() => incursion(eveSequelize, sequelize))
+    .then((incursionMapNumber) => rowsAdded += incursionMapNumber)
+    .then(() => {
+      logger.action('Number of rows added: ' + rowsAdded, ['access'], 'yellow');
+      process.exit(0);
+    });
 }
 
 startMigration();

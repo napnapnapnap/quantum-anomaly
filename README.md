@@ -32,7 +32,7 @@ Currently there are 3 `package.json` files because this is technically 2 project
 One is located in `/server` folder and handles `node` code. It has following scripts:
 - `npm run start` runs `express` server which starts your backend (uses `Nodemon`)
 - `npm run build` builds files in `server` with babel and outputs to `/build` folder (production task)
-- `npm run migrate-eve-data` this is a task which imports all needed information from EVE Online database dump (please refer to next section for details)
+- `npm run populate-eve-database` this is a task which imports all needed information from EVE Online database dump (please refer to next section for details)
 
 One is located in `/frontend` folder and handles `react` code. It has following scripts:
 - `npm run start` starts react dev server and compiles assets, also starts `sass` watchers
