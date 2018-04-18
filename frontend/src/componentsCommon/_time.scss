@@ -1,0 +1,11 @@
+.time {
+  &--low {
+    color: #be6837;
+  }
+  &--danger {
+    color: coral;
+  }
+  &--critical {
+    color: #dc3545;
+  }
+}

@@ -11,10 +11,10 @@ const renderCetus = (cetus) => (
         {cetus.day ? 'day' : 'night'}
       </span>
       <span> for another </span>
-      <span className="bold"><Time time={cetus.timeDayNightRemaining}/></span>
+      <span className="bold"><Time time={cetus.timeDayNightRemaining} showSeconds='true' colorCode='true'/></span>
     </p>
     <p className="warframe__small">
-      Ostrons bounties will refresh in <Time time={cetus.timeOstronBountyRemaining}/>
+      Ostrons bounties will refresh in <Time time={cetus.timeOstronBountyRemaining} showSeconds='true'/>
     </p>
   </section>
 );

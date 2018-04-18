@@ -13,12 +13,12 @@ const renderNodes = (invasions) => (
           <span className="warframe__invasion-zero"></span>
         </div>
         <div className="warframe__invasion-parties">
-          <ul className="warframe__invasion-party warframe__invasion-party--attacker">
+          <ul className="warframe__invasion-party warframe__invasion-party--attacker-rewards">
             {invasion.attackerRewards.map((reward, index) => (
               <li key={index}>{reward}</li>
             ))}
           </ul>
-          <ul className="warframe__invasion-party warframe__invasion-party--defender">
+          <ul className="warframe__invasion-party warframe__invasion-party--defender-rewards">
             {invasion.defenderRewards.map((reward, index) => (
               <li key={index}>{reward}</li>
             ))}

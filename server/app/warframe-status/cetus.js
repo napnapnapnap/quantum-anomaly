@@ -10,8 +10,9 @@ function cetusTime(cetus) {
   if (new Date().getTime() - cetus['Expiry']['$date']['$numberLong'] > 0) {
     // this is case when internal API hasn't got new info from the DE servers 
     // and new cycle has begun, in that case just add one more cycle duration (150 minutes)
-    cetus['Expiry']['$date']['$numberLong'] = cetus['Expiry']['$date']['$numberLong'] + (1000 * 60 * 150);
+    cetus['Expiry']['$date']['$numberLong'] = parseInt(cetus['Expiry']['$date']['$numberLong'], 10) + (1000 * 60 * 150);
     timeOstronBountyRemaining = time.timeFrom(cetus['Expiry']['$date']['$numberLong']);
+    timeDayNightRemaining = time.timeFrom(cetus['Expiry']['$date']['$numberLong'] - (1000 * 60 * 50));
   }
 
   if (timeDayNightRemaining.minutes >= 0 && timeDayNightRemaining.minutes <= 50 && timeDayNightRemaining.hours < 1) {
