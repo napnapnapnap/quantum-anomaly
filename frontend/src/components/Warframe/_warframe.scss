@@ -21,13 +21,13 @@
     @include flex-grid(100%, 45%, 45%);
     margin: 0.7rem 0;
   }
-  
+
   &__seperator {
-    background: linear-gradient(to right, #fff 0%, #f0f0f3 50%, #fff 100%);
+    background: linear-gradient(to right, #FFFFFF 0%, #F0F0F3 50%, #FFFFFF 100%);
     margin: 1rem 0 0;
     padding: 1rem 0;
   }
-  
+
   &__alert {
     margin: 0 0 1.5rem;
   }
@@ -39,11 +39,11 @@
   &__fissure {
     margin: 0 0 0.5rem;
   }
-  
+
   &__sortie-mission {
     margin: 1.5rem 0;
   }
-  
+
   &__header {
     font-size: large;
     margin-bottom: 0.3rem;
@@ -54,21 +54,21 @@
       margin-bottom: 0;
     }
   }
-  
+
   &__small {
     margin-bottom: 0.1rem;
   }
-  
+
   &__reward {
     list-style-type: disc;
     margin-left: 1.3rem;
   }
-  
+
   &__invasion-planet {
     margin: 0 0 2rem;
     max-width: 400px;
   }
-  
+
   &__invasion-parties {
     display: flex;
     justify-content: space-between;
@@ -112,7 +112,7 @@
     transform: translate(-1px, -1px);
     @include racial-colors;
   }
-  
+
   &__invasion-zero {
     position: absolute;
     width: 2px;
@@ -121,7 +121,7 @@
     transform: translate(-50%, 2px);
     left: 50%;
   }
-  
+
   &__icons {
     padding-left: 1.1rem;
     display: inline-block;
@@ -133,5 +133,15 @@
     &--night {
       background-image: url("/images/night.svg");
     }
+  }
+  
+  &__planets {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  &__planet {
+    flex: 0 0 180px;
+    margin-bottom: 2rem;
   }
 }
