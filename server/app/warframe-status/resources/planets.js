@@ -127,6 +127,14 @@ export default [{
   bossDrops:    ['Malignant Force', 'Toxic Barrage', 'Virulent Scourge', 'Pistol Pestilence'],
   resources:    ['Ferrite', 'Rubedo', 'Argon Crystal', 'Control Module']
 }, {
+  name:         'Derelict',
+  level:        '25 - 35',
+  faction:      'Infested',
+  boss:         'Lephantis',
+  bossLocation: '-',
+  bossDrops:    [],
+  resources:    ['Nano Spores', 'Mutagen Sample', 'Orokin Cell', 'Neurodes']
+}, {
   name:         'Kuva Fortress',
   level:        '28 - 34',
   faction:      'Grineer',

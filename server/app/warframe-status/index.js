@@ -5,7 +5,7 @@ import cetus from './cetus';
 import fissures from './fissures';
 import invasions from './invasions';
 import sortie from './sortie';
-import planets from './resources/planets';
+import resources from './resources';
 
 export default function () {
   return models.WarframeStatus.get().then((data) => {
@@ -15,7 +15,7 @@ export default function () {
     result.sortie    = sortie(data['Sorties'][0]);
     result.cetus     = cetus(data['SyndicateMissions']);
     result.fissures  = fissures(data['ActiveMissions']);
-    result.planets   = planets;
+    result.resources = resources();
     return result;
   });
 };

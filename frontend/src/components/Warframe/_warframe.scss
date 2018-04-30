@@ -135,13 +135,11 @@
     }
   }
   
-  &__planets {
+  &__resource {
     display: flex;
-    flex-wrap: wrap;
   }
   
-  &__planet {
-    flex: 0 0 180px;
-    margin-bottom: 2rem;
+  &__resource-name {
+    flex: 0 0 125px;
   }
 }

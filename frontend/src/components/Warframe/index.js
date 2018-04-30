@@ -6,7 +6,7 @@ import Sortie from './Sortie';
 import Invasions from './Invasions';
 import Fissures from './Fissures';
 import Cetus from './Cetus';
-import Planets from './Planets';
+import Resources from './Resources';
 
 export default class WarframeStatus extends Component {
   constructor(props) {
@@ -47,8 +47,8 @@ export default class WarframeStatus extends Component {
             <Sortie sortie={this.state.status.sortie}/>
             <Invasions invasions={this.state.status.invasions}/>
           </section>
-          <section className="warframe__columns warframe__seperator">
-            <Planets planets={this.state.status.planets}/>
+          <section className="warframe__seperator">
+            <Resources resources={this.state.status.resources}/>
           </section>
         </section>
       );
