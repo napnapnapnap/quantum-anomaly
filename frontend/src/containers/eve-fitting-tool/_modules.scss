@@ -1,10 +1,30 @@
 .modules {
   $block: '.modules';
+  display: flex;
+  flex-wrap: wrap;
   transition: 0.5s linear all;
-  max-height: 550px;
-  overflow: auto;
   user-select: none;
   font-size: 12px;
+
+  &__groups {
+    flex: 0 0 240px;
+    padding: 0.3rem;
+    background: white;
+    border-radius: 0 0 0 4px;
+    min-height: 550px;
+  }
+
+  &__group-items {
+    flex: 0 0 360px;
+    padding: 0.3rem 0.5rem;
+    background: white;
+    border-radius: 0 0 4px 0;
+    border-left: 2px solid #DDD;
+  }
+
+  &__title {
+    padding: 0 0.5rem;
+  }
 
   &__expand-indicator {
     min-width: initial;
@@ -27,12 +47,8 @@
   }
 
   &__subgroup {
-    margin-left: 8px;
-
-    &--border {
-      border-left: 1px solid #DDD;
-      padding: 0 0 0 6px;
-    }
+    border-left: 1px solid #DDD;
+    padding: 0 0 0 6px;
   }
 
   &__subgroup-title {
@@ -44,31 +60,27 @@
     }
   }
 
-  &__items {
-    display: none;
-    padding: 0 0 0.5rem;
-
-    &--expanded {
-      display: block;
-    }
-  }
-
   &__item {
     display: flex;
     align-items: center;
     cursor: pointer;
-    max-width: 90%;
     line-height: 1.3;
     padding: 0.3rem 0;
 
     &:hover {
-      background: #DFDFDF;
+      box-shadow: 0 0 10px 0 #ddd;
       border-radius: 5px;
     }
   }
 
   &__item-image {
-    width: 28px;
-    margin: 2px 4px 2px 2px;
+    width: 26px;
+    margin: 3px 4px 3px 2px;
+  }
+
+  &__item-label {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }

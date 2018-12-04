@@ -29,6 +29,12 @@ export default function reducer(state, action) {
         moduleGroups: action.payload
       };
     }
+    case 'FETCH_MODULE_GROUP': {
+      return {
+        ...state,
+        modules: action.payload
+      };
+    }
     default: {
       return {...state};
     }

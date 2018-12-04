@@ -19,8 +19,5 @@
   "bugs": {
     "url": "https://github.com/msaracevic/quantum_anomaly/issues"
   },
-  "homepage": "https://github.com/msaracevic/quantum_anomaly#readme",
-  "dependencies": {
-    "request": "^2.88.0"
-  }
+  "homepage": "https://github.com/msaracevic/quantum_anomaly#readme"
 }

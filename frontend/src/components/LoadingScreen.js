@@ -5,7 +5,7 @@ export default class LoadingScreen extends Component {
     return (
       <div className="loading-screen">
         <p className="loading-screen__message">
-          Loading content, please wait
+          Loading...
         </p>
       </div>
     );

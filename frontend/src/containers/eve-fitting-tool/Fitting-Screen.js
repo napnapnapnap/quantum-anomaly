@@ -49,7 +49,7 @@ class FittingScreen extends Component {
       <article className="fitting-main">
         <section className="fitting-main__header">
           <div className={dogma['Meta Level'] ? `fitting-main__image tech-level tech-level--${dogma['Meta Level'].value}` : 'fitting-main__image'}>
-            <img src={ship.type_id ? `https://image.eveonline.com/Render/${ship.type_id}_128.png` : '/images/placeholder.png'} alt="ship" />
+            <img src={ship.type_id ? `https://image.eveonline.com/Render/${ship.type_id}_64.png` : '/images/placeholder.png'} alt="ship" />
           </div>
           <div className="fitting-main__controls">
             <h2 className="fitting-main__title">{ship.name || 'Loading...'}</h2>

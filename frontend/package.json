@@ -1,6 +1,6 @@
 {
-  "name": "quantum_anomaly_frontend",
-  "version": "0.2.1",
+  "name": "quantum_anomaly",
+  "version": "0.2.2",
   "dependencies": {
     "axios": "^0.18.0",
     "babel-polyfill": "^6.26.0",

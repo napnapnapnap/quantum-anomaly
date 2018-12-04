@@ -33,6 +33,7 @@ export default function (app) {
   router.use('/api/eve-fitting-simulator/groups', eveFittingSimulator.getShipGroups);
   router.use('/api/eve-fitting-simulator/ship', eveFittingSimulator.getShip);
   router.use('/api/eve-fitting-simulator/module-groups', eveFittingSimulator.getModuleGroups);
+  router.use('/api/eve-fitting-simulator/module-group', eveFittingSimulator.getModuleGroup);
 
   // for time being, poor flag until we get user roles setup (to enable these
   // routes, flip the env variable on server)

@@ -2,6 +2,7 @@ import {models} from '../models';
 import units from '../app/eve-fitting-simulator/units';
 
 import * as logger from '../helpers/logger';
+import {dynamicSortMultiple} from "../helpers";
 
 export function getShipGroups(req, res) {
   models.EveShipGroups.findAll({
@@ -27,6 +28,22 @@ export function getModuleGroups(req, res) {
   models.EveCache.findOne({
     where: {name: 'modules'}
   }).then(modules => res.json(modules.data));
+}
+
+export function getModuleGroup(req, res) {
+  return models.EveModules
+    .findAll({where: {market_group_id: req.body.id}})
+    .then(modules => modules.map(module => {
+      return {
+        id: module.id,
+        name: module.name,
+        meta_level: module.data.meta_level,
+        data: module.data,
+        group_id: module.data.group_id
+      }
+    }))
+    .then(modules => modules.sort(dynamicSortMultiple('group_id', 'meta_level', 'name')))
+    .then(modules => res.json(modules));
 }
 
 export async function getShip(req, res) {
