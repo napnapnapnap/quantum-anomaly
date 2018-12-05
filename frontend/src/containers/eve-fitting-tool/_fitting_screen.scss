@@ -1,18 +1,13 @@
 .fitting-main {
   padding: 1rem;
-  background: #F5F5F5;
-
-  // let's force this page to always show scrollbar - to avoid jumps on
-  // big market groups opening
-  min-height: calc(100vh - calc(#{$navbar-height} + #{$footer-height} - 1px));
 
   &__header {
     display: inline-flex;
     align-items: center;
     padding: 0.3rem 0.5rem;
     min-width: 320px;
-    background: white;
-    border-radius: 4px;
+    border-radius: 5px;
+    @extend .gradient;
   }
 
   &__image {
@@ -36,13 +31,14 @@
   &__sections {
     display: flex;
     margin-top: 1rem;
+    min-height: 75vh;
     overflow-x: auto;
   }
 
   &__modules {
     flex: 0 0 600px;
-    background: white;
-    border-radius: 4px;
+    @extend .gradient;
+    border-radius: 5px;
   }
 
   &__slots {
@@ -50,15 +46,15 @@
     min-width: 400px;
     margin: 0 1rem;
     padding: 0 1rem;
-    background: white;
-    border-radius: 4px;
+    @extend .gradient;
+    border-radius: 5px;
   }
 
   &__stats {
     flex: 0 0 300px;
-    background: white;
-    border-radius: 4px;
     padding: 0 1rem;
+    @extend .gradient;
+    border-radius: 5px;
   }
 }
 

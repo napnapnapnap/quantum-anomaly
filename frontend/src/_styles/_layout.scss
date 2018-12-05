@@ -52,6 +52,11 @@ body {
   max-width: 600px;
 }
 
+.gradient {
+  background: linear-gradient(to bottom left, #fff 0%, rgba(#808080, 0.1) 50%, #fff 100%);
+  border: 1px solid #ddd;
+}
+
 .spacer {
   width: 100%;
   flex: 0 0 100%;

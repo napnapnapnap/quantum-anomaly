@@ -39,11 +39,19 @@ export function getModuleGroup(req, res) {
         name: module.name,
         meta_level: module.data.meta_level,
         data: module.data,
-        group_id: module.data.group_id
+        group_name: module.data.group_name
       }
     }))
-    .then(modules => modules.sort(dynamicSortMultiple('group_id', 'meta_level', 'name')))
-    .then(modules => res.json(modules));
+    .then(modules => modules.sort(dynamicSortMultiple('group_name', 'meta_level', 'name')))
+    .then(modules => {
+      let grouped = {};
+      modules.forEach(module => {
+        if (!grouped.hasOwnProperty(module.group_name)) grouped[module.group_name] = [];
+        grouped[module.group_name].push(module);
+      });
+      return grouped;
+    })
+    .then(grouped => res.json(grouped));
 }
 
 export async function getShip(req, res) {
