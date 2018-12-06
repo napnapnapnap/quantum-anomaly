@@ -45,3 +45,11 @@ export function fetchModuleGroup(id) {
       .catch(err => console.log(err));
   };
 }
+
+export function fetchDogma(id) {
+  return (dispatch) => {
+    return axios.post('/api/eve-fitting-simulator/dogma')
+      .then(response => dispatch({type: 'FETCH_DOGMA', payload: response.data}))
+      .catch(err => console.log(err));
+  };
+}

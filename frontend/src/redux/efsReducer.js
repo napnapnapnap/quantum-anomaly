@@ -35,6 +35,14 @@ export default function reducer(state, action) {
         modules: action.payload
       };
     }
+    case 'FETCH_DOGMA': {
+      return {
+        ...state,
+        dogmaAttributes:  action.payload.dogmaAttributes,
+        dogmaEffects:     action.payload.dogmaEffects,
+        dogmaReverseInfo: action.payload.dogmaReverseInfo
+      };
+    }
     default: {
       return {...state};
     }

@@ -20,6 +20,7 @@ class FittingScreen extends Component {
   }
 
   renderDogmaAttribute(current = null, attribute) {
+    return null;
     let dogma = this.props.efsReducer.ship.dogmaAttributesNamed,
         currentValue;
 
@@ -60,7 +61,7 @@ class FittingScreen extends Component {
         </section>
         <section className="fitting-main__sections">
           <section className="fitting-main__modules">
-            <Modules />
+            <Modules ship={this.props.efsReducer.ship}/>
           </section>
 
           <section className="fitting-main__slots">

@@ -1,8 +1,8 @@
 // well, emberassing, but this info is not available on the EVE online API
 // this is copied from database dump
 
-export default function (id) {
-  let units = {
+export default function () {
+  return {
     1:   {
       name:        'Length',
       displayName: 'm',
@@ -175,7 +175,7 @@ export default function (id) {
     },
     117: {
       name:        'Sizeclass',
-      displayName: '1=small;2=medium;3=large',
+      displayName: '1=small;2=medium;3=large;4=capital',
       description: ''
     },
     118: {
@@ -294,10 +294,4 @@ export default function (id) {
       description: 'Date and time'
     }
   };
-
-  let valueYouAreLookingFor = null;
-  if (units[id]) valueYouAreLookingFor = units[id].displayName;
-  // Not the One. NOT the One
-  if (valueYouAreLookingFor === '') valueYouAreLookingFor = null;
-  return valueYouAreLookingFor;
 }

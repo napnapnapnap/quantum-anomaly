@@ -4,16 +4,21 @@ import {connect} from 'react-redux';
 import LoadingScreen from '../../components/LoadingScreen';
 import * as efsActions from '../../redux/efsActions';
 
+const CPU_ID       = 48,
+      PG_ID        = 11,
+      CPU_USAGE_ID = 50,
+      PG_USAGE_ID  = 30;
+
 class Modules extends Component {
   constructor(props) {
     super(props);
     this.state = {
       active:        [],
-      hideImposible: true,
-      t1:            true,
-      t2:            true,
-      faction:       true,
-      officer:       true
+      showImposible: false,
+      showT1:        true,
+      showT2:        true,
+      showFaction:   true,
+      showOfficer:   true
     };
 
     this.expand            = this.expand.bind(this);
@@ -60,13 +65,22 @@ class Modules extends Component {
     }
   }
 
-  isHidden(cpu, pg, meta) {
-    let visible = true;
-    if (this.state.t1 && meta < 5) visible = false;
-    if (this.state.t2 && meta === 5) visible = false;
-    if (this.state.faction && (meta > 5 && meta <= 9)) visible = false;
-    if (this.state.officer && (meta > 9)) visible = false;
-    return visible;
+  isVisible(module) {
+    let show = true,
+        meta = module.meta_level,
+        cpu  = module.data.dogma_attributes[CPU_USAGE_ID],
+        pg   = module.data.dogma_attributes[PG_USAGE_ID];
+
+    if (!this.state.showT1 && meta < 5) show = false;
+    if (!this.state.showT2 && meta === 5) show = false;
+    if (!this.state.showFaction && (meta > 5 && meta <= 9)) show = false;
+    if (!this.state.showOfficer && (meta > 9)) show = false;
+
+    if (!this.state.showImposible && this.props.ship) {
+      if (this.props.ship.dogma_attributes[CPU_ID] * 2 < cpu || this.props.ship.dogma_attributes[PG_ID] * 2 < pg)
+        show = false;
+    }
+    return show;
   }
 
   renderItems(modules) {
@@ -75,7 +89,7 @@ class Modules extends Component {
         <h5>{key}</h5>
         <ul>
           {modules[key].map(module =>
-            <li className={this.isHidden(0, 0, module.meta_level) ? 'modules__item modules__item--hidden' : 'modules__item'}
+            <li className={this.isVisible(module) ? 'modules__item' : 'modules__item modules__item--hidden'}
                 title={module.name}
                 key={module.id}>
               <img className="modules__item-image"
@@ -140,25 +154,25 @@ class Modules extends Component {
   renderFilters() {
     return (
       <React.Fragment>
-        <label className="modules__checkbox">
-          <input type="checkbox" name="hideImposible" onChange={this.handleInputChange} defaultChecked={this.state.hideImposible} />
-          Hide modules impossible to fit
+        <label className="modules__checkbox" title="Toggle modules which take more than double of total fitting available for this ship">
+          <input type="checkbox" name="showImposible" onChange={this.handleInputChange} defaultChecked={this.state.showImposible} />
+          Show modules impossible to fit
         </label>
         <h5 className="modules__title">Item meta level</h5>
         <label className="modules__checkbox">
-          <input type="checkbox" name="t1" onChange={this.handleInputChange} defaultChecked={this.state.t1} />
+          <input type="checkbox" name="showT1" onChange={this.handleInputChange} defaultChecked={this.state.showT1} />
           T1
         </label>
         <label className="modules__checkbox">
-          <input type="checkbox" name="t2" onChange={this.handleInputChange} defaultChecked={this.state.t2} />
+          <input type="checkbox" name="showT2" onChange={this.handleInputChange} defaultChecked={this.state.showT2} />
           T2
         </label>
         <label className="modules__checkbox">
-          <input type="checkbox" name="faction" onChange={this.handleInputChange} defaultChecked={this.state.faction} />
+          <input type="checkbox" name="showFaction" onChange={this.handleInputChange} defaultChecked={this.state.showFaction} />
           Faction
         </label>
         <label className="modules__checkbox">
-          <input type="checkbox" name="officer" onChange={this.handleInputChange} defaultChecked={this.state.officer} />
+          <input type="checkbox" name="showOfficer" onChange={this.handleInputChange} defaultChecked={this.state.showOfficer} />
           Officer
         </label>
       </React.Fragment>
