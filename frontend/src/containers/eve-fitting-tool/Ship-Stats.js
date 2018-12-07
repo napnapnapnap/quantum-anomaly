@@ -9,36 +9,15 @@ class ShipStats extends Component {
     if (!this.props.efsReducer.dogmaAttributes) this.props.fetchDogma();
   }
 
-  renderDogmaAttribute(current = null, attribute) {
-    let dogma = this.props.efsReducer.ship.dogmaAttributesNamed,
-        currentValue;
-
-    if (!dogma[attribute]) return null;
-
-    let attributeValue = dogma[attribute].value,
-        units          = dogma[attribute].units;
-
-    if (current) currentValue = dogma[current].value;
-    if (!isNaN(currentValue)) currentValue = currentValue.toLocaleString('de-DE');
-    if (!isNaN(attributeValue)) attributeValue = attributeValue.toLocaleString('de-DE');
-
-    return (
-      <div className='fitting__attribute'>
-        <img className='fitting__icon' src={`/images/eve/icons/${attribute.replace(' ', '')}.png`} alt='icon' title={attribute} />
-        {current ? `${currentValue} / ${attributeValue} ${units}` : `${attributeValue} ${units}`}
-      </div>
-    );
-  }
-
-  generalInfo() {
+  getStatsObject() {
     let dogmaReverseInfo = this.props.efsReducer.dogmaReverseInfo;
     if (this.props.ship && dogmaReverseInfo) {
       let dogmaAttributes = this.props.ship.dogma_attributes;
       return {
         turretHardpoints:   dogmaAttributes[dogmaReverseInfo['Turret Hardpoints']],
         launcherHardpoints: dogmaAttributes[dogmaReverseInfo['Launcher Hardpoints']],
-        cpuOutput:          dogmaAttributes[dogmaReverseInfo['CPU Output']].toLocaleString('de-DE'),
-        powergridOutput:    dogmaAttributes[dogmaReverseInfo['Powergrid Output']].toLocaleString('de-DE'),
+        cpuOutput:          dogmaAttributes[dogmaReverseInfo['CPU Output']],
+        powergridOutput:    dogmaAttributes[dogmaReverseInfo['Powergrid Output']],
         droneBandwidth:     dogmaAttributes[dogmaReverseInfo['Drone Bandwidth']],
         droneCapacity:      dogmaAttributes[dogmaReverseInfo['Drone Capacity']],
         rigSize:            dogmaAttributes[dogmaReverseInfo['Rig Size']],
@@ -47,6 +26,19 @@ class ShipStats extends Component {
         pgUsed:             20,
       };
     } else return {};
+  }
+
+  renderVisualBar(used, available) {
+    return (
+      <div className="ship-stats__visual">
+        {(used || 0).toLocaleString('de-DE')} / {(available || 0).toLocaleString('de-DE')}
+        <span className="ship-stats__bar">
+                <span className={(used || 1) / available >= 1 ? "ship-stats__bar-used ship-stats__bar-used--over" : "ship-stats__bar-used"}
+                      style={{width: (used || 1) / available * 100 + '%'}}>
+                </span>
+              </span>
+      </div>
+    );
   }
 
   renderGeneralInfo(attributes) {
@@ -63,25 +55,11 @@ class ShipStats extends Component {
         <ul className="ship-stats__fitting">
           <li className="ship-stats__item" title="Cpu Output">
             <img className="ship-stats__image" src={`/images/eve/icons/cpuOutput.png`} alt='Cpu Output' />
-            <div className="ship-stats__visual">
-              {attributes.cpuUsed || 0} / {attributes.cpuOutput || 0}
-              <span className="ship-stats__bar">
-                <span className={(attributes.cpuUsed || 1) / attributes.cpuOutput >= 1 ? "ship-stats__bar-used ship-stats__bar-used--over" : "ship-stats__bar-used"}
-                      style={{width: (attributes.cpuUsed || 1) / attributes.cpuOutput * 100 + '%'}}>
-                </span>
-              </span>
-            </div>
+            {this.renderVisualBar(attributes.cpuUsed, attributes.cpuOutput)}
           </li>
           <li className="ship-stats__item" title="Powergrid Output">
             <img className="ship-stats__image" src={`/images/eve/icons/powergridOutput.png`} alt='Powergrid Output' />
-            <div className="ship-stats__visual">
-              {attributes.pgUsed || 0} / {attributes.powergridOutput || 0}
-              <span className="ship-stats__bar">
-                <span className={(attributes.pgUsed || 1) / attributes.powergridOutput >= 1 ? "ship-stats__bar-used ship-stats__bar-used--over" : "ship-stats__bar-used"}
-                      style={{width: (attributes.pgUsed || 1) / attributes.powergridOutput * 100 + '%'}}>
-                </span>
-              </span>
-            </div>
+            {this.renderVisualBar(attributes.pgUsed, attributes.powergridOutput)}
           </li>
         </ul>
       </div>
@@ -89,10 +67,11 @@ class ShipStats extends Component {
   }
 
   render() {
+    const stats = this.getStatsObject();
     return (
       <section className='ship-stats'>
         <h5>Stats - Experimental</h5>
-        {this.renderGeneralInfo(this.generalInfo())}
+        {this.renderGeneralInfo(stats)}
       </section>
     );
   }

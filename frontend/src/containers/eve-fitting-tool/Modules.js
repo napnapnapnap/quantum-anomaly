@@ -83,6 +83,22 @@ class Modules extends Component {
     return show;
   }
 
+  renderCpuPG(module) {
+    const cpu = module.data.dogma_attributes[CPU_USAGE_ID],
+          pg  = module.data.dogma_attributes[PG_USAGE_ID];
+
+    return (
+      <React.Fragment>
+        <div className="modules__dogma">
+          CPU: {cpu.toLocaleString('de-DE')}
+        </div>
+        <div className="modules__dogma">
+          Powergrid: {pg.toLocaleString('de-DE')}
+        </div>
+      </React.Fragment>
+    );
+  }
+
   renderItems(modules) {
     return Object.keys(modules).map(key => (
       <React.Fragment key={key}>
@@ -95,7 +111,10 @@ class Modules extends Component {
               <img className="modules__item-image"
                    src={`https://image.eveonline.com/Type/${module.id}_32.png`}
                    alt="module.name" />
-              <span className="modules__item-label">{module.name}</span>
+              <span className="modules__item-label">
+                {module.name}<br />
+                {this.renderCpuPG(module)}
+              </span>
             </li>
           )}
         </ul>
@@ -140,13 +159,7 @@ class Modules extends Component {
     return (
       <React.Fragment>
         <h5>No group selected</h5><br />
-        <p className="bold">Please select group</p><br /><br />
-        <p>This fitting tool is still under development</p><br />
-        <p>
-          If you wish to show support and incrase motivation,
-          you can donate ISK to Quantum Anomaly corporation in-game.
-          Still no promises on when this tool will be ready.
-        </p>
+        <p className="bold">Please select group</p>
       </React.Fragment>
     );
   }
@@ -186,7 +199,7 @@ class Modules extends Component {
     return (
       <section className="modules">
         <div className="modules__groups">
-          <h5 className="modules__title">Modules</h5>
+          <h5 className="modules__title">Module groups</h5>
           {moduleGroups ? this.renderModules(moduleGroups) : <LoadingScreen />}
           {this.renderFilters()}
         </div>
