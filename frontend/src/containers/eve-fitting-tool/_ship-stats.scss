@@ -1,0 +1,63 @@
+.ship-stats {
+  $block: '.modules';
+
+  &__block {
+    border-top: 1px solid #AAA;
+    border-bottom: 1px solid #AAA;
+    margin: 0.5rem 0;
+    padding: 0.2rem 0;
+    border-radius: 5px;
+
+    &--split {
+      display: flex;
+    }
+  }
+
+  &__item {
+    flex: 0 0 30px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  &__image{
+    width: 32px;
+    height: 32px;
+    margin-right: 0.5rem;
+  }
+
+  &__hardpoints {
+    flex: 0 0 60px;
+  }
+
+  &__fitting {
+    flex: 1 0 auto;
+    padding-left: 1rem;
+    border-left: 1px solid #AAA;
+  }
+
+  &__visual {
+    flex: 1 0 auto;
+  }
+
+  &__bar {
+    display: block;
+    background: green;
+    border: 1px solid black;
+    height: 10px;
+    width: 90%;
+    overflow: hidden;
+    border-radius: 5px;
+  }
+
+  &__bar-used {
+    display: block;
+    background: lightgreen;
+    padding: 1px;
+    height: 8px;
+
+    &--over {
+      background: red;
+    }
+  }
+}

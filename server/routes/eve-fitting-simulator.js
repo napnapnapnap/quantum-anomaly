@@ -78,7 +78,8 @@ export async function getDogma(req, res) {
       let unit = units[attr.data.unit_id];
       if (unit) attr.data.unit = unit;
       dogmaAttributesObject[attr.id] = {...attr.data};
-      if (attr.data.display_name) dogmaReverseInfo[attr.data.display_name] = attr.id;
+      // 1377 is weird case in API which overrides 48, investigate later
+      if (attr.data.display_name && attr.id !== 1377) dogmaReverseInfo[attr.data.display_name] = attr.id;
     }
   });
 
