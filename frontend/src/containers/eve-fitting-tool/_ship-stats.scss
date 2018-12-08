@@ -10,6 +10,7 @@
 
     &--split {
       display: flex;
+      flex-wrap: wrap;
     }
   }
 
@@ -34,6 +35,10 @@
     flex: 1 0 auto;
     padding-left: 1rem;
     border-left: 1px solid #AAA;
+  }
+
+  &__row {
+    flex: 0 0 100%;
   }
 
   &__visual {

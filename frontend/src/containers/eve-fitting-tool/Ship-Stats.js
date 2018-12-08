@@ -9,29 +9,38 @@ class ShipStats extends Component {
     if (!this.props.efsReducer.dogmaAttributes) this.props.fetchDogma();
   }
 
+  getSize(value, type) {
+    const sizes = {
+      numbered: {1: 'Small', 2: 'Medium', 3: 'Large', 4: 'Capital'}
+    };
+    return sizes[type][value];
+  }
+
   getStatsObject() {
     let dogmaReverseInfo = this.props.efsReducer.dogmaReverseInfo;
     if (this.props.ship && dogmaReverseInfo) {
-      let dogmaAttributes = this.props.ship.dogma_attributes;
+      let shipDogmaAttributes = this.props.ship.dogma_attributes;
       return {
-        turretHardpoints:   dogmaAttributes[dogmaReverseInfo['Turret Hardpoints']],
-        launcherHardpoints: dogmaAttributes[dogmaReverseInfo['Launcher Hardpoints']],
-        cpuOutput:          dogmaAttributes[dogmaReverseInfo['CPU Output']],
-        powergridOutput:    dogmaAttributes[dogmaReverseInfo['Powergrid Output']],
-        droneBandwidth:     dogmaAttributes[dogmaReverseInfo['Drone Bandwidth']],
-        droneCapacity:      dogmaAttributes[dogmaReverseInfo['Drone Capacity']],
-        rigSize:            dogmaAttributes[dogmaReverseInfo['Rig Size']],
-        rigCalibration:     dogmaAttributes[dogmaReverseInfo['Calibration']],
-        cpuUsed:            500,
-        pgUsed:             20,
+        turretHardpoints:   shipDogmaAttributes[dogmaReverseInfo['Turret Hardpoints']],
+        launcherHardpoints: shipDogmaAttributes[dogmaReverseInfo['Launcher Hardpoints']],
+        cpuOutput:          shipDogmaAttributes[dogmaReverseInfo['CPU Output']],
+        powergridOutput:    shipDogmaAttributes[dogmaReverseInfo['Powergrid Output']],
+        droneBandwidth:     shipDogmaAttributes[dogmaReverseInfo['Drone Bandwidth']],
+        droneCapacity:      shipDogmaAttributes[dogmaReverseInfo['Drone Capacity']],
+        rigSize:            this.getSize(shipDogmaAttributes[dogmaReverseInfo['Rig Size']], 'numbered'),
+        rigSlots:           shipDogmaAttributes[dogmaReverseInfo['Rig Slots']],
+        rigCalibration:     shipDogmaAttributes[dogmaReverseInfo['Calibration']],
+        rigCalibrationUsed: 0,
+        cpuUsed:            0,
+        pgUsed:             0,
       };
     } else return {};
   }
 
-  renderVisualBar(used, available) {
+  renderVisualBar(used, available, postLabel) {
     return (
       <div className="ship-stats__visual">
-        {(used || 0).toLocaleString('de-DE')} / {(available || 0).toLocaleString('de-DE')}
+        {(used || 0).toLocaleString('de-DE')} / {(available || 0).toLocaleString('de-DE')} {postLabel ? `[${postLabel}]` : ''}
         <span className="ship-stats__bar">
                 <span className={(used || 1) / available >= 1 ? "ship-stats__bar-used ship-stats__bar-used--over" : "ship-stats__bar-used"}
                       style={{width: (used || 1) / available * 100 + '%'}}>
@@ -51,6 +60,9 @@ class ShipStats extends Component {
           <li className="ship-stats__item" title="Missile hardpoints">
             <img className="ship-stats__image" src={`/images/eve/icons/launcherHardpoints.png`} alt='Missiles' />{attributes.launcherHardpoints || 0}
           </li>
+          <li className="ship-stats__item" title="Rig hardpoints">
+            <img className="ship-stats__image" src={`/images/eve/icons/rigSize.png`} alt='Rigs' />{attributes.rigSlots || 0}
+          </li>
         </ul>
         <ul className="ship-stats__fitting">
           <li className="ship-stats__item" title="Cpu Output">
@@ -60,6 +72,10 @@ class ShipStats extends Component {
           <li className="ship-stats__item" title="Powergrid Output">
             <img className="ship-stats__image" src={`/images/eve/icons/powergridOutput.png`} alt='Powergrid Output' />
             {this.renderVisualBar(attributes.pgUsed, attributes.powergridOutput)}
+          </li>
+          <li className="ship-stats__item" title="Rigs">
+            <img className="ship-stats__image" src={`/images/eve/icons/rigCalibration.png`} alt='Rig Calibration' />
+            {this.renderVisualBar(attributes.rigCalibrationUsed, attributes.rigCalibration, attributes.rigSize)}
           </li>
         </ul>
       </div>
