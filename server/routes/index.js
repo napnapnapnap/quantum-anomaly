@@ -8,6 +8,7 @@ import serveStatic from 'serve-static';
 import * as logger from '../helpers/logger';
 import {ensureAuthenticated} from '../middleware/auth';
 
+import * as admin from './admin';
 import * as epicArcs from './epic-arcs';
 import * as incursions from './incursions';
 import * as eveFittingSimulator from './eve-fitting-simulator';
@@ -36,13 +37,14 @@ export default function (app) {
   router.use('/api/eve-fitting-simulator/module-group', eveFittingSimulator.getModuleGroup);
   router.use('/api/eve-fitting-simulator/dogma', eveFittingSimulator.getDogma);
 
+  router.use('/admin/esi/information', ensureAuthenticated, admin.getEsiInformation);
+  router.use('/admin/esi/running-job', ensureAuthenticated, admin.getCurrentJob);
+  router.use('/admin/esi/fetch-endpoints', ensureAuthenticated, admin.fetchEndpoints);
+  router.use('/admin/esi/update-endpoints', ensureAuthenticated, admin.updateEndpoints);
+
   // for time being, poor flag until we get user roles setup (to enable these
   // routes, flip the env variable on server)
   if (process.env.ESI_UPDATES_ENABLED === 'true') {
-    router.use('/tasks/create/all', tasks.createAll);
-    router.use('/tasks/create/:type', tasks.create);
-    router.use('/tasks/update/all', tasks.updateAll);
-    router.use('/tasks/update/null/:type', tasks.updateNullData);
     router.use('/tasks/generate/all', tasks.generateAll);
     router.use('/tasks/generate/market', tasks.generateMarket);
     logger.appWarning('ESI tasks routes are loaded', 'red');

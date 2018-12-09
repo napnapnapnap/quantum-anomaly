@@ -46,10 +46,14 @@ function setupPassport() {
    'dist' folder - should be able to access css / js and assets
    'auth' routes - should be able to access route to be able to login
 */
-function ensureAuthenticated(req, res, next) {
+export function ensureAuthenticated(req, res, next) {
   const allowedGuestRoutes = [
     '/auth/',
-    '/api/'
+    '/static/',
+    '/styles/',
+    '/images/',
+    '/manifest.json',
+    '/favicon.ico'
   ];
   if (req.isAuthenticated()) {
     return next();
@@ -67,7 +71,7 @@ function ensureAuthenticated(req, res, next) {
       }
     });
     if (!publicRoute) {
-      logger.error(req, 'Not allowed to access route');
+      logger.error('Not allowed to access route');
       res.redirect('/');
     }
   }
@@ -93,30 +97,27 @@ export default function (app) {
   setupPassport();
   app.use(passport.initialize());
   app.use(passport.session());
-  //app.use(ensureAuthenticated);
+  // app.use(ensureAuthenticated);
 
   app.get('/auth/google', passport.authenticate('google', {scope: ['https://www.googleapis.com/auth/userinfo.email']}), (req, res) => {
     // this is being handled by google guys, they are smarter
   });
 
   app.use('/auth/google/callback', passport.authenticate('google', {failureRedirect: '/'}), (req, res) => {
-    res.locals.user = req.user;
     if (req.cookies.loggedIn === undefined) {
-      res.cookie('loggedIn', true, {
-        maxAge: cookieAge
-      });
+      res.cookie('loggedIn', true, {maxAge: cookieAge});
     }
     res.redirect('/');
   });
 
   // on each request, save user data in res.local so we can use it on views
-  app.use((req, res, next) => {
-    if (!req.user) {
-      req.user = {};
-    }
-    res.locals.user = req.user;
-    next();
-  });
+  // app.use((req, res, next) => {
+  //   if (!req.user) {
+  //     req.user = {};
+  //   }
+  //   res.locals.user = req.user;
+  //   next();
+  // });
 
   app.get('/logout', (req, res) => {
     if (req.user) {

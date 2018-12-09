@@ -7,6 +7,7 @@ import Footer from './components/Footer';
 import NotFound from './components/NotFound';
 
 import Home from './components/Home';
+import Admin from './components/Admin';
 import ShipSelector from './containers/eve-fitting-tool/Selection-Screen';
 import ShipView from './containers/eve-fitting-tool/Fitting-Screen';
 
@@ -23,6 +24,7 @@ const App = () => (
     <main className="page-content-main">
       <Switch>
         <Route exact path='/' component={Home} />
+        <Route exact path='/admin' component={Admin} />
         <Route exact path='/eve-fitting-simulator' component={ShipSelector} />
         <Route exact path='/eve-fitting-simulator/:shipId' component={ShipView} />
         <Route path='/skills' component={Skills} />
