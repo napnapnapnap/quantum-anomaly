@@ -16,7 +16,7 @@ button:focus {
 
 body {
   max-width: $base-max-width;
-  min-width: 320px;
+  min-width: 360px;
   position: relative;
   background: lightgrey;
   margin: 0 auto;
@@ -55,6 +55,10 @@ body {
 .gradient {
   background: linear-gradient(to bottom left, #fff 0%, rgba(#808080, 0.1) 50%, #fff 100%);
   border: 1px solid #ddd;
+}
+
+.gradient--pure {
+  background: linear-gradient(to bottom left, #fff 0%, rgba(#808080, 0.1) 50%, #fff 100%);
 }
 
 .spacer {

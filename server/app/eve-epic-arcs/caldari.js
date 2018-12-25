@@ -4,10 +4,11 @@ export default function () {
     'iconID':      '500001',
     'race':        'caldari',
     'starter':     'Aursa Kunivuri',
-    'description': 'The Caldari epic arc does have lots of traveling, so bring interceptor or covert ops since you\'ll be using your dps ships for 3-5 missions tops. To start this epic arc you need standings of 5.0 towards Aursa Kunivuri or Expert Distribution or Caldari State',
+    'description': ['The Caldari epic arc does have lots of traveling, so bring interceptor or covert ops since you\'ll be using your dps ships for 3-5 missions tops',
+                    'To start this epic arc you need standings of 5.0 towards Aursa Kunivuri, Expert Distribution or Caldari State'],
     'rewards':     [
-      '+10% (unmodified) Caldari State faction standing increase.',
-      '1 x Hyasyoda Mobile Laboratory (3.000 m3)'
+      '+10% Caldari State faction standing increase (unmodified)',
+      '1 x Hyasyoda Mobile Laboratory (3 000 m3)'
     ],
     'notes':       [
       'You need Data Analyzer in mission 11 and 15',

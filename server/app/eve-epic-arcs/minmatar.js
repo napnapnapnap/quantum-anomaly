@@ -4,8 +4,11 @@ export default function () {
     'iconID':      '500002',
     'race':        'minmatar',
     'starter':     'Arsten Takalo',
-    'description': 'The Minmatar epic arc is probable the easiest from all 4. It does take a while to complete because you need to travel a lot in your combat ship. It is also very buggy so you will possibly have to petition some missions to get CCP to resolve issue for you. Mission in question are the ones neededing Relic Analyzers',
-    'rewards':     ['+10% (unmodified) Minmatar Republic faction standing increase.'],
+    'description': ['The Minmatar epic arc is probable the easiest from all level 4 epic arcs',
+                    'It does take a while to complete because you need to travel a lot in your combat ship',
+                    'It is also very buggy so you will possibly have to petition some missions to get CCP to resolve issue for you. Mission in question are the ones needing Relic Analyzers',
+                    'To start this epic arc you need standings of 5.0 towards Arsten Takalo, Brutor Tribe or Minmatar Republic'],
+    'rewards':     ['+10% Minmatar Republic faction standing increase (unmodified)'],
     'notes':       [
       'You can avoid going to lowsec all together.',
       'You need Data Analyzer in mission 11',

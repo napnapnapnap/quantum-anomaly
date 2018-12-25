@@ -4,10 +4,13 @@ export default function () {
     'iconID':      '500003',
     'race':        'amarr',
     'starter':     'Karde Romu',
-    'description': 'The Amarr epic arc is notable for heavy capacitor neutralizers and heavy tracking disruption. In some missions you might have trouble so it would be nice idea to have a missile ship, an alt, a friend or a Marauders EWAR immunity. This guide covers the route to maximum standing reward. To start this epic arc you need standings of 5.0 towards Karde Romu or Ministry of Internal Order or Amarr Empire',
+    'description': ['The Amarr epic arc is notable for heavy capacitor neutralizers and heavy tracking disruption',
+                    'In some missions you might have trouble due to tracking disruption so it would be nice idea to have a missile ship, an alt, good drones damage, a friend or a Marauders EWAR immunity',
+                    'This guide covers the route to maximum standing reward',
+                    'To start this epic arc you need standings of 5.0 towards Karde Romu, Ministry of Internal Order or Amarr Empire'],
     'rewards':     [
-      '+10% (unmodified) Amarr Empire faction standing increase.',
-      '1 x Imperial Navy Modified \'Noble\' Implant.'
+      '+10% Amarr Empire faction standing increase (unmodified)',
+      '1 x Imperial Navy Modified \'Noble\' Implant (1 m3)'
     ],
     'notes':       [
       'Mission 16 can send you into lowsec sometimes, but it can be done in non-combat ship.',

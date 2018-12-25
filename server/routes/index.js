@@ -26,7 +26,8 @@ export default function (app) {
   router.use('/robots.txt', serveStatic(path.join(frontendPublicPath, 'robots.txt')));
   logger.appLog(`React build files from ${frontendPublicPath} loaded on '/' route`);
 
-  router.use('/api/get-epic-arcs', epicArcs.getEpicArcs);
+  router.use('/api/epic-arcs/:faction', epicArcs.getFaction);
+  router.use('/api/epic-arcs', epicArcs.getAll);
   router.use('/api/get-incursions', incursions.getIncursions);
   router.use('/api/warframe', warframeStatus.getWarframeStatus);
 

@@ -4,9 +4,13 @@ export default function () {
     'iconID':      '500004',
     'race':        'gallente',
     'starter':     'Roineron Aviviere',
-    'description': 'The Gallente epic arc is notable for some heavy incoming dps on short ranges. Most enemy battleships have MWD\'s and come really fast into range to apply it. Be careful to maintain spawns and ranges in accordance to your ship capabilities. Also count on enemy doing sensor dampening on your ship',
+    'description': ['The Gallente epic arc is notable for some heavy incoming dps on short ranges',
+                    'Most enemy battleships have MWD\'s and come really fast into range to apply that damage',
+                    'Be careful to maintain spawns and ranges in accordance to your ship capabilities',
+                    'Also count on enemy doing sensor dampening on your ship',
+                    'To start this epic arc you need standings of 5.0 towards Roineron Aviviere, Impetus or Gallente Federation'],
     'rewards':     [
-      '+10% (unmodified) Gallente Federation faction standing increase.',
+      '+10% Gallente Federation faction standing increase (unmodified)',
       '1 x Black Eagle Drone Link Augmentor. (25 m3)'
     ],
     'notes':       [

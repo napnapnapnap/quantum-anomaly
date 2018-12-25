@@ -42,10 +42,10 @@
   }
 }
 
-.a:link    { color: #00c }  /* unvisited links */
-.a:visited { color: #00c }  /* visited links   */
-.a:hover   { color: #06e }  /* user hovers     */
-.a:active  { color: #00c }  /* active links    */
+.link:link    { color: #00c }  /* unvisited links */
+.link:visited { color: #00c }  /* visited links   */
+.link:hover   { color: #06e }  /* user hovers     */
+.link:active  { color: #00c }  /* active links    */
 
 .link {
   &--secondary {

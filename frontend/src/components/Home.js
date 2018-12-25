@@ -7,7 +7,7 @@ const initialState = {
     cover:   '/images/eve-logo.png',
     label:   'Eve fitting simulator',
     content: 'Still work in progress, idea being to offer same features as in-game fitting tool, just better...'
-  },{
+  }, {
     url:     '/epic-arcs',
     cover:   '/images/eve-logo.png',
     label:   'Epic arcs guide',
@@ -41,7 +41,7 @@ export default class Index extends Component {
             <div className="home__links">
               {this.state[key].map(item => (
                 <a href={item.url} className="home__link" key={item.url}>
-                  <img src={item.cover} alt={item.url} />
+                  <img src={item.cover} alt={item.url}/>
                   <h4 className="home__link-label">{item.label}</h4>
                   <p>{item.content}</p>
                 </a>
