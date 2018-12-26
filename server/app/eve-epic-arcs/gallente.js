@@ -2,6 +2,7 @@ export default function () {
   return {
     'name':        'Syndication',
     'iconID':      '500004',
+    'empire':      'Gallente Federation',
     'race':        'gallente',
     'starter':     'Roineron Aviviere',
     'description': ['The Gallente epic arc is notable for some heavy incoming dps on short ranges',
@@ -25,8 +26,8 @@ export default function () {
       'agentLocation': 'Dodixie - Roineron Aviviere Beacon',
       'type':          'Travel',
       'destination':   'Tolle system, 4 jumps away',
-      'description':   'Talk to Roineron Aviviere and take mission to report to Gian Parele in Tolle Solar system',
-      'tip':           'You can start conversation with Roineron Aviviere from anywhere and accept first mission',
+      'description':   ['Talk to Roineron Aviviere and take mission to report to Gian Parele in Tolle Solar system'],
+      'tips':          ['You can start conversation with Roineron Aviviere from anywhere and accept first mission'],
       'completed':     'Fly to destination and start conversation with next agent.'
     }, {
       'name':          'The Tolle Scar',
@@ -34,7 +35,7 @@ export default function () {
       'agentLocation': 'Tolle  - Impetus Tolle Studio',
       'type':          'Combat',
       'destination':   'Same system',
-      'description':   'Fight Rogue Drones',
+      'description':   ['Fight Rogue Drones'],
       'enemy':         'Rogue Drones (Tank against: Explosive/Thermal, Best damage: Explosive/Thermal)',
       'pockets':       [[{
         'range':   '10 kilometers',
@@ -77,7 +78,7 @@ export default function () {
           'name':   'Battleships'
         }]
       }]],
-      'tip':           'Just kill everything',
+      'tips':          ['Just kill everything'],
       'completed':     'Kill all the ships and complete remotely.'
     }, {
       'name':          'Priority One',
@@ -85,7 +86,9 @@ export default function () {
       'agentLocation': 'Tolle  - Impetus Tolle Studio',
       'type':          'Combat',
       'destination':   'Carirgnottin system, 1 jump away',
-      'description':   'Fight Minmatar Republic and salvage shuttle. You have to use module, I was able to do it with skill on level 2, but would recommend level 3 at least. Keep in mind you don\'t need to bring anything to your agent, just successfully complete one cycle on the wreck',
+      'description':   ['Fight Minmatar Republic and salvage shuttle',
+                        'You have to use module, I was able to do it with skill on level 2, but would recommend level 3 at least',
+                        'Keep in mind you don\'t need to bring anything to your agent, just successfully complete one cycle on the wreck'],
       'enemy':         'Minmatar Republic (Tank against: Explosive/Kinetic, Best damage: Explosive/Kinetic)',
       'pockets':       [[{
         'range':   '60 kilometers',
@@ -131,7 +134,9 @@ export default function () {
           'name':   'Battleships'
         }]
       }]],
-      'tip':           'Gates are not locked so you can skip killing NPC\'s in pocket I, you also don\'t need to kill ships in last pocket, but makes salvaging easier. This mission does not incur any negative standings towards Minmatar Republic',
+      'tips':          ['Gates are not locked so you can skip killing NPC\'s in pocket I',
+                        'You also don\'t need to kill ships in last pocket, but makes salvaging easier',
+                        'This mission does not incur any negative standings towards Minmatar Republic and gets you nice tags'],
       'completed':     'You need to salvage shuttle wreck and then complete remotely.'
     }, {
       'name':          'The Averon Exchange',
@@ -139,7 +144,7 @@ export default function () {
       'agentLocation': 'Tolle  - Impetus Tolle Studio',
       'type':          'Combat',
       'destination':   'Averon system, 2 jumps away',
-      'description':   'Fight Mercenaries in couple of waves',
+      'description':   ['Fight Mercenaries in couple of waves'],
       'enemy':         'Mercenaries (Tank against: Kinetic/Thermal, Best damage: Kinetic/Thermal)',
       'pockets':       [[{
         'range':   '50 kilometers',
@@ -178,7 +183,8 @@ export default function () {
           'name':   'Battleships'
         }]
       }]],
-      'tip':           'Kill everything and take care of triggers so you don\'t get in trouble. You might wanna move away from warp in beacon since warp scramblers with webs will spawn right on top of it',
+      'tips':          ['Kill everything and take care of triggers so you don\'t get in trouble',
+                        'You might wanna move away from warp in beacon since warp scramblers with webs will spawn right on top of it'],
       'completed':     'Kill everything and then complete remotely.'
     }, {
       'name':          'A Different Kind of Director',
@@ -186,8 +192,8 @@ export default function () {
       'agentLocation': 'Tolle  - Impetus Tolle Studio',
       'type':          'Travel',
       'destination':   'Stetille II - Impetus Publisher, 8 jumps away',
-      'description':   'Report to Eron Viette in Stetille system',
-      'tip':           'You can start conversation with Gian Parele from anywhere and accept mission',
+      'description':   ['Report to Eron Viette in Stetille system'],
+      'tips':          ['You can start conversation with Gian Parele from anywhere and accept mission'],
       'completed':     'Automatically once you initiate conversation with next agent.'
     }, {
       'name':          'Assistance',
@@ -195,7 +201,7 @@ export default function () {
       'agentLocation': 'Stetille II - Impetus Publisher',
       'type':          'Combat',
       'destination':   'Same system',
-      'description':   'Fight Mercenaries in couple of waves',
+      'description':   ['Fight Mercenaries in couple of waves'],
       'enemy':         'Mercenaries (Tank against: Kinetic/Thermal, Best damage: Kinetic/Thermal)',
       'pockets':       [[{
         'range':   '35 kilometer',
@@ -256,7 +262,12 @@ export default function () {
           'name':   'Battleships'
         }]
       }]],
-      'tip':           'When you aprroach Audalle Roire, waves will spawn really fast. You\'ll be webbed and scrammed under heavy DPS. Either bastion up or use alt in shuttle/noob ship to trigger waves while damage dealers hold range. Last 2 waves are optimal. Take care of positioning so you don\'t end up in wrong spot at wrong time. 800 dps tank was enough for me, but keep in mind it will take for your drones some time to kill of frigates',
+      'tips':          ['When you aprroach Audalle Roire, waves will spawn really fast',
+                        'You\'ll be webbed and scrammed under heavy DPS',
+                        'Either bastion up or use alt in shuttle/noob ship to trigger waves while damage dealers hold range',
+                        'Last 2 waves are optimal',
+                        'Take care of positioning so you don\'t end up in wrong spot at wrong time',
+                        '800 dps tank was enough for me, but keep in mind it will take some time for your drones to kill of frigates'],
       'completed':     'Kill the spawns, dock up and talk to agent.'
     }, {
       'name':          'The High or Low Road',
@@ -264,8 +275,10 @@ export default function () {
       'agentLocation': 'Stetille II - Impetus Publisher',
       'type':          'Epic arc choice',
       'destination':   'Same station',
-      'description':   'Choose your side. One side leads to lowsec and other stays in highsec. Choose Into The Black as your next mission to stay in highsec',
-      'tip':           'Into The Black should be the next mission choice',
+      'description':   ['Choose your side',
+                        'One side leads to lowsec and other stays in highsec',
+                        'Choose Into The Black as your next mission to stay in highsec'],
+      'tips':          ['Into The Black should be the next mission choice'],
       'completed':     'Just confirm your choice.'
     }, {
       'name':          'Into The Black',
@@ -273,8 +286,8 @@ export default function () {
       'agentLocation': 'Tolle  - Impetus Tolle Studio',
       'type':          'Travel',
       'destination':   'Noghere , 8 jumps away',
-      'description':   'Report to Mourmarie Mone in Noghere system',
-      'tip':           'You can start conversation with Gian Parele from anywhere and accept mission',
+      'description':   ['Report to Mourmarie Mone in Noghere system'],
+      'tips':          ['You can start conversation with Gian Parele from anywhere and accept mission'],
       'completed':     'Automatically once you initiate conversation with next agent.'
     }, {
       'name':          'Poor Man\'s Shakedown',
@@ -282,7 +295,10 @@ export default function () {
       'agentLocation': 'Noghere - Unmarked Operation Beacon',
       'type':          'Combat',
       'destination':   'Charmerout system, 2 jumps away',
-      'description':   'Fight Mercenaries. You need to kill Asteroid Micro-Colony Minors to unlock gate in initial pocket. Furthest one from gate drops the key. Key is consumed',
+      'description':   ['Fight Mercenaries',
+                        'You need to kill Asteroid Micro-Colony Minors to unlock gate in initial pocket',
+                        'Furthest one from gate drops the key',
+                        'Key is consumed'],
       'enemy':         'Mercenaries (Tank against: Kinetic/Thermal, Best damage: Kinetic/Thermal)',
       'pockets':       [[{
         'range':   'different ranges',
@@ -327,7 +343,7 @@ export default function () {
           'effect': 'Spawns once the furthest Micro-Colony is destroyed'
         }]
       }]],
-      'tip':           'You can blitz the mission by shooting just the trigger Micro-Colonies',
+      'tips':          ['You can blitz the mission by shooting just the trigger Micro-Colonies'],
       'completed':     'Kill The Elder and fly back to your agent.'
     }, {
       'name':          'Underground Circus',
@@ -335,7 +351,7 @@ export default function () {
       'agentLocation': 'Noghere - Unmarked Operation Beacon',
       'type':          'Combat',
       'destination':   'Caslemon system, 1 jump away',
-      'description':   'Get the ringmaster',
+      'description':   ['Get the ringmaster'],
       'enemy':         'Mercenaries (Tank against: Kinetic/Thermal, Best damage: Kinetic/Thermal)',
       'pockets':       [[{
         'range':   '0 kilometers',
@@ -402,7 +418,7 @@ export default function () {
           'effect': 'Spawns after destroying Ringmaster\'s Pleasure Hub'
         }]
       }]],
-      'tip':           'Don\'t forget to loot 1 x The Ringmaster (1.0 m3)',
+      'tips':          ['Don\'t forget to loot 1 x The Ringmaster (1.0 m3)'],
       'completed':     'Kill everything, retrieve the item, fly back to station.'
     }, {
       'name':          'Intaki Chase',
@@ -410,7 +426,8 @@ export default function () {
       'agentLocation': 'Noghere - Unmarked Operation Beacon',
       'type':          'Combat',
       'destination':   'Pemene system, 3 jumps away',
-      'description':   'Intaki Settlement Control Tower is trigger for wave I. Battleships are using MWD and will close in fast and deal heavy DPS',
+      'description':   ['Intaki Settlement Control Tower is trigger for wave I',
+                        'Battleships are using MWD and will close in fast and deal heavy DPS'],
       'enemy':         'Mercenaries (Tank against: Kinetic/Thermal, Best damage: Kinetic/Thermal)',
       'pockets':       [[{
         'range':   '60 kilometers',
@@ -456,7 +473,7 @@ export default function () {
           'name':   'Veteran Battleships'
         }]
       }]],
-      'tip':           'Watch out on incoming DPS and be aligned if you don\'t think you can tank about 1000-1200 DPS',
+      'tips':          ['Watch out on incoming DPS and be aligned if you don\'t think you can tank about 1000-1200 DPS'],
       'completed':     'Kill everything, fly back to station.'
     }, {
       'name':          'Rat in a Corner ',
@@ -464,8 +481,8 @@ export default function () {
       'agentLocation': 'Noghere - Unmarked Operation Beacon',
       'type':          'Travel',
       'destination':   'Mesybier X - TransStellar Shipping Storage, 2 jumps away',
-      'description':   'Report to Ascain Adeset in Mesybier',
-      'tip':           'You can start conversation with Mourmarie Mone from anywhere and accept mission',
+      'description':   ['Report to Ascain Adeset in Mesybier'],
+      'tips':          ['You can start conversation with Mourmarie Mone from anywhere and accept mission'],
       'completed':     'Automatically once you initiate conversation with next agent.'
     }, {
       'name':          'Places to Hide',
@@ -473,8 +490,9 @@ export default function () {
       'agentLocation': 'Mesybier X - TransStellar Shipping Storage',
       'type':          'Epic arc choice',
       'destination':   'Same station',
-      'description':   'Choose your next mission. Best option would be to take Little Fingers since it is always in high-sec location',
-      'tip':           'Little Fingers should be the next mission choice',
+      'description':   ['Choose your next mission',
+                        'Best option would be to take Little Fingers since it is always in high-sec location'],
+      'tips':          ['Little Fingers should be the next mission choice'],
       'completed':     'Just confirm your choice.'
     }, {
       'name':          'Little Fingers',
@@ -482,7 +500,8 @@ export default function () {
       'agentLocation': 'Mesybier X - TransStellar Shipping Storage',
       'type':          'Combat',
       'destination':   'Same system',
-      'description':   'Last ship is always trigger. Don\'t forget carry on token from fuel depot which can be used to blitz next mission',
+      'description':   ['Last ship is always trigger',
+                        'Don\'t forget carry on token from fuel depot which can be used to blitz next mission'],
       'enemy':         'Mercenaries (Tank against: Kinetic/Thermal, Best damage: Kinetic/Thermal)',
       'pockets':       [[{
         'range':   '15 kilometers',
@@ -514,7 +533,7 @@ export default function () {
           'effect': 'Energy neutralizer / Sensor dampener'
         }]
       }]],
-      'tip':           'Kill the fuel depots to get 1 x Carry on Token which can be used to blitz next mission',
+      'tips':          ['Kill the fuel depots to get 1 x Carry on Token which can be used to blitz next mission'],
       'completed':     'Kill everything, fly back to station.'
     }, {
       'name':          'Carry On',
@@ -522,7 +541,10 @@ export default function () {
       'agentLocation': 'Mesybier X - TransStellar Shipping Storage',
       'type':          'Combat',
       'destination':   'Osmeden, 2 jumps away',
-      'description':   'There are 2 gates, The Hub gate is locked and leads to last pocket. It can be unlocked with Carry on Token from last mission. Otherwise you have to go through Alley to get to the Hub',
+      'description':   ['There are 2 gates',
+                        'The Hub gate is locked and leads to last pocket',
+                        'It can be unlocked with Carry on Token from last mission',
+                        'Otherwise you have to go through Alley to get to the Hub'],
       'enemy':         'Mercenaries (Tank against: Kinetic/Thermal, Best damage: Kinetic/Thermal)',
       'pockets':       [[{
         'range':   '50 kilometers',
@@ -578,7 +600,9 @@ export default function () {
           'effect': 'Mission objective structure'
         }]
       }]],
-      'tip':           'If you want to blitz this mission, use carry on token from last site and just use The Hub acceleration gate on start. Then approach the Carry on Hub at 10 kilometers are rest will warp off. You might wanna snipe frigates from range so they don\'t web you on your approach',
+      'tips':          ['If you want to blitz this mission, use carry on token from last site and just use The Hub acceleration gate on start',
+                        'Approach the Carry on Hub at 10 kilometers are rest will warp off',
+                        'You might wanna snipe frigates from range so they don\'t web you on your approach'],
       'completed':     'Approach 10 kilometers within Carry on Hub to get mission completed.'
     }, {
       'name':          'Studio One',
@@ -586,7 +610,9 @@ export default function () {
       'agentLocation': 'Mesybier X - TransStellar Shipping Storage',
       'type':          'Combat',
       'destination':   'Osmeden, 2 jumps away',
-      'description':   'Battleships use MWDs and deal high DPS from close up. Be aligned or be ready to overheat tank for a bit while you clear some of grid. This is most DPS I\'ve encountered in L4 missions if you let them close',
+      'description':   ['Battleships use MWDs and deal high DPS from close up',
+                        'Be aligned or be ready to overheat tank for a bit while you clear some of grid',
+                        'This is most DPS I\'ve encountered in L4 missions if you let them close'],
       'enemy':         'Mercenaries (Tank against: Kinetic/Thermal, Best damage: Kinetic/Thermal)',
       'pockets':       [[{
         'range':   '60 kilometers',
@@ -628,7 +654,9 @@ export default function () {
           'name':   'Elite Battleships'
         }]
       }]],
-      'tip':           'Keep an eye on that incoming DPS, be careful, I use 1000 dps tank + OGB on top of that for this mission. Don\'t be afraid to overheat or to warp out if needed',
+      'tips':          ['Keep an eye on that incoming DPS, be careful and be aligned',
+                        'I use 1000 dps tank + OGB on top of that for this mission',
+                        'Don\'t be afraid to overheat or to warp out if needed'],
       'completed':     'Kill Studio I and either finish off the enemy or warp out.'
     }, {
       'name':          'Showtime',
@@ -636,7 +664,8 @@ export default function () {
       'agentLocation': 'Mesybier X - TransStellar Shipping Storage',
       'type':          'Combat and retrieve item',
       'destination':   'Adacyne system, 3 jumps away',
-      'description':   'Battleships deal high DPS. Be aligned or be ready to overheat tank for a bit while you clear some of grid',
+      'description':   ['Battleships deal high DPS',
+                        'Be aligned or be ready to overheat tank for a bit while you clear some of grid'],
       'enemy':         'Mercenaries (Tank against: Kinetic/Thermal, Best damage: Kinetic/Thermal)',
       'pockets':       [[{
         'range':   '60 kilometers',
@@ -670,7 +699,9 @@ export default function () {
           'effect': 'Mission objective'
         }]
       }]],
-      'tip':           'Don\'t forget to loot 1 x Ralie Ardanne (1.0 m3). Pator Six Elite Battleships deal lots of Alpha damage and lots of DPS. Don\'t be afraid to warp out if needed',
+      'tips':          ['Don\'t forget to loot 1 x Ralie Ardanne (1.0 m3)',
+                        'Pator Six Elite Battleships deal lots of Alpha damage and lots of DPS',
+                        'Don\'t be afraid to warp out if needed'],
       'completed':     'Kill the mission objective, loot him and fly back to your agent.'
     }, {
       'name':          'Where\'s the Line?',
@@ -678,8 +709,10 @@ export default function () {
       'agentLocation': 'Mesybier X - TransStellar Shipping Storage',
       'type':          'Epic arc choice',
       'destination':   'Same station',
-      'description':   'Choose your side. One side gives Syndicate Cloaking Device and Syndicate faction standings. Other side gives Black Eagle Drone Link Augmentor and Gallente faction standing',
-      'tip':           'Safe Return should be the next mission choice for Gallente standings',
+      'description':   ['Choose your side',
+                        'One side gives Syndicate Cloaking Device and Syndicate faction standings',
+                        'Other side gives Black Eagle Drone Link Augmentor and Gallente faction standing'],
+      'tips':          ['Safe Return should be the next mission choice for Gallente standings'],
       'completed':     'Just confirm your choice.'
     }, {
       'name':          'Safe Return',
@@ -687,9 +720,12 @@ export default function () {
       'agentLocation': 'Mesybier X - TransStellar Shipping Storage',
       'type':          'Deliver item and optional combat',
       'destination':   'Enedore system, 9 jumps away',
-      'description':   'Fly couple of jumps out and drop the kid into transport ship. Once you drop kid there will be a spawn of hostile NPC\'s. Suggested to use shuttle and just drop the kid and warp off once the wave spawns. Not worth the jumps to take battleship all the way there since you have to return to your agent to pick up reward',
+      'description':   ['Fly couple of jumps out and drop the kid into transport ship',
+                        'Once you drop kid there will be a spawn of hostile NPC\'s',
+                        'Suggested to use shuttle and just drop the kid and warp off once the wave spawns',
+                        'Not worth the jumps to take battleship all the way there since you have to return to your agent to pick up reward'],
       'enemy':         'Mercenaries (Tank against: Kinetic/Thermal, Best damage: Kinetic/Thermal)',
-      'tip':           'Just blitz it. From what I remember you don\'t make much by bounties or loot',
+      'tips':          ['Just blitz it. From what I remember you don\'t make much by bounties or loot'],
       'completed':     'Drop the item and warp off.'
     }]
   };

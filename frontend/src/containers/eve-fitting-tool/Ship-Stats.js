@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
-import LoadingScreen from '../../components/LoadingScreen';
 import * as efsActions from '../../redux/efsActions';
 
 class ShipStats extends Component {

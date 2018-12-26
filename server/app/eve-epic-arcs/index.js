@@ -8,31 +8,33 @@ function globalInfo() {
 }
 
 export function getAll() {
-  const epicArcs = {
+  return {
     amarr:    amarr(),
     caldari:  caldari(),
     gallente: gallente(),
     minmatar: minmatar()
   };
-
-  epicArcs.amarr.global    = globalInfo();
-  epicArcs.caldari.global  = globalInfo();
-  epicArcs.gallente.global = globalInfo();
-  epicArcs.minmatar.global = globalInfo();
-
-  return epicArcs;
 }
 
 export function getFaction(faction) {
-  let epicArc = {};
+  const epicArc = {};
+
+  switch (faction) {
+    case 'amarr':
+      epicArc[faction] = amarr();
+      break;
+    case 'caldari':
+      epicArc[faction] = caldari();
+      break;
+    case 'gallente':
+      epicArc[faction] = gallente();
+      break;
+    case 'minmatar':
+      epicArc[faction] = minmatar();
+      break;
+    default:
+      epicArc[faction] = {error: 'Not found'};
+  }
   
-  epicArc[faction] = {};
-  if (faction === 'amarr') epicArc[faction]= amarr();
-  else if (faction === 'caldari') epicArc[faction] = caldari();
-  else if (faction === 'gallente') epicArc[faction] = gallente();
-  else if (faction === 'minmatar') epicArc[faction] = minmatar();
-
-  epicArc[faction].global = globalInfo();
-
   return epicArc;
 }

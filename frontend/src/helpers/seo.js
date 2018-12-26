@@ -7,3 +7,7 @@ export function seo(data = {}) {
   document.title = data.title;
   document.querySelector('meta[name="description"]').setAttribute('content', data.metaDescription);
 }
+
+export function updateTitle(value, seperator) {
+  console.log(document.title);
+}

@@ -30,7 +30,7 @@ const App = () => (
         <Route exact path='/eve-fitting-simulator/:shipId' component={ShipView} />
         <Route path='/skills' component={Skills} />
         <Route exact path='/epic-arcs/' component={EpicArcsOverview} />
-        <Route exact path='/epic-arcs/:faction' component={EpicArc} />
+        <Route exact path='/epic-arcs/:faction/:mission' component={EpicArc} />
         <Route path='/incursion-manager' component={Incursions} />
         <Route path='/warframe' component={Warframe} />
         <Route path="*" component={NotFound} />
