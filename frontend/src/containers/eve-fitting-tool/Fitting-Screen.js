@@ -7,6 +7,7 @@ import * as efsActions from '../../redux/efsActions';
 import Modules from './Modules';
 import Slots from './Slots';
 import ShipStats from './Ship-Stats';
+import {seo} from '../../helpers/seo';
 
 class FittingScreen extends Component {
   constructor(props) {
@@ -17,7 +18,12 @@ class FittingScreen extends Component {
   }
 
   componentWillMount() {
-    this.props.fetchShip(this.state.shipId);
+    this.props.fetchShip(this.state.shipId).then(response => {
+      seo({
+        title:           `${response.payload.name} ${response.payload.group_name} - EVE Fitting Tool`,
+        metaDescription: response.payload.description
+      });
+    });
   }
 
   render() {

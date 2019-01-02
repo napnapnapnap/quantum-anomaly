@@ -8,6 +8,7 @@ import Invasions from './Invasions';
 import Fissures from './Fissures';
 import Cetus from './Cetus';
 import Planets from './Planets';
+import {seo} from '../../../helpers/seo';
 
 const UPDATE_FREQUNCY = 60 * 1000;
 
@@ -42,6 +43,10 @@ export default class Warframe extends Component {
         this.setState({...response});
         tempDebug(false, response)
       });
+    seo({
+      title:           'Warframe Tracker',
+      metaDescription: 'Current available events inside Warframe universe'
+    });
   }
 
   componentWillMount() {

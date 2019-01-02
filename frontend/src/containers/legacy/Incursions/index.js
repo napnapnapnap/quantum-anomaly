@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import LoadingScreen from '../../../components/LoadingScreen';
+import {seo} from '../../../helpers/seo';
 
 export default class Incursions extends Component {
   constructor(props) {
@@ -27,6 +28,10 @@ export default class Incursions extends Component {
       .then(response => this.setState({
         incursions: response
       }));
+    seo({
+      title:           'EVE Online Incursions',
+      metaDescription: 'Current EVE Online ingame sansha incursions'
+    });
   }
 
   expandStationsButton(systemId) {
@@ -83,7 +88,7 @@ export default class Incursions extends Component {
   incursions(incursions) {
     return incursions.map(incursion => {
       const factionId     = incursion['factionID'],
-            factionName   = incursion['factionName']  || "Null security space",
+            factionName   = incursion['factionName'] || 'Null security space',
             constellation = incursion['constellationName'],
             influence     = incursion['influence'],
             state         = incursion['state'],
@@ -95,7 +100,7 @@ export default class Incursions extends Component {
         <article className="incursion" key={incursion['constellationID']}>
           <header className="incursion__header">
             <div className="incursion__header-image">
-              <img className="responsive" src={constImg} alt={constellation} />
+              <img className="responsive" src={constImg} alt={constellation}/>
             </div>
             <div className="incursion__header-text">
               <h4>{constellation}</h4>
@@ -128,7 +133,7 @@ export default class Incursions extends Component {
 
   render() {
     if (Object.keys(this.state.incursions).length === 0) {
-      return <LoadingScreen />;
+      return <LoadingScreen/>;
     } else {
       return (
         <article className="incursions">

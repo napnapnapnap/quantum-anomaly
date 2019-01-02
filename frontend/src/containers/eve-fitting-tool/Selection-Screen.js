@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 
 import LoadingScreen from '../../components/LoadingScreen';
 import * as efsActions from '../../redux/efsActions';
+import {seo} from '../../helpers/seo';
 
 class SelectionScreen extends Component {
   constructor(props) {
@@ -18,13 +19,17 @@ class SelectionScreen extends Component {
           // in some other parts of app, we can get group preselected, in that case just refresh the
           // ships from this group
           this.props.fetchShipGroup(this.props.efsReducer.currentGroup.id);
-        }
-        else {
+        } else {
           // otherwise if there is no group preset, fire up ajax to server to get all groups and
           // then get details for the first group from response array
           this.props.fetchShipGroup(shipGroups.payload[0].id);
         }
       });
+    
+    seo({
+      title:           'EVE Fitting Tool',
+      metaDescription: 'EVE Fitting Tool online version'
+    });
   }
 
   handleInputChange(e) {
@@ -37,7 +42,7 @@ class SelectionScreen extends Component {
         {ships.map(ship => (
           <Link to={`/eve-fitting-simulator/${ship.id}`} className="selection-screen__ship" key={ship.id}>
             <div className={`selection-screen__ship-image tech-level tech-level--${ship.meta_level}`}>
-              <img src={`https://image.eveonline.com/Render/${ship.id}_128.png`} alt="ship" />
+              <img src={`https://image.eveonline.com/Render/${ship.id}_128.png`} alt="ship"/>
             </div>
             <h2 className='selection-screen__name'>{ship.name}</h2>
           </Link>
@@ -67,7 +72,7 @@ class SelectionScreen extends Component {
             </label>
           </div>
         </form>
-        {currentGroup.ships ? SelectionScreen.renderShips(currentGroup.ships) : <LoadingScreen />}
+        {currentGroup.ships ? SelectionScreen.renderShips(currentGroup.ships) : <LoadingScreen/>}
       </article>
     );
   }
