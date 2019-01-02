@@ -7,25 +7,41 @@ export default class Mission extends Component {
   constructor(props) {
     super(props);
 
+    this.setCurrent        = this.setCurrent.bind(this);
+    this.nextMission       = this.nextMission.bind(this);
+    this.prevMission       = this.prevMission.bind(this);
+    this.updateSeo         = this.updateSeo.bind(this);
+    this.getCurrentMission = this.getCurrentMission.bind(this);
+
+    const currentMission = this.getCurrentMission();
+
+    this.state = {currentMission: currentMission};
+    this.updateSeo(currentMission);
+  };
+
+  componentWillReceiveProps() {
+    window.onpopstate = () => {
+      let currentMission = this.getCurrentMission();
+      this.setState({currentMission: currentMission});
+      this.updateSeo(currentMission);
+    };
+  }
+
+  componentWillUnmount() {
+    window.onpopstate = () => {};
+  }
+
+  getCurrentMission() {
     const missions       = this.props.missions,
           faction        = this.props.faction,
           currentMission = this.props.mission;
 
     let currentIndex = -1;
-
     missions.forEach((mission, index) => {
       if (generateMissionUrl(faction, mission.name).indexOf(currentMission) !== -1) currentIndex = index;
     });
-
-    this.state = {currentMission: currentIndex};
-
-    this.setCurrent  = this.setCurrent.bind(this);
-    this.nextMission = this.nextMission.bind(this);
-    this.prevMission = this.prevMission.bind(this);
-    this.updateSeo   = this.updateSeo.bind(this);
-
-    this.updateSeo(currentIndex);
-  };
+    return currentIndex;
+  }
 
   updateSeo(missionIndex) {
     if (this.state.currentMission === -1) return;
@@ -63,10 +79,10 @@ export default class Mission extends Component {
     return (
       <ul className="missions__list">
         {missions.map((mission, index) => (
-          <li className={currentMission === index ? 'missions__list-item bold' : 'missions__list-item'}
-              onClick={() => {this.setCurrent(index);}}
-              key={index}>
-            <Link className="link" to={generateMissionUrl(faction, mission.name)}>
+          <li className={currentMission === index ? 'missions__list-item bold' : 'missions__list-item'} key={index}>
+            <Link className="link"
+                  to={generateMissionUrl(faction, mission.name)}
+                  onClick={() => {this.setCurrent(index);}}>
               {index + 1}. {mission.name}
             </Link>
           </li>
