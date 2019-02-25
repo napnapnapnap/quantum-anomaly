@@ -4,10 +4,10 @@ import {models} from '../../models';
 import {wait} from '../../helpers';
 
 const URLS = {
-  MarketGroups:       'https://esi.tech.ccp.is/latest/markets/groups',
-  UniverseGroups:     'https://esi.tech.ccp.is/latest/universe/groups',
-  UniverseCategories: 'https://esi.tech.ccp.is/latest/universe/categories',
-  UniverseTypes:      'https://esi.tech.ccp.is/latest/universe/types',
+  MarketGroups:       'https://esi.evetech.net/latest/markets/groups',
+  UniverseGroups:     'https://esi.evetech.net/latest/universe/groups',
+  UniverseCategories: 'https://esi.evetech.net/latest/universe/categories',
+  UniverseTypes:      'https://esi.evetech.net/latest/universe/types',
   DogmaAttributes:    'https://esi.evetech.net/latest/dogma/attributes',
   DogmaEffects:       'https://esi.evetech.net/latest/dogma/effects',
   appendix:           '?datasource=tranquility&language=en-us'
