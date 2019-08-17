@@ -4,10 +4,12 @@ import configuration from './config';
 import * as logger from './helpers/logger';
 
 export default function () {
-  const sequelize = new Sequelize(process.env.DATABASE_URL, {
+  const databaseUrl = process.env.DATABASE_URL;
+
+  const sequelize = new Sequelize(databaseUrl, {
     dialectOptions: {
       timeout: 30,
-      // ssl: true
+      ssl:     databaseUrl.indexOf('ssl=true') !== -1
     },
     operatorsAliases: Sequelize.Op,
     pool:           {

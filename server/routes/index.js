@@ -12,6 +12,7 @@ import * as admin from './admin';
 import * as epicArcs from './epic-arcs';
 import * as incursions from './incursions';
 import * as eveFittingSimulator from './eve-fitting-simulator';
+import * as eveNpcs from './eve-npcs';
 import * as tasks from './tasks';
 import * as warframeStatus from './warframe';
 
@@ -26,8 +27,13 @@ export default function (app) {
   router.use('/robots.txt', serveStatic(path.join(frontendPublicPath, 'robots.txt')));
   logger.appLog(`React build files from ${frontendPublicPath} loaded on '/' route`);
 
-  router.use('/api/epic-arcs/:faction', epicArcs.getFaction);
-  router.use('/api/epic-arcs', epicArcs.getAll);
+  router.use('/api/epic-arcs/info', epicArcs.getInfo);
+  router.use('/api/epic-arcs/:faction', epicArcs.getEpicArc);
+
+  router.get('/api/npcs/index', eveNpcs.getList);
+  router.get('/api/npcs/:indices', eveNpcs.getNpcByIndex);
+  router.get('/api/npcs/', eveNpcs.getNpcs);
+
   router.use('/api/get-incursions', incursions.getIncursions);
   router.use('/api/warframe', warframeStatus.getWarframeStatus);
 
@@ -48,6 +54,7 @@ export default function (app) {
   if (process.env.ESI_UPDATES_ENABLED === 'true') {
     router.use('/tasks/generate/all', tasks.generateAll);
     router.use('/tasks/generate/market', tasks.generateMarket);
+    router.use('/tasks/generate/npc', tasks.generateNpcs);
     logger.appWarning('ESI tasks routes are loaded', 'red');
   }
 

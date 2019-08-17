@@ -10,8 +10,8 @@ import Home from './components/Home';
 import Admin from './components/Admin';
 import ShipSelector from './containers/eve-fitting-tool/Selection-Screen';
 import ShipView from './containers/eve-fitting-tool/Fitting-Screen';
-import EpicArcsOverview from './containers/epic-arcs/Overview';
-import EpicArc from './containers/epic-arcs/EpicArc';
+
+import EpicArcs from './containers/epic-arcs';
 
 import Skills from './containers/legacy/Efs/Skills/';
 import Incursions from './containers/legacy/Incursions/';
@@ -29,8 +29,9 @@ const App = () => (
         <Route exact path='/eve-fitting-simulator' component={ShipSelector} />
         <Route exact path='/eve-fitting-simulator/:shipId' component={ShipView} />
         <Route path='/skills' component={Skills} />
-        <Route exact path='/epic-arcs/' component={EpicArcsOverview} />
-        <Route exact path='/epic-arcs/:faction/:mission' component={EpicArc} />
+        <Route exact path='/epic-arcs/:faction/:mission' component={EpicArcs} />
+        <Route exact path='/epic-arcs/:faction' component={EpicArcs} />
+        <Route exact path='/epic-arcs' component={EpicArcs} />
         <Route path='/incursion-manager' component={Incursions} />
         <Route path='/warframe' component={Warframe} />
         <Route path="*" component={NotFound} />

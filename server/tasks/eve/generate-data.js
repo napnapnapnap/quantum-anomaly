@@ -4,20 +4,17 @@ import {dynamicSortMultiple} from '../../helpers';
 
 const TABLE_GROUPS = {
   6:  'EveShipGroups',
-  7:  'EveModuleGroups',
-  11: 'EveEntitiesGroups'
+  7:  'EveModuleGroups'
 };
 
 const TABLE_ITEMS = {
   6:  'EveShips',
-  7:  'EveModules',
-  11: 'EveEntities'
+  7:  'EveModules'
 };
 
 const NAME = {
   6:  'ship',
-  7:  'module',
-  11: 'entities'
+  7:  'module'
 };
 
 function getGroups(type) {

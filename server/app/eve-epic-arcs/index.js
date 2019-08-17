@@ -1,40 +1,38 @@
-import amarr from './amarr';
-import caldari from './caldari';
-import gallente from './gallente';
-import minmatar from './minmatar';
+import amarrData from './amarr.json';
+import caldariData from './caldari.json';
+import gallenteData from './gallente.json';
+import minmatarData from './minmatar.json';
 
-function globalInfo() {
-  return 'For those who will attempt this on first try. It is recommended to have ship that is cap stable with around 1000 dps tank. If your skills permit, usage of Marauders is recommended since they can easily reach more then 1000dps tank and they have immunity towards EWAR.';
+function augmentInfoData(info) {
+  Object.keys(info).forEach(faction => {
+    info[faction].missionIndex = {};
+    getEpicArc(faction)[faction].forEach((mission, index) =>
+      info[faction].missionIndex[mission.name.replace(/ /g, '-').toLowerCase()] = index
+    );
+  });
+  return info;
 }
 
-export function getAll() {
-  return {
-    amarr:    amarr(),
-    caldari:  caldari(),
-    gallente: gallente(),
-    minmatar: minmatar()
-  };
+export function getInfo() {
+  return augmentInfoData({
+    amarr:    amarrData.info,
+    caldari:  caldariData.info,
+    gallente: gallenteData.info,
+    minmatar: minmatarData.info
+  });
 }
 
-export function getFaction(faction) {
-  const epicArc = {};
-
+export function getEpicArc(faction) {
   switch (faction) {
     case 'amarr':
-      epicArc[faction] = amarr();
-      break;
+      return {amarr: amarrData.missions};
     case 'caldari':
-      epicArc[faction] = caldari();
-      break;
+      return {caldari: caldariData.missions};
     case 'gallente':
-      epicArc[faction] = gallente();
-      break;
+      return {gallente: gallenteData.missions};
     case 'minmatar':
-      epicArc[faction] = minmatar();
-      break;
+      return {minmatar: minmatarData.missions};
     default:
-      epicArc[faction] = {error: 'Not found'};
+      return {error: 'Not found'};
   }
-  
-  return epicArc;
 }

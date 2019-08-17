@@ -9,7 +9,7 @@
   display: inline-block;
   border-radius: 8px;
   font-size: 0.8rem;
-  
+
   &--cta {
   }
 
@@ -42,17 +42,47 @@
   }
 }
 
-.link:link    { color: #00c }
-.link:visited { color: #00c }
-.link:hover   { color: #06e }
-.link:active  { color: #00c }
+.link:link {
+  color: #00c
+}
+
+.link:visited {
+  color: #00c
+}
+
+.link:hover {
+  color: #06e
+}
+
+.link:active {
+  color: #00c
+}
 
 .link {
   &--secondary {
     text-decoration: underline;
     color: #999;
+
     &:hover {
       color: #444;
+    }
+  }
+}
+
+.breadcrumbs {
+  font-size: x-small;
+  font-style: italic;
+  display: inline-block;
+  @extend .gradient;
+  padding: 0.3rem 0;
+  border-radius: 5px;
+
+  &__item {
+    padding: 0.3rem 0.5rem;
+
+    &--link {
+      @extend .link;
+      text-decoration: underline;
     }
   }
 }

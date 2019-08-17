@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-export function fetchEpicArcs() {
+export function fetchEpicArcsInfo() {
   return (dispatch) => {
-    return axios.get('/api/epic-arcs')
+    return axios.get('/api/epic-arcs/info')
       .then(response => dispatch({
-        type:    'FETCH_EPIC_ARCS',
+        type:    'FETCH_EPIC_ARCS_INFO',
         payload: response.data
       }))
       .catch(err => console.log(err));

@@ -31,12 +31,14 @@ $navbar-breakpoint: lg;
 
   &__content {
     display: none;
+    margin: 0;
     @include absolute($navbar-height, 0, auto, 0);
   }
 
   &__link {
-    padding: 0 1rem;
     display: block;
+    padding: 0 1rem;
+    margin: 0;
   }
 
   &__mobile {

@@ -1,9 +1,9 @@
 import * as epicArcs from '../app/eve-epic-arcs';
 
-export function getAll(req, res) {
-  res.json(epicArcs.getAll());
+export function getInfo(req, res) {
+  res.json(epicArcs.getInfo());
 }
 
-export function getFaction(req, res) {
-  res.json(epicArcs.getFaction(req.params.faction));
+export function getEpicArc(req, res) {
+  res.json(epicArcs.getEpicArc(req.params.faction));
 }
