@@ -21,6 +21,8 @@ import esiDogmaEffectsModel from './esiDogmaEffects';
 import eveShipsModel from './eveShips';
 import eveShipGroupsModel from './eveShipGroups';
 import eveModulesModel from './eveModules';
+import eveEntitiesGroupsModel from './eveEntitiesGroups';
+import eveEntitiesModel from './eveEntities';
 import eveModuleGroupsModel from './eveModuleGroups';
 import eveCacheModel from './eveCache';
 
@@ -78,6 +80,8 @@ export default function (sequelize, silent) {
     EveShipGroups:         eveShipGroupsModel(sequelize),
     EveModules:            eveModulesModel(sequelize),
     EveModuleGroups:       eveModuleGroupsModel(sequelize),
+    EveEntitiesGroups:     eveEntitiesGroupsModel(sequelize),
+    EveEntities:           eveEntitiesModel(sequelize),
     EveCache:              eveCacheModel(sequelize),
     Sessions:              sessionsModel(sequelize),
     Users:                 usersModel(sequelize),

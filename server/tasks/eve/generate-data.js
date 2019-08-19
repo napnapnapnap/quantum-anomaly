@@ -3,18 +3,21 @@ import {models} from '../../models';
 import {dynamicSortMultiple} from '../../helpers';
 
 const TABLE_GROUPS = {
-  6: 'EveShipGroups',
-  7: 'EveModuleGroups'
+  6:  'EveShipGroups',
+  7:  'EveModuleGroups',
+  11: 'EveEntitiesGroups'
 };
 
 const TABLE_ITEMS = {
-  6: 'EveShips',
-  7: 'EveModules'
+  6:  'EveShips',
+  7:  'EveModules',
+  11: 'EveEntities'
 };
 
 const NAME = {
-  6: 'ship',
-  7: 'module'
+  6:  'ship',
+  7:  'module',
+  11: 'entities'
 };
 
 function getGroups(type) {
