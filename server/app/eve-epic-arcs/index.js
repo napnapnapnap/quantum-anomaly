@@ -1,7 +1,7 @@
-import amarrData from './amarr.json';
-import caldariData from './caldari.json';
-import gallenteData from './gallente.json';
-import minmatarData from './minmatar.json';
+import {data as amarrData} from './amarr';
+import {data as caldariData} from './caldari';
+import {data as gallenteData} from './gallente';
+import {data as minmatarData} from './minmatar';
 
 function augmentInfoData(info) {
   Object.keys(info).forEach(faction => {
