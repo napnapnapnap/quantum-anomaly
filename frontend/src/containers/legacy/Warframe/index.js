@@ -49,7 +49,7 @@ export default class Warframe extends Component {
     });
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.getData();
     setInterval(this.getData.bind(this), UPDATE_FREQUNCY);
   }

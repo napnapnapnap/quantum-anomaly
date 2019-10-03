@@ -18,7 +18,7 @@ export default class Footer extends Component {
     this.userAgree = this.userAgree.bind(this);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     cookies.setCookie('cookiesAgree', 'true', '1000');
   }
 

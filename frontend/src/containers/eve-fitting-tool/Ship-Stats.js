@@ -4,8 +4,8 @@ import {connect} from 'react-redux';
 import * as efsActions from '../../redux/efsActions';
 
 class ShipStats extends Component {
-  componentWillMount() {
-    if (!this.props.efsReducer.dogmaAttributes) this.props.fetchDogma();
+  componentDidMount() {
+    if (!this.props.dogmaAttributes) this.props.fetchDogma();
   }
 
   getSize(value, type) {
@@ -16,7 +16,7 @@ class ShipStats extends Component {
   }
 
   getStatsObject() {
-    let dogmaReverseInfo = this.props.efsReducer.dogmaReverseInfo;
+    let dogmaReverseInfo = this.props.dogmaReverseInfo;
     if (this.props.ship && dogmaReverseInfo) {
       let shipDogmaAttributes = this.props.ship.dogma_attributes;
       return {
@@ -85,14 +85,14 @@ class ShipStats extends Component {
     const stats = this.getStatsObject();
     return (
       <section className='ship-stats'>
-        <h5>Stats - Experimental</h5>
+        <h5>Stats</h5>
         {this.renderGeneralInfo(stats)}
       </section>
     );
   }
 }
 
-const mapStateToProps    = state => state,
+const mapStateToProps = state => state.efs,
       mapDispatchToProps = {...efsActions};
 
 export default connect(mapStateToProps, mapDispatchToProps)(ShipStats);

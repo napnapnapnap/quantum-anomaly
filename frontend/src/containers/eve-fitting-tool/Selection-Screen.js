@@ -12,20 +12,20 @@ class SelectionScreen extends Component {
     this.handleInputChange = this.handleInputChange.bind(this);
   };
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.fetchShipGroups()
       .then(shipGroups => {
-        if (this.props.efsReducer.currentGroup) {
+        if (this.props.currentGroup) {
           // in some other parts of app, we can get group preselected, in that case just refresh the
           // ships from this group
-          this.props.fetchShipGroup(this.props.efsReducer.currentGroup.id);
+          this.props.fetchShipGroup(this.props.currentGroup.id);
         } else {
           // otherwise if there is no group preset, fire up ajax to server to get all groups and
           // then get details for the first group from response array
           this.props.fetchShipGroup(shipGroups.payload[0].id);
         }
       });
-    
+
     seo({
       title:           'EVE Fitting Tool',
       metaDescription: 'EVE Fitting Tool online version'
@@ -52,8 +52,8 @@ class SelectionScreen extends Component {
   }
 
   render() {
-    const groups       = this.props.efsReducer.shipGroups || [],
-          currentGroup = this.props.efsReducer.currentGroup || {};
+    const groups       = this.props.shipGroups || [],
+          currentGroup = this.props.currentGroup || {};
 
     return (
       <article className='selection-screen'>
@@ -78,7 +78,7 @@ class SelectionScreen extends Component {
   }
 }
 
-const mapStateToProps    = state => state,
+const mapStateToProps = state => state.efs,
       mapDispatchToProps = {...efsActions};
 
 export default connect(mapStateToProps, mapDispatchToProps)(SelectionScreen);

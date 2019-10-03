@@ -1,4 +1,8 @@
 .modules {
+  li {
+    margin: 0.2em 0;
+  }
+
   $block: '.modules';
   display: flex;
   flex-wrap: wrap;
@@ -9,53 +13,38 @@
   &__groups {
     flex: 0 0 240px;
     padding: 0.3rem 0;
-    max-height: 75vh;
-    overflow-y: auto;
+    //max-height: 75vh;
+    //overflow-y: auto;
   }
 
-  &__group-items {
+  &__items {
     flex: 1 0 340px;
     padding: 0.3rem 0.5rem;
     overflow-y: auto;
     max-height: 75vh;
   }
 
-  &__title {
-    padding: 0 0.5rem;
-  }
-
-  &__expand-indicator {
-    min-width: initial;
-    margin-right: 6px;
-    width: 16px;
-    padding: 0 3px;
-    text-align: center;
-    border: 1px solid black;
-    border-radius: 2px;
-    background: #DDD;
-    font-family: 'Consolas', monospace;
-  }
-
-  &__subgroup-section {
+  &__group {
     display: none;
 
     &--expanded {
       display: block;
+      padding: 0 0 0 16px;
     }
   }
 
-  &__subgroup {
-    border-left: 1px solid #DDD;
-    padding: 0 0 0 6px;
-  }
-
-  &__subgroup-title {
+  &__group-title {
     cursor: pointer;
     display: inline-block;
+    margin: 0;
 
     &:hover {
       text-decoration: underline;
     }
+  }
+
+  &__tooltip {
+    width: 250px;
   }
 
   &__item {
@@ -63,7 +52,7 @@
     align-items: center;
     cursor: pointer;
     line-height: 1.3;
-    padding: 0.3rem 0;
+    padding: 0.1rem 0;
 
     &--hidden {
       display: none;
@@ -86,11 +75,36 @@
     text-overflow: ellipsis;
   }
 
+  &__filters {
+    display: flex;
+    justify-content: space-evenly;
+    border-radius: 3px;
+    overflow: hidden;
+    margin: 0 0 1em;
+  }
+
   &__checkbox {
-    display: inline-flex;
-    flex: 0 0 100%;
-    margin: 0.5rem 0.3rem;
-    align-items: center;
+    padding: 0.3em 0.7rem;
+    background: black;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    font-size: 10px;
+    font-weight: bold;
+    border-radius: 5px;
+
+    &--active {
+      background: darkgreen;
+      opacity: 1;
+    }
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    [type="checkbox"] {
+      display: none;
+    }
   }
 
   &__dogma {
@@ -98,7 +112,11 @@
     align-items: center;
     font-size: 11px;
     min-width: 50px;
-    margin: 5px;
+    margin: 0 5px;
     opacity: 0.9;
+
+    &--overfit {
+      color: darkred;
+    }
   }
 }

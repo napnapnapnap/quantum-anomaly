@@ -17,7 +17,7 @@ class FittingScreen extends Component {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.fetchShip(this.state.shipId).then(response => {
       seo({
         title:           `${response.payload.name} ${response.payload.group_name} - EVE Fitting Tool`,
@@ -27,8 +27,8 @@ class FittingScreen extends Component {
   }
 
   render() {
-    const ship  = this.props.efsReducer.ship || {},
-          group = this.props.efsReducer.currentGroup || {},
+    const ship  = this.props.ship || {},
+          group = this.props.currentGroup || {},
           dogma = ship.dogmaAttributesNamed || {};
 
     return (
@@ -46,15 +46,15 @@ class FittingScreen extends Component {
         </section>
         <section className="fitting-main__sections">
           <div className="fitting-main__modules">
-            <Modules ship={this.props.efsReducer.ship} />
+            <Modules ship={this.props.ship} />
           </div>
 
           <div className="fitting-main__slots">
-            <Slots ship={this.props.efsReducer.ship} />
+            <Slots ship={this.props.ship} />
           </div>
 
           <div className='fitting-main__stats'>
-            <ShipStats ship={this.props.efsReducer.ship} />
+            <ShipStats ship={this.props.ship} />
           </div>
         </section>
       </article>
@@ -62,7 +62,7 @@ class FittingScreen extends Component {
   }
 }
 
-const mapStateToProps    = state => state,
+const mapStateToProps = state => state.efs,
       mapDispatchToProps = {...efsActions};
 
 export default connect(mapStateToProps, mapDispatchToProps)(FittingScreen);

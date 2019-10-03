@@ -10,7 +10,7 @@ export default class Ships extends Component {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     fetch('/api/get-all-skills')
       .then(response => response.json())
       .then(response => {

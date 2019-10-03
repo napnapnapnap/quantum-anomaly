@@ -13,11 +13,11 @@ export default class Admin extends Component {
         name: null
       }
     };
-    
+
     this.updateInformation = this.updateInformation.bind(this);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.updateInformation();
     setInterval(this.updateInformation, UPDATE_RATE);
   }
@@ -25,7 +25,7 @@ export default class Admin extends Component {
   updateInformation() {
     return axios.get('/admin/esi/information').then(response => this.setState({...response.data}));
   }
-  
+
   renderDate(date) {
     return (
       <React.Fragment>

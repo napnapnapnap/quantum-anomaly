@@ -37,8 +37,6 @@
 
   &__modules {
     flex: 0 0 600px;
-    @extend .gradient;
-    border-radius: 5px;
   }
 
   &__slots {
@@ -46,14 +44,12 @@
     min-width: 400px;
     margin: 0 1rem;
     padding: 0 1rem;
-    @extend .gradient;
     border-radius: 5px;
   }
 
   &__stats {
     flex: 0 0 300px;
     padding: 0 1rem;
-    @extend .gradient;
     border-radius: 5px;
   }
 }

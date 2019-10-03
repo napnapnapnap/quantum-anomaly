@@ -1,217 +1,183 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import classNames from 'classnames';
+import ReactTooltip from 'react-tooltip';
 
 import LoadingScreen from '../../components/LoadingScreen';
 import * as efsActions from '../../redux/efsActions';
 
-const CPU_ID       = 48,
-      PG_ID        = 11,
-      CPU_USAGE_ID = 50,
-      PG_USAGE_ID  = 30;
+const CPU_ID = 48,
+  PG_ID = 11,
+  CPU_USAGE_ID = 50,
+  PG_USAGE_ID = 30;
 
 class Modules extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      active:        [],
-      showImposible: false,
-      showT1:        true,
-      showT2:        true,
-      showFaction:   true,
-      showOfficer:   true
+      active: [],
+      showT1: true,
+      showT2: true,
+      showFaction: false,
+      showOfficer: false
     };
 
-    this.expand            = this.expand.bind(this);
+    this.expand = this.expand.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
   }
 
-  componentWillMount() {
-    return this.props.fetchModuleGroups();
+  componentDidMount() {
+    this.props.fetchModuleGroups();
   }
 
   handleInputChange(e) {
-    this.setState({
-      [e.target.name]: e.target.type === 'checkbox' ? e.target.checked : e.target.value
-    });
+    this.setState({[e.target.name]: e.target.type === 'checkbox' ? e.target.checked : e.target.value});
   }
 
   expand(e, id, level, hasOnlyItems) {
     e.stopPropagation();
-    let active        = [...this.state.active],
-        currentlength = active.length;
+    let active = [...this.state.active],
+      currentLength = active.length;
 
-    if (level === 0 && active[0] === id) {
-      // if clicking on saem top level one, then remove it from expaneded
-      active = [];
-    } else if (level === 0) {
-      // initial state and every other top level click
+    if (level === 0 && active[0] === id) active = []; // if clicking on same top level one, then remove it from expanded
+    else if (level === 0) { // initial state and every other top level click
       active = [];
       active.push(id);
-    } else if (currentlength === level + 1 && active[level] === id) {
-      // same element clicked, toogle
-      active = active.slice(0, level);
-    } else if (currentlength === level) {
-      // any click which is natural progression deeper into three
-      active.push(id);
-    } else if (currentlength > level) {
-      // in case of selecting something inside current tree, but higher than deepest expanded
+    }
+    else if (currentLength === level + 1 && active[level] === id) active = active.slice(0, level); // same element, toggle
+    else if (currentLength === level) active.push(id); // any click which is natural progression deeper into tree
+    else if (currentLength > level) { // in case of selecting something inside current tree, but higher than deepest expanded
       active = active.slice(0, level);
       active.push(id);
     }
+
     this.setState({active: active});
-
-    if (hasOnlyItems) {
-      this.props.fetchModuleGroup(id);
-    }
+    if (hasOnlyItems) this.props.fetchModuleGroup(id);
   }
 
   isVisible(module) {
     let show = true,
-        meta = module.meta_level,
-        cpu  = module.data.dogma_attributes[CPU_USAGE_ID],
-        pg   = module.data.dogma_attributes[PG_USAGE_ID];
+      meta = module.meta_level;
 
     if (!this.state.showT1 && meta < 5) show = false;
     if (!this.state.showT2 && meta === 5) show = false;
     if (!this.state.showFaction && (meta > 5 && meta <= 9)) show = false;
     if (!this.state.showOfficer && (meta > 9)) show = false;
 
-    if (!this.state.showImposible && this.props.ship) {
-      if (this.props.ship.dogma_attributes[CPU_ID] * 2 < cpu || this.props.ship.dogma_attributes[PG_ID] * 2 < pg)
-        show = false;
-    }
     return show;
   }
 
   renderCpuPG(module) {
     const cpu = module.data.dogma_attributes[CPU_USAGE_ID],
-          pg  = module.data.dogma_attributes[PG_USAGE_ID];
+      pg = module.data.dogma_attributes[PG_USAGE_ID],
+      {dogma_attributes: shipAttributes} = this.props.ship;
 
     return (
       <React.Fragment>
-        <div className="modules__dogma">
+        <div className={classNames('modules__dogma', {'modules__dogma--overfit': shipAttributes[CPU_ID] < cpu})}>
           CPU: {cpu.toLocaleString('de-DE')}
         </div>
-        <div className="modules__dogma">
+        <div className={classNames('modules__dogma', {'modules__dogma--overfit': shipAttributes[PG_ID] < pg})}>
           Powergrid: {pg.toLocaleString('de-DE')}
         </div>
       </React.Fragment>
     );
   }
 
-  renderItems(modules) {
+  renderModules(modules) {
     return Object.keys(modules).map(key => (
       <React.Fragment key={key}>
         <h5>{key}</h5>
         <ul>
           {modules[key].map(module =>
             <li className={this.isVisible(module) ? 'modules__item' : 'modules__item modules__item--hidden'}
-                title={module.name}
+                data-tip={`${module.name}`}
                 key={module.id}>
               <img className="modules__item-image"
                    src={`https://image.eveonline.com/Type/${module.id}_32.png`}
-                   alt="module.name" />
+                   alt="module.name"/>
               <span className="modules__item-label">
-                {module.name}<br />
+                {module.name}<br/>
                 {this.renderCpuPG(module)}
               </span>
             </li>
           )}
         </ul>
+        <ReactTooltip place="left" type="dark" effect="solid" multiline={true} className='modules__tooltip'/>
       </React.Fragment>
     ));
   }
 
+  renderFilters() {
+    return (
+      <section className="modules__filters">
+        <label className={classNames('modules__checkbox', {'modules__checkbox--active': this.state.showT1})}>
+          <input type="checkbox" name="showT1" onChange={this.handleInputChange} defaultChecked={this.state.showT1}/>
+          T1
+        </label>
+        <label className={classNames('modules__checkbox', {'modules__checkbox--active': this.state.showT2})}>
+          <input type="checkbox" name="showT2" onChange={this.handleInputChange} defaultChecked={this.state.showT2}/>
+          T2
+        </label>
+        <label className={classNames('modules__checkbox', {'modules__checkbox--active': this.state.showFaction})}>
+          <input type="checkbox" name="showFaction" onChange={this.handleInputChange}
+                 defaultChecked={this.state.showFaction}/>
+          Faction
+        </label>
+        <label className={classNames('modules__checkbox', {'modules__checkbox--active': this.state.showOfficer})}>
+          <input type="checkbox" name="showOfficer" onChange={this.handleInputChange}
+                 defaultChecked={this.state.showOfficer}/>
+          Officer
+        </label>
+      </section>
+    );
+  }
+
   renderSubgroups(tree, level = 0) {
-    const isVisible    = this.state.active.indexOf(tree.id) !== -1,
-          hasOnlyItems = !tree.subgroups;
+    const isVisible = this.state.active.indexOf(tree.id) !== -1,
+      hasOnlyItems = !tree.subgroups;
 
     return (
-      <li className={level === 0 ? 'modules__subgroup' : 'modules__subgroup modules__subgroup--border'} key={tree.id}>
-        <button className="btn modules__expand-indicator" onClick={e => this.expand(e, tree.id, level, hasOnlyItems)}>
-          {isVisible ? '-' : '+'}
-        </button>
-        <p className={isVisible ? 'modules__subgroup-title bold' : 'modules__subgroup-title'} onClick={e => this.expand(e, tree.id, level, hasOnlyItems)}>
+      <li key={tree.id}>
+        <p className={'modules__group-title'} onClick={e => this.expand(e, tree.id, level, hasOnlyItems)}>
           {tree.name}
         </p>
-        {tree.subgroups ?
-          <ul className={isVisible ? 'modules__subgroup-section modules__subgroup-section--expanded' : 'modules__subgroup-section'}>
-            {tree.subgroups.map(subgroup => this.renderSubgroups(subgroup, level + 1))}
-          </ul> : null
+        {tree.subgroups &&
+        <ul className={classNames('modules__group', {'modules__group--expanded': isVisible})}>
+          {tree.subgroups.map(subgroup => this.renderSubgroups(subgroup, level + 1))}
+        </ul>
         }
       </li>
     );
   }
 
-  renderModules(modules) {
+  renderModuleGroups(modules) {
     return (
       <React.Fragment>
-        {modules.map(topLevelModule => (
-          <ul className="modules__top-level-item" key={topLevelModule.id}>
-            {this.renderSubgroups(topLevelModule)}
-          </ul>
-        ))}
-      </React.Fragment>
-    );
-  }
-
-  renderMessage() {
-    return (
-      <React.Fragment>
-        <h5>No group selected</h5><br />
-        <p className="bold">Please select group</p>
-      </React.Fragment>
-    );
-  }
-
-  renderFilters() {
-    return (
-      <React.Fragment>
-        <label className="modules__checkbox" title="Toggle modules which take more than double of total fitting available for this ship">
-          <input type="checkbox" name="showImposible" onChange={this.handleInputChange} defaultChecked={this.state.showImposible} />
-          Show modules impossible to fit
-        </label>
-        <h5 className="modules__title">Item meta level</h5>
-        <label className="modules__checkbox">
-          <input type="checkbox" name="showT1" onChange={this.handleInputChange} defaultChecked={this.state.showT1} />
-          T1
-        </label>
-        <label className="modules__checkbox">
-          <input type="checkbox" name="showT2" onChange={this.handleInputChange} defaultChecked={this.state.showT2} />
-          T2
-        </label>
-        <label className="modules__checkbox">
-          <input type="checkbox" name="showFaction" onChange={this.handleInputChange} defaultChecked={this.state.showFaction} />
-          Faction
-        </label>
-        <label className="modules__checkbox">
-          <input type="checkbox" name="showOfficer" onChange={this.handleInputChange} defaultChecked={this.state.showOfficer} />
-          Officer
-        </label>
+        {modules.map(topLevelModule => <ul key={topLevelModule.id}>{this.renderSubgroups(topLevelModule)}</ul>)}
       </React.Fragment>
     );
   }
 
   render() {
-    const moduleGroups = this.props.efsReducer.moduleGroups,
-          modules      = this.props.efsReducer.modules;
+    const {moduleGroups, modules} = this.props;
 
     return (
       <section className="modules">
         <div className="modules__groups">
-          <h5 className="modules__title">Module groups</h5>
-          {moduleGroups ? this.renderModules(moduleGroups) : <LoadingScreen />}
+          <h5>Module groups</h5>
           {this.renderFilters()}
+          {moduleGroups ? this.renderModuleGroups(moduleGroups) : <LoadingScreen/>}
         </div>
-        <div className="modules__group-items">
-          {modules ? this.renderItems(modules) : this.renderMessage()}
+        <div className="modules__items">
+          {modules && this.renderModules(modules)}
         </div>
       </section>
     );
   }
 }
 
-const mapStateToProps    = state => state,
-      mapDispatchToProps = {...efsActions};
+const mapStateToProps = state => state.efs,
+  mapDispatchToProps = {...efsActions};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Modules);

@@ -5,13 +5,13 @@ import LoadingScreen from '../../components/LoadingScreen';
 import * as efsActions from '../../redux/efsActions';
 
 class Slots extends Component {
-  componentWillMount() {
-    if (!this.props.efsReducer.dogmaAttributes) this.props.fetchDogma();
+  componentDidMount() {
+    if (!this.props.dogmaAttributes) this.props.fetchDogma();
   }
 
   renderSlots(type) {
     let slots            = [],
-        dogmaReverseInfo = this.props.efsReducer.dogmaReverseInfo;
+        dogmaReverseInfo = this.props.dogmaReverseInfo;
 
     if (this.props.ship && dogmaReverseInfo) {
       for (let index = 0; index < this.props.ship.dogma_attributes[dogmaReverseInfo[type]]; index++) {
@@ -45,7 +45,7 @@ class Slots extends Component {
   }
 }
 
-const mapStateToProps    = state => state,
+const mapStateToProps = state => state.efs,
       mapDispatchToProps = {...efsActions};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Slots);

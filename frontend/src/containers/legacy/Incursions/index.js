@@ -22,7 +22,7 @@ export default class Incursions extends Component {
     });
   }
 
-  componentWillMount() {
+  componentDidMount() {
     fetch('/api/get-incursions')
       .then(response => response.json())
       .then(response => this.setState({

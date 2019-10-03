@@ -1,10 +1,10 @@
 import {combineReducers} from 'redux';
-import efsReducer from './efsReducer';
+import efs from './efsReducer';
 import epicArcs from './epicArcsReducer';
 import eveNpcs from './eveNpcsReducer';
 
 export default combineReducers({
-  efsReducer,
+  efs,
   epicArcs,
   eveNpcs
 });
