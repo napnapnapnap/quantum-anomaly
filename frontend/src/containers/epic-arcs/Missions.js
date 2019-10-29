@@ -6,7 +6,7 @@ import {renderEnemyProfile, renderMissionType} from './helpers';
 export default class Missions extends Component {
   getActiveMissionIndex() {
     const {info, activeMission} = this.props;
-    return activeMission ? info.missionIndex[activeMission] : null;
+    return activeMission && info.missionIndex[activeMission] !== undefined ? info.missionIndex[activeMission] : null;
   }
 
   static renderGeneralDescription(info) {

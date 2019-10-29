@@ -4,7 +4,7 @@ import configuration from './config';
 import * as logger from './helpers/logger';
 
 export default function () {
-  const databaseUrl = process.env.DATABASE_URL_LIVE;
+  const databaseUrl = process.env.DATABASE_URL;
 
   const sequelize = new Sequelize(databaseUrl, {
     dialectOptions: {

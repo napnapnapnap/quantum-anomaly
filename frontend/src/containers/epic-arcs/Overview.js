@@ -35,3 +35,17 @@ export default class Overview extends Component {
     );
   }
 }
+
+/*
+        <Link to={'/epic-arcs/general'} className="epic-arcs__list-item">
+          <header className="epic-arcs__header">
+            <div className="epic-arcs__header-logo">
+              <img src={`https://image.eveonline.com/Corporation/98217943_128.png`} alt="faction"/>
+            </div>
+            <div className="epic-arcs__header-text">
+              <h2 className="epic-arcs__header-title">General guidelines and overview</h2>
+              <p>Quantum Anomaly Corporation</p>
+            </div>
+          </header>
+        </Link>
+ */

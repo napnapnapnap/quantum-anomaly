@@ -22,6 +22,38 @@ class EpicArcs extends Component {
 
   componentDidUpdate() {
     this.fetchData();
+    const {epicArcs} = this.props;
+    const urlParams = this.props.match.params;
+
+    if (!urlParams.faction) this.setEpicArcSeo();
+    else if (urlParams.faction && epicArcs.fetchedInfo && epicArcs.data.missions[urlParams.faction].length !== 0) this.setEpicArcMissionSeo();
+  }
+
+  setEpicArcSeo() {
+    seo({
+      title:           'EVE Online Epic Arcs Level 4',
+      metaDescription: `Guides for EVE Online Epic Arcs: Amarr Empire Right To Rule, Caldari State Penumbra, Gallente Federation Syndication and Minmatar Republic Wildfire. In depth guide for all level 4 epic arc missions. Find all about the related missions, enemies, rewards, what to bring and how to start them...`
+    });
+  }
+
+  setEpicArcMissionSeo() {
+    const {epicArcs} = this.props;
+    const urlParams = this.props.match.params,
+      info = epicArcs.data.info[urlParams.faction],
+      missions = epicArcs.data.missions[urlParams.faction],
+      missionIndex = urlParams.faction && info.missionIndex[urlParams.mission] !== undefined
+                     ? info.missionIndex[urlParams.mission] : null;
+
+    const empire = info.empire,
+      description = info.description.join('. '),
+      missionName = missionIndex ? missions[missionIndex].name : null,
+      name = missionName ? `${info.name} - ${missionName}` : info.name;
+
+    seo({
+      title:           `${empire} Epic Arc - ${name}`,
+      metaDescription: missionName ? `EVE Online ${empire} Epic Arc - ${name} - ${missionName}. ${description}`
+                                   : `EVE Online ${empire} Epic Arc - ${name}. ${description}`
+    });
   }
 
   getShipInfo(names) {
@@ -34,18 +66,11 @@ class EpicArcs extends Component {
 
     if (!epicArcs.fetchedInfo) await fetchEpicArcsInfo();
 
-    if (!urlParams.faction) {
-      seo({
-        title:           'EVE Online Epic Arcs Level 4',
-        metaDescription: 'Guides for EVE Online Epic Arcs: Amarr Empire Right To Rule, Caldari State Penumbra, ' +
-                           'Gallente Federation Syndication and Minmatar Republic Wildfire. In depth guide for all ' +
-                           'level 4 epic arc missions. Find all about the related missions, enemies, rewards, what ' +
-                           'to bring and how to start them...'
-      });
-    } else if (urlParams.faction && epicArcs.fetchedInfo && epicArcs.data.missions[urlParams.faction].length === 0) {
+    if (!urlParams.faction) this.setEpicArcSeo();
+    else if (urlParams.faction && epicArcs.fetchedInfo && epicArcs.data.missions[urlParams.faction].length === 0) {
       fetchEpicArc(urlParams.faction).then(data => {
         const missions = data.payload[urlParams.faction],
-              enemies  = {};
+          enemies = {};
 
         missions.forEach(mission => {
           if (mission.pockets) mission.pockets.forEach(pocket => pocket.forEach(wave => wave.enemies.forEach(enemy => {
@@ -54,21 +79,17 @@ class EpicArcs extends Component {
         });
 
         this.props.fetchNpcs(Object.keys(enemies).join(';'));
-
-        seo({
-          title:           `EVE Online ${epicArcs.data.info[urlParams.faction].empire} Epic Arc - ${epicArcs.data.info[urlParams.faction].name}`,
-          metaDescription: epicArcs.data.info[urlParams.faction].description.join('. ')
-        });
+        this.setEpicArcMissionSeo();
       });
     }
   }
 
   render() {
     const {epicArcs} = this.props,
-          urlParams  = this.props.match.params,
-          faction    = urlParams.faction,
-          info       = epicArcs.data.info,
-          missions   = epicArcs.data.missions;
+      urlParams = this.props.match.params,
+      faction = urlParams.faction,
+      info = epicArcs.data.info,
+      missions = epicArcs.data.missions;
 
     return (
       <article className="epic-arcs">
@@ -85,9 +106,7 @@ class EpicArcs extends Component {
   }
 }
 
-const mapStateToProps    = state => {
-        return {epicArcs: state.epicArcs, eveNpcs: state.eveNpcs};
-      },
-      mapDispatchToProps = {...epicArcsActions, ...eveNpcsActions};
+const mapStateToProps = state => ({epicArcs: state.epicArcs, eveNpcs: state.eveNpcs}),
+  mapDispatchToProps = {...epicArcsActions, ...eveNpcsActions};
 
 export default connect(mapStateToProps, mapDispatchToProps)(EpicArcs);
