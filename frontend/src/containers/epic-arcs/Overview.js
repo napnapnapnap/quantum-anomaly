@@ -7,7 +7,7 @@ export default class Overview extends Component {
       <Link to={`/epic-arcs/${faction.race}`} key={faction.race} className="epic-arcs__list-item">
         <header className="epic-arcs__header">
           <div className="epic-arcs__header-logo">
-            <img src={`https://image.eveonline.com/Alliance/${faction.iconID}_128.png`} alt="faction"/>
+            <img src={`https://images.evetech.net/corporations/${faction.iconID}/logo`} alt="faction"/>
           </div>
           <div className="epic-arcs__header-text">
             <h2 className="epic-arcs__header-title">{faction.name}</h2>

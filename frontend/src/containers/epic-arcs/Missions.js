@@ -107,7 +107,7 @@ export default class Missions extends Component {
       <section className="missions">
         <header className="epic-arcs__header missions__header">
           <div className="epic-arcs__header-logo">
-            <img src={`https://image.eveonline.com/Alliance/${info.iconID}_128.png`} alt="faction"/>
+            <img src={`https://images.evetech.net/corporations/${info.iconID}/logo`} alt="faction"/>
           </div>
           <div className="epic-arcs__header-text">
             <h2 className="epic-arcs__header-title">{info.name}</h2>

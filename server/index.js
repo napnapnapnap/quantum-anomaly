@@ -34,10 +34,10 @@ app.use(compression());
 app.use(cookieParser());
 app.use(methodOverride());
 
-app.use(rendertron.makeMiddleware({
-  proxyUrl: 'https://render-tron.appspot.com/render/',
-  userAgentPattern: new RegExp(botUserAgents.join('|'), 'i'),
-}));
+// app.use(rendertron.makeMiddleware({
+//   proxyUrl: 'https://render-tron.appspot.com/render/',
+//   userAgentPattern: new RegExp(botUserAgents.join('|'), 'i'),
+// }));
 
 models(sequelize).then(models => {
   forceHttps(app);

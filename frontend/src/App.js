@@ -1,5 +1,5 @@
 import React from 'react';
-import {Switch, Route} from 'react-router-dom';
+import {Switch, Route, withRouter} from 'react-router-dom';
 
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
@@ -17,30 +17,43 @@ import Skills from './containers/legacy/Efs/Skills/';
 import Incursions from './containers/legacy/Incursions/';
 import Warframe from './containers/legacy/Warframe/';
 
-const App = () => (
-  <React.Fragment>
-    <header className="page-content-header">
-      <Navigation />
-    </header>
-    <main className="page-content-main">
-      <Switch>
-        <Route exact path='/' component={Home} />
-        <Route exact path='/admin' component={Admin} />
-        <Route exact path='/eve-fitting-simulator' component={ShipSelector} />
-        <Route exact path='/eve-fitting-simulator/:shipId' component={ShipView} />
-        <Route path='/skills' component={Skills} />
-        <Route exact path='/epic-arcs/:faction/:mission' component={EpicArcs} />
-        <Route exact path='/epic-arcs/:faction' component={EpicArcs} />
-        <Route exact path='/epic-arcs' component={EpicArcs} />
-        <Route path='/incursion-manager' component={Incursions} />
-        <Route path='/warframe' component={Warframe} />
-        <Route path="*" component={NotFound} />
-      </Switch>
-    </main>
-    <footer className="page-content-footer">
-      <Footer />
-    </footer>
-  </React.Fragment>
-);
+function updateCanonical () {
+  const link = !!document.querySelector("link[rel='canonical']") ? document.querySelector("link[rel='canonical']") : document.createElement('link');
+  link.setAttribute('rel', 'canonical');
+  link.setAttribute('href', window.location.protocol + '//' + window.location.host + window.location.pathname);
+  document.head.appendChild(link);
+}
 
-export default App;
+const App = ({history}) => {
+  updateCanonical();
+  history.listen(() => updateCanonical());
+
+  return (
+    <React.Fragment>
+      <header className="page-content-header">
+        <Navigation/>
+      </header>
+      <main className="page-content-main">
+        <Switch>
+          <Route exact path='/' component={Home}/>
+          <Route exact path='/admin' component={Admin}/>
+          <Route exact path='/eve-fitting-simulator' component={ShipSelector}/>
+          <Route exact path='/eve-fitting-simulator/:shipId' component={ShipView}/>
+          <Route path='/skills' component={Skills}/>
+          <Route exact path='/epic-arcs/:faction/:mission' component={EpicArcs}/>
+          <Route exact path='/epic-arcs/:faction' component={EpicArcs}/>
+          <Route exact path='/epic-arcs' component={EpicArcs}/>
+          <Route path='/incursion-manager' component={Incursions}/>
+          <Route path='/warframe' component={Warframe}/>
+          <Route path="*" component={NotFound}/>
+        </Switch>
+      </main>
+      <footer className="page-content-footer">
+        <Footer/>
+      </footer>
+    </React.Fragment>
+  )
+};
+
+
+export default withRouter(App);
