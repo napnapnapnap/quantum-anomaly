@@ -9,7 +9,6 @@ import compression from 'compression';
 import cookieParser from 'cookie-parser';
 import methodOverride from 'method-override';
 import multer from 'multer';
-import * as rendertron from 'rendertron-middleware';
 
 import auth from './middleware/auth';
 import cors from './middleware/cors';
@@ -24,8 +23,7 @@ import warframeAlerts from './app/mailer/warframe-alert-mailer';
 
 const PORT      = process.env.PORT || 3000,
       app       = express(),
-      sequelize = database(),
-      botUserAgents = ['W3C_Validator','baiduspider','bingbot', 'googlebot'];
+      sequelize = database();
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
@@ -33,11 +31,6 @@ app.use(multer().array());
 app.use(compression());
 app.use(cookieParser());
 app.use(methodOverride());
-
-// app.use(rendertron.makeMiddleware({
-//   proxyUrl: 'https://render-tron.appspot.com/render/',
-//   userAgentPattern: new RegExp(botUserAgents.join('|'), 'i'),
-// }));
 
 models(sequelize).then(models => {
   forceHttps(app);

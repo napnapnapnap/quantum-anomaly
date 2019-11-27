@@ -871,7 +871,7 @@ export const data = {
       'objective':   'Kill everything, fly back to station.'
     },
     {
-      'name':        'Rat in a Corner ',
+      'name':        'Rat in a Corner',
       'agent':       'Mourmarie Mone',
       'source':      'Noghere - Unmarked Operation Beacon',
       'type':        'Travel',
