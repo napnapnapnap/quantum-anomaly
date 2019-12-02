@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 
 import LoadingScreen from '../../components/LoadingScreen';
 import * as efsActions from '../../redux/efsActions';
-import {seo} from '../../helpers/seo';
+import {seo} from '../../helpers/';
 
 class SelectionScreen extends Component {
   constructor(props) {

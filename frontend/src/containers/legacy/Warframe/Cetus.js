@@ -4,6 +4,7 @@ import Time from '../../../components/Time';
 
 const renderCetus = (cetus) => (
   <section className="warframe__seperator">
+    <h2>Cetus</h2>
     <p>
       <span>Currently it is </span>
       <span className={`warframe__icons warframe__icons--${cetus.day ? 'day' : 'night'} bold`}>

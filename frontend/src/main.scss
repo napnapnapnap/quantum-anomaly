@@ -1,18 +1,4 @@
-$grid-breakpoints: (
-  xs: 0,
-  sm: 576px,
-  md: 768px,
-  lg: 992px,
-  xl: 1200px,
-  eve-md: 610px,
-  eve-lg: 1210px
-) !default;
-
-$base-max-width: 1440px;
-$base-background: white;
-$footer-height: 2rem;
-$navbar-height: 3rem;
-
+@import "_styles/variables";
 @import "_styles/reset";
 
 @import "_styles/mixins/breakpoints";
@@ -43,4 +29,3 @@ $navbar-height: 3rem;
 @import "containers/legacy/Efs/Ships/ships";
 @import "containers/epic-arcs/epicArcs";
 @import "containers/legacy/Incursions/incursions";
-@import "containers/legacy/Warframe/warframe";

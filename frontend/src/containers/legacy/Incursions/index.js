@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import LoadingScreen from '../../../components/LoadingScreen';
-import {seo} from '../../../helpers/seo';
+import {seo} from '../../../helpers/';
 
 export default class Incursions extends Component {
   constructor(props) {
@@ -94,7 +94,7 @@ export default class Incursions extends Component {
             state         = incursion['state'],
             hasBoss       = incursion['hasBoss'],
             systems       = incursion['systems'],
-            constImg      = `https://image.eveonline.com/Alliance/${factionId || 500000}_128.png`;
+            constImg      = `https://images.evetech.net/corporations/${factionId || 500019}/logo`;
 
       return (
         <article className="incursion" key={incursion['constellationID']}>

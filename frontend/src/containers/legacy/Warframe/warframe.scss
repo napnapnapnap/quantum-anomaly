@@ -1,3 +1,7 @@
+@import "../../../_styles/variables";
+@import "../../../_styles/mixins/breakpoints";
+@import "../../../_styles/mixins/grid";
+
 @mixin racial-colors {
   &--grineer {
     background: #CC0000;
@@ -10,12 +14,16 @@
   }
 }
 
-.tabs {
-  padding: 1rem;
-  margin-bottom: 0;
-}
-
 .warframe {
+  padding: 1rem;
+
+  h2 {
+    font-size: 2em;
+    line-height: 2.1em;
+    font-weight: bold;
+    margin: 0.7em 0;
+  }
+
   &__columns {
     @include make-flex();
   }
@@ -28,14 +36,10 @@
     margin: 0 0 1.5rem;
   }
 
-  &__seperator {
-    padding: 1rem;
-  }
-  
   &__fissure-endless {
     color: green;
   }
-  
+
   &__sortie-mission {
     margin-top: 1rem;
     flex: 0 0 100%;
@@ -48,6 +52,8 @@
     font-size: large;
     margin-bottom: 0.3rem;
     margin-top: 0;
+    font-weight: normal;
+
     &:first-letter {
       text-transform: capitalize;
     }
@@ -93,7 +99,7 @@
     transform: translate(-1px, -1px);
     @include racial-colors;
   }
-  
+
   &__invasion-factions {
     display: flex;
     margin-top: 0.3rem;
@@ -107,13 +113,13 @@
       text-align: right;
     }
   }
-  
+
   &__invasion-reward {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
   }
-  
+
   &__icons {
     padding-left: 1.1rem;
     display: inline-block;
@@ -147,11 +153,10 @@
       display: inline-block;
     }
   }
-  
+
   &__update-info {
-    @extend .disclaimer;
     position: absolute;
-    bottom: 0.3rem;   
+    bottom: 0.3rem;
     left: 0;
     right: 0;
     padding: 0 1rem;

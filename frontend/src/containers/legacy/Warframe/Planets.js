@@ -18,6 +18,7 @@ export default class Planets extends Component {
   render() {
     return (
       <section className="warframe__seperator warframe__planets">
+        <h2>Planets</h2>
         {this.props.planets.map(planet => renderPlanet(planet))}
       </section>
     );

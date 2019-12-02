@@ -1,76 +1,57 @@
-import passport from 'passport';
-import expressSession from 'express-session';
-import connectPgSimple from 'connect-pg-simple';
-import googleAuth from 'passport-google-oauth';
-
+import jwt from 'jsonwebtoken';
+import {models} from '../models';
 import * as logger from '../helpers/logger';
-import {models} from '../models/index';
 
-const googleStrategy = googleAuth.OAuth2Strategy;
-
-function setupPassport() {
-  passport.serializeUser((user, done) => {
-    done(null, user);
-  });
-
-  passport.deserializeUser((obj, done) => {
-    done(null, obj);
-  });
-
-  passport.use(new googleStrategy({
-      clientID:     process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL:  process.env.GOOGLE_CALLBACK_URL
-    }, function (accessToken, refreshToken, profile, done) {
-      process.nextTick(() => {
-        models.Users.login(profile)
-          .then((userRecord) => {
-            if (!userRecord.err) {
-              return done(null, userRecord);
-            } else {
-              logger.error('Registration - something went wrong');
-              return done(userRecord.err, null);
-            }
-          });
-      });
-    }
-  ));
-}
+const secretKey = process.env.SECRET_KEY;
 
 export default function (app) {
-  const pgSession       = connectPgSimple(expressSession),
-        cookieAge       = 7 * 24 * 60 * 60 * 1000,
-        sessionSettings = {
-          store:             new pgSession({
-            conString: process.env.DATABASE_URL,
-            tableName: 'Sessions'
-          }),
-          secret:            process.env.DATABASE_SECRET,
-          resave:            false,
-          saveUninitialized: false,
-          cookie:            {
-            maxAge: cookieAge
-          }
-        };
+  app.post('/user/login', (req, res) => {
+    models.Users.findUser(req.body.email).then(user => {
+      if (!user) {
+        logger.error('User failed to login because he is not registered');
+        res.send({error: true, message: 'Wrong credentials provided'});
+      } else {
+        if (models.Users.validatePassword(req.body.password, user.password)) {
+          const authObject = {
+            id:    user.id,
+            email: user.email,
+            name:  user.name
+          };
 
-  app.use(expressSession(sessionSettings));
-  setupPassport();
-  app.use(passport.initialize());
-  app.use(passport.session());
-
-  app.get('/auth/google', passport.authenticate('google', {scope: ['https://www.googleapis.com/auth/userinfo.email']}));
-
-  app.use('/auth/google/callback', passport.authenticate('google', {failureRedirect: '/'}), (req, res) => {
-    if (req.cookies.loggedIn === undefined) res.cookie('loggedIn', true, {maxAge: cookieAge});
-    res.redirect('/');
+          const token = jwt.sign(JSON.stringify(authObject), secretKey);
+          logger.action(`User ${req.body.email} logged in`);
+          res.send({...authObject, token});
+        } else {
+          logger.error('User failed to login because of wrong password');
+          res.send({error: true, message: 'Wrong credentials provided'});
+        }
+      }
+    });
   });
 
-  app.get('/auth/google', passport.authenticate('google', {scope: ['https://www.googleapis.com/auth/userinfo.email']}));
-
-  app.get('/logout', (req, res) => {
-    if (req.user) logger.action(req.user.name + ' logged out', 'gray');
-    req.logout();
-    res.cookie('loggedIn', '', {expires: new Date(0)});
-    res.redirect('/');
+  app.get('/user/info', (req, res) => {
+    try {
+      req.authObject = jwt.verify(verifyToken(req), secretKey);
+      res.send({...req.authObject});
+    } catch (err) {
+      logger.error(err);
+      res.sendStatus(401);
+    }
   });
+  logger.appLog('Authentication module loaded');
 };
+
+function verifyToken(req) {
+  const bearerHeader = req.headers['authorization'];
+  return typeof bearerHeader !== 'undefined' ? (bearerHeader.split(' '))[1] : null;
+}
+
+export function ensureAuthenticated(req, res, next) {
+  try {
+    req.authObject = jwt.verify(verifyToken(req), secretKey);
+    return next();
+  } catch (err) {
+    logger.error(err);
+    res.sendStatus(401);
+  }
+}

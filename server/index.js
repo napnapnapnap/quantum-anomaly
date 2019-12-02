@@ -1,6 +1,5 @@
 const env = process.env.NODE_ENV || 'development';
 import dotenv from 'dotenv';
-
 if (env === 'development') dotenv.config();
 
 import express from 'express';
@@ -32,7 +31,7 @@ app.use(compression());
 app.use(cookieParser());
 app.use(methodOverride());
 
-models(sequelize).then(models => {
+models(sequelize).then(() => {
   forceHttps(app);
   cors(app);
   auth(app);

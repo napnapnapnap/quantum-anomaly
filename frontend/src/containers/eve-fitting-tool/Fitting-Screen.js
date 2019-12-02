@@ -7,7 +7,7 @@ import * as efsActions from '../../redux/efsActions';
 import Modules from './Modules';
 import Slots from './Slots';
 import ShipStats from './Ship-Stats';
-import {seo} from '../../helpers/seo';
+import {seo} from '../../helpers/';
 
 class FittingScreen extends Component {
   constructor(props) {

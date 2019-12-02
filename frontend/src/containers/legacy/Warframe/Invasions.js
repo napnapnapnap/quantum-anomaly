@@ -37,6 +37,7 @@ export default class Invasions extends Component {
   render() {
     return (
       <section className="warframe__seperator warframe__columns">
+        <h2>Invasions</h2>
         {Object.keys(this.props.invasions).map(key =>
           this.props.invasions[key].map(invasion => renderInvasions(invasion))
         )}

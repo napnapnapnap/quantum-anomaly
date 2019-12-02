@@ -8,6 +8,11 @@ import * as serviceWorker from './serviceWorker';
 
 import App from './App';
 import store from './store';
+import {isLoggedIn} from './auth';
+
+import './main.scss';
+
+isLoggedIn();
 
 render((
   <Provider store={store}>

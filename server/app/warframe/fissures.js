@@ -8,19 +8,21 @@ function getFissureLevel(arg) {
   if (arg === 'VoidT2') return 'Meso';
   if (arg === 'VoidT3') return 'Neo';
   if (arg === 'VoidT4') return 'Axi';
+  if (arg === 'VoidT5') return 'Requiem';
 }
 
 export default function (arg) {
   let fissures = {
-    lith: [],
-    meso: [],
-    neo:  [],
-    axi:  []
+    lith:    [],
+    meso:    [],
+    neo:     [],
+    axi:     [],
+    requiem: []
   };
-  
+
   arg.forEach(fissure => {
     const fissureLevel = getFissureLevel(fissure['Modifier']).toLowerCase();
-    
+
     fissures[fissureLevel].push({
       start:        fissure['Activation']['$date']['$numberLong'],
       timeStart:    time.timeFrom(fissure['Activation']['$date']['$numberLong']),
@@ -32,9 +34,9 @@ export default function (arg) {
       region:       fissure['Region']
     });
   });
-  
+
   Object.keys(fissures)
     .forEach(key => fissures[key].sort(helpers.dynamicSort('region')));
-  
+
   return fissures;
 }

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
-import {seo} from '../../helpers/seo';
+import {seo} from '../../helpers/';
 import * as epicArcsActions from '../../redux/epicArcsActions';
 import * as eveNpcsActions from '../../redux/eveNpcsActions';
 

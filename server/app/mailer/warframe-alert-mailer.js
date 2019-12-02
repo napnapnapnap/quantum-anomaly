@@ -40,10 +40,6 @@ function removeExpired() {
          However, here and there it happens we remove alert from the array
          but it is still available on API so gets send again.
      */
-    if (mailItem.mailType === 'alert') {
-      const timeOffsetEnd = parseInt(mailItem.end) + (60 * 60 * 1000);
-      if (Date.now() > timeOffsetEnd) mailQueue.splice(index, 1);
-    }
     if (mailItem.mailType === 'invasion') {
       if (mailItem.status <= 0 || mailItem.status >= 100)
         mailQueue.splice(index, 1);
@@ -55,7 +51,6 @@ function getMailQueueMessages() {
   let message = '';
   mailQueue.forEach(mailItem => {
     if (mailItem.notified !== true) {
-      if (mailItem.mailType === 'alert') message += `Alert at ${mailItem.location} which ends in ${time(mailItem.timeEnd)} offers: ${mailItem.rewards.join(', ')}<br/>`;
       if (mailItem.mailType === 'invasion') message += `Invasion at ${mailItem.node.value} offers ${mailItem.attackerRewards.join(', ')} for ${mailItem.attacker} and ${mailItem.defenderRewards.join(', ')} for ${mailItem.defender}<br/>`;
       mailItem.notified = true;
     }
@@ -95,21 +90,6 @@ function hasInterestingRewards(rewards) {
 
 function warframeAlerts() {
   warframeStatus().then(data => {
-    data.alerts.forEach(alert => {
-      let shouldBeSent = true;
-      // already expired
-      if (Date.now() > parseInt(alert.end)) shouldBeSent = false;
-      // already sent out as mail
-      mailQueue.forEach(sentMail => {
-        if (sentMail.mailType === 'alert')
-          if (sentMail.end === alert.end && sentMail.location === alert.location)
-            shouldBeSent = false;
-      });
-      alert.mailType = 'alert';
-      // don't send unless it contains one of these rewards
-      if (shouldBeSent) shouldBeSent = hasInterestingRewards(alert.rewards);
-      if (shouldBeSent) mailQueue.push(alert);
-    });
     Object.keys(data.invasions).forEach(key => {
       data.invasions[key].forEach(invasion => {
         let shouldBeSent = true;

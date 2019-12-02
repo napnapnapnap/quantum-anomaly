@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {seo} from '../helpers/seo';
+import {seo} from '../helpers/';
 
 export default class NotFound extends Component {
   render() {
