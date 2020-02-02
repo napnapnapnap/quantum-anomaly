@@ -3,6 +3,8 @@ import * as logger from '../../helpers/logger';
 import {models} from '../../models';
 import {wait} from '../../helpers';
 
+const THROTTLE_MS = 30;
+
 const URLS = {
   MarketGroups:       'https://esi.evetech.net/latest/markets/groups',
   UniverseGroups:     'https://esi.evetech.net/latest/universe/groups',
@@ -37,14 +39,20 @@ function requestData(url) {
 }
 
 async function getItem(id, index, table, length) {
-  await wait(index * 30);
+  await wait(index * THROTTLE_MS);
 
-  let data = await requestData(`${URLS[table]}/${id}/${URLS.appendix}`);
+  const data = await requestData(`${URLS[table]}/${id}/${URLS.appendix}`);
 
-  if (index === Math.ceil(length * 0.25)) logger.action(`Update data of Esi${table} table at 25%`);
-  if (index === Math.ceil(length * 0.50)) logger.action(`Update data of Esi${table} table at 50%`);
-  if (index === Math.ceil(length * 0.75)) logger.action(`Update data of Esi${table} table at 75%`);
-  if (index === length - 1) logger.action(`Update data of Esi${table} table at 100%`, 'yellow');
+  if (index === Math.ceil(length * 0.10)) logger.action(`Update of Esi${table} table at 10% ${index}/${length}`);
+  else if (index === Math.ceil(length * 0.20)) logger.action(`Update of Esi${table} table at 20% ${index}/${length}`);
+  else if (index === Math.ceil(length * 0.30)) logger.action(`Update of Esi${table} table at 30% ${index}/${length}`);
+  else if (index === Math.ceil(length * 0.40)) logger.action(`Update of Esi${table} table at 40% ${index}/${length}`);
+  else if (index === Math.ceil(length * 0.50)) logger.action(`Update of Esi${table} table at 50% ${index}/${length}`);
+  else if (index === Math.ceil(length * 0.60)) logger.action(`Update of Esi${table} table at 60% ${index}/${length}`);
+  else if (index === Math.ceil(length * 0.70)) logger.action(`Update of Esi${table} table at 70% ${index}/${length}`);
+  else if (index === Math.ceil(length * 0.80)) logger.action(`Update of Esi${table} table at 80% ${index}/${length}`);
+  else if (index === Math.ceil(length * 0.90)) logger.action(`Update of Esi${table} table at 90% ${index}/${length}`);
+  else if (index === length - 1) logger.action(`Update of Esi${table} table at 100%`, 'yellow');
 
   return {
     id:        id,
@@ -56,7 +64,7 @@ async function getItem(id, index, table, length) {
 
 async function fetchEndpoint(table) {
   const model = models[`Esi${table}`];
-  
+
   if (!model) {
     logger.error(`Unknown data model ${table}`);
     return;
@@ -104,6 +112,6 @@ export async function updateEndpoints(types) {
   // example of firing async/await in sequence
   for (let i = 0; i < types.length; i++)
     await updateItems(types[i]);
-  
+
   logger.action('Done updating all entries', 'green');
 }
