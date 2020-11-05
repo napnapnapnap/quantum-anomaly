@@ -1,21 +1,21 @@
 export const data = {
-  'info':     {
-    'name':          'Right To Rule',
-    'iconID':        '500003',
-    'empire':        'Amarr Empire',
-    'race':          'amarr',
+  'info': {
+    'name': 'Right To Rule',
+    'iconID': '500003',
+    'empire': 'Amarr Empire',
+    'race': 'amarr',
     'startingAgent': 'Karde Romu in Kor-Azor Prime',
-    'description':   [
+    'desc': [
       'The Amarr epic arc is notable for heavy capacitor neutralizers and heavy tracking disruption',
       'In some missions you might have trouble due to tracking disruption so it would be nice idea to have a missile ship, an alt, good drones damage, a friend or a Marauders EWAR immunity',
       'This guide covers the route to maximum standing reward',
       'To start this epic arc you need standings of 5.0 towards Karde Romu, Ministry of Internal Order or Amarr Empire'
     ],
-    'rewards':       [
+    'rewards': [
       '+10% Amarr Empire faction standing increase (unmodified)',
-      'Imperial Navy Modified \'Noble\' Implant (1 m3)'
+      'Imperial Navy Modified \'Noble\' Implant (1 m³)'
     ],
-    'notes':         [
+    'notes': [
       'Mission 16 can send you into lowsec sometimes, but it can be done in non-combat ship.',
       'Heavy neutralizing ability in some missions',
       'Heavy tracking disruptions in some missions',
@@ -25,51 +25,51 @@ export const data = {
   },
   'missions': [
     {
-      'name':              'Aiding an Investigator',
-      'agent':             'Karde Romu',
-      'source':            'Kor Azor Prime - MIO Agent Beacon',
-      'type':              'Travel',
-      'start':             'Kor Azor Prime',
-      'destination':       'Nahyeen system, 3 jumps away',
-      'description':       [
+      'name': 'Aiding an Investigator',
+      'agent': 'Karde Romu',
+      'source': 'Kor Azor Prime - MIO Agent Beacon',
+      'type': 'Travel',
+      'start': 'Kor Azor Prime',
+      'dest': 'Nahyeen system, 3 jumps away',
+      'desc': [
         'Report to Kandus Sandar in Nahyeen VI - Ministry of Internal Order Assembly Plant'
       ],
-      'tips':              [
+      'tips': [
         'You can start conversation with Karde Romu from anywhere and accept first mission'
       ],
-      'objective':         'Automatically finished once you initiate conversation with next agent',
-      'canAcceptRemotely': true
+      'objective': 'Automatically finished once you initiate conversation with next agent',
+      'canAcptRmty': true
     },
     {
-      'name':        'Late Reports',
-      'agent':       'Kandus Sandar',
-      'source':      'Nahyeen VI - Ministry of Internal Order Assembly Plant',
-      'type':        'Combat and retrieve item',
-      'start':       'Nahyeen',
-      'destination': 'Any system in constellation',
-      'description': [
+      'name': 'Late Reports',
+      'agent': 'Kandus Sandar',
+      'source': 'Nahyeen VI - Ministry of Internal Order Assembly Plant',
+      'type': 'Combat and retrieve item',
+      'start': 'Nahyeen',
+      'dest': 'Any system in constellation',
+      'desc': [
         'Fight Sansha\'s Nation and get item'
       ],
-      'enemy':       'Sansha\'s Nation',
-      'tips':        [
-        'Don\'t forget to loot Reports (0.1 m3) - They should appear in your cargo hold after you kill last enemy'
+      'enemy': 'Sansha\'s Nation',
+      'tips': [
+        'Don\'t forget to loot Reports (0.1 m³) - They should appear in your cargo hold after you kill last enemy'
       ],
-      'objective':   'Kill everything, retrieve the item, fly back to station',
-      'pockets':     [
+      'objective': 'Kill everything, retrieve the item, fly back to station',
+      'pockets': [
         [
           {
-            'range':   30,
+            'range': 30,
             'enemies': [
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Centii Loyal Ravener',
                   'Centii Loyal Scavenger'
                 ]
               },
               {
                 'quantity': 4,
-                'names':    [
+                'names': [
                   'Centus Mutant Lord',
                   'Centus Savage Lord'
                 ]
@@ -77,11 +77,11 @@ export const data = {
             ]
           },
           {
-            'range':   30,
+            'range': 30,
             'enemies': [
               {
                 'quantity': 4,
-                'names':    [
+                'names': [
                   'Centum Loyal Beast',
                   'Centum Loyal Juggernaut',
                   'Centum Loyal Slaughterer',
@@ -90,7 +90,7 @@ export const data = {
               },
               {
                 'quantity': 4,
-                'names':    [
+                'names': [
                   'Centus Beast Lord',
                   'Centus Plague Lord'
                 ]
@@ -98,11 +98,11 @@ export const data = {
             ]
           },
           {
-            'range':   40,
+            'range': 40,
             'enemies': [
               {
                 'quantity': 4,
-                'names':    [
+                'names': [
                   'Centii Loyal Manslayer',
                   'Centii Loyal Plague',
                   'Centii Loyal Enslaver',
@@ -111,7 +111,7 @@ export const data = {
               },
               {
                 'quantity': 4,
-                'names':    [
+                'names': [
                   'Centus Dark Lord',
                   'Centus Overlord'
                 ]
@@ -122,54 +122,54 @@ export const data = {
       ]
     },
     {
-      'name':        'The Outclassed Outpost',
-      'agent':       'Kandus Sandar',
-      'source':      'Nahyeen VI - Ministry of Internal Order Assembly Plant',
-      'type':        'Combat',
-      'start':       'Nahyeen',
-      'destination': 'Any system in constellation',
-      'description': [
+      'name': 'The Outclassed Outpost',
+      'agent': 'Kandus Sandar',
+      'source': 'Nahyeen VI - Ministry of Internal Order Assembly Plant',
+      'type': 'Combat',
+      'start': 'Nahyeen',
+      'dest': 'Any system in constellation',
+      'desc': [
         'Fight Sansha\'s Nation',
         'Approach the station to be around 60km from all spawn points'
       ],
-      'enemy':       'Sansha\'s Nation',
-      'tips':        [
+      'enemy': 'Sansha\'s Nation',
+      'tips': [
         'Move closer to the station to be in better range for reinforcement spawns',
         'You can complete the mission remotely'
       ],
-      'objective':   'Completed after last ship is dead',
-      'pockets':     [
+      'objective': 'Completed after last ship is dead',
+      'pockets': [
         [
           {
-            'range':   30,
+            'range': 30,
             'enemies': [
               {
                 'quantity': 4,
-                'names':    [
+                'names': [
                   'Centii Loyal Savage',
                   'Centii Loyal Slavehunter'
                 ]
               },
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Centus Plague Lord'
                 ]
               }
             ]
           },
           {
-            'range':   80,
+            'range': 80,
             'enemies': [
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Centii Loyal Servant'
                 ]
               },
               {
                 'quantity': 4,
-                'names':    [
+                'names': [
                   'Centus Beast Lord',
                   'Centus Plague Lord'
                 ]
@@ -177,11 +177,11 @@ export const data = {
             ]
           },
           {
-            'range':   70,
+            'range': 70,
             'enemies': [
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Centii Loyal Butcher',
                   'Centii Loyal Plague',
                   'Centii Loyal Enslaver'
@@ -189,7 +189,7 @@ export const data = {
               },
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Centus Dark Lord',
                   'Centus Overlord'
                 ]
@@ -200,31 +200,31 @@ export const data = {
       ]
     },
     {
-      'name':        'Raging Sansha',
-      'agent':       'Kandus Sandar',
-      'source':      'Nahyeen VI - Ministry of Internal Order Assembly Plant',
-      'type':        'Combat',
-      'start':       'Nahyeen',
-      'destination': 'Any system in constellation',
-      'description': [
+      'name': 'Raging Sansha',
+      'agent': 'Kandus Sandar',
+      'source': 'Nahyeen VI - Ministry of Internal Order Assembly Plant',
+      'type': 'Combat',
+      'start': 'Nahyeen',
+      'dest': 'Any system in constellation',
+      'desc': [
         'Fight Sansha\'s Nation',
         'Any of the Centum Juggernauts (cruiser size) is trigger for second wave',
         'Any of the frigates and any of the cruisers in second wave is trigger for additional waves'
       ],
-      'enemy':       'Sansha\'s Nation',
-      'tips':        [
+      'enemy': 'Sansha\'s Nation',
+      'tips': [
         'Bring marauder, good drone damage, a friend or missile ship due to heavy tracking disruption',
         'You can complete the mission remotely'
       ],
-      'objective':   'Complete remotely after last ship is dead',
-      'pockets':     [
+      'objective': 'Complete remotely after last ship is dead',
+      'pockets': [
         [
           {
-            'range':   '30',
+            'range': '30',
             'enemies': [
               {
                 'quantity': 4,
-                'names':    [
+                'names': [
                   'Centii Loyal Savage',
                   'Centii Loyal Manslayer',
                   'Centii Loyal Slavehunter'
@@ -232,22 +232,22 @@ export const data = {
               },
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Centum Beast',
                   'Centum Juggernaut'
                 ],
-                'notice':   'Any could trigger wave 2'
+                'notice': 'Any could trigger wave 2'
               },
               {
                 'quantity': 2,
-                'names':    [
+                'names': [
                   'Centum Loyal Mutilator',
                   'Centum Loyal Fiend'
                 ]
               },
               {
                 'quantity': 4,
-                'names':    [
+                'names': [
                   'Centatis Daemon',
                   'Centatis Wraith',
                   'Centatis Phantasm'
@@ -255,7 +255,7 @@ export const data = {
               },
               {
                 'quantity': 5,
-                'names':    [
+                'names': [
                   'Centus Dread Lord',
                   'Centus Dark Lord',
                   'Centus Overlord'
@@ -263,39 +263,39 @@ export const data = {
               },
               {
                 'quantity': 1,
-                'names':    [
+                'names': [
                   'Centus Tyrant'
                 ],
-                'notice':   'Sansha Commander, on damage warps off and triggers wave 1'
+                'notice': 'Sansha Commander, on damage warps off and triggers wave 1'
               }
             ]
           },
           {
-            'range':   45,
+            'range': 45,
             'enemies': [
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Centatis Specter'
                 ]
               }
             ]
           },
           {
-            'range':   85,
+            'range': 85,
             'enemies': [
               {
                 'quantity': 5,
-                'names':    [
+                'names': [
                   'Centii Loyal Servant',
                   'Centii Loyal Butcher',
                   'Centii Loyal Enslaver'
                 ],
-                'notice':   'Any could trigger wave 3'
+                'notice': 'Any could trigger wave 3'
               },
               {
                 'quantity': 2,
-                'names':    [
+                'names': [
                   'Centum Loyal Execrator',
                   'Centum Loyal Slaughterer'
                 ]
@@ -303,30 +303,30 @@ export const data = {
             ]
           },
           {
-            'range':   30,
+            'range': 30,
             'enemies': [
               {
                 'quantity': 1,
-                'names':    [
+                'names': [
                   'Centum Torturer'
                 ],
-                'notice':   'Trigger wave 4'
+                'notice': 'Trigger wave 4'
               }
             ]
           },
           {
-            'range':   30,
+            'range': 30,
             'enemies': [
               {
                 'quantity': 1,
-                'names':    [
+                'names': [
                   'Centii Loyal Manslayer',
                   'Centii Loyal Enslaver'
                 ]
               },
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Centum Loyal Torturer',
                   'Centum Loyal Slaughterer',
                   'Centum Loyal Hellhound'
@@ -334,7 +334,7 @@ export const data = {
               },
               {
                 'quantity': 1,
-                'names':    [
+                'names': [
                   'Centus Plague Lord'
                 ]
               }
@@ -344,60 +344,60 @@ export const data = {
       ]
     },
     {
-      'name':        'Cowardly Commander',
-      'agent':       'Kandus Sandar',
-      'source':      'Nahyeen VI - Ministry of Internal Order Assembly Plant',
-      'type':        'Combat',
-      'start':       'Nahyeen',
-      'destination': 'Any system in constellation',
-      'description': [
+      'name': 'Cowardly Commander',
+      'agent': 'Kandus Sandar',
+      'source': 'Nahyeen VI - Ministry of Internal Order Assembly Plant',
+      'type': 'Combat',
+      'start': 'Nahyeen',
+      'dest': 'Any system in constellation',
+      'desc': [
         'Kill everything, watch out on neutralizer towers',
         'Gates are not locked so you can burn 150 km out and then warp to gate at 0 to activate',
         'However be warned this might not be best idea for your capacitor levels'
       ],
-      'enemy':       [
+      'enemy': [
         'Sansha\'s Nation',
         'Amarr Empire'
       ],
-      'tips':        [
+      'tips': [
         'Shoot down energy neutralizer towers as soon as possible or you might find yourself in serious capacitor issues',
         'If you are having issues killing towers due to tracking disruption, you can either MJD or MWD to 250km range to move out of neut range, wait for enemies to come closer, then use warp drive to land on tower and finish it',
         'Acceleration gates are not locked, if you are confident you could blitz it. Take care of scrams in that case'
       ],
-      'objective':   'Complete remotely after last ship is dead',
-      'pockets':     [
+      'objective': 'Complete remotely after last ship is dead',
+      'pockets': [
         [
           {
-            'range':   20,
+            'range': 20,
             'enemies': [
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Centii Loyal Minion',
                   'Centii Loyal Scavenger'
                 ]
               },
               {
                 'quantity': 4,
-                'names':    [
+                'names': [
                   'Centus Plague Lord',
                   'Centus Beast Lord'
                 ]
               },
               {
                 'quantity': 2,
-                'names':    [
+                'names': [
                   'Tower Sentry Sansha III'
                 ]
               }
             ]
           },
           {
-            'range':   20,
+            'range': 20,
             'enemies': [
               {
                 'quantity': 4,
-                'names':    [
+                'names': [
                   'Centii Loyal Butcher',
                   'Centii Loyal Manslayer',
                   'Centii Loyal Enslaver'
@@ -405,7 +405,7 @@ export const data = {
               },
               {
                 'quantity': 4,
-                'names':    [
+                'names': [
                   'Centus Dark Lord',
                   'Centus Overlord'
                 ]
@@ -415,49 +415,49 @@ export const data = {
         ],
         [
           {
-            'range':   60,
+            'range': 60,
             'enemies': [
               {
                 'quantity': 4,
-                'names':    [
+                'names': [
                   'Centii Loyal Slavehunter',
                   'Centii Loyal Savage'
                 ]
               },
               {
                 'quantity': 4,
-                'names':    [
+                'names': [
                   'Centus Dark Lord',
                   'Centus Overlord'
                 ]
               },
               {
                 'quantity': 2,
-                'names':    [
+                'names': [
                   'Sansha Energy Neutralizer Sentry I'
                 ]
               },
               {
                 'quantity': 2,
-                'names':    [
+                'names': [
                   'Tower Sentry Sansha III'
                 ]
               }
             ]
           },
           {
-            'range':   60,
+            'range': 60,
             'enemies': [
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Centatis Daemon',
                   'Centatis Devil'
                 ]
               },
               {
                 'quantity': 4,
-                'names':    [
+                'names': [
                   'Centus Beast Lord',
                   'Centus Plague Lord'
                 ]
@@ -467,77 +467,77 @@ export const data = {
         ],
         [
           {
-            'range':   '20-30',
+            'range': '20-30',
             'enemies': [
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Centii Loyal Ravener'
                 ]
               },
               {
                 'quantity': 4,
-                'names':    [
+                'names': [
                   'Centum Loyal Torturer',
                   'Centum Loyal Hellhound',
                   'Centum Loyal Mutilator'
                 ],
-                'notice':   'Last killed will trigger wave 1'
+                'notice': 'Last killed will trigger wave 1'
               },
               {
                 'quantity': 4,
-                'names':    [
+                'names': [
                   'Centatis Daemon',
                   'Centatis Behemoth'
                 ],
-                'notice':   'Last killed will trigger wave 2'
+                'notice': 'Last killed will trigger wave 2'
               },
               {
                 'quantity': 4,
-                'names':    [
+                'names': [
                   'Centus Plague Lord',
                   'Centus Beast Lord'
                 ]
               },
               {
                 'quantity': 1,
-                'names':    [
+                'names': [
                   'Sansha Energy Neutralizer Sentry I'
                 ]
               },
               {
                 'quantity': 2,
-                'names':    [
+                'names': [
                   'Tower Sentry Sansha III'
                 ]
               }
             ]
           },
           {
-            'range':   40,
+            'range': 40,
             'enemies': [
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Centii Loyal Scavenger',
                   'Centii Loyal Ravener'
                 ]
               },
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Centus Dread Lord',
-                  'Centus Dread Tyrant'
+                  'Centus Tyrant'
                 ]
               }
             ]
           },
           {
-            'range':   20,
+            'range': 20,
             'enemies': [
               {
                 'quantity': 4,
-                'names':    [
+                'names': [
                   'Centii Loyal Butcher',
                   'Centii Loyal Plague',
                   'Centii Loyal Manslayer'
@@ -545,9 +545,8 @@ export const data = {
               },
               {
                 'quantity': 4,
-                'names':    [
-                  'Centus Dark Lord',
-                  'Centus Dark Overlord'
+                'names': [
+                  'Centus Dark Lord'
                 ]
               }
             ]
@@ -555,24 +554,24 @@ export const data = {
         ],
         [
           {
-            'range':   40,
+            'range': 40,
             'enemies': [
               {
                 'quantity': 2,
-                'names':    [
+                'names': [
                   'Divine Imperial Imran'
                 ]
               },
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Imperial Templar Tamir',
                   'Imperial Templar Donus'
                 ]
               },
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Imperial Martyr',
                   'Imperial Dominator'
                 ]
@@ -580,39 +579,39 @@ export const data = {
             ]
           },
           {
-            'range':   '35-100',
+            'range': '35-100',
             'enemies': [
               {
                 'quantity': 2,
-                'names':    [
+                'names': [
                   'Imperial Champion',
-                  'Templar Justicar'
+                  'Imperial Templar Justicar'
                 ]
               },
               {
                 'quantity': 4,
-                'names':    [
+                'names': [
                   'Imperial Templar Ultara',
                   'Imperial Templar Dominator'
                 ],
-                'notice':   'Closer group at 35km, last killed will trigger wave 2'
+                'notice': 'Closer group at 35km, last killed will trigger wave 2'
               },
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Divine Imperial Valok',
                   'Divine Imperial Paladin'
                 ]
               },
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Divine Imperial Tamir'
                 ]
               },
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Imperial Martyr',
                   'Imperial Ultara',
                   'Imperial Templar Torah'
@@ -621,23 +620,23 @@ export const data = {
             ]
           },
           {
-            'range':   30,
+            'range': 30,
             'enemies': [
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Imperial Templar Caius'
                 ]
               },
               {
                 'quantity': 2,
-                'names':    [
+                'names': [
                   'Imperial Templar Phalanx'
                 ]
               },
               {
                 'quantity': 2,
-                'names':    [
+                'names': [
                   'Imperial Templar Martyr'
                 ]
               }
@@ -647,54 +646,54 @@ export const data = {
       ]
     },
     {
-      'name':        'Report to Aralin Jick',
-      'agent':       'Kandus Sandar',
-      'source':      'Nahyeen VI - Ministry of Internal Order Assembly Plant',
-      'type':        'Travel',
-      'start':       'Nahyeen',
-      'destination': 'Nishah system, 4 jumps away',
-      'description': [
+      'name': 'Report to Aralin Jick',
+      'agent': 'Kandus Sandar',
+      'source': 'Nahyeen VI - Ministry of Internal Order Assembly Plant',
+      'type': 'Travel',
+      'start': 'Nahyeen',
+      'dest': 'Nishah system, 4 jumps away',
+      'desc': [
         'Report to Aralin Jick at Nishah VII - Moon 5 - Kor-Azor Family Treasury'
       ],
-      'tips':        [
+      'tips': [
         'You can start conversation with Kandus Sandar from anywhere and accept mission'
       ],
-      'objective':   'Automatically finished once you initiate conversation with next agent'
+      'objective': 'Automatically finished once you initiate conversation with next agent'
     },
     {
-      'name':        'Background Check',
-      'agent':       'Aralin Jick',
-      'source':      'Nishah VII - Moon 5 - Kor-Azor Family Treasury',
-      'type':        'Combat',
-      'start':       'Nishah',
-      'destination': 'Same system',
-      'description': [
+      'name': 'Background Check',
+      'agent': 'Aralin Jick',
+      'source': 'Nishah VII - Moon 5 - Kor-Azor Family Treasury',
+      'type': 'Combat',
+      'start': 'Nishah',
+      'dest': 'Same system',
+      'desc': [
         'Fight Sansha\'s forces',
         'Watch out on triggers, they are random',
         'Lock everything on grid and kill it, then repeat',
         'Don\'t move to new waves until you finish current active wave'
       ],
-      'enemy':       'Sansha\'s Nation ',
-      'tips':        [
+      'enemy': 'Sansha\'s Nation',
+      'tips': [
         'Triggers are random',
         'Finish each group before moving to next one'
       ],
-      'objective':   'Complete remotely after last ship is dead',
-      'pockets':     [
+      'objective': 'Complete remotely after last ship is dead',
+      'pockets': [
         [
           {
-            'range':   '10 kilometers',
+            'range': '10 kilometers',
             'enemies': [
               {
                 'quantity': 2,
-                'names':    [
+                'names': [
                   'Centum Loyal Mutilator',
                   'Centum Loyal Hellhound'
                 ]
               },
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Centus Dread Lord',
                   'Centus Tyrant'
                 ]
@@ -702,11 +701,11 @@ export const data = {
             ]
           },
           {
-            'range':   '10 kilometers',
+            'range': '10 kilometers',
             'enemies': [
               {
                 'quantity': 2,
-                'names':    [
+                'names': [
                   'Centatis Devil',
                   'Centatis Wraith'
                 ]
@@ -714,11 +713,11 @@ export const data = {
             ]
           },
           {
-            'range':   '25 kilometers',
+            'range': '25 kilometers',
             'enemies': [
               {
                 'quantity': 2,
-                'names':    [
+                'names': [
                   'Centum Loyal Fiend',
                   'Centum Loyal Hellhound',
                   'Centum Loyal Torturer'
@@ -726,7 +725,7 @@ export const data = {
               },
               {
                 'quantity': 2,
-                'names':    [
+                'names': [
                   'Centus Tyrant',
                   'Centus Dread Lord'
                 ]
@@ -734,11 +733,11 @@ export const data = {
             ]
           },
           {
-            'range':   '25 kilometers',
+            'range': '25 kilometers',
             'enemies': [
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Centii Loyal Minion',
                   'Centii Loyal Servant'
                 ]
@@ -746,11 +745,11 @@ export const data = {
             ]
           },
           {
-            'range':   '30 kilometers',
+            'range': '30 kilometers',
             'enemies': [
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Centatis Devil',
                   'Centatis Wraith'
                 ]
@@ -758,11 +757,11 @@ export const data = {
             ]
           },
           {
-            'range':   '30 kilometers',
+            'range': '30 kilometers',
             'enemies': [
               {
                 'quantity': 1,
-                'names':    [
+                'names': [
                   'Centii Loyal Servant',
                   'Centii Loyal Minion'
                 ]
@@ -770,11 +769,11 @@ export const data = {
             ]
           },
           {
-            'range':   '30 kilometers',
+            'range': '30 kilometers',
             'enemies': [
               {
                 'quantity': 2,
-                'names':    [
+                'names': [
                   'Centum Loyal Torturer',
                   'Centum Loyal Mutilator',
                   'Centum Loyal Fiend'
@@ -782,7 +781,7 @@ export const data = {
               },
               {
                 'quantity': 2,
-                'names':    [
+                'names': [
                   'Centus Dread Lord',
                   'Centus Tyrant'
                 ]
@@ -790,11 +789,11 @@ export const data = {
             ]
           },
           {
-            'range':   '20 kilometers',
+            'range': '20 kilometers',
             'enemies': [
               {
                 'quantity': 2,
-                'names':    [
+                'names': [
                   'Centatis Wraith',
                   'Centatis Devil'
                 ]
@@ -802,11 +801,11 @@ export const data = {
             ]
           },
           {
-            'range':   '20 kilometers',
+            'range': '20 kilometers',
             'enemies': [
               {
                 'quantity': 2,
-                'names':    [
+                'names': [
                   'Centii Loyal Minion',
                   'Centii Loyal Servant'
                 ]
@@ -817,81 +816,81 @@ export const data = {
       ]
     },
     {
-      'name':        'Longing Leman',
-      'agent':       'Aralin Jick',
-      'source':      'Nishah VII - Moon 5 - Kor-Azor Family Treasury',
-      'type':        'Data Analyze and retrieve item',
-      'start':       'Nishah',
-      'destination': 'Any system in constellation',
-      'description': [
+      'name': 'Longing Leman',
+      'agent': 'Aralin Jick',
+      'source': 'Nishah VII - Moon 5 - Kor-Azor Family Treasury',
+      'type': 'Data Analyze and retrieve item',
+      'start': 'Nishah',
+      'dest': 'Any system in constellation',
+      'desc': [
         'Burn 16 km to the Encrypted Communications Array and hack it',
         'Do NOT fight in this mission otherwise you will get Amarr Empire standings hit',
         'If you decide to fight, be aware of energy neutralizers on battleship hulls'
       ],
-      'tips':        [
-        'Don\'t forget to loot Communications Logs (0.1 m3)'
+      'tips': [
+        'Don\'t forget to loot Communications Logs (0.1 m³)'
       ],
-      'objective':   'Hack structure, loot item, fly back to station.'
+      'objective': 'Hack structure, loot item, fly back to station.'
     },
     {
-      'name':        'Languishing Lord',
-      'agent':       'Aralin Jick',
-      'source':      'Nishah VII - Moon 5 - Kor-Azor Family Treasury',
-      'type':        'Travel',
-      'start':       'Nishah',
-      'destination': 'Same system',
-      'description': [
+      'name': 'Languishing Lord',
+      'agent': 'Aralin Jick',
+      'source': 'Nishah VII - Moon 5 - Kor-Azor Family Treasury',
+      'type': 'Travel',
+      'start': 'Nishah',
+      'dest': 'Same system',
+      'desc': [
         'If you engage ANY ships, you will FAIL this mission',
         'Approach Broken Metallic Crystal Asteroid (30km distance from warp in point) and wait for screen popup that says mission is completed'
       ],
-      'tips':        [
+      'tips': [
         'Do not engage any ships'
       ],
-      'objective':   'Complete remotely after the ships you\'re spying on warp off.'
+      'objective': 'Complete remotely after the ships you\'re spying on warp off.'
     },
     {
-      'name':        'Razing the Outpost',
-      'agent':       'Aralin Jick',
-      'source':      'Nishah VII - Moon 5 - Kor-Azor Family Treasury',
-      'type':        'Combat',
-      'start':       'Nishah',
-      'destination': 'Same system',
-      'description': [
+      'name': 'Razing the Outpost',
+      'agent': 'Aralin Jick',
+      'source': 'Nishah VII - Moon 5 - Kor-Azor Family Treasury',
+      'type': 'Combat',
+      'start': 'Nishah',
+      'dest': 'Same system',
+      'desc': [
         'Fight Mercenaries and kill the outpost'
       ],
-      'enemy':       'Mordu\'s Legion',
-      'tips':        [
+      'enemy': 'Mordu\'s Legion',
+      'tips': [
         'Just keep shooting as they come, blow up the station at the end',
         'You can blow up station first to stop new spawns, but that will take some time based on your DPS'
       ],
-      'objective':   'Complete remotely after last ship is dead.',
-      'pockets':     [
+      'objective': 'Complete remotely after last ship is dead.',
+      'pockets': [
         [
           {
-            'range':   '10 kilometers',
+            'range': '10 kilometers',
             'enemies': [
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Mordus Bounty Hunter'
                 ]
               },
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Mordus Lion'
                 ]
               },
               {
                 'quantity': 4,
-                'names':    [
+                'names': [
                   'Mordus Gigamar',
                   'Mordus Phanti'
                 ]
               },
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Caldari Cruise Missile Battery'
                 ]
               }
@@ -900,18 +899,18 @@ export const data = {
         ],
         [
           {
-            'range':   '20 kilometers',
+            'range': '20 kilometers',
             'enemies': [
               {
                 'quantity': 6,
-                'names':    [
+                'names': [
                   'Mordus Puma',
                   'Mordus Leopard'
                 ]
               },
               {
                 'quantity': 4,
-                'names':    [
+                'names': [
                   'Mordus Gigamar',
                   'Mordus Phanti',
                   'Mordus Mammoth'
@@ -919,7 +918,7 @@ export const data = {
               },
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Caldari Cruise Missile Battery'
                 ]
               }
@@ -928,91 +927,91 @@ export const data = {
         ],
         [
           {
-            'range':   '10-80 kilometers',
+            'range': '10-80 kilometers',
             'enemies': [
               {
                 'quantity': 2,
-                'names':    [
+                'names': [
                   'Mordus Bounty Hunter'
                 ]
               },
               {
                 'quantity': 4,
-                'names':    [
+                'names': [
                   'Mordus Bobcat'
                 ]
               },
               {
                 'quantity': 2,
-                'names':    [
+                'names': [
                   'Mordus Gigamar'
                 ],
-                'notice':   'Last killed will trigger wave 1'
+                'notice': 'Last killed will trigger wave 1'
               },
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Caldari Heavy Missile Battery'
                 ]
               },
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Caldari Cruise Missile Battery'
                 ]
               },
               {
                 'quantity': 1,
-                'names':    [
+                'names': [
                   'Caldari Station 150k'
                 ],
-                'notice':   'Mission objective Outpost'
+                'notice': 'Mission objective Outpost'
               }
             ]
           },
           {
-            'range':   '70 kilometers',
+            'range': '70 kilometers',
             'enemies': [
               {
                 'quantity': 2,
-                'names':    [
+                'names': [
                   'Mordus Bounty Hunter'
                 ]
               },
               {
                 'quantity': 4,
-                'names':    [
+                'names': [
                   'Mordus Leopard'
                 ]
               },
               {
                 'quantity': 4,
-                'names':    [
+                'names': [
                   'Mordus Gigamar',
                   'Mordus Mammoth'
                 ],
-                'notice':   'Last killed will trigger wave 2'
+                'notice': 'Last killed will trigger wave 2'
               }
             ]
           },
           {
-            'range':   '60 kilometers',
+            'range': '60 kilometers',
             'enemies': [
               {
                 'quantity': 4,
-                'names':    [
+                'names': [
                   'Mordus Bounty Hunter'
                 ]
               },
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Mordus Lion'
                 ]
               },
               {
                 'quantity': 6,
-                'names':    [
+                'names': [
                   'Mordus Gigamar',
                   'Mordus Phanti',
                   'Mordus Mammoth'
@@ -1024,75 +1023,75 @@ export const data = {
       ]
     },
     {
-      'name':        'Ascending Nobles',
-      'agent':       'Aralin Jick',
-      'source':      'Nishah VII - Moon 5 - Kor-Azor Family Treasury',
-      'type':        'Combat and retrieve item',
-      'start':       'Nishah',
-      'destination': 'Reteka system, 7 jumps away',
-      'description': [
+      'name': 'Ascending Nobles',
+      'agent': 'Aralin Jick',
+      'source': 'Nishah VII - Moon 5 - Kor-Azor Family Treasury',
+      'type': 'Combat and retrieve item',
+      'start': 'Nishah',
+      'dest': 'Reteka system, 7 jumps away',
+      'desc': [
         'Heavy DPS if you let them come in close, make sure to kill and loot as soon as possible',
         'Few minutes after last enemy dies, wave 4 will arrive and they hit hard, more then 1200 dps if they come in close',
         'Wave 4 doesn\'t offer any bounty and it\'s fairly bad loot/salvage',
         'It is recommended to just skip looting all together in this mission'
       ],
-      'enemy':       'Amarr Empire',
-      'tips':        [
-        'Don\'t forget to loot Mina Darabi (1.0 m3) at chapel and get out before wave 4',
+      'enemy': 'Amarr Empire',
+      'tips': [
+        'Don\'t forget to loot Mina Darabi (1.0 m³) at chapel and get out before wave 4',
         'You have about 15-20 minutes before they show up after Mina has been ejected in a can from chapel'
       ],
-      'objective':   'Kill everything, loot item, fly back to station.',
-      'pockets':     [
+      'objective': 'Kill everything, loot item, fly back to station.',
+      'pockets': [
         [
           {
-            'range':   '75 kilometers',
+            'range': '75 kilometers',
             'enemies': [
               {
                 'quantity': 5,
-                'names':    [
+                'names': [
                   'Independent Veteran Abaddon',
                   'Independent Veteran Armageddon',
                   'Independent Veteran Apocalypse'
                 ],
-                'notice':   'Last killed will trigger wave 1'
+                'notice': 'Last killed will trigger wave 1'
               },
               {
                 'quantity': 2,
-                'names':    [
+                'names': [
                   'Amarr Light Missile Battery'
                 ]
               },
               {
                 'quantity': 2,
-                'names':    [
+                'names': [
                   'Amarr Cruise Missile Battery'
                 ]
               }
             ]
           },
           {
-            'range':       '70 kilometers',
+            'range': '70 kilometers',
             'lastTrigger': true,
-            'enemies':     [
+            'enemies': [
               {
                 'quantity': 8,
-                'names':    [
+                'names': [
                   'Independent Veteran Omen',
                   'Independent Veteran Augoror',
                   'Independent Veteran Maller',
                   'Independent Veteran Arbitrator'
                 ],
-                'notice':   'There is 8 of them with strong neuts, stay out of range'
+                'notice': 'There is 8 of them with strong neuts, stay out of range'
               }
             ]
           },
           {
-            'range':       '70 kilometers',
+            'range': '70 kilometers',
             'lastTrigger': true,
-            'enemies':     [
+            'enemies': [
               {
                 'quantity': 7,
-                'names':    [
+                'names': [
                   'Independent Green-Crewed Abaddon',
                   'Independent Green-Crewed Armageddon',
                   'Independent Green-Crewed Apocalypse'
@@ -1101,11 +1100,11 @@ export const data = {
             ]
           },
           {
-            'range':   '70 kilometers',
+            'range': '70 kilometers',
             'enemies': [
               {
                 'quantity': 6,
-                'names':    [
+                'names': [
                   'Independent Abaddon',
                   'Independent Armageddon',
                   'Independent Apocalypse'
@@ -1114,19 +1113,19 @@ export const data = {
             ]
           },
           {
-            'range':   '70 kilometers',
-            'note':    'reinforcement timed wave',
+            'range': '70 kilometers',
+            'note': 'reinforcement timed wave',
             'enemies': [
               {
                 'quantity': 6,
-                'names':    [
+                'names': [
                   'Independent Veteran Crucifier',
                   'Independent Veteran Inquisitor'
                 ]
               },
               {
                 'quantity': 6,
-                'names':    [
+                'names': [
                   'Independent Veteran Omen',
                   'Independent Veteran Maller',
                   'Independent Veteran Augoror'
@@ -1134,7 +1133,7 @@ export const data = {
               },
               {
                 'quantity': 6,
-                'names':    [
+                'names': [
                   'Independent Veteran Armageddon',
                   'Independent Veteran Apocalypse',
                   'Independent Veteran Abaddon'
@@ -1146,41 +1145,41 @@ export const data = {
       ]
     },
     {
-      'name':        'Hunting the Hunter',
-      'agent':       'Aralin Jick',
-      'source':      'Nishah VII - Moon 5 - Kor-Azor Family Treasury',
-      'type':        'Combat and retrieve item',
-      'start':       'Nishah',
-      'destination': 'Any system in constellation',
-      'description': [
+      'name': 'Hunting the Hunter',
+      'agent': 'Aralin Jick',
+      'source': 'Nishah VII - Moon 5 - Kor-Azor Family Treasury',
+      'type': 'Combat and retrieve item',
+      'start': 'Nishah',
+      'dest': 'Any system in constellation',
+      'desc': [
         'Fight Sansha an capture enemy commander'
       ],
-      'enemy':       'Sansha\'s Nation',
-      'tips':        [
-        'Don\'t forget to loot Rahsa (1.0 m3)'
+      'enemy': 'Sansha\'s Nation',
+      'tips': [
+        'Don\'t forget to loot Rahsa (1.0 m³)'
       ],
-      'pockets':     [
+      'pockets': [
         [
           {
-            'range':   '10 kilometers',
+            'range': '10 kilometers',
             'enemies': [
               {
                 'quantity': 6,
-                'names':    [
+                'names': [
                   'Centum Loyal Fiend',
                   'Centum Loyal Hellhound'
                 ]
               },
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Centus Dark Lord',
                   'Centus Dread Lord'
                 ]
               },
               {
                 'quantity': 6,
-                'names':    [
+                'names': [
                   'Sansha Heavy Missile Battery'
                 ]
               }
@@ -1189,65 +1188,65 @@ export const data = {
         ],
         [
           {
-            'range':   '50 kilometers',
+            'range': '50 kilometers',
             'enemies': [
               {
                 'quantity': 2,
-                'names':    [
+                'names': [
                   'Centii Loyal Savage',
                   'Centii Loyal Slavehunter'
                 ]
               },
               {
                 'quantity': 4,
-                'names':    [
+                'names': [
                   'Centatis Devil',
                   'Centatis Daemon'
                 ],
-                'notice':   'Last killed will trigger wave 2'
+                'notice': 'Last killed will trigger wave 2'
               },
               {
                 'quantity': 4,
-                'names':    [
+                'names': [
                   'Centus Tyrant',
                   'Centus Dread Lord'
                 ],
-                'notice':   'Last killed will trigger wave 3'
+                'notice': 'Last killed will trigger wave 3'
               },
               {
                 'quantity': 2,
-                'names':    [
+                'names': [
                   'Tower Sentry Sansha III'
                 ]
               },
               {
                 'quantity': 1,
-                'names':    [
+                'names': [
                   'Sansha Energy Neutralizer Sentry I'
                 ]
               },
               {
                 'quantity': 1,
-                'names':    [
+                'names': [
                   'Sansha\'s Battletower'
                 ],
-                'notice':   'Destroy to unlock gate, clear the room first'
+                'notice': 'Destroy to unlock gate, clear the room first'
               }
             ]
           },
           {
-            'range':   '140 kilometers',
+            'range': '140 kilometers',
             'enemies': [
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Centum Loyal Mutilator',
                   'Centum Loyal Torturer'
                 ]
               },
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Centus Beast Lord',
                   'Centus Savage Lord',
                   'Centus Overlord'
@@ -1256,11 +1255,11 @@ export const data = {
             ]
           },
           {
-            'range':   '40 kilometers',
+            'range': '40 kilometers',
             'enemies': [
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Centum Loyal Execrator',
                   'Centum Loyal Slaughterer'
                 ]
@@ -1268,18 +1267,18 @@ export const data = {
             ]
           },
           {
-            'range':   '50 kilometers',
+            'range': '50 kilometers',
             'enemies': [
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Centii Loyal Plague',
                   'Centii Loyal Butcher'
                 ]
               },
               {
                 'quantity': 2,
-                'names':    [
+                'names': [
                   'Centus Beast Lord',
                   'Centus Plague Lord'
                 ]
@@ -1289,140 +1288,140 @@ export const data = {
         ],
         [
           {
-            'range':   '30 kilometers',
+            'range': '30 kilometers',
             'enemies': [
               {
                 'quantity': 1,
-                'names':    [
+                'names': [
                   'Centus Tyrant'
                 ],
-                'notice':   'Rahsa Battleship, drops mission objective'
+                'notice': 'Rahsa Battleship, drops mission objective'
               }
             ]
           }
         ]
       ],
-      'objective':   'Kill everything, loot item, fly back to station.'
+      'objective': 'Kill everything, loot item, fly back to station.'
     },
     {
-      'name':        'Fate of a Madman',
-      'agent':       'Aralin Jick',
-      'source':      'Nishah VII - Moon 5 - Kor-Azor Family Treasury',
-      'type':        'Epic arc choice',
-      'start':       'Nishah',
-      'destination': 'Same station',
-      'description': [
+      'name': 'Fate of a Madman',
+      'agent': 'Aralin Jick',
+      'source': 'Nishah VII - Moon 5 - Kor-Azor Family Treasury',
+      'type': 'Epic arc choice',
+      'start': 'Nishah',
+      'dest': 'Same station',
+      'desc': [
         'Choose your side',
         'One side leads to lowsec and continues this arc for sansha side and other goes forward to Amarr Empire standings',
         'Choose Interrogation: Catching the Scent as your next mission to stay on Amarr Empire path'
       ],
-      'tips':        [
+      'tips': [
         'Interrogation: Catching the Scent should be the next mission choice'
       ],
-      'objective':   'Just confirm your choice.'
+      'objective': 'Just confirm your choice.'
     },
     {
-      'name':        'Interrogation: Catching the Scent',
-      'agent':       'Aralin Jick',
-      'source':      'Nishah VII - Moon 5 - Kor-Azor Family Treasury',
-      'type':        'Combat and retrieve item',
-      'start':       'Nishah',
-      'destination': 'Any system in constellation',
-      'description': [
+      'name': 'Interrogation: Catching the Scent',
+      'agent': 'Aralin Jick',
+      'source': 'Nishah VII - Moon 5 - Kor-Azor Family Treasury',
+      'type': 'Combat and retrieve item',
+      'start': 'Nishah',
+      'dest': 'Any system in constellation',
+      'desc': [
         'Fight Sansha an loot Sansha Command Signal Receiver'
       ],
-      'enemy':       'Sansha\'s Nation',
-      'tips':        [
+      'enemy': 'Sansha\'s Nation',
+      'tips': [
         'Kill frigates in initial spawn, then all but one cruiser and battleship',
         'After that just clear all the battleships, then all the cruisers',
-        'Don\'t forget to loot The Sansha Command Signal Receiver (0.1 m3)'
+        'Don\'t forget to loot The Sansha Command Signal Receiver (0.1 m³)'
       ],
-      'objective':   'Kill everything, loot item, fly back to station.',
-      'pockets':     [
+      'objective': 'Kill everything, loot item, fly back to station.',
+      'pockets': [
         [
           {
-            'range':   '60 kilometers',
+            'range': '60 kilometers',
             'enemies': [
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Centii Loyal Savage',
                   'Centii Loyal Slavehunter'
                 ]
               },
               {
                 'quantity': 5,
-                'names':    [
+                'names': [
                   'Centum Mutilator',
                   'Centum Torturer'
                 ],
-                'notice':   'Trigger wave 1, just Cruisers'
+                'notice': 'Trigger wave 1, just Cruisers'
               },
               {
                 'quantity': 6,
-                'names':    [
+                'names': [
                   'Centus Dark Lord',
                   'Centus Overlord'
                 ],
-                'notice':   'Trigger wave 1, just Battleships'
+                'notice': 'Trigger wave 1, just Battleships'
               }
             ]
           },
           {
-            'range':   '60 kilometers',
+            'range': '60 kilometers',
             'enemies': [
               {
                 'quantity': 4,
-                'names':    [
+                'names': [
                   'Centum Hellhound',
                   'Centum Fiend'
                 ],
-                'notice':   'Trigger wave 2, just Cruisers'
+                'notice': 'Trigger wave 2, just Cruisers'
               },
               {
                 'quantity': 5,
-                'names':    [
+                'names': [
                   'Centus Dread Lord',
                   'Centus Dark Lord'
                 ],
-                'notice':   'Trigger wave 2, just Battleships'
+                'notice': 'Trigger wave 2, just Battleships'
               }
             ]
           },
           {
-            'range':   '60 kilometers',
+            'range': '60 kilometers',
             'enemies': [
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Centum Loyal Torturer',
                   'Centum Loyal Mutilator'
                 ],
-                'notice':   'Trigger wave 3, just Cruisers'
+                'notice': 'Trigger wave 3, just Cruisers'
               },
               {
                 'quantity': 4,
-                'names':    [
+                'names': [
                   'Centus Dread Lord',
                   'Centus Tyrant'
                 ],
-                'effect':   'Trigger wave III battleships',
-                'notice':   'Trigger wave 3, just Battleships'
+                'effect': 'Trigger wave III battleships',
+                'notice': 'Trigger wave 3, just Battleships'
               }
             ]
           },
           {
-            'range':   '60 kilometers',
+            'range': '60 kilometers',
             'enemies': [
               {
                 'quantity': 2,
-                'names':    [
+                'names': [
                   'Centum Loyal Fiend'
                 ]
               },
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Centus Tyrant'
                 ]
               }
@@ -1432,41 +1431,42 @@ export const data = {
       ]
     },
     {
-      'name':        'Falling into Place',
-      'agent':       'Aralin Jick',
-      'source':      'Nishah VII - Moon 5 - Kor-Azor Family Treasury',
-      'type':        'Take item to mission site and then combat',
-      'start':       'Nishah',
-      'destination': 'Shaha system, 13 jumps away',
-      'description': [
-        'Do not forget to take Homemade Sansha Beacon (1.0 m3) with you',
+      'name': 'Falling into Place',
+      'agent': 'Aralin Jick',
+      'source': 'Nishah VII - Moon 5 - Kor-Azor Family Treasury',
+      'type': 'Take item to mission site and then combat',
+      'start': 'Nishah',
+      'dest': 'Shaha system, 13 jumps away',
+      'desc': [
+        'Do not forget to take Homemade Sansha Beacon (1.0 m³) with you',
         'Place the beacon in Linked Broadcast Array Hub and kill all the ships that come to rescue',
         'Park your ships in Palas on your way back, read tips for more information'
       ],
-      'enemy':       'Amarr Empire',
-      'tips':        [
+      'enemy': 'Amarr Empire',
+      'tips': [
         'When returning to your agent stop in system called Palas and dock up your ships/orca',
         'Use only frigate or shuttle to burn back to your agent',
         'Next mission is not combat and mission after that will send you into Palas so you save yourself 10 jumps'
       ],
-      'objective':   'Complete remotely after last ship is dead.',
-      'pockets':     [
+      'objective': 'Complete remotely after last ship is dead.',
+      'pockets': [
         [
           {
-            'range':   '60 kilometers',
+            'range': '60 kilometers',
             'enemies': [
               {
                 'quantity': 5,
-                'names':    [
+                'names': [
                   'Independent Maller',
-                  'Independent Omen,Independent Green-Crewed Maller',
+                  'Independent Omen',
+                  'Independent Green-Crewed Maller',
                   'Independent Green-Crewed Augoror',
                   'Independent Green-Crewed Arbitrator'
                 ]
               },
               {
                 'quantity': 1,
-                'names':    [
+                'names': [
                   'Independent Veteran Augoror',
                   'Independent Veteran Arbitrator',
                   'Independent Veteran Omen'
@@ -1474,7 +1474,7 @@ export const data = {
               },
               {
                 'quantity': 5,
-                'names':    [
+                'names': [
                   'Independent Green-Crewed Abaddon',
                   'Independent Green-Crewed Armageddon',
                   'Independent Green-Crewed Apocalypse',
@@ -1489,148 +1489,148 @@ export const data = {
       ]
     },
     {
-      'name':        'Making an Arrest',
-      'agent':       'Aralin Jick',
-      'source':      'Nishah VII - Moon 5 - Kor-Azor Family Treasury',
-      'type':        'Fly to location in space',
-      'start':       'Nishah',
-      'destination': 'Random location in several possible constellations, cca 15 jumps away',
-      'description': [
+      'name': 'Making an Arrest',
+      'agent': 'Aralin Jick',
+      'source': 'Nishah VII - Moon 5 - Kor-Azor Family Treasury',
+      'type': 'Fly to location in space',
+      'start': 'Nishah',
+      'dest': 'Random location in several possible constellations, cca 15 jumps away',
+      'desc': [
         'Burn to Harkan\'s Manor',
         'This will trigger station to explode and complete mission',
         'This mission has no NPC\'s and can be done in Covert Ops frigate or an shuttle',
         'This mission has a chance to send you into lowsec so inform yourself how to navigate lowsec safely'
       ],
-      'tips':        [
+      'tips': [
         'Do not take your battleship/orca into lowsec',
         'Use small fast ship'
       ],
-      'objective':   'Once you get message from your agent, fly back to his station.'
+      'objective': 'Once you get message from your agent, fly back to his station.'
     },
     {
-      'name':        'An Unfortunate End',
-      'agent':       'Aralin Jick',
-      'source':      'Nishah VII - Moon 5 - Kor-Azor Family Treasury',
-      'type':        'Travel',
-      'start':       'Nishah',
-      'destination': 'Palas system, 6 jumps away',
-      'description': [
+      'name': 'An Unfortunate End',
+      'agent': 'Aralin Jick',
+      'source': 'Nishah VII - Moon 5 - Kor-Azor Family Treasury',
+      'type': 'Travel',
+      'start': 'Nishah',
+      'dest': 'Palas system, 6 jumps away',
+      'desc': [
         'Report to Riff Hebian in Palas at Miyan Security Forces Beacon'
       ],
-      'tips':        [
+      'tips': [
         'Your battleship should be there already if you left it there 2 missions ago'
       ],
-      'objective':   'Automatically once you initiate conversation with next agent.'
+      'objective': 'Automatically once you initiate conversation with next agent.'
     },
     {
-      'name':        'Panic Response',
-      'agent':       'Riff Hebian',
-      'source':      'Palas system at Miyan Security Forces Beacon',
-      'type':        'Combat',
-      'start':       'Palas',
-      'destination': 'Any system in constellation',
-      'description': [
+      'name': 'Panic Response',
+      'agent': 'Riff Hebian',
+      'source': 'Palas system at Miyan Security Forces Beacon',
+      'type': 'Combat',
+      'start': 'Palas',
+      'dest': 'Any system in constellation',
+      'desc': [
         'Kill all ships in area',
         'Keep in mind that bounty, salvage and loot from this mission are very low',
         'It is recommended to just keep killing frigates until energy neutralizer tower spawns, then kill the tower and everything will warp off',
         'After that simply finish remaining towers to complete the mission',
         'Be aligned if you don\'t think your tank will hold'
       ],
-      'enemy':       'Sansha\'s Nation',
-      'pockets':     [
+      'enemy': 'Sansha\'s Nation',
+      'pockets': [
         [
           {
-            'range':   '40 kilometers',
+            'range': '40 kilometers',
             'enemies': [
               {
                 'quantity': 4,
-                'names':    [
+                'names': [
                   'Centii Servant',
                   'Centii Minion'
                 ],
-                'notice':   'Trigger same number of frigates five times'
+                'notice': 'Trigger same number of frigates five times'
               },
               {
                 'quantity': 4,
-                'names':    [
+                'names': [
                   'Centum Ravisher',
                   'Centum Ravager'
                 ],
-                'notice':   'Trigger same number of cruisers five times'
+                'notice': 'Trigger same number of cruisers five times'
               },
               {
                 'quantity': 1,
-                'names':    [
+                'names': [
                   'Centus Tyrant'
                 ]
               }
             ]
           },
           {
-            'range':   '40 kilometers',
-            'note':    'timed spawn',
+            'range': '40 kilometers',
+            'note': 'timed spawn',
             'enemies': [
               {
                 'quantity': 4,
-                'names':    [
+                'names': [
                   'Amarr Cruise Missile Battery'
                 ]
               },
               {
                 'quantity': 1,
-                'names':    [
+                'names': [
                   'Amarr Stasis Tower'
                 ]
               },
               {
                 'quantity': 1,
-                'names':    [
-                  'Anarr Energy Neutralizer Sentry III'
+                'names': [
+                  'Amarr Energy Neutralizer Sentry III'
                 ]
               }
             ]
           }
         ]
       ],
-      'tips':        [
+      'tips': [
         'Blitz the mission by killing neutralizer tower as soon as it spawns'
       ],
-      'objective':   'Fly back to station once you kill neutralizer tower and missile batteries.'
+      'objective': 'Fly back to station once you kill neutralizer tower and missile batteries.'
     },
     {
-      'name':        'The Right to Rule',
-      'agent':       'Riff Hebian',
-      'source':      'Palas system at Miyan Security Forces Beacon',
-      'type':        'Combat',
-      'start':       'Palas',
-      'destination': 'Choga system, 4 systems away',
-      'description': [
+      'name': 'The Right to Rule',
+      'agent': 'Riff Hebian',
+      'source': 'Palas system at Miyan Security Forces Beacon',
+      'type': 'Combat',
+      'start': 'Palas',
+      'dest': 'Choga system, 4 systems away',
+      'desc': [
         'Fight Sansha and kill Harkan'
       ],
-      'enemy':       'Sansha\'s Nation',
-      'tips':        [
+      'enemy': 'Sansha\'s Nation',
+      'tips': [
         'Watch out on triggers',
         'If you are not sure if you can handle all the waves in last pocket go for blitz option',
         'Good way to keep track of spawns is to always eliminate all the ships from current wave before moving on next spawned wave',
         'Exception of this rule is initial battleship in pocket III and Harkan\'s Behemoth in pocket IV since they have multipsle triggers',
         'Blitz in last wave is done by burning away from the group which will pull Harkan away from rest of this ship and away from spawn points. Once you burned 50-100 kilometers, just kill him him and warp off'
       ],
-      'objective':   'Once Harkan is dead, fly back to agent to get standings and implant.',
-      'pockets':     [
+      'objective': 'Once Harkan is dead, fly back to agent to get standings and implant.',
+      'pockets': [
         [
           {
-            'range':   '10 kilometers',
+            'range': '10 kilometers',
             'enemies': [
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Centum Loyal Hellhound',
                   'Centum Loyal Fiend'
                 ]
               },
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Centatis Devil',
                   'Centatis Wraith'
                 ]
@@ -1640,39 +1640,39 @@ export const data = {
         ],
         [
           {
-            'range':   '10 kilometers',
+            'range': '10 kilometers',
             'enemies': [
               {
                 'quantity': 2,
-                'names':    [
+                'names': [
                   'Centii Loyal Servant',
                   'Centii Loyal Minion'
                 ]
               },
               {
                 'quantity': 2,
-                'names':    [
+                'names': [
                   'Centum Slaughterer',
                   'Centum Execrator'
                 ]
               },
               {
                 'quantity': 4,
-                'names':    [
+                'names': [
                   'Centum Loyal Hellhound',
                   'Centum Loyal Fiend'
                 ]
               },
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Centatis Wraith',
                   'Centatis Behemoth'
                 ]
               },
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Centus Plague Lord',
                   'Centus Beast Lord'
                 ]
@@ -1682,25 +1682,25 @@ export const data = {
         ],
         [
           {
-            'range':   '18 kilometers',
+            'range': '18 kilometers',
             'enemies': [
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Centum Loyal Torturer',
                   'Centum Loyal Mutilator'
                 ]
               },
               {
                 'quantity': 6,
-                'names':    [
+                'names': [
                   'Centatis Devil',
                   'Centatis Daemon'
                 ]
               },
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Centus Mutant Lord',
                   'Centus Savage Lord'
                 ]
@@ -1708,11 +1708,11 @@ export const data = {
             ]
           },
           {
-            'range':   '10 kilometers',
+            'range': '10 kilometers',
             'enemies': [
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Centii Loyal Enslaver',
                   'Centii Loyal Manslayer',
                   'Centii Loyal Plague'
@@ -1720,9 +1720,9 @@ export const data = {
               },
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Centum Loyal Slaughterer',
-                  'Centum Loyal Execrato'
+                  'Centum Loyal Execrator'
                 ]
               }
             ]
@@ -1730,57 +1730,57 @@ export const data = {
         ],
         [
           {
-            'range':   '40 kilometers',
+            'range': '40 kilometers',
             'enemies': [
               {
                 'quantity': 2,
-                'names':    [
+                'names': [
                   'Centior Monster'
                 ]
               },
               {
                 'quantity': 1,
-                'names':    [
+                'names': [
                   'Centus Tyrant'
                 ],
-                'notice':   'Trigger next a group like wave 1 at 10% shield, at 10% armor, getting structure damage and destruction'
+                'notice': 'Trigger next a group like wave 1 at 10% shield, at 10% armor, getting structure damage and destruction'
               }
             ]
           },
           {
-            'range':   '5-40 kilometers',
+            'range': '5-40 kilometers',
             'enemies': [
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Centii Loyal Enslaver',
-                  'Centum Loyal Butcher'
+                  'Centii Loyal Butcher'
                 ],
-                'notice':   'Random one is trigger wave 2'
+                'notice': 'Random one is trigger wave 2'
               },
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Centus Overlord',
                   'Centus Dark Lord'
                 ],
-                'notice':   'Random one is trigger wave 2'
+                'notice': 'Random one is trigger wave 2'
               }
             ]
           },
           {
-            'range':   '5-40 kilometers',
+            'range': '5-40 kilometers',
             'enemies': [
               {
                 'quantity': 2,
-                'names':    [
+                'names': [
                   'Centum Loyal Hellhound',
                   'Centum Loyal Torturer'
                 ]
               },
               {
                 'quantity': 2,
-                'names':    [
+                'names': [
                   'Centatis Daemon',
                   'Centatis Behemoth'
                 ]
@@ -1790,139 +1790,139 @@ export const data = {
         ],
         [
           {
-            'range':   '20 kilometers',
+            'range': '20 kilometers',
             'enemies': [
               {
                 'quantity': 2,
-                'names':    [
+                'names': [
                   'Centum Loyal Hellhound',
                   'Centum Loyal Fiend'
                 ],
-                'notice':   'Any could trigger wave 4'
+                'notice': 'Any could trigger wave 4'
               },
               {
                 'quantity': 2,
-                'names':    [
+                'names': [
                   'Centus Tyrant',
                   'Centus Dread Lord'
                 ],
-                'notice':   'Any could trigger wave 4'
+                'notice': 'Any could trigger wave 4'
               },
               {
                 'quantity': 1,
-                'names':    [
+                'names': [
                   'Harkan\'s Behemoth'
                 ],
-                'notice':   'Trigger wave 1 on damage, trigger wave 2 on armor damage, trigger wave 3 on destruction'
+                'notice': 'Trigger wave 1 on damage, trigger wave 2 on armor damage, trigger wave 3 on destruction'
               }
             ]
           },
           {
-            'range':   '20 kilometers',
+            'range': '20 kilometers',
             'enemies': [
               {
                 'quantity': 2,
-                'names':    [
+                'names': [
                   'Centior Cannibal'
                 ]
               },
               {
                 'quantity': 2,
-                'names':    [
+                'names': [
                   'Centum Execrator'
                 ]
               }
             ]
           },
           {
-            'range':   '20 kilometers',
+            'range': '20 kilometers',
             'enemies': [
               {
                 'quantity': 2,
-                'names':    [
+                'names': [
                   'Centior Misshape'
                 ]
               },
               {
                 'quantity': 2,
-                'names':    [
+                'names': [
                   'Centum Execrator'
                 ]
               }
             ]
           },
           {
-            'range':   '20 kilometers',
+            'range': '20 kilometers',
             'enemies': [
               {
                 'quantity': 2,
-                'names':    [
+                'names': [
                   'Centior Abomination'
                 ]
               },
               {
                 'quantity': 2,
-                'names':    [
+                'names': [
                   'Centum Slaughterer'
                 ]
               }
             ]
           },
           {
-            'range':   '1-40 kilometers',
+            'range': '1-40 kilometers',
             'enemies': [
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Centatis Daemon',
                   'Centatis Behemoth'
                 ],
-                'notice':   'First one killed will trigger wave 5'
+                'notice': 'First one killed will trigger wave 5'
               }
             ]
           },
           {
-            'range':   '1-40 kilometers',
-            'note':    'repeating wave',
+            'range': '1-40 kilometers',
+            'note': 'repeating wave',
             'enemies': [
               {
                 'quantity': 2,
-                'names':    [
+                'names': [
                   'Centii Loyal Scavenger',
                   'Centii Loyal Ravener'
                 ],
-                'notice':   'Last killed will trigger wave 6'
+                'notice': 'Last killed will trigger wave 6'
               }
             ]
           },
           {
-            'range':   '1-40 kilometers',
-            'note':    'repeating wave',
+            'range': '1-40 kilometers',
+            'note': 'repeating wave',
             'enemies': [
               {
                 'quantity': 2,
-                'names':    [
+                'names': [
                   'Centii Loyal Slavehunter'
                 ],
-                'notice':   'Attacking any will trigger wave 4, this repeats 4-5 times in total'
+                'notice': 'Attacking any will trigger wave 4, this repeats 4-5 times in total'
               },
               {
                 'quantity': 2,
-                'names':    [
+                'names': [
                   'Centum Loyal Mutilator',
                   'Centum Loyal Torturer',
                   'Centum Loyal Slaughterer'
                 ],
-                'effect':   'Tracking disruptor',
-                'notice':   'Attacking any will trigger wave 4, this repeats 4-5 times in total'
+                'effect': 'Tracking disruptor',
+                'notice': 'Attacking any will trigger wave 4, this repeats 4-5 times in total'
               },
               {
                 'quantity': 2,
-                'names':    [
+                'names': [
                   'Centus Tyrant',
                   'Centus Dread Lord'
                 ],
-                'notice':   'Attacking any will trigger wave 4, this repeats 4-5 times in total'
+                'notice': 'Attacking any will trigger wave 4, this repeats 4-5 times in total'
               }
             ]
           }

@@ -1,6 +1,6 @@
 export function setCookie(name, value, minutes) {
   const expiresDate = new Date(),
-        ttl = minutes * 60 * 1000;
+    ttl = minutes * 60 * 1000;
   expiresDate.setTime(expiresDate.setTime(expiresDate.getTime() + ttl));
   document.cookie = `${name}=${value};expires=${expiresDate.toUTCString()};path=/`;
 }
@@ -13,7 +13,7 @@ export function deleteCookie(name, value) {
 
 export function getCookie(name) {
   const decodedCookie = decodeURIComponent(document.cookie),
-        cookieArray = decodedCookie.split('; ');
+    cookieArray = decodedCookie.split('; ');
 
   let cookieValue = null;
   cookieArray.forEach((cookie) => {

@@ -7,11 +7,18 @@ export function lowercaseComparison(arg) {
 }
 
 export function seo(data = {}) {
-  data.title           = data.title || 'Quantum Anomaly';
+  data.title = data.title || 'Quantum Anomaly';
   data.metaDescription = data.metaDescription || 'Quantum Anomaly websites contains useful information and resources about online games such as EVE Online and WarFrame';
 
   if (data.title.indexOf('Quantum Anomaly') === -1) data.title += ' - Quantum Anomaly';
 
   document.title = data.title;
   document.querySelector('meta[name="description"]').setAttribute('content', data.metaDescription);
+}
+
+export function updateCanonical() {
+  const link = !!document.querySelector('link[rel=\'canonical\']') ? document.querySelector('link[rel=\'canonical\']') : document.createElement('link');
+  link.setAttribute('rel', 'canonical');
+  link.setAttribute('href', window.location.protocol + '//' + window.location.host + window.location.pathname);
+  document.head.appendChild(link);
 }

@@ -1,22 +1,22 @@
 export const data = {
-  'info':     {
-    'name':        'Syndication',
-    'iconID':      '500004',
-    'empire':      'Gallente Federation',
-    'race':        'gallente',
-    'starter':     'Roineron Aviviere',
-    'description': [
+  'info': {
+    'name': 'Syndication',
+    'iconID': '500004',
+    'empire': 'Gallente Federation',
+    'race': 'gallente',
+    'starter': 'Roineron Aviviere',
+    'desc': [
       'The Gallente epic arc is notable for some heavy incoming dps on short ranges',
       'Most enemy battleships have MWD\'s and come really fast into range to apply that damage, be careful to maintain spawns and ranges in accordance to your ship capabilities',
       'Also count on enemy doing sensor dampening on your ship',
       'To start this epic arc you need standings of 5.0 towards Roineron Aviviere, Impetus or Gallente Federation'
     ],
-    'rewards':     [
+    'rewards': [
       '+10% Gallente Federation faction standing increase (unmodified)',
-      'Black Eagle Drone Link Augmentor. (25 m3)'
+      'Black Eagle Drone Link Augmentor. (25 m³)'
     ],
-    'notes':       [
-      'You can avoid going to lowsec all together.',
+    'notes': [
+      'You can avoid going to lowsec all together',
       'Heavy DPS in some missions',
       'Heavy sensor dampening in some missions',
       'You need Salvager in mission 3'
@@ -24,40 +24,40 @@ export const data = {
   },
   'missions': [
     {
-      'name':        'Impetus',
-      'agent':       'Roineron Aviviere',
-      'source':      'Dodixie - Roineron Aviviere Beacon',
-      'type':        'Travel',
-      'start':       'Dodixie',
-      'destination': 'Tolle system, 4 jumps away',
-      'description': [
+      'name': 'Impetus',
+      'agent': 'Roineron Aviviere',
+      'source': 'Dodixie - Roineron Aviviere Beacon',
+      'type': 'Travel',
+      'start': 'Dodixie',
+      'dest': 'Tolle system, 4 jumps away',
+      'desc': [
         'Talk to Roineron Aviviere and take mission to report to Gian Parele in Tolle Solar system'
       ],
-      'tips':        [
+      'tips': [
         'You can start conversation with Roineron Aviviere from anywhere and accept first mission'
       ],
-      'objective':   'Fly to destination and start conversation with next agent.'
+      'objective': 'Fly to destination and start conversation with next agent.'
     },
     {
-      'name':        'The Tolle Scar',
-      'agent':       'Gian Parele',
-      'source':      'Tolle - Impetus Tolle Studio',
-      'type':        'Combat',
-      'start':       'Tolle',
-      'destination': 'Same system',
-      'description': [
+      'name': 'The Tolle Scar',
+      'agent': 'Gian Parele',
+      'source': 'Tolle - Impetus Tolle Studio',
+      'type': 'Combat',
+      'start': 'Tolle',
+      'dest': 'Same system',
+      'desc': [
         'Fight Rogue Drones'
       ],
-      'enemy':       'Rogue Drones II',
-      'pockets':     [
+      'enemy': 'Rogue Drones II',
+      'pockets': [
         [
           {
-            'range':   10,
-            'note':    'spawns when you get 10 kilometers from the accelation gate',
+            'range': 10,
+            'note': 'spawns when you get 10 kilometers from the accelation gate',
             'enemies': [
               {
                 'quantity': 6,
-                'names':    [
+                'names': [
                   'Barracuda Alvi',
                   'Devilfish Alvi',
                   'Strain Decimator Alvi'
@@ -65,20 +65,20 @@ export const data = {
               },
               {
                 'quantity': 2,
-                'names':    [
+                'names': [
                   'Disintegrator Alvum'
                 ]
               },
               {
                 'quantity': 4,
-                'names':    [
+                'names': [
                   'Enforcer Alvatis',
                   'Striker Alvatis'
                 ]
               },
               {
                 'quantity': 2,
-                'names':    [
+                'names': [
                   'Matriarch Alvus',
                   'Patriarch Alvus'
                 ]
@@ -88,23 +88,23 @@ export const data = {
         ],
         [
           {
-            'range':   160,
+            'range': 160,
             'enemies': [
               {
                 'quantity': 6,
-                'names':    [
-                  'The Pator Six Cruisers'
+                'names': [
+                  'The Pator Six'
                 ],
-                'notice':   'They warp off after you enter pocket'
+                'notice': 'They warp off after you enter pocket'
               }
             ]
           },
           {
-            'range':   '50-120',
+            'range': '50-120',
             'enemies': [
               {
                 'quantity': 5,
-                'names':    [
+                'names': [
                   'Barracuda Alvi',
                   'Devilfish Alvi',
                   'Strain Decimator Alvi'
@@ -112,19 +112,19 @@ export const data = {
               },
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Bomber Alvum'
                 ]
               },
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Defeater Alvatis'
                 ]
               },
               {
                 'quantity': 7,
-                'names':    [
+                'names': [
                   'Alvus Queen',
                   'Matriarch Alvus',
                   'Patriarch Alvus'
@@ -134,33 +134,33 @@ export const data = {
           }
         ]
       ],
-      'tips':        [
+      'tips': [
         'Just kill everything'
       ],
-      'objective':   'Kill all the ships and complete remotely.'
+      'objective': 'Kill all the ships and complete remotely.'
     },
     {
-      'name':        'Priority One',
-      'agent':       'Gian Parele',
-      'source':      'Tolle - Impetus Tolle Studio',
-      'type':        'Combat and Salvage',
-      'start':       'Tolle',
-      'destination': 'Carirgnottin system, 1 jump away',
-      'description': [
+      'name': 'Priority One',
+      'agent': 'Gian Parele',
+      'source': 'Tolle - Impetus Tolle Studio',
+      'type': 'Combat and Salvage',
+      'start': 'Tolle',
+      'dest': 'Carirgnottin system, 1 jump away',
+      'desc': [
         'Fight Minmatar Republic and salvage shuttle',
         'In pocket I, first group spawns when you get 10 kilometers from the acceleration gate',
         'You have to use module, I was able to do it with skill on level 2, but would recommend level 3 at least',
         'Keep in mind you don\'t need to bring anything to your agent, just successfully complete one cycle on the wreck'
       ],
-      'enemy':       'Minmatar Republic',
-      'pockets':     [
+      'enemy': 'Minmatar Republic',
+      'pockets': [
         [
           {
-            'range':   60,
+            'range': 60,
             'enemies': [
               {
                 'quantity': 1,
-                'names':    [
+                'names': [
                   'Acceleration Gate'
                 ]
               }
@@ -169,11 +169,11 @@ export const data = {
         ],
         [
           {
-            'range':   10,
+            'range': 10,
             'enemies': [
               {
                 'quantity': 6,
-                'names':    [
+                'names': [
                   'Republic Tribal Takan',
                   'Republic Tribal Baldur',
                   'Chief Republic Gleeda'
@@ -181,14 +181,14 @@ export const data = {
               },
               {
                 'quantity': 4,
-                'names':    [
+                'names': [
                   'Republic Tribal Jarpur',
                   'Republic Tribal Manadis'
                 ]
               },
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Republic Tribal Jotun',
                   'Republic Tribal Sigur'
                 ]
@@ -198,45 +198,45 @@ export const data = {
         ],
         [
           {
-            'range':   50,
-            'note':    'this wave warps off',
+            'range': 50,
+            'note': 'this wave warps off',
             'enemies': [
               {
                 'quantity': 6,
-                'names':    [
-                  'The Pator Six Cruisers'
+                'names': [
+                  'The Pator Six'
                 ]
               },
               {
                 'quantity': 1,
-                'names':    [
+                'names': [
                   'Shuttle wreck'
                 ],
-                'notice':   'Needs to be salvaged'
+                'notice': 'Needs to be salvaged'
               }
             ]
           },
           {
-            'range':   20,
+            'range': 20,
             'enemies': [
               {
                 'quantity': 2,
-                'names':    [
+                'names': [
                   'Chief Republic Hrakt'
                 ]
               },
               {
                 'quantity': 5,
-                'names':    [
+                'names': [
                   'Chief Republic Manadis',
                   'Chief Republic Rodul'
                 ]
               },
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Republic Tribal Jotun',
-                  'Republic Tribal Kinal',
+                  'Republic Tribal Kinai',
                   'Republic Tribal Sigur'
                 ]
               }
@@ -244,87 +244,87 @@ export const data = {
           }
         ]
       ],
-      'tips':        [
+      'tips': [
         'Gates are not locked so you can skip killing NPC\'s in pocket I',
         'You also don\'t need to kill ships in last pocket, but makes salvaging easier',
         'This mission does not incur any negative standings towards Minmatar Republic and gets you nice tags'
       ],
-      'objective':   'You need to salvage shuttle wreck and then complete remotely.'
+      'objective': 'You need to salvage shuttle wreck and then complete remotely.'
     },
     {
-      'name':        'The Averon Exchange',
-      'agent':       'Gian Parele',
-      'source':      'Tolle - Impetus Tolle Studio',
-      'type':        'Combat',
-      'start':       'Tolle',
-      'destination': 'Averon system, 2 jumps away',
-      'description': [
+      'name': 'The Averon Exchange',
+      'agent': 'Gian Parele',
+      'source': 'Tolle - Impetus Tolle Studio',
+      'type': 'Combat',
+      'start': 'Tolle',
+      'dest': 'Averon system, 2 jumps away',
+      'desc': [
         'Fight Mercenaries in couple of waves'
       ],
-      'enemy':       'Mercenaries',
-      'pockets':     [
+      'enemy': 'Mercenaries',
+      'pockets': [
         [
           {
-            'range':   50,
-            'note':    'This wave warps off in few seconds and triggers wave I',
+            'range': 50,
+            'note': 'This wave warps off in few seconds and triggers wave I',
             'enemies': [
               {
                 'quantity': 6,
-                'names':    [
-                  'The Pator Six Cruisers'
+                'names': [
+                  'The Pator Six'
                 ]
               }
             ]
           },
           {
-            'range':   5,
+            'range': 5,
             'enemies': [
               {
                 'quantity': 5,
-                'names':    [
+                'names': [
                   'Mercenary Elite Fighter'
                 ]
               },
               {
                 'quantity': 5,
-                'names':    [
+                'names': [
                   'Mercenary Wingman'
                 ],
-                'notice':   'Trigger wave II'
+                'notice': 'Trigger wave II'
               },
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Mercenary Commander'
                 ]
               }
             ]
           },
           {
-            'range':   25,
+            'range': 25,
             'enemies': [
               {
                 'quantity': 9,
-                'names':    [
+                'names': [
                   'Mercenary Corporal',
                   'Mercenary Lieutenant'
                 ],
-                'notice':   'Trigger wave III'
+                'notice': 'Trigger wave III'
               }
             ]
           },
           {
-            'range':   20,
+            'range': 20,
             'enemies': [
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Mercenary Commander'
                 ]
               },
               {
                 'quantity': 5,
-                'names':    [
+                'names': [
                   'Mercenary Overlord'
                 ]
               }
@@ -332,136 +332,136 @@ export const data = {
           }
         ]
       ],
-      'tips':        [
+      'tips': [
         'Kill everything and take care of triggers so you don\'t get in trouble',
         'You might wanna move away from warp in beacon since warp scramblers with webs will spawn right on top of it'
       ],
-      'objective':   'Kill everything and then complete remotely.'
+      'objective': 'Kill everything and then complete remotely.'
     },
     {
-      'name':        'A Different Kind of Director',
-      'agent':       'Gian Parele',
-      'source':      'Tolle - Impetus Tolle Studio',
-      'type':        'Travel',
-      'start':       'Tolle',
-      'destination': 'Stetille II - Impetus Publisher, 8 jumps away',
-      'description': [
+      'name': 'A Different Kind of Director',
+      'agent': 'Gian Parele',
+      'source': 'Tolle - Impetus Tolle Studio',
+      'type': 'Travel',
+      'start': 'Tolle',
+      'dest': 'Stetille II - Impetus Publisher, 8 jumps away',
+      'desc': [
         'Report to Eron Viette in Stetille system'
       ],
-      'tips':        [
+      'tips': [
         'You can start conversation with Gian Parele from anywhere and accept mission'
       ],
-      'objective':   'Automatically once you initiate conversation with next agent.'
+      'objective': 'Automatically once you initiate conversation with next agent.'
     },
     {
-      'name':        'Assistance',
-      'agent':       'Eron Viette',
-      'source':      'Stetille II - Impetus Publisher',
-      'type':        'Combat',
-      'start':       'Stetille',
-      'destination': 'Same system',
-      'description': [
+      'name': 'Assistance',
+      'agent': 'Eron Viette',
+      'source': 'Stetille II - Impetus Publisher',
+      'type': 'Combat',
+      'start': 'Stetille',
+      'dest': 'Same system',
+      'desc': [
         'Fight Mercenaries in couple of waves'
       ],
-      'enemy':       'Mercenaries',
-      'pockets':     [
+      'enemy': 'Mercenaries',
+      'pockets': [
         [
           {
-            'range':   '35 kilometer',
+            'range': '35 kilometer',
             'enemies': [
               {
                 'quantity': 1,
-                'names':    [
+                'names': [
                   'Audalle Roire'
                 ],
-                'notice':   'Neutral NPC, do not shoot him'
+                'notice': 'Neutral NPC, do not shoot him'
               }
             ]
           },
           {
-            'range':   10,
+            'range': 10,
             'enemies': [
               {
                 'quantity': 4,
-                'names':    [
+                'names': [
                   'Mercenary Elite Fighter'
                 ]
               },
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Mercenary Wingman'
                 ]
               },
               {
                 'quantity': 6,
-                'names':    [
-                  'The Pator Six Cruisers'
+                'names': [
+                  'The Pator Six'
                 ]
               }
             ]
           },
           {
-            'range':   10,
+            'range': 10,
             'enemies': [
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Mercenary Overlord'
                 ]
               }
             ]
           },
           {
-            'range':   20,
+            'range': 20,
             'enemies': [
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Mercenary Overlord'
                 ]
               }
             ]
           },
           {
-            'range':   30,
+            'range': 30,
             'enemies': [
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Mercenary Overlord'
                 ]
               }
             ]
           },
           {
-            'range':   10,
+            'range': 10,
             'enemies': [
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Mercenary Overlord'
                 ]
               }
             ]
           },
           {
-            'range':   10,
+            'range': 10,
             'enemies': [
               {
                 'quantity': 1,
-                'names':    [
+                'names': [
                   'Mercenary Overlord'
                 ]
               }
             ]
           },
           {
-            'range':   10,
+            'range': 10,
             'enemies': [
               {
                 'quantity': 2,
-                'names':    [
+                'names': [
                   'Mercenary Overlord'
                 ]
               }
@@ -469,7 +469,7 @@ export const data = {
           }
         ]
       ],
-      'tips':        [
+      'tips': [
         'When you aprroach Audalle Roire, waves will spawn really fast',
         'You\'ll be webbed and scrammed under heavy DPS',
         'Either bastion up or use alt in shuttle/noob ship to trigger waves while damage dealers hold range',
@@ -477,75 +477,75 @@ export const data = {
         'Take care of positioning so you don\'t end up in wrong spot at wrong time',
         '800 dps tank was enough for me, but keep in mind it will take some time for your drones to kill of frigates'
       ],
-      'objective':   'Kill the spawns, dock up and talk to agent.'
+      'objective': 'Kill the spawns, dock up and talk to agent.'
     },
     {
-      'name':        'The High or Low Road',
-      'agent':       'Eron Viette',
-      'source':      'Stetille II - Impetus Publisher',
-      'type':        'Epic arc choice',
-      'start':       'Stetille',
-      'destination': 'Same station',
-      'description': [
+      'name': 'The High or Low Road',
+      'agent': 'Eron Viette',
+      'source': 'Stetille II - Impetus Publisher',
+      'type': 'Epic arc choice',
+      'start': 'Stetille',
+      'dest': 'Same station',
+      'desc': [
         'Choose your side',
         'One side leads to lowsec and other stays in highsec',
         'Choose Into The Black as your next mission to stay in highsec'
       ],
-      'tips':        [
+      'tips': [
         'Into The Black should be the next mission choice'
       ],
-      'objective':   'Just confirm your choice.'
+      'objective': 'Just confirm your choice.'
     },
     {
-      'name':        'Into The Black',
-      'agent':       'Gian Parele',
-      'source':      'Tolle - Impetus Tolle Studio',
-      'type':        'Travel',
-      'start':       'Tolle',
-      'destination': 'Noghere , 8 jumps away',
-      'description': [
+      'name': 'Into The Black',
+      'agent': 'Gian Parele',
+      'source': 'Tolle - Impetus Tolle Studio',
+      'type': 'Travel',
+      'start': 'Tolle',
+      'dest': 'Noghere , 8 jumps away',
+      'desc': [
         'Report to Mourmarie Mone in Noghere system'
       ],
-      'tips':        [
+      'tips': [
         'You can start conversation with Gian Parele from anywhere and accept mission'
       ],
-      'objective':   'Automatically once you initiate conversation with next agent.'
+      'objective': 'Automatically once you initiate conversation with next agent.'
     },
     {
-      'name':        'Poor Man\'s Shakedown',
-      'agent':       'Mourmarie Mone',
-      'source':      'Noghere - Unmarked Operation Beacon',
-      'type':        'Combat',
-      'start':       'Noghere',
-      'destination': 'Charmerout system, 2 jumps away',
-      'description': [
+      'name': 'Poor Man\'s Shakedown',
+      'agent': 'Mourmarie Mone',
+      'source': 'Noghere - Unmarked Operation Beacon',
+      'type': 'Combat',
+      'start': 'Noghere',
+      'dest': 'Charmerout system, 2 jumps away',
+      'desc': [
         'Fight Mercenaries',
         'You need to kill Asteroid Micro-Colony Minors to unlock gate in initial pocket',
         'Furthest one from gate drops the key',
         'Key is consumed'
       ],
-      'enemy':       'Mercenaries',
-      'pockets':     [
+      'enemy': 'Mercenaries',
+      'pockets': [
         [
           {
-            'range':   'different ranges',
+            'range': 'different ranges',
             'enemies': [
               {
                 'quantity': 4,
-                'names':    [
+                'names': [
                   'Asteroid Micro-Colony Minor'
                 ],
-                'notice':   'Triggers reinforcement spawn'
+                'notice': 'Triggers reinforcement spawn'
               }
             ]
           },
           {
-            'range':   10,
-            'note':    'reinforcement spawn',
+            'range': 10,
+            'note': 'reinforcement spawn',
             'enemies': [
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Independent Green-crewed Bellicose',
                   'Independent Green-crewed Scythe',
                   'Independent Green-crewed Stabber',
@@ -554,7 +554,7 @@ export const data = {
               },
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Independent Green-crewed Typhoon',
                   'Independent Green-crewed Tempest',
                   'Independent Green-crewed Maelstrom'
@@ -565,30 +565,30 @@ export const data = {
         ],
         [
           {
-            'range':   'different ranges',
+            'range': 'different ranges',
             'enemies': [
               {
                 'quantity': 4,
-                'names':    [
+                'names': [
                   'Asteroid Micro-Colony Minor'
                 ],
-                'notice':   'Each triggers reinforcement spawn I'
+                'notice': 'Each triggers reinforcement spawn I'
               }
             ]
           },
           {
-            'range':   15,
+            'range': 15,
             'enemies': [
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Independent Rupture',
                   'Independent Stabber'
                 ]
               },
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Independent Green-crewed Typhoon',
                   'Independent Green-crewed Tempest',
                   'Independent Green-crewed Maelstrom'
@@ -597,47 +597,47 @@ export const data = {
             ]
           },
           {
-            'range':   15,
-            'note':    'objective spawn',
+            'range': 15,
+            'note': 'objective spawn',
             'enemies': [
               {
                 'quantity': 1,
-                'names':    [
+                'names': [
                   'The Elder'
                 ],
-                'notice':   'Spawns once the furthest Micro-Colony is destroyed, mission objective'
+                'notice': 'Spawns once the furthest Micro-Colony is destroyed, mission objective'
               }
             ]
           }
         ]
       ],
-      'tips':        [
+      'tips': [
         'You can blitz the mission by shooting just the trigger Micro-Colonies'
       ],
-      'objective':   'Kill The Elder and fly back to your agent.'
+      'objective': 'Kill The Elder and fly back to your agent.'
     },
     {
-      'name':        'Underground Circus',
-      'agent':       'Mourmarie Mone',
-      'source':      'Noghere - Unmarked Operation Beacon',
-      'type':        'Combat',
-      'start':       'Noghere',
-      'destination': 'Caslemon system, 1 jump away',
-      'description': [
+      'name': 'Underground Circus',
+      'agent': 'Mourmarie Mone',
+      'source': 'Noghere - Unmarked Operation Beacon',
+      'type': 'Combat',
+      'start': 'Noghere',
+      'dest': 'Caslemon system, 1 jump away',
+      'desc': [
         'Get the ringmaster'
       ],
-      'enemy':       [
+      'enemy': [
         'Serpentis',
         'Angel Cartel'
       ],
-      'pockets':     [
+      'pockets': [
         [
           {
-            'range':   0,
+            'range': 0,
             'enemies': [
               {
                 'quantity': 1,
-                'names':    [
+                'names': [
                   'Acceleration gate'
                 ]
               }
@@ -646,32 +646,32 @@ export const data = {
         ],
         [
           {
-            'range':   25,
+            'range': 25,
             'enemies': [
               {
                 'quantity': 4,
-                'names':    [
+                'names': [
                   'Sinful Saints',
                   'Gistum Centurion'
                 ]
               },
               {
                 'quantity': 4,
-                'names':    [
+                'names': [
                   'Consumption Junkies',
                   'Corelatis Wing Leader'
                 ]
               },
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Sinful Saints',
                   'Gist Seraphim'
                 ]
               },
               {
                 'quantity': 4,
-                'names':    [
+                'names': [
                   'Consumption Junkies',
                   'Core High Admiral'
                 ]
@@ -679,18 +679,18 @@ export const data = {
             ]
           },
           {
-            'range':   45,
+            'range': 45,
             'enemies': [
               {
                 'quantity': 4,
-                'names':    [
+                'names': [
                   'Lustadores',
                   'Corelum Guardian Chief Safeguard'
                 ]
               },
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Lustadores',
                   'Corelatis Captain Sentry'
                 ]
@@ -700,46 +700,46 @@ export const data = {
         ],
         [
           {
-            'range':   35,
+            'range': 35,
             'enemies': [
               {
                 'quantity': 2,
-                'names':    [
+                'names': [
                   'Lustadores',
                   'Gistum Liquidator'
                 ]
               },
               {
                 'quantity': 2,
-                'names':    [
+                'names': [
                   'Lustadores',
                   'Corelum Guardian Chief Safeguard'
                 ]
               },
               {
                 'quantity': 2,
-                'names':    [
+                'names': [
                   'Consumption Junkies',
                   'Corelatis High Captain'
                 ]
               },
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Consumption Junkies',
                   'Corelatis Platoon Leader'
                 ]
               },
               {
                 'quantity': 2,
-                'names':    [
+                'names': [
                   'Sinful Saints',
                   'Gist Saint'
                 ]
               },
               {
                 'quantity': 2,
-                'names':    [
+                'names': [
                   'Lustadores',
                   'Core Vice Admiral'
                 ]
@@ -747,69 +747,69 @@ export const data = {
             ]
           },
           {
-            'range':   70,
+            'range': 70,
             'enemies': [
               {
                 'quantity': 1,
-                'names':    [
+                'names': [
                   'Serpentis Cruiser'
                 ],
-                'notice':   'The Ringmaster, spawns after destroying Ringmaster\'s Pleasure Hub'
+                'notice': 'The Ringmaster, spawns after destroying Ringmaster\'s Pleasure Hub'
               }
             ]
           }
         ]
       ],
-      'tips':        [
-        'Don\'t forget to loot The Ringmaster (1.0 m3)'
+      'tips': [
+        'Don\'t forget to loot The Ringmaster (1.0 m³)'
       ],
-      'objective':   'Kill everything, retrieve the item, fly back to station.'
+      'objective': 'Kill everything, retrieve the item, fly back to station.'
     },
     {
-      'name':        'Intaki Chase',
-      'agent':       'Mourmarie Mone',
-      'source':      'Noghere - Unmarked Operation Beacon',
-      'type':        'Combat',
-      'start':       'Noghere',
-      'destination': 'Pemene system, 3 jumps away',
-      'description': [
+      'name': 'Intaki Chase',
+      'agent': 'Mourmarie Mone',
+      'source': 'Noghere - Unmarked Operation Beacon',
+      'type': 'Combat',
+      'start': 'Noghere',
+      'dest': 'Pemene system, 3 jumps away',
+      'desc': [
         'Battleships are using MWD and will close in fast and deal heavy DPS'
       ],
-      'enemy':       'Mercenaries',
-      'pockets':     [
+      'enemy': 'Mercenaries',
+      'pockets': [
         [
           {
-            'range':   60,
+            'range': 60,
             'enemies': [
               {
                 'quantity': 1,
-                'names':    [
+                'names': [
                   'Intaki Settlement Control Tower'
                 ],
-                'notice':   'Trigger wave I'
+                'notice': 'Trigger wave I'
               }
             ]
           },
           {
-            'range':   70,
+            'range': 70,
             'enemies': [
               {
                 'quantity': 1,
-                'names':    [
+                'names': [
                   'Independent Veteran Dominix'
                 ],
-                'notice':   'Trigger wave II'
+                'notice': 'Trigger wave II'
               },
               {
                 'quantity': 2,
-                'names':    [
+                'names': [
                   'Independent Megathron',
                   'Independent Dominix'
                 ]
               },
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Pator Six Delegate',
                   'Independent Green-Crewed Tempest',
                   'Independent Green-Crewed Typhoon',
@@ -818,21 +818,21 @@ export const data = {
               },
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Independent Veteran Celestis',
                   'Independent Veteran Exequror'
                 ]
               },
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Independent Thorax',
                   'Independent Exequror'
                 ]
               },
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Independent Veteran Incursus',
                   'Independent Veteran Maulus'
                 ]
@@ -840,11 +840,11 @@ export const data = {
             ]
           },
           {
-            'range':   65,
+            'range': 65,
             'enemies': [
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Independent Veteran Megathron',
                   'Independent Veteran Hyperion'
                 ]
@@ -852,11 +852,11 @@ export const data = {
             ]
           },
           {
-            'range':   60,
+            'range': 60,
             'enemies': [
               {
                 'quantity': 4,
-                'names':    [
+                'names': [
                   'Independent Veteran Dominix',
                   'Independent Veteran Megathron'
                 ]
@@ -865,62 +865,62 @@ export const data = {
           }
         ]
       ],
-      'tips':        [
+      'tips': [
         'Watch out on incoming DPS and be aligned if you don\'t think you can tank about 1000-1200 DPS'
       ],
-      'objective':   'Kill everything, fly back to station.'
+      'objective': 'Kill everything, fly back to station.'
     },
     {
-      'name':        'Rat in a Corner',
-      'agent':       'Mourmarie Mone',
-      'source':      'Noghere - Unmarked Operation Beacon',
-      'type':        'Travel',
-      'start':       'Noghere',
-      'destination': 'Mesybier X - TransStellar Shipping Storage, 2 jumps away',
-      'description': [
+      'name': 'Rat in a Corner',
+      'agent': 'Mourmarie Mone',
+      'source': 'Noghere - Unmarked Operation Beacon',
+      'type': 'Travel',
+      'start': 'Noghere',
+      'dest': 'Mesybier X - TransStellar Shipping Storage, 2 jumps away',
+      'desc': [
         'Report to Ascain Adeset in Mesybier'
       ],
-      'tips':        [
+      'tips': [
         'You can start conversation with Mourmarie Mone from anywhere and accept mission'
       ],
-      'objective':   'Automatically once you initiate conversation with next agent.'
+      'objective': 'Automatically once you initiate conversation with next agent.'
     },
     {
-      'name':        'Places to Hide',
-      'agent':       'Ascain Adeset',
-      'source':      'Mesybier X - TransStellar Shipping Storage',
-      'type':        'Epic arc choice',
-      'start':       'Mesybier',
-      'destination': 'Same station',
-      'description': [
+      'name': 'Places to Hide',
+      'agent': 'Ascain Adeset',
+      'source': 'Mesybier X - TransStellar Shipping Storage',
+      'type': 'Epic arc choice',
+      'start': 'Mesybier',
+      'dest': 'Same station',
+      'desc': [
         'Choose your next mission',
         'Best option would be to take Little Fingers since it is always in high-sec location'
       ],
-      'tips':        [
+      'tips': [
         'Little Fingers should be the next mission choice'
       ],
-      'objective':   'Just confirm your choice.'
+      'objective': 'Just confirm your choice.'
     },
     {
-      'name':        'Little Fingers',
-      'agent':       'Ascain Adeset',
-      'source':      'Mesybier X - TransStellar Shipping Storage',
-      'type':        'Combat',
-      'start':       'Mesybier',
-      'destination': 'Same system',
-      'description': [
+      'name': 'Little Fingers',
+      'agent': 'Ascain Adeset',
+      'source': 'Mesybier X - TransStellar Shipping Storage',
+      'type': 'Combat',
+      'start': 'Mesybier',
+      'dest': 'Same system',
+      'desc': [
         'Last ship is always trigger',
         'Don\'t forget carry on token from fuel depot which can be used to blitz next mission'
       ],
-      'enemy':       'Mercenaries',
-      'pockets':     [
+      'enemy': 'Mercenaries',
+      'pockets': [
         [
           {
-            'range':   15,
+            'range': 15,
             'enemies': [
               {
                 'quantity': 5,
-                'names':    [
+                'names': [
                   'Independent Hyperion',
                   'Independent Dominix'
                 ]
@@ -928,18 +928,18 @@ export const data = {
             ]
           },
           {
-            'range':   20,
+            'range': 20,
             'enemies': [
               {
                 'quantity': 4,
-                'names':    [
+                'names': [
                   'Independent Veteran Imicus',
                   'Independent Veteran Incursus'
                 ]
               },
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Independent Veteran Hyperion',
                   'Independent Veteran Megathron'
                 ]
@@ -947,11 +947,11 @@ export const data = {
             ]
           },
           {
-            'range':   20,
+            'range': 20,
             'enemies': [
               {
                 'quantity': 6,
-                'names':    [
+                'names': [
                   'Independent Hyperion',
                   'Independent Dominix',
                   'Independent Megathron'
@@ -960,65 +960,65 @@ export const data = {
             ]
           },
           {
-            'range':   60,
+            'range': 60,
             'enemies': [
               {
                 'quantity': 4,
-                'names':    [
+                'names': [
                   'Independent Veteran Thorax',
                   'Independent Veteran Vexor',
-                  'Independent Veteran Exequor'
+                  'Independent Veteran Exequror'
                 ]
               }
             ]
           }
         ]
       ],
-      'tips':        [
+      'tips': [
         'Kill the fuel depots to get Carry on Token which can be used to blitz next mission'
       ],
-      'objective':   'Kill everything, fly back to station.'
+      'objective': 'Kill everything, fly back to station.'
     },
     {
-      'name':        'Carry On',
-      'agent':       'Ascain Adeset',
-      'source':      'Mesybier X - TransStellar Shipping Storage',
-      'type':        'Combat',
-      'start':       'Mesybier',
-      'destination': 'Osmeden, 2 jumps away',
-      'description': [
+      'name': 'Carry On',
+      'agent': 'Ascain Adeset',
+      'source': 'Mesybier X - TransStellar Shipping Storage',
+      'type': 'Combat',
+      'start': 'Mesybier',
+      'dest': 'Osmeden, 2 jumps away',
+      'desc': [
         'There are 2 gates',
         'The Hub gate is locked and leads to last pocket',
         'It can be unlocked with Carry on Token from last mission',
         'Otherwise you have to go through Alley to get to the Hub'
       ],
-      'enemy':       'Mercenaries',
-      'pockets':     [
+      'enemy': 'Mercenaries',
+      'pockets': [
         [
           {
-            'range':   15,
+            'range': 15,
             'enemies': [
               {
                 'quantity': 1,
-                'names':    [
+                'names': [
                   'Acceleration Gate - The Hub'
                 ],
-                'notice':   'Locked, required Carry on token'
+                'notice': 'Locked, required Carry on token'
               },
               {
                 'quantity': 1,
-                'names':    [
-                  'Acceleration Gate - The Alley '
+                'names': [
+                  'Acceleration Gate - The Alley'
                 ]
               }
             ]
           },
           {
-            'range':   50,
+            'range': 50,
             'enemies': [
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Independent Veteran Thorax',
                   'Independent Veteran Vexor',
                   'Independent Veteran Celestis'
@@ -1026,7 +1026,7 @@ export const data = {
               },
               {
                 'quantity': 8,
-                'names':    [
+                'names': [
                   'Independent Hyperion',
                   'Independent Dominix',
                   'Independent Megathron'
@@ -1034,21 +1034,21 @@ export const data = {
               },
               {
                 'quantity': 6,
-                'names':    [
+                'names': [
                   'Gallente Cruise Missile Battery'
                 ],
-                'notice':   'Does thermal damage'
+                'notice': 'Does thermal damage'
               }
             ]
           }
         ],
         [
           {
-            'range':   50,
+            'range': 50,
             'enemies': [
               {
                 'quantity': 8,
-                'names':    [
+                'names': [
                   'Independent Thorax',
                   'Independent Vexor',
                   'Independent Celestis',
@@ -1057,7 +1057,7 @@ export const data = {
               },
               {
                 'quantity': 6,
-                'names':    [
+                'names': [
                   'Independent Hyperion',
                   'Independent Dominix',
                   'Independent Megathron'
@@ -1065,28 +1065,28 @@ export const data = {
               },
               {
                 'quantity': 2,
-                'names':    [
+                'names': [
                   'Gallente Cruise Missile Battery'
                 ],
-                'notice':   'Does thermal damage'
+                'notice': 'Does thermal damage'
               },
               {
                 'quantity': 2,
-                'names':    [
+                'names': [
                   'Gallente Heavy Missile Battery'
                 ],
-                'notice':   'Does kinetic damage'
+                'notice': 'Does kinetic damage'
               }
             ]
           }
         ],
         [
           {
-            'range':   50,
+            'range': 50,
             'enemies': [
               {
                 'quantity': 4,
-                'names':    [
+                'names': [
                   'Independent Veteran Tristan',
                   'Independent Veteran Maulus',
                   'Independent Veteran Atron'
@@ -1094,7 +1094,7 @@ export const data = {
               },
               {
                 'quantity': 2,
-                'names':    [
+                'names': [
                   'Independent Veteran Thorax',
                   'Independent Veteran Vexor',
                   'Independent Veteran Celestis'
@@ -1102,7 +1102,7 @@ export const data = {
               },
               {
                 'quantity': 8,
-                'names':    [
+                'names': [
                   'Independent Hyperion',
                   'Independent Dominix',
                   'Independent Megathron'
@@ -1110,14 +1110,14 @@ export const data = {
               },
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Carry On Freighter',
                   'Freighter'
                 ]
               },
               {
                 'quantity': 2,
-                'names':    [
+                'names': [
                   'Carry On Courier',
                   'Carry On Industrial',
                   'Industrial'
@@ -1125,44 +1125,44 @@ export const data = {
               },
               {
                 'quantity': 1,
-                'names':    [
+                'names': [
                   'Carry on Hub'
                 ],
-                'notice':   'Mission objective structure'
+                'notice': 'Mission objective structure'
               }
             ]
           }
         ]
       ],
-      'tips':        [
+      'tips': [
         'If you want to blitz this mission, use carry on token from last site and just use The Hub acceleration gate on start',
         'Approach the Carry on Hub at 10 kilometers are rest will warp off',
         'You might wanna snipe frigates from range so they don\'t web you on your approach'
       ],
-      'objective':   'Approach 10 kilometers within Carry on Hub to get mission completed.'
+      'objective': 'Approach 10 kilometers within Carry on Hub to get mission completed.'
     },
     {
-      'name':        'Studio One',
-      'agent':       'Ascain Adeset',
-      'source':      'Mesybier X - TransStellar Shipping Storage',
-      'type':        'Combat',
-      'start':       'Mesybier',
-      'destination': 'Osmeden, 2 jumps away',
-      'description': [
+      'name': 'Studio One',
+      'agent': 'Ascain Adeset',
+      'source': 'Mesybier X - TransStellar Shipping Storage',
+      'type': 'Combat',
+      'start': 'Mesybier',
+      'dest': 'Osmeden, 2 jumps away',
+      'desc': [
         'Battleships use MWDs and deal high DPS from close up',
         'Be aligned or be ready to overheat tank for a bit while you clear some of grid',
         'This is most DPS I\'ve encountered in L4 missions if you let them close',
         'The Pator Six ships deal some explosive damage, but they are cruisers so not that much damage'
       ],
-      'enemy':       'Mercenaries',
-      'pockets':     [
+      'enemy': 'Mercenaries',
+      'pockets': [
         [
           {
-            'range':   60,
+            'range': 60,
             'enemies': [
               {
                 'quantity': 2,
-                'names':    [
+                'names': [
                   'Independent Veteran Tristan',
                   'Independent Veteran Atron',
                   'Independent Veteran Maulus',
@@ -1171,7 +1171,7 @@ export const data = {
               },
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Independent Veteran Thorax',
                   'Independent Veteran Vexor',
                   'Independent Veteran Celestis'
@@ -1179,7 +1179,7 @@ export const data = {
               },
               {
                 'quantity': 2,
-                'names':    [
+                'names': [
                   'Independent Veteran Hyperion',
                   'Independent Veteran Dominix',
                   'Independent Veteran Megathron'
@@ -1188,11 +1188,11 @@ export const data = {
             ]
           },
           {
-            'range':   80,
+            'range': 80,
             'enemies': [
               {
                 'quantity': 2,
-                'names':    [
+                'names': [
                   'Independent Veteran Tristan',
                   'Independent Veteran Atron',
                   'Independent Veteran Maulus',
@@ -1201,7 +1201,7 @@ export const data = {
               },
               {
                 'quantity': 2,
-                'names':    [
+                'names': [
                   'Independent Veteran Thorax',
                   'Independent Veteran Vexor',
                   'Independent Veteran Celestis'
@@ -1209,7 +1209,7 @@ export const data = {
               },
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Independent Veteran Hyperion',
                   'Independent Veteran Dominix',
                   'Independent Veteran Megathron'
@@ -1220,11 +1220,11 @@ export const data = {
         ],
         [
           {
-            'range':   60,
+            'range': 60,
             'enemies': [
               {
                 'quantity': 3,
-                'names':    [
+                'names': [
                   'Independent Veteran Thorax',
                   'Independent Veteran Vexor',
                   'Independent Veteran Celestis'
@@ -1232,7 +1232,7 @@ export const data = {
               },
               {
                 'quantity': 2,
-                'names':    [
+                'names': [
                   'Independent Veteran Hyperion',
                   'Independent Veteran Dominix',
                   'Independent Veteran Megathron'
@@ -1240,7 +1240,7 @@ export const data = {
               },
               {
                 'quantity': 10,
-                'names':    [
+                'names': [
                   'Independent Hyperion',
                   'Independent Dominix',
                   'Independent Megathron'
@@ -1248,20 +1248,20 @@ export const data = {
               },
               {
                 'quantity': 1,
-                'names':    [
+                'names': [
                   'Studio 1'
                 ],
-                'notice':   'Mission objective structure, trigger wave I'
+                'notice': 'Mission objective structure, trigger wave I'
               }
             ]
           },
           {
-            'range':   60,
+            'range': 60,
             'enemies': [
               {
                 'quantity': 6,
-                'names':    [
-                  'Pator Six Elite Frigates',
+                'names': [
+                  'Pator Six Elite Frigate',
                   'Independent Veteran Rifter',
                   'Independent Veteran Slasher',
                   'Independent Veteran Probe',
@@ -1270,7 +1270,7 @@ export const data = {
               },
               {
                 'quantity': 6,
-                'names':    [
+                'names': [
                   'Independent Veteran Hyperion',
                   'Independent Veteran Dominix',
                   'Independent Veteran Megathron'
@@ -1280,37 +1280,37 @@ export const data = {
           }
         ]
       ],
-      'tips':        [
+      'tips': [
         'Keep an eye on that incoming DPS, be careful and be aligned',
         'I use 1000 dps tank + OGB on top of that for this mission',
         'Don\'t be afraid to overheat or to warp out if needed'
       ],
-      'objective':   'Kill Studio I and either finish off the enemy or warp out.'
+      'objective': 'Kill Studio I and either finish off the enemy or warp out.'
     },
     {
-      'name':        'Showtime',
-      'agent':       'Ascain Adeset',
-      'source':      'Mesybier X - TransStellar Shipping Storage',
-      'type':        'Combat and retrieve item',
-      'start':       'Mesybier',
-      'destination': 'Adacyne system, 3 jumps away',
-      'description': [
+      'name': 'Showtime',
+      'agent': 'Ascain Adeset',
+      'source': 'Mesybier X - TransStellar Shipping Storage',
+      'type': 'Combat and retrieve item',
+      'start': 'Mesybier',
+      'dest': 'Adacyne system, 3 jumps away',
+      'desc': [
         'Battleships deal high DPS',
         'Be aligned or be ready to overheat tank for a bit while you clear some of grid',
         'Like last mission, this is most DPS I\'ve encountered in L4 missions, even on range'
       ],
-      'enemy':       [
+      'enemy': [
         'Mercenaries',
         'Minmatar Republic'
       ],
-      'pockets':     [
+      'pockets': [
         [
           {
-            'range':   60,
+            'range': 60,
             'enemies': [
               {
                 'quantity': 5,
-                'names':    [
+                'names': [
                   'Independent Veteran Imicus',
                   'Independent Veteran Maulus',
                   'Independent Veteran Tristan',
@@ -1319,32 +1319,32 @@ export const data = {
               },
               {
                 'quantity': 3,
-                'names':    [
-                  'Pator Six Elite Cruisers',
+                'names': [
+                  'Pator Six Elite Cruiser',
                   'Independent Veteran Stabber',
                   'Independent Veteran Bellicose',
                   'Independent Veteran Scythe'
                 ],
-                'notice':   'Trigger wave I'
+                'notice': 'Trigger wave I'
               },
               {
                 'quantity': 5,
-                'names':    [
-                  'Pator Six Elite Battleships',
+                'names': [
+                  'Pator Six Elite Battleship',
                   'Independent Veteran Tempest',
                   'Independent Veteran Maelstrom',
                   'Independent Veteran Typhoon'
                 ],
-                'notice':   'Trigger wave II'
+                'notice': 'Trigger wave II'
               }
             ]
           },
           {
-            'range':   60,
+            'range': 60,
             'enemies': [
               {
                 'quantity': 5,
-                'names':    [
+                'names': [
                   'Independent Thorax',
                   'Independent Vexor',
                   'Independent Celestis',
@@ -1354,11 +1354,11 @@ export const data = {
             ]
           },
           {
-            'range':   60,
+            'range': 60,
             'enemies': [
               {
                 'quantity': 6,
-                'names':    [
+                'names': [
                   'Independent Hyperion',
                   'Independent Dominix',
                   'Independent Megathron'
@@ -1366,58 +1366,58 @@ export const data = {
               },
               {
                 'quantity': 1,
-                'names':    [
-                  'Minmatar Battleship'
+                'names': [
+                  'Rosulf Fririk'
                 ],
-                'notice':   'Rosulf Fririk, mission objective'
+                'notice': 'Rosulf Fririk, mission objective'
               }
             ]
           }
         ]
       ],
-      'tips':        [
-        'Don\'t forget to loot Ralie Ardanne (1.0 m3)',
+      'tips': [
+        'Don\'t forget to loot Ralie Ardanne (1.0 m³)',
         'Pator Six Elite Battleships deal lots of Alpha damage and lots of DPS',
         'Don\'t be afraid to warp out if needed',
         'Usually I try to kill all frigates first, then I kill 2-4 battleships to lower DPS, when cruisers start coming under 40km, I switch to them and kill them and their spawn. Then I focus on finishing battleships and their spawn. Ideally you will have enough DPS manage to kill at least 3-4 battleships before cruisers come close since you really don\'t need energy neutralizer pressure in this mission'
       ],
-      'objective':   'Kill the mission objective, loot him and fly back to your agent.'
+      'objective': 'Kill the mission objective, loot him and fly back to your agent.'
     },
     {
-      'name':        'Where\'s the Line',
-      'agent':       'Ascain Adeset',
-      'source':      'Mesybier X - TransStellar Shipping Storage',
-      'type':        'Epic arc choice',
-      'start':       'Mesybier',
-      'destination': 'Same station',
-      'description': [
+      'name': 'Where\'s the Line',
+      'agent': 'Ascain Adeset',
+      'source': 'Mesybier X - TransStellar Shipping Storage',
+      'type': 'Epic arc choice',
+      'start': 'Mesybier',
+      'dest': 'Same station',
+      'desc': [
         'Choose your side',
         'One side gives Syndicate Cloaking Device and Syndicate faction standings',
         'Other side gives Black Eagle Drone Link Augmentor and Gallente faction standing'
       ],
-      'tips':        [
+      'tips': [
         'Safe Return should be the next mission choice for Gallente standings'
       ],
-      'objective':   'Just confirm your choice.'
+      'objective': 'Just confirm your choice.'
     },
     {
-      'name':        'Safe Return',
-      'agent':       'Ascain Adeset',
-      'source':      'Mesybier X - TransStellar Shipping Storage',
-      'type':        'Deliver item and optional combat',
-      'start':       'Mesybier',
-      'destination': 'Enedore system, 9 jumps away',
-      'description': [
+      'name': 'Safe Return',
+      'agent': 'Ascain Adeset',
+      'source': 'Mesybier X - TransStellar Shipping Storage',
+      'type': 'Deliver item and optional combat',
+      'start': 'Mesybier',
+      'dest': 'Enedore system, 9 jumps away',
+      'desc': [
         'Fly couple of jumps out and drop the kid into transport ship',
         'Once you drop kid there will be a spawn of hostile NPC\'s',
         'Suggested to use shuttle and just drop the kid and warp off once the wave spawns',
         'Not worth the jumps to take battleship all the way there since you have to return to your agent to pick up reward'
       ],
-      'enemy':       'Mercenaries',
-      'tips':        [
+      'enemy': 'Mercenaries',
+      'tips': [
         'Just blitz it. From what I remember you don\'t make much by bounties or loot'
       ],
-      'objective':   'Drop the item and warp off.'
+      'objective': 'Drop the item and warp off.'
     }
   ]
 };

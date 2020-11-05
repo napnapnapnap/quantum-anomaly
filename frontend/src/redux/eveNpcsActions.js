@@ -4,7 +4,7 @@ export function fetchNpcs(indices) {
   return (dispatch) => {
     return axios.get(`/api/npcs/${indices}`)
       .then(response => dispatch({
-        type:    'FETCH_NPCS',
+        type: 'FETCH_NPCS',
         payload: response.data
       }))
       .catch(err => console.log(err));

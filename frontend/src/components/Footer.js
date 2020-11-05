@@ -1,11 +1,7 @@
-import React, {Component} from 'react';
+import React from 'react';
 
-export default class Footer extends Component {
-  render() {
-    return (
-      <React.Fragment>
-        Copyright © {new Date().getFullYear()} Quantum Anomaly
-      </React.Fragment>
-    );
-  }
-}
+const Footer = props => (
+  <React.Fragment>Copyright © {new Date().getFullYear()} Quantum Anomaly</React.Fragment>
+);
+
+export default Footer;

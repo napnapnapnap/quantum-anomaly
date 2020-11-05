@@ -10,15 +10,15 @@ export default function reducer(state, action) {
       return {
         ...state,
         currentGroup: {...action.payload},
-        ship:         null
+        ship: null
       };
     }
     case 'FETCH_SHIP': {
       return {
         ...state,
-        ship:         action.payload,
+        ship: action.payload,
         currentGroup: {
-          id:   action.payload.group_id,
+          id: action.payload.group_id,
           name: action.payload.group_name
         }
       };
@@ -38,8 +38,8 @@ export default function reducer(state, action) {
     case 'FETCH_DOGMA': {
       return {
         ...state,
-        dogmaAttributes:  action.payload.dogmaAttributes,
-        dogmaEffects:     action.payload.dogmaEffects,
+        dogmaAttributes: action.payload.dogmaAttributes,
+        dogmaEffects: action.payload.dogmaEffects,
         dogmaReverseInfo: action.payload.dogmaReverseInfo
       };
     }

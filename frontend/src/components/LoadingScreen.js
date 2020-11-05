@@ -1,13 +1,12 @@
-import React, {Component} from 'react';
+import React from 'react';
+import './LoadingScreen.scss';
 
-export default class LoadingScreen extends Component {
-  render() {
-    return (
-      <div className="loading-screen">
-        <p className="loading-screen__message">
-          Loading...
-        </p>
-      </div>
-    );
-  }
-}
+const LoadingScreen = () => (
+  <div className='loading-screen'>
+    <p className='loading-screen__message'>
+      Loading...
+    </p>
+  </div>
+);
+
+export default LoadingScreen;

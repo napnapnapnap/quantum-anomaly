@@ -1,4 +1,4 @@
-export default function reducer(state = {}, action) {
+export default function reducer(state = null, action) {
   switch (action.type) {
     case 'FETCH_NPCS': {
       return {

@@ -5,73 +5,47 @@ import {connect} from 'react-redux';
 import * as authActions from './redux/authActions';
 import * as auth from './auth';
 
+import {updateCanonical} from './helpers';
+
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
-// import UnderConstruction from './components/UnderConstruction';
 import NotFound from './components/NotFound';
-
 import Home from './components/Home';
-import Admin from './components/Admin';
-import ShipSelector from './containers/eve-fitting-tool/Selection-Screen';
-import ShipView from './containers/eve-fitting-tool/Fitting-Screen';
+import Cookies from './components/Cookies';
 
-import EpicArcs from './containers/epic-arcs';
-import EpicArcsGeneral from './containers/epic-arcs/General';
-
-import Skills from './containers/legacy/Efs/Skills/';
-import Incursions from './containers/legacy/Incursions/';
-import Warframe from './containers/legacy/Warframe/';
-
-function updateCanonical() {
-  const link = !!document.querySelector('link[rel=\'canonical\']') ? document.querySelector('link[rel=\'canonical\']') : document.createElement('link');
-  link.setAttribute('rel', 'canonical');
-  link.setAttribute('href', window.location.protocol + '//' + window.location.host + window.location.pathname);
-  document.head.appendChild(link);
-}
+import EpicArcsOverview from './containers/epic-arcs/Overview';
+import EpicArc from './containers/epic-arcs/Arc';
 
 class App extends Component {
   componentDidMount() {
     if (auth.isLoggedIn()) this.props.getUserInfo();
-
     updateCanonical();
-    this.props.history.listen(() => updateCanonical());
+    this.props.history.listen(updateCanonical);
   }
 
   render() {
     return (
       <React.Fragment>
-        <header className="page-content-header">
+        <header className='page-content-header'>
           <Navigation/>
         </header>
-        <main className="page-content-main">
+        <main className='page-content-main'>
+          <Cookies/>
           <Switch>
             <Route exact path='/' component={Home}/>
-
-            <Route exact path='/admin' component={Admin}/>
-
-            <Route exact path='/eve-fitting-simulator' component={ShipSelector}/>
-            <Route exact path='/eve-fitting-simulator/:shipId' component={ShipView}/>
-            <Route path='/skills' component={Skills}/>
-
-            <Route exact path='/epic-arcs/:faction(amarr|caldari|gallente|minmatar)/:mission' component={EpicArcs}/>
-            <Route exact path='/epic-arcs/:faction(amarr|caldari|gallente|minmatar)' component={EpicArcs}/>
-            <Route exact path='/epic-arcs/general' component={EpicArcsGeneral}/>
-            <Route exact path='/epic-arcs' component={EpicArcs}/>
-
-            <Route path='/incursion-manager' component={Incursions}/>
-
-            <Route path='/warframe' component={Warframe}/>
-
-            <Route path="*" component={NotFound}/>
+            <Route exact path='/epic-arcs/:faction(amarr|caldari|gallente|minmatar)/:mission' component={EpicArc}/>
+            <Route exact path='/epic-arcs/:faction(amarr|caldari|gallente|minmatar)' component={EpicArc}/>
+            <Route exact path='/epic-arcs' render={props => <EpicArcsOverview {...props}/>}/>
+            <Route path='*' component={NotFound}/>
           </Switch>
         </main>
-        <footer className="page-content-footer">
+        <footer className='page-content-footer'>
           <Footer/>
         </footer>
       </React.Fragment>
     );
   }
-};
+}
 
 const mapStateToProps = state => state.auth,
   mapDispatchToProps = {...authActions};

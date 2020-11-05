@@ -15,8 +15,8 @@ function augmentInfoData(info) {
 
 export function getInfo() {
   return augmentInfoData({
-    amarr:    amarrData.info,
-    caldari:  caldariData.info,
+    amarr: amarrData.info,
+    caldari: caldariData.info,
     gallente: gallenteData.info,
     minmatar: minmatarData.info
   });

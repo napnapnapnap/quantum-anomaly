@@ -4,7 +4,7 @@ export function fetchShipGroups() {
   return (dispatch) => {
     return axios.post('/api/eve-fitting-simulator/groups')
       .then(response => dispatch({
-        type:    'FETCH_SHIP_GROUPS',
+        type: 'FETCH_SHIP_GROUPS',
         payload: response.data
       }))
       .catch(err => console.log(err));
@@ -15,7 +15,7 @@ export function fetchShipGroup(id) {
   return (dispatch) => {
     return axios.post('/api/eve-fitting-simulator/group', {id: id})
       .then(response => dispatch({
-        type:    'FETCH_CURRENT_SHIP_GROUP',
+        type: 'FETCH_CURRENT_SHIP_GROUP',
         payload: response.data
       }))
       .catch(err => console.log(err));

@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import './Time.scss';
 
 const getTimeClass = (time) => {
   if (time.days === 0 && time.hours === 0) {
@@ -9,14 +10,14 @@ const getTimeClass = (time) => {
 };
 
 const getTimeString = (time, showSeconds = false) => {
-  let days       = time.days,
-      hours      = time.hours,
-      minutes    = time.minutes,
-      seconds    = time.seconds,
-      timeString = '';
+  let days = time.days,
+    hours = time.hours,
+    minutes = time.minutes,
+    seconds = time.seconds,
+    timeString = '';
 
   if (time.days === 0 && time.hours === 0 && time.minutes < 5 && showSeconds) {
-    timeString += `${minutes } minutes ${seconds} seconds`;
+    timeString += `${minutes} minutes ${seconds} seconds`;
     timeString = timeString.replace('0 minutes ', '');
   } else {
     days += ' day';
@@ -36,7 +37,7 @@ const getTimeString = (time, showSeconds = false) => {
       timeString = 'less than a minute';
     }
     timeString = timeString.replace('hour 0 minute', 'hour');
-    timeString = timeString.replace('day 0 hour', 'day')
+    timeString = timeString.replace('day 0 hour', 'day');
   }
   return timeString;
 };
@@ -84,7 +85,7 @@ export default class Time extends Component {
         timeObject.future = false;
       }
       this.setState({time: timeObject});
-    }, 1000)
+    }, 1000);
   }
 
   render() {

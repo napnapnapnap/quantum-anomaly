@@ -1,7 +1,7 @@
 export const data = {
   loot: {
-    amarr:    {
-      reward:  {name: 'Imperial Navy Modified \'Noble\' Implant', quantity: 2, size: 2, value: 790080749.48},
+    amarr: {
+      reward: {name: 'Imperial Navy Modified \'Noble\' Implant', quantity: 2, size: 2, value: 790080749.48},
       notable: [
         {name: 'Armor Plates', quantity: 329, size: 3.29, value: 22818357.59},
         {name: 'Burned Logic Circuit', quantity: 456, size: 4.56, value: 26825563.44},
@@ -31,9 +31,9 @@ export const data = {
         {name: 'Scorched Telemetry Processor', quantity: 69, size: 0.69, value: 432756.27},
         {name: 'Tangled Power Conduit', quantity: 263, size: 2.63, value: 16329378.07},
         {name: 'Tripped Power Circuit', quantity: 467, size: 4.67, value: 2485822.32},
-        {name: 'Ward Console', quantity: 58, size: 0.58, value: 2283785.96},
+        {name: 'Ward Console', quantity: 58, size: 0.58, value: 2283785.96}
       ],
-      rest:    [
+      rest: [
         {name: '\'Accord\' Core Compensation', quantity: 1, size: 5, value: 8543.81},
         {name: '\'Arbalest\' Rapid Heavy Missile Launcher I', quantity: 1, size: 20, value: 85071.15},
         {name: '\'Arbalest\' Rocket Launcher I', quantity: 1, size: 5, value: 419788.60},
@@ -395,11 +395,11 @@ export const data = {
         {name: 'Xray L', quantity: 15, size: 15, value: 140288.55},
         {name: 'Xray M', quantity: 3, size: 3, value: 12181.38},
         {name: 'Xray S', quantity: 2, size: 2, value: 1606.18},
-        {name: 'XT-9000 Cruise Launcher', quantity: 1, size: 20, value: 5075.23},
+        {name: 'XT-9000 Cruise Launcher', quantity: 1, size: 20, value: 5075.23}
       ]
     },
-    caldari:  {
-      reward:  {name: 'Standup Hyasyoda Research Lab Blueprint', quantity: 2, size: 0.02, value: 400000000},
+    caldari: {
+      reward: {name: 'Standup Hyasyoda Research Lab Blueprint', quantity: 2, size: 0.02, value: 400000000},
       notable: [
         {name: 'Armor Plates', quantity: 21, size: 0.21, value: 1456490.91},
         {name: 'Broken Drone Transceiver', quantity: 27, size: 0.27, value: 988673.85},
@@ -420,7 +420,7 @@ export const data = {
         {name: 'Serpentis Platinum Tag', quantity: 1, size: 0.10, value: 150101.31},
         {name: 'Tripped Power Circuit', quantity: 63, size: 0.63, value: 335346.48},
         {name: 'Ward Console', quantity: 23, size: 0.23, value: 905639.26}],
-      rest:    [
+      rest: [
         {name: '\'Arbalest\' Rapid Heavy Missile Launcher I', quantity: 1, size: 20, value: 85071.15},
         {name: '100mm Crystalline Carbonide Restrained Plates', quantity: 1, size: 5, value: 7083.99},
         {name: '100mm Rolled Tungsten Compact Plates', quantity: 2, size: 10, value: 11144.84},
@@ -503,11 +503,11 @@ export const data = {
         {name: 'Uranium Charge M', quantity: 100, size: 1.25, value: 4555.00},
         {name: 'Wasp I', quantity: 2, size: 50, value: 98272.26},
         {name: 'X-Large C5-L Emergency Shield Overload I', quantity: 1, size: 50, value: 63630.29},
-        {name: 'X5 Enduring Stasis Webifier', quantity: 2, size: 10, value: 27695.66},
+        {name: 'X5 Enduring Stasis Webifier', quantity: 2, size: 10, value: 27695.66}
       ]
     },
     gallente: {
-      reward:  {name: 'Black Eagle Drone Link Augmentor', quantity: 2, size: 50, value: 581937095.70},
+      reward: {name: 'Black Eagle Drone Link Augmentor', quantity: 2, size: 50, value: 581937095.70},
       notable: [
         {name: 'Alloyed Tritanium Bar', quantity: 35, size: 0.35, value: 226522.45},
         {name: 'Armor Plates', quantity: 74, size: 0.74, value: 5132396.54},
@@ -534,7 +534,7 @@ export const data = {
         {name: 'Thruster Console', quantity: 51, size: 0.51, value: 708042.18},
         {name: 'Tripped Power Circuit', quantity: 222, size: 2.22, value: 1181697.12}
       ],
-      rest:    [
+      rest: [
         {name: '\'Arbalest\' Cruise Launcher I', quantity: 2, size: 40, value: 223795.26},
         {name: '\'Arbalest\' Rapid Heavy Missile Launcher I', quantity: 1, size: 20, value: 85071.15},
         {name: '\'Hypnos\' Signal Distortion Amplifier I', quantity: 2, size: 10, value: 46108.36},
@@ -845,7 +845,7 @@ export const data = {
         {name: 'Thruster Console', quantity: 58, size: 0.58, value: 805224.44},
         {name: 'Tripped Power Circuit', quantity: 189, size: 1.89, value: 1006039.44}
       ],
-      rest:    [
+      rest: [
         {name: '\'Arbalest\' Cruise Launcher I', quantity: 1, size: 20, value: 111897.63},
         {name: '\'Hypnos\' Signal Distortion Amplifier I', quantity: 1, size: 5, value: 23054.18},
         {name: '\'Limos\' Rapid Heavy Missile Launcher I', quantity: 1, size: 20, value: 3049.38},

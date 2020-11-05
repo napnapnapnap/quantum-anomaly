@@ -1,0 +1,81 @@
+.btn {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0.5em 0.75em;
+  min-width: 100px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s linear;
+  display: inline-block;
+  border-radius: 8px;
+  font-size: 0.8rem;
+
+  &--cta {
+  }
+
+  &--secondary {
+    color: white;
+    background-color: gray;
+    border: 2px solid gray;
+  }
+
+  &--cancel {
+  }
+
+  &--seperated {
+    margin-bottom: 1rem;
+  }
+
+  &--small {
+    padding: 0 0.3rem;
+    margin-left: 0.3rem;
+    min-width: inherit;
+  }
+
+  &--inline {
+    margin-right: 1rem;
+  }
+
+  &--center {
+    margin: 0 auto;
+    display: block;
+  }
+}
+
+.link {
+  border: none;
+  background: none;
+  outline: none;
+  text-decoration: none;
+
+  &:link {
+    color: #00c;
+  }
+
+  &:visited {
+    color: #00c;
+  }
+
+  &:hover {
+    color: #00c;
+    text-decoration: underline;
+  }
+
+  &:active {
+    color: #00c
+  }
+
+  &--active {
+    font-weight: bold;
+  }
+
+  &--secondary {
+    text-decoration: underline;
+    color: #999;
+
+    &:hover {
+      color: #444;
+      text-decoration: none;
+    }
+  }
+}

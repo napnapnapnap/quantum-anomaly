@@ -1,31 +1,11 @@
-@import "_styles/variables";
-@import "_styles/reset";
+@import 'styles/variables';
+@import 'styles/reset';
 
-@import "_styles/mixins/breakpoints";
-@import "_styles/mixins/grid";
+@import 'styles/mixins/breakpoints';
+@import 'styles/mixins/grid';
 
-@import "_styles/layout";
-@import "_styles/ui-messages";
-@import "_styles/typography";
-@import "_styles/buttons-links";
-@import "_styles/forms";
-
-@import "components/navigation";
-@import "components/cookies";
-@import "components/time";
-@import "components/tabs";
-@import "components/loading-sceen";
-@import "components/admin";
-@import "components/not-found";
-
-@import "components/home";
-@import "containers/eve-fitting-tool/shared";
-@import "containers/eve-fitting-tool/selection-screen";
-@import "containers/eve-fitting-tool/fitting_screen";
-@import "containers/eve-fitting-tool/modules";
-@import "containers/eve-fitting-tool/slots";
-@import "containers/eve-fitting-tool/ship-stats";
-
-@import "containers/legacy/Efs/Ships/ships";
-@import "containers/epic-arcs/epicArcs";
-@import "containers/legacy/Incursions/incursions";
+@import 'styles/layout';
+@import 'styles/ui-messages';
+@import 'styles/typography';
+@import 'styles/buttons-links';
+@import 'styles/forms';

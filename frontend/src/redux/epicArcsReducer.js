@@ -1,44 +1,15 @@
-const defaultState = {
-  data:            {
-    info:     {
-      amarr:    {},
-      caldari:  {},
-      gallente: {},
-      minmatar: {}
-    },
-    missions: {
-      amarr:    [],
-      caldari:  [],
-      gallente: [],
-      minmatar: []
-    }
-  },
-  fetchedInfo:     false
-};
-
-export default function reducer(state = defaultState, action) {
+export default function reducer(state = null, action) {
   switch (action.type) {
     case 'FETCH_EPIC_ARCS_INFO': {
       return {
-        ...state,
-        data:        {
-          ...state.data,
-          info: action.payload
-        },
-        fetchedInfo: true
+        ...action.payload
       };
     }
     case 'FETCH_EPIC_ARC': {
-      return {
-        ...state,
-        data:        {
-          ...state.data,
-          missions: {
-            ...state.data.missions,
-            ...action.payload
-          }
-        },
-      };
+      const faction = Object.keys(action.payload)[0];
+      const result = {...state};
+      result[faction].missions = action.payload[faction];
+      return result;
     }
     default: {
       return {...state};

@@ -1,0 +1,14 @@
+.not-found {
+  padding: 1rem;
+  max-width: 600px;
+
+  &__list {
+    margin: 1rem 0 0;
+    padding: 0 1rem;
+    list-style: disc;
+
+    li {
+      margin: 0.5rem 0;
+    }
+  }
+}

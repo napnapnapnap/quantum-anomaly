@@ -1,50 +1,35 @@
-import React, {Component} from 'react';
+import React, {useEffect, useState} from 'react';
+import classnames from 'classnames';
+import './Navigation.scss';
 
-export default class Navigation extends Component {
-  constructor(props) {
-    super(props);
-    this.state      = {
-      visibleMobile: false
-    };
-    this.showMobile = this.showMobile.bind(this);
-  }
+const Navigation = () => {
+  const [mobile, setMobile] = useState(false);
+  const userLoggedIn = document.cookie.indexOf('loggedIn=') === -1;
 
-  userLoggedIn() {
-    return document.cookie.indexOf('loggedIn=') === -1;
-  }
+  const closeMobileNavigation = event => {
+    event.target.className.indexOf('navigation') === -1 && setMobile(false);
+  };
 
-  showMobile() {
-    this.setState({
-      visibleMobile: !this.state.visibleMobile
-    });
-  }
+  useEffect(() => {
+    window.addEventListener('click', closeMobileNavigation);
+    return () => window.removeEventListener('click', closeMobileNavigation);
+  });
 
-  render() {
-    return (
-      <nav className={'navigation ' + (this.state.visibleMobile ? 'navigation--visible' : '')}>
-        <span className="navigation__mobile" onClick={this.showMobile}></span>
-        <div className="navigation__title"><a href="/">Quantum Anomaly</a>
-        </div>
-        <ul className="navigation__content">
-          <li className="navigation__link">
-            <a href="/eve-fitting-simulator" title="EVE Fitting Simulator">EVE Fitting Simulator</a>
-          </li>
-          <li className="navigation__link">
-            <a href="/incursion-manager" title="EVE Incursions Manager">EVE Incursions</a>
-          </li>
-          <li className="navigation__link">
-            <a href="/epic-arcs" title="EVE Epic Arcs">EVE Epic arcs</a>
-          </li>
-          <li className="navigation__link">
-            <a href="/warframe">WarFrame</a>
-          </li>
-          {this.userLoggedIn() ? (
-            <li className="navigation__link"><a href="/auth/google">Login</a></li>
-          ) : (
-            <li className="navigation__link"><a href="/logout">Logout</a></li>
-          )}
-        </ul>
-      </nav>
-    );
-  }
+  return (
+    <nav className={classnames('navigation', {'navigation--visible': mobile})}>
+      <span className='navigation__mobile' onClick={() => setMobile(!mobile)}/>
+      <div className='navigation__title'><a href='/'>Quantum Anomaly</a>
+      </div>
+      <ul className='navigation__content'>
+        <li className='navigation__link'><a href='/epic-arcs' title='EVE Epic Arcs'>EVE Epic arcs</a></li>
+        {userLoggedIn ? (
+          <li className='navigation__link'><a href='/auth/google'>Login</a></li>
+        ) : (
+          <li className='navigation__link'><a href='/logout'>Logout</a></li>
+        )}
+      </ul>
+    </nav>
+  );
 };
+
+export default Navigation;
