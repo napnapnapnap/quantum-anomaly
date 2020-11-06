@@ -54,7 +54,7 @@ const renderMissionPockets = (pockets = [], eveNpcs) => (
               <div className='enemies__quantity'>{enemy.quantity}</div>
               <div className='enemies__ship'>
                 <p className='enemies__type'>{getInfoByNames(eveNpcs, enemy.names).type}</p>
-                <span className='small'>{enemy.names.join(', ')}</span>
+                <p className='enemies__names'>{enemy.names.join(', ')}</p>
                 {enemy.notice && <p className='enemies__notice'>{enemy.notice}</p>}
               </div>
               <div className='enemies__effects'>

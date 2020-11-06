@@ -129,8 +129,11 @@
     line-height: 0.7;
   }
 
-  .small {
-    font-size: 10px;
+  &__names {
+    margin: 5px 0 2px;
+    font-size: 11px;
+    font-style: italic;
+    line-height: 1;
   }
 
   &__effects {
