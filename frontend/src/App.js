@@ -15,6 +15,7 @@ import Cookies from './components/Cookies';
 
 import EpicArcsOverview from './containers/epic-arcs/Overview';
 import EpicArc from './containers/epic-arcs/Arc';
+import X4 from './containers/x4';
 
 class App extends Component {
   componentDidMount() {
@@ -36,6 +37,7 @@ class App extends Component {
             <Route exact path='/epic-arcs/:faction(amarr|caldari|gallente|minmatar)/:mission' component={EpicArc}/>
             <Route exact path='/epic-arcs/:faction(amarr|caldari|gallente|minmatar)' component={EpicArc}/>
             <Route exact path='/epic-arcs' render={props => <EpicArcsOverview {...props}/>}/>
+            <Route exact path='/x4-ships' render={props => <X4 {...props}/>}/>
             <Route path='*' component={NotFound}/>
           </Switch>
         </main>

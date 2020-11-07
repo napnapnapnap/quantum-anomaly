@@ -18,8 +18,6 @@ import routes from './routes';
 import database from './database';
 import models from './models';
 
-// import warframeAlerts from './app/mailer/warframe-alert-mailer';
-
 const PORT      = process.env.PORT || 3000,
       app       = express(),
       sequelize = database();
@@ -39,9 +37,4 @@ models(sequelize).then(() => {
 
   app.listen(PORT);
   logger.appLog('App started');
-
-  if (process.env.NODE_ENV === 'production') {
-    // warframeAlerts();
-    // logger.appLog('Warframe alerts mail module started', 'gray');
-  }
 });

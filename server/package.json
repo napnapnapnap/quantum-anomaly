@@ -6,7 +6,8 @@
   "scripts": {
     "start": "nodemon ./index.js --exec babel-node --presets es2017-node7",
     "build": "babel ./ -d build --presets es2017-node7 --ignore 'node_modules/*'",
-    "crawl": "babel-node ./crawler.js --presets es2017-node7"
+    "crawl": "babel-node ./crawler.js --presets es2017-node7",
+    "x4": "babel-node tasks/x4/index.js --presets es2017-node7"
   },
   "repository": {
     "type": "git",
@@ -44,6 +45,7 @@
     "es6-promise": "^4.2.8",
     "isomorphic-fetch": "^2.2.1",
     "jsdom": "^15.2.1",
-    "nodemon": "^1.19.3"
+    "nodemon": "^1.19.3",
+    "xml2js": "^0.4.23"
   }
 }

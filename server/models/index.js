@@ -7,7 +7,6 @@ import usersModel from './users';
 import skillsModel from './skills';
 import incursionMapModel from './incursion-map';
 import incursionsModel from './incursions';
-import warframeStatusModel from './warframe-status';
 
 // Data which get filled from EVE API
 import esiMarketGroupsModel from './esiMarketGroups';
@@ -55,7 +54,6 @@ function overwriteEntry(error, response, Model) {
 function updateEntry(Model, modelName, timer) {
   const urls = {
     incursions:     'https://esi.evetech.net/latest/incursions/?datasource=tranquility',
-    warframeStatus: 'http://content.warframe.com/dynamic/worldState.php'
   };
 
   helpers.request({url: urls[modelName]}, overwriteEntry, Model);
@@ -85,14 +83,12 @@ export default function (sequelize, silent) {
     Users:                 usersModel(sequelize),
     Skills:                skillsModel(sequelize),
     IncursionMaps:         incursionMapModel(sequelize),
-    Incursions:            incursionsModel(sequelize),
-    WarframeStatus:        warframeStatusModel(sequelize)
+    Incursions:            incursionsModel(sequelize)
   };
 
   return sequelize.sync().then(() => {
     if (!silent) logger.appLog('Database models synced');
     updateEntry(models.Incursions, 'incursions', 10);
-    updateEntry(models.WarframeStatus, 'warframeStatus', 3);
     return models;
   });
 };

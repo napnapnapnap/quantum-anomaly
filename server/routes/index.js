@@ -8,13 +8,14 @@ import serveStatic from 'serve-static';
 import {ensureAuthenticated} from '../middleware/auth';
 import * as logger from '../helpers/logger';
 
+import * as x4 from './x4';
+
 import * as admin from './admin';
 import * as epicArcs from './epic-arcs';
 import * as incursions from './incursions';
 import * as eveFittingSimulator from './eve-fitting-simulator';
 import * as eveNpcs from './eve-npcs';
 import * as tasks from './tasks';
-import * as warframeStatus from './warframe';
 
 const router = express.Router(),
       upload = multer({dest: 'uploads/'}),
@@ -34,8 +35,10 @@ export default function (app) {
   router.get('/api/npcs/:indices', eveNpcs.getNpcByIndex);
   router.get('/api/npcs/', eveNpcs.getNpcs);
 
+  router.get('/api/x4/ships', x4.getShips)
+  router.get('/api/x4/equipment', x4.getEquipment)
+
   router.use('/api/get-incursions', incursions.getIncursions);
-  router.use('/api/warframe', warframeStatus.getWarframeStatus);
 
   router.use('/api/eve-fitting-simulator/group', eveFittingSimulator.getShipGroup);
   router.use('/api/eve-fitting-simulator/groups', eveFittingSimulator.getShipGroups);

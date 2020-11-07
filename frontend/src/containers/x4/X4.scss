@@ -1,0 +1,56 @@
+@import '../../styles/variables';
+@import '../../styles/mixins/breakpoints';
+
+.x4 {
+  .not-going-to-mobile {
+    min-width: 800px;
+    height: auto;
+  }
+
+  &__dropdowns {
+    margin: 0 0 2rem;
+  }
+
+  &__dropdown {
+    margin: 2rem 0 0;
+
+    select {
+      width: 220px;
+      margin-right: 1rem;
+      margin-bottom: 1rem;
+    }
+  }
+
+  .label--checkbox {
+    margin-right: 1rem;
+  }
+}
+
+.ship {
+  td {
+    vertical-align: top;
+  }
+
+  &__image {
+    width: 80px;
+  }
+
+  &__type {
+    text-transform: capitalize;
+  }
+
+  &__attributes {
+    width: 150px;
+    text-align: right;
+
+    &--left {
+      text-align: left;
+    }
+  }
+
+  &__name {
+    font-size: $font-size-base;
+    margin: 0.3rem 0;
+    line-height: 1.3;
+  }
+}
