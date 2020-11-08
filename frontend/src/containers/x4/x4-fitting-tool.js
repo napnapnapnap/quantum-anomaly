@@ -18,8 +18,8 @@ export function fillOntoShip(ship, equipment, size, items) {
       const boost = equipment[size][item].boost.thrust;
       const travel = equipment[size][item].travel.thrust;
       ship.speed = {
-        forward: (float(ship.engines.quantity) * float(thrust)) / float(ship.drag.forward),
-        acceleration: float(thrust) / float(ship.mass),
+        forward: (int(ship.engines.quantity) * float(thrust)) / float(ship.drag.forward),
+        acceleration: (int(ship.engines.quantity) * float(thrust)) / float(ship.mass),
         travel: (float(ship.engines.quantity) * float(thrust) * float(travel)) / float(ship.drag.forward),
         boost:(float(ship.engines.quantity) * float(thrust) * float(boost)) / float(ship.drag.forward)
       }
