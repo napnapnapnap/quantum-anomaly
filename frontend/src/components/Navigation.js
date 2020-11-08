@@ -21,7 +21,8 @@ const Navigation = () => {
       <div className='navigation__title'><a href='/'>Quantum Anomaly</a>
       </div>
       <ul className='navigation__content'>
-        <li className='navigation__link'><a href='/epic-arcs' title='EVE Epic Arcs'>EVE Epic arcs</a></li>
+        <li className='navigation__link'><a href='/epic-arcs' title='EVE Epic Arcs'>EVE Epic Arcs</a></li>
+        <li className='navigation__link'><a href='/x4-ships' title='X4 Ships'>X4 Ships</a></li>
         {userLoggedIn ? (
           <li className='navigation__link'><a href='/auth/google'>Login</a></li>
         ) : (

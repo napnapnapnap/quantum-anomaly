@@ -65,7 +65,7 @@ const Races = props => (
 
 const Ship = (ship) => (
   <tr key={ship.id} className='ship'>
-    <td className='ship__image'><img src='./images/x4/na.png'/></td>
+    <td className='ship__image'><img src='/images/x4/na.png'/></td>
     <td className='ship__attributes ship__attributes--left'>
       <h2 className='ship__name bold'>{ship.name}</h2>
       <p className='ship__type'>{ship.type}</p>
