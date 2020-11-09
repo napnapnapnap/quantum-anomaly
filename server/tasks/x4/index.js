@@ -3,12 +3,11 @@ import xml2js from 'xml2js';
 import path from 'path';
 import {appLog} from '../../helpers/logger';
 
-import {getTranslations} from './getter-translations';
-import {processMacro} from './processor-macro-data';
-import {processData} from './processor-data';
-import {getDefaults} from './getter-defaults';
-import {normalizeShip, resolveAdditionalInformation} from './processor-ship';
-import {getEquipment} from './getter-equipment';
+import {getTranslations} from './translations';
+import {getDefaults} from './defaults';
+import {getEquipment} from './equipment';
+import {saveToFile} from './helpers';
+import {getShips} from './ships';
 
 /*  NOTE: This task only runs on local machine. Even though path is being used in most places, this is still best ran
           to run on windows machine, which you probably have so that you can run the game as well, right? It expects
@@ -22,108 +21,90 @@ pause
 
 For split vendetta
 cd "C:\Program Files (x86)\Steam\steamapps\common\X4 Foundations"
-XRCatTool.exe -in extensions\ego_dlc_split\ext_01.cat -in extensions\ego_dlc_split\ext_02.cat -in extensions\ego_dlc_split\ext_03.cat -out "C:\X4\_dlc_split"
+XRCatTool.exe -in extensions\ego_dlc_split\ext_01.cat -in extensions\ego_dlc_split\ext_02.cat -in extensions\ego_dlc_split\ext_03.cat -out "C:\X4\extensions\ego_dlc_split"
 pause
 
 For now you can just copy paste manually files from split dlc into main unpackaged folder
  */
 
-const resourcesPath = 'C:\\X4';
-const parserOptions = {mergeAttrs: true, explicitArray: false};
+const sourceBasePath = 'C:\\X4';
+const sourcify = arg => path.join(sourceBasePath, `${arg}.xml`);
 
-async function processShips(macroPath, translations, defaults, storage, shipstorage) {
-  // get macro data, this is our first entry into EgoSoft ship details
-  const macroParser = new xml2js.Parser(parserOptions);
-  appLog(`Parsing macro data from ${macroPath}`);
-  const macroData = await macroParser.parseStringPromise(await fs.readFile(macroPath));
+// macros [true/false] - true gets all macros, false gets all components instead
+async function composeIndexTree(macros, dlc = null) {
+  if (macros !== true && macros !== false) throw new Error('Missing argument macros');
+  let sourceIndexBasePath = sourceBasePath;
+  if (dlc === 'split') sourceIndexBasePath = path.join(sourceIndexBasePath, 'extensions', 'ego_dlc_split');
+  sourceIndexBasePath = path.join(sourceIndexBasePath, 'index');
 
-  let ship = processMacro(macroData, translations, defaults, storage, shipstorage);
+  let sourceFilePath;
+  if (macros) sourceFilePath = path.join(sourceIndexBasePath, 'macros.xml');
+  else sourceFilePath = path.join(sourceIndexBasePath, 'components.xml');
 
-  // once you macro data, find next related file which is referenced, get useful data from there as well
-  const dataParser = new xml2js.Parser(parserOptions);
-  const dataFile = macroData.macros.macro.component.ref;
-  let dataPath = macroPath.split('\\');
-  dataPath = `${dataPath.splice(0, dataPath.length - 2).join('\\')}\\${dataFile}.xml`;
-  appLog(`Parsing additional information from ${dataPath}`);
-  const data = await dataParser.parseStringPromise(await fs.readFile(dataPath));
+  const parser = new xml2js.Parser({mergeAttrs: true, explicitArray: false});
+  let parsedIndex = await parser.parseStringPromise(await fs.readFile(sourceFilePath));
 
-  ship = {...ship, ...processData(data)};
-  ship = {...normalizeShip(ship)};
-  ship = {...await resolveAdditionalInformation(ship)};
+  let index = {};
+  parsedIndex.index.entry.forEach(entry => {
+    index[entry.name] = entry.value;
+  });
 
-  // at this point we either have most data consumable, or we have some things almost ready to use
-  // so let's look at the specifics that still remain and adjust those into properly usable properties
-
-  // at the end, save this as json file
-  const pathToOutput = path.join(__dirname, '..', '..', 'static-files', 'x4', `${ship.id}.json`);
-  appLog(`Saving data for ${ship.name} at ${pathToOutput}`, 'magenta');
-  const file = await fs.open(pathToOutput, 'w');
-  file.close();
-  await fs.writeFile(pathToOutput, JSON.stringify(ship));
-
-  return ship;
-}
-
-async function getListOfShips() {
-  let listOfFiles = [];
-  const sizes = ['l', 'm', 's', 'xl'];
-
-  await sizes.reduce(async (prev, size) => {
-    await prev;
-    appLog(`Getting all macro file paths for ${size} size`);
-    const basePath = path.join(resourcesPath, 'assets', 'units', `size_${size}`, `macros`);
-    let listCurrentSize = await fs.readdir(basePath);
-    listCurrentSize = listCurrentSize.filter(item => item.indexOf('ship') !== -1);
-    listCurrentSize = listCurrentSize.map(item => `${basePath}\\${item}`);
-    listOfFiles = listOfFiles.concat(listCurrentSize);
-  }, Promise.resolve());
-
-  return listOfFiles;
+  return index;
 }
 
 async function start() {
-  const translations = await getTranslations(resourcesPath, parserOptions);
-  appLog('Translations done', 'magenta');
+  const translations = await getTranslations(sourceBasePath);
+  await saveToFile(translations, '_translations', 'translations');
 
-  const equipment = await getEquipment(resourcesPath, parserOptions, translations);
-  appLog('Equipment done', 'magenta');
+  let macrosIndex = await composeIndexTree(true);
+  macrosIndex = {...macrosIndex, ...await composeIndexTree(true, 'split')};
+  await saveToFile(macrosIndex, '_macros-index', 'macro index');
 
-  const defaults = await getDefaults(resourcesPath, parserOptions);
-  appLog('Defaults done', 'magenta');
+  let componentsIndex = await composeIndexTree(false);
+  componentsIndex = {...componentsIndex, ...await composeIndexTree(false, 'split')};
+  await saveToFile(componentsIndex, '_components-index', 'components index');
 
-  const allMacroFiles = await getListOfShips();
-  appLog(`Got list of ${allMacroFiles.length} files`, 'magenta');
 
-  const ships = {
-    ship_xl: {},
-    ship_l: {},
-    ship_m: {},
-    ship_s: {}
+  let shipPaths = [];
+  const fileLists = {
+    engine: [],
+    thruster: [],
+    shield: [],
+    shipstorage: [],
+    storage: []
   };
 
-  let counter = 0;
-  await allMacroFiles.reduce(async (prev, macroFile) => {
-    await prev;
-    // There are not interesting atm
-    if (macroFile.indexOf('ship_tfm_l_carrier_01_a_macro') !== -1) return Promise.resolve();
-    if (macroFile.indexOf('ship_gen_s_lasertower_01_a_macro') !== -1) return Promise.resolve();
-    if (macroFile.indexOf('miningdrone') !== -1) return Promise.resolve();
-    if (macroFile.indexOf('fightingdrone') !== -1) return Promise.resolve();
-    // NOTE: These seem to be unfinished terraformer ships
-    if (macroFile.indexOf('tfm') !== -1) return Promise.resolve();
+  Object.keys(macrosIndex).forEach(key => {
+    if (key.indexOf('_test_') !== -1 || key.indexOf('legacy') !== -1) return;
+    if (key.indexOf('ship_') === 0 && key.indexOf('xs') === -1) shipPaths.push(sourcify(macrosIndex[key]));
 
-    const ship = await processShips(macroFile, translations, defaults, equipment.storage, equipment.shipstorage);
-    counter++;
-    ships[ship.class][ship.id] = ship;
-  }, Promise.resolve());
+    if (key.indexOf('engine_') === 0 && key.indexOf('xs') === -1) fileLists.engine.push(sourcify(macrosIndex[key]));
+    if (key.indexOf('thruster_') === 0 && key.indexOf('xs') === -1) fileLists.thruster.push(sourcify(macrosIndex[key]));
+    if (key.indexOf('shield_') === 0 && key.indexOf('xs') === -1) fileLists.shield.push(sourcify(macrosIndex[key]));
+    if (key.indexOf('shipstorage_') === 0 && key.indexOf('xs') === -1) fileLists.shipstorage.push(sourcify(macrosIndex[key]));
+    if (key.indexOf('storage_') === 0 && key.indexOf('xs') === -1) fileLists.storage.push(sourcify(macrosIndex[key]));
+  });
 
-  // for simplicity now and since weekend is almost over, let's brick this over in one file
-  const pathToOutput = path.join(__dirname, '..', '..', 'static-files', 'x4', '_ships.json');
-  appLog(`Saving all ship data at ${pathToOutput}`, 'magenta');
-  const file = await fs.open(pathToOutput, 'w');
-  file.close();
-  await fs.writeFile(pathToOutput, JSON.stringify(ships));
-  appLog(`Processed ${counter} ships`, 'green');
+  shipPaths.sort();
+  shipPaths = [...new Set(shipPaths)];
+  Object.keys(fileLists).forEach(key => fileLists[key] = [...new Set(fileLists[key].sort())]);
+
+  const equipment = await getEquipment(fileLists, translations);
+  await saveToFile({
+    extralarge: equipment.extralarge,
+    large: equipment.large,
+    medium: equipment.medium,
+    small: equipment.small
+  }, '_equipment', 'equipment');
+
+  const defaults = await getDefaults(sourceBasePath);
+  await saveToFile(defaults, '_defaults', 'defaults');
+
+  const ships = await getShips(shipPaths, translations, defaults, equipment);
+  await saveToFile(ships, '_ships', 'ships');
+
+  const totalNumberOfShips = Object.keys(ships.ship_xl).length + Object.keys(ships.ship_l).length + Object.keys(ships.ship_m).length + Object.keys(ships.ship_s).length
+  appLog(`Finished generating ${totalNumberOfShips} ships`, 'green');
 }
 
 start();

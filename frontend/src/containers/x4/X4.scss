@@ -3,8 +3,11 @@
 
 .x4 {
   .not-going-to-mobile {
-    min-width: 800px;
-    height: auto;
+    overflow-x: auto;
+
+    table {
+      width: 1200px;
+    }
   }
 
   &__dropdowns {
@@ -23,7 +26,9 @@
   }
 
   .label--checkbox {
-    margin-right: 1rem;
+    width: 120px;
+    display: inline-block;
+    margin-bottom: 1em;
   }
 }
 

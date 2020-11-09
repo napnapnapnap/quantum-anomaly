@@ -4,14 +4,24 @@ import {connect} from 'react-redux';
 import ShipRow from './ShipRow';
 import {fetchX4Equipment, fetchX4Ships} from '../../redux/x4Actions';
 import {fillOntoShip} from './x4-fitting-tool';
+import {maps, separateWord} from './helpers';
 import './X4.scss';
 
-const racesMap = [{label: 'Argon', value: 'arg'}, {label: 'Kha\'ak', value: 'kha'}, {label: 'Paranid', value: 'par'},
-                  {label: 'Split', value: 'spl'}, {label: 'Teladi', value: 'tel'}, {label: 'Xenon', value: 'xen'}];
-const subtypeMap = [{label: 'Base variation', value: 'BV'}, {label: 'Vanguard', value: 'VA'},
-                    {label: 'Sentinel', value: 'ST'}, {label: 'Raider', value: 'RD'}];
-const sizeMap = {ship_xl: 'extralarge', ship_l: 'large', ship_m: 'medium', ship_s: 'small'};
-const separateWord = arg => arg.replace('large', 'large ').replace('heavy', 'heavy ');
+const GroupedOptions = props => {
+  if (props.items.length === 0) return null;
+
+  const groups = {};
+  props.items.forEach(item => {
+    const race = item.name.substring(0, 3);
+    groups[race] ? groups[race].push(item) : groups[race] = [item];
+  });
+
+  return Object.keys(groups).map(key => (
+    <optgroup key={key} label={maps.reverseRace[key.toLowerCase()]}>
+      {groups[key].map(item => <option key={item.id} value={item.id}>{item.name}</option>)}
+    </optgroup>
+  ));
+};
 
 const Dropdowns = props => (
   <div className='x4__dropdown'>
@@ -28,59 +38,58 @@ const Dropdowns = props => (
       <option value='ship_s'>Small Ships</option>
     </select>
     <select onChange={e => props.setActiveShields(e.target.value)}>
-      <option value='none'>Select shields</option>
-      {props.shields.map(shield => (
-        <option key={shield.id} value={shield.id}>{shield.name}</option>
-      ))}
+      <option value='none'>No shields</option>
+      <GroupedOptions items={[...props.shields]}/>
     </select>
     <select onChange={e => props.setActiveEngines(e.target.value)}>
-      <option value='none'>Select engines</option>
-      {props.engines.map(engine => (
-        <option key={engine.id} value={engine.id}>{engine.name}</option>
-      ))}
+      <option value='none'>No engine</option>
+      <GroupedOptions items={[...props.engines]}/>
     </select>
     <select onChange={e => props.setActiveThrusters(e.target.value)}>
-      <option value='none'>Select thrusters</option>
-      {props.thrusters.map(thruster => (
-        <option key={thruster.id} value={thruster.id}>{thruster.name}</option>
-      ))}
+      <option value='none'>No thrusters</option>
+      <optgroup label='Thrusters'>
+        {props.thrusters.map(thruster => (
+          <option key={thruster.id} value={thruster.id}>{thruster.name}</option>
+        ))}
+      </optgroup>
     </select>
     <select onChange={e => props.setActiveType(e.target.value)}>
       <option value='all'>All types of ship</option>
-      {props.types.map(type => (
-        <option key={type} value={type}>{separateWord(type)}</option>
-      ))}
+      <optgroup label='Ship Types'>
+        {props.types.map(type => (
+          <option key={type} value={type}>{separateWord(type)}</option>
+        ))}
+      </optgroup>
     </select>
   </div>
 );
 
 const Races = props => (
   <div>
-    Show: &nbsp;&nbsp;
-    {racesMap.map(raceMap => (
-      <label className='label--checkbox' key={raceMap.value}>
+    {maps.race.map(mapRace => (
+      <label className='label--checkbox' key={mapRace.value}>
         <input type='checkbox'
                onChange={e => props.setRace(race => {
                  const selectedRace = {};
-                 selectedRace[raceMap.value] = e.target.checked;
+                 selectedRace[mapRace.value] = e.target.checked;
                  return {...race, ...selectedRace};
                })}
                defaultChecked
         />
-        {raceMap.label}
+        {mapRace.label}
       </label>
-    ))}
-    {subtypeMap.map(subtypeMap => (
-      <label className='label--checkbox' key={subtypeMap.value}>
+    ))}<br/>
+    {maps.subtype.map(mapSubtype => (
+      <label className='label--checkbox' key={mapSubtype.value}>
         <input type='checkbox'
                onChange={e => props.setSubtype(subtype => {
                  const selectedSubtype = {};
-                 selectedSubtype[subtypeMap.value] = e.target.checked;
+                 selectedSubtype[mapSubtype.value] = e.target.checked;
                  return {...subtype, ...selectedSubtype};
                })}
                defaultChecked
         />
-        {subtypeMap.label}
+        {mapSubtype.label}
       </label>
     ))}
   </div>
@@ -112,14 +121,17 @@ const index = (props) => {
     }
 
     if (props.x4.equipment) {
-      const equipment = props.x4.equipment[sizeMap[size]];
+      const equipment = props.x4.equipment[maps.size[size]];
       const eligibleShields = [];
       const eligibleEngines = [];
       const eligibleThrusters = [];
 
       Object.keys(equipment).forEach(key => {
         equipment[key].class === 'shield' && eligibleShields.push({name: equipment[key].name, id: key});
-        equipment[key].class === 'engine' && eligibleEngines.push({name: equipment[key].name.replace('APL','SPL'), id: key});
+        equipment[key].class === 'engine' && eligibleEngines.push({
+          name: equipment[key].name.replace('APL', 'SPL'),
+          id: key
+        });
         equipment[key].class === 'thruster' && eligibleThrusters.push({name: equipment[key].name, id: key});
       });
 
@@ -139,7 +151,7 @@ const index = (props) => {
                    setSize={setSize} setActiveType={setActiveType}
                    types={types}
         />
-        <Races setRace={setRace} setSubtype={setSubtype} />
+        <Races setRace={setRace} setSubtype={setSubtype}/>
       </div>
 
       <div className='not-going-to-mobile'>
@@ -150,9 +162,9 @@ const index = (props) => {
             if (!race[ship.race]) return null;
             if (!subtype[ship.shortvariation]) return null;
             if (activeType && activeType !== 'all' && ship.type !== activeType) return null;
-            if (activeShield) ship = fillOntoShip(ship, props.x4.equipment, sizeMap[size], [activeShield]);
-            if (activeEngine) ship = fillOntoShip(ship, props.x4.equipment, sizeMap[size], [activeEngine]);
-            if (activeThruster) ship = fillOntoShip(ship, props.x4.equipment, sizeMap[size], [activeThruster]);
+            if (activeShield) ship = fillOntoShip(ship, props.x4.equipment, maps.size[size], [activeShield]);
+            if (activeEngine) ship = fillOntoShip(ship, props.x4.equipment, maps.size[size], [activeEngine]);
+            if (activeThruster) ship = fillOntoShip(ship, props.x4.equipment, maps.size[size], [activeThruster]);
             return <ShipRow key={ship.id} ship={ship}/>;
           })}
           </tbody>

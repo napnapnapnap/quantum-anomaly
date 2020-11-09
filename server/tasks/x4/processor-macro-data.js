@@ -1,4 +1,4 @@
-import {translate} from './getter-translations';
+import {translate} from './translations';
 import {appLog} from '../../helpers/logger';
 
 const getRace = (name) => {

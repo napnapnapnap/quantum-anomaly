@@ -1,4 +1,6 @@
-import {appWarning} from '../../helpers/logger';
+import {appLog, appWarning} from '../../helpers/logger';
+import path from "path";
+import {promises as fs} from "fs";
 
 const sizes = [
   'extralarge',
@@ -7,6 +9,14 @@ const sizes = [
   'small'
 ];
 
+export async function saveToFile(data, fileName, label) {
+  const destinationBasePath = path.join(__dirname, '..', '..', 'static-files', 'x4');
+  const destinationPath = path.join(destinationBasePath, `${fileName}.json`);
+  appLog(`Saving ${label} at ${destinationPath}`, 'magenta');
+  const file = await fs.open(destinationPath, 'w');
+  file.close();
+  await fs.writeFile(destinationPath, JSON.stringify(data));
+}
 
 export function getSizeFromTags(tags) {
   let size = null;
