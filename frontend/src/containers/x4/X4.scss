@@ -18,6 +18,7 @@
       width: 220px;
       margin-right: 1rem;
       margin-bottom: 1rem;
+      text-transform: capitalize;
     }
   }
 
@@ -26,7 +27,28 @@
   }
 }
 
+.capitalize {
+  text-transform: capitalize;
+}
+
 .ship {
+  font-size: 12px;
+
+  .label {
+    display: inline-block;
+    width: 80px;
+  }
+
+  .value {
+    display: inline-block;
+    width: 40px;
+
+    &--unit-shifted {
+      position: relative;
+      right: -4px;
+    }
+  }
+
   td {
     vertical-align: top;
   }
@@ -40,16 +62,77 @@
   }
 
   &__attributes {
-    width: 190px;
     text-align: right;
+    padding-bottom: 3em;
 
-    &--left {
+    &--name {
+      width: 200px;
       text-align: left;
+    }
+
+    &--health {
+      width: 130px;
+
+      .label {
+        width: 50px;
+      }
+
+      .value {
+        width: 70px;
+      }
+    }
+
+    &--speed {
+      width: 160px;
+
+      .label {
+        width: 50px;
+      }
+
+      .value {
+        width: 70px;
+      }
+    }
+
+    &--maneuverability {
+      width: 120px;
+
+      .label {
+        width: 50px;
+      }
+
+      .value {
+        width: 50px;
+      }
+    }
+
+    &--offensive {
+      width: 120px;
+
+      .label {
+        width: 50px;
+      }
+
+      .value {
+        width: 30px;
+      }
+    }
+
+    &--defensive {
+      width: 200px;
+
+      .label {
+        width: 120px;
+      }
+
+      .value {
+        width: 60px;
+      }
     }
   }
 
   &__name {
-    font-size: $font-size-base;
+    font-size: 12px;
     margin: 0.3rem 0;
     line-height: 1.3;
   }

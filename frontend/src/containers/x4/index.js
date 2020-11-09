@@ -1,14 +1,17 @@
 import React, {useEffect, useState} from 'react';
 import {connect} from 'react-redux';
+
+import ShipRow from './ShipRow';
 import {fetchX4Equipment, fetchX4Ships} from '../../redux/x4Actions';
 import {fillOntoShip} from './x4-fitting-tool';
 import './X4.scss';
 
-const racesMap = [{label: 'Argon', value: 'arg'}, {label: 'Paranid', value: 'par'},
-  {label: 'Split', value: 'spl'}, {label: 'Teladi', value: 'tel'}, {label: 'Xenon', value: 'xen'}];
-
+const racesMap = [{label: 'Argon', value: 'arg'}, {label: 'Kha\'ak', value: 'kha'}, {label: 'Paranid', value: 'par'},
+                  {label: 'Split', value: 'spl'}, {label: 'Teladi', value: 'tel'}, {label: 'Xenon', value: 'xen'}];
+const subtypeMap = [{label: 'Base variation', value: 'BV'}, {label: 'Vanguard', value: 'VA'},
+                    {label: 'Sentinel', value: 'ST'}, {label: 'Raider', value: 'RD'}];
 const sizeMap = {ship_xl: 'extralarge', ship_l: 'large', ship_m: 'medium', ship_s: 'small'};
-const number = arg => arg ? parseInt(arg, 10).toLocaleString('de-DE', {style: 'decimal'}) : 0;
+const separateWord = arg => arg.replace('large', 'large ').replace('heavy', 'heavy ');
 
 const Dropdowns = props => (
   <div className='x4__dropdown'>
@@ -16,6 +19,7 @@ const Dropdowns = props => (
       props.setActiveShields(null);
       props.setActiveEngines(null);
       props.setActiveThrusters(null);
+      props.setActiveType(null);
       props.setSize(e.target.value);
     }}>
       <option value='ship_xl'>Extra Large Ships</option>
@@ -41,12 +45,18 @@ const Dropdowns = props => (
         <option key={thruster.id} value={thruster.id}>{thruster.name}</option>
       ))}
     </select>
+    <select onChange={e => props.setActiveType(e.target.value)}>
+      <option value='all'>All types of ship</option>
+      {props.types.map(type => (
+        <option key={type} value={type}>{separateWord(type)}</option>
+      ))}
+    </select>
   </div>
 );
 
 const Races = props => (
   <div>
-    Show following races: &nbsp;&nbsp;
+    Show: &nbsp;&nbsp;
     {racesMap.map(raceMap => (
       <label className='label--checkbox' key={raceMap.value}>
         <input type='checkbox'
@@ -60,80 +70,62 @@ const Races = props => (
         {raceMap.label}
       </label>
     ))}
+    {subtypeMap.map(subtypeMap => (
+      <label className='label--checkbox' key={subtypeMap.value}>
+        <input type='checkbox'
+               onChange={e => props.setSubtype(subtype => {
+                 const selectedSubtype = {};
+                 selectedSubtype[subtypeMap.value] = e.target.checked;
+                 return {...subtype, ...selectedSubtype};
+               })}
+               defaultChecked
+        />
+        {subtypeMap.label}
+      </label>
+    ))}
   </div>
-);
-
-const Ship = (ship) => (
-  <tr key={ship.id} className='ship'>
-    <td className='ship__image'><img src='/images/x4/na.png'/></td>
-    <td className='ship__attributes ship__attributes--left'>
-      <h2 className='ship__name bold'>{ship.name}</h2>
-      <p className='ship__type'>{ship.type}</p>
-      <p>{ship.storage.capacity}m³ {ship.storage.capacityType}</p>
-      <p>Crew: {ship.storage.people}</p>
-    </td>
-    <td className='ship__attributes'>
-      <p>Hull: {number(ship.hull)} MJ</p>
-      <p>Shields: {number(ship.shield.max)} MJ</p>
-      <p>Recharge: {number(ship.shield.rate)} MJ/s</p>
-      <p>Delay: {number(ship.shield.delay)} s</p>
-    </td>
-    <td className='ship__attributes'>
-      <p>Speed: {number(ship.speed.forward)} m/s</p>
-      <p>Acc: {number(ship.speed.acceleration)} m/s²</p>
-      <p>Boost: {number(ship.speed.boost)} m/s</p>
-      <p>Travel: {number(ship.speed.travel)} m/s</p>
-    </td>
-    <td className='ship__attributes'>
-      <p>Weapons: {ship.weapons.reduce((total, weapon) => total+=weapon.quantity, 0)}</p>
-      <p>Turrets: {ship.turrets.reduce((total, turret) => total+=turret.quantity, 0)}</p>
-      <p>Missiles: {ship.storage.missile}</p>
-    </td>
-    <td className='ship__attributes'>
-      <p>Drones: {ship.storage.unit || 0}</p>
-      <p>Deployables: {ship.storage.deployable}</p>
-      <p>Countermeasures: {ship.storage.countermeasure}</p>
-    </td>
-    <td></td>
-  </tr>
 );
 
 const index = (props) => {
   const [size, setSize] = useState('ship_xl');
-  const [race, setRace] = useState({arg: true, par: true, spl: true, tel: true, xen: true});
+  const [race, setRace] = useState({arg: true, par: true, spl: true, tel: true, xen: true, kha: true});
+  const [subtype, setSubtype] = useState({BV: true, VA: true, ST: true, RD: true});
+  const [types, setTypes] = useState([]);
+
   const [shields, setShields] = useState([]);
   const [activeShield, setActiveShield] = useState(null);
   const [engines, setEngines] = useState([]);
   const [activeEngine, setActiveEngine] = useState(null);
   const [thrusters, setThrusters] = useState([]);
   const [activeThruster, setActiveThruster] = useState(null);
+  const [activeType, setActiveType] = useState(null);
 
   useEffect(() => {
     if (!props.x4.ships) props.fetchX4Ships();
     if (!props.x4.equipment) props.fetchX4Equipment();
 
+    if (props.x4.ships) {
+      const ships = props.x4.ships[size];
+      const availableTypes = [];
+      Object.keys(ships).forEach(key => (availableTypes.indexOf(ships[key].type) === -1 && availableTypes.push(ships[key].type)));
+      setTypes(availableTypes);
+    }
+
     if (props.x4.equipment) {
-      const eligibleShields = Object.keys(props.x4.equipment[sizeMap[size]]).filter(key => key.indexOf('shield') !== -1);
-      setShields(() => {
-        return eligibleShields.map(eligibleShield => ({
-          name: props.x4.equipment[sizeMap[size]][eligibleShield].name,
-          id: eligibleShield
-        }));
+      const equipment = props.x4.equipment[sizeMap[size]];
+      const eligibleShields = [];
+      const eligibleEngines = [];
+      const eligibleThrusters = [];
+
+      Object.keys(equipment).forEach(key => {
+        equipment[key].class === 'shield' && eligibleShields.push({name: equipment[key].name, id: key});
+        equipment[key].class === 'engine' && eligibleEngines.push({name: equipment[key].name.replace('APL','SPL'), id: key});
+        equipment[key].class === 'thruster' && eligibleThrusters.push({name: equipment[key].name, id: key});
       });
-      const eligibleEngines = Object.keys(props.x4.equipment[sizeMap[size]]).filter(key => key.indexOf('engine') !== -1);
-      setEngines(() => {
-        return eligibleEngines.map(eligibleEngine => ({
-          name: props.x4.equipment[sizeMap[size]][eligibleEngine].name,
-          id: eligibleEngine
-        }));
-      });
-      const eligibleThrusters = Object.keys(props.x4.equipment[sizeMap[size]]).filter(key => key.indexOf('thruster') !== -1);
-      setThrusters(() => {
-        return eligibleThrusters.map(eligibleThruster => ({
-          name: props.x4.equipment[sizeMap[size]][eligibleThruster].name,
-          id: eligibleThruster
-        }));
-      });
+
+      setShields(() => eligibleShields);
+      setEngines(() => eligibleEngines);
+      setThrusters(() => eligibleThrusters);
     }
   }, [props.x4, size]);
 
@@ -144,9 +136,10 @@ const index = (props) => {
         <Dropdowns shields={shields} setActiveShields={setActiveShield}
                    engines={engines} setActiveEngines={setActiveEngine}
                    thrusters={thrusters} setActiveThrusters={setActiveThruster}
-                   setSize={setSize}
+                   setSize={setSize} setActiveType={setActiveType}
+                   types={types}
         />
-        <Races setRace={setRace}/>
+        <Races setRace={setRace} setSubtype={setSubtype} />
       </div>
 
       <div className='not-going-to-mobile'>
@@ -155,10 +148,12 @@ const index = (props) => {
           {props.x4.ships && Object.keys(props.x4.ships[size]).map(id => {
             let ship = {...props.x4.ships[size][id]};
             if (!race[ship.race]) return null;
+            if (!subtype[ship.shortvariation]) return null;
+            if (activeType && activeType !== 'all' && ship.type !== activeType) return null;
             if (activeShield) ship = fillOntoShip(ship, props.x4.equipment, sizeMap[size], [activeShield]);
             if (activeEngine) ship = fillOntoShip(ship, props.x4.equipment, sizeMap[size], [activeEngine]);
             if (activeThruster) ship = fillOntoShip(ship, props.x4.equipment, sizeMap[size], [activeThruster]);
-            return Ship(ship);
+            return <ShipRow key={ship.id} ship={ship}/>;
           })}
           </tbody>
         </table>

@@ -107,6 +107,10 @@ async function start() {
     // There are not interesting atm
     if (macroFile.indexOf('ship_tfm_l_carrier_01_a_macro') !== -1) return Promise.resolve();
     if (macroFile.indexOf('ship_gen_s_lasertower_01_a_macro') !== -1) return Promise.resolve();
+    if (macroFile.indexOf('miningdrone') !== -1) return Promise.resolve();
+    if (macroFile.indexOf('fightingdrone') !== -1) return Promise.resolve();
+    // NOTE: These seem to be unfinished terraformer ships
+    if (macroFile.indexOf('tfm') !== -1) return Promise.resolve();
 
     const ship = await processShips(macroFile, translations, defaults, equipment.storage, equipment.shipstorage);
     counter++;

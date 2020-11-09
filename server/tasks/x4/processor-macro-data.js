@@ -7,6 +7,8 @@ const getRace = (name) => {
   if (name.indexOf('spl') !== -1) return 'spl';
   if (name.indexOf('tel') !== -1) return 'tel';
   if (name.indexOf('xen') !== -1) return 'xen';
+  if (name.indexOf('kha') !== -1) return 'kha';
+  if (name.indexOf('ship_gen_s_fighter_01') !== -1) return 'arg';
 };
 
 export function processMacro(data, translations, defaults, storage, shipstorage) {
@@ -45,7 +47,10 @@ export function processMacro(data, translations, defaults, storage, shipstorage)
       forward: 0,
       acceleration: 0,
       boost: 0,
-      travel: 0
+      travel: 0,
+      pitch: 0,
+      roll: 0,
+      yaw: 0
     },
     mass: properties.physics.mass,
     inertia: {
@@ -85,6 +90,11 @@ export function processMacro(data, translations, defaults, storage, shipstorage)
   });
 
   if (ship.description && ship.description.indexOf('No information available') !== -1) ship.description = null;
+  if (!ship.shortvariation) {
+    if (ship.name.indexOf('Vanguard') !== -1) ship.shortvariation = 'VA';
+    else if (ship.name.indexOf('Sentinel') !== -1) ship.shortvariation = 'ST';
+    else ship.shortvariation = 'BV';
+  }
   ship.name = ship.name.replace(/\\/g, '');
 
   appLog(`Processed macro data of ${data.macros.macro.name} (${ship.name})`);
