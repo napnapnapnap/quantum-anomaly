@@ -3,7 +3,17 @@ import xml2js from 'xml2js';
 import {translate} from './translations';
 import {inspect} from '../../helpers/logger';
 
-const getContent = async (paths, type, translations) => {
+const applyBulletInfo = (bullets, bullet) => {
+  bullet = bullet.trim().replace('_macro', '');
+  return {
+    properties: bullets[bullet].bullet,
+    damage: bullets[bullet].damage,
+    reload: bullets[bullet].reload,
+    system: bullets[bullet].system
+  };
+};
+
+const getContent = async (paths, type, translations, bullets) => {
   const result = {};
 
   await paths.reduce(async (prev, filePath) => {
@@ -32,10 +42,63 @@ const getContent = async (paths, type, translations) => {
     // if this gets fixed in EgoSoft file, then change id to data.component.ref
     // in meantime we can abuse name and just remove _macro part
 
-    if (type === 'engine') {
+    // [TODO]: Missiles don't have bullets
+    if (type === 'turret' && data.class !== 'missileturret') {
+      result[size][data.name.replace('_macro', '')] = {
+        name: translate(properties.identification.name, translations, true),
+        makerrace: properties.identification.makerrace,
+        mk: properties.identification.mk,
+        class: data.class,
+        bullet: applyBulletInfo(bullets, properties.bullet.class),
+        rotation: {
+          speed: properties.rotationspeed.max
+        },
+        reload: {
+          rate: properties.reload.rate,
+          time: properties.reload.time
+        },
+        hull: properties.hull.max
+      };
+    } else if (type === 'turret' && data.class === 'missileturret') {
+      result[size][data.name.replace('_macro', '')] = {
+        name: translate(properties.identification.name, translations, true),
+        makerrace: properties.identification.makerrace,
+        mk: properties.identification.mk,
+        class: data.class,
+        //bullet: applyBulletInfo(bullets, properties.bullet.class),
+        rotation: {
+          speed: properties.rotationspeed.max
+        },
+        ammunition: properties.ammunition.tags.trim().split(' '),
+        storage: properties.storage.capacity,
+        hull: properties.hull.max
+      };
+    } else if (type === 'weapon' && data.class !== 'missilelauncher') {
+      result[size][data.name.replace('_macro', '')] = {
+        name: translate(properties.identification.name, translations, true),
+        heat: properties.heat,
+        mk: properties.identification.mk,
+        class: data.class,
+        bullet: applyBulletInfo(bullets, properties.bullet.class),
+        rotation: {
+          speed: properties.rotationspeed.max,
+          acceleration: properties.rotationacceleration ? properties.rotationacceleration.max : 'N/A'
+        },
+        hull: properties.hull.max
+      };
+    } else if (type === 'weapon' && data.class === 'missilelauncher') {
+      result[size][data.name.replace('_macro', '')] = {
+        name: translate(properties.identification.name, translations, true),
+        mk: properties.identification.mk,
+        class: data.class,
+        // bullet: applyBulletInfo(bullets, properties.bullet.class),
+        ammunition: properties.ammunition.tags.trim().split(' '),
+        hull: properties.hull.max
+      };
+    } else if (type === 'engine') {
       result[size][data.name.replace('_macro', '')] = {
         id: data.name.replace('_macro', ''),
-        name: translate(properties.identification.name, translations, true),
+        name: translate(properties.identification.name, translations, true).replace('APL', 'SPL'),
         mk: properties.identification.mk,
         class: type,
         makerrace: properties.identification.makerrace,
@@ -66,6 +129,16 @@ const getContent = async (paths, type, translations) => {
           delay: properties.recharge.delay
         }
       };
+    } else if (type === 'bullet') {
+      result[data.name.replace('_macro', '')] = {
+        class: data.class,
+        ammunition: properties.ammunition,
+        bullet: properties.bullet,
+        heat: properties.heat,
+        damage: properties.damage,
+        reload: properties.reload,
+        system: properties.weapon ? properties.weapon.system : null
+      };
     } else if (type === 'storage') {
       result[parsed.macros.macro.name] = {
         cargo: properties.cargo.max,
@@ -77,10 +150,6 @@ const getContent = async (paths, type, translations) => {
         capacity: properties.dock.capacity,
         type: properties.docksize.tags.trim()
       };
-    }
-    if (filePath.indexOf('par_m_travel') !== -1) {
-      inspect(result[size]);
-      // throw new Error();
     }
   }, Promise.resolve());
 
@@ -97,9 +166,14 @@ const mergeResults = (destination, source) => ({
 export async function getEquipment(fileLists, translations) {
   let results = {extralarge: {}, large: {}, medium: {}, small: {}};
 
+  // get all bullet info here... don't merge into results, but just plug into weapons
+  const bullets = await getContent(fileLists.bullet, 'bullet', translations);
+
   results = mergeResults(results, await getContent(fileLists.engine, 'engine', translations));
   results = mergeResults(results, await getContent(fileLists.thruster, 'thruster', translations));
   results = mergeResults(results, await getContent(fileLists.shield, 'shield', translations));
+  results = mergeResults(results, await getContent(fileLists.weapon, 'weapon', translations, bullets));
+  results = mergeResults(results, await getContent(fileLists.turret, 'turret', translations, bullets));
 
   // we treat next ones differently since we don't care about it later at runtime, we just need it once
   // during this scripts as reference to inject numbers

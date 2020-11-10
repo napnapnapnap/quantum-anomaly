@@ -110,8 +110,7 @@ const index = (props) => {
   const [activeType, setActiveType] = useState(null);
 
   useEffect(() => {
-    if (!props.x4.ships) props.fetchX4Ships();
-    if (!props.x4.equipment) props.fetchX4Equipment();
+    if (!props.x4.ships) props.fetchX4Ships().then(() => props.fetchX4Equipment());
 
     if (props.x4.ships) {
       const ships = props.x4.ships[size];
@@ -128,10 +127,7 @@ const index = (props) => {
 
       Object.keys(equipment).forEach(key => {
         equipment[key].class === 'shield' && eligibleShields.push({name: equipment[key].name, id: key});
-        equipment[key].class === 'engine' && eligibleEngines.push({
-          name: equipment[key].name.replace('APL', 'SPL'),
-          id: key
-        });
+        equipment[key].class === 'engine' && eligibleEngines.push({name: equipment[key].name, id: key});
         equipment[key].class === 'thruster' && eligibleThrusters.push({name: equipment[key].name, id: key});
       });
 

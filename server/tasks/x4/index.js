@@ -71,7 +71,10 @@ async function start() {
     thruster: [],
     shield: [],
     shipstorage: [],
-    storage: []
+    storage: [],
+    weapon: [],
+    turret: [],
+    bullet: [],
   };
 
   Object.keys(macrosIndex).forEach(key => {
@@ -83,6 +86,9 @@ async function start() {
     if (key.indexOf('shield_') === 0 && key.indexOf('xs') === -1) fileLists.shield.push(sourcify(macrosIndex[key]));
     if (key.indexOf('shipstorage_') === 0 && key.indexOf('xs') === -1) fileLists.shipstorage.push(sourcify(macrosIndex[key]));
     if (key.indexOf('storage_') === 0 && key.indexOf('xs') === -1) fileLists.storage.push(sourcify(macrosIndex[key]));
+    if (key.indexOf('weapon_') === 0 && key.indexOf('xs') === -1) fileLists.weapon.push(sourcify(macrosIndex[key]));
+    if (key.indexOf('turret_') === 0 && key.indexOf('xs') === -1) fileLists.turret.push(sourcify(macrosIndex[key]));
+    if (key.indexOf('bullet_') === 0 && key.indexOf('xs') === -1) fileLists.bullet.push(sourcify(macrosIndex[key]));
   });
 
   shipPaths.sort();
@@ -100,6 +106,7 @@ async function start() {
   const defaults = await getDefaults(sourceBasePath);
   await saveToFile(defaults, '_defaults', 'defaults');
 
+  // [TODO]: Optimize ship processing
   const ships = await getShips(shipPaths, translations, defaults, equipment);
   await saveToFile(ships, '_ships', 'ships');
 
