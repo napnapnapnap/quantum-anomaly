@@ -1,5 +1,12 @@
-import {appLog} from '../../helpers/logger';
 import {checkSizeUniformity, getSizeFromTags} from './helpers';
+
+function countArmaments(armament) {
+  const result = {large: 0, medium: 0, small: 0};
+  armament.forEach(item => {
+    result[item.size] += item.quantity;
+  });
+  return result;
+}
 
 export function normalizeShip(ship) {
   if (ship.groups) {
@@ -80,12 +87,10 @@ export function normalizeShip(ship) {
   // this is some of the things that might be usefull later, but for now we get rid of it and we can comment out
   // next line in future in case there is something interesting still there
   delete ship.unknownThings;
-  appLog(`Normalized ${ship.id} (${ship.name})`);
-  return ship;
-}
 
+  //    armaments: {weapons: {large: 0, medium: 0, small: 0}, turrets: {large: 0, medium: 0, small: 0}},
+  ship.armaments.turrets = countArmaments(ship.turrets);
+  ship.armaments.weapons = countArmaments(ship.weapons);
 
-export async function resolveAdditionalInformation(ship) {
-  // some things like storage and ship storage need lookup in additional files, we do that here
   return ship;
 }

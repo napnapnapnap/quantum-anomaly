@@ -30,3 +30,19 @@ export const maps = {
 };
 
 export const separateWord = arg => arg.replace('large', 'large ').replace('heavy', 'heavy ');
+
+export const translateRace = arg => arg
+  .replace('arg', 'Argon ')
+  .replace('kha', 'Kha\'ak ')
+  .replace('par', 'Paranid')
+  .replace('spl', 'Split')
+  .replace('tel', 'Teladi')
+  .replace('xen', 'Xenon');
+
+
+export const int = arg => arg ? parseInt(arg, 10).toLocaleString('de-DE', {style: 'decimal'}) : 0;
+export const float = arg => arg ? parseFloat(arg, 10).toLocaleString('de-DE', {
+  style: 'decimal',
+  maximumFractionDigits: 2,
+  minimumFractionDigits: 2
+}) : 0;

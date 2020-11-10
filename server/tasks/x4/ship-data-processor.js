@@ -1,19 +1,12 @@
-import {appLog} from '../../helpers/logger';
 import {checkSizeUniformity, getSizeFromTags, getWeaponTypesFromTags} from './helpers';
 
-export function processData(data, translations) {
+export function addDataFromDataFile(data) {
   const connections = data.components.component.connections.connection;
   const ship = {
     turrets: [],
     weapons: [],
-    shields: {
-      size: null,
-      quantity: 0
-    },
-    engines: {
-      size: null,
-      quantity: 0
-    },
+    shields: {size: null, quantity: 0},
+    engines: {size: null, quantity: 0},
     specialExit: false,
     groups: {}, // temporary storage for sorting groups, later we remove this
     unknownThings: [] // temporary storage for things we don't know what are yet
@@ -72,6 +65,5 @@ export function processData(data, translations) {
     }
   });
 
-  appLog(`Processed data of ${data.components.component.name}`);
   return ship;
 }

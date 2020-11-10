@@ -11,7 +11,7 @@ const getRace = (name) => {
   if (name.indexOf('ship_gen_s_fighter_01') !== -1) return 'arg';
 };
 
-export function processMacro(data, translations, defaults, storage, shipstorage) {
+export function addDataFromMacroFile(data, translations, defaults, storage, shipstorage) {
   const properties = data.macros.macro.properties;
   const connections = data.macros.macro.connections.connection;
   const classOfShip = data.macros.macro.class;
@@ -20,12 +20,18 @@ export function processMacro(data, translations, defaults, storage, shipstorage)
     id: data.macros.macro.name,
     class: classOfShip,
     race: getRace(data.macros.macro.name),
-    name: translate(properties.identification.name, translations, true),
+    name: translate(properties.identification.name, translations, true).replace(/\\/g, ''),
     basename: translate(properties.identification.basename, translations),
     description: translate(properties.identification.description, translations, false, true),
     shortvariation: translate(properties.identification.shortvariation, translations),
     variation: translate(properties.identification.variation, translations),
     type: properties.ship.type,
+    radarRange: defaults[classOfShip].radarRange,
+    docksize: defaults[classOfShip].docksize,
+    hull: properties.hull.max,
+    shield: {max: 0, rate: 0, delay: 0},
+    speed: {forward: 0, acceleration: 0, boost: 0, travel: 0, pitch: 0, roll: 0, yaw: 0},
+    armaments: {weapons: {large: 0, medium: 0, small: 0}, turrets: {large: 0, medium: 0, small: 0}},
     storage: {
       unit: properties.storage ? properties.storage.unit : 0,
       missile: properties.storage ? properties.storage.missile : 0,
@@ -34,23 +40,6 @@ export function processMacro(data, translations, defaults, storage, shipstorage)
       deployable: defaults[classOfShip].storage.deployable,
       capacity: 0,
       capacityType: null
-    },
-    radarRange: defaults[classOfShip].radarRange,
-    docksize: defaults[classOfShip].docksize,
-    hull: properties.hull.max,
-    shield: {
-      max: 0,
-      rate: 0,
-      delay: 0
-    },
-    speed: {
-      forward: 0,
-      acceleration: 0,
-      boost: 0,
-      travel: 0,
-      pitch: 0,
-      roll: 0,
-      yaw: 0
     },
     mass: properties.physics.mass,
     inertia: {
@@ -71,8 +60,8 @@ export function processMacro(data, translations, defaults, storage, shipstorage)
       size: properties.thruster.tags
     },
     shipstorage: {
-      dock_m: {capacity: 0},
-      dock_s: {capacity: 0}
+      dock_m: 0,
+      dock_s: 0
     }
   };
 
@@ -81,7 +70,7 @@ export function processMacro(data, translations, defaults, storage, shipstorage)
       if (connection.macro.ref.indexOf('xs') !== -1) return;
       const shipstorageType = shipstorage[connection.macro.ref].type;
       const shipstorageCapacity = parseInt(shipstorage[connection.macro.ref].capacity, 10);
-      ship.shipstorage[shipstorageType].capacity += shipstorageCapacity;
+      ship.shipstorage[shipstorageType] += shipstorageCapacity;
     }
     if (connection.ref.indexOf('_storage') !== -1) {
       ship.storage.capacity = storage[connection.macro.ref].cargo;
@@ -89,14 +78,17 @@ export function processMacro(data, translations, defaults, storage, shipstorage)
     }
   });
 
+  // some things don't have information and we don't want to show this text then at all
   if (ship.description && ship.description.indexOf('No information available') !== -1) ship.description = null;
+
+  // possible variations to filter later on frontend [VA/ST/RD] and self introduced BV for everything else
   if (!ship.shortvariation) {
     if (ship.name.indexOf('Vanguard') !== -1) ship.shortvariation = 'VA';
     else if (ship.name.indexOf('Sentinel') !== -1) ship.shortvariation = 'ST';
     else ship.shortvariation = 'BV';
   }
-  ship.name = ship.name.replace(/\\/g, '');
+  // because Split are the only one who have this types, we will unify it under BV, like rest of the ships
+  ship.shortvariation = ship.shortvariation.replace('\\(Gas\\)', 'BV').replace('\\(Mineral\\)', 'BV');
 
-  appLog(`Processed macro data of ${data.macros.macro.name} (${ship.name})`);
   return ship;
 }

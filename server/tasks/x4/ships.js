@@ -1,47 +1,36 @@
 import xml2js from 'xml2js';
-import path from 'path';
 import {promises as fs} from 'fs';
-import {processMacro} from './processor-macro-data';
-import {processData} from './processor-data';
-import {normalizeShip, resolveAdditionalInformation} from './processor-ship';
-import {appLog} from '../../helpers/logger';
+import {addDataFromMacroFile} from './ship-macro-processor';
+import {addDataFromDataFile} from './ship-data-processor';
+import {normalizeShip, resolveAdditionalInformation} from './ship-normalizer';
+import {saveToFile} from './helpers';
 
 async function processShips(macroPath, translations, defaults, storage, shipstorage) {
   // get macro data, this is our first entry into EgoSoft ship details
-  const macroParser = new xml2js.Parser({mergeAttrs: true, explicitArray: false});
-  appLog(`Parsing macro data from ${macroPath}`);
-  const macroData = await macroParser.parseStringPromise(await fs.readFile(macroPath));
+  let parser = new xml2js.Parser({mergeAttrs: true, explicitArray: false});
+  const macroData = await parser.parseStringPromise(await fs.readFile(macroPath));
 
-  let ship = processMacro(macroData, translations, defaults, storage, shipstorage);
+  let ship = addDataFromMacroFile(macroData, translations, defaults, storage, shipstorage);
 
-  // once you macro data, find next related file which is referenced, get useful data from there as well
-  const dataParser = new xml2js.Parser({mergeAttrs: true, explicitArray: false});
+  // from last step we have ships most specific information, now we look at the ref file which the
+  // ship shares with other ships to get more information
+  parser = new xml2js.Parser({mergeAttrs: true, explicitArray: false});
   const dataFile = macroData.macros.macro.component.ref;
+
+  // unfortunately we only have the file name, but this ref file will always be one folder up
+  // for some reason, split builder is referencing argon builder, since in that context we will be in split dlc
+  // root folder, we need to adjust the path
   let dataPath = macroPath.split('\\');
   dataPath = `${dataPath.splice(0, dataPath.length - 2).join('\\')}\\${dataFile}.xml`;
-
-  // for some reason, split builder is referencing argon builder as base... and since that one is only in base
-  // game, the path needs to be adjusted
-  if (dataPath.indexOf('extensions\\ego_dlc_split\\assets\\units\\size_xl\\ship_arg_xl_builder_01') !== -1)
+  if (dataPath.indexOf('ego_dlc_split') !== -1 && dataPath.indexOf('ship_arg_xl_builder_01') !== -1) {
     dataPath = dataPath.replace('extensions\\ego_dlc_split\\', '');
+  }
+  const data = await parser.parseStringPromise(await fs.readFile(dataPath));
 
-  appLog(`Parsing additional information from ${dataPath}`);
-  const data = await dataParser.parseStringPromise(await fs.readFile(dataPath));
-
-  ship = {...ship, ...processData(data)};
+  ship = {...ship, ...addDataFromDataFile(data)};
   ship = {...normalizeShip(ship)};
-  ship = {...await resolveAdditionalInformation(ship)};
 
-  // at this point we either have most data consumable, or we have some things almost ready to use
-  // so let's look at the specifics that still remain and adjust those into properly usable properties
-
-  // at the end, save this as json file
-  const pathToOutput = path.join(__dirname, '..', '..', 'static-files', 'x4', `${ship.id}.json`);
-  appLog(`Saving data for ${ship.name} at ${pathToOutput}`, 'magenta');
-  const file = await fs.open(pathToOutput, 'w');
-  file.close();
-  await fs.writeFile(pathToOutput, JSON.stringify(ship));
-
+  await saveToFile(ship, ship.id, ship.name)
   return ship;
 }
 
@@ -53,6 +42,10 @@ export async function getShips(shipFileList, translations, defaults, equipment) 
 
     if (shipFile.indexOf('ship_tfm_l_carrier_01_a_macro') !== -1) return Promise.resolve();
     if (shipFile.indexOf('ship_gen_s_lasertower_01_a_macro') !== -1) return Promise.resolve();
+    if (shipFile.indexOf('ship_spl_s_trans_container_01_plot_01_macro') !== -1) return Promise.resolve();
+    if (shipFile.indexOf('ship_spl_m_bomber_01_a_macro') !== -1) return Promise.resolve();
+    if (shipFile.indexOf('ship_spl_xl_battleship_01_a_macro') !== -1) return Promise.resolve();
+    if (shipFile.indexOf('ship_kha_s_fighter_01_a_macro') !== -1) return Promise.resolve();
     if (shipFile.indexOf('miningdrone') !== -1) return Promise.resolve();
     if (shipFile.indexOf('fightingdrone') !== -1) return Promise.resolve();
     if (shipFile.indexOf('tfm') !== -1) return Promise.resolve();

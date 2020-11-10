@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import {connect} from 'react-redux';
+import classnames from 'classnames';
 
-import ShipRow from './ShipRow';
+import ShipPreview from './ShipPreview';
 import {fetchX4Equipment, fetchX4Ships} from '../../redux/x4Actions';
 import {fillOntoShip} from './x4-fitting-tool';
 import {maps, separateWord} from './helpers';
@@ -79,6 +80,10 @@ const Races = props => (
         {mapRace.label}
       </label>
     ))}<br/>
+    <label className='label--checkbox'>
+      <input type='checkbox' onChange={e => props.setComparisonMode(comparisonMode => !comparisonMode)}/>
+      Compare mode
+    </label>
     {maps.subtype.map(mapSubtype => (
       <label className='label--checkbox' key={mapSubtype.value}>
         <input type='checkbox'
@@ -100,6 +105,7 @@ const index = (props) => {
   const [race, setRace] = useState({arg: true, par: true, spl: true, tel: true, xen: true, kha: true});
   const [subtype, setSubtype] = useState({BV: true, VA: true, ST: true, RD: true});
   const [types, setTypes] = useState([]);
+  const [comparisonMode, setComparisonMode] = useState(false);
 
   const [shields, setShields] = useState([]);
   const [activeShield, setActiveShield] = useState(null);
@@ -138,7 +144,7 @@ const index = (props) => {
   }, [props.x4, size]);
 
   return (
-    <div className='x4'>
+    <div className={classnames('x4', {['x4--comparison']: comparisonMode })}>
       <h1>X4 Ship Previewer</h1>
       <div className='x4__dropdowns'>
         <Dropdowns shields={shields} setActiveShields={setActiveShield}
@@ -147,24 +153,20 @@ const index = (props) => {
                    setSize={setSize} setActiveType={setActiveType}
                    types={types}
         />
-        <Races setRace={setRace} setSubtype={setSubtype}/>
+        <Races setRace={setRace} setSubtype={setSubtype} setComparisonMode={setComparisonMode}/>
       </div>
 
-      <div className='not-going-to-mobile'>
-        <table>
-          <tbody>
-          {props.x4.ships && Object.keys(props.x4.ships[size]).map(id => {
-            let ship = {...props.x4.ships[size][id]};
-            if (!race[ship.race]) return null;
-            if (!subtype[ship.shortvariation]) return null;
-            if (activeType && activeType !== 'all' && ship.type !== activeType) return null;
-            if (activeShield) ship = fillOntoShip(ship, props.x4.equipment, maps.size[size], [activeShield]);
-            if (activeEngine) ship = fillOntoShip(ship, props.x4.equipment, maps.size[size], [activeEngine]);
-            if (activeThruster) ship = fillOntoShip(ship, props.x4.equipment, maps.size[size], [activeThruster]);
-            return <ShipRow key={ship.id} ship={ship}/>;
-          })}
-          </tbody>
-        </table>
+      <div className='x4__ships'>
+        {props.x4.ships && Object.keys(props.x4.ships[size]).map(id => {
+          let ship = {...props.x4.ships[size][id]};
+          if (!race[ship.race]) return null;
+          if (!subtype[ship.shortvariation]) return null;
+          if (activeType && activeType !== 'all' && ship.type !== activeType) return null;
+          if (activeShield) ship = fillOntoShip(ship, props.x4.equipment, maps.size[size], [activeShield]);
+          if (activeEngine) ship = fillOntoShip(ship, props.x4.equipment, maps.size[size], [activeEngine]);
+          if (activeThruster) ship = fillOntoShip(ship, props.x4.equipment, maps.size[size], [activeThruster]);
+          return <ShipPreview key={ship.id} ship={ship}/>;
+        })}
       </div>
     </div>
   );
