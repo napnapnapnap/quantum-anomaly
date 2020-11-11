@@ -8,95 +8,128 @@ import {fillOntoShip} from './x4-fitting-tool';
 import {maps, separateWord} from './helpers';
 import './X4.scss';
 
-const GroupedOptions = props => {
+const RadioGroups = props => {
   if (props.items.length === 0) return null;
 
-  const groups = {};
+  const mkGroups = {};
   props.items.forEach(item => {
-    const race = item.name.substring(0, 3);
-    groups[race] ? groups[race].push(item) : groups[race] = [item];
+    let base = item.name.replace(/ Mk\d/, '');
+    let race = 'GEN';
+    if (item.name.indexOf('Thrusters') === -1) {
+      base = item.name.replace(/ Mk\d/, '').replace(/\w\w\w /, '');
+      race = item.name.substring(0, 3);
+    }
+    if (!mkGroups[base]) mkGroups[base] = {};
+    if (!mkGroups[base][race]) mkGroups[base][race] = [];
+    let mk = item.name.replace(base, '').trim().replace('  ', ' ');
+    if (mk.length < 4) mk = `GEN ${mk}`;
+    mkGroups[base][race].push({...item, mk});
   });
+  const groupRandomName = Math.random();
 
-  return Object.keys(groups).map(key => (
-    <optgroup key={key} label={maps.reverseRace[key.toLowerCase()]}>
-      {groups[key].map(item => <option key={item.id} value={item.id}>{item.name}</option>)}
-    </optgroup>
-  ));
+  return (
+    <div className={classnames('x4__radio-group', {['x4__radio-group--wide']: props.isBig})}>
+      {Object.keys(mkGroups).map(baseKey => (
+        <div className='x4__radio-base' key={baseKey}>
+          <p className='x4__radio-title'>{baseKey}</p>
+          {Object.keys(mkGroups[baseKey]).map(raceKey => (
+            <div className='x4__radio-race' key={raceKey}>
+              {mkGroups[baseKey][raceKey].map((item, index) => (
+                <label className='x4__radio-label' key={item.id}>
+                  <input type='radio'
+                         name={groupRandomName}
+                         value={item.id}
+                         onChange={e => props.onChange(e.target.value)}/>
+                  {item.mk}
+                </label>
+              ))}
+            </div>
+          ))}
+        </div>
+      ))}
+    </div>
+  );
 };
 
-const Dropdowns = props => (
-  <div className='x4__dropdown'>
-    <select onChange={e => {
-      props.setActiveShields(null);
-      props.setActiveEngines(null);
-      props.setActiveThrusters(null);
-      props.setActiveType(null);
-      props.setSize(e.target.value);
-    }}>
-      <option value='ship_xl'>Extra Large Ships</option>
-      <option value='ship_l'>Large Ships</option>
-      <option value='ship_m'>Medium Ships</option>
-      <option value='ship_s'>Small Ships</option>
-    </select>
-    <select onChange={e => props.setActiveShields(e.target.value)}>
-      <option value='none'>No shields</option>
-      <GroupedOptions items={[...props.shields]}/>
-    </select>
-    <select onChange={e => props.setActiveEngines(e.target.value)}>
-      <option value='none'>No engine</option>
-      <GroupedOptions items={[...props.engines]}/>
-    </select>
-    <select onChange={e => props.setActiveThrusters(e.target.value)}>
-      <option value='none'>No thrusters</option>
-      <optgroup label='Thrusters'>
-        {props.thrusters.map(thruster => (
-          <option key={thruster.id} value={thruster.id}>{thruster.name}</option>
-        ))}
-      </optgroup>
-    </select>
-    <select onChange={e => props.setActiveType(e.target.value)}>
-      <option value='all'>All types of ship</option>
-      <optgroup label='Ship Types'>
-        {props.types.map(type => (
-          <option key={type} value={type}>{separateWord(type)}</option>
-        ))}
-      </optgroup>
-    </select>
+const RadioSize = props => (
+  <div className='x4__radio-group x4__radio-group--size'>
+    <p className='x4__radio-title'>Size of ships to display</p>
+    {props.sizes.map(size => (
+      <label className='x4__radio-label' key={size}>
+        <input type='radio'
+               name='size'
+               value={size}
+               checked={size === props.size}
+               onChange={e => {
+                 props.setActiveShields(null);
+                 props.setActiveEngines(null);
+                 props.setActiveThrusters(null);
+                 props.setActiveType(null);
+                 props.setSize(e.target.value);
+               }}/>
+        {size.replace('ship_', '')
+          .replace('xl', 'Extra Large')
+          .replace('l', 'Large')
+          .replace('m', 'Medium')
+          .replace('s', 'Small')}
+      </label>
+    ))}
+    <label className='label--checkbox'>
+      <input type='checkbox' onChange={e => props.setComparisonMode(comparisonMode => !comparisonMode)}/>
+      Comparison mode
+    </label>
+    <p className='x4__radio-title'>Types of ships to display</p>
+    <label className='x4__radio-label capitalize'>
+      <input type='radio' name='type' value='all' onChange={e => {
+        props.setActiveType(e.target.value);
+      }} checked={!props.activeType || props.activeType === 'all'}/>
+      All types
+    </label>
+    {props.types.map(type => (
+      <label className='x4__radio-label capitalize' key={type}>
+        <input type='radio' name='type' value={type} onChange={e => {
+          props.setActiveType(e.target.value);
+        }}/>
+        {separateWord(type)}
+      </label>
+    ))}
   </div>
 );
 
 const Races = props => (
-  <div>
-    {maps.race.map(mapRace => (
-      <label className='label--checkbox' key={mapRace.value}>
-        <input type='checkbox'
-               onChange={e => props.setRace(race => {
-                 const selectedRace = {};
-                 selectedRace[mapRace.value] = e.target.checked;
-                 return {...race, ...selectedRace};
-               })}
-               defaultChecked
-        />
-        {mapRace.label}
-      </label>
-    ))}<br/>
-    <label className='label--checkbox'>
-      <input type='checkbox' onChange={e => props.setComparisonMode(comparisonMode => !comparisonMode)}/>
-      Compare mode
-    </label>
-    {maps.subtype.map(mapSubtype => (
-      <label className='label--checkbox' key={mapSubtype.value}>
-        <input type='checkbox'
-               onChange={e => props.setSubtype(subtype => {
-                 const selectedSubtype = {};
-                 selectedSubtype[mapSubtype.value] = e.target.checked;
-                 return {...subtype, ...selectedSubtype};
-               })}
-               defaultChecked
-        />
-        {mapSubtype.label}
-      </label>
-    ))}
+  <div className='x4__checkboxes'>
+    <div className='x4__checkbox-group'>
+      <p className='x4__radio-title'>Display following races</p>
+      {maps.race.map(mapRace => (
+        <label className='label--checkbox' key={mapRace.value}>
+          <input type='checkbox'
+                 onChange={e => props.setRace(race => {
+                   const selectedRace = {};
+                   selectedRace[mapRace.value] = e.target.checked;
+                   return {...race, ...selectedRace};
+                 })}
+                 defaultChecked
+          />
+          {mapRace.label}
+        </label>
+      ))}
+    </div>
+    <div className='x4__checkbox-group'>
+      <p className='x4__radio-title'>Display following subtypes</p>
+      {maps.subtype.map(mapSubtype => (
+        <label className='label--checkbox' key={mapSubtype.value}>
+          <input type='checkbox'
+                 onChange={e => props.setSubtype(subtype => {
+                   const selectedSubtype = {};
+                   selectedSubtype[mapSubtype.value] = e.target.checked;
+                   return {...subtype, ...selectedSubtype};
+                 })}
+                 defaultChecked
+          />
+          {mapSubtype.label}
+        </label>
+      ))}
+    </div>
   </div>
 );
 
@@ -144,18 +177,27 @@ const index = (props) => {
   }, [props.x4, size]);
 
   return (
-    <div className={classnames('x4', {['x4--comparison']: comparisonMode })}>
+    <div className={classnames('x4', {['x4--comparison']: comparisonMode})}>
       <h1>X4 Ship Previewer</h1>
-      <div className='x4__dropdowns'>
-        <Dropdowns shields={shields} setActiveShields={setActiveShield}
-                   engines={engines} setActiveEngines={setActiveEngine}
-                   thrusters={thrusters} setActiveThrusters={setActiveThruster}
-                   setSize={setSize} setActiveType={setActiveType}
+      <div className='x4__controls'>
+        <RadioSize sizes={['ship_xl', 'ship_l', 'ship_m', 'ship_s']}
+                   setSize={setSize}
+                   setActiveShields={setActiveShield}
+                   setActiveEngines={setActiveEngine}
+                   setActiveThrusters={setActiveThruster}
+                   setActiveType={setActiveType}
+                   activeType={activeType}
+                   setComparisonMode={setComparisonMode}
+                   size={size}
                    types={types}
         />
-        <Races setRace={setRace} setSubtype={setSubtype} setComparisonMode={setComparisonMode}/>
+        <Races setRace={setRace} setSubtype={setSubtype}/>
+        <p className='divider'/>
+        <RadioGroups items={[...engines]} onChange={setActiveEngine} isBig/>
+        <RadioGroups items={[...shields]} onChange={setActiveShield}/>
+        <RadioGroups items={[...thrusters]} onChange={setActiveThruster}/>
       </div>
-
+      <p className='divider'/>
       <div className='x4__ships'>
         {props.x4.ships && Object.keys(props.x4.ships[size]).map(id => {
           let ship = {...props.x4.ships[size][id]};

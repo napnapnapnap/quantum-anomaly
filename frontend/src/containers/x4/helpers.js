@@ -26,10 +26,27 @@ export const maps = {
     spl: 'Split',
     tel: 'Teladi',
     xen: 'Xenon'
+  },
+  factions: {
+    argon: 'Argon Federation',
+    antigone: 'Antigone Republic',
+    alliance: 'Alliance of the Word',
+    holyorder: 'Holy Order',
+    paranid: 'Paranid Godrealm',
+    freesplit: 'Free Families',
+    teladi: 'Teladi Company',
+    ministry: 'Ministry of Finance',
+    xenon: 'Xenon',
+    scaleplate: 'Scale Plate Pact',
+    split: 'Zyarth Patriarcy'
   }
 };
 
-export const separateWord = arg => arg.replace('large', 'large ').replace('heavy', 'heavy ');
+export const separateWord = arg => arg
+  .replace('large', 'large ')
+  .replace('heavy', 'heavy ')
+  .replace('energy', 'energy ')
+  .replace('hullparts', 'hull parts');
 
 export const translateRace = arg => arg
   .replace('arg', 'Argon ')

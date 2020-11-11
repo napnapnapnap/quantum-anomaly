@@ -8,6 +8,7 @@ import {getDefaults} from './defaults';
 import {getEquipment} from './equipment';
 import {saveToFile} from './helpers';
 import {getShips} from './ships';
+import {getWares} from './wares';
 
 /*  NOTE: This task only runs on local machine. Even though path is being used in most places, this is still best ran
           to run on windows machine, which you probably have so that you can run the game as well, right? It expects
@@ -30,16 +31,15 @@ For now you can just copy paste manually files from split dlc into main unpackag
 const sourceBasePath = 'C:\\X4';
 const sourcify = arg => path.join(sourceBasePath, `${arg}.xml`);
 
-// macros [true/false] - true gets all macros, false gets all components instead
-async function composeIndexTree(macros, dlc = null) {
-  if (macros !== true && macros !== false) throw new Error('Missing argument macros');
+// type [macros/components]
+async function composeIndexTree(type, dlc = null) {
   let sourceIndexBasePath = sourceBasePath;
   if (dlc === 'split') sourceIndexBasePath = path.join(sourceIndexBasePath, 'extensions', 'ego_dlc_split');
   sourceIndexBasePath = path.join(sourceIndexBasePath, 'index');
 
   let sourceFilePath;
-  if (macros) sourceFilePath = path.join(sourceIndexBasePath, 'macros.xml');
-  else sourceFilePath = path.join(sourceIndexBasePath, 'components.xml');
+  if (type === 'macros') sourceFilePath = path.join(sourceIndexBasePath, 'macros.xml');
+  else if (type === 'components') sourceFilePath = path.join(sourceIndexBasePath, 'components.xml');
 
   const parser = new xml2js.Parser({mergeAttrs: true, explicitArray: false});
   let parsedIndex = await parser.parseStringPromise(await fs.readFile(sourceFilePath));
@@ -56,12 +56,15 @@ async function start() {
   const translations = await getTranslations(sourceBasePath);
   await saveToFile(translations, '_translations', 'translations');
 
-  let macrosIndex = await composeIndexTree(true);
-  macrosIndex = {...macrosIndex, ...await composeIndexTree(true, 'split')};
+  const wares = await getWares(sourceBasePath);
+  await saveToFile(wares, '_wares', 'wares');
+
+  let macrosIndex = await composeIndexTree('macros');
+  macrosIndex = {...macrosIndex, ...await composeIndexTree('macros', 'split')};
   await saveToFile(macrosIndex, '_macros-index', 'macro index');
 
-  let componentsIndex = await composeIndexTree(false);
-  componentsIndex = {...componentsIndex, ...await composeIndexTree(false, 'split')};
+  let componentsIndex = await composeIndexTree('components');
+  componentsIndex = {...componentsIndex, ...await composeIndexTree('components', 'split')};
   await saveToFile(componentsIndex, '_components-index', 'components index');
 
 
@@ -74,7 +77,7 @@ async function start() {
     storage: [],
     weapon: [],
     turret: [],
-    bullet: [],
+    bullet: []
   };
 
   Object.keys(macrosIndex).forEach(key => {
@@ -107,10 +110,10 @@ async function start() {
   await saveToFile(defaults, '_defaults', 'defaults');
 
   // [TODO]: Optimize ship processing
-  const ships = await getShips(shipPaths, translations, defaults, equipment);
+  const ships = await getShips(shipPaths, translations, defaults, equipment, wares);
   await saveToFile(ships, '_ships', 'ships');
 
-  const totalNumberOfShips = Object.keys(ships.ship_xl).length + Object.keys(ships.ship_l).length + Object.keys(ships.ship_m).length + Object.keys(ships.ship_s).length
+  const totalNumberOfShips = Object.keys(ships.ship_xl).length + Object.keys(ships.ship_l).length + Object.keys(ships.ship_m).length + Object.keys(ships.ship_s).length;
   appLog(`Finished generating ${totalNumberOfShips} ships`, 'green');
 }
 

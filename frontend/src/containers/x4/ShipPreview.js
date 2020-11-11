@@ -1,4 +1,4 @@
-import {float, int, separateWord, translateRace} from './helpers';
+import {float, int, maps, separateWord, translateRace} from './helpers';
 
 const Armaments = props => {
   const {large, medium, small} = props.ship.armaments[props.type];
@@ -77,6 +77,25 @@ const ShipPreview = ({ship}) => (
           <span className='value'>{float(ship.speed.yaw)} °/s</span>
         </p>
         <p className='divider'/>
+        <p>
+          <span className='label label--flip'>Main seller:</span>
+          <span className='value value--flip'>
+            {ship.manufacturer === 'khaak' || ship.manufacturer === 'xenon'
+              ? 'Not sold'
+              : maps.factions[ship.manufacturer] || ship.manufacturer
+            }
+          </span>
+        </p>
+        <p>
+          <span className='label'>Average cost: </span>
+          <span className='value'>
+            {ship.manufacturer === 'khaak' || ship.manufacturer === 'xenon'
+              ? 'Not sold'
+              : `${int(ship.price.average)} CR`
+            }
+          </span>
+        </p>
+        <p className='divider'/>
       </div>
 
       <div className='x4__attributes-column'>
@@ -116,11 +135,7 @@ const ShipPreview = ({ship}) => (
         </p>
         <p>
           <span className='label'>Capacity</span>
-          <span className='value'>{ship.storage.capacity} m³</span>
-        </p>
-        <p>
-          <span className='label'>Trade score</span>
-          <span className='value'>{int(int(ship.storage.capacity) * int(ship.speed.travel))}</span>
+          <span className='value'>{int(ship.storage.capacity)} m³</span>
         </p>
         <p className='divider'/>
         <p>
@@ -132,6 +147,21 @@ const ShipPreview = ({ship}) => (
           <span className='value'>{ship.shipstorage.dock_s} ships</span>
         </p>
         <p className='divider'/>
+        {ship.manufacturer !== 'khaak' && (
+          <div key={Math.random()}>
+            <p>
+              <span className='label'>Time to build</span>
+              <span className='value'>{Math.floor(ship.production.time / 60)} min {ship.production.time % 60} sec</span>
+            </p>
+            {ship.production.primary.ware.map(item => (
+              <p key={Math.random()}>
+                <span className='label capitalize'>{separateWord(item.ware)}</span>
+                <span className='value'>{int(item.amount)}</span>
+              </p>
+            ))}
+            <p className='divider'/>
+          </div>
+        )}
       </div>
     </div>
   </div>

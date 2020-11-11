@@ -1,4 +1,5 @@
 import {checkSizeUniformity, getSizeFromTags} from './helpers';
+import {inspect} from '../../helpers/logger';
 
 function countArmaments(armament) {
   const result = {large: 0, medium: 0, small: 0};
@@ -8,7 +9,7 @@ function countArmaments(armament) {
   return result;
 }
 
-export function normalizeShip(ship) {
+export function normalizeShip(ship, wares) {
   if (ship.groups) {
     Object.keys(ship.groups).forEach(groupKey => {
       // Here we will have things that we can easily transpose into usable properties without having
@@ -82,6 +83,22 @@ export function normalizeShip(ship) {
       }
     });
   }
+
+  const ware = wares.wares.ware[ship.id.replace('_macro', '')];
+  ship.price = ware.price;
+  ship.production = ware.production;
+
+  let manufacturer = null;
+  if (Array.isArray(ware.owner)) {
+    ware.owner.forEach(item => {
+      if (!manufacturer && item.faction !== 'buccaneers' && item.faction !== 'court' && item.faction !== 'hatikvah'  && item.faction !== 'alliance') manufacturer = item.faction;
+    });
+  } else {
+    manufacturer = ware.owner.faction;
+  }
+  ship.manufacturer = manufacturer;
+
+  if (ship.storage.capacityType === 'container liquid solid') ship.storage.capacityType = 'Any type';
 
   delete ship.groups;
   // this is some of the things that might be usefull later, but for now we get rid of it and we can comment out

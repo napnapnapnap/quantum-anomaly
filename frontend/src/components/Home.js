@@ -7,10 +7,15 @@ const menuItems = [{
   label: 'EVE Online: Epic arcs guide',
   content: 'In depth guide for EVE Online level 4 epic arc missions. Find all about the related missions, enemies, rewards, what to bring and how to start them...'
 },{
-  url: '/x4-ships',
+  url: '/x4/ships',
   cover: '/images/x4/logo.png',
   label: 'X4 Foundations: Ships',
   content: 'List of ships with their stats. Still work in progress with aim at offering same equiping options as in game so that you can use this application to validate your fits beforehand.'
+},{
+  url: '/x4/efficiency',
+  cover: '/images/x4/logo.png',
+  label: 'X4 Foundations: Efficiency',
+  content: 'Analysis of trading ships currently in X4 Foundations version 3.3.'
 }];
 
 const Home = () => (

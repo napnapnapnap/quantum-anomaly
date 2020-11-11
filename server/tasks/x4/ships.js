@@ -2,10 +2,10 @@ import xml2js from 'xml2js';
 import {promises as fs} from 'fs';
 import {addDataFromMacroFile} from './ship-macro-processor';
 import {addDataFromDataFile} from './ship-data-processor';
-import {normalizeShip, resolveAdditionalInformation} from './ship-normalizer';
+import {normalizeShip} from './ship-normalizer';
 import {saveToFile} from './helpers';
 
-async function processShips(macroPath, translations, defaults, storage, shipstorage) {
+async function processShips(macroPath, translations, defaults, storage, shipstorage, wares) {
   // get macro data, this is our first entry into EgoSoft ship details
   let parser = new xml2js.Parser({mergeAttrs: true, explicitArray: false});
   const macroData = await parser.parseStringPromise(await fs.readFile(macroPath));
@@ -28,13 +28,13 @@ async function processShips(macroPath, translations, defaults, storage, shipstor
   const data = await parser.parseStringPromise(await fs.readFile(dataPath));
 
   ship = {...ship, ...addDataFromDataFile(data)};
-  ship = {...normalizeShip(ship)};
+  ship = {...normalizeShip(ship, wares)};
 
   await saveToFile(ship, ship.id, ship.name)
   return ship;
 }
 
-export async function getShips(shipFileList, translations, defaults, equipment) {
+export async function getShips(shipFileList, translations, defaults, equipment, wares) {
   const ships = {ship_xl: {}, ship_l: {}, ship_m: {}, ship_s: {}};
 
   await shipFileList.reduce(async (prev, shipFile) => {
@@ -50,7 +50,7 @@ export async function getShips(shipFileList, translations, defaults, equipment) 
     if (shipFile.indexOf('fightingdrone') !== -1) return Promise.resolve();
     if (shipFile.indexOf('tfm') !== -1) return Promise.resolve();
 
-    const ship = await processShips(shipFile, translations, defaults, equipment.storage, equipment.shipstorage);
+    const ship = await processShips(shipFile, translations, defaults, equipment.storage, equipment.shipstorage, wares);
     ships[ship.class][ship.id] = ship;
   }, Promise.resolve());
 

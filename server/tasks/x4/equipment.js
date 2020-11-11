@@ -28,7 +28,6 @@ const getContent = async (paths, type, translations, bullets) => {
     else if (filePath.indexOf('_l_') !== -1) size = 'large';
     else return Promise.resolve();
 
-
     const parser = new xml2js.Parser({mergeAttrs: true, explicitArray: false});
     const parsed = await parser.parseStringPromise(await fs.readFile(filePath));
 
@@ -96,6 +95,10 @@ const getContent = async (paths, type, translations, bullets) => {
         hull: properties.hull.max
       };
     } else if (type === 'engine') {
+      if (data.name.replace('_macro', '').indexOf('xen') !== -1) return;
+      if (data.name.replace('_macro', '').indexOf('kha') !== -1) return;
+      if (data.name.replace('_macro', '').indexOf('tfm') !== -1) return;
+
       result[size][data.name.replace('_macro', '')] = {
         id: data.name.replace('_macro', ''),
         name: translate(properties.identification.name, translations, true).replace('APL', 'SPL'),
@@ -115,6 +118,10 @@ const getContent = async (paths, type, translations, bullets) => {
         thrust: properties.thrust
       };
     } else if (type === 'shield') {
+      if (data.name.replace('_macro', '').indexOf('m_standard_01') !== -1) return;
+      if (data.name.replace('_macro', '').indexOf('xen') !== -1) return;
+      if (data.name.replace('_macro', '').indexOf('kha') !== -1) return;
+
       result[size][data.name.replace('_macro', '')] = {
         id: data.name.replace('_macro', ''),
         name: translate(properties.identification.name, translations, true),
