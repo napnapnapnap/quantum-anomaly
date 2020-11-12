@@ -2,249 +2,192 @@ import React, {useEffect, useState} from 'react';
 import {fetchX4Equipment, fetchX4Ships} from '../../redux/x4Actions';
 import {connect} from 'react-redux';
 import {fillOntoShip} from './x4-fitting-tool';
-import {float, int} from './helpers';
+import {float, int, separateWord, translateRace} from './helpers';
+import './ShipEfficiency.scss';
+
+const LARGE_SHIP_EXTRA_TRAVEL = 4.5 + 7.5;
 
 const ShipEfficiency = (props) => {
-  const [firstTest, setFirstTest] = useState([]);
-  const [secondTest, setSecondTest] = useState([]);
-  const [best, setBest] = useState([]);
+  const [race, setRace] = useState('arg');
+  const [distance, setDistance] = useState(1000);
+  const [jumpGates, setJumpGates] = useState(4);
+  const [percentHighway, setPercentHighway] = useState(80);
+  const [highwaySpeed, setHighwaySpeed] = useState(13500);
+  const [results, setResults] = useState([]);
 
   useEffect(() => {
     if (!props.x4.ships) props.fetchX4Ships().then(() => props.fetchX4Equipment());
+
     if (props.x4.ships && props.x4.equipment) {
       let shipCollection = [];
+      const extraNormalTravelDistance = jumpGates * LARGE_SHIP_EXTRA_TRAVEL;
+      const highwayDistance = distance * percentHighway / 100;
+
       Object.keys(props.x4.ships.ship_l).forEach(key => {
         let ship = props.x4.ships.ship_l[key];
         if (ship.type === 'freighter') {
-          ship = {...fillOntoShip(ship, props.x4.equipment, 'large', ['engine_arg_l_travel_01_mk1'])};
-          ship.first = ship.storage.capacity / (630 * 1000 / ship.speed.travel + 20 * 1000 / ship.speed.forward);
-          ship.second = ship.storage.capacity / (630 * 1000 / ship.speed.travel + 20 * 1000 / ship.speed.forward);
-          ship.average = (ship.first + ship.second) / 2;
-          ship.name = '[L] ' + ship.name;
+          ship = {...fillOntoShip(ship, props.x4.equipment, 'large', [`engine_${race}_l_travel_01_mk1`])};
+          ship.travelTime = distance * 1000 / ship.speed.travel + extraNormalTravelDistance * 1000 / ship.speed.forward;
+          ship.tradeScore = ship.storage.capacity / ship.travelTime;
           shipCollection.push(ship);
         }
       });
       Object.keys(props.x4.ships.ship_m).forEach(key => {
         let ship = props.x4.ships.ship_m[key];
         if (ship.type === 'transporter') {
-          ship = {...fillOntoShip(ship, props.x4.equipment, 'medium', ['engine_arg_m_travel_01_mk3'])};
-          ship.first = ship.storage.capacity / ((175 * 1000 / ship.speed.travel) + ((480 * 1000) / 13500));
-          ship.second = ship.storage.capacity / (630 * 1000 / ship.speed.travel);
-          ship.average = (ship.first + ship.second) / 2;
-          ship.name = '[M] ' + ship.name;
+          ship = {...fillOntoShip(ship, props.x4.equipment, 'medium', [`engine_${race}_m_travel_01_mk3`])};
+          ship.travelTime = (distance - highwayDistance) * 1000 / ship.speed.travel + highwayDistance * 1000 / highwaySpeed;
+          ship.tradeScore = ship.storage.capacity / ship.travelTime;
           shipCollection.push(ship);
         }
       });
       Object.keys(props.x4.ships.ship_s).forEach(key => {
         let ship = props.x4.ships.ship_s[key];
         if (ship.type === 'courier') {
-          ship = {...fillOntoShip(ship, props.x4.equipment, 'small', ['engine_arg_s_travel_01_mk3'])};
-          ship.first = ship.storage.capacity / (1755 * 1000 / ship.speed.travel + 480 * 1000 / 13500);
-          ship.second = ship.storage.capacity / (630 * 1000 / ship.speed.travel);
-          ship.average = (ship.first + ship.second) / 2;
-          ship.name = '[S] ' + ship.name;
+          ship = {...fillOntoShip(ship, props.x4.equipment, 'small', [`engine_${race}_s_travel_01_mk3`])};
+          ship.travelTime = (distance - highwayDistance) * 1000 / ship.speed.travel + highwayDistance * 1000 / highwaySpeed;
+          ship.tradeScore = ship.storage.capacity / ship.travelTime;
           shipCollection.push(ship);
         }
       });
-      shipCollection.sort((a, b) => (a.first < b.first) ? 1 : ((b.first < a.first) ? -1 : 0));
-      setFirstTest([...shipCollection]);
-      shipCollection.sort((a, b) => (a.second < b.second) ? 1 : ((b.second < a.second) ? -1 : 0));
-      setSecondTest([...shipCollection]);
-
-      shipCollection = shipCollection.filter(item => !(item.shortvariation === 'VA'));
-      shipCollection.sort((a, b) => (a.average < b.average) ? 1 : ((b.average < a.average) ? -1 : 0));
-      setBest([...shipCollection]);
+      shipCollection.sort((a, b) => (a.tradeScore < b.tradeScore) ? 1 : ((b.tradeScore < a.tradeScore) ? -1 : 0));
+      setResults(shipCollection);
     }
-  }, [props.x4.equipment]);
+  }, [props.x4.equipment, race, distance, jumpGates, percentHighway, highwaySpeed]);
 
   return (
     <div className='x4__efficiency'>
       <h1>X4 Ship Efficiency</h1>
-      <h3>Trading ships</h3>
+      <h3>Large Transport Ships</h3>
       <p className='long-text'>
-        In order to understand what makes trading ships efficient we need to look at multiple facts. Is it the ship
-        with most cargo? With most speed? With most m³ moved per second? One able to outrun enemies? Some of them are
-        easy to figure out, other, well...
+        For large ships there are three things to consider. First obvious thing is if it can dock at station you want to
+        trade with. This is something you have to discover on your own for the materials you want to trade. Second thing
+        is that large ships can't use highways, so their efficiency is mostly limited by their travel speed and cargo
+        size. Third thing is that large ships jump systems by going at the back of the gate. After some testing in game,
+        results show that time needed to jump out of sectors is same as ship needing to travel about 4.5km and time
+        needed to go into travel mode on other side is about same as ship needing to travel 7.5km. On the bottom of the
+        page you can find more details.
       </p>
       <p className='long-text'>
-        So let's introduce a metric to measure the performance. The the trading score. We can calculate some things and
-        list few other things where you can do your own weighting and come to a decision.
+        So settings mostly related to large ships are total distance covered, 1000km sounds like good estimation for
+        range of 4 systems and number of gates they will have to use. That is actual jump gates, acceleration gates are
+        fine.
+      </p>
+      <h3>Small and Medium Transport Ships</h3>
+      <p className='long-text'>
+        For medium ships there is one main thing to consider, they can use highways. Now speeds on highways are same for
+        all ships, but not same for all highways. At the time of writting, in game they range from 11.000 to 15.000 and
+        it was decided for 13.500 average.
+        You can change that setting if you want to something else. The problem is that usage of highways effects their
+        efficiency in very enourmous way. So there is a setting of what % of highways you expect your trading ships to
+        use. If they will be trading in core sectors, try to figure out for yourself how much time they will spend on
+        highways. Argon Prime traders probably do it about 80% of time. Tharka's Ravine traders do it 0% of the
+        time.
       </p>
       <p className='long-text'>
-        Let's set up two different trading scenarios. Both start at Wharf in Profit Center Alpha. For first scenario
-        we go to Hatikvah's Choice III to a station. In second scenario we go to Open Market Trading Station. Both
-        scenarios include very likable trading route that you might encounter.
+        So settings related to small and medium ships are total distance covered, 1000km sounds like good estimation for
+        4 systems and percentage of that distance they can spend on highways.
       </p>
+      <h3>Trading Score Tool</h3>
       <p className='long-text'>
-        What can we measure? Well, we know the distances, the cargo spaces of ships and the speeds. The easiest would
-        be to just multiply the travel speed with cargo capacity and call it a day. But that doesn't work when we
-        include highways. Since ships on highways react averages of 13.500m/s it means that small and medium ships
-        get massive boost to their efficiency. So let's look at details.
+        Now that you are aware of these things, feel free to use this tool to try to figure out which traders might work
+        best for your use case scenario
       </p>
 
-
-      <h5>Scenario I</h5>
-      <p className='long-text'>
-        Let's look at distances here. We have 30km to highway and then 240km to next gate. Large ships have to go
-        directly to gate, meaning they have 260km to fly. Then in Silent Witness we have 240km highway or 225km direct
-        line. In Hatikvah's Choice I we have 25km to the superhighway connection and then 120km on the other side to
-        reach station.
-      </p>
-      <p className='bold'>Medium ships need 175km travel and 480km highways. </p>
-      <p className='long-text'>
-        Large ships are looking at 630km of travel distance. One
-        thing to note is that large ships need to go at the back of the gate and use normal speed to reach the gate.
-        They also do some slow moving on the other side when they exit. We will assume that distance is 5km on both
-        sides.
-      </p>
-      <p className='bold'>
-        Large ships need 630km travel and 20km normal speeds.
-      </p>
-      <p className='long-text'>
-        So let's look at our ships. Since there is a lot, let's limit the result to the best engine. In case of large
-        ships it is Argon Travel L. Time spent is time in travel mode and time in normal mode.
-        In case of medium and small ships, as long as you are not in sector, they will spend all time either on highway
-        or in travel mode. Time spent is first travel time then highway time and engines are Argon travel.
-      </p><br/>
-      <div className='efficiency__ships'>
-        <div key={Math.random()} className='efficiency__ship'>
-          <span className='efficiency__item'>Ship name</span>
-          <span className='efficiency__item'>Capacity</span>
-          <span className='efficiency__item'>Normal speed</span>
-          <span className='efficiency__item'>Travel speed</span>
-          <span className='efficiency__item'>Time spent</span>
-          <span className='efficiency__item'>m³ moved per second</span>
+      <div className='x4__controls'>
+        <div className='x4__radio-group x4__radio-group--numbers'>
+          <p className='x4__radio-title'>Variables you want to use</p>
+          <label>
+            <input type='number' defaultValue='1000' min='10' max='10000'
+                   onChange={e => setDistance(parseInt(e.target.value, 10))}/> km of total whole trip
+          </label><br/>
+          <label>
+            <input type='number' defaultValue='4' min='0' max='15'
+                   onChange={e => setJumpGates(parseInt(e.target.value, 10))}/> jump gates
+          </label><br/>
+          <label>
+            <input type='number' defaultValue='80' min='0' max='100'
+                   onChange={e => setPercentHighway(parseInt(e.target.value, 10))}/> percent of travel on highway
+          </label><br/>
+          <label>
+            <input type='number' defaultValue='13500' min='10000' max='15000'
+                   onChange={e => setHighwaySpeed(parseInt(e.target.value, 10))}/> m/s highway speed
+          </label>
         </div>
-        {firstTest.map(ship => (
-          <div key={Math.random()} className='efficiency__ship'>
-            <span className='efficiency__item'>{ship.name}</span>
-            <span className='efficiency__item'>{int(ship.storage.capacity)}m³</span>
-            <span className='efficiency__item'>{int(ship.speed.forward)}m/s</span>
-            <span className='efficiency__item'>{int(ship.speed.travel)}m/s</span>
-            <span className='efficiency__item'>
-              {ship.class === 'ship_l'
-                ? <>{int(630 * 1000 / ship.speed.travel)}s / {int(20 * 1000 / ship.speed.forward)}s</>
-                : <>{int(175 * 1000 / ship.speed.travel)}s / {int(480 * 1000 / 13500)}s</>
-              }
-            </span>
-            <span className='efficiency__item'>
-              {float(ship.first)} m³/s
-            </span>
-          </div>
-        ))}
-      </div><br/>
-      <p className='long-text'>
-        Interesting thing to note here is that as long as there is highway involved, most large traders get blown out
-        of the water. Also small traders are really not to be used as soon as you can afford it, maybe 1 or 2 per
-        station complex for those small cargo runs so it doesn't block medium ships.
-      </p>
-
-
-      <h5>Scenario II</h5>
-      <p className='long-text'>
-        Let's look at distances here. We have 200km to next gate. Then in Two Grand we have 260 km to next gate.
-        Lastly, we have 170km to reach station in Open Market. Same thing as last time. Large ships still need
-        to do their gate finick, while small and medium ships spend all their time in travel mode.
-      </p>
-      <p className='bold'>Medium ships need 630km travel mode. </p>
-      <p className='bold'>Large ships need 630km travel and 20km normal speeds.</p>
-      <p className='long-text'>
-        Again all ships in table are using Argon Engines since they provide best results.
-      </p><br/>
-      <div className='efficiency__ships'>
-        <div key={Math.random()} className='efficiency__ship'>
-          <span className='efficiency__item'>Ship name</span>
-          <span className='efficiency__item'>Capacity</span>
-          <span className='efficiency__item'>Normal speed</span>
-          <span className='efficiency__item'>Travel speed</span>
-          <span className='efficiency__item'>Time spent</span>
-          <span className='efficiency__item'>m³ moved per second</span>
+        <div className='x4__radio-group x4__radio-group'>
+          <p className='x4__radio-title'>Travel engines you want to use (highest Mk available for class)</p>
+          <label className='x4__radio-label'>
+            <input type='radio' name='engines' value='arg' onChange={e => setRace('arg')} defaultChecked/> Argon
+          </label>
+          <label className='x4__radio-label'>
+            <input type='radio' name='engines' value='par' onChange={e => setRace('par')}/> Paranid
+          </label>
+          <label className='x4__radio-label'>
+            <input type='radio' name='engines' value='spl' onChange={e => setRace('spl')}/> Split
+          </label>
+          <label className='x4__radio-label'>
+            <input type='radio' name='engines' value='tel' onChange={e => setRace('tel')}/> Teladi
+          </label>
         </div>
-        {secondTest.map(ship => (
-          <div key={Math.random()} className='efficiency__ship'>
-            <span className='efficiency__item'>{ship.name}</span>
-            <span className='efficiency__item'>{int(ship.storage.capacity)}m³</span>
-            <span className='efficiency__item'>{int(ship.speed.forward)}m/s</span>
-            <span className='efficiency__item'>{int(ship.speed.travel)}m/s</span>
-            <span className='efficiency__item'>
-              {ship.class === 'ship_l'
-                ? <>{int(630 * 1000 / ship.speed.travel)}s / {int(20 * 1000 / ship.speed.forward)}s</>
-                : <>{int(630 * 1000 / ship.speed.travel)}s</>
-              }
+      </div>
+
+
+      <div className='x4-ships-efficiency'>
+        {results.map((ship, index) => (
+          <div key={Math.random()} className='x4-ships-efficiency__ship'>
+            <span className='x4-ships-efficiency__place'>
+              <span className='bold'>{index + 1}</span>
             </span>
-            <span className='efficiency__item'>
-              {float(ship.second)} m³/s
+            <img src={`/images/x4/${ship.id}.jpg`}/>
+            <span className='x4-ships-efficiency__info'>
+              <span className='bold'>{ship.name}</span><br/>
+              {translateRace(ship.race)} {separateWord(ship.type)}
+            </span>
+            <span className='x4-ships-efficiency__capacity'>
+              <span className='bold'>Storage capacity</span><br/>
+              {int(ship.storage.capacity)}m³
+            </span>
+            <span className='x4-ships-efficiency__speed'>
+              <span className='bold'>Normal Speed</span><br/>
+              {int(ship.speed.forward)} m/s
+            </span>
+            <span className='x4-ships-efficiency__speed'>
+              <span className='bold'>Travel Speed</span><br/>
+              {int(ship.speed.travel)} m/s
+            </span>
+            <span className='x4-ships-efficiency__ttc'>
+              <span className='bold'>Done after</span><br/>
+              {int(ship.travelTime)} seconds
+            </span>
+            <span className='x4-ships-efficiency__ttc'>
+              <span className='bold'>Trade score</span><br/>
+              {float(ship.tradeScore)} m³/s
             </span>
           </div>
         ))}
       </div>
       <br/>
       <p className='long-text'>
-        Here things get interesting. Large ships clearly lead when there are no highways... But...
-      </p>
-
-
-      <h3>Conclusions</h3>
-      <p className='long-text'>
-        We have two different results, based on the fact if we have or have not access to highway. Let's assume that
-        our trade ships do kinda both and we want to be ready for all, let's see those ships when we average m³/s
-        values. Since Sentinel and Vanguard are very close in results, we can remove Vanguards from the list for
-        better overview.
-      </p><br/>
-      <div className='efficiency__ships'>
-        <div key={Math.random()} className='efficiency__ship'>
-          <span className='efficiency__item'>Ship name</span>
-          <span className='efficiency__item'>Capacity</span>
-          <span className='efficiency__item'>Normal speed</span>
-          <span className='efficiency__item'>Travel speed</span>
-          <span className='efficiency__item'>m³ moved per second</span>
-        </div>
-        {best.map(ship => (
-          <div key={Math.random()} className='efficiency__ship'>
-            <span className='efficiency__item'>{ship.name}</span>
-            <span className='efficiency__item'>{int(ship.storage.capacity)}m³</span>
-            <span className='efficiency__item'>{int(ship.speed.forward)}m/s</span>
-            <span className='efficiency__item'>{int(ship.speed.travel)}m/s</span>
-            <span className='efficiency__item'>{float(ship.average)} m³/s</span>
-          </div>
-        ))}
-      </div><br/>
-      <p className='long-text'>
-        Now the hard thing. Should you use the top one? Hell no... Depends
+        Few other things to keep in mind. Large traders usually can withstand attacks from smaller fighters. Some medium
+        traders like Boa can outrun most of the things that can threaten it. Small traders usually can outrun
+        everything, but they carry very little cargo. However they are usefull to have 1-2 per every 8-10 medium traders
+        on station so that they can take care of smaller wares like medicine or energy cells without blocking larger
+        traders.
       </p>
       <p className='long-text'>
-        Should you use the top one for trading? Probably not... Depends on what you actually need. Keep in mind that
-        Large ships can't dock everywhere. If you find yourself in sector with one, it will take ages to dock or
-        actually take the gate. It will hit every asteroid and stop. From personal experience, I started with about 100
-        Mercuries as station traders. Lost about 10 of them in 20 hour playthrough. Then I switched to Boa. That ship is
-        amazing, since it can outrun all but few selected ships. Cobra and Dragon are a threat at most, rest it can
-        outrun, outboost or survive until it gets to station.
+        For the calculation of large ships time needed to cross a gate, Boa, Sonra Vanguard and Incarcatura Vanguard
+        were used. It was tested on 5 gate jumps for each. Boa on average took 30 seconds on one side, 45 seconds on
+        other side. Sonra did 45 seconds and 70 seconds. Incarcatura 90 seconds and 150 seconds on average. They land
+        behind the gate about 4.5 km and then use normal drive to cross that distance. On the other side they do this
+        weird thing of flying a bit forward, then turning around and flying a bit back and finally turning again and
+        engaging drive. The times waried a bit, so it is safe to assume that it is not the same every time, hence the
+        decision to average it out on 7.5km.
       </p>
       <p className='long-text'>
-        One other thing to consider is that your ships should be doing something. If you have medium ships, you can
-        quickly tell them to do something else, like move some claytronics from here to there and go back to their
-        business. With medium ships they will get to that order faster on average, fullfill it and get back to their
-        job. This plays a big role in some setups.
-      </p>
-      <p className='long-text'>
-        Filling large cargohold won't be that easy on most wares, so your ship will look for ages to find full hold and
-        then sell it. With Boas smaller hold it goes faster. If you do distribute ware with large ship, it will take
-        ages and lot's of docking to get rid of all wares.
-      </p>
-      <p className='long-text'>
-        It might sound I am saying there is no use for large ships. But there is... When I build new stations, I can
-        send 20 of my Boas to deliver hull parts. They are mostly around Argon Prime doing station trading. So I tell
-        them to go where ever and pick up stuff and go somewhere and drop off stuff. Distance doesn't matter. If I was
-        doing that with large ships, I would not tell them to pick up stuff on other side of universe. However, if you
-        do have complex that produces hull parts or claytronics, then might be a good idea to park few large ships next
-        to it so that you can use 10 large ships instead of 20-30 trips with medium ships.
-      </p>
-      <p className='long-text'>
-        Overall, early and mid game, use medium ships, Boa, Demeter or Mercury. I suggest Boa for it's survavibility.
-        Late game, use same ships, but if you're bursting with money and wanna save some clicks when building that next
-        complex, have 10ish Buffalos or Sonras parked next to your production stations to make things easy! Also, the
-        more you spend time close to highways the more the efficiency of medium ships goes up, so keep that in mind as
-        well.
+        Please feel free to discuss this tool and methods further on reddit
+        <a className='link'
+           href='https://www.reddit.com/r/X4Foundations/comments/jrxkfy/x4_trading_ship_efficiency/'
+           target='_blank'> via this link</a>.
       </p>
     </div>
   );

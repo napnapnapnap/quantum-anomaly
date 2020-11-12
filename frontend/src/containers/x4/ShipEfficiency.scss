@@ -1,0 +1,41 @@
+.x4-ships-efficiency {
+  &__ship {
+    display: flex;
+    margin-bottom: 5px;
+    font-size: 12px;
+
+    img {
+      display: block;
+      width: 64px;
+      margin-right: 4px;
+      filter: brightness(2.5) contrast(1.1) saturate(1.2);
+      border-radius: 5px;
+    }
+
+    text-align: right;
+  }
+
+  &__place {
+    width: 25px;
+    text-align: center;
+    justify-self: center;
+    align-self: center;
+  }
+
+  &__info {
+    width: 150px;
+    text-align: left;
+  }
+
+  &__capacity {
+    width: 120px;
+  }
+
+  &__speed {
+    width: 110px;
+  }
+
+  &__ttc {
+    width: 90px;
+  }
+}

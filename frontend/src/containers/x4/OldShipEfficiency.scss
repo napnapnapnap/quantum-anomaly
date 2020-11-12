@@ -1,0 +1,33 @@
+.efficiency {
+  &__ships {
+    overflow-x: auto;
+  }
+
+  &__ship {
+    width: 680px;
+    font-size: 12px;
+
+    &:nth-of-type(even) {
+      background: #eee;
+    }
+  }
+
+  &__item {
+    display: inline-block;
+    margin: 2px;
+
+    &:nth-of-type(1) {
+      width: 140px;
+    }
+
+    &:nth-of-type(2), &:nth-of-type(3), &:nth-of-type(4) {
+      width: 90px;
+      text-align: center;
+    }
+
+    &:nth-of-type(5), &:nth-of-type(6) {
+      width: 120px;
+      text-align: center;
+    }
+  }
+}
