@@ -7,7 +7,7 @@ const Navigation = () => {
   const userLoggedIn = document.cookie.indexOf('loggedIn=') === -1;
 
   const closeMobileNavigation = event => {
-    event.target.className.indexOf('navigation') === -1 && setMobile(false);
+    if (event.target.classname) event.target.className.indexOf('navigation') === -1 && setMobile(false);
   };
 
   useEffect(() => {
@@ -23,6 +23,7 @@ const Navigation = () => {
       <ul className='navigation__content'>
         <li className='navigation__link'><a href='/epic-arcs' title='EVE Epic Arcs'>EVE Epic Arcs</a></li>
         <li className='navigation__link'><a href='/x4/ships' title='X4 Ships'>X4 Ships</a></li>
+        <li className='navigation__link'><a href='/x4/map' title='X4 Ships'>X4 Map</a></li>
         <li className='navigation__link'><a href='/x4/efficiency' title='X4 Ships'>X4 Efficiency</a></li>
         {userLoggedIn ? (
           <li className='navigation__link'><a href='/auth/google'>Login</a></li>

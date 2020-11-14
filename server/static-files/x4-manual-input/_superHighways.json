@@ -1,0 +1,22 @@
+{
+  "superHighways": [
+    {"origin": {"x": 64, "y": 101}, "destination": {"x": 85, "y": 63}},
+    {"origin": {"x": 149, "y": 151}, "destination": {"x": 161, "y": 106}},
+    {"origin": {"x": 588, "y": 206}, "destination": {"x": 611, "y": 222}},
+    {"origin": {"x": 608, "y": 376}, "destination": {"x": 588, "y": 396}},
+    {"origin": {"x": 1341, "y": 372}, "destination": {"x": 1350, "y": 403}},
+    {"origin": {"x": 1284, "y": 409}, "destination": {"x": 1272, "y": 452}},
+    {"origin": {"x": 1201, "y": 537}, "destination": {"x": 1212, "y": 582}},
+    {"origin": {"x": 1120, "y": 624}, "destination": {"x": 1123, "y": 580}},
+    {"origin": {"x": 1265, "y": 667}, "destination": {"x": 1289, "y": 702}},
+    {"origin": {"x": 1185, "y": 720}, "destination": {"x": 1205, "y": 752}},
+    {"origin": {"x": 1112, "y": 76}, "destination": {"x": 1136, "y": 100}},
+    {"origin": {"x": 765, "y": 544}, "destination": {"x": 760, "y": 574}},
+    {"origin": {"x": 752, "y": 579}, "destination": {"x": 733, "y": 566}},
+    {"origin": {"x": 752, "y": 542}, "destination": {"x": 724, "y": 550}},
+    {"origin": {"x": 677, "y": 580}, "destination": {"x": 674, "y": 621}},
+    {"origin": {"x": 910, "y": 663}, "destination": {"x": 887, "y": 637}},
+    {"origin": {"x": 437, "y": 810}, "destination": {"x": 457, "y": 823}},
+    {"origin": {"x": 585, "y": 825}, "destination": {"x": 606, "y": 808}}
+  ]
+}

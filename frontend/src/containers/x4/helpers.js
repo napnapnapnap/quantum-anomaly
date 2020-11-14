@@ -38,7 +38,19 @@ export const maps = {
     ministry: 'Ministry of Finance',
     xenon: 'Xenon',
     scaleplate: 'Scale Plate Pact',
-    split: 'Zyarth Patriarcy'
+    split: 'Zyarth Patriarcy',
+  },
+  colors: {
+    xenon: {color: '#880000', border: '#c90000'},
+    paranid: {color: '#2d0050', border: '#8000ff'},
+    split: {color: '#5e2204', border: '#ff691e'},
+    argon: {color: '#00256e', border: '#0055ff'},
+    antigone: {color: '#4023ae', border: '#5033de'},
+    hatikvah: {color: '#147a70', border: '#20f6e1'},
+    teladi: {color: '#6e7c2a', border: '#a9c22e'},
+    holyorder: {color: '#b45694', border: '#ff72ad'},
+    freesplit: {color: '#a45525', border: '#ff8000'},
+    none: {color: '#666', border: '#aaa'}
   }
 };
 
