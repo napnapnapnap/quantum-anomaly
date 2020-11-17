@@ -45,7 +45,7 @@ export async function getMapDefaults(sourceBasePath, translations) {
   let splitParsed = await parser.parseStringPromise(await fs.readFile(pathToSplitFile));
   const mapDefaults = parsed.defaults.dataset = [...parsed.defaults.dataset, ...splitParsed.defaults.dataset];
 
-  let result = {sectors: {}, zones: {}, clusters: {}};
+  let result = {sectors: {}, zones: {}, clusters: {}, stations: {}};
 
   // from here we can use cluster macro to find what is inside this cluster, the thing we care for is
   // asteroid fieds, we are going to take all connections and sort them under their macro name for reference later
@@ -55,10 +55,12 @@ export async function getMapDefaults(sourceBasePath, translations) {
   splitParsed = await parser.parseStringPromise(await fs.readFile(pathToFile));
   const clusters = parsed.macros.macro = [...parsed.macros.macro, ...splitParsed.macros.macro];
 
-  clusters.forEach(cluster => cluster.connections.connection.forEach(connection => {
-    result.clusters[connection.macro.ref || connection.macro.name] = connection;
-  }));
-
+  clusters.forEach(cluster => {
+    result.clusters[cluster.name] = [];
+    cluster.connections.connection.forEach(connection => {
+      result.clusters[cluster.name].push(connection);
+    });
+  });
 
   // from sectors we get zone ofc! makes total sense, anyways this maps every zone to a given sectors,
   // so we are going to use it for that mapping service
@@ -69,10 +71,10 @@ export async function getMapDefaults(sourceBasePath, translations) {
   const sectors = parsed.macros.macro = [...parsed.macros.macro, ...splitParsed.macros.macro];
 
   sectors.forEach(sector => {
+    result.sectors[sector.name] = [];
     sector.connections.connection.forEach(connection => {
-      result.sectors[connection.macro.ref] = [];
       // the SHCon gates are defined in component.xml under <component name="standardzone" class="zone">
-      result.sectors[connection.macro.ref].push(connection);
+      result.sectors[sector.name].push(connection);
     });
   });
 
@@ -81,8 +83,40 @@ export async function getMapDefaults(sourceBasePath, translations) {
   pathToFile = path.join(splitSourcePath, 'maps', 'xu_ep2_universe', 'dlc4_zones.xml');
   splitParsed = await parser.parseStringPromise(await fs.readFile(pathToFile));
   const zones = parsed.macros.macro = [...parsed.macros.macro, ...splitParsed.macros.macro];
-
   zones.forEach(zone => result.zones[zone.name] = {...zone});
+
+  pathToFile = path.join(sourceBasePath, 'libraries', 'god.xml');
+  parsed = await parser.parseStringPromise(await fs.readFile(pathToFile));
+  pathToFile = path.join(splitSourcePath, 'libraries', 'god.xml');
+  splitParsed = await parser.parseStringPromise(await fs.readFile(pathToFile));
+
+  const splitDlcStations = splitParsed.diff.add.filter(item => item.sel === '/god/stations');
+  const stationsParsed = parsed.god.stations.station = [...parsed.god.stations.station, ...splitDlcStations[0].station];
+
+  stationsParsed.forEach(station => {
+    if (
+      station.id.indexOf('shipyard') !== -1 ||
+      station.id.indexOf('wharf') !== -1 ||
+      station.id.indexOf('equipmentdock') !== -1 ||
+      station.id.indexOf('tradestation') !== -1 ||
+      station.type === 'tradingstation'
+    ) {
+      const cluster = station.location.macro.match(/cluster_(.*?)_/)[1];
+      const sector = station.location.macro.match(/sector(.*?)_/)[1];
+      const sectorId = `Cluster_${cluster}_Sector${sector}_macro`;
+      if (!result.stations[sectorId]) result.stations[sectorId] = [];
+      result.stations[sectorId].push({
+        id: station.id,
+        race: station.race,
+        owner: station.owner,
+        tags: station.type === 'tradingstation' ? 'tradestation' : station.station.select.tags.replace(/\[/, '').replace(/]/, '')
+      });
+    }
+  });
+
+  // read from region definitions
+  // go through array result.clusters
+  // for each macro.property.region.ref take and look into region definitions, grab if definition of minable items
 
   mapDefaults.forEach(mapDefault => {
     if (mapDefault.macro === 'xu_ep2_universe_macro') return;
@@ -101,7 +135,9 @@ export async function getMapDefaults(sourceBasePath, translations) {
       result[parent].sectors.push({
         name: translate(mapDefault.properties.identification.name, translations, true),
         description: translate(mapDefault.properties.identification.description, translations),
-        zones: result.sectors[mapDefault.macro]
+        id: mapDefault.macro,
+        zones: result.sectors[mapDefault.macro],
+        stations: result.stations[mapDefault.macro] || null
       });
     }
   });
@@ -109,6 +145,7 @@ export async function getMapDefaults(sourceBasePath, translations) {
   delete result.clusters;
   delete result.zones;
   delete result.sectors;
+  delete result.stations;
 
   const resultArray = Object.keys(result).map(key => result[key]);
   // we pull this manually assigned things
@@ -125,6 +162,7 @@ export async function getMapDefaults(sourceBasePath, translations) {
   const mapInfo = JSON.parse(await fs.readFile(path.join(pathToFile, '_sectorsMap.json'), 'utf-8'));
   const gates = JSON.parse(await fs.readFile(path.join(pathToFile, '_gates.json'), 'utf-8')).gates;
   const superHighways = JSON.parse(await fs.readFile(path.join(pathToFile, '_superHighways.json'), 'utf-8')).superHighways;
+  const stations = JSON.parse(await fs.readFile(path.join(pathToFile, '_stations.json'), 'utf-8')).stations;
 
   Object.keys(result).map(key => {
     result[key].position = mapInfo[key].position || {x: -1000, y: -1000};
@@ -171,6 +209,7 @@ export async function getMapDefaults(sourceBasePath, translations) {
   return {
     systems: result,
     gates,
-    superHighways
+    superHighways,
+    stations
   };
 }

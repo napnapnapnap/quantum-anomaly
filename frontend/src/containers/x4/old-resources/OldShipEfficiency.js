@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
-import {fetchX4Equipment, fetchX4Ships} from '../../redux/x4Actions';
+import {fetchX4Equipment, fetchX4Ships} from '../../../redux/x4Actions';
 import {connect} from 'react-redux';
-import {fillOntoShip} from './x4-fitting-tool';
-import {float, int} from './helpers';
+import {fillOntoShip} from '../x4-fitting-tool';
+import {float, int} from '../helpers';
 import './OldShipEfficiency.scss'
 
 const OldShipEfficiency = (props) => {

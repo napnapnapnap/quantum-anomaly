@@ -38,21 +38,27 @@ export const maps = {
     ministry: 'Ministry of Finance',
     xenon: 'Xenon',
     scaleplate: 'Scale Plate Pact',
-    split: 'Zyarth Patriarcy',
+    split: 'Zyarth Patriarcy'
   },
   colors: {
     xenon: {color: '#880000', border: '#c90000'},
     paranid: {color: '#2d0050', border: '#8000ff'},
+    alliance: {color: '#b03cca', border: '#b03cca'},
     split: {color: '#5e2204', border: '#ff691e'},
     argon: {color: '#00256e', border: '#0055ff'},
     antigone: {color: '#4023ae', border: '#5033de'},
     hatikvah: {color: '#147a70', border: '#20f6e1'},
     teladi: {color: '#6e7c2a', border: '#a9c22e'},
+    ministry: {color: '#94bc92', border: '#94bc92'},
     holyorder: {color: '#b45694', border: '#ff72ad'},
     freesplit: {color: '#a45525', border: '#ff8000'},
     none: {color: '#666', border: '#aaa'}
   }
 };
+
+const HEXSIZE = {x: 24.8, y: 42.5};
+const HEXSIZE_SMALL = {x: 12.2, y: 21.1};
+const HEX_OFFSET = {x: 12.5, y: 21.5};
 
 export const separateWord = arg => arg
   .replace('large', 'large ')
@@ -75,3 +81,46 @@ export const float = arg => arg ? parseFloat(arg, 10).toLocaleString('de-DE', {
   maximumFractionDigits: 2,
   minimumFractionDigits: 2
 }) : 0;
+
+
+export const getHexagonPoints = (prop, type) => {
+  const {x, y} = prop;
+  const {x: hx, y: hy} = type === 'small' ? HEXSIZE_SMALL : HEXSIZE;
+  return `${x - hx},${y - hy} ${x + hx},${y - hy} ${x + hx * 2},${y} ${x + hx},${y + hy} ${x - hx},${y + hy} ${x - hx * 2},${y} ${x - hx},${y - hy}`;
+};
+
+export const resolveHexagonCenterByProps = (sectorPosition, sectorIndex, cluster) => {
+  switch (sectorPosition) {
+    case 'top-right':
+      if (sectorIndex === 0) return {x: cluster.x + HEX_OFFSET.x, y: cluster.y - HEX_OFFSET.y};
+      else return {x: cluster.x - HEX_OFFSET.x, y: cluster.y + HEX_OFFSET.y};
+    case 'top-left':
+      if (sectorIndex === 0) return {x: cluster.x - HEX_OFFSET.x, y: cluster.y - HEX_OFFSET.y};
+      else return {x: cluster.x + HEX_OFFSET.x, y: cluster.y + HEX_OFFSET.y};
+    case 'tripple-right':
+      if (sectorIndex === 0) return {x: cluster.x + HEX_OFFSET.x, y: cluster.y + HEX_OFFSET.y};
+      else if (sectorIndex === 1) return {x: cluster.x - HEX_OFFSET.x * 2, y: cluster.y};
+      else return {x: cluster.x + HEX_OFFSET.x, y: cluster.y - HEX_OFFSET.y};
+    case 'singular':
+      return {x: cluster.x, y: cluster.y};
+  }
+};
+
+export const backgroundLabelRectWidth = label => {
+  let numberOfShortLetters = 0;
+  const i = label.toLowerCase().match(/i/g);
+  const l = label.toLowerCase().match(/l/g);
+  const apo = label.toLowerCase().match(/'/g);
+  const m = label.toLowerCase().match(/M/g);
+  const bigZ = label.match(/Z/g);
+  const bigA = label.match(/A/g);
+
+  if (i) numberOfShortLetters += i.length * 2;
+  if (l) numberOfShortLetters += l.length * 2;
+  if (apo) numberOfShortLetters += apo.length * 2;
+  if (bigZ) numberOfShortLetters -= bigZ.length;
+  if (bigA) numberOfShortLetters -= bigA.length * 2;
+  if (m) numberOfShortLetters -= m.length * 2;
+
+  return numberOfShortLetters;
+};

@@ -59,6 +59,7 @@ async function start() {
   const mapInformation = await getMapDefaults(sourceBasePath, translations);
   await saveToFile(mapInformation, '_map', 'map');
 
+  return null;
   const wares = await getWares(sourceBasePath);
   await saveToFile(wares, '_wares', 'wares');
 

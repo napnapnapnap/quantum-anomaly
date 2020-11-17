@@ -17,7 +17,7 @@ import EpicArcsOverview from './containers/epic-arcs/Overview';
 import EpicArc from './containers/epic-arcs/Arc';
 import X4ShipEfficiency from './containers/x4/ShipEfficiency';
 import X4Map from './containers/x4/Map';
-import X4OldShipEfficiency from './containers/x4/OldShipEfficiency';
+import X4OldShipEfficiency from './containers/x4/old-resources/OldShipEfficiency';
 import X4 from './containers/x4';
 
 class App extends Component {
