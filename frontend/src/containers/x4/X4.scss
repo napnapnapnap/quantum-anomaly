@@ -2,163 +2,6 @@
 @import '../../styles/mixins/breakpoints';
 
 .x4 {
-  &__ships {
-    font-size: 12px;
-  }
-
-  .divider {
-    background: #eee;
-    height: 2px;
-    margin: 1rem 2rem;
-  }
-
-  &__ship {
-    flex-wrap: wrap;
-    padding-bottom: 3rem;
-  }
-
-  &__image {
-    max-width: 300px;
-    margin: 0 auto 2rem;
-    position: relative;
-
-    img {
-      display: block;
-      filter: brightness(2) contrast(1.1) saturate(1.2);
-      border-radius: 10px;
-    }
-  }
-
-  &__ship-description {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    color: black;
-    cursor: pointer;
-    background: white;
-    width: 1rem;
-    text-align: center;
-    border-radius: 50%;
-  }
-
-  &__armament-item:not(:last-child) {
-    padding-right: 4px;
-    margin-right: 4px;
-    border-right: 2px solid #eee;
-  }
-
-  &__title {
-    text-align: center;
-  }
-
-  &__attributes {
-    flex: 1 0 60%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  &__attributes-column {
-    flex: 0 1 auto;
-    padding: 0 2rem;
-
-    .label {
-      display: inline-block;
-      width: 110px;
-
-      &--flip {
-        width: 70px;
-      }
-    }
-
-    .value {
-      display: inline-block;
-      width: 90px;
-      clear: right;
-      text-align: right;
-
-      &--unit-shifted {
-        position: relative;
-        right: -5px;
-      }
-
-      &--flip {
-        width: 130px;
-      }
-    }
-  }
-
-  @include media-breakpoint-up(lg) {
-    &__ship {
-      display: flex;
-    }
-
-    &__image {
-      flex: 0 0 40%;
-      max-width: 350px;
-    }
-
-    &__title {
-      text-align: left;
-    }
-
-    &__attributes {
-      justify-content: flex-start;
-      margin-left: 2rem;
-    }
-
-    &__attributes-column {
-      margin-right: 1.5rem;
-    }
-  }
-
-  &--comparison {
-    .x4__title {
-      .bold {
-        display: block;
-      }
-    }
-
-    .x4__image {
-      width: 210px;
-      margin-bottom: 1.2rem;
-    }
-
-    .x4__ships {
-      display: flex;
-      overflow-x: auto;
-    }
-
-    .x4__ship {
-      display: block;
-      min-width: 245px;
-      margin: 0 20px 20px 0;
-      border-right: 1px solid black;
-      padding: 0 20px 0 0;
-    }
-
-    .x4__attributes {
-      display: block;
-      margin: 0;
-    }
-
-    .x4__attributes-column {
-      display: block;
-      margin: 0;
-      padding: 0;
-
-      .value {
-        width: 114px;
-
-        &--flip {
-          width: 154px;
-        }
-      }
-    }
-  }
-}
-
-.x4 {
   &__controls {
     display: flex;
     flex-wrap: wrap;
@@ -179,6 +22,8 @@
       min-width: 65px;
       padding: 0.2rem;
     }
+
+    margin-bottom: 1rem;
   }
 
   &__radio-group {
@@ -201,7 +46,6 @@
 
     &--size {
       .x4__radio-label {
-        width: 125px;
         padding: 0.2rem 0;
       }
     }
@@ -234,11 +78,13 @@
   &__radio-label {
     font-family: monospace;
     display: inline-block;
-    width: 75px;
+    margin-right: 8px;
   }
 
   .divider {
     flex: 0 1 100%;
-    margin-top: 0;
+    margin: 0 2rem 1rem;
+    background: #eee;
+    height: 2px;
   }
 }

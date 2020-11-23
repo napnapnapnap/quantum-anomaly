@@ -1,0 +1,192 @@
+@import '../../styles/variables';
+@import '../../styles/mixins/breakpoints';
+
+.x4 {
+  &__ships {
+    font-size: 12px;
+  }
+
+  &__ship {
+    padding-bottom: 3rem;
+  }
+
+  &__image {
+    max-width: 300px;
+    margin: 0 auto 2rem;
+    position: relative;
+
+    img {
+      display: block;
+      filter: brightness(2) contrast(1.1) saturate(1.2);
+      border-radius: 10px;
+    }
+  }
+
+  &__ship-description {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: black;
+    cursor: pointer;
+    background: white;
+    width: 1rem;
+    text-align: center;
+    border-radius: 50%;
+  }
+
+  &__armament-item:not(:last-child) {
+    padding-right: 4px;
+  }
+
+  &__name {
+    text-align: center;
+  }
+
+  &__attributes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    .unit-shifted {
+      position: relative;
+      right: -4px;
+    }
+
+    // TODO: Fix later
+    .divider {
+      margin: 0.6rem !important;
+    }
+  }
+
+  &__attributes-column {
+    width: 280px;
+    margin: 0 1rem;
+  }
+
+  &__attribute-line {
+    display: flex;
+    justify-content: space-between;
+
+    &--double {
+      > span:nth-of-type(odd) {
+        width: 75px;
+        margin-left: 30px;
+      }
+
+      > span:nth-of-type(even) {
+        width: 55px;
+        text-align: right;
+      }
+
+      > span:first-of-type {
+        margin-left: 0;
+      }
+    }
+
+    &--large-number {
+      > span:first-of-type {
+        width: 50px;
+      }
+      > span:nth-of-type(2) {
+        width: 90px;
+      }
+    }
+
+    &--half {
+      justify-content: flex-end;
+      > span:first-of-type {
+        width: 85px;
+        margin-left: 30px;
+      }
+      > span:last-of-type {
+        width: 35px;
+        text-align: right;
+      }
+    }
+
+    &--manuverability {
+      > span:nth-of-type(odd) {
+        margin-left: 1.3rem;
+      }
+
+      > span:first-of-type {
+        margin-left: 0;
+      }
+    }
+
+    &--cargo {
+      > span:nth-of-type(3) {
+        width: 55px;
+      }
+      >  span:nth-of-type(4){
+        width: 75px;
+      }
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+    &__ship {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    &__image {
+      flex: 0 1 20%;
+      max-width: 300px;
+      margin: 0 0;
+    }
+
+    &__name {
+      text-align: left;
+    }
+
+    &__attributes {
+      justify-content: flex-start;
+      margin-left: 2rem;
+    }
+
+    &__attributes-column {
+      margin-right: 4rem;
+    }
+  }
+
+  &--comparison {
+    .x4__name {
+      .bold {
+        display: block;
+      }
+    }
+
+    .x4__image {
+      width: 210px;
+      margin: 0 auto 1.2rem;
+    }
+
+    .x4__ships {
+      display: flex;
+      overflow-x: auto;
+    }
+
+    .x4__ship {
+      display: block;
+      margin: 0 30px 0 0;
+      border-right: 2px solid #ddd;
+      padding: 0 20px 0 0;
+    }
+
+    .x4__attributes {
+      display: block;
+      margin: 0;
+
+      p {
+        font-size: 11px;
+      }
+    }
+
+    .x4__attributes-column {
+      display: block;
+      margin: 0;
+      padding: 0;
+    }
+  }
+}

@@ -34,7 +34,7 @@ const RadioGroups = props => {
           <p className='x4__radio-title'>{baseKey}</p>
           {Object.keys(mkGroups[baseKey]).map(raceKey => (
             <div className='x4__radio-race' key={raceKey}>
-              {mkGroups[baseKey][raceKey].map((item, index) => (
+              {mkGroups[baseKey][raceKey].map(item => (
                 <label className='x4__radio-label' key={item.id}>
                   <input type='radio'
                          name={groupRandomName}
@@ -99,7 +99,6 @@ const RadioSize = props => (
 const Races = props => (
   <div className='x4__checkboxes'>
     <div className='x4__checkbox-group'>
-      <p className='x4__radio-title'>Display following races</p>
       {maps.race.map(mapRace => (
         <label className='label--checkbox' key={mapRace.value}>
           <input type='checkbox'
@@ -113,9 +112,6 @@ const Races = props => (
           {mapRace.label}
         </label>
       ))}
-    </div>
-    <div className='x4__checkbox-group'>
-      <p className='x4__radio-title'>Display following subtypes</p>
       {maps.subtype.map(mapSubtype => (
         <label className='label--checkbox' key={mapSubtype.value}>
           <input type='checkbox'
@@ -133,7 +129,7 @@ const Races = props => (
   </div>
 );
 
-const index = (props) => {
+const Ships = (props) => {
   const [size, setSize] = useState('ship_xl');
   const [race, setRace] = useState({arg: true, par: true, spl: true, tel: true, xen: true, kha: true});
   const [subtype, setSubtype] = useState({BV: true, VA: true, ST: true, RD: true});
@@ -191,6 +187,7 @@ const index = (props) => {
                    size={size}
                    types={types}
         />
+        <p className='divider'/>
         <Races setRace={setRace} setSubtype={setSubtype}/>
         <p className='divider'/>
         <RadioGroups items={[...engines]} onChange={setActiveEngine} isBig/>
@@ -217,4 +214,4 @@ const index = (props) => {
 const mapStateToProps = state => ({x4: state.x4}),
   mapDispatchToProps = {fetchX4Ships, fetchX4Equipment};
 
-export default connect(mapStateToProps, mapDispatchToProps)(index);
+export default connect(mapStateToProps, mapDispatchToProps)(Ships);
