@@ -4,7 +4,8 @@ import path from 'path';
 import {appLog} from '../../helpers/logger';
 
 import {getTranslations} from './translations';
-import {getDefaults, getMapDefaults} from './defaults';
+import {getDefaults} from './defaults';
+import {getMap} from './map';
 import {getEquipment} from './equipment';
 import {saveToFile} from './helpers';
 import {getShips} from './ships';
@@ -56,7 +57,7 @@ async function start() {
   const translations = await getTranslations(sourceBasePath);
   await saveToFile(translations, '_translations', 'translations');
 
-  const mapInformation = await getMapDefaults(sourceBasePath, translations);
+  const mapInformation = await getMap(sourceBasePath, translations);
   await saveToFile(mapInformation, '_map', 'map');
 
   return null;

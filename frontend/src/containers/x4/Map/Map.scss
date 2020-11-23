@@ -20,25 +20,28 @@
     max-height: 750px;
   }
 
-  &__map-controls {
+  &__legend {
+    font-size: 11px;
     position: absolute;
-    z-index: 100;
-    right: 5px;
-    top: 50px;
-    padding: 3px;
-    text-align: center;
+    color: white;
+    right: 10px;
+    top: 60px;
+    width: 220px;
+    padding: 5px;
+    z-index: 1000;
+    background: rgba(#051238, 0.9);
 
-    span {
-      display: inline-block;
-      font-family: monospace;
-      padding: 5px;
-      border-radius: 5px;
-      text-align: center;
+    .x4__resources {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
       color: black;
-      background: white;
-      border: 1px solid black;
-      cursor: pointer;
-      margin: 4px;
+      > p {
+        flex: 0 0 30%;
+        text-align: center;
+        padding: 3px;
+        border-radius: 3px;
+      }
     }
   }
 }

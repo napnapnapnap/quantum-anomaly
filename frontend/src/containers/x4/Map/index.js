@@ -6,10 +6,50 @@ import {backgroundLabelRectWidth, getHexagonPoints, maps, resolveHexagonCenterBy
 import Stations from './Stations';
 import {Gates, SuperHighways} from './Travel';
 
+const resourceColors = {
+  ore: '#ff8c00',
+  silicon: '#d4d3cf',
+  nividium: '#4b0091',
+  ice: '#ffffff',
+  hydrogen: '#c5ffff',
+  helium: '#ffeec1',
+  methane: '#165ca2'
+}
+
+const Resources = props => {
+  const offsets = {
+    ore: {x: props.small ? -10 : -22, y: props.small ? 13: 33},
+    silicon: {x: props.small ? -2 : -14, y: props.small ? 13: 33},
+    ice: {x: props.small ? 6 : -6, y: props.small ? 13: 33},
+    hydrogen: {x: props.small ? -10 : -22, y: props.small ? 19: 40},
+    helium: {x: props.small ? -2 : -14, y: props.small ? 19: 40},
+    methane: {x: props.small ? 6 : -6, y: props.small ? 19: 40},
+    nividium: {x: props.small ? 14 : 2, y: props.small ? 13: 33}
+  }
+  const {resources} = props;
+  if (!resources) return null;
+  return Object.keys(resources).map(key => {
+    if (resources[key] === 0) return null;
+    return (
+      <React.Fragment key={Math.random()}>
+        <rect x={props.x + offsets[key].x - 2.9} y={props.y + offsets[key].y - 4.25}
+              width='6.2' height='5.1' fill={resourceColors[key]}
+              stroke={resourceColors[key]} strokeWidth='0' rx='10px'
+        >
+          <title>{key}</title>
+        </rect>
+        <text textAnchor='middle' fontSize='5px' fill='black' x={props.x + offsets[key].x} y={props.y + offsets[key].y}>
+          {resources[key]}
+        </text>
+      </React.Fragment>
+    );
+  });
+};
+
 const Sectors = props => (
   props.sectors.map((sector, index) => {
     let sectorOwner = props.owner;
-    const backgroundWidth = (sector.name.length * 4) - backgroundLabelRectWidth(sector.name);
+    const backgroundWidth = (sector.name.length * 3.7) - backgroundLabelRectWidth(sector.name);
     if (sector.name === 'Hatikvah\'s Choice I') sectorOwner = 'hatikvah';
     if (sector.name === 'Hewa\'s Twin IV The Cove') sectorOwner = 'none';
 
@@ -27,31 +67,31 @@ const Sectors = props => (
         {sectorsPosition !== 'singular' && props.text && (
           <>
             <rect x={resolveHexagonCenterByProps(sectorsPosition, index, position).x - backgroundWidth / 2}
-                  y={resolveHexagonCenterByProps(sectorsPosition, index, position).y - 18}
-                  width={backgroundWidth} height='8' fill={color}
+                  y={resolveHexagonCenterByProps(sectorsPosition, index, position).y - 16}
+                  width={backgroundWidth} height='6' fill={color}
                   stroke={color} strokeWidth='0.2'/>
-            <text textAnchor='middle' fontSize='8px' fill='white'
+            <text textAnchor='middle' fontSize='7px' fill='white'
                   x={resolveHexagonCenterByProps(sectorsPosition, index, position).x}
                   y={resolveHexagonCenterByProps(sectorsPosition, index, position).y - 11}>
               {sector.name}
             </text>
+            <Resources resources={sector.resources} {...resolveHexagonCenterByProps(sectorsPosition, index, position)} small/>
           </>
         )}
 
         {sectorsPosition === 'singular' && !props.text && (
-          <polyline fill='black'
-                    stroke={color}
-                    points={getHexagonPoints({x: position.x, y: position.y})}/>
+          <polyline fill='black' stroke={color} points={getHexagonPoints({x: position.x, y: position.y})}/>
         )}
 
         {sectorsPosition === 'singular' && props.text && (
           <>
-            <rect x={position.x - backgroundWidth / 2} y={position.y - 39}
-                  width={backgroundWidth} height='8' fill={color}
+            <rect x={position.x - backgroundWidth / 2} y={position.y - 37}
+                  width={backgroundWidth} height='6' fill={color}
                   stroke={color} strokeWidth='0.2'/>
-            <text textAnchor='middle' fontSize='8px' fill='white' x={position.x} y={position.y - 32}>
+            <text textAnchor='middle' fontSize='7px' fill='white' x={position.x} y={position.y - 32}>
               {sector.name}
             </text>
+            <Resources resources={sector.resources} {...position}/>
           </>
         )}
       </React.Fragment>
@@ -60,19 +100,19 @@ const Sectors = props => (
 );
 
 const Clusters = props => (
-  Object.keys(props.x4.map.systems).map(key => (
+  props.x4.map.systems.map(system => (
     <React.Fragment key={Math.random()}>
-      {props.x4.map.systems[key].position.x !== -1000 && <Sectors {...props.x4.map.systems[key]} />}
+      {system.position.x !== -1000 && <Sectors {...system} />}
       <polyline fill='none'
-                stroke={maps.colors[props.x4.map.systems[key].owner].border}
-                points={getHexagonPoints(props.x4.map.systems[key].position)}/>
+                stroke={maps.colors[system.owner].border}
+                points={getHexagonPoints(system.position)}/>
     </React.Fragment>
   )));
 
 const ClusterTexts = props => (
-  Object.keys(props.x4.map.systems).map(key => (
+  props.x4.map.systems.map(system => (
     <React.Fragment key={Math.random()}>
-      {props.x4.map.systems[key].position.x !== -1000 && <Sectors {...props.x4.map.systems[key]} text/>}
+      {system.position.x !== -1000 && <Sectors {...system} text/>}
     </React.Fragment>
   )));
 
@@ -148,20 +188,26 @@ const Map = (props) => {
   return (
     <div className='x4__map'>
       <h1>X4 Map v3.3</h1>
-      <div className='x4__map-controls'>
-        <span onClick={() => setScale(scale => scale < 3 ? scale += 0.5 : 3)}>+</span>
-        <span onClick={() => setScale(scale => scale > 1.5 ? scale -= 0.5 : 1)}>-</span><br/>
-      </div>
       {props.x4.map && (
         <div ref={wrapper} className='x4__map-wrapper'>
+          <div className='x4__legend'>
+            Items are approximate to 50km <br/>
+            Xenon stations are not correctly placed <br/>
+            Use mouse to move and zoom
+            <div className='x4__resources'>
+              <p style={{'background': resourceColors.ore}}>Ore</p>
+              <p style={{'background': resourceColors.silicon}}>Silicon</p>
+              <p style={{'background': resourceColors.ice}}>Ice</p>
+              <p style={{'background': resourceColors.hydrogen}}>Hydrogen</p>
+              <p style={{'background': resourceColors.helium}}>Helium</p>
+              <p style={{'background': resourceColors.methane}}>Methane</p>
+              <p style={{'background': resourceColors.nividium}}>Nividium</p>
+            </div>
+          </div>
           <svg ref={svg} width='100%' height='100%' viewBox='20 -140 1700 1150'
                version="1.1" xmlns="http://www.w3.org/2000/svg"
                style={{transform: `scale(${scale}) translate(${moved.x}px, ${moved.y}px)`}}>
             <rect x='20' y='-140' width='1700' height='1150' fill='#051238'/>
-            <text x='40' y='-100' fill='white' fontSize='12px'>All items are approximate to about 50km</text>
-            <text x='40' y='-80' fill='white' fontSize='12px'>
-              Some Xenon stations are not even approximate (for now)
-            </text>
             <Clusters {...props} />
             <Stations {...props} stationScale={scale === 1 ? 1.3 : 1}/>
             <Gates {...props} />
