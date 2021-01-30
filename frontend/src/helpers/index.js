@@ -8,7 +8,7 @@ export function lowercaseComparison(arg) {
 
 export function seo(data = {}) {
   data.title = data.title || 'Quantum Anomaly';
-  data.metaDescription = data.metaDescription || 'Quantum Anomaly websites contains useful information and resources about online games such as EVE Online and WarFrame';
+  data.metaDescription = data.metaDescription || 'Quantum Anomaly websites contains useful information and resources about online games such as EVE Online, Elite Dangerous, X4 Foundations, X4 Split Vendetta';
 
   if (data.title.indexOf('Quantum Anomaly') === -1) data.title += ' - Quantum Anomaly';
 

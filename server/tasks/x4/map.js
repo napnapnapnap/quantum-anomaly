@@ -74,8 +74,6 @@ export async function getMap(sourceBasePath, translations) {
     });
   });
 
-  await saveToFile(totalYields, '___regions', 'reg');
-
   // from sectors we get zone ofc! makes total sense, anyways this maps every zone to a given sectors,
   // so we are going to use it for that mapping service
   pathToFile = path.join(sourceBasePath, 'maps', 'xu_ep2_universe', 'sectors.xml');

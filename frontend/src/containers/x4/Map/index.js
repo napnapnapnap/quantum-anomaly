@@ -1,10 +1,13 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {fetchX4Map} from '../../../redux/x4Actions';
 import {connect} from 'react-redux';
-import './Map.scss';
+
 import {backgroundLabelRectWidth, getHexagonPoints, maps, resolveHexagonCenterByProps} from '../helpers';
 import Stations from './Stations';
 import {Gates, SuperHighways} from './Travel';
+
+import './Map.scss';
+import {seo} from '../../../helpers';
 
 const resourceColors = {
   ore: '#ff8c00',
@@ -14,18 +17,18 @@ const resourceColors = {
   hydrogen: '#c5ffff',
   helium: '#ffeec1',
   methane: '#165ca2'
-}
+};
 
 const Resources = props => {
   const offsets = {
-    ore: {x: props.small ? -10 : -22, y: props.small ? 13: 33},
-    silicon: {x: props.small ? -2 : -14, y: props.small ? 13: 33},
-    ice: {x: props.small ? 6 : -6, y: props.small ? 13: 33},
-    hydrogen: {x: props.small ? -10 : -22, y: props.small ? 19: 40},
-    helium: {x: props.small ? -2 : -14, y: props.small ? 19: 40},
-    methane: {x: props.small ? 6 : -6, y: props.small ? 19: 40},
-    nividium: {x: props.small ? 14 : 2, y: props.small ? 13: 33}
-  }
+    ore: {x: props.small ? -10 : -22, y: props.small ? 13 : 33},
+    silicon: {x: props.small ? -2 : -14, y: props.small ? 13 : 33},
+    ice: {x: props.small ? 6 : -6, y: props.small ? 13 : 33},
+    hydrogen: {x: props.small ? -10 : -22, y: props.small ? 19 : 40},
+    helium: {x: props.small ? -2 : -14, y: props.small ? 19 : 40},
+    methane: {x: props.small ? 6 : -6, y: props.small ? 19 : 40},
+    nividium: {x: props.small ? 14 : 2, y: props.small ? 13 : 33}
+  };
   const {resources} = props;
   if (!resources) return null;
   return Object.keys(resources).map(key => {
@@ -171,6 +174,15 @@ const Map = (props) => {
       : setScale(prevScale => prevScale > 1 ? prevScale - 1 : 1);
   };
 
+  const downloadSvgFile = () => {
+    const element = document.createElement('a');
+    const file = new Blob([svg.current.outerHTML.toString()], {type: 'image/svg+xml'});
+    element.href = URL.createObjectURL(file);
+    element.download = 'x4-map.svg';
+    document.body.appendChild(element);
+    element.click();
+  };
+
   useEffect(() => {
     if (!props.x4.map) return;
     addEventListener('mousedown', mouseDownHandler);
@@ -185,36 +197,48 @@ const Map = (props) => {
     };
   }, [props.x4.map, scale]);
 
+  useEffect(() => {
+    if (props.x4.map) seo({
+      title: 'X4 Foundations Map',
+      metaDescription: `X4 Foundations and Split Vendetta Map. ${props.x4.map.systems.map(system => system.sectors.map(sector => sector.name).join(', ')).join(', ')}`
+    });
+  }, [props.x4.map]);
+
   return (
     <div className='x4__map'>
       <h1>X4 Map v3.3</h1>
       {props.x4.map && (
-        <div ref={wrapper} className='x4__map-wrapper'>
-          <div className='x4__legend'>
-            Items are approximate to 50km <br/>
-            Xenon stations are not correctly placed <br/>
-            Use mouse to move and zoom
-            <div className='x4__resources'>
-              <p style={{'background': resourceColors.ore}}>Ore</p>
-              <p style={{'background': resourceColors.silicon}}>Silicon</p>
-              <p style={{'background': resourceColors.ice}}>Ice</p>
-              <p style={{'background': resourceColors.hydrogen}}>Hydrogen</p>
-              <p style={{'background': resourceColors.helium}}>Helium</p>
-              <p style={{'background': resourceColors.methane}}>Methane</p>
-              <p style={{'background': resourceColors.nividium}}>Nividium</p>
+        <React.Fragment>
+          <div ref={wrapper} className='x4__map-wrapper'>
+            <div className='x4__legend'>
+              Gates are approximate to 50km <br/>
+              Xenon stations are not true locations<br/>
+              Use mouse to move and zoom
+              <div className='x4__resources'>
+                <p style={{'background': resourceColors.ore}}>Ore</p>
+                <p style={{'background': resourceColors.silicon}}>Silicon</p>
+                <p style={{'background': resourceColors.ice}}>Ice</p>
+                <p style={{'background': resourceColors.hydrogen}}>Hydrogen</p>
+                <p style={{'background': resourceColors.helium}}>Helium</p>
+                <p style={{'background': resourceColors.methane}}>Methane</p>
+                <p style={{'background': resourceColors.nividium}}>Nividium</p>
+              </div>
             </div>
+            <svg ref={svg} width='100%' height='100%' viewBox='20 -140 1700 1150'
+                 version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 style={{transform: `scale(${scale}) translate(${moved.x}px, ${moved.y}px)`}}>
+              <rect x='20' y='-140' width='1700' height='1150' fill='#051238'/>
+              <Clusters {...props} />
+              <Stations {...props} stationScale={scale === 1 ? 1.3 : 1}/>
+              <Gates {...props} />
+              <SuperHighways {...props} />
+              <ClusterTexts {...props} />
+            </svg>
           </div>
-          <svg ref={svg} width='100%' height='100%' viewBox='20 -140 1700 1150'
-               version="1.1" xmlns="http://www.w3.org/2000/svg"
-               style={{transform: `scale(${scale}) translate(${moved.x}px, ${moved.y}px)`}}>
-            <rect x='20' y='-140' width='1700' height='1150' fill='#051238'/>
-            <Clusters {...props} />
-            <Stations {...props} stationScale={scale === 1 ? 1.3 : 1}/>
-            <Gates {...props} />
-            <SuperHighways {...props} />
-            <ClusterTexts {...props} />
-          </svg>
-        </div>
+          <div style={{textAlign: 'right'}}>
+            <button onClick={downloadSvgFile} className='link'>Download as svg</button>
+          </div>
+        </React.Fragment>
       )}
     </div>
   );

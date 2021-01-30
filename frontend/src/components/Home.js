@@ -7,6 +7,11 @@ const menuItems = [{
   label: 'EVE Online: Epic arcs guide',
   content: 'In depth guide for EVE Online level 4 epic arc missions. Find all about the related missions, enemies, rewards, what to bring and how to start them...'
 },{
+  url: '/x4/map',
+  cover: '/images/x4/logo.png',
+  label: 'X4 Foundations: Map',
+  content: 'Complete X4 map, together with X4 Split Vendetta systems (v3.3).'
+},{
   url: '/x4/ships',
   cover: '/images/x4/logo.png',
   label: 'X4 Foundations: Ships',

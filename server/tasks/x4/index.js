@@ -10,6 +10,7 @@ import {getEquipment} from './equipment';
 import {saveToFile} from './helpers';
 import {getShips} from './ships';
 import {getWares} from './wares';
+import {getModifications} from './modifications';
 
 /*  NOTE: This task only runs on local machine. Even though path is being used in most places, this is still best ran
           to run on windows machine, which you probably have so that you can run the game as well, right? It expects
@@ -60,9 +61,11 @@ async function start() {
   const mapInformation = await getMap(sourceBasePath, translations);
   await saveToFile(mapInformation, '_map', 'map');
 
-  return null;
   const wares = await getWares(sourceBasePath);
   await saveToFile(wares, '_wares', 'wares');
+
+  const modifications = await getModifications(sourceBasePath);
+  await saveToFile(modifications, '_modifications', 'modifications');
 
   let macrosIndex = await composeIndexTree('macros');
   macrosIndex = {...macrosIndex, ...await composeIndexTree('macros', 'split')};
