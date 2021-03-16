@@ -62,8 +62,9 @@ const Sectors = props => (
     return (
       <React.Fragment key={Math.random()}>
         {sectorsPosition !== 'singular' && !props.text && (
-          <polyline fill='black'
+          <polyline fill='#000020'
                     stroke={color}
+                    strokeWidth='1.3'
                     points={getHexagonPoints(resolveHexagonCenterByProps(sectorsPosition, index, position), 'small')}/>
         )}
 
@@ -71,25 +72,26 @@ const Sectors = props => (
           <>
             <rect x={resolveHexagonCenterByProps(sectorsPosition, index, position).x - backgroundWidth / 2}
                   y={resolveHexagonCenterByProps(sectorsPosition, index, position).y - 16}
-                  width={backgroundWidth} height='6' fill={color}
+                  width={backgroundWidth} height='6' fill='black'
                   stroke={color} strokeWidth='0.2'/>
             <text textAnchor='middle' fontSize='7px' fill='white'
                   x={resolveHexagonCenterByProps(sectorsPosition, index, position).x}
                   y={resolveHexagonCenterByProps(sectorsPosition, index, position).y - 11}>
               {sector.name}
             </text>
-            <Resources resources={sector.resources} {...resolveHexagonCenterByProps(sectorsPosition, index, position)} small/>
+            <Resources resources={sector.resources} {...resolveHexagonCenterByProps(sectorsPosition, index, position)}
+                       small/>
           </>
         )}
 
         {sectorsPosition === 'singular' && !props.text && (
-          <polyline fill='black' stroke={color} points={getHexagonPoints({x: position.x, y: position.y})}/>
+          <polyline fill='#000022' stroke={color} strokeWidth='1.3' points={getHexagonPoints({x: position.x, y: position.y})}/>
         )}
 
         {sectorsPosition === 'singular' && props.text && (
           <>
             <rect x={position.x - backgroundWidth / 2} y={position.y - 37}
-                  width={backgroundWidth} height='6' fill={color}
+                  width={backgroundWidth} height='6' fill='black'
                   stroke={color} strokeWidth='0.2'/>
             <text textAnchor='middle' fontSize='7px' fill='white' x={position.x} y={position.y - 32}>
               {sector.name}
@@ -107,6 +109,7 @@ const Clusters = props => (
     <React.Fragment key={Math.random()}>
       {system.position.x !== -1000 && <Sectors {...system} />}
       <polyline fill='none'
+                strokeWidth='1.3'
                 stroke={maps.colors[system.owner].border}
                 points={getHexagonPoints(system.position)}/>
     </React.Fragment>
@@ -200,19 +203,18 @@ const Map = (props) => {
   useEffect(() => {
     if (props.x4.map) seo({
       title: 'X4 Foundations Map',
-      metaDescription: `X4 Foundations and Split Vendetta Map. ${props.x4.map.systems.map(system => system.sectors.map(sector => sector.name).join(', ')).join(', ')}`
+      metaDescription: `X4 Foundations, Split Vendetta and Cradle of Humanity map. ${props.x4.map.systems.map(system => system.sectors.map(sector => sector.name).join(', ')).join(', ')}`
     });
   }, [props.x4.map]);
 
   return (
     <div className='x4__map'>
-      <h1>X4 Map v3.3</h1>
+      <h1>X4 Map v4.0</h1>
       {props.x4.map && (
         <React.Fragment>
           <div ref={wrapper} className='x4__map-wrapper'>
             <div className='x4__legend'>
-              Gates are approximate to 50km <br/>
-              Xenon stations are not true locations<br/>
+              All locations are approximate <br/>
               Use mouse to move and zoom
               <div className='x4__resources'>
                 <p style={{'background': resourceColors.ore}}>Ore</p>
@@ -224,10 +226,10 @@ const Map = (props) => {
                 <p style={{'background': resourceColors.nividium}}>Nividium</p>
               </div>
             </div>
-            <svg ref={svg} width='100%' height='100%' viewBox='20 -140 1700 1150'
+            <svg ref={svg} width='100%' height='100%' viewBox='-400 -160 2200 1150'
                  version="1.1" xmlns="http://www.w3.org/2000/svg"
                  style={{transform: `scale(${scale}) translate(${moved.x}px, ${moved.y}px)`}}>
-              <rect x='20' y='-140' width='1700' height='1150' fill='#051238'/>
+              <rect x='20' y='-140' width='1700' height='1150' fill='#000011'/>
               <Clusters {...props} />
               <Stations {...props} stationScale={scale === 1 ? 1.3 : 1}/>
               <Gates {...props} />
@@ -236,7 +238,7 @@ const Map = (props) => {
             </svg>
           </div>
           <div style={{textAlign: 'right'}}>
-            <button onClick={downloadSvgFile} className='link'>Download as svg</button>
+            <button onClick={downloadSvgFile} className='link'>Click here to download as svg</button>
           </div>
         </React.Fragment>
       )}

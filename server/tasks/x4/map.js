@@ -55,7 +55,10 @@ export async function getMap(sourceBasePath, translations) {
       if (connection.macro.properties && connection.macro.properties.region.ref.indexOf('audioregion') === -1) {
         const resources = result.regions[connection.macro.properties.region.ref].resources;
         if (resources && resources.resource) {
-          let name = connection.name.replace('Cluster', 'C').replace('_Sector', 'S').split('_')[0];
+          let name = connection.name;
+          // beacuse old files have different namings then new ones, do some weird shit... For old files we have
+          // something like C01S01, for new ones we have Cluster100_Sector001, we want to unify it all
+          name = name.replace('Cluster', 'C').replace('_Sector0', 'S').split('_')[0];
           const cluster = name.match(/C(.*)S/)[1];
           const sector = '0' + name.match(/S(.*)/)[1];
           name = `Cluster_${cluster}_Sector${sector}_macro`;
@@ -75,7 +78,7 @@ export async function getMap(sourceBasePath, translations) {
   Object.keys(result.resources).map(key => {
     totalYields[key] = {ore: 0, silicon: 0, nividium: 0, ice: 0, hydrogen: 0, helium: 0, methane: 0};
     result.resources[key].map(res => {
-      let values = {medium: 5, high: 10, veryhigh: 20};
+      let values = {lowest: 1, verylow: 2, low: 2, medium: 5, high: 10, veryhigh: 20};
       totalYields[key][res.ware] += values[res.yield];
     });
   });
@@ -153,7 +156,6 @@ export async function getMap(sourceBasePath, translations) {
     }
     if (mapDefault.macro.indexOf('Sector') !== -1) {
       const parent = mapDefault.macro.replace(/Sector\d\d\d_/, '');
-      let regionId = mapDefault.macro;
       result[parent].sectors.push({
         name: translate(mapDefault.properties.identification.name, translations, true),
         description: translate(mapDefault.properties.identification.description, translations),

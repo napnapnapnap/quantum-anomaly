@@ -11,7 +11,7 @@
 
   &__map-wrapper {
     overflow: hidden;
-    background: #051238;
+    background: #000011;
     cursor: grab;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -41,6 +41,8 @@
         text-align: center;
         padding: 3px;
         border-radius: 3px;
+        line-height: 0.8;
+        margin: 3px;
       }
     }
   }

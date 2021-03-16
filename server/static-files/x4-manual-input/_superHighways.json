@@ -17,6 +17,9 @@
     {"origin": {"x": 677, "y": 580}, "destination": {"x": 674, "y": 621}},
     {"origin": {"x": 910, "y": 663}, "destination": {"x": 887, "y": 637}},
     {"origin": {"x": 437, "y": 810}, "destination": {"x": 457, "y": 823}},
-    {"origin": {"x": 585, "y": 825}, "destination": {"x": 606, "y": 808}}
+    {"origin": {"x": 585, "y": 825}, "destination": {"x": 606, "y": 808}},
+    {"origin": {"x": 367, "y": 357}, "destination": {"x": 387, "y": 330}},
+    {"origin": {"x": -87, "y": 415}, "destination": {"x": -63, "y": 443}},
+    {"origin": {"x": -145, "y": 722}, "destination": {"x": -162, "y": 750}}
   ]
 }

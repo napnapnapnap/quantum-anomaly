@@ -62,7 +62,7 @@ export const maps = {
     freesplit: {color: '#a45525', border: '#ff8000'},
     pioneers: {color: '#41aa9a', border: '#66aa9a'},
     yaki: {color: '#fe8dfa', border: '#ffadfa'},
-    terran: {color: '#bcd0fb', border: '#ccf0ff'},
+    terran: {color: '#bcd0fb', border: '#bcd0fb'},
     none: {color: '#666', border: '#aaa'}
   }
 };

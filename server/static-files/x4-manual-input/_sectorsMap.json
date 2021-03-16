@@ -541,92 +541,110 @@
   },
   "Cluster_100_macro": {
     "position": {
-      "x": -1000,
-      "y": -1000
-    }
+      "x": 0,
+      "y": 559
+    },
+    "owner": "terran"
   },
   "Cluster_101_macro": {
     "position": {
-      "x": -1000,
-      "y": -1000
-    }
+      "x": -75,
+      "y": 516
+    },
+    "owner": "terran"
   },
   "Cluster_102_macro": {
     "position": {
-      "x": -1000,
-      "y": -1000
-    }
+      "x": -150,
+      "y": 473
+    },
+    "owner": "terran"
   },
   "Cluster_104_macro": {
     "position": {
-      "x": -1000,
-      "y": -1000
-    }
+      "x": -75,
+      "y": 430
+    },
+    "owner": "terran",
+    "sectorsPosition": "top-left"
   },
   "Cluster_106_macro": {
     "position": {
-      "x": -1000,
-      "y": -1000
-    }
+      "x": -150,
+      "y": 387
+    },
+    "owner": "terran"
   },
   "Cluster_107_macro": {
     "position": {
-      "x": -1000,
-      "y": -1000
-    }
+      "x": -75,
+      "y": 688
+    },
+    "owner": "terran"
   },
   "Cluster_108_macro": {
     "position": {
-      "x": -1000,
-      "y": -1000
-    }
+      "x": -150,
+      "y": 731
+    },
+    "owner": "terran",
+    "sectorsPosition": "top-right"
   },
   "Cluster_109_macro": {
     "position": {
-      "x": -1000,
-      "y": -1000
-    }
+      "x": -225,
+      "y": 774
+    },
+    "owner": "terran"
   },
   "Cluster_110_macro": {
     "position": {
-      "x": -1000,
-      "y": -1000
-    }
+      "x": -150,
+      "y": 817
+    },
+    "owner": "terran"
   },
   "Cluster_111_macro": {
     "position": {
-      "x": -1000,
-      "y": -1000
-    }
+      "x": -225,
+      "y": 860
+    },
+    "owner": "terran"
   },
   "Cluster_112_macro": {
     "position": {
-      "x": -1000,
-      "y": -1000
-    }
+      "x": 375,
+      "y": 344
+    },
+    "owner": "xenon",
+    "sectorsPosition": "top-right"
   },
   "Cluster_113_macro": {
     "position": {
-      "x": -1000,
-      "y": -1000
-    }
+      "x": 225,
+      "y": 860
+    },
+    "owner": "pioneers"
   },
   "Cluster_114_macro": {
     "position": {
-      "x": -1000,
-      "y": -1000
-    }
+      "x": 150,
+      "y": 903
+    },
+    "owner": "pioneers"
   },
   "Cluster_115_macro": {
     "position": {
-      "x": -1000,
-      "y": -1000
-    }
+      "x": 75,
+      "y": 860
+    },
+    "owner": "pioneers"
   },
   "Cluster_116_macro": {
     "position": {
-      "x": -1000,
-      "y": -1000
-    }
+      "x": -300,
+      "y": 903
+    },
+    "owner": "terran"
   }
 }
