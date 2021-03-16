@@ -9,11 +9,18 @@ export async function getWares(resourcesPath) {
 
   parser = new xml2js.Parser({mergeAttrs: true, explicitArray: false});
   const pathToSplitWare = path.join(resourcesPath, 'extensions', 'ego_dlc_split', 'libraries', 'wares.xml');
+  const pathToTerranWare = path.join(resourcesPath, 'extensions', 'ego_dlc_terran', 'libraries', 'wares.xml');
   const splitParsed = await parser.parseStringPromise(await fs.readFile(pathToSplitWare));
+  const terranParsed = await parser.parseStringPromise(await fs.readFile(pathToTerranWare));
 
   // this is diff file, so it will have add array and each item will be selection where to add and other key of what
   // to add, later we can do this dynamically, but for now let's just hardcode it since there is only 2 items
   splitParsed.diff.add.forEach(item => {
+    if (item.sel === '/wares/production') parsed.wares.production.method = parsed.wares.production.method.concat(item.method);
+    else if (item.sel === '/wares') parsed.wares.ware = parsed.wares.ware.concat(item.ware);
+  });
+
+  terranParsed.diff.add.forEach(item => {
     if (item.sel === '/wares/production') parsed.wares.production.method = parsed.wares.production.method.concat(item.method);
     else if (item.sel === '/wares') parsed.wares.ware = parsed.wares.ware.concat(item.ware);
   });

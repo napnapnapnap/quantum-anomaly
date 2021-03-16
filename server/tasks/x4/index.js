@@ -27,6 +27,11 @@ cd "C:\Program Files (x86)\Steam\steamapps\common\X4 Foundations"
 XRCatTool.exe -in extensions\ego_dlc_split\ext_01.cat -in extensions\ego_dlc_split\ext_02.cat -in extensions\ego_dlc_split\ext_03.cat -out "C:\X4\extensions\ego_dlc_split"
 pause
 
+For cradle of humanity
+cd "C:\Program Files (x86)\Steam\steamapps\common\X4 Foundations"
+XRCatTool.exe -in extensions\ego_dlc_terran\ext_01.cat -in extensions\ego_dlc_terran\ext_02.cat -in extensions\ego_dlc_terran\ext_03.cat -out "C:\X4\extensions\ego_dlc_terran"
+pause
+
 For now you can just copy paste manually files from split dlc into main unpackaged folder
  */
 
@@ -37,6 +42,7 @@ const sourcify = arg => path.join(sourceBasePath, `${arg}.xml`);
 async function composeIndexTree(type, dlc = null) {
   let sourceIndexBasePath = sourceBasePath;
   if (dlc === 'split') sourceIndexBasePath = path.join(sourceIndexBasePath, 'extensions', 'ego_dlc_split');
+  if (dlc === 'terran') sourceIndexBasePath = path.join(sourceIndexBasePath, 'extensions', 'ego_dlc_terran');
   sourceIndexBasePath = path.join(sourceIndexBasePath, 'index');
 
   let sourceFilePath;
@@ -69,10 +75,12 @@ async function start() {
 
   let macrosIndex = await composeIndexTree('macros');
   macrosIndex = {...macrosIndex, ...await composeIndexTree('macros', 'split')};
+  macrosIndex = {...macrosIndex, ...await composeIndexTree('macros', 'terran')};
   await saveToFile(macrosIndex, '_macros-index', 'macro index');
 
   let componentsIndex = await composeIndexTree('components');
   componentsIndex = {...componentsIndex, ...await composeIndexTree('components', 'split')};
+  componentsIndex = {...componentsIndex, ...await composeIndexTree('components', 'terran')};
   await saveToFile(componentsIndex, '_components-index', 'components index');
 
 

@@ -8,15 +8,18 @@ import {saveToFile} from './helpers';
 // if it did break, just give up and do something else with your life...
 export async function getMap(sourceBasePath, translations) {
   let splitSourcePath = path.join(sourceBasePath, 'extensions', 'ego_dlc_split');
+  let terranSourcePath = path.join(sourceBasePath, 'extensions', 'ego_dlc_terran');
   let parser = new xml2js.Parser({mergeAttrs: true, explicitArray: false});
 
   // from here we get list of all sectors with their name and descriptions, they can be then grouped by macro which
   // points to cluster
   let pathToFile = path.join(sourceBasePath, 'libraries', 'mapdefaults.xml');
   let pathToSplitFile = path.join(splitSourcePath, 'libraries', 'mapdefaults.xml');
+  let pathToTerranFile = path.join(terranSourcePath, 'libraries', 'mapdefaults.xml');
   let parsed = await parser.parseStringPromise(await fs.readFile(pathToFile));
   let splitParsed = await parser.parseStringPromise(await fs.readFile(pathToSplitFile));
-  const mapDefaults = parsed.defaults.dataset = [...parsed.defaults.dataset, ...splitParsed.defaults.dataset];
+  let terranParsed = await parser.parseStringPromise(await fs.readFile(pathToTerranFile));
+  const mapDefaults = parsed.defaults.dataset = [...parsed.defaults.dataset, ...splitParsed.defaults.dataset, ...terranParsed.defaults.dataset];
 
   let result = {sectors: {}, zones: {}, resources: {}, stations: {}, regions: {}};
 
@@ -27,9 +30,10 @@ export async function getMap(sourceBasePath, translations) {
   parsed = await parser.parseStringPromise(await fs.readFile(pathToFile));
   pathToFile = path.join(splitSourcePath, 'libraries', 'region_definitions.xml');
   splitParsed = await parser.parseStringPromise(await fs.readFile(pathToFile));
+  pathToFile = path.join(terranSourcePath, 'libraries', 'region_definitions.xml');
+  terranParsed = await parser.parseStringPromise(await fs.readFile(pathToFile));
 
-
-  const regions = parsed.regions.region = [...parsed.regions.region, ...splitParsed.regions.region];
+  const regions = parsed.regions.region = [...parsed.regions.region, ...splitParsed.regions.region, ...terranParsed.regions.region];
   regions.forEach(region => result.regions[region.name] = {...region});
 
   // from here we can use cluster macro to find what is inside this cluster, the thing we care for is
@@ -38,7 +42,9 @@ export async function getMap(sourceBasePath, translations) {
   parsed = await parser.parseStringPromise(await fs.readFile(pathToFile));
   pathToFile = path.join(splitSourcePath, 'maps', 'xu_ep2_universe', 'dlc4_clusters.xml');
   splitParsed = await parser.parseStringPromise(await fs.readFile(pathToFile));
-  const clusters = parsed.macros.macro = [...parsed.macros.macro, ...splitParsed.macros.macro];
+  pathToFile = path.join(terranSourcePath, 'maps', 'xu_ep2_universe', 'dlc_terran_clusters.xml');
+  terranParsed = await parser.parseStringPromise(await fs.readFile(pathToFile));
+  const clusters = parsed.macros.macro = [...parsed.macros.macro, ...splitParsed.macros.macro, ...terranParsed.macros.macro];
 
   // problem here is that some regions are shared definitions and appear on multiple connections...
   // since I no longer remember the where those connections are described and how to create them, we will just assume
@@ -49,7 +55,7 @@ export async function getMap(sourceBasePath, translations) {
       if (connection.macro.properties && connection.macro.properties.region.ref.indexOf('audioregion') === -1) {
         const resources = result.regions[connection.macro.properties.region.ref].resources;
         if (resources && resources.resource) {
-          let name = connection.name.split('_')[0];
+          let name = connection.name.replace('Cluster', 'C').replace('_Sector', 'S').split('_')[0];
           const cluster = name.match(/C(.*)S/)[1];
           const sector = '0' + name.match(/S(.*)/)[1];
           name = `Cluster_${cluster}_Sector${sector}_macro`;
@@ -80,7 +86,9 @@ export async function getMap(sourceBasePath, translations) {
   parsed = await parser.parseStringPromise(await fs.readFile(pathToFile));
   pathToFile = path.join(splitSourcePath, 'maps', 'xu_ep2_universe', 'dlc4_sectors.xml');
   splitParsed = await parser.parseStringPromise(await fs.readFile(pathToFile));
-  const sectors = parsed.macros.macro = [...parsed.macros.macro, ...splitParsed.macros.macro];
+  pathToFile = path.join(terranSourcePath, 'maps', 'xu_ep2_universe', 'dlc_terran_sectors.xml');
+  terranParsed = await parser.parseStringPromise(await fs.readFile(pathToFile));
+  const sectors = parsed.macros.macro = [...parsed.macros.macro, ...splitParsed.macros.macro, ...terranParsed.macros.macro];
 
   sectors.forEach(sector => {
     result.sectors[sector.name] = [];
@@ -94,16 +102,21 @@ export async function getMap(sourceBasePath, translations) {
   parsed = await parser.parseStringPromise(await fs.readFile(pathToFile));
   pathToFile = path.join(splitSourcePath, 'maps', 'xu_ep2_universe', 'dlc4_zones.xml');
   splitParsed = await parser.parseStringPromise(await fs.readFile(pathToFile));
-  const zones = parsed.macros.macro = [...parsed.macros.macro, ...splitParsed.macros.macro];
+  pathToFile = path.join(terranSourcePath, 'maps', 'xu_ep2_universe', 'dlc_terran_zones.xml');
+  terranParsed = await parser.parseStringPromise(await fs.readFile(pathToFile));
+  const zones = parsed.macros.macro = [...parsed.macros.macro, ...splitParsed.macros.macro, ...terranParsed.macros.macro];
   zones.forEach(zone => result.zones[zone.name] = {...zone});
 
   pathToFile = path.join(sourceBasePath, 'libraries', 'god.xml');
   parsed = await parser.parseStringPromise(await fs.readFile(pathToFile));
   pathToFile = path.join(splitSourcePath, 'libraries', 'god.xml');
   splitParsed = await parser.parseStringPromise(await fs.readFile(pathToFile));
+  pathToFile = path.join(terranSourcePath, 'libraries', 'god.xml');
+  terranParsed = await parser.parseStringPromise(await fs.readFile(pathToFile));
 
   const splitDlcStations = splitParsed.diff.add.filter(item => item.sel === '/god/stations');
-  const stationsParsed = parsed.god.stations.station = [...parsed.god.stations.station, ...splitDlcStations[0].station];
+  const terranDlcStations = terranParsed.diff.add.filter(item => item.sel === '/god/stations');
+  const stationsParsed = parsed.god.stations.station = [...parsed.god.stations.station, ...splitDlcStations[0].station, ...terranDlcStations[0].station];
 
   stationsParsed.forEach(station => {
     if (

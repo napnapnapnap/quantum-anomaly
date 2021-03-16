@@ -1,10 +1,12 @@
 export const maps = {
   race: [
     {label: 'Argon', value: 'arg'},
+    {label: 'ATF', value: 'atf'},
     {label: 'Kha\'ak', value: 'kha'},
     {label: 'Paranid', value: 'par'},
     {label: 'Split', value: 'spl'},
     {label: 'Teladi', value: 'tel'},
+    {label: 'Terran', value: 'ter'},
     {label: 'Xenon', value: 'xen'}
   ],
   size: {
@@ -20,11 +22,13 @@ export const maps = {
     {label: 'Raider', value: 'RD'}
   ],
   reverseRace: {
+    atf: 'ATF',
     arg: 'Argon',
     kha: 'Kha\'ak',
     par: 'Paranid',
     spl: 'Split',
     tel: 'Teladi',
+    ter: 'Terran',
     xen: 'Xenon'
   },
   factions: {
@@ -38,7 +42,11 @@ export const maps = {
     ministry: 'Ministry of Finance',
     xenon: 'Xenon',
     scaleplate: 'Scale Plate Pact',
-    split: 'Zyarth Patriarcy'
+    split: 'Zyarth Patriarcy',
+    pioneers: 'Segaris Pioneers',
+    yaki: 'Yaki',
+    terran: 'Terran Protectorate'
+
   },
   colors: {
     xenon: {color: '#880000', border: '#c90000'},
@@ -52,6 +60,9 @@ export const maps = {
     ministry: {color: '#94bc92', border: '#94bc92'},
     holyorder: {color: '#b45694', border: '#ff72ad'},
     freesplit: {color: '#a45525', border: '#ff8000'},
+    pioneers: {color: '#41aa9a', border: '#66aa9a'},
+    yaki: {color: '#fe8dfa', border: '#ffadfa'},
+    terran: {color: '#bcd0fb', border: '#ccf0ff'},
     none: {color: '#666', border: '#aaa'}
   }
 };
@@ -64,14 +75,18 @@ export const separateWord = arg => arg
   .replace('large', 'large ')
   .replace('heavy', 'heavy ')
   .replace('energy', 'energy ')
+  .replace('computronic', 'computronic ')
+  .replace('metallic', 'metallic ')
   .replace('hullparts', 'hull parts');
 
 export const translateRace = arg => arg
   .replace('arg', 'Argon ')
+  .replace('atf', 'ATF ')
   .replace('kha', 'Kha\'ak ')
   .replace('par', 'Paranid')
   .replace('spl', 'Split')
   .replace('tel', 'Teladi')
+  .replace('ter', 'Terran')
   .replace('xen', 'Xenon');
 
 

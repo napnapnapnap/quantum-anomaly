@@ -31,7 +31,7 @@ export async function getTranslations(resourcesPath) {
 export function translate(id, translations, isName = false, isRef = false) {
   if (!id) return null;
   const ids = id.replace(/{/, '').replace(/}/, '').split(',');
-  const pageId = ids[0].trim();
+  let pageId = ids[0].trim();
   const translationId = ids[1].trim();
   let result = translations[pageId].translations[translationId];
   if (result && isName && result.match(/\((.*)\)/)) result = result.match(/\((.*)\)/).pop();

@@ -128,6 +128,9 @@ const ShipEfficiency = (props) => {
           <label className='x4__radio-label'>
             <input type='radio' name='engines' value='tel' onChange={e => setRace('tel')}/> Teladi
           </label>
+          <label className='x4__radio-label'>
+            <input type='radio' name='engines' value='ter' onChange={e => setRace('tel')}/> Terran
+          </label>
         </div>
       </div>
 

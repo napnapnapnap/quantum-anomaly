@@ -1,5 +1,4 @@
 import {translate} from './translations';
-import {appLog} from '../../helpers/logger';
 
 const getRace = (name) => {
   if (name.indexOf('arg') !== -1) return 'arg';
@@ -8,6 +7,9 @@ const getRace = (name) => {
   if (name.indexOf('tel') !== -1) return 'tel';
   if (name.indexOf('xen') !== -1) return 'xen';
   if (name.indexOf('kha') !== -1) return 'kha';
+  if (name.indexOf('ter') !== -1) return 'ter';
+  if (name.indexOf('yak') !== -1) return 'yak';
+  if (name.indexOf('atf') !== -1) return 'atf';
   if (name.indexOf('ship_gen_s_fighter_01') !== -1) return 'arg';
 };
 
@@ -22,7 +24,8 @@ export function addDataFromMacroFile(data, translations, defaults, storage, ship
     race: getRace(data.macros.macro.name),
     name: translate(properties.identification.name, translations, true).replace(/\\/g, ''),
     basename: translate(properties.identification.basename, translations),
-    description: translate(properties.identification.description, translations, false, true),
+    description: getRace(data.macros.macro.name) !== 'atf' && getRace(data.macros.macro.name) !== 'ter' && getRace(data.macros.macro.name) !== 'yak'
+      ? translate(properties.identification.description, translations, false, true) : '',
     shortvariation: translate(properties.identification.shortvariation, translations),
     variation: translate(properties.identification.variation, translations),
     type: properties.ship.type,

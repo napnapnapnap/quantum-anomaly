@@ -25,6 +25,9 @@ async function processShips(macroPath, translations, defaults, storage, shipstor
   if (dataPath.indexOf('ego_dlc_split') !== -1 && dataPath.indexOf('ship_arg_xl_builder_01') !== -1) {
     dataPath = dataPath.replace('extensions\\ego_dlc_split\\', '');
   }
+  if (dataPath.indexOf('ego_dlc_terran') !== -1 && dataPath.indexOf('ship_arg_xl_builder_01') !== -1) {
+    dataPath = dataPath.replace('extensions\\ego_dlc_terran\\', '');
+  }
   const data = await parser.parseStringPromise(await fs.readFile(dataPath));
 
   ship = {...ship, ...addDataFromDataFile(data)};
@@ -46,6 +49,12 @@ export async function getShips(shipFileList, translations, defaults, equipment, 
     if (shipFile.indexOf('ship_spl_m_bomber_01_a_macro') !== -1) return Promise.resolve();
     if (shipFile.indexOf('ship_spl_xl_battleship_01_a_macro') !== -1) return Promise.resolve();
     if (shipFile.indexOf('ship_kha_s_fighter_01_a_macro') !== -1) return Promise.resolve();
+    if (shipFile.indexOf('ship_gen_m_transdrone_container_01_a_macro') !== -1) return Promise.resolve();
+    if (shipFile.indexOf('ship_gen_m_transdrone_container_02_a_macro') !== -1) return Promise.resolve();
+    if (shipFile.indexOf('ship_gen_s_transdrone_container_01_a_macro') !== -1) return Promise.resolve();
+    if (shipFile.indexOf('ship_gen_s_transdrone_container_02_a_macro') !== -1) return Promise.resolve();
+    if (shipFile.indexOf('ship_ter_l_trans_container_01_landmark_macro') !== -1) return Promise.resolve();
+    if (shipFile.indexOf('ship_ter_l_research_01_a_macro') !== -1) return Promise.resolve();
     if (shipFile.indexOf('miningdrone') !== -1) return Promise.resolve();
     if (shipFile.indexOf('fightingdrone') !== -1) return Promise.resolve();
     if (shipFile.indexOf('tfm') !== -1) return Promise.resolve();

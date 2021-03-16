@@ -80,7 +80,7 @@ const getContent = async (paths, type, translations, bullets) => {
         class: data.class,
         bullet: applyBulletInfo(bullets, properties.bullet.class),
         rotation: {
-          speed: properties.rotationspeed.max,
+          speed: properties.rotationspeed ? properties.rotationspeed.max : 'N/A',
           acceleration: properties.rotationacceleration ? properties.rotationacceleration.max : 'N/A'
         },
         hull: properties.hull.max

@@ -1,5 +1,4 @@
 import {checkSizeUniformity, getSizeFromTags} from './helpers';
-import {inspect} from '../../helpers/logger';
 
 function countArmaments(armament) {
   const result = {large: 0, medium: 0, small: 0};
@@ -85,8 +84,8 @@ export function normalizeShip(ship, wares) {
   }
 
   const ware = wares.wares.ware[ship.id.replace('_macro', '')];
-  ship.price = ware.price;
-  ship.production = ware.production;
+  ship.price = ware ? ware.price : 'N/A';
+  ship.production = ware ? ware.production : 'N/A';
 
   let manufacturer = null;
   if (Array.isArray(ware.owner)) {
