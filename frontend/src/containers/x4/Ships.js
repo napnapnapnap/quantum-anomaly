@@ -131,7 +131,7 @@ const Races = props => (
 
 const Ships = (props) => {
   const [size, setSize] = useState('ship_xl');
-  const [race, setRace] = useState({atf: true, arg: true, par: true, spl: true, tel: true, ter:true, xen: true, kha: true});
+  const [race, setRace] = useState({atf: true, arg: true, par: true, spl: true, tel: true, ter:true, yak:true , xen: true, kha: true});
   const [subtype, setSubtype] = useState({BV: true, VA: true, ST: true, RD: true});
   const [types, setTypes] = useState([]);
   const [comparisonMode, setComparisonMode] = useState(false);

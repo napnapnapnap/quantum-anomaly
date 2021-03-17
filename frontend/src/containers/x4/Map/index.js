@@ -179,7 +179,8 @@ const Map = (props) => {
 
   const downloadSvgFile = () => {
     const element = document.createElement('a');
-    const file = new Blob([svg.current.outerHTML.toString()], {type: 'image/svg+xml'});
+    const svgAsString = svg.current.outerHTML.toString().replace(/style="(.*?)"/, '');
+    const file = new Blob([svgAsString], {type: 'image/svg+xml'});
     element.href = URL.createObjectURL(file);
     element.download = 'x4-map.svg';
     document.body.appendChild(element);
@@ -229,7 +230,6 @@ const Map = (props) => {
             <svg ref={svg} width='100%' height='100%' viewBox='-400 -160 2200 1150'
                  version="1.1" xmlns="http://www.w3.org/2000/svg"
                  style={{transform: `scale(${scale}) translate(${moved.x}px, ${moved.y}px)`}}>
-              <rect x='20' y='-140' width='1700' height='1150' fill='#000011'/>
               <Clusters {...props} />
               <Stations {...props} stationScale={scale === 1 ? 1.3 : 1}/>
               <Gates {...props} />

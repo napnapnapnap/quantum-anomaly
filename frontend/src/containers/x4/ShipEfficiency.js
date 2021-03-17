@@ -58,6 +58,11 @@ const ShipEfficiency = (props) => {
   return (
     <div className='x4__efficiency'>
       <h1>X4 Ship Efficiency</h1>
+      <h5>Notice</h5>
+      <p className='long-text'>
+        This information is out of date for v4.0. Large ships now take different time
+        to pass the gate. I will update this guide in next few days and remove this notice.
+      </p>
       <h3>Large Transport Ships</h3>
       <p className='long-text'>
         For large ships there are three things to consider. First obvious thing is if it can dock at station you want to

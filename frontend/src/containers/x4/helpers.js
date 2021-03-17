@@ -7,6 +7,7 @@ export const maps = {
     {label: 'Split', value: 'spl'},
     {label: 'Teladi', value: 'tel'},
     {label: 'Terran', value: 'ter'},
+    {label: 'Yaki', value: 'yak'},
     {label: 'Xenon', value: 'xen'}
   ],
   size: {
@@ -29,6 +30,7 @@ export const maps = {
     spl: 'Split',
     tel: 'Teladi',
     ter: 'Terran',
+    yak: 'Yaki',
     xen: 'Xenon'
   },
   factions: {
@@ -87,6 +89,7 @@ export const translateRace = arg => arg
   .replace('spl', 'Split')
   .replace('tel', 'Teladi')
   .replace('ter', 'Terran')
+  .replace('yak', 'Yaki')
   .replace('xen', 'Xenon');
 
 
