@@ -57,7 +57,7 @@ export const ResourcesTable = props => {
       {props.x4.map && (
         <React.Fragment>
           <div className='x4__map-controls'>
-            <Link to={'/x4/map'}>Go to interactive map</Link>
+            <Link to={'/x4/map'} className='link'>Go to interactive map</Link>
             <span onClick={() => setShowEmpty(!showEmpty)}>
               {!showEmpty ? 'Hide' : 'Show'} empty systems
             </span>

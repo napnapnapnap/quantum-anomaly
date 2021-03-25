@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Redirect, Route, Switch, withRouter} from 'react-router-dom';
+import classnames from 'classnames';
 
 import {connect} from 'react-redux';
 import * as authActions from './redux/authActions';
@@ -19,12 +20,21 @@ import X4ShipEfficiency from './containers/x4/ShipEfficiency';
 import X4Map from './containers/x4/Map';
 import X4Ships from './containers/x4/Ships';
 import X4ResourcesTable from './containers/x4/Resources';
+import {deleteCookie, getCookie, setCookie} from './helpers/cookies';
 
 class App extends Component {
+  constructor() {
+    super();
+    this.isDarkMode = window.location.href.indexOf('darkMode=true') !== -1 || getCookie('dark-mode');
+    if (window.location.href.indexOf('darkMode=false') !== -1) this.isDarkMode = false;
+  }
+
   componentDidMount() {
     if (auth.isLoggedIn()) this.props.getUserInfo();
     updateCanonical();
     this.props.history.listen(updateCanonical);
+    this.isDarkMode && setCookie('dark-mode', true);
+    window.location.href.indexOf('darkMode=false') !== -1 && deleteCookie('dark-mode');
   }
 
   render() {
@@ -33,7 +43,7 @@ class App extends Component {
         <header className='page-content-header'>
           <Navigation/>
         </header>
-        <main className='page-content-main'>
+        <main className={classnames('page-content-main', {'dark-mode': this.isDarkMode})}>
           <Cookies/>
           <Switch>
             <Route exact path='/' component={Home}/>

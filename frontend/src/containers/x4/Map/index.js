@@ -179,7 +179,7 @@ const Map = (props) => {
       {props.x4.map && (
         <React.Fragment>
           <div className='x4__map-controls'>
-            <Link to={'/x4/resources'}>Go to resource table</Link>
+            <Link to={'/x4/resources'} className='link'>Go to resource table</Link>
             <span onClick={() => setShowLegend(!showLegend)}>
               {showLegend ? 'Hide' : 'Show'}  legend
             </span>

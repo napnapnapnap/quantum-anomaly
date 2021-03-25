@@ -1,4 +1,7 @@
 .dark-mode {
+  background: #0e1116;
+  color: #cad1d8;
+
   .btn {
     &--cta {
       color: white;
@@ -15,7 +18,7 @@
 
   .link {
     &:link, &:visited, &:hover, &:active {
-      color: #000051;
+      color: #69a7f8;
     }
 
     &--active {
@@ -39,7 +42,7 @@
 
   .home {
     &__link {
-      color: black;
+      color: #cad1d8;
 
       &:hover {
         background: rgba(gray, 0.1);
@@ -47,13 +50,8 @@
     }
 
     &__title {
-      border-bottom: 1px solid black;
+      border-bottom: 1px solid #cad1d8;;
     }
-  }
-
-  .page-content-main {
-    background: #121212;
-    color: white;
   }
 
   table {
@@ -80,7 +78,23 @@
     }
   }
 
-  .overview__header {
-    color: black;
+  .overview {
+    &__header {
+      color: #cad1d8;
+    }
+    &__title {
+      color: #cad1d8;
+    }
+    p, li {
+      color: #cad1d8;
+    }
+  }
+
+  .ul--packed li {
+    color: #cad1d8;
+  }
+
+  .enemies {
+    background: linear-gradient(to bottom left, #000 0%, rgba(204, 204, 204, 0.1) 50%, #000 100%);;
   }
 }
