@@ -1,0 +1,22 @@
+.x4-ships-efficiency {
+  font-size: 11px;
+  max-width: 700px;
+
+  tr {
+    th {
+      cursor: pointer;
+    }
+
+    td {
+      width: 80px;
+
+      &:nth-of-type(2) {
+        width: 140px;
+      }
+
+      &:first-of-type {
+        width: 24px;
+      }
+    }
+  }
+}

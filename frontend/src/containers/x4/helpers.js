@@ -81,17 +81,8 @@ export const separateWord = arg => arg
   .replace('metallic', 'metallic ')
   .replace('hullparts', 'hull parts');
 
-export const translateRace = arg => arg
-  .replace('arg', 'Argon ')
-  .replace('atf', 'ATF ')
-  .replace('kha', 'Kha\'ak ')
-  .replace('par', 'Paranid')
-  .replace('spl', 'Split')
-  .replace('tel', 'Teladi')
-  .replace('ter', 'Terran')
-  .replace('yak', 'Yaki')
-  .replace('xen', 'Xenon');
-
+export const translateRace = arg => maps.reverseRace[arg];
+export const getSizeLabel = arg => separateWord(maps.size[arg]);
 
 export const int = arg => arg ? parseInt(arg, 10).toLocaleString('de-DE', {style: 'decimal'}) : 0;
 export const float = arg => arg ? parseFloat(arg, 10).toLocaleString('de-DE', {

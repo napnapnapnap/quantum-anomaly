@@ -348,8 +348,8 @@
       "tags": "shipyard",
       "sector": "Matrix #79B",
       "position": {
-        "x": 526,
-        "y": 150
+        "x": 514,
+        "y": 164
       }
     },
     {
@@ -359,7 +359,7 @@
       "tags": "wharf",
       "sector": "Matrix #79B",
       "position": {
-        "x": 514,
+        "x": 540,
         "y": 170
       }
     },
@@ -753,7 +753,7 @@
       "race": "xenon",
       "owner": "xenon",
       "tags": "shipyard",
-      "sector": "Emperor's Pride VI",
+      "sector": "Savage Spur I",
       "position": {
         "x": 398,
         "y": 322
@@ -764,10 +764,10 @@
       "race": "xenon",
       "owner": "xenon",
       "tags": "wharf",
-      "sector": "Emperor's Pride VI",
+      "sector": "Savage Spur I",
       "position": {
-        "x": 402,
-        "y": 326
+        "x": 392,
+        "y": 334
       }
     }
   ]

@@ -1,5 +1,5 @@
 import React from 'react';
-import {float, int, maps, separateWord, translateRace} from './helpers';
+import {float, int, maps, separateWord, translateRace} from '../helpers';
 import './ShipPreview.scss';
 
 const Armaments = props => {

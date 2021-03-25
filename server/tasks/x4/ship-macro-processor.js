@@ -36,11 +36,11 @@ export function addDataFromMacroFile(data, translations, defaults, storage, ship
     speed: {forward: 0, acceleration: 0, boost: 0, travel: 0, pitch: 0, roll: 0, yaw: 0},
     armaments: {weapons: {large: 0, medium: 0, small: 0}, turrets: {large: 0, medium: 0, small: 0}},
     storage: {
-      unit: properties.storage ? properties.storage.unit : 0,
-      missile: properties.storage ? properties.storage.missile : 0,
-      people: properties.people.capacity,
-      countermeasure: defaults[classOfShip].storage.countermeasure,
-      deployable: defaults[classOfShip].storage.deployable,
+      unit: properties.storage ? parseFloat(properties.storage.unit) : 0,
+      missile: properties.storage ? parseFloat(properties.storage.missile) : 0,
+      people: parseFloat(properties.people.capacity),
+      countermeasure: parseFloat(defaults[classOfShip].storage.countermeasure),
+      deployable: parseFloat(defaults[classOfShip].storage.deployable),
       capacity: 0,
       capacityType: null
     },
@@ -76,7 +76,7 @@ export function addDataFromMacroFile(data, translations, defaults, storage, ship
       ship.shipstorage[shipstorageType] += shipstorageCapacity;
     }
     if (connection.ref.indexOf('_storage') !== -1) {
-      ship.storage.capacity = storage[connection.macro.ref].cargo;
+      ship.storage.capacity = parseFloat(storage[connection.macro.ref].cargo);
       ship.storage.capacityType = storage[connection.macro.ref].type;
     }
   });

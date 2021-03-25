@@ -3,10 +3,10 @@ import {connect} from 'react-redux';
 import classnames from 'classnames';
 
 import ShipPreview from './ShipPreview';
-import {fetchX4Equipment, fetchX4Ships} from '../../redux/x4Actions';
-import {fillOntoShip} from './x4-fitting-tool';
-import {maps, separateWord} from './helpers';
-import './X4.scss';
+import {fetchX4Equipment, fetchX4Ships} from '../../../redux/x4Actions';
+import {fillOntoShip} from '../x4-fitting-tool';
+import {maps, separateWord} from '../helpers';
+import '../X4.scss';
 
 const RadioGroups = props => {
   if (props.items.length === 0) return null;
