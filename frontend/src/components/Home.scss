@@ -1,15 +1,16 @@
 @import '../styles/variables';
 @import '../styles/mixins/breakpoints';
+@import '../styles/mixins/typography';
 
 .home {
   $block: 'home';
-  max-width: 800px;
+  @include long-text;
 
   &__link {
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
-    margin: 3rem 0 1rem 0;
+    margin: 2rem 0 1rem 0;
     padding: 0.3rem;
     color: black;
 

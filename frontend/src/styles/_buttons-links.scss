@@ -1,3 +1,11 @@
+a {
+  text-decoration: none;
+}
+
+button:focus {
+  outline: 0;
+}
+
 .btn {
   box-sizing: border-box;
   margin: 0;
@@ -11,15 +19,14 @@
   font-size: 0.8rem;
 
   &--cta {
+    color: white;
+    background: #000051;
   }
 
   &--secondary {
     color: white;
-    background-color: gray;
-    border: 2px solid gray;
-  }
-
-  &--cancel {
+    background-color: #666;
+    border: 2px solid #000051;
   }
 
   &--seperated {
@@ -48,21 +55,12 @@
   outline: none;
   text-decoration: none;
 
-  &:link {
-    color: #00c;
-  }
-
-  &:visited {
-    color: #00c;
+  &:link, &:visited, &:hover, &:active {
+    color: #000051;
   }
 
   &:hover {
-    color: #00c;
     text-decoration: underline;
-  }
-
-  &:active {
-    color: #00c
   }
 
   &--active {
@@ -70,8 +68,8 @@
   }
 
   &--secondary {
-    text-decoration: underline;
     color: #999;
+    text-decoration: underline;
 
     &:hover {
       color: #444;

@@ -70,13 +70,13 @@ const ShipEfficiency = (props) => {
   }, [props.x4.equipment, race, distance, jumpGates, percentHighway, highwaySpeed]);
 
   return (
-    <div className='x4__efficiency'>
+    <div className='x4'>
       <h1>X4 Ship Efficiency</h1>
       <p className='muted'>Explanation of values is under the table. Still not fully adjusted for v4.0</p>
 
       <div className='x4__controls'>
         <div className='x4__radio-group x4__radio-group--numbers'>
-          <p className='x4__radio-title'>Variables used for calcuation</p>
+          <p className='x4__control-title'>Variables used for calcuation</p>
           <label>
             <input type='number' defaultValue='1000' min='10' max='10000'
                    onChange={e => setDistance(parseInt(e.target.value, 10))}/> km of total whole trip
@@ -94,8 +94,8 @@ const ShipEfficiency = (props) => {
                    onChange={e => setHighwaySpeed(parseInt(e.target.value, 10))}/> m/s highway speed
           </label>
         </div>
-        <div className='x4__radio-group x4__radio-group'>
-          <p className='x4__radio-title'>Travel engines you want to use (highest Mk available for class)</p>
+        <div className='x4__radio-group x4__radio-group--wide x4__radio-group'>
+          <p className='x4__control-title'>Travel engines you want to use (highest Mk available for class)</p>
           {ENGINE_RACES.map((race, index) => (
             <label className='x4__radio-label' key={race}>
               <input type='radio'

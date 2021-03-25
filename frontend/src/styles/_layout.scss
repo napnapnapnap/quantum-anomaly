@@ -6,16 +6,7 @@ html {
   box-sizing: border-box;
 }
 
-a {
-  text-decoration: none;
-}
-
-button:focus {
-  outline: 0;
-}
-
 body {
-  max-width: $base-max-width;
   min-width: 320px;
   position: relative;
   background: lightgrey;
@@ -24,16 +15,14 @@ body {
 
 .page-content-header {
   position: relative;
-  max-width: $base-max-width;
   z-index: 10;
 }
 
 .page-content-main {
   display: block;
   position: relative;
-  max-width: $base-max-width;
   min-height: calc(100vh - calc(#{$navbar-height} + #{$footer-height}));
-  background: $base-background;
+  background: white;
   padding: 1rem 1.3rem;
 }
 
@@ -50,7 +39,7 @@ body {
 }
 
 .long-text {
-  max-width: 700px;
+  max-width: 750px;
 }
 
 .gradient {
@@ -94,76 +83,4 @@ img {
   max-width: 100%;
   max-height: 100%;
   width: 100%;
-}
-
-table {
-  width: 100%;
-  background-color: #FFFFFF;
-  border-radius: 5px;
-  overflow: hidden;
-
-  td, th {
-    padding: 0.3rem;
-
-    &.number {
-      text-align: right;
-    }
-
-    &.center {
-      text-align: center;
-    }
-  }
-
-  thead {
-    tr {
-      background-color: rgba(200, 200, 200, 0.4);
-    }
-
-    th {
-      text-align: left;
-      font-weight: bold;
-    }
-  }
-
-  tbody {
-    tr {
-      background-color: #FFFFFF;
-
-      &:nth-of-type(even) {
-        background-color: rgba(200, 200, 200, 0.2);
-      }
-    }
-  }
-}
-// Prolly needs to go away at one point...
-.columns {
-  @include make-flex();
-}
-
-.column {
-  flex: 0 0 48%;
-
-  &--label {
-    flex: 0 1 auto;
-  }
-
-  &--value {
-    flex: 1 0 auto;
-  }
-
-  &:nth-of-type(even) {
-    text-align: right;
-  }
-}
-
-.box {
-  @include box;
-}
-
-.box__label {
-  @include box__label(100px);
-}
-
-.box__value {
-  @include box__value;
 }

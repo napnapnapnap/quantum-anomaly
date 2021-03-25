@@ -57,19 +57,6 @@
   }
 }
 
-@mixin box {
-  display: flex;
-}
-
-@mixin box__label($width: 100px) {
-  flex: 0 0 $width;
-  font-weight: bold;
-}
-
-@mixin box__value {
-  flex-grow: 1;
-}
-
 @mixin paddless-header {
   h1, h2, h3, h4, h5, h6 {
     padding: 0;

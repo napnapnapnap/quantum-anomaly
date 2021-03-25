@@ -1,0 +1,86 @@
+.dark-mode {
+  .btn {
+    &--cta {
+      color: white;
+      background: #000051;
+    }
+
+    &--secondary {
+      color: white;
+      background-color: #666;
+      border: 2px solid #000051;
+    }
+  }
+
+
+  .link {
+    &:link, &:visited, &:hover, &:active {
+      color: #000051;
+    }
+
+    &--active {
+      font-weight: bold;
+    }
+
+    &--secondary {
+      color: #999;
+      text-decoration: underline;
+
+      &:hover {
+        color: #444;
+        text-decoration: none;
+      }
+    }
+  }
+
+  .cookies__inner {
+    background: white;
+  }
+
+  .home {
+    &__link {
+      color: black;
+
+      &:hover {
+        background: rgba(gray, 0.1);
+      }
+    }
+
+    &__title {
+      border-bottom: 1px solid black;
+    }
+  }
+
+  .page-content-main {
+    background: #121212;
+    color: white;
+  }
+
+  table {
+    background-color: #121212;
+
+    thead {
+      tr {
+        background-color: rgba(200, 200, 200, 0.4);
+      }
+    }
+
+    tbody {
+      tr {
+        background-color: #121212;
+
+        &:nth-of-type(even) {
+          background-color: #323232;
+        }
+
+        &:hover {
+          background: #727272;
+        }
+      }
+    }
+  }
+
+  .overview__header {
+    color: black;
+  }
+}

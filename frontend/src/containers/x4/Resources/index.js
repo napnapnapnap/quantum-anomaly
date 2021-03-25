@@ -52,7 +52,7 @@ export const ResourcesTable = props => {
   }, [props.x4.map]);
 
   return (
-    <div className='x4'>
+    <div className='x4-resources-table'>
       <h1>X4 Resource table v4.0</h1>
       {props.x4.map && (
         <React.Fragment>
@@ -62,7 +62,7 @@ export const ResourcesTable = props => {
               {!showEmpty ? 'Hide' : 'Show'} empty systems
             </span>
           </div>
-          <table className='x4__resources-table'>
+          <table>
             <thead>
             <tr>
               <th onClick={() => sortBy('name')}>System</th>
@@ -99,15 +99,15 @@ export const ResourcesTable = props => {
             ))}
             </tbody>
           </table>
-          <p className='long-text'>
+          <p>
             The game defines regions in each system. Tthis is reference table which describes which resources you might
             find in each sector.
           </p>
-          <p className='long-text'>
+          <p>
             Each zone can be have resources in either one of these states: lowest: 1, verylow: 2, low: 3, medium: 5,
             high: 10, very high: 20.
           </p>
-          <p className='long-text'>
+          <p>
             For each resource the number is calcualated based on availability in given system. Zones affect how much and
             how fast resource generates. Low numbers are really not that good for
             supporting complex factories, but for simple ones you can assume there will be enough resource to cover the

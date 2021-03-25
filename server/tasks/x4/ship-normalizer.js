@@ -1,7 +1,7 @@
 import {checkSizeUniformity, getSizeFromTags} from './helpers';
 
 function countArmaments(armament) {
-  const result = {large: 0, medium: 0, small: 0};
+  const result = {extralarge: 0, large: 0, medium: 0, small: 0};
   armament.forEach(item => {
     result[item.size] += item.quantity;
   });

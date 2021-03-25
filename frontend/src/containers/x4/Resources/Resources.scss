@@ -1,18 +1,15 @@
-.x4 {
-  max-width: 750px;
+@import 'src/styles/mixins/typography';
 
-  &__resources-table {
+.x4-resources-table {
+  @include long-text;
+
+  table {
     margin: 0 0 1em;
-    font-size: 12px;
   }
 
   tr {
     th {
       cursor: pointer;
-    }
-
-    &:hover {
-      background: #DDD;
     }
 
     td {
@@ -37,7 +34,7 @@
         padding: 2px;
         min-width: 24px;
         text-align: center;
-        border-radius: 50%;
+        border-radius: 35%;
       }
     }
   }

@@ -1,13 +1,13 @@
 import React from 'react';
 
 const Description = () => (
-  <div>
+  <div className='long-text'>
     <h5>Notice</h5>
-    <p className='long-text'>
+    <p>
       This information is still not fully v4.0 compliant. Read on for explanation
     </p>
     <h3>Large Transport Ships</h3>
-    <p className='long-text'>
+    <p>
       For large ships there are three things to consider. First obvious thing is if it can dock at station you want to
       trade with. This is something you have to discover on your own for the materials you want to trade. Second thing
       is that large ships can't use highways, so their efficiency is mostly limited by their travel speed and cargo
@@ -17,13 +17,13 @@ const Description = () => (
       7 km and 12 km. I suspect that the angle of next destination waypoint now plays a role as well, which is very
       hard to average.
     </p>
-    <p className='long-text'>
+    <p>
       So settings mostly related to large ships are total distance covered, 1000km sounds like good estimation for
       range of 4 systems and number of gates they will have to use. That is actual jump gates, acceleration gates are
       fine.
     </p>
     <h3>Small and Medium Transport Ships</h3>
-    <p className='long-text'>
+    <p>
       For medium ships there is one main thing to consider, they can use highways. Now speeds on highways are same for
       all ships, but not same for all highways. At the time of writting, in game they range from 11.000 to 15.000 and
       it was decided for 13.500 average.
@@ -34,7 +34,7 @@ const Description = () => (
       time.
     </p>
     <h3>What else should I consider?</h3>
-    <p className='long-text'>
+    <p>
       Few other things to keep in mind. Large traders usually can withstand attacks from smaller fighters. Some medium
       traders like Boa can outrun most of the things that can threaten it. Small traders usually can outrun
       everything, but they carry very little cargo. However they are usefull to have 1-2 per every 8-10 medium traders
@@ -42,11 +42,11 @@ const Description = () => (
       traders.
     </p>
     <h3>Which settings should I use?</h3>
-    <p className='long-text'>
+    <p>
       So settings related to small and medium ships are total distance covered, 1000km sounds like good estimation for
       4 systems and percentage of that distance they can spend on highways.
     </p>
-    <p className='long-text'>
+    <p>
       Please feel free to discuss this tool and methods further on reddit
       <a className='link'
          href='https://www.reddit.com/r/X4Foundations/comments/jrxkfy/x4_trading_ship_efficiency/'

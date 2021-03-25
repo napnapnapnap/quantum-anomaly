@@ -1,5 +1,5 @@
-@import '../../styles/variables';
-@import '../../styles/mixins/breakpoints';
+@import 'src/styles/variables';
+@import 'src/styles/mixins/breakpoints';
 
 .x4 {
   &__controls {
@@ -19,15 +19,14 @@
 
     .label--checkbox {
       display: inline-block;
-      min-width: 65px;
-      padding: 0.2rem;
+      min-width: 50px;
+      margin: 0 0.5rem;
     }
-
-    margin-bottom: 1rem;
   }
 
   &__radio-group {
-    margin-bottom: 1rem;
+    margin: 1rem 0;
+    width: 250px;
 
     .label--checkbox {
       display: inline-block;
@@ -35,19 +34,7 @@
     }
 
     &--wide {
-      flex: 0 0 100%;
-      display: flex;
-      flex-wrap: wrap;
-
-      .x4__radio-base {
-        flex: 0 0 250px;
-      }
-    }
-
-    &--size {
-      .x4__radio-label {
-        padding: 0.2rem 0;
-      }
+      width: 450px;
     }
 
     &--numbers {
@@ -61,16 +48,7 @@
     }
   }
 
-  &__radio-race {
-    max-width: 250px;
-  }
-
-  &__radio-base {
-    width: 250px;
-    margin-bottom: 10px;
-  }
-
-  &__radio-title {
+  &__control-title {
     flex: 0 0 100%;
     font-weight: bold;
   }

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {getCookie, setCookie, deleteAllCookies} from '../helpers/cookies';
+import {deleteAllCookies, getCookie, setCookie} from '../helpers/cookies';
 import './Cookies.scss';
 
 const disableCookies = () => {
@@ -37,9 +37,7 @@ const Cookies = () => {
         </ul>
         <div className='cookies__buttons'>
           <button className='link link--secondary' onClick={disableCookies}>I don't agree</button>
-          <button className='btn btn--cta' onClick={() => {
-            enableCookies(setShow);
-          }}>OK
+          <button className='btn btn--cta' onClick={() => enableCookies(setShow)}>OK
           </button>
         </div>
       </div>
