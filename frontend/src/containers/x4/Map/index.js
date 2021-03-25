@@ -4,50 +4,12 @@ import {connect} from 'react-redux';
 
 import {backgroundLabelRectWidth, getHexagonPoints, maps, resolveHexagonCenterByProps} from '../helpers';
 import Stations from './Stations';
+import Resources from './Resources';
 import {Gates, SuperHighways} from './Travel';
 
 import './Map.scss';
 import {seo} from '../../../helpers';
-
-const resourceColors = {
-  ore: '#ff8c00',
-  silicon: '#d4d3cf',
-  nividium: '#4b0091',
-  ice: '#ffffff',
-  hydrogen: '#c5ffff',
-  helium: '#ffeec1',
-  methane: '#165ca2'
-};
-
-const Resources = props => {
-  const offsets = {
-    ore: {x: props.small ? -10 : -22, y: props.small ? 13 : 33},
-    silicon: {x: props.small ? -2 : -14, y: props.small ? 13 : 33},
-    ice: {x: props.small ? 6 : -6, y: props.small ? 13 : 33},
-    hydrogen: {x: props.small ? -10 : -22, y: props.small ? 19 : 40},
-    helium: {x: props.small ? -2 : -14, y: props.small ? 19 : 40},
-    methane: {x: props.small ? 6 : -6, y: props.small ? 19 : 40},
-    nividium: {x: props.small ? 14 : 2, y: props.small ? 13 : 33}
-  };
-  const {resources} = props;
-  if (!resources) return null;
-  return Object.keys(resources).map(key => {
-    if (resources[key] === 0) return null;
-    return (
-      <React.Fragment key={Math.random()}>
-        <rect x={props.x + offsets[key].x - 2.9} y={props.y + offsets[key].y - 4.25}
-              width='6.2' height='5.1' fill={resourceColors[key]}
-              stroke={resourceColors[key]} strokeWidth='0' rx='10px'
-        >
-          <title>{key}</title>
-        </rect>
-        <text textAnchor='middle' fontSize='5px' fill='black' x={props.x + offsets[key].x} y={props.y + offsets[key].y}>
-          {resources[key]}
-        </text>
-      </React.Fragment>
-    );
-  });
-};
+import {Link} from 'react-router-dom';
 
 const Sectors = props => (
   props.sectors.map((sector, index) => {
@@ -85,7 +47,8 @@ const Sectors = props => (
         )}
 
         {sectorsPosition === 'singular' && !props.text && (
-          <polyline fill='#000022' stroke={color} strokeWidth='1.3' points={getHexagonPoints({x: position.x, y: position.y})}/>
+          <polyline fill='#000022' stroke={color} strokeWidth='1.3'
+                    points={getHexagonPoints({x: position.x, y: position.y})}/>
         )}
 
         {sectorsPosition === 'singular' && props.text && (
@@ -125,6 +88,8 @@ const ClusterTexts = props => (
 const Map = (props) => {
   const [scale, setScale] = useState(1);
   const [moved, setMoved] = useState({x: 0, y: 0});
+  const [showLegend, setShowLegend] = useState(false);
+
   const svg = useRef();
   const wrapper = useRef();
   let moving = false;
@@ -197,7 +162,7 @@ const Map = (props) => {
       removeEventListener('mousedown', mouseDownHandler);
       removeEventListener('mousemove', mouseMoveHandler);
       removeEventListener('mouseup', mouseUpHandler);
-      wrapper.current.removeEventListener('wheel', wheelHandler);
+      if(wrapper.current) wrapper.current.removeEventListener('wheel', wheelHandler);
     };
   }, [props.x4.map, scale]);
 
@@ -213,20 +178,27 @@ const Map = (props) => {
       <h1>X4 Map v4.0</h1>
       {props.x4.map && (
         <React.Fragment>
+          <div className='x4__map-controls'>
+            <Link to={'/x4/resources'}>Go to resource table</Link>
+            <span onClick={() => setShowLegend(!showLegend)}>
+              {showLegend ? 'Hide' : 'Show'}  legend
+            </span>
+          </div>
           <div ref={wrapper} className='x4__map-wrapper'>
-            <div className='x4__legend'>
+            {showLegend && <div className='x4__legend'>
               All locations are approximate <br/>
-              Use mouse to move and zoom
+              Use mouse to move and zoom <br/>
+              Resource numbers are explained in resource table
               <div className='x4__resources'>
-                <p style={{'background': resourceColors.ore}}>Ore</p>
-                <p style={{'background': resourceColors.silicon}}>Silicon</p>
-                <p style={{'background': resourceColors.ice}}>Ice</p>
-                <p style={{'background': resourceColors.hydrogen}}>Hydrogen</p>
-                <p style={{'background': resourceColors.helium}}>Helium</p>
-                <p style={{'background': resourceColors.methane}}>Methane</p>
-                <p style={{'background': resourceColors.nividium}}>Nividium</p>
+                <p style={{'background': maps.resourceColors.ore}}>Ore</p>
+                <p style={{'background': maps.resourceColors.silicon}}>Silicon</p>
+                <p style={{'background': maps.resourceColors.ice}}>Ice</p>
+                <p style={{'background': maps.resourceColors.hydrogen}}>Hydrogen</p>
+                <p style={{'background': maps.resourceColors.helium}}>Helium</p>
+                <p style={{'background': maps.resourceColors.methane}}>Methane</p>
+                <p style={{'background': maps.resourceColors.nividium}}>Nividium</p>
               </div>
-            </div>
+            </div>}
             <svg ref={svg} width='100%' height='100%' viewBox='-400 -160 2200 1150'
                  version="1.1" xmlns="http://www.w3.org/2000/svg"
                  style={{transform: `scale(${scale}) translate(${moved.x}px, ${moved.y}px)`}}>

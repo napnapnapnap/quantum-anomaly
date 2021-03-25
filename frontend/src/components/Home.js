@@ -12,6 +12,11 @@ const menuItems = [{
   label: 'X4 Foundations: Map',
   content: 'Complete X4 map, together with X4 Split Vendetta and Cradle of Humanity systems (v4.0).'
 },{
+  url: '/x4/resources',
+  cover: '/images/x4/logo.png',
+  label: 'X4 Foundations: Resources',
+  content: 'Supplement table to X4 map, gives table overview of resources available in the game.'
+},{
   url: '/x4/ships',
   cover: '/images/x4/logo.png',
   label: 'X4 Foundations: Ships',

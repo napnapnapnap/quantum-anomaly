@@ -18,6 +18,7 @@ import EpicArc from './containers/epic-arcs/Arc';
 import X4ShipEfficiency from './containers/x4/ShipEfficiency';
 import X4Map from './containers/x4/Map';
 import X4Ships from './containers/x4/Ships';
+import X4ResourcesTable from './containers/x4/Resources';
 
 class App extends Component {
   componentDidMount() {
@@ -42,6 +43,7 @@ class App extends Component {
             <Route exact path='/x4/efficiency/' render={props => <X4ShipEfficiency {...props}/>}/>
             <Route exact path='/x4/ships' render={props => <X4Ships {...props}/>}/>
             <Route exact path='/x4/map' render={props => <X4Map {...props}/>}/>
+            <Route exact path='/x4/resources' render={props => <X4ResourcesTable {...props}/>}/>
             <Route exact path='/x4-ships'><Redirect to='/x4/ships'/></Route>
             <Route path='*' component={NotFound}/>
           </Switch>

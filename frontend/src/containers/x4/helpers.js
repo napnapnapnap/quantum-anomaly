@@ -66,6 +66,15 @@ export const maps = {
     yaki: {color: '#fe8dfa', border: '#ffadfa'},
     terran: {color: '#bcd0fb', border: '#bcd0fb'},
     none: {color: '#666', border: '#aaa'}
+  },
+  resourceColors: {
+    ore: '#ff8c00',
+    silicon: '#d4d3cf',
+    nividium: '#Ab20B1',
+    ice: '#ffffff',
+    hydrogen: '#c5ffff',
+    helium: '#ffeec1',
+    methane: '#367ca2'
   }
 };
 

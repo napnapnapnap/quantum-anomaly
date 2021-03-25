@@ -20,12 +20,20 @@
     max-height: 750px;
   }
 
+  &__map-controls {
+    padding: 5px;
+    font-size: 11px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+  }
+
   &__legend {
     font-size: 11px;
     position: absolute;
     color: white;
     right: 10px;
-    top: 60px;
+    top: 80px;
     width: 220px;
     padding: 5px;
     z-index: 1000;

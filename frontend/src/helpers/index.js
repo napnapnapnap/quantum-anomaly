@@ -22,3 +22,32 @@ export function updateCanonical() {
   link.setAttribute('href', window.location.protocol + '//' + window.location.host + window.location.pathname);
   document.head.appendChild(link);
 }
+
+export function dynamicSort(property, caseInsensitive) {
+  let sortOrder = 1;
+  if (property[0] === '-') {
+    sortOrder = -1;
+    property  = property.substr(1);
+  }
+  return (a, b) => {
+    let result;
+    if (caseInsensitive) {
+      result = (a[property].toLocaleLowerCase() < b[property].toLocaleLowerCase()) ? -1 : (a[property].toLocaleLowerCase() > b[property].toLocaleLowerCase()) ? 1 : 0;
+    } else {
+      result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+    }
+    return result * sortOrder;
+  };
+}
+
+export function dynamicSortMultiple() {
+  const props = arguments;
+  return (obj1, obj2) => {
+    let index,
+      result = 0;
+    for (index = 0; result === 0 && index < props.length; index++) {
+      result = dynamicSort(props[index])(obj1, obj2);
+    }
+    return result;
+  };
+}

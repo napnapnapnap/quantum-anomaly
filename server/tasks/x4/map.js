@@ -78,7 +78,7 @@ export async function getMap(sourceBasePath, translations) {
   Object.keys(result.resources).map(key => {
     totalYields[key] = {ore: 0, silicon: 0, nividium: 0, ice: 0, hydrogen: 0, helium: 0, methane: 0};
     result.resources[key].map(res => {
-      let values = {lowest: 1, verylow: 2, low: 2, medium: 5, high: 10, veryhigh: 20};
+      let values = {lowest: 1, verylow: 2, low: 3, medium: 5, high: 10, veryhigh: 20};
       totalYields[key][res.ware] += values[res.yield];
     });
   });
