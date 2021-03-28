@@ -6,6 +6,14 @@
     display: flex;
   }
 
+  &__ships {
+    overflow-x: scroll;
+  }
+
+  table {
+    min-width: 1500px;
+  }
+
   &__ship-row {
     td {
       vertical-align: middle;

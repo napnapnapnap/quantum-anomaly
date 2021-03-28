@@ -62,43 +62,45 @@ export const ResourcesTable = props => {
               {!showEmpty ? 'Hide' : 'Show'} empty systems
             </span>
           </div>
-          <table>
-            <thead>
-            <tr>
-              <th onClick={() => sortBy('name')}>System</th>
-              <th onClick={() => sortBy('owner')}>Owner</th>
-              <th onClick={() => sortBy('ore')} className='number'>Ore</th>
-              <th onClick={() => sortBy('silicon')} className='number'>Silicon</th>
-              <th onClick={() => sortBy('ice')} className='number'>Ice</th>
-              <th onClick={() => sortBy('hydrogen')} className='number'>Hydrogen</th>
-              <th onClick={() => sortBy('helium')} className='number'>Helium</th>
-              <th onClick={() => sortBy('methane')} className='number'>Methane</th>
-              <th onClick={() => sortBy('nividium')} className='number'>Nividium</th>
-            </tr>
-            </thead>
-            <tbody>
-            {sectors.map(sector => (
-              <React.Fragment key={sector.id}>
-                {(!sector.empty || !showEmpty) && (
-                  <tr>
-                    <td title={sector.id}>{sector.name}</td>
-                    <td>{maps.factions[sector.owner] || 'Neutral'}</td>
+          <div className='x4-resources-table__wrapper'>
+            <table>
+              <thead>
+              <tr>
+                <th onClick={() => sortBy('name')}>System</th>
+                <th onClick={() => sortBy('owner')}>Owner</th>
+                <th onClick={() => sortBy('ore')} className='number'>Ore</th>
+                <th onClick={() => sortBy('silicon')} className='number'>Silicon</th>
+                <th onClick={() => sortBy('ice')} className='number'>Ice</th>
+                <th onClick={() => sortBy('hydrogen')} className='number'>Hydrogen</th>
+                <th onClick={() => sortBy('helium')} className='number'>Helium</th>
+                <th onClick={() => sortBy('methane')} className='number'>Methane</th>
+                <th onClick={() => sortBy('nividium')} className='number'>Nividium</th>
+              </tr>
+              </thead>
+              <tbody>
+              {sectors.map(sector => (
+                <React.Fragment key={sector.id}>
+                  {(!sector.empty || !showEmpty) && (
+                    <tr>
+                      <td title={sector.id}>{sector.name}</td>
+                      <td>{maps.factions[sector.owner] || 'Neutral'}</td>
 
-                    {['ore', 'silicon', 'ice', 'hydrogen', 'helium', 'methane', 'nividium'].map(resource => (
-                      <td className='number' key={`${sector.id}${resource}`}>
-                        {sector[resource]
-                          ? <span title={resource}
-                                  style={{borderColor: maps.resourceColors[resource]}}>{sector[resource]}</span>
-                          : null
-                        }
-                      </td>
-                    ))}
-                  </tr>
-                )}
-              </React.Fragment>
-            ))}
-            </tbody>
-          </table>
+                      {['ore', 'silicon', 'ice', 'hydrogen', 'helium', 'methane', 'nividium'].map(resource => (
+                        <td className='number' key={`${sector.id}${resource}`}>
+                          {sector[resource]
+                            ? <span title={resource}
+                                    style={{borderColor: maps.resourceColors[resource]}}>{sector[resource]}</span>
+                            : null
+                          }
+                        </td>
+                      ))}
+                    </tr>
+                  )}
+                </React.Fragment>
+              ))}
+              </tbody>
+            </table>
+          </div>
           <p>
             The game defines regions in each system. Tthis is reference table which describes which resources you might
             find in each sector.

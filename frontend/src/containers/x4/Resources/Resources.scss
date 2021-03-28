@@ -3,8 +3,13 @@
 .x4-resources-table {
   @include long-text;
 
+  &__wrapper {
+    overflow-y: scroll;
+  }
+
   table {
     margin: 0 0 1em;
+    min-width: 680px;
   }
 
   tr {

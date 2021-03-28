@@ -1,7 +1,12 @@
 @import 'src/styles/mixins/typography';
 
 .x4-ships-efficiency {
-  @include long-text;
+  overflow-x: scroll;
+
+  table {
+    min-width: 800px !important;
+    max-width: 800px;
+  }
 
   tr {
     th {
