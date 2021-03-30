@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 
 import {maps} from '../helpers';
-import {dynamicSortMultiple} from '../../../helpers';
+import {dynamicSortMultiple, seo} from '../../../helpers';
 import './Resources.scss';
 
 export const ResourcesTable = props => {
@@ -47,6 +47,11 @@ export const ResourcesTable = props => {
         })
       ));
       orderedSectors.sort(dynamicSortMultiple('name', 'owner'));
+      seo({
+        title: 'X4 Foundations Resource Table',
+        metaDescription: 'X4 Foundations, Split Vendetta and Cradle of Humanity resource table.',
+        keywords: `${orderedSectors.map(sector => sector.name).join(',')}`
+      });
       setSectors(orderedSectors);
     }
   }, [props.x4.map]);

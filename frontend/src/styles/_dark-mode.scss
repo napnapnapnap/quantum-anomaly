@@ -17,6 +17,8 @@
 
 
   .link {
+    color: #69a7f8;
+    cursor: pointer;
     &:link, &:visited, &:hover, &:active {
       color: #69a7f8;
     }

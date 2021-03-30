@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 
 import './Modifications.scss';
 import {float} from '../helpers';
+import {seo} from '../../../helpers';
 
 const splitWords = arg => arg.replace('length', ' length')
   .replace('time', ' time')
@@ -15,7 +16,7 @@ const splitWords = arg => arg.replace('length', ' length')
   .replace('travel', ' travel ')
   .replace('recharge', ' recharge ')
   .replace('thrust', ' thrust')
-  .replace(/  /g, '');
+  .replace(/  /g, ' ');
 
 const percent = arg => `${float((parseFloat(arg.min) - 1) * 100)} to ${float((parseFloat(arg.max) - 1) * 100)}%`;
 const chance = arg => `${float((parseFloat(arg)) * 100)}%`;
@@ -42,7 +43,7 @@ const RenderModifications = props => {
                     <div key={key}>
                       <span className='x4-modifications__label'>
                         {props.category} {splitWords(key)}
-                        {mod.bonus[key].weight && <span className='muted'> ({mod.bonus[key].weight})</span> }
+                        {mod.bonus[key].weight && <span className='muted'> ({mod.bonus[key].weight})</span>}
                       </span>
                       <span className='x4-modifications__values'>
                         {percent({min: mod.bonus[key].min, max: mod.bonus[key].max})}
@@ -52,12 +53,12 @@ const RenderModifications = props => {
                 })}
               </div>
             )}
-          <span>Materials needed:</span><br/>
-          {mod.production.map(resource => (
-            <div key={resource.ware} className='x4-modifications__mats'>
-              {resource.amount} {resource.ware}
-            </div>
-          ))}
+            <span>Materials needed:</span><br/>
+            {mod.production.map(resource => (
+              <div key={resource.ware} className='x4-modifications__mats'>
+                {resource.amount} {resource.ware}
+              </div>
+            ))}
           </div>
         ))}
       </div>
@@ -86,6 +87,14 @@ const Modifications = props => {
   useEffect(() => {
     if (!props.x4.modifications) {
       props.fetchX4Modifications();
+    } else {
+      const {equipmentmods} = props.x4.modifications;
+      const modNames = Object.keys(equipmentmods).map(type => Object.keys(equipmentmods[type]).map(mod => equipmentmods[type][mod].map(mod => mod.name)));
+      seo({
+        title: 'X4 Foundations Modifications',
+        metaDescription: 'X4 Foundations, Split Vendetta and Cradle of Humanity modifications.',
+        keywords: `${modNames}`
+      });
     }
   }, [props.x4.modifications]);
 

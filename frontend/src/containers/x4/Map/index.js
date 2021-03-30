@@ -169,7 +169,8 @@ const Map = (props) => {
   useEffect(() => {
     if (props.x4.map) seo({
       title: 'X4 Foundations Map',
-      metaDescription: `X4 Foundations, Split Vendetta and Cradle of Humanity map. ${props.x4.map.systems.map(system => system.sectors.map(sector => sector.name).join(', ')).join(', ')}`
+      metaDescription: 'X4 Foundations, Split Vendetta and Cradle of Humanity map.',
+      keywords:`${props.x4.map.systems.map(system => system.sectors.map(sector => sector.name).join(', '))}`
     });
   }, [props.x4.map]);
 

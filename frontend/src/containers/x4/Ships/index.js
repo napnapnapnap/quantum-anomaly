@@ -1,12 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import {connect} from 'react-redux';
-import classnames from 'classnames';
+import clsx from 'clsx';
 
 import ShipPreview from './ShipPreview';
 import {fetchX4Equipment, fetchX4Ships} from '../../../redux/x4Actions';
 import {fillOntoShip} from '../x4-fitting-tool';
 import {maps, separateWord} from '../helpers';
 import '../X4.scss';
+import {seo} from "../../../helpers";
 
 const SizeAndTypes = props => (
   <React.Fragment>
@@ -162,6 +163,13 @@ const Ships = (props) => {
       const availableTypes = [];
       Object.keys(ships).forEach(key => (availableTypes.indexOf(ships[key].type) === -1 && availableTypes.push(ships[key].type)));
       setTypes(availableTypes);
+
+      const allShips = Object.keys(props.x4.ships).map(size => Object.keys(props.x4.ships[size]).map(ship => props.x4.ships[size][ship].name));
+      seo({
+        title: 'X4 Ship Previewer',
+        metaDescription: 'X4 Foundations, Split Vendetta and Cradle of Humanity ships previewer.',
+        keywords: `${allShips}`
+      });
     }
 
     if (props.x4.equipment) {
@@ -183,7 +191,7 @@ const Ships = (props) => {
   }, [props.x4, size]);
 
   return (
-    <div className={classnames('x4', {['x4--comparison']: comparisonMode})}>
+    <div className={clsx('x4', {['x4--comparison']: comparisonMode})}>
       <h1>X4 Ship Previewer</h1>
       <div className='x4__controls'>
         <SizeAndTypes sizes={['ship_xl', 'ship_l', 'ship_m', 'ship_s']}
