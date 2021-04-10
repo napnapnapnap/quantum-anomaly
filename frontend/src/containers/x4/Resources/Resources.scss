@@ -1,10 +1,9 @@
 @import 'src/styles/mixins/typography';
 
 .x4-resources-table {
-  @include long-text;
-
   &__wrapper {
     overflow-y: scroll;
+    max-width: 850px;
   }
 
   &__method {
@@ -14,7 +13,7 @@
 
   table {
     margin: 0 0 1em;
-    min-width: 680px;
+    width: 850px;
   }
 
   tr {
@@ -34,6 +33,10 @@
 
       &:first-of-type {
         width: 200px;
+      }
+
+      &:last-of-type {
+        width: 150px;
       }
     }
 

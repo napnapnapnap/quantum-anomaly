@@ -2,6 +2,10 @@ import remoteRequest from 'request';
 
 import * as logger from './logger';
 
+export function roundToClosest(arg) {
+  return Math.pow(10, Math.ceil(Math.log10(arg)));
+}
+
 function request(options, callback, args) {
   options.headers = {'User-Agent': process.env.USER_AGENT};
   if (!args) args = {options: options};
@@ -28,7 +32,7 @@ function dynamicSort(property, caseInsensitive) {
   let sortOrder = 1;
   if (property[0] === '-') {
     sortOrder = -1;
-    property  = property.substr(1);
+    property = property.substr(1);
   }
   return (a, b) => {
     let result;
@@ -45,7 +49,7 @@ function dynamicSortMultiple() {
   const props = arguments;
   return (obj1, obj2) => {
     let index,
-        result = 0;
+      result = 0;
     for (index = 0; result === 0 && index < props.length; index++) {
       result = dynamicSort(props[index])(obj1, obj2);
     }
@@ -54,7 +58,7 @@ function dynamicSortMultiple() {
 }
 
 function clone(obj) {
-  if (obj === null || typeof(obj) !== 'object') return obj;
+  if (obj === null || typeof (obj) !== 'object') return obj;
   let temp = new obj.constructor();
   for (let key in obj) if (obj.hasOwnProperty(key)) temp[key] = clone(obj[key]);
   return temp;

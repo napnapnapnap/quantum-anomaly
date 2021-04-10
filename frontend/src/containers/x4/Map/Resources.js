@@ -14,7 +14,7 @@ const Resources = props => {
   const {resources} = props;
   if (!resources) return null;
   return Object.keys(resources).map(key => {
-    if (resources[key] === 0) return null;
+    if (resources[key] === 0 || key === 'volume' || key === 'totalFields') return null;
     return (
       <React.Fragment key={Math.random()}>
         <rect x={props.x + offsets[key].x - 2.9} y={props.y + offsets[key].y - 4.25}

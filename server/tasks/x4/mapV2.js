@@ -3,6 +3,7 @@ import xml2js from 'xml2js';
 import {promises as fs} from 'fs';
 import {translateRecursiveTrim} from './translations';
 import {saveToFile} from './helpers';
+import {roundToClosest} from '../../helpers';
 
 // layers ==> galaxy -> cluster -> sector -> zone -> stuff ??
 
@@ -201,8 +202,7 @@ function processResourcesInField(regionDefinitions) {
 
   wares.forEach(ware => highestValues[ware] = 0);
 
-
-  regionDefinitions.forEach(item => {
+  regionDefinitions.forEach((item, index) => {
     resourcesInFieldObject[item.name] = {
       boundary: item.boundary
     };
@@ -225,6 +225,9 @@ function processResourcesInField(regionDefinitions) {
       });
       totalVolume = 3.14 * Math.pow((item.boundary.size.r / 1000), 2) * totalLength;
     }
+
+    resourcesInFieldObject[item.name].volume = totalVolume;
+    if (totalVolume > Math.pow(300, 3)) totalVolume = Math.pow(300, 3);
 
     const resources = {};
     if (item.fields.asteroid) item.fields.asteroid.forEach(asteroid => {
@@ -255,11 +258,15 @@ function processResourcesInField(regionDefinitions) {
         // since some regions in game are enormous and way out of bounds of sector, they will skew results
         // hence we divide the highest value by 2 to and block the value at 99 being max
         // this causes few sectors to be able to "reach" maximum yield
-        const weightedTop = Math.ceil(resourcesInFieldObject[key].resources[ware] / (highestValues[ware] / 2) * 100);
+        const weightedTop = Math.ceil(resourcesInFieldObject[key].resources[ware] / (highestValues[ware]) * 100);
         resourcesInFieldObject[key].relativeResources = {
           ...resourcesInFieldObject[key].relativeResources,
-          [ware]: weightedTop > 99 ? 99 : weightedTop,
+          [ware]: weightedTop > 99 ? 99 : weightedTop
         };
+        resourcesInFieldObject[key].relativeResources.volume = 0;
+        resourcesInFieldObject[key].relativeResources.volume = resourcesInFieldObject[key].volume > Math.pow(300, 3)
+          ? Math.pow(300, 3)
+          : roundToClosest(resourcesInFieldObject[key].volume);
       }
     });
   });
@@ -402,11 +409,11 @@ export async function getMapV2(sourceBasePath, translations) {
           if (clusterObjectsItem.name && clusterObjectsItem.name.includes('Audio')) shouldBeAdded = false;
           if (clusterObjectsItem.macro.properties.region.ref.includes('audio')) shouldBeAdded = false;
           if (shouldBeAdded) {
-
             cluster.regions.push({
               id: clusterObjectsItem.macro.name,
               ...clusterObjectsItem.offset,
-              ...clusterObjectsItem.macro.properties.region
+              ...clusterObjectsItem.macro.properties.region,
+              ...resourcesInFieldObject[clusterObjectsItem.macro.properties.region.ref]
             });
           }
         }

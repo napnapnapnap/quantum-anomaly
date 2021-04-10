@@ -74,12 +74,13 @@ export async function getMap(sourceBasePath, translations) {
 
   const totalYields = {};
   Object.keys(result.resources).map(key => {
-    totalYields[key] = {ore: 0, silicon: 0, nividium: 0, ice: 0, hydrogen: 0, helium: 0, methane: 0};
+    totalYields[key] = {ore: 0, silicon: 0, nividium: 0, ice: 0, hydrogen: 0, helium: 0, methane: 0, volume: 0};
     result.resources[key].forEach(resourceGroup => {
       Object.keys(resourceGroup).forEach(ware => {
         totalYields[key][ware] += resourceGroup[ware];
-        if (totalYields[key][ware] > 99) totalYields[key][ware] = 99;
+        if (ware !== 'volume' && totalYields[key][ware] > 99) totalYields[key][ware] = 99;
       });
+      totalYields[key]['totalFields'] = result.resources[key].length;
     });
   });
 
