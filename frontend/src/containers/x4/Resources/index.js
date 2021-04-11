@@ -22,32 +22,32 @@ export const ResourcesTable = props => {
       props.fetchX4Map();
     } else {
       const orderedSectors = [];
-      props.x4.map.systems.forEach(system => system.sectors.forEach(sector =>
+      console.log(props.x4)
+      props.x4.map.clusters.forEach(cluster => cluster.sectors.forEach((sector =>
         orderedSectors.push({
           id: sector.id,
           name: sector.name,
-          owner: system.owner,
-          ore: sector.resources && sector.resources.ore > 0 ? sector.resources.ore : null,
-          silicon: sector.resources && sector.resources.silicon > 0 ? sector.resources.silicon : null,
-          ice: sector.resources && sector.resources.ice > 0 ? sector.resources.ice : null,
-          hydrogen: sector.resources && sector.resources.hydrogen > 0 ? sector.resources.hydrogen : null,
-          helium: sector.resources && sector.resources.helium > 0 ? sector.resources.helium : null,
-          methane: sector.resources && sector.resources.methane > 0 ? sector.resources.methane : null,
-          nividium: sector.resources && sector.resources.nividium > 0 ? sector.resources.nividium : null,
-          volume: sector.resources && sector.resources.volume ? sector.resources.volume : null,
-          totalFields: sector.resources && sector.resources.totalFields ? sector.resources.totalFields : null,
+          owner: sector.owner,
+          ore: sector.relativeResources && sector.relativeResources.ore > 0 ? sector.relativeResources.ore : null,
+          silicon: sector.relativeResources && sector.relativeResources.silicon > 0 ? sector.relativeResources.silicon : null,
+          ice: sector.relativeResources && sector.relativeResources.ice > 0 ? sector.relativeResources.ice : null,
+          hydrogen: sector.relativeResources && sector.relativeResources.hydrogen > 0 ? sector.relativeResources.hydrogen : null,
+          helium: sector.relativeResources && sector.relativeResources.helium > 0 ? sector.relativeResources.helium : null,
+          methane: sector.relativeResources && sector.relativeResources.methane > 0 ? sector.relativeResources.methane : null,
+          nividium: sector.relativeResources && sector.relativeResources.nividium > 0 ? sector.relativeResources.nividium : null,
+          volume: sector.relativeResources && sector.relativeResources.volume ? sector.relativeResources.volume : null,
           // yea... I know, fix later...
-          empty: !(sector.resources && (
-            sector.resources.ore ||
-            sector.resources.silicon ||
-            sector.resources.ice ||
-            sector.resources.hydrogen ||
-            sector.resources.helium ||
-            sector.resources.methane ||
-            sector.resources.nividium
+          empty: !(sector.relativeResources && (
+            sector.relativeResources.ore ||
+            sector.relativeResources.silicon ||
+            sector.relativeResources.ice ||
+            sector.relativeResources.hydrogen ||
+            sector.relativeResources.helium ||
+            sector.relativeResources.methane ||
+            sector.relativeResources.nividium
           ))
         })
-      ));
+      )));
       orderedSectors.sort(dynamicSortMultiple('name', 'owner'));
       seo({
         title: 'X4 Foundations Resource Table',
@@ -105,8 +105,7 @@ export const ResourcesTable = props => {
                           }
                         </td>
                       ))}
-                      <td className='number'
-                          title={`There are total of ${sector.totalFields} fields in ${sector.name}`}>
+                      <td className='number'>
                         {int(sector.volume)} <br/>
                       </td>
                     </tr>
@@ -122,8 +121,8 @@ export const ResourcesTable = props => {
             can have resources. For each of those regions volume was calculated and multiplied by density of the field.
             <span className='bold'> Falloff zones</span> were ignored in calculations. They will most likely be added in
             future. This means that extremes are a bit skewed, but still should provide good relative idea of what is
-            where and how much of it is there. Since some zones are huge, the maximum volume used in calculation is
-            <span className='bold'>limited to 400 cubic kilometers</span>. This seems like good enough estimation for
+            where and how much of it is there. Since some zones are huge, the maximum volume used in calculation is:&nbsp;
+            <span className='bold'>limited to 300 km in each direction</span>. This seems like good enough estimation for
             relative calculations later and out of 120 zones, 37 of them are clipped in this way.
           </p>
           <p className='long-text'>
@@ -159,7 +158,7 @@ export const ResourcesTable = props => {
               Volume shown is all the fields in sector added together, hover on the value to see number of fields.
             </li>
             <li>
-              File used for calculation are available here:
+              File used for calculation are available here:&nbsp;
               <a href='/api/x4/resources' className='link' target='_blank'>Resources data</a>
             </li>
             <li>

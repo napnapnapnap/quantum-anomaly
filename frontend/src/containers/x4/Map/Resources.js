@@ -2,33 +2,36 @@ import React from 'react';
 import {maps} from '../helpers';
 
 const Resources = props => {
+  if (!props.relativeResources) return null;
+
   const offsets = {
-    ore: {x: props.small ? -10 : -22, y: props.small ? 13 : 33},
-    silicon: {x: props.small ? -2 : -14, y: props.small ? 13 : 33},
-    ice: {x: props.small ? 6 : -6, y: props.small ? 13 : 33},
-    hydrogen: {x: props.small ? -10 : -22, y: props.small ? 19 : 40},
-    helium: {x: props.small ? -2 : -14, y: props.small ? 19 : 40},
-    methane: {x: props.small ? 6 : -6, y: props.small ? 19 : 40},
-    nividium: {x: props.small ? 14 : 2, y: props.small ? 13 : 33}
+    ore: {x: props.transformation ? -27 : -60, z: props.transformation ? 40 : 90},
+    silicon: {x: props.transformation ? -16 : -49, z: props.transformation ? 40 : 90},
+    ice: {x: props.transformation ? -5 : -38, z: props.transformation ? 40 : 90},
+    nividium: {x: props.transformation ? 6 : -27, z: props.transformation ? 40 : 90},
+    hydrogen: {x: props.transformation ? -27 : -60, z: props.transformation ? 51 : 101},
+    helium: {x: props.transformation ? -16 : -49, z: props.transformation ? 51 : 101},
+    methane: {x: props.transformation ? -5 : -38, z: props.transformation ? 51 : 101}
   };
-  const {resources} = props;
-  if (!resources) return null;
-  return Object.keys(resources).map(key => {
-    if (resources[key] === 0 || key === 'volume' || key === 'totalFields') return null;
-    return (
-      <React.Fragment key={Math.random()}>
-        <rect x={props.x + offsets[key].x - 2.9} y={props.y + offsets[key].y - 4.25}
-              width='6.2' height='5.1' fill={maps.resourceColors[key]}
-              stroke={maps.resourceColors[key]} strokeWidth='0' rx='10px'
-        >
-          <title>{key}</title>
-        </rect>
-        <text textAnchor='middle' fontSize='5px' fill='black' x={props.x + offsets[key].x} y={props.y + offsets[key].y}>
-          {resources[key]}
-        </text>
-      </React.Fragment>
-    );
-  });
+
+  return (
+    <React.Fragment>
+      {['ore', 'silicon', 'ice', 'hydrogen', 'helium', 'methane', 'nividium'].map(resource =>
+        props.relativeResources[resource] && <React.Fragment key={Math.random()}>
+          <rect x={props.adjusted.x + offsets[resource].x - 4.5}
+                y={-props.adjusted.z + offsets[resource].z - 9}
+                width="11" height="10" fill={maps.resourceColors[resource]}
+                stroke={maps.resourceColors[resource]} strokeWidth="0" rx="3px"
+          />
+          <text textAnchor="middle" fontSize="11px" fill="black"
+                x={props.adjusted.x + offsets[resource].x + 1}
+                y={-props.adjusted.z + offsets[resource].z}>
+            {props.relativeResources[resource] > 99 ? 99 : props.relativeResources[resource]}
+          </text>
+        </React.Fragment>
+      )}
+    </React.Fragment>
+  );
 };
 
 export default Resources;

@@ -11,7 +11,6 @@ import {saveToFile} from './helpers';
 import {getShips} from './ships';
 import {getWares} from './wares';
 import {getModifications} from './modifications';
-import {getMapV2} from './mapV2';
 
 /*  NOTE: This task only runs on local machine. Even though path is being used in most places, this is still best ran
           to run on windows machine, which you probably have so that you can run the game as well, right? It expects
@@ -34,6 +33,40 @@ XRCatTool.exe -in extensions\ego_dlc_terran\ext_01.cat -in extensions\ego_dlc_te
 pause
 
 For now you can just copy paste manually files from split dlc into main unpackaged folder
+
+Cleanup for size:
+cd "C:\X4"
+del /S *.xsd
+del /S *.xsm
+del /S *.xac
+del /S *.xpm
+del /S *.ANI
+del /S *.xmf
+del /S *.gz
+del /S *.ogg
+del /S *.dds
+del /S *.bgp
+del /S *.dtd
+del /S *.amw
+del /S *.bgf
+del /S *.bsg
+del /S *.dae
+del /S *.xpl
+del /S *.lua
+del /S *.jpg
+del /S *.psb
+del /S *.wav
+del /S *.pk
+del /S *.h
+del /S *.f
+del /S *.v
+del /S *.comp
+del /S *.fh
+del /S *.vh
+del /S *.tcs
+del /S *.tes
+del /S *.ogl
+robocopy C:\X4 C:\X4 /S /move
  */
 
 const sourceBasePath = 'C:\\X4';
@@ -65,10 +98,6 @@ async function start() {
   const translations = await getTranslations(sourceBasePath);
   await saveToFile(translations, '_translations', 'translations');
 
-  const mapInformationV2 = await getMapV2(sourceBasePath, translations);
-  await saveToFile(mapInformationV2, '_mapV2', 'map');
-
-  // uses file from mapInformationV2
   const mapInformation = await getMap(sourceBasePath, translations);
   await saveToFile(mapInformation, '_map', 'map');
 
@@ -87,7 +116,6 @@ async function start() {
   componentsIndex = {...componentsIndex, ...await composeIndexTree('components', 'split')};
   componentsIndex = {...componentsIndex, ...await composeIndexTree('components', 'terran')};
   await saveToFile(componentsIndex, '_components-index', 'components index');
-
 
   let shipPaths = [];
   const fileLists = {
