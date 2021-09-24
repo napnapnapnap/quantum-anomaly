@@ -10,7 +10,7 @@ export function fillOntoShip(ship, equipment, size, items) {
       const shield = equipment[size][item].recharge.max;
       modifiedShip.shield = {
         max: int(ship.shields.quantity) * int(shield),
-        rate: int(equipment[size][item].recharge.rate),
+        rate: int(ship.shields.quantity) * int(equipment[size][item].recharge.rate),
         delay: int(equipment[size][item].recharge.delay)
       };
     }
