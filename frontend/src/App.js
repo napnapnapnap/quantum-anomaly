@@ -11,7 +11,6 @@ import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 import NotFound from './components/NotFound';
 import Home from './components/Home';
-import Cookies from './components/Cookies';
 import StyleGuide from './components/StyleGuide';
 
 import EpicArcsOverview from './containers/epic-arcs/Overview';
@@ -44,7 +43,6 @@ class App extends Component {
           <Navigation/>
         </header>
         <main className={clsx('page-content-main', {'dark-mode': this.isDarkMode})}>
-          <Cookies/>
           <Switch>
             <Route exact path='/' component={Home}/>
             <Route exact path='/styleguide' render={props => <StyleGuide {...props}/>}/>
