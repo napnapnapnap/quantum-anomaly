@@ -1,6 +1,7 @@
 const env = process.env.NODE_ENV || 'development';
 import dotenv from 'dotenv';
 if (env === 'development') dotenv.config();
+import 'regenerator-runtime/runtime'
 
 import express from 'express';
 import bodyParser from 'body-parser';

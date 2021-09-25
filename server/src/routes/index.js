@@ -19,7 +19,7 @@ import * as tasks from './tasks';
 
 const router = express.Router(),
   upload = multer({dest: 'uploads/'}),
-  root = env === 'production' ? path.join(__dirname, '..', '..') : path.join(__dirname, '..');
+  root = path.join(__dirname, '..', '..');
 
 export default function (app) {
   const frontendPublicPath = path.join(root, '..', 'frontend', 'build');

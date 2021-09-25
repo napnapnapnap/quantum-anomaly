@@ -2,7 +2,7 @@ import {promises as fs} from 'fs';
 import path from 'path';
 
 const env = process.env.NODE_ENV || 'development';
-const root = env === 'development' ? path.join(__dirname, '..') : path.join(__dirname, '..', '..');
+const root = path.join(__dirname, '..', '..');
 
 export async function getShips(req, res) {
   const pathToFile = path.join(root, 'static-files', 'x4', '_ships.json');
