@@ -10,7 +10,7 @@ const menuItems = [{
   url: '/x4/map',
   cover: '/images/x4/logo.png',
   label: 'X4 Foundations: Map',
-  content: 'Complete X4 map, together with X4 Split Vendetta and Cradle of Humanity systems (v4.0).'
+  content: 'Complete X4 map, together with X4 Split Vendetta and Cradle of Humanity systems (v4.1).'
 },{
   url: '/x4/resources',
   cover: '/images/x4/logo.png',

@@ -98,7 +98,7 @@ const Map = (props) => {
 
   return (
     <div className="x4__map">
-      <h1>X4 Map v4.0</h1>
+      <h1>X4 Map v4.1</h1>
       {props.x4.map && (
         <React.Fragment>
           <div className="x4__map-controls">

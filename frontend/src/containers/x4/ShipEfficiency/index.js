@@ -75,7 +75,7 @@ const ShipEfficiency = (props) => {
   return (
     <div className='x4-efficiency'>
       <h1>X4 Ship Efficiency</h1>
-      <p className='muted'>Explanation of values is under the table. Still not fully adjusted for v4.0. Time to reach full speed is also not yet in calculation.</p>
+      <p className='muted'>Explanation of values is under the table. Still not fully adjusted for v4.1. Time to reach full speed is also not yet in calculation.</p>
 
       <div className='flex'>
         <div>

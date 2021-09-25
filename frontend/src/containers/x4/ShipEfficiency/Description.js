@@ -4,7 +4,7 @@ const Description = () => (
   <div className='long-text'>
     <h5>Notice</h5>
     <p>
-      This information is still not fully v4.0 compliant. Read on for explanation
+      This information is still not fully v4.1 compliant. Read on for explanation
     </p>
     <h3>Large Transport Ships</h3>
     <p>
