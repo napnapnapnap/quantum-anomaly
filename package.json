@@ -2,7 +2,7 @@
   "name": "quantum_anomaly",
   "version": "1.1.0",
   "description": "",
-  "main": "./server/index.js",
+  "main": "server/src/index.js",
   "scripts": {
     "heroku-postbuild": "cd server && npm install && npm run build && cd ../frontend && npm install && npm run build"
   },

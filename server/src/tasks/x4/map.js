@@ -473,6 +473,7 @@ function calculatePerSectorYields(map) {
           if (region.relativeResources && region.relativeResources[item]) {
             if (!sector.relativeResources[item]) sector.relativeResources[item] = 0;
             sector.relativeResources[item] += region.relativeResources[item];
+            if (sector.relativeResources[item] > 99 && item !== 'volume') sector.relativeResources[item] = 99;
           }
           if (region.resources && region.resources[item]) {
             if (!sector.resources[item]) sector.resources[item] = 0;
@@ -789,7 +790,7 @@ export async function getMap(sourceBasePath, translations) {
   const connections = calculateConnections(map, gateDestinations);
   map.forEach(clusters => delete clusters.regions);
 
-  const highways = path.join(__dirname, '..', '..', 'static-files', 'x4-manual-input');
+  const highways = path.join(__dirname, '..', '..', '..', 'static-files', 'x4-manual-input');
   const superHighways = JSON.parse(await fs.readFile(path.join(highways, '_superHighways.json'), 'utf-8')).superHighways;
   return {clusters: map, connections: connections, sectorHighways: superHighways};
 }
