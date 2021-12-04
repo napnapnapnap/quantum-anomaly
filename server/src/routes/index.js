@@ -28,6 +28,8 @@ export default function (app) {
   router.use('/robots.txt', serveStatic(path.join(frontendPublicPath, 'robots.txt')));
   logger.appLog(`React build files from ${frontendPublicPath} loaded on '/' route`);
 
+  router.use('/api/user', (req, res) => res.json(req.socket.remoteAddress));
+
   router.use('/api/epic-arcs/info', epicArcs.getInfo);
   router.use('/api/epic-arcs/:faction', epicArcs.getEpicArc);
 

@@ -1,18 +1,20 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { seo } from '../../../helpers';
 import { fetchX4Map } from '../../../redux/x4Actions';
-import { connect, ReactReduxContext } from 'react-redux';
+import { backgroundLabelRectWidth, getHexagonPointsV2, maps } from '../helpers';
 
 import './Map.scss';
-import { seo } from '../../../helpers';
-import { Link } from 'react-router-dom';
-import { backgroundLabelRectWidth, getHexagonPointsV2, maps } from '../helpers';
-import Station from './Station';
 import Resources from './Resources';
+import Station from './Station';
 
 const Map = (props) => {
   const [scale, setScale] = useState(3);
   const [moved, setMoved] = useState({ x: 0, y: 0 });
   const [showLegend, setShowLegend] = useState(false);
+
+  const [width, setWidth] = useState("100%");
 
   const svg = useRef();
   const wrapper = useRef();
@@ -51,6 +53,9 @@ const Map = (props) => {
     if (moving) {
       moving = false;
       wrapper.current.style.cursor = 'grab';
+
+      // for some reason, chrome fails in some cases to render things where they should be... quick fix - force redraw...
+      setWidth(width === "99.5%" ? "100%" : "99.5%");
     }
   };
 
@@ -59,8 +64,8 @@ const Map = (props) => {
     if (e.deltaY < 0 && scale > 8) return null;
     if (e.deltaY > 0 && scale < 1.25) return null;
     e.deltaY < 0
-      ? setScale(prevScale => prevScale < 8 ? prevScale + 0.25 : 8)
-      : setScale(prevScale => prevScale > -1 ? prevScale - 0.25 : -1);
+      ? setScale(prevScale => prevScale < 8 ? prevScale + 0.5 : 8)
+      : setScale(prevScale => prevScale > 1 ? prevScale - 0.5 : 1);
   };
 
   const downloadSvgFile = () => {
@@ -98,7 +103,7 @@ const Map = (props) => {
 
   return (
     <div className="x4__map">
-      <h1>X4 Map v4.1</h1>
+      <h1>X4 Foundations Map v4.2</h1>
       {props.x4.map && (
         <React.Fragment>
           <div className="x4__map-controls">
@@ -122,7 +127,7 @@ const Map = (props) => {
                 <p style={{ 'background': maps.resourceColors.nividium }}>Nividium</p>
               </div>
             </div>}
-            <svg ref={svg} width="100%" height="100%" viewBox="-2800 -1800 5300 5000"
+            <svg ref={svg} width={width} height="100%" viewBox="-2800 -1800 5300 5000"
                  version="1.1" xmlns="http://www.w3.org/2000/svg"
                  style={{ transform: `scale(${scale}) translate(${moved.x}px, ${moved.y}px)` }}>
 

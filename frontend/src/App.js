@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, {Component} from 'react';
 import {Redirect, Route, Switch, withRouter} from 'react-router-dom';
 import clsx from 'clsx';
@@ -5,7 +6,7 @@ import {connect} from 'react-redux';
 import * as authActions from './redux/authActions';
 import * as auth from './auth';
 
-import {updateCanonical} from './helpers';
+import { hashUserId, updateCanonical } from './helpers';
 
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
@@ -34,6 +35,17 @@ class App extends Component {
     updateCanonical();
     this.props.history.listen(updateCanonical);
     window.location.href.indexOf('darkMode=false') !== -1 && deleteCookie('dark-mode');
+
+    axios.get('/api/user')
+      .then(response => {
+        window.ga('create', 'UA-216496717-1', {
+          'storage': 'none',
+          'clientId': hashUserId(response.data)
+        });
+        window.ga('set', 'anonymizeIp', true);
+        window.ga('send', 'pageview');
+      })
+      .catch(err => console.log(err));
   }
 
   render() {

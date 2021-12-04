@@ -1,9 +1,10 @@
+import { promises as fs } from 'fs';
 import path from 'path';
 import xml2js from 'xml2js';
-import {promises as fs} from 'fs';
-import {translateRecursiveTrim} from './translations';
-import {saveToFile} from './helpers';
-import {roundToClosest} from '../../helpers';
+import { roundToClosest } from '../../helpers';
+import { appLog, inspect } from "../../helpers/logger";
+import { saveToFile } from './helpers';
+import { translateRecursiveTrim } from './translations';
 
 /*
     Things to keep in mind.
@@ -16,7 +17,7 @@ import {roundToClosest} from '../../helpers';
 const SAVE_SUBSTEPS = true;
 
 async function parseFile(pathToFile) {
-  const parser = new xml2js.Parser({mergeAttrs: true, explicitArray: false});
+  const parser = new xml2js.Parser({ mergeAttrs: true, explicitArray: false });
   return await parser.parseStringPromise(await fs.readFile(pathToFile));
 }
 
@@ -43,7 +44,7 @@ function processMapDefaults(mapDefaults, translations) {
 function processGalaxy(galaxy) {
   galaxy.forEach(galaxyItem => {
     if (galaxyItem.ref === 'clusters' && galaxyItem.macro.connection === 'galaxy') {
-      if (!galaxyItem.offset) galaxyItem.offset = {position: {x: 0, y: 0, z: 0}};
+      if (!galaxyItem.offset) galaxyItem.offset = { position: { x: 0, y: 0, z: 0 } };
       else galaxyItem.offset.position = {
         x: parseInt(galaxyItem.offset.position.x, 10) / 80000,
         y: parseInt(galaxyItem.offset.position.y, 10) / 80000,
@@ -56,8 +57,27 @@ function processGalaxy(galaxy) {
 
 function processClusters(clusters) {
   clusters.forEach(clusterItem => clusterItem.connections.connection.forEach(clusterConnection => {
+    const clusterName = clusterItem.name.replace("_macro", '').replace("_", '');
+    const macroName = clusterConnection.macro.name;
+
+    if (clusterName === 'Cluster110' && macroName === "Cluster108_Sector002_Region001_macro") {
+      // invalid pointer for neptune_field
+      clusterConnection.macro.name = "Cluster110_Sector001_Region001_macro";
+      appLog("Fixing broken Neptune connection", "yellow");
+    } else if (clusterName === 'Cluster112' && macroName === "Cluster104_Sector001_Region002_macro") {
+      // invalid pointer for cluster112_s2_region01
+      clusterConnection.macro.name = "Cluster112_Sector002_Region001_macro'";
+      appLog("Fixing broken Savage Spur connection", "yellow");
+    } else if (clusterName === 'Cluster414' && macroName === "C415S01_Region02_macro") {
+      // invalid pointer for region_cluster_415_sector_001
+      clusterConnection.macro.name = "C414S01_Region02_macro'";
+      appLog("Fixing broken Rhy's Defiance connection", "yellow");
+    }
+  }));
+
+  clusters.forEach(clusterItem => clusterItem.connections.connection.forEach(clusterConnection => {
     if (!clusterConnection.offset || !clusterConnection.offset.position)
-      clusterConnection.offset = {position: {x: 0, y: 0, z: 0}};
+      clusterConnection.offset = { position: { x: 0, y: 0, z: 0 } };
     else clusterConnection.offset.position = {
       x: parseInt(clusterConnection.offset.position.x, 10) / 80000,
       y: parseInt(clusterConnection.offset.position.y, 10) / 80000,
@@ -90,7 +110,7 @@ function processRegionYields(regionYields) {
       if (item.gatherspeedfactor) yields[item.name].gatherspeedfactor = parseFloat(item.gatherspeedfactor);
     });
 
-    regionYieldsObject[resource.ware] = {...yields};
+    regionYieldsObject[resource.ware] = { ...yields };
   });
   return regionYieldsObject;
 }
@@ -318,24 +338,24 @@ function applyCrazySectorTransformations(map, sectorsObjects) {
     if (cluster.sectors.length === 1) cluster.sectors[0].adjusted = cluster.position;
 
     if (cluster.sectors.length === 2) {
-      cluster.sectors[0].adjusted = {...cluster.position};
-      cluster.sectors[1].adjusted = {...cluster.position};
+      cluster.sectors[0].adjusted = { ...cluster.position };
+      cluster.sectors[1].adjusted = { ...cluster.position };
       // It is very very tempting to group these, but due to all the factors it gets really tricky
       // Better leave as this, it is ugly, but it has cascading if else effect and it's actually very safe way
       // of checking things
       if (cluster.sectors[0].position.x === 0 && cluster.sectors[0].position.z === 0 && cluster.sectors[1].position.x === 0 && cluster.sectors[1].position.z > 0) {
-        cluster.sectors[0].adjusted = {x: cluster.position.x + 32, z: cluster.position.z - 54};
-        cluster.sectors[1].adjusted = {x: cluster.position.x - 32, z: cluster.position.z + 54};
+        cluster.sectors[0].adjusted = { x: cluster.position.x + 32, z: cluster.position.z - 54 };
+        cluster.sectors[1].adjusted = { x: cluster.position.x - 32, z: cluster.position.z + 54 };
         cluster.sectors[0].transformation = 'A';
         cluster.sectors[1].transformation = 'A';
       } else if (cluster.sectors[0].position.x === 0 && cluster.sectors[0].position.z === 0 && cluster.sectors[1].position.x === 0 && cluster.sectors[1].position.z < -2000) {
-        cluster.sectors[0].adjusted = {x: cluster.position.x - 32, z: cluster.position.z + 54};
-        cluster.sectors[1].adjusted = {x: cluster.position.x + 32, z: cluster.position.z - 54};
+        cluster.sectors[0].adjusted = { x: cluster.position.x - 32, z: cluster.position.z + 54 };
+        cluster.sectors[1].adjusted = { x: cluster.position.x + 32, z: cluster.position.z - 54 };
         cluster.sectors[0].transformation = 'B';
         cluster.sectors[1].transformation = 'B';
       } else if (cluster.sectors[0].position.x === 0 && cluster.sectors[0].position.z === 0 && cluster.sectors[1].position.x === 0 && cluster.sectors[1].position.z < 0) {
-        cluster.sectors[0].adjusted = {x: cluster.position.x + 32, z: cluster.position.z + 54};
-        cluster.sectors[1].adjusted = {x: cluster.position.x - 32, z: cluster.position.z - 54};
+        cluster.sectors[0].adjusted = { x: cluster.position.x + 32, z: cluster.position.z + 54 };
+        cluster.sectors[1].adjusted = { x: cluster.position.x - 32, z: cluster.position.z - 54 };
         cluster.sectors[0].transformation = 'C';
         cluster.sectors[1].transformation = 'C';
       } else if (cluster.sectors[1].position.x < 0) {
@@ -353,24 +373,24 @@ function applyCrazySectorTransformations(map, sectorsObjects) {
           cluster.sectors[1].transformation = 'E';
         }
       } else if (cluster.sectors[1].position.x > 0 && cluster.sectors[1].position.z > 0) {
-        cluster.sectors[0].adjusted = {x: cluster.position.x - 32, z: cluster.position.z - 54};
-        cluster.sectors[1].adjusted = {x: cluster.position.x + 32, z: cluster.position.z + 54};
+        cluster.sectors[0].adjusted = { x: cluster.position.x - 32, z: cluster.position.z - 54 };
+        cluster.sectors[1].adjusted = { x: cluster.position.x + 32, z: cluster.position.z + 54 };
         cluster.sectors[0].transformation = 'F';
         cluster.sectors[1].transformation = 'F';
       } else if (cluster.sectors[1].position.x > 0 && cluster.sectors[1].position.z < 0) {
-        cluster.sectors[0].adjusted = {x: cluster.position.x - 32, z: cluster.position.z + 54};
-        cluster.sectors[1].adjusted = {x: cluster.position.x + 32, z: cluster.position.z - 54};
+        cluster.sectors[0].adjusted = { x: cluster.position.x - 32, z: cluster.position.z + 54 };
+        cluster.sectors[1].adjusted = { x: cluster.position.x + 32, z: cluster.position.z - 54 };
         cluster.sectors[0].transformation = 'G';
         cluster.sectors[1].transformation = 'G';
       } else if (cluster.sectors[1].position.z === 0) {
-        cluster.sectors[0].adjusted = {x: cluster.position.x - 32, z: cluster.position.z - 54};
-        cluster.sectors[1].adjusted = {x: cluster.position.x + 32, z: cluster.position.z + 54};
+        cluster.sectors[0].adjusted = { x: cluster.position.x - 32, z: cluster.position.z - 54 };
+        cluster.sectors[1].adjusted = { x: cluster.position.x + 32, z: cluster.position.z + 54 };
         cluster.sectors[0].transformation = 'H';
         cluster.sectors[1].transformation = 'H';
         // special flake
         if (cluster.id === 'Cluster_42_macro') {
-          cluster.sectors[0].adjusted = {x: cluster.position.x - 32, z: cluster.position.z + 54};
-          cluster.sectors[1].adjusted = {x: cluster.position.x + 32, z: cluster.position.z - 54};
+          cluster.sectors[0].adjusted = { x: cluster.position.x - 32, z: cluster.position.z + 54 };
+          cluster.sectors[1].adjusted = { x: cluster.position.x + 32, z: cluster.position.z - 54 };
           cluster.sectors[0].transformation = 'I';
           cluster.sectors[1].transformation = 'I';
         }
@@ -382,9 +402,9 @@ function applyCrazySectorTransformations(map, sectorsObjects) {
       cluster.sectors[2].adjusted = cluster.position;
       // special flake
       if (cluster.id === 'Cluster_01_macro') {
-        cluster.sectors[0].adjusted = {x: cluster.position.x + 32, z: cluster.position.z - 54};
-        cluster.sectors[2].adjusted = {x: cluster.position.x + 32, z: cluster.position.z + 54};
-        cluster.sectors[1].adjusted = {x: cluster.position.x - 62, z: cluster.position.z};
+        cluster.sectors[0].adjusted = { x: cluster.position.x + 32, z: cluster.position.z - 54 };
+        cluster.sectors[2].adjusted = { x: cluster.position.x + 32, z: cluster.position.z + 54 };
+        cluster.sectors[1].adjusted = { x: cluster.position.x - 62, z: cluster.position.z };
         cluster.sectors[0].transformation = 'S';
         cluster.sectors[1].transformation = 'S';
         cluster.sectors[2].transformation = 'S';
@@ -392,9 +412,9 @@ function applyCrazySectorTransformations(map, sectorsObjects) {
 
       // special flake2
       if (cluster.id === 'Cluster_108_macro') {
-        cluster.sectors[1].adjusted = {x: cluster.position.x - 32, z: cluster.position.z - 54};
-        cluster.sectors[2].adjusted = {x: cluster.position.x - 32, z: cluster.position.z + 54};
-        cluster.sectors[0].adjusted = {x: cluster.position.x + 62, z: cluster.position.z};
+        cluster.sectors[1].adjusted = { x: cluster.position.x - 32, z: cluster.position.z - 54 };
+        cluster.sectors[2].adjusted = { x: cluster.position.x - 32, z: cluster.position.z + 54 };
+        cluster.sectors[0].adjusted = { x: cluster.position.x + 62, z: cluster.position.z };
         cluster.sectors[0].transformation = 'T';
         cluster.sectors[1].transformation = 'T';
         cluster.sectors[2].transformation = 'T';
@@ -420,9 +440,9 @@ function applyCrazySectorTransformations(map, sectorsObjects) {
     cluster.sectors.forEach(sector => sector.stations && sector.stations.forEach(station => {
       const inSectorDivider = !sector.transformation ? 3000 : 6000;
       if (!sectorsObjects[station.zoneReference.replace('macro', 'connection')])
-        sectorsObjects[station.zoneReference.replace('macro', 'connection')] = {offset: {position: {x: 0, z: 0}}};
+        sectorsObjects[station.zoneReference.replace('macro', 'connection')] = { offset: { position: { x: 0, z: 0 } } };
       const zoneInSectorPosition = sectorsObjects[station.zoneReference.replace('macro', 'connection')].offset.position;
-      if (!station.offset) station.offset = {position: {x: 0, z: 0}};
+      if (!station.offset) station.offset = { position: { x: 0, z: 0 } };
       station.adjustedInSector = {
         x: sector.adjusted.x + zoneInSectorPosition.x / inSectorDivider,
         z: sector.adjusted.z + zoneInSectorPosition.z / inSectorDivider
@@ -534,7 +554,7 @@ function processComponents(components) {
 }
 
 function calculateConnections(map, gateDestinations) {
-  const connections = {gates: []};
+  const connections = { gates: [] };
   const gates = {};
   map.forEach(clusters => clusters.sectors.forEach(sector => sector.zones && sector.zones.forEach(zone => {
     if (zone.ref === 'gates') {
@@ -792,5 +812,5 @@ export async function getMap(sourceBasePath, translations) {
 
   const highways = path.join(__dirname, '..', '..', '..', 'static-files', 'x4-manual-input');
   const superHighways = JSON.parse(await fs.readFile(path.join(highways, '_superHighways.json'), 'utf-8')).superHighways;
-  return {clusters: map, connections: connections, sectorHighways: superHighways};
+  return { clusters: map, connections: connections, sectorHighways: superHighways };
 }
