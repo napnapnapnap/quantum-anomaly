@@ -21,6 +21,16 @@
           }
         },
         {
+          "id": "processing",
+          "name": "{20206,1301}",
+          "tags": "noplayerbuild recycling"
+        },
+        {
+          "id": "recycling",
+          "name": "{20206,1101}",
+          "tags": "noplayerbuild recycling"
+        },
+        {
           "id": "research",
           "name": "{20206,501}",
           "tags": "noplayerbuild"
@@ -53,6 +63,10 @@
           "default": {
             "race": "terran"
           }
+        },
+        {
+          "id": "closedloop",
+          "name": "{20206,1201}"
         }
       ]
     },
@@ -410,38 +424,65 @@
           "average": "2040",
           "max": "2346"
         },
-        "production": {
-          "time": "900",
-          "amount": "108",
-          "method": "default",
-          "name": "{20206,101}",
-          "primary": {
-            "ware": [
-              {
-                "ware": "antimattercells",
-                "amount": "100"
-              },
-              {
-                "ware": "energycells",
-                "amount": "140"
-              },
-              {
-                "ware": "microchips",
-                "amount": "160"
-              },
-              {
-                "ware": "quantumtubes",
-                "amount": "100"
+        "production": [
+          {
+            "time": "900",
+            "amount": "108",
+            "method": "default",
+            "name": "{20206,101}",
+            "primary": {
+              "ware": [
+                {
+                  "ware": "antimattercells",
+                  "amount": "100"
+                },
+                {
+                  "ware": "energycells",
+                  "amount": "140"
+                },
+                {
+                  "ware": "microchips",
+                  "amount": "160"
+                },
+                {
+                  "ware": "quantumtubes",
+                  "amount": "100"
+                }
+              ]
+            },
+            "effects": {
+              "effect": {
+                "type": "work",
+                "product": "0.34"
               }
-            ]
+            }
           },
-          "effects": {
-            "effect": {
-              "type": "work",
-              "product": "0.34"
+          {
+            "time": "300",
+            "amount": "60",
+            "method": "recycling",
+            "name": "{20206,1101}",
+            "tags": "noplayerbuild recycling",
+            "primary": {
+              "ware": [
+                {
+                  "ware": "energycells",
+                  "amount": "12000"
+                },
+                {
+                  "ware": "scrapmetal",
+                  "amount": "300"
+                }
+              ]
+            },
+            "effects": {
+              "effect": {
+                "type": "work",
+                "product": "0.34"
+              }
             }
           }
-        },
+        ],
         "icon": {
           "active": "ware_claytronics",
           "video": "ware_claytronics_macro"
@@ -2065,7 +2106,7 @@
         "group": "engines",
         "transport": "inventory",
         "volume": "1",
-        "tags": "disallowdrop engine equipment inventory noblueprint noplayerblueprint personalupgrade",
+        "tags": "disallowdrop engine equipment inventory noblueprint nocustomgamestart noplayerblueprint personalupgrade",
         "price": {
           "min": "800",
           "average": "1000",
@@ -4863,6 +4904,7 @@
           "amount": "1",
           "method": "default",
           "name": "{20206,101}",
+          "dismantlefactor": "10",
           "primary": {
             "ware": [
               {
@@ -5063,6 +5105,7 @@
           "amount": "1",
           "method": "default",
           "name": "{20206,101}",
+          "dismantlefactor": "2.6",
           "primary": {
             "ware": [
               {
@@ -5148,6 +5191,7 @@
         "description": "{20201,1102}",
         "factoryname": "{20201,1104}",
         "group": "food",
+        "licence": "ceremonyally",
         "transport": "container",
         "volume": "1",
         "tags": "container economy",
@@ -5328,6 +5372,31 @@
                 "product": "0.37"
               }
             }
+          },
+          {
+            "time": "300",
+            "amount": "200",
+            "method": "recycling",
+            "name": "{20206,1101}",
+            "tags": "noplayerbuild recycling",
+            "primary": {
+              "ware": [
+                {
+                  "ware": "energycells",
+                  "amount": "3500"
+                },
+                {
+                  "ware": "scrapmetal",
+                  "amount": "75"
+                }
+              ]
+            },
+            "effects": {
+              "effect": {
+                "type": "work",
+                "product": "0.37"
+              }
+            }
           }
         ],
         "icon": {
@@ -5363,6 +5432,7 @@
         "description": "{20201,1402}",
         "factoryname": "{20201,1404}",
         "group": "ice",
+        "licence": "ceremonyally",
         "transport": "solid",
         "volume": "8",
         "tags": "economy minable mineral solid",
@@ -7423,9 +7493,9 @@
         "volume": "1",
         "tags": "inventory nocustomgamestart",
         "price": {
-          "min": "1",
-          "average": "1",
-          "max": "1"
+          "min": "42539",
+          "average": "46746",
+          "max": "50953"
         }
       },
       "inv_processing_panel_19L": {
@@ -7436,9 +7506,9 @@
         "volume": "1",
         "tags": "inventory nocustomgamestart",
         "price": {
-          "min": "1",
-          "average": "1",
-          "max": "1"
+          "min": "21704",
+          "average": "23850",
+          "max": "25997"
         }
       },
       "inv_processing_panel_46B": {
@@ -7449,9 +7519,9 @@
         "volume": "1",
         "tags": "inventory nocustomgamestart",
         "price": {
-          "min": "1",
-          "average": "1",
-          "max": "1"
+          "min": "6077",
+          "average": "6678",
+          "max": "7279"
         }
       },
       "inv_processing_panel_7A": {
@@ -7462,9 +7532,9 @@
         "volume": "1",
         "tags": "inventory nocustomgamestart",
         "price": {
-          "min": "1",
-          "average": "1",
-          "max": "1"
+          "min": "2604",
+          "average": "2862",
+          "max": "3120"
         }
       },
       "inv_processing_panel_8X": {
@@ -7475,9 +7545,9 @@
         "volume": "1",
         "tags": "inventory nocustomgamestart",
         "price": {
-          "min": "1",
-          "average": "1",
-          "max": "1"
+          "min": "11286",
+          "average": "12402",
+          "max": "13518"
         }
       },
       "inv_programmablefieldarray": {
@@ -13921,6 +13991,59 @@
           }
         ]
       },
+      "module_gen_proc_scrapworks": {
+        "id": "module_gen_proc_scrapworks",
+        "name": "{20104,120101}",
+        "description": "{20104,120102}",
+        "transport": "container",
+        "volume": "1",
+        "tags": "module",
+        "price": {
+          "min": "992413",
+          "average": "1167545",
+          "max": "1342677"
+        },
+        "production": {
+          "time": "566",
+          "amount": "1",
+          "method": "default",
+          "name": "{20206,101}",
+          "primary": {
+            "ware": [
+              {
+                "ware": "claytronics",
+                "amount": "178"
+              },
+              {
+                "ware": "energycells",
+                "amount": "162"
+              },
+              {
+                "ware": "hullparts",
+                "amount": "733"
+              }
+            ]
+          }
+        },
+        "component": {
+          "ref": "proc_gen_scrapworks_macro",
+          "amount": "1"
+        },
+        "restriction": {
+          "licence": "station_gen_basic"
+        },
+        "owner": [
+          {
+            "faction": "alliance"
+          },
+          {
+            "faction": "scaleplate"
+          },
+          {
+            "faction": "teladi"
+          }
+        ]
+      },
       "module_gen_prod_advancedcomposites_01": {
         "id": "module_gen_prod_advancedcomposites_01",
         "name": "{20104,10001}",
@@ -15090,6 +15213,59 @@
           }
         ]
       },
+      "module_gen_prod_scrap_recycler": {
+        "id": "module_gen_prod_scrap_recycler",
+        "name": "{20104,130101}",
+        "description": "{20104,130102}",
+        "transport": "container",
+        "volume": "1",
+        "tags": "module",
+        "price": {
+          "min": "1628494",
+          "average": "1915875",
+          "max": "2203256"
+        },
+        "production": {
+          "time": "777",
+          "amount": "1",
+          "method": "default",
+          "name": "{20206,101}",
+          "primary": {
+            "ware": [
+              {
+                "ware": "claytronics",
+                "amount": "300"
+              },
+              {
+                "ware": "energycells",
+                "amount": "600"
+              },
+              {
+                "ware": "hullparts",
+                "amount": "1100"
+              }
+            ]
+          }
+        },
+        "component": {
+          "ref": "prod_gen_scrap_recycler_macro",
+          "amount": "1"
+        },
+        "restriction": {
+          "licence": "station_gen_basic"
+        },
+        "owner": [
+          {
+            "faction": "alliance"
+          },
+          {
+            "faction": "scaleplate"
+          },
+          {
+            "faction": "teladi"
+          }
+        ]
+      },
       "module_gen_prod_shieldcomponents_01": {
         "id": "module_gen_prod_shieldcomponents_01",
         "name": "{20104,12601}",
@@ -15683,6 +15859,45 @@
         },
         "owner": {
           "faction": "visitor"
+        }
+      },
+      "module_gen_welfare_gamblinghall_01": {
+        "id": "module_gen_welfare_gamblinghall_01",
+        "name": "{20104,110201}",
+        "description": "{20104,110202}",
+        "transport": "container",
+        "volume": "1",
+        "tags": "missiononly module",
+        "price": {
+          "min": "2095385",
+          "average": "2465159",
+          "max": "2834932"
+        },
+        "production": {
+          "time": "730",
+          "amount": "1",
+          "method": "default",
+          "name": "{20206,101}",
+          "primary": {
+            "ware": [
+              {
+                "ware": "claytronics",
+                "amount": "376"
+              },
+              {
+                "ware": "energycells",
+                "amount": "342"
+              },
+              {
+                "ware": "hullparts",
+                "amount": "1546"
+              }
+            ]
+          }
+        },
+        "component": {
+          "ref": "welfare_gen_gamblinghall_01_macro",
+          "amount": "1"
         }
       },
       "module_par_conn_base_01": {
@@ -20231,6 +20446,7 @@
           "method": "default",
           "name": "{20206,601}",
           "tags": "noplayerbuild",
+          "dismantlefactor": "1.76",
           "primary": {
             "ware": [
               {
@@ -20277,6 +20493,7 @@
           "method": "default",
           "name": "{20206,601}",
           "tags": "noplayerbuild",
+          "dismantlefactor": "1.76",
           "primary": {
             "ware": [
               {
@@ -20323,6 +20540,7 @@
           "method": "default",
           "name": "{20206,601}",
           "tags": "noplayerbuild",
+          "dismantlefactor": "4.24",
           "primary": {
             "ware": [
               {
@@ -20369,6 +20587,7 @@
           "method": "default",
           "name": "{20206,601}",
           "tags": "noplayerbuild",
+          "dismantlefactor": "5.29",
           "primary": {
             "ware": [
               {
@@ -20415,6 +20634,7 @@
           "method": "default",
           "name": "{20206,601}",
           "tags": "noplayerbuild",
+          "dismantlefactor": "13.3",
           "primary": {
             "ware": [
               {
@@ -20461,6 +20681,7 @@
           "method": "default",
           "name": "{20206,601}",
           "tags": "noplayerbuild",
+          "dismantlefactor": "18.64",
           "primary": {
             "ware": [
               {
@@ -20507,6 +20728,7 @@
           "method": "default",
           "name": "{20206,601}",
           "tags": "noplayerbuild",
+          "dismantlefactor": "3.83",
           "primary": {
             "ware": [
               {
@@ -22004,6 +22226,43 @@
           }
         }
       },
+      "mod_ship_hidecargo_01": {
+        "id": "mod_ship_hidecargo_01",
+        "name": "{20110,121230011}",
+        "description": "{20110,102122}",
+        "shortname": "{20110,121230012}",
+        "transport": "inventory",
+        "volume": "1",
+        "tags": "crafting equipmentmod",
+        "price": {
+          "min": "1",
+          "average": "1",
+          "max": "1"
+        },
+        "production": {
+          "time": "10",
+          "amount": "1",
+          "method": "default",
+          "name": "{20206,101}",
+          "primary": {
+            "ware": [
+              {
+                "ware": "modpart_nividiumcrystallite",
+                "amount": "3"
+              },
+              {
+                "ware": "modpart_shipnanoweave_t3",
+                "amount": "1"
+              }
+            ]
+          },
+          "research": {
+            "ware": {
+              "ware": "research_mod_ship_mk3"
+            }
+          }
+        }
+      },
       "mod_ship_mass_01_mk1": {
         "id": "mod_ship_mass_01_mk1",
         "name": "{20110,120010011}",
@@ -22189,6 +22448,117 @@
           }
         }
       },
+      "mod_ship_radarcloak_01_mk1": {
+        "id": "mod_ship_radarcloak_01_mk1",
+        "name": "{20110,121010011}",
+        "description": "{20110,102102}",
+        "shortname": "{20110,121010012}",
+        "transport": "inventory",
+        "volume": "1",
+        "tags": "crafting equipmentmod",
+        "price": {
+          "min": "1",
+          "average": "1",
+          "max": "1"
+        },
+        "production": {
+          "time": "10",
+          "amount": "1",
+          "method": "default",
+          "name": "{20206,101}",
+          "primary": {
+            "ware": [
+              {
+                "ware": "modpart_nividiumcrystallite",
+                "amount": "3"
+              },
+              {
+                "ware": "modpart_shipnanoweave_t1",
+                "amount": "1"
+              }
+            ]
+          },
+          "research": {
+            "ware": {
+              "ware": "research_mod_ship_mk1"
+            }
+          }
+        }
+      },
+      "mod_ship_radarcloak_01_mk2": {
+        "id": "mod_ship_radarcloak_01_mk2",
+        "name": "{20110,121020011}",
+        "description": "{20110,102102}",
+        "shortname": "{20110,121020012}",
+        "transport": "inventory",
+        "volume": "1",
+        "tags": "crafting equipmentmod",
+        "price": {
+          "min": "1",
+          "average": "1",
+          "max": "1"
+        },
+        "production": {
+          "time": "10",
+          "amount": "1",
+          "method": "default",
+          "name": "{20206,101}",
+          "primary": {
+            "ware": [
+              {
+                "ware": "modpart_nividiumcrystallite",
+                "amount": "3"
+              },
+              {
+                "ware": "modpart_shipnanoweave_t2",
+                "amount": "1"
+              }
+            ]
+          },
+          "research": {
+            "ware": {
+              "ware": "research_mod_ship_mk2"
+            }
+          }
+        }
+      },
+      "mod_ship_radarcloak_01_mk3": {
+        "id": "mod_ship_radarcloak_01_mk3",
+        "name": "{20110,121030011}",
+        "description": "{20110,102102}",
+        "shortname": "{20110,121030012}",
+        "transport": "inventory",
+        "volume": "1",
+        "tags": "crafting equipmentmod",
+        "price": {
+          "min": "1",
+          "average": "1",
+          "max": "1"
+        },
+        "production": {
+          "time": "10",
+          "amount": "1",
+          "method": "default",
+          "name": "{20206,101}",
+          "primary": {
+            "ware": [
+              {
+                "ware": "modpart_nividiumcrystallite",
+                "amount": "3"
+              },
+              {
+                "ware": "modpart_shipnanoweave_t3",
+                "amount": "1"
+              }
+            ]
+          },
+          "research": {
+            "ware": {
+              "ware": "research_mod_ship_mk3"
+            }
+          }
+        }
+      },
       "mod_ship_radarrange_01_mk1": {
         "id": "mod_ship_radarrange_01_mk1",
         "name": "{20110,120910011}",
@@ -22222,6 +22592,117 @@
           "research": {
             "ware": {
               "ware": "research_mod_ship_mk1"
+            }
+          }
+        }
+      },
+      "mod_ship_regiondamage_01_mk1": {
+        "id": "mod_ship_regiondamage_01_mk1",
+        "name": "{20110,121110011}",
+        "description": "{20110,102112}",
+        "shortname": "{20110,121110012}",
+        "transport": "inventory",
+        "volume": "1",
+        "tags": "crafting equipmentmod",
+        "price": {
+          "min": "1",
+          "average": "1",
+          "max": "1"
+        },
+        "production": {
+          "time": "10",
+          "amount": "1",
+          "method": "default",
+          "name": "{20206,101}",
+          "primary": {
+            "ware": [
+              {
+                "ware": "modpart_nividiumcrystallite",
+                "amount": "3"
+              },
+              {
+                "ware": "modpart_shipnanoweave_t1",
+                "amount": "1"
+              }
+            ]
+          },
+          "research": {
+            "ware": {
+              "ware": "research_mod_ship_mk1"
+            }
+          }
+        }
+      },
+      "mod_ship_regiondamage_01_mk2": {
+        "id": "mod_ship_regiondamage_01_mk2",
+        "name": "{20110,121120011}",
+        "description": "{20110,102112}",
+        "shortname": "{20110,121120012}",
+        "transport": "inventory",
+        "volume": "1",
+        "tags": "crafting equipmentmod",
+        "price": {
+          "min": "1",
+          "average": "1",
+          "max": "1"
+        },
+        "production": {
+          "time": "10",
+          "amount": "1",
+          "method": "default",
+          "name": "{20206,101}",
+          "primary": {
+            "ware": [
+              {
+                "ware": "modpart_nividiumcrystallite",
+                "amount": "3"
+              },
+              {
+                "ware": "modpart_shipnanoweave_t2",
+                "amount": "1"
+              }
+            ]
+          },
+          "research": {
+            "ware": {
+              "ware": "research_mod_ship_mk2"
+            }
+          }
+        }
+      },
+      "mod_ship_regiondamage_01_mk3": {
+        "id": "mod_ship_regiondamage_01_mk3",
+        "name": "{20110,121130011}",
+        "description": "{20110,102112}",
+        "shortname": "{20110,121130012}",
+        "transport": "inventory",
+        "volume": "1",
+        "tags": "crafting equipmentmod",
+        "price": {
+          "min": "1",
+          "average": "1",
+          "max": "1"
+        },
+        "production": {
+          "time": "10",
+          "amount": "1",
+          "method": "default",
+          "name": "{20206,101}",
+          "primary": {
+            "ware": [
+              {
+                "ware": "modpart_nividiumcrystallite",
+                "amount": "3"
+              },
+              {
+                "ware": "modpart_shipnanoweave_t3",
+                "amount": "1"
+              }
+            ]
+          },
+          "research": {
+            "ware": {
+              "ware": "research_mod_ship_mk3"
             }
           }
         }
@@ -25720,6 +26201,24 @@
           "video": "ware_quantumtubes_macro"
         }
       },
+      "rawscrap": {
+        "id": "rawscrap",
+        "name": "{20201,6801}",
+        "description": "{20201,6802}",
+        "group": "refined",
+        "transport": "solid",
+        "volume": "10",
+        "tags": "processed recycling solid",
+        "price": {
+          "min": "153",
+          "average": "180",
+          "max": "207"
+        },
+        "icon": {
+          "active": "ware_scrapmetal",
+          "video": "ware_scrapmetal_macro"
+        }
+      },
       "refinedmetals": {
         "id": "refinedmetals",
         "name": "{20201,3201}",
@@ -26025,6 +26524,45 @@
         },
         "research": {
           "time": "600"
+        }
+      },
+      "research_module_welfare_1": {
+        "id": "research_module_welfare_1",
+        "name": "{20216,2101}",
+        "description": "{20216,2102}",
+        "transport": "research",
+        "volume": "1",
+        "tags": "research",
+        "sortorder": "305",
+        "price": {
+          "min": "1",
+          "average": "1",
+          "max": "1"
+        },
+        "research": {
+          "time": "10",
+          "research": {
+            "ware": {
+              "ware": "research_module_welfare_1_pre"
+            }
+          }
+        }
+      },
+      "research_module_welfare_1_pre": {
+        "id": "research_module_welfare_1_pre",
+        "name": "{20216,2301}",
+        "description": "{20216,2302}",
+        "transport": "research",
+        "volume": "1",
+        "tags": "missiononly research",
+        "sortorder": "305",
+        "price": {
+          "min": "1",
+          "average": "1",
+          "max": "1"
+        },
+        "research": {
+          "time": "10"
         }
       },
       "research_mod_engine_mk1": {
@@ -27070,6 +27608,44 @@
         "icon": {
           "active": "ware_scanningarrays",
           "video": "ware_scanningarrays_macro"
+        }
+      },
+      "scrapmetal": {
+        "id": "scrapmetal",
+        "name": "{20201,6601}",
+        "description": "{20201,6602}",
+        "factoryname": "{20201,6604}",
+        "group": "refined",
+        "transport": "solid",
+        "volume": "10",
+        "tags": "economy recycling solid",
+        "price": {
+          "min": "318",
+          "average": "375",
+          "max": "431"
+        },
+        "production": {
+          "time": "60",
+          "amount": "1",
+          "method": "processing",
+          "name": "{20206,1301}",
+          "tags": "noplayerbuild recycling",
+          "primary": {
+            "ware": [
+              {
+                "ware": "energycells",
+                "amount": "10"
+              },
+              {
+                "ware": "rawscrap",
+                "amount": "1"
+              }
+            ]
+          }
+        },
+        "icon": {
+          "active": "ware_scrapmetal",
+          "video": "ware_scrapmetal_macro"
         }
       },
       "shieldcomponents": {
@@ -29083,6 +29659,7 @@
           "amount": "1",
           "method": "default",
           "name": "{20206,101}",
+          "dismantlefactor": "1.47",
           "primary": {
             "ware": [
               {
@@ -29183,6 +29760,7 @@
           "amount": "1",
           "method": "default",
           "name": "{20206,101}",
+          "dismantlefactor": "1.79",
           "primary": {
             "ware": [
               {
@@ -29283,6 +29861,7 @@
           "amount": "1",
           "method": "default",
           "name": "{20206,101}",
+          "dismantlefactor": "1.79",
           "primary": {
             "ware": [
               {
@@ -29383,6 +29962,7 @@
           "amount": "1",
           "method": "default",
           "name": "{20206,101}",
+          "dismantlefactor": "1.82",
           "primary": {
             "ware": [
               {
@@ -32011,6 +32591,55 @@
           "faction": "player"
         }
       },
+      "ship_gen_m_tugboat_01_a": {
+        "id": "ship_gen_m_tugboat_01_a",
+        "name": "{20101,13601}",
+        "description": "{20101,13611}",
+        "transport": "ship",
+        "volume": "1",
+        "tags": "ship",
+        "price": {
+          "min": "342342",
+          "average": "402755",
+          "max": "463168"
+        },
+        "production": {
+          "time": "25",
+          "amount": "1",
+          "method": "default",
+          "name": "{20206,101}",
+          "primary": {
+            "ware": [
+              {
+                "ware": "energycells",
+                "amount": "136"
+              },
+              {
+                "ware": "hullparts",
+                "amount": "375"
+              }
+            ]
+          }
+        },
+        "component": {
+          "ref": "ship_gen_m_tugboat_01_a_macro",
+          "amount": "1"
+        },
+        "restriction": {
+          "licence": "generaluseship"
+        },
+        "owner": [
+          {
+            "faction": "alliance"
+          },
+          {
+            "faction": "scaleplate"
+          },
+          {
+            "faction": "teladi"
+          }
+        ]
+      },
       "ship_gen_s_fighter_01_a": {
         "id": "ship_gen_s_fighter_01_a",
         "name": "{20101,120302}",
@@ -32872,6 +33501,62 @@
           }
         ]
       },
+      "ship_par_l_destroyer_02_a": {
+        "id": "ship_par_l_destroyer_02_a",
+        "name": "{20101,30704}",
+        "description": "{20101,30714}",
+        "group": "ships_paranid",
+        "transport": "ship",
+        "volume": "1",
+        "tags": "ship",
+        "price": {
+          "min": "4412478",
+          "average": "5191150",
+          "max": "5969823"
+        },
+        "production": {
+          "time": "276",
+          "amount": "1",
+          "method": "default",
+          "name": "{20206,101}",
+          "primary": {
+            "ware": [
+              {
+                "ware": "energycells",
+                "amount": "1066"
+              },
+              {
+                "ware": "hullparts",
+                "amount": "4886"
+              }
+            ]
+          }
+        },
+        "component": {
+          "ref": "ship_par_l_destroyer_02_a_macro",
+          "amount": "1"
+        },
+        "restriction": {
+          "licence": "capitalship"
+        },
+        "owner": [
+          {
+            "faction": "alliance"
+          },
+          {
+            "faction": "buccaneers"
+          },
+          {
+            "faction": "holyorder"
+          },
+          {
+            "faction": "paranid"
+          },
+          {
+            "faction": "trinity"
+          }
+        ]
+      },
       "ship_par_l_miner_liquid_01_a": {
         "id": "ship_par_l_miner_liquid_01_a",
         "name": "{20101,30904}",
@@ -32978,6 +33663,59 @@
           }
         ]
       },
+      "ship_par_l_miner_liquid_02_a": {
+        "id": "ship_par_l_miner_liquid_02_a",
+        "name": "{20101,30907}",
+        "description": "{20101,30917}",
+        "group": "ships_paranid",
+        "transport": "ship",
+        "volume": "1",
+        "tags": "ship",
+        "price": {
+          "min": "1352877",
+          "average": "1591620",
+          "max": "1830363"
+        },
+        "production": {
+          "time": "91",
+          "amount": "1",
+          "method": "default",
+          "name": "{20206,101}",
+          "primary": {
+            "ware": [
+              {
+                "ware": "energycells",
+                "amount": "406"
+              },
+              {
+                "ware": "hullparts",
+                "amount": "1492"
+              }
+            ]
+          }
+        },
+        "component": {
+          "ref": "ship_par_l_miner_liquid_02_a_macro",
+          "amount": "1"
+        },
+        "restriction": {
+          "licence": "generaluseship"
+        },
+        "owner": [
+          {
+            "faction": "buccaneers"
+          },
+          {
+            "faction": "holyorder"
+          },
+          {
+            "faction": "paranid"
+          },
+          {
+            "faction": "trinity"
+          }
+        ]
+      },
       "ship_par_l_miner_solid_01_a": {
         "id": "ship_par_l_miner_solid_01_a",
         "name": "{20101,30902}",
@@ -33078,6 +33816,59 @@
           },
           {
             "faction": "holyorder"
+          },
+          {
+            "faction": "trinity"
+          }
+        ]
+      },
+      "ship_par_l_miner_solid_02_a": {
+        "id": "ship_par_l_miner_solid_02_a",
+        "name": "{20101,30906}",
+        "description": "{20101,30916}",
+        "group": "ships_paranid",
+        "transport": "ship",
+        "volume": "1",
+        "tags": "ship",
+        "price": {
+          "min": "1352881",
+          "average": "1591625",
+          "max": "1830369"
+        },
+        "production": {
+          "time": "91",
+          "amount": "1",
+          "method": "default",
+          "name": "{20206,101}",
+          "primary": {
+            "ware": [
+              {
+                "ware": "energycells",
+                "amount": "393"
+              },
+              {
+                "ware": "hullparts",
+                "amount": "1493"
+              }
+            ]
+          }
+        },
+        "component": {
+          "ref": "ship_par_l_miner_solid_02_a_macro",
+          "amount": "1"
+        },
+        "restriction": {
+          "licence": "generaluseship"
+        },
+        "owner": [
+          {
+            "faction": "buccaneers"
+          },
+          {
+            "faction": "holyorder"
+          },
+          {
+            "faction": "paranid"
           },
           {
             "faction": "trinity"
@@ -33198,7 +33989,7 @@
           "max": "2295124"
         },
         "production": {
-          "time": "127",
+          "time": "108",
           "amount": "1",
           "method": "default",
           "name": "{20206,101}",
@@ -33248,7 +34039,7 @@
           "max": "2772432"
         },
         "production": {
-          "time": "154",
+          "time": "130",
           "amount": "1",
           "method": "default",
           "name": "{20206,101}",
@@ -33278,6 +34069,59 @@
           },
           {
             "faction": "holyorder"
+          },
+          {
+            "faction": "trinity"
+          }
+        ]
+      },
+      "ship_par_l_trans_container_03_a": {
+        "id": "ship_par_l_trans_container_03_a",
+        "name": "{20101,30804}",
+        "description": "{20101,30814}",
+        "group": "ships_paranid",
+        "transport": "ship",
+        "volume": "1",
+        "tags": "ship",
+        "price": {
+          "min": "2949500",
+          "average": "3470000",
+          "max": "3990500"
+        },
+        "production": {
+          "time": "178",
+          "amount": "1",
+          "method": "default",
+          "name": "{20206,101}",
+          "primary": {
+            "ware": [
+              {
+                "ware": "energycells",
+                "amount": "739"
+              },
+              {
+                "ware": "hullparts",
+                "amount": "3264"
+              }
+            ]
+          }
+        },
+        "component": {
+          "ref": "ship_par_l_trans_container_03_a_macro",
+          "amount": "1"
+        },
+        "restriction": {
+          "licence": "generaluseship"
+        },
+        "owner": [
+          {
+            "faction": "buccaneers"
+          },
+          {
+            "faction": "holyorder"
+          },
+          {
+            "faction": "paranid"
           },
           {
             "faction": "trinity"
@@ -33901,6 +34745,48 @@
             "faction": "trinity"
           }
         ]
+      },
+      "ship_par_m_trans_container_03_a": {
+        "id": "ship_par_m_trans_container_03_a",
+        "name": "{20101,32601}",
+        "description": "{20101,32611}",
+        "group": "ships_paranid",
+        "transport": "ship",
+        "volume": "1",
+        "tags": "ship",
+        "price": {
+          "min": "203460",
+          "average": "292080",
+          "max": "380700"
+        },
+        "production": {
+          "time": "18",
+          "amount": "1",
+          "method": "default",
+          "name": "{20206,101}",
+          "primary": {
+            "ware": [
+              {
+                "ware": "energycells",
+                "amount": "98"
+              },
+              {
+                "ware": "hullparts",
+                "amount": "272"
+              }
+            ]
+          }
+        },
+        "component": {
+          "ref": "ship_par_m_trans_container_03_a_macro",
+          "amount": "1"
+        },
+        "restriction": {
+          "licence": "militaryship"
+        },
+        "owner": {
+          "faction": "buccaneers"
+        }
       },
       "ship_par_s_fighter_01_a": {
         "id": "ship_par_s_fighter_01_a",
@@ -34623,6 +35509,58 @@
           }
         ]
       },
+      "ship_par_xl_carrier_02_a": {
+        "id": "ship_par_xl_carrier_02_a",
+        "name": "{20101,31004}",
+        "description": "{20101,31014}",
+        "transport": "ship",
+        "volume": "1",
+        "tags": "ship",
+        "price": {
+          "min": "14909536",
+          "average": "17540630",
+          "max": "20171725"
+        },
+        "production": {
+          "time": "682",
+          "amount": "1",
+          "method": "default",
+          "name": "{20206,101}",
+          "primary": {
+            "ware": [
+              {
+                "ware": "energycells",
+                "amount": "1506"
+              },
+              {
+                "ware": "hullparts",
+                "amount": "16670"
+              }
+            ]
+          }
+        },
+        "component": {
+          "ref": "ship_par_xl_carrier_02_a_macro",
+          "amount": "1"
+        },
+        "restriction": {
+          "licence": "capitalship"
+        },
+        "owner": [
+          {
+            "faction": "buccaneers"
+          },
+          {
+            "faction": "holyorder"
+          },
+          {
+            "faction": "paranid"
+          },
+          {
+            "faction": "trinity"
+          }
+        ]
+      },
       "ship_par_xl_resupplier_01_a": {
         "id": "ship_par_xl_resupplier_01_a",
         "name": "{20101,31202}",
@@ -34717,6 +35655,59 @@
           },
           {
             "faction": "holyorder"
+          },
+          {
+            "faction": "trinity"
+          }
+        ]
+      },
+      "ship_par_xl_resupplier_02_a": {
+        "id": "ship_par_xl_resupplier_02_a",
+        "name": "{20101,31204}",
+        "description": "{20101,31214}",
+        "group": "ships_paranid",
+        "transport": "ship",
+        "volume": "1",
+        "tags": "ship",
+        "price": {
+          "min": "13138973",
+          "average": "15457615",
+          "max": "17776257"
+        },
+        "production": {
+          "time": "541",
+          "amount": "1",
+          "method": "default",
+          "name": "{20206,101}",
+          "primary": {
+            "ware": [
+              {
+                "ware": "energycells",
+                "amount": "1319"
+              },
+              {
+                "ware": "hullparts",
+                "amount": "14691"
+              }
+            ]
+          }
+        },
+        "component": {
+          "ref": "ship_par_xl_resupplier_02_a_macro",
+          "amount": "1"
+        },
+        "restriction": {
+          "licence": "militaryship"
+        },
+        "owner": [
+          {
+            "faction": "buccaneers"
+          },
+          {
+            "faction": "holyorder"
+          },
+          {
+            "faction": "paranid"
           },
           {
             "faction": "trinity"
@@ -36325,6 +37316,47 @@
           }
         ]
       },
+      "ship_tel_s_trans_container_02_a": {
+        "id": "ship_tel_s_trans_container_02_a",
+        "name": "{20101,22504}",
+        "description": "{20101,22514}",
+        "transport": "ship",
+        "volume": "1",
+        "tags": "noblueprint nocustomgamestart noplayerbuild ship",
+        "price": {
+          "min": "481177",
+          "average": "566090",
+          "max": "651004"
+        },
+        "production": {
+          "time": "28",
+          "amount": "1",
+          "method": "default",
+          "name": "{20206,101}",
+          "primary": {
+            "ware": [
+              {
+                "ware": "energycells",
+                "amount": "153"
+              },
+              {
+                "ware": "hullparts",
+                "amount": "530"
+              }
+            ]
+          }
+        },
+        "component": {
+          "ref": "ship_tel_s_trans_container_02_a_macro",
+          "amount": "1"
+        },
+        "restriction": {
+          "licence": "militaryship"
+        },
+        "owner": {
+          "faction": "ministry"
+        }
+      },
       "ship_tel_xl_builder_01_a": {
         "id": "ship_tel_xl_builder_01_a",
         "name": "{20101,21102}",
@@ -36758,6 +37790,7 @@
           "method": "default",
           "name": "{20206,601}",
           "tags": "noplayerbuild",
+          "dismantlefactor": "23.88",
           "primary": {
             "ware": [
               {
@@ -36805,6 +37838,7 @@
           "method": "default",
           "name": "{20206,601}",
           "tags": "noplayerbuild",
+          "dismantlefactor": "8.31",
           "primary": {
             "ware": [
               {
@@ -36852,6 +37886,7 @@
           "method": "default",
           "name": "{20206,601}",
           "tags": "noplayerbuild",
+          "dismantlefactor": "17.31",
           "primary": {
             "ware": [
               {
@@ -36898,6 +37933,7 @@
           "method": "default",
           "name": "{20206,601}",
           "tags": "noplayerbuild",
+          "dismantlefactor": "11.85",
           "primary": {
             "ware": [
               {
@@ -36944,6 +37980,7 @@
           "method": "default",
           "name": "{20206,601}",
           "tags": "noplayerbuild",
+          "dismantlefactor": "8.58",
           "primary": {
             "ware": [
               {
@@ -36991,6 +38028,7 @@
           "method": "default",
           "name": "{20206,601}",
           "tags": "noplayerbuild",
+          "dismantlefactor": "8.67",
           "primary": {
             "ware": [
               {
@@ -37037,6 +38075,7 @@
           "method": "default",
           "name": "{20206,601}",
           "tags": "noplayerbuild",
+          "dismantlefactor": "9.3",
           "primary": {
             "ware": [
               {
@@ -39430,9 +40469,6 @@
           },
           {
             "faction": "argon"
-          },
-          {
-            "faction": "buccaneers"
           }
         ]
       },
@@ -39490,9 +40526,6 @@
           },
           {
             "faction": "argon"
-          },
-          {
-            "faction": "buccaneers"
           }
         ]
       },
@@ -39903,9 +40936,6 @@
           },
           {
             "faction": "argon"
-          },
-          {
-            "faction": "buccaneers"
           }
         ]
       },
@@ -40243,9 +41273,6 @@
           },
           {
             "faction": "argon"
-          },
-          {
-            "faction": "buccaneers"
           }
         ]
       },
@@ -40743,6 +41770,64 @@
           }
         ]
       },
+      "turret_gen_m_scrapbeam_01_mk1": {
+        "id": "turret_gen_m_scrapbeam_01_mk1",
+        "name": "{20105,9021}",
+        "description": "{20105,9022}",
+        "group": "turrets",
+        "transport": "equipment",
+        "volume": "1",
+        "tags": "equipment turret",
+        "price": {
+          "min": "12154",
+          "average": "14299",
+          "max": "16444"
+        },
+        "production": {
+          "time": "20",
+          "amount": "1",
+          "method": "default",
+          "name": "{20206,101}",
+          "primary": {
+            "ware": [
+              {
+                "ware": "advancedelectronics",
+                "amount": "2"
+              },
+              {
+                "ware": "energycells",
+                "amount": "75"
+              },
+              {
+                "ware": "turretcomponents",
+                "amount": "10"
+              }
+            ]
+          }
+        },
+        "component": {
+          "ref": "turret_gen_m_scrapbeam_01_mk1_macro",
+          "amount": "1"
+        },
+        "restriction": {
+          "licence": "generaluseequipment"
+        },
+        "use": {
+          "threshold": "0",
+          "purposes": "salvage"
+        },
+        "owner": [
+          {
+            "faction": "alliance"
+          },
+          {
+            "faction": "scaleplate"
+          },
+          {
+            "faction": "teladi"
+          }
+        ]
+      },
       "turret_kha_m_beam_01_mk1": {
         "id": "turret_kha_m_beam_01_mk1",
         "name": "{20105,4804}",
@@ -40884,9 +41969,6 @@
             "faction": "alliance"
           },
           {
-            "faction": "buccaneers"
-          },
-          {
             "faction": "holyorder"
           },
           {
@@ -40945,9 +42027,6 @@
         "owner": [
           {
             "faction": "alliance"
-          },
-          {
-            "faction": "buccaneers"
           },
           {
             "faction": "holyorder"
@@ -41377,9 +42456,6 @@
             "faction": "alliance"
           },
           {
-            "faction": "buccaneers"
-          },
-          {
             "faction": "holyorder"
           },
           {
@@ -41615,9 +42691,6 @@
         "owner": [
           {
             "faction": "alliance"
-          },
-          {
-            "faction": "buccaneers"
           },
           {
             "faction": "holyorder"
@@ -43398,6 +44471,7 @@
           "amount": "1",
           "method": "default",
           "name": "{20206,101}",
+          "dismantlefactor": "3.17",
           "primary": {
             "ware": [
               {
@@ -43586,6 +44660,7 @@
         "description": "{20201,4702}",
         "factoryname": "{20201,4704}",
         "group": "water",
+        "licence": "ceremonyally",
         "transport": "container",
         "volume": "6",
         "tags": "container economy",
@@ -43789,6 +44864,12 @@
           },
           {
             "faction": "buccaneers"
+          },
+          {
+            "faction": "hatikvah"
+          },
+          {
+            "faction": "scaleplate"
           }
         ]
       },
@@ -44418,9 +45499,6 @@
             "faction": "argon"
           },
           {
-            "faction": "buccaneers"
-          },
-          {
             "faction": "hatikvah"
           },
           {
@@ -44497,9 +45575,6 @@
           },
           {
             "faction": "argon"
-          },
-          {
-            "faction": "buccaneers"
           },
           {
             "faction": "holyorder"
@@ -44724,9 +45799,6 @@
             "faction": "argon"
           },
           {
-            "faction": "buccaneers"
-          },
-          {
             "faction": "holyorder"
           },
           {
@@ -44797,9 +45869,6 @@
           },
           {
             "faction": "argon"
-          },
-          {
-            "faction": "buccaneers"
           },
           {
             "faction": "holyorder"
@@ -46160,9 +47229,6 @@
             "faction": "argon"
           },
           {
-            "faction": "buccaneers"
-          },
-          {
             "faction": "hatikvah"
           },
           {
@@ -46239,9 +47305,6 @@
           },
           {
             "faction": "argon"
-          },
-          {
-            "faction": "buccaneers"
           },
           {
             "faction": "holyorder"
@@ -46466,9 +47529,6 @@
             "faction": "argon"
           },
           {
-            "faction": "buccaneers"
-          },
-          {
             "faction": "holyorder"
           },
           {
@@ -46539,9 +47599,6 @@
           },
           {
             "faction": "argon"
-          },
-          {
-            "faction": "buccaneers"
           },
           {
             "faction": "holyorder"
@@ -48069,6 +49126,7 @@
           "amount": "1",
           "method": "default",
           "name": "{20206,101}",
+          "dismantlefactor": "18.93",
           "primary": {
             "ware": [
               {
@@ -55356,38 +56414,65 @@
           "average": "8280",
           "max": "9108"
         },
-        "production": {
-          "time": "600",
-          "amount": "98",
-          "method": "default",
-          "name": "{20206,901}",
-          "primary": {
-            "ware": [
-              {
-                "ware": "energycells",
-                "amount": "4000"
-              },
-              {
-                "ware": "hydrogen",
-                "amount": "2000"
-              },
-              {
-                "ware": "ore",
-                "amount": "3000"
-              },
-              {
-                "ware": "silicon",
-                "amount": "3000"
+        "production": [
+          {
+            "time": "600",
+            "amount": "98",
+            "method": "default",
+            "name": "{20206,901}",
+            "primary": {
+              "ware": [
+                {
+                  "ware": "energycells",
+                  "amount": "4000"
+                },
+                {
+                  "ware": "hydrogen",
+                  "amount": "2000"
+                },
+                {
+                  "ware": "ore",
+                  "amount": "3000"
+                },
+                {
+                  "ware": "silicon",
+                  "amount": "3000"
+                }
+              ]
+            },
+            "effects": {
+              "effect": {
+                "type": "work",
+                "product": "0.1"
               }
-            ]
+            }
           },
-          "effects": {
-            "effect": {
-              "type": "work",
-              "product": "0.1"
+          {
+            "time": "300",
+            "amount": "50",
+            "method": "recycling",
+            "name": "{20206,1101}",
+            "tags": "noplayerbuild recycling",
+            "primary": {
+              "ware": [
+                {
+                  "ware": "energycells",
+                  "amount": "12500"
+                },
+                {
+                  "ware": "scrapmetal",
+                  "amount": "1000"
+                }
+              ]
+            },
+            "effects": {
+              "effect": {
+                "type": "work",
+                "product": "0.1"
+              }
             }
           }
-        },
+        ],
         "icon": {
           "active": "ware_computronicsubstrate",
           "video": "ware_computronicsubstrate_macro"
@@ -56847,9 +57932,9 @@
         "volume": "1",
         "tags": "module",
         "price": {
-          "min": "194349109",
+          "min": "223501475",
           "average": "262942912",
-          "max": "228646010"
+          "max": "302384349"
         },
         "production": {
           "time": "731",
@@ -56905,9 +57990,9 @@
         "volume": "1",
         "tags": "module",
         "price": {
-          "min": "197485714",
+          "min": "227108570",
           "average": "267186553",
-          "max": "232336133"
+          "max": "307264536"
         },
         "production": {
           "time": "954",
@@ -57495,9 +58580,9 @@
         "volume": "1",
         "tags": "module",
         "price": {
-          "min": "27977818",
+          "min": "32174490",
           "average": "37852341",
-          "max": "32915079"
+          "max": "43530192"
         },
         "production": {
           "time": "650",
@@ -57553,9 +58638,9 @@
         "volume": "1",
         "tags": "module",
         "price": {
-          "min": "50195751",
+          "min": "57725113",
           "average": "67911898",
-          "max": "59053824"
+          "max": "78098683"
         },
         "production": {
           "time": "364",
@@ -57611,9 +58696,9 @@
         "volume": "1",
         "tags": "module",
         "price": {
-          "min": "51961123",
+          "min": "59755291",
           "average": "70300342",
-          "max": "61130732"
+          "max": "80845393"
         },
         "production": {
           "time": "477",
@@ -58414,6 +59499,51 @@
             "faction": "terran"
           }
         ]
+      },
+      "module_ter_prod_scrap_recycler": {
+        "id": "module_ter_prod_scrap_recycler",
+        "name": "{20104,140101}",
+        "description": "{20104,140102}",
+        "transport": "container",
+        "volume": "1",
+        "tags": "module",
+        "price": {
+          "min": "1719675",
+          "average": "1915898",
+          "max": "2112168"
+        },
+        "production": {
+          "time": "777",
+          "amount": "1",
+          "method": "default",
+          "name": "{20206,901}",
+          "primary": {
+            "ware": [
+              {
+                "ware": "computronicsubstrate",
+                "amount": "99"
+              },
+              {
+                "ware": "energycells",
+                "amount": "131"
+              },
+              {
+                "ware": "siliconcarbide",
+                "amount": "21"
+              }
+            ]
+          }
+        },
+        "component": {
+          "ref": "prod_ter_scrap_recycler_macro",
+          "amount": "1"
+        },
+        "restriction": {
+          "licence": "station_gen_advanced"
+        },
+        "owner": {
+          "faction": "pioneers"
+        }
       },
       "module_ter_prod_siliconcarbide_01": {
         "id": "module_ter_prod_siliconcarbide_01",
@@ -60415,8 +61545,8 @@
       },
       "ship_ter_l_research_01_a": {
         "id": "ship_ter_l_research_01_a",
-        "name": "{20101,63601}",
-        "description": "{20101,63611}",
+        "name": "{20101,63602}",
+        "description": "{20101,63612}",
         "transport": "ship",
         "volume": "1",
         "tags": "noblueprint noplayerblueprint",
@@ -60609,9 +61739,9 @@
         "volume": "1",
         "tags": "ship",
         "price": {
-          "min": "2366240",
+          "min": "1789217",
           "average": "2057600",
-          "max": "1789217"
+          "max": "2366240"
         },
         "production": {
           "time": "27",
@@ -61099,9 +62229,9 @@
         "volume": "1",
         "tags": "ship",
         "price": {
-          "min": "394163",
+          "min": "298043",
           "average": "342750",
-          "max": "298043"
+          "max": "394163"
         },
         "production": {
           "time": "11",
@@ -61485,38 +62615,65 @@
           "average": "1414",
           "max": "1627"
         },
-        "production": {
-          "time": "300",
-          "amount": "48",
-          "method": "default",
-          "name": "{20206,901}",
-          "primary": {
-            "ware": [
-              {
-                "ware": "energycells",
-                "amount": "200"
-              },
-              {
-                "ware": "metallicmicrolattice",
-                "amount": "2"
-              },
-              {
-                "ware": "methane",
-                "amount": "400"
-              },
-              {
-                "ware": "silicon",
-                "amount": "300"
+        "production": [
+          {
+            "time": "300",
+            "amount": "48",
+            "method": "default",
+            "name": "{20206,901}",
+            "primary": {
+              "ware": [
+                {
+                  "ware": "energycells",
+                  "amount": "200"
+                },
+                {
+                  "ware": "metallicmicrolattice",
+                  "amount": "2"
+                },
+                {
+                  "ware": "methane",
+                  "amount": "400"
+                },
+                {
+                  "ware": "silicon",
+                  "amount": "300"
+                }
+              ]
+            },
+            "effects": {
+              "effect": {
+                "type": "work",
+                "product": "0.2"
               }
-            ]
+            }
           },
-          "effects": {
-            "effect": {
-              "type": "work",
-              "product": "0.2"
+          {
+            "time": "300",
+            "amount": "60",
+            "method": "recycling",
+            "name": "{20206,1101}",
+            "tags": "noplayerbuild recycling",
+            "primary": {
+              "ware": [
+                {
+                  "ware": "energycells",
+                  "amount": "4000"
+                },
+                {
+                  "ware": "scrapmetal",
+                  "amount": "250"
+                }
+              ]
+            },
+            "effects": {
+              "effect": {
+                "type": "work",
+                "product": "0.2"
+              }
             }
           }
-        },
+        ],
         "icon": {
           "active": "ware_siliconcarbide",
           "video": "ware_siliconcarbide_macro"
@@ -62904,9 +64061,9 @@
         "volume": "1",
         "tags": "equipment weapon",
         "price": {
-          "min": "2806681",
-          "average": "3301978",
-          "max": "3797274"
+          "min": "4559808",
+          "average": "5364478",
+          "max": "6169148"
         },
         "production": {
           "time": "10",
@@ -62957,9 +64114,9 @@
         "volume": "1",
         "tags": "equipment weapon",
         "price": {
-          "min": "54325",
-          "average": "63912",
-          "max": "73499"
+          "min": "140876",
+          "average": "165736",
+          "max": "190596"
         },
         "production": {
           "time": "10",
@@ -63015,9 +64172,9 @@
         "volume": "1",
         "tags": "equipment weapon",
         "price": {
-          "min": "270141",
-          "average": "317813",
-          "max": "365485"
+          "min": "700151",
+          "average": "823707",
+          "max": "947263"
         },
         "production": {
           "time": "10",
@@ -63507,6 +64664,2002 @@
             "faction": "terran"
           }
         ]
+      },
+      "condensate": {
+        "id": "condensate",
+        "name": "{20201,6701}",
+        "description": "{20201,6702}",
+        "factoryname": "{20201,6704}",
+        "transport": "condensate",
+        "volume": "10",
+        "tags": "condensate economy",
+        "price": {
+          "min": "22500",
+          "average": "25000",
+          "max": "27500"
+        },
+        "icon": {
+          "active": "ware_condensate",
+          "video": "ware_condensate_macro"
+        }
+      },
+      "engine_gen_m_yacht_01_mk1": {
+        "id": "engine_gen_m_yacht_01_mk1",
+        "name": "{20107,9004}",
+        "description": "{20107,9002}",
+        "group": "engines",
+        "transport": "equipment",
+        "volume": "1",
+        "tags": "engine equipment noplayerblueprint",
+        "price": {
+          "min": "601290",
+          "average": "707400",
+          "max": "813510"
+        },
+        "production": [
+          {
+            "time": "20",
+            "amount": "1",
+            "method": "default",
+            "name": "{20206,101}",
+            "primary": {
+              "ware": [
+                {
+                  "ware": "antimatterconverters",
+                  "amount": "200"
+                },
+                {
+                  "ware": "energycells",
+                  "amount": "100"
+                },
+                {
+                  "ware": "engineparts",
+                  "amount": "250"
+                }
+              ]
+            }
+          },
+          {
+            "time": "20",
+            "amount": "1",
+            "method": "closedloop",
+            "name": "{20206,1201}",
+            "primary": {
+              "ware": [
+                {
+                  "ware": "claytronics",
+                  "amount": "34"
+                },
+                {
+                  "ware": "energycells",
+                  "amount": "460"
+                },
+                {
+                  "ware": "hullparts",
+                  "amount": "197"
+                }
+              ]
+            }
+          }
+        ],
+        "component": {
+          "ref": "engine_gen_m_yacht_01_mk1_macro",
+          "amount": "1"
+        },
+        "icon": {
+          "video": "engine_gen_m_yacht_01_mk1_video_macro"
+        },
+        "restriction": {
+          "licence": "generaluseequipment"
+        },
+        "use": {
+          "threshold": "0"
+        },
+        "owner": {
+          "faction": "loanshark"
+        }
+      },
+      "engine_pir_xl_battleship_01_allround_01_mk1": {
+        "id": "engine_pir_xl_battleship_01_allround_01_mk1",
+        "name": "{20107,9014}",
+        "description": "{20107,9012}",
+        "group": "engines",
+        "transport": "equipment",
+        "volume": "1",
+        "tags": "engine equipment",
+        "price": {
+          "min": "45773",
+          "average": "53850",
+          "max": "61928"
+        },
+        "production": {
+          "time": "140",
+          "amount": "1",
+          "method": "default",
+          "name": "{20206,101}",
+          "primary": {
+            "ware": [
+              {
+                "ware": "antimatterconverters",
+                "amount": "11"
+              },
+              {
+                "ware": "energycells",
+                "amount": "45"
+              },
+              {
+                "ware": "engineparts",
+                "amount": "93"
+              }
+            ]
+          }
+        },
+        "component": {
+          "ref": "engine_pir_xl_battleship_01_allround_01_mk1_macro",
+          "amount": "1"
+        },
+        "restriction": {
+          "licence": "capitalequipment"
+        },
+        "use": {
+          "threshold": "0"
+        },
+        "owner": {
+          "faction": "ownerless"
+        }
+      },
+      "inv_condensate_sample": {
+        "id": "inv_condensate_sample",
+        "name": "{20201,55501}",
+        "description": "{20201,55502}",
+        "transport": "inventory",
+        "volume": "1",
+        "tags": "inventory missiononly",
+        "price": {
+          "min": "1",
+          "average": "1",
+          "max": "1"
+        },
+        "icon": {
+          "video": "ware_inventory_condensatesample_macro"
+        }
+      },
+      "inv_research_blackbox": {
+        "id": "inv_research_blackbox",
+        "name": "{20201,55601}",
+        "description": "{20201,55602}",
+        "transport": "inventory",
+        "volume": "1",
+        "tags": "inventory missiononly",
+        "price": {
+          "min": "1",
+          "average": "1",
+          "max": "1"
+        },
+        "icon": {
+          "video": "ware_inventory_researchblackbox_macro"
+        }
+      },
+      "inv_securityapparatus": {
+        "id": "inv_securityapparatus",
+        "name": "{20201,55201}",
+        "description": "{20201,55202}",
+        "transport": "inventory",
+        "volume": "1",
+        "tags": "crafting inventory missiononly",
+        "price": {
+          "min": "38981",
+          "average": "42837",
+          "max": "46692"
+        },
+        "production": {
+          "time": "10",
+          "amount": "1",
+          "method": "default",
+          "name": "{20206,101}",
+          "primary": {
+            "ware": [
+              {
+                "ware": "inv_agidevice_01",
+                "amount": "1"
+              },
+              {
+                "ware": "inv_interfaceunit",
+                "amount": "1"
+              },
+              {
+                "ware": "inv_securityapparatus_chip",
+                "amount": "1"
+              }
+            ]
+          }
+        },
+        "icon": {
+          "video": "ware_inventory_securityapparatus_macro"
+        }
+      },
+      "inv_securityapparatus_chip": {
+        "id": "inv_securityapparatus_chip",
+        "name": "{20201,55301}",
+        "description": "{20201,55302}",
+        "transport": "inventory",
+        "volume": "1",
+        "tags": "crafting inventory missiononly",
+        "price": {
+          "min": "3956",
+          "average": "4347",
+          "max": "4738"
+        },
+        "icon": {
+          "video": "ware_inventory_securityapparatuschip_macro"
+        }
+      },
+      "inv_wormwood_protocols": {
+        "id": "inv_wormwood_protocols",
+        "name": "{20201,55401}",
+        "description": "{20201,55402}",
+        "transport": "inventory",
+        "volume": "1",
+        "tags": "inventory missiononly",
+        "price": {
+          "min": "25000",
+          "average": "25000",
+          "max": "25000"
+        },
+        "icon": {
+          "video": "ware_inventory_wormwoodsecruityprotocols_macro"
+        }
+      },
+      "module_conn_lndm_piratestation_01_core_01": {
+        "id": "module_conn_lndm_piratestation_01_core_01",
+        "name": "{20104,102601}",
+        "description": "{20104,102602}",
+        "transport": "container",
+        "volume": "1",
+        "tags": "module noblueprint",
+        "price": {
+          "min": "405797",
+          "average": "504549",
+          "max": "603302"
+        },
+        "production": {
+          "time": "211",
+          "amount": "1",
+          "method": "default",
+          "name": "{20206,1201}",
+          "primary": {
+            "ware": [
+              {
+                "ware": "claytronics",
+                "amount": "77"
+              },
+              {
+                "ware": "energycells",
+                "amount": "70"
+              },
+              {
+                "ware": "hullparts",
+                "amount": "316"
+              }
+            ]
+          }
+        },
+        "component": {
+          "ref": "landmarks_gen_piratestation_01_core_01_macro",
+          "amount": "1"
+        },
+        "restriction": {
+          "licence": "station_gen_basic"
+        },
+        "owner": {
+          "faction": "loanshark"
+        }
+      },
+      "module_conn_lndm_piratestation_01_exit_01": {
+        "id": "module_conn_lndm_piratestation_01_exit_01",
+        "name": "{20104,102701}",
+        "description": "{20104,102702}",
+        "transport": "container",
+        "volume": "1",
+        "tags": "module noblueprint",
+        "price": {
+          "min": "405797",
+          "average": "504549",
+          "max": "603302"
+        },
+        "production": {
+          "time": "211",
+          "amount": "1",
+          "method": "default",
+          "name": "{20206,1201}",
+          "primary": {
+            "ware": [
+              {
+                "ware": "claytronics",
+                "amount": "77"
+              },
+              {
+                "ware": "energycells",
+                "amount": "70"
+              },
+              {
+                "ware": "hullparts",
+                "amount": "316"
+              }
+            ]
+          }
+        },
+        "component": {
+          "ref": "landmarks_gen_piratestation_01_exit_01_macro",
+          "amount": "1"
+        },
+        "restriction": {
+          "licence": "station_gen_basic"
+        },
+        "owner": {
+          "faction": "loanshark"
+        }
+      },
+      "module_def_lndm_piratestation_02_ring_01": {
+        "id": "module_def_lndm_piratestation_02_ring_01",
+        "name": "{20104,102801}",
+        "description": "{20104,102802}",
+        "transport": "container",
+        "volume": "1",
+        "tags": "module noblueprint",
+        "price": {
+          "min": "4434000",
+          "average": "5513386",
+          "max": "6592772"
+        },
+        "production": {
+          "time": "2309",
+          "amount": "1",
+          "method": "default",
+          "name": "{20206,1201}",
+          "primary": {
+            "ware": [
+              {
+                "ware": "claytronics",
+                "amount": "841"
+              },
+              {
+                "ware": "energycells",
+                "amount": "765"
+              },
+              {
+                "ware": "hullparts",
+                "amount": "3457"
+              }
+            ]
+          }
+        },
+        "component": {
+          "ref": "landmarks_gen_piratestation_02_ring_01_macro",
+          "amount": "1"
+        },
+        "restriction": {
+          "licence": "station_gen_basic"
+        },
+        "owner": {
+          "faction": "loanshark"
+        }
+      },
+      "module_gen_welfare_casino_01": {
+        "id": "module_gen_welfare_casino_01",
+        "name": "{20104,110101}",
+        "description": "{20104,110102}",
+        "transport": "container",
+        "volume": "1",
+        "tags": "missiononly module",
+        "price": {
+          "min": "3311343",
+          "average": "3895697",
+          "max": "4480052"
+        },
+        "production": {
+          "time": "1155",
+          "amount": "1",
+          "method": "default",
+          "name": "{20206,101}",
+          "primary": {
+            "ware": [
+              {
+                "ware": "claytronics",
+                "amount": "594"
+              },
+              {
+                "ware": "energycells",
+                "amount": "541"
+              },
+              {
+                "ware": "hullparts",
+                "amount": "2445"
+              }
+            ]
+          }
+        },
+        "component": {
+          "ref": "welfare_gen_casino_01_macro",
+          "amount": "1"
+        }
+      },
+      "module_hab_lndm_piratestation_01_port_01": {
+        "id": "module_hab_lndm_piratestation_01_port_01",
+        "name": "{20104,102901}",
+        "description": "{20104,102902}",
+        "transport": "container",
+        "volume": "1",
+        "tags": "module noblueprint",
+        "price": {
+          "min": "50244904",
+          "average": "62479590",
+          "max": "74714276"
+        },
+        "production": {
+          "time": "1633",
+          "amount": "1",
+          "method": "default",
+          "name": "{20206,1201}",
+          "primary": {
+            "ware": [
+              {
+                "ware": "claytronics",
+                "amount": "594"
+              },
+              {
+                "ware": "energycells",
+                "amount": "541"
+              },
+              {
+                "ware": "hullparts",
+                "amount": "2445"
+              }
+            ]
+          }
+        },
+        "component": {
+          "ref": "landmarks_gen_piratestation_01_port_01_macro",
+          "amount": "1"
+        },
+        "restriction": {
+          "licence": "station_gen_basic"
+        },
+        "owner": {
+          "faction": "loanshark"
+        }
+      },
+      "module_hab_lndm_piratestation_02_port_01": {
+        "id": "module_hab_lndm_piratestation_02_port_01",
+        "name": "{20104,102901}",
+        "description": "{20104,102902}",
+        "transport": "container",
+        "volume": "1",
+        "tags": "module noblueprint",
+        "price": {
+          "min": "50244904",
+          "average": "62479590",
+          "max": "74714276"
+        },
+        "production": {
+          "time": "1633",
+          "amount": "1",
+          "method": "default",
+          "name": "{20206,1201}",
+          "primary": {
+            "ware": [
+              {
+                "ware": "claytronics",
+                "amount": "594"
+              },
+              {
+                "ware": "energycells",
+                "amount": "541"
+              },
+              {
+                "ware": "hullparts",
+                "amount": "2445"
+              }
+            ]
+          }
+        },
+        "component": {
+          "ref": "landmarks_gen_piratestation_02_port_01_macro",
+          "amount": "1"
+        },
+        "restriction": {
+          "licence": "station_gen_basic"
+        },
+        "owner": {
+          "faction": "loanshark"
+        }
+      },
+      "module_hab_lndm_piratestation_02_ring_02": {
+        "id": "module_hab_lndm_piratestation_02_ring_02",
+        "name": "{20104,103001}",
+        "description": "{20104,103002}",
+        "transport": "container",
+        "volume": "1",
+        "tags": "module noblueprint",
+        "price": {
+          "min": "50244904",
+          "average": "62479590",
+          "max": "74714276"
+        },
+        "production": {
+          "time": "1633",
+          "amount": "1",
+          "method": "default",
+          "name": "{20206,1201}",
+          "primary": {
+            "ware": [
+              {
+                "ware": "claytronics",
+                "amount": "594"
+              },
+              {
+                "ware": "energycells",
+                "amount": "541"
+              },
+              {
+                "ware": "hullparts",
+                "amount": "2445"
+              }
+            ]
+          }
+        },
+        "component": {
+          "ref": "landmarks_gen_piratestation_02_ring_02_macro",
+          "amount": "1"
+        },
+        "restriction": {
+          "licence": "station_gen_basic"
+        },
+        "owner": {
+          "faction": "loanshark"
+        }
+      },
+      "module_pir_hab_l_01": {
+        "id": "module_pir_hab_l_01",
+        "name": "{20104,31801}",
+        "description": "{20104,31802}",
+        "transport": "container",
+        "volume": "1",
+        "tags": "module",
+        "price": {
+          "min": "17721792",
+          "average": "22037202",
+          "max": "26352612"
+        },
+        "production": {
+          "time": "1155",
+          "amount": "1",
+          "method": "default",
+          "name": "{20206,1201}",
+          "primary": {
+            "ware": [
+              {
+                "ware": "claytronics",
+                "amount": "420"
+              },
+              {
+                "ware": "energycells",
+                "amount": "383"
+              },
+              {
+                "ware": "hullparts",
+                "amount": "1729"
+              }
+            ]
+          }
+        },
+        "component": {
+          "ref": "hab_pir_l_01_macro",
+          "amount": "1"
+        },
+        "restriction": {
+          "licence": "station_gen_advanced"
+        },
+        "owner": [
+          {
+            "faction": "loanshark"
+          },
+          {
+            "faction": "scavenger"
+          }
+        ]
+      },
+      "module_pir_hab_m_01": {
+        "id": "module_pir_hab_m_01",
+        "name": "{20104,31701}",
+        "description": "{20104,31702}",
+        "transport": "container",
+        "volume": "1",
+        "tags": "module",
+        "price": {
+          "min": "12530160",
+          "average": "15581052",
+          "max": "18631944"
+        },
+        "production": {
+          "time": "816",
+          "amount": "1",
+          "method": "default",
+          "name": "{20206,1201}",
+          "primary": {
+            "ware": [
+              {
+                "ware": "claytronics",
+                "amount": "297"
+              },
+              {
+                "ware": "energycells",
+                "amount": "271"
+              },
+              {
+                "ware": "hullparts",
+                "amount": "1222"
+              }
+            ]
+          }
+        },
+        "component": {
+          "ref": "hab_pir_m_01_macro",
+          "amount": "1"
+        },
+        "restriction": {
+          "licence": "station_gen_advanced"
+        },
+        "owner": [
+          {
+            "faction": "loanshark"
+          },
+          {
+            "faction": "scavenger"
+          }
+        ]
+      },
+      "module_pir_hab_s_01": {
+        "id": "module_pir_hab_s_01",
+        "name": "{20104,31601}",
+        "description": "{20104,31602}",
+        "transport": "container",
+        "volume": "1",
+        "tags": "module",
+        "price": {
+          "min": "8689428",
+          "average": "10804878",
+          "max": "12920328"
+        },
+        "production": {
+          "time": "566",
+          "amount": "1",
+          "method": "default",
+          "name": "{20206,1201}",
+          "primary": {
+            "ware": [
+              {
+                "ware": "claytronics",
+                "amount": "206"
+              },
+              {
+                "ware": "energycells",
+                "amount": "188"
+              },
+              {
+                "ware": "hullparts",
+                "amount": "847"
+              }
+            ]
+          }
+        },
+        "component": {
+          "ref": "hab_pir_s_01_macro",
+          "amount": "1"
+        },
+        "restriction": {
+          "licence": "station_gen_advanced"
+        },
+        "owner": [
+          {
+            "faction": "loanshark"
+          },
+          {
+            "faction": "scavenger"
+          }
+        ]
+      },
+      "module_pir_stor_condensate_l_01": {
+        "id": "module_pir_stor_condensate_l_01",
+        "name": "{20104,92501}",
+        "description": "{20104,92502}",
+        "transport": "container",
+        "volume": "1",
+        "tags": "module",
+        "price": {
+          "min": "1433988",
+          "average": "1790186",
+          "max": "2146384"
+        },
+        "production": {
+          "time": "1033",
+          "amount": "1",
+          "method": "default",
+          "name": "{20206,1201}",
+          "primary": {
+            "ware": [
+              {
+                "ware": "claytronics",
+                "amount": "291"
+              },
+              {
+                "ware": "energycells",
+                "amount": "265"
+              },
+              {
+                "ware": "hullparts",
+                "amount": "1198"
+              }
+            ]
+          }
+        },
+        "component": {
+          "ref": "storage_pir_l_condensate_01_macro",
+          "amount": "1"
+        },
+        "restriction": {
+          "licence": "station_gen_advanced"
+        },
+        "owner": {
+          "faction": "scavenger"
+        }
+      },
+      "module_pir_stor_condensate_s_01": {
+        "id": "module_pir_stor_condensate_s_01",
+        "name": "{20104,92601}",
+        "description": "{20104,92602}",
+        "transport": "container",
+        "volume": "1",
+        "tags": "missiononly module nocustomgamestart",
+        "price": {
+          "min": "454298",
+          "average": "567097",
+          "max": "679896"
+        },
+        "production": {
+          "time": "327",
+          "amount": "1",
+          "method": "default",
+          "name": "{20206,1201}",
+          "primary": {
+            "ware": [
+              {
+                "ware": "claytronics",
+                "amount": "92"
+              },
+              {
+                "ware": "energycells",
+                "amount": "84"
+              },
+              {
+                "ware": "hullparts",
+                "amount": "379"
+              }
+            ]
+          }
+        },
+        "component": {
+          "ref": "storage_pir_s_condensate_01_macro",
+          "amount": "1"
+        },
+        "restriction": {
+          "licence": "station_gen_basic"
+        },
+        "owner": {
+          "faction": "scavenger"
+        }
+      },
+      "module_stor_lndm_piratestation_01_ring_01": {
+        "id": "module_stor_lndm_piratestation_01_ring_01",
+        "name": "{20104,103101}",
+        "description": "{20104,103102}",
+        "transport": "container",
+        "volume": "1",
+        "tags": "module noblueprint",
+        "price": {
+          "min": "1534842",
+          "average": "1908590",
+          "max": "2282338"
+        },
+        "production": {
+          "time": "1033",
+          "amount": "1",
+          "method": "default",
+          "name": "{20206,1201}",
+          "primary": {
+            "ware": [
+              {
+                "ware": "claytronics",
+                "amount": "291"
+              },
+              {
+                "ware": "energycells",
+                "amount": "265"
+              },
+              {
+                "ware": "hullparts",
+                "amount": "1198"
+              }
+            ]
+          }
+        },
+        "component": {
+          "ref": "landmarks_gen_piratestation_01_ring_01_macro",
+          "amount": "1"
+        },
+        "restriction": {
+          "licence": "station_gen_basic"
+        },
+        "owner": {
+          "faction": "loanshark"
+        }
+      },
+      "module_stor_lndm_piratestation_02_storage_01": {
+        "id": "module_stor_lndm_piratestation_02_storage_01",
+        "name": "{20104,103201}",
+        "description": "{20104,103202}",
+        "transport": "container",
+        "volume": "1",
+        "tags": "module noblueprint",
+        "price": {
+          "min": "1534842",
+          "average": "1908590",
+          "max": "2282338"
+        },
+        "production": {
+          "time": "1033",
+          "amount": "1",
+          "method": "default",
+          "name": "{20206,1201}",
+          "primary": {
+            "ware": [
+              {
+                "ware": "claytronics",
+                "amount": "291"
+              },
+              {
+                "ware": "energycells",
+                "amount": "265"
+              },
+              {
+                "ware": "hullparts",
+                "amount": "1198"
+              }
+            ]
+          }
+        },
+        "component": {
+          "ref": "landmarks_gen_piratestation_02_storage_01_macro",
+          "amount": "1"
+        },
+        "restriction": {
+          "licence": "station_gen_basic"
+        },
+        "owner": {
+          "faction": "loanshark"
+        }
+      },
+      "module_stor_lndm_piratestation_02_storage_02": {
+        "id": "module_stor_lndm_piratestation_02_storage_02",
+        "name": "{20104,103201}",
+        "description": "{20104,103202}",
+        "transport": "container",
+        "volume": "1",
+        "tags": "module noblueprint",
+        "price": {
+          "min": "1534842",
+          "average": "1908590",
+          "max": "2282338"
+        },
+        "production": {
+          "time": "1033",
+          "amount": "1",
+          "method": "default",
+          "name": "{20206,1201}",
+          "primary": {
+            "ware": [
+              {
+                "ware": "claytronics",
+                "amount": "291"
+              },
+              {
+                "ware": "energycells",
+                "amount": "265"
+              },
+              {
+                "ware": "hullparts",
+                "amount": "1198"
+              }
+            ]
+          }
+        },
+        "component": {
+          "ref": "landmarks_gen_piratestation_02_storage_02_macro",
+          "amount": "1"
+        },
+        "restriction": {
+          "licence": "station_gen_basic"
+        },
+        "owner": {
+          "faction": "loanshark"
+        }
+      },
+      "research_condensate_sample": {
+        "id": "research_condensate_sample",
+        "name": "{20216,1801}",
+        "description": "{20216,1802}",
+        "transport": "research",
+        "volume": "1",
+        "tags": "research",
+        "sortorder": "401",
+        "price": {
+          "min": "1",
+          "average": "1",
+          "max": "1"
+        },
+        "research": {
+          "time": "300",
+          "primary": {
+            "ware": [
+              {
+                "ware": "antimattercells",
+                "amount": "100"
+              },
+              {
+                "ware": "energycells",
+                "amount": "3000"
+              },
+              {
+                "ware": "plasmaconductors",
+                "amount": "500"
+              }
+            ]
+          },
+          "research": {
+            "ware": {
+              "ware": "research_condensate_sample_pre"
+            }
+          }
+        }
+      },
+      "research_condensate_sample_pre": {
+        "id": "research_condensate_sample_pre",
+        "name": "{20216,1901}",
+        "description": "{20216,1902}",
+        "transport": "research",
+        "volume": "1",
+        "tags": "missiononly research",
+        "sortorder": "401",
+        "price": {
+          "min": "1",
+          "average": "1",
+          "max": "1"
+        },
+        "research": {
+          "time": "10",
+          "primary": {
+            "ware": [
+              {
+                "ware": "antimattercells",
+                "amount": "150"
+              },
+              {
+                "ware": "energycells",
+                "amount": "3000"
+              },
+              {
+                "ware": "plasmaconductors",
+                "amount": "1000"
+              }
+            ]
+          }
+        }
+      },
+      "research_erlking_core": {
+        "id": "research_erlking_core",
+        "name": "{20216,2001}",
+        "description": "{20216,2002}",
+        "transport": "research",
+        "volume": "1",
+        "tags": "research",
+        "sortorder": "501",
+        "price": {
+          "min": "1",
+          "average": "1",
+          "max": "1"
+        },
+        "research": {
+          "time": "600",
+          "primary": {
+            "ware": {
+              "ware": "energycells",
+              "amount": "10000"
+            }
+          }
+        }
+      },
+      "research_module_welfare_2": {
+        "id": "research_module_welfare_2",
+        "name": "{20216,2201}",
+        "description": "{20216,2202}",
+        "transport": "research",
+        "volume": "1",
+        "tags": "research",
+        "sortorder": "305",
+        "price": {
+          "min": "1",
+          "average": "1",
+          "max": "1"
+        },
+        "research": {
+          "time": "600",
+          "research": {
+            "ware": [
+              {
+                "ware": "research_module_welfare_1"
+              },
+              {
+                "ware": "research_module_welfare_2_pre"
+              }
+            ]
+          }
+        }
+      },
+      "research_module_welfare_2_pre": {
+        "id": "research_module_welfare_2_pre",
+        "name": "{20216,2401}",
+        "description": "{20216,2402}",
+        "transport": "research",
+        "volume": "1",
+        "tags": "hidden missiononly research",
+        "sortorder": "305",
+        "price": {
+          "min": "1",
+          "average": "1",
+          "max": "1"
+        },
+        "research": {
+          "time": "10",
+          "research": {
+            "ware": {
+              "ware": "research_module_welfare_1"
+            }
+          }
+        }
+      },
+      "shield_gen_m_yacht_01_mk1": {
+        "id": "shield_gen_m_yacht_01_mk1",
+        "name": "{20106,9004}",
+        "description": "{20106,9002}",
+        "group": "shields",
+        "transport": "equipment",
+        "volume": "1",
+        "tags": "equipment noplayerblueprint shield",
+        "price": {
+          "min": "52958",
+          "average": "62304",
+          "max": "71650"
+        },
+        "production": [
+          {
+            "time": "10",
+            "amount": "1",
+            "method": "default",
+            "name": "{20206,101}",
+            "primary": {
+              "ware": [
+                {
+                  "ware": "energycells",
+                  "amount": "100"
+                },
+                {
+                  "ware": "fieldcoils",
+                  "amount": "50"
+                },
+                {
+                  "ware": "shieldcomponents",
+                  "amount": "20"
+                }
+              ]
+            }
+          },
+          {
+            "time": "10",
+            "amount": "1",
+            "method": "closedloop",
+            "name": "{20206,1201}",
+            "primary": {
+              "ware": [
+                {
+                  "ware": "claytronics",
+                  "amount": "7"
+                },
+                {
+                  "ware": "energycells",
+                  "amount": "168"
+                },
+                {
+                  "ware": "hullparts",
+                  "amount": "43"
+                }
+              ]
+            }
+          }
+        ],
+        "component": {
+          "ref": "shield_gen_m_yacht_01_mk1_macro",
+          "amount": "1"
+        },
+        "restriction": {
+          "licence": "generaluseequipment"
+        },
+        "use": {
+          "threshold": "0"
+        },
+        "owner": {
+          "faction": "loanshark"
+        }
+      },
+      "shield_pir_xl_battleship_01_standard_01_mk1": {
+        "id": "shield_pir_xl_battleship_01_standard_01_mk1",
+        "name": "{20106,9014}",
+        "description": "{20106,9012}",
+        "group": "shields",
+        "transport": "equipment",
+        "volume": "1",
+        "tags": "equipment shield",
+        "price": {
+          "min": "102082",
+          "average": "120096",
+          "max": "138110"
+        },
+        "production": {
+          "time": "20",
+          "amount": "1",
+          "method": "default",
+          "name": "{20206,101}",
+          "primary": {
+            "ware": [
+              {
+                "ware": "energycells",
+                "amount": "200"
+              },
+              {
+                "ware": "fieldcoils",
+                "amount": "100"
+              },
+              {
+                "ware": "shieldcomponents",
+                "amount": "30"
+              }
+            ]
+          }
+        },
+        "component": {
+          "ref": "shield_pir_xl_battleship_01_standard_01_mk1_macro",
+          "amount": "1"
+        },
+        "restriction": {
+          "licence": "capitalequipment"
+        },
+        "use": {
+          "threshold": "0"
+        },
+        "owner": {
+          "faction": "ownerless"
+        }
+      },
+      "ship_gen_m_yacht_01_a": {
+        "id": "ship_gen_m_yacht_01_a",
+        "name": "{20101,120101}",
+        "description": "{20101,120111}",
+        "transport": "ship",
+        "volume": "1",
+        "tags": "noblueprint noplayerbuild ship",
+        "price": {
+          "min": "1844500",
+          "average": "2170000",
+          "max": "2495500"
+        },
+        "production": {
+          "time": "300",
+          "amount": "1",
+          "method": "default",
+          "name": "{20206,101}",
+          "primary": {
+            "ware": [
+              {
+                "ware": "energycells",
+                "amount": "1000"
+              },
+              {
+                "ware": "hullparts",
+                "amount": "2000"
+              }
+            ]
+          }
+        },
+        "component": {
+          "ref": "ship_gen_m_yacht_01_a_macro",
+          "amount": "1"
+        },
+        "restriction": {
+          "licence": "generaluseequipment"
+        },
+        "owner": {
+          "faction": "loanshark"
+        }
+      },
+      "ship_pir_l_miner_solid_01_a": {
+        "id": "ship_pir_l_miner_solid_01_a",
+        "name": "{20101,81601}",
+        "description": "{20101,81611}",
+        "transport": "ship",
+        "volume": "1",
+        "tags": "ship",
+        "price": {
+          "min": "1090800",
+          "average": "1564470",
+          "max": "2038140"
+        },
+        "production": {
+          "time": "86",
+          "amount": "1",
+          "method": "default",
+          "name": "{20206,101}",
+          "primary": {
+            "ware": [
+              {
+                "ware": "energycells",
+                "amount": "354"
+              },
+              {
+                "ware": "hullparts",
+                "amount": "1470"
+              }
+            ]
+          }
+        },
+        "component": {
+          "ref": "ship_pir_l_miner_solid_01_a_macro",
+          "amount": "1"
+        },
+        "restriction": {
+          "licence": "capitalship"
+        },
+        "owner": {
+          "faction": "loanshark"
+        }
+      },
+      "ship_pir_l_scavenger_01_a": {
+        "id": "ship_pir_l_scavenger_01_a",
+        "name": "{20101,81501}",
+        "description": "{20101,81511}",
+        "transport": "ship",
+        "volume": "1",
+        "tags": "ship",
+        "price": {
+          "min": "5382530",
+          "average": "7714025",
+          "max": "10045520"
+        },
+        "production": {
+          "time": "258.75",
+          "amount": "1",
+          "method": "default",
+          "name": "{20206,101}",
+          "primary": {
+            "ware": [
+              {
+                "ware": "energycells",
+                "amount": "1056"
+              },
+              {
+                "ware": "hullparts",
+                "amount": "7301"
+              }
+            ]
+          }
+        },
+        "component": {
+          "ref": "ship_pir_l_scavenger_01_a_macro",
+          "amount": "1"
+        },
+        "restriction": {
+          "licence": "capitalship"
+        },
+        "owner": {
+          "faction": "loanshark"
+        }
+      },
+      "ship_pir_l_scavenger_01_a_storyhighcapacity": {
+        "id": "ship_pir_l_scavenger_01_a_storyhighcapacity",
+        "name": "{20101,81501}",
+        "description": "{20101,81511}",
+        "transport": "ship",
+        "volume": "1",
+        "tags": "noblueprint noplayerblueprint",
+        "price": {
+          "min": "3909363",
+          "average": "4599250",
+          "max": "5289138"
+        },
+        "production": {
+          "time": "258.75",
+          "amount": "1",
+          "method": "default",
+          "name": "{20206,101}",
+          "primary": {
+            "ware": [
+              {
+                "ware": "energycells",
+                "amount": "1056"
+              },
+              {
+                "ware": "hullparts",
+                "amount": "7301"
+              }
+            ]
+          }
+        },
+        "component": {
+          "ref": "ship_pir_l_scavenger_01_a_storyhighcapacity_macro",
+          "amount": "1"
+        }
+      },
+      "ship_pir_l_scrapper_01": {
+        "id": "ship_pir_l_scrapper_01",
+        "name": "{20101,81201}",
+        "description": "{20101,81202}",
+        "transport": "ship",
+        "volume": "1",
+        "tags": "ship",
+        "price": {
+          "min": "3013480",
+          "average": "4322065",
+          "max": "5630650"
+        },
+        "production": {
+          "time": "239.2",
+          "amount": "1",
+          "method": "default",
+          "name": "{20206,101}",
+          "primary": {
+            "ware": [
+              {
+                "ware": "energycells",
+                "amount": "1094"
+              },
+              {
+                "ware": "hullparts",
+                "amount": "4539"
+              }
+            ]
+          }
+        },
+        "component": {
+          "ref": "ship_pir_l_scrapper_01_macro",
+          "amount": "1"
+        },
+        "restriction": {
+          "licence": "generaluseship"
+        },
+        "owner": {
+          "faction": "scavenger"
+        }
+      },
+      "ship_pir_s_fighter_01_a": {
+        "id": "ship_pir_s_fighter_01_a",
+        "name": "{20101,81801}",
+        "description": "{20101,81811}",
+        "transport": "ship",
+        "volume": "1",
+        "tags": "ship",
+        "price": {
+          "min": "36250",
+          "average": "53080",
+          "max": "69910"
+        },
+        "production": {
+          "time": "10.35",
+          "amount": "1",
+          "method": "default",
+          "name": "{20206,101}",
+          "primary": {
+            "ware": [
+              {
+                "ware": "energycells",
+                "amount": "141"
+              },
+              {
+                "ware": "hullparts",
+                "amount": "40"
+              }
+            ]
+          }
+        },
+        "component": {
+          "ref": "ship_pir_s_fighter_01_a_macro",
+          "amount": "1"
+        },
+        "restriction": {
+          "licence": "militaryship"
+        },
+        "owner": {
+          "faction": "loanshark"
+        }
+      },
+      "ship_pir_s_fighter_02_a": {
+        "id": "ship_pir_s_fighter_02_a",
+        "name": "{20101,82801}",
+        "description": "{20101,82811}",
+        "transport": "ship",
+        "volume": "1",
+        "tags": "ship",
+        "price": {
+          "min": "122070",
+          "average": "175140",
+          "max": "228210"
+        },
+        "production": {
+          "time": "11.5",
+          "amount": "1",
+          "method": "default",
+          "name": "{20206,101}",
+          "primary": {
+            "ware": [
+              {
+                "ware": "energycells",
+                "amount": "47"
+              },
+              {
+                "ware": "hullparts",
+                "amount": "164"
+              }
+            ]
+          }
+        },
+        "component": {
+          "ref": "ship_pir_s_fighter_02_a_macro",
+          "amount": "1"
+        },
+        "restriction": {
+          "licence": "militaryship"
+        },
+        "owner": {
+          "faction": "loanshark"
+        }
+      },
+      "ship_pir_s_heavyfighter_01_a": {
+        "id": "ship_pir_s_heavyfighter_01_a",
+        "name": "{20101,82901}",
+        "description": "{20101,82911}",
+        "transport": "ship",
+        "volume": "1",
+        "tags": "ship",
+        "price": {
+          "min": "191310",
+          "average": "274485",
+          "max": "357660"
+        },
+        "production": {
+          "time": "18.4",
+          "amount": "1",
+          "method": "default",
+          "name": "{20206,101}",
+          "primary": {
+            "ware": [
+              {
+                "ware": "energycells",
+                "amount": "74"
+              },
+              {
+                "ware": "hullparts",
+                "amount": "257"
+              }
+            ]
+          }
+        },
+        "component": {
+          "ref": "ship_pir_s_heavyfighter_01_a_macro",
+          "amount": "1"
+        },
+        "restriction": {
+          "licence": "militaryship"
+        },
+        "owner": {
+          "faction": "loanshark"
+        }
+      },
+      "ship_pir_s_trans_condensate_01_a": {
+        "id": "ship_pir_s_trans_condensate_01_a",
+        "name": "{20101,81903}",
+        "description": "{20101,81913}",
+        "transport": "ship",
+        "volume": "1",
+        "tags": "ship",
+        "price": {
+          "min": "151870",
+          "average": "217900",
+          "max": "283930"
+        },
+        "production": {
+          "time": "14.95",
+          "amount": "1",
+          "method": "default",
+          "name": "{20206,101}",
+          "primary": {
+            "ware": [
+              {
+                "ware": "energycells",
+                "amount": "59"
+              },
+              {
+                "ware": "hullparts",
+                "amount": "204"
+              }
+            ]
+          }
+        },
+        "component": {
+          "ref": "ship_pir_s_trans_condensate_01_a_macro",
+          "amount": "1"
+        },
+        "restriction": {
+          "licence": "militaryship"
+        },
+        "owner": [
+          {
+            "faction": "loanshark"
+          },
+          {
+            "faction": "scavenger"
+          }
+        ]
+      },
+      "ship_pir_s_trans_container_01_a": {
+        "id": "ship_pir_s_trans_container_01_a",
+        "name": "{20101,81902}",
+        "description": "{20101,81912}",
+        "transport": "ship",
+        "volume": "1",
+        "tags": "ship",
+        "price": {
+          "min": "142180",
+          "average": "203995",
+          "max": "265810"
+        },
+        "production": {
+          "time": "13.8",
+          "amount": "1",
+          "method": "default",
+          "name": "{20206,101}",
+          "primary": {
+            "ware": [
+              {
+                "ware": "energycells",
+                "amount": "55"
+              },
+              {
+                "ware": "hullparts",
+                "amount": "191"
+              }
+            ]
+          }
+        },
+        "component": {
+          "ref": "ship_pir_s_trans_container_01_a_macro",
+          "amount": "1"
+        },
+        "restriction": {
+          "licence": "generaluseship"
+        },
+        "owner": [
+          {
+            "faction": "loanshark"
+          },
+          {
+            "faction": "scavenger"
+          }
+        ]
+      },
+      "ship_pir_xl_battleship_01_a": {
+        "id": "ship_pir_xl_battleship_01_a",
+        "name": "{20101,121101}",
+        "description": "{20101,121111}",
+        "transport": "ship",
+        "volume": "1",
+        "tags": "nocustomgamestart ship",
+        "price": {
+          "min": "10407890",
+          "average": "14920415",
+          "max": "19432940"
+        },
+        "production": {
+          "time": "542",
+          "amount": "1",
+          "method": "default",
+          "name": "{20206,101}",
+          "primary": {
+            "ware": [
+              {
+                "ware": "energycells",
+                "amount": "2996"
+              },
+              {
+                "ware": "hullparts",
+                "amount": "16569"
+              }
+            ]
+          },
+          "research": {
+            "ware": {
+              "ware": "research_erlking_core"
+            }
+          }
+        },
+        "component": {
+          "ref": "ship_pir_xl_battleship_01_a_macro",
+          "amount": "1"
+        },
+        "restriction": {
+          "licence": "capitalship"
+        },
+        "owner": {
+          "faction": "ownerless"
+        }
+      },
+      "ship_pir_xl_builder_01": {
+        "id": "ship_pir_xl_builder_01",
+        "name": "{20101,81101}",
+        "description": "{20101,81111}",
+        "transport": "ship",
+        "volume": "1",
+        "tags": "ship",
+        "price": {
+          "min": "8001560",
+          "average": "11470775",
+          "max": "14939990"
+        },
+        "production": {
+          "time": "479.55",
+          "amount": "1",
+          "method": "default",
+          "name": "{20206,101}",
+          "primary": {
+            "ware": [
+              {
+                "ware": "energycells",
+                "amount": "1957"
+              },
+              {
+                "ware": "hullparts",
+                "amount": "10827"
+              }
+            ]
+          }
+        },
+        "component": {
+          "ref": "ship_pir_xl_builder_01_macro",
+          "amount": "1"
+        },
+        "restriction": {
+          "licence": "generaluseship"
+        },
+        "owner": [
+          {
+            "faction": "loanshark"
+          },
+          {
+            "faction": "scavenger"
+          }
+        ]
+      },
+      "turret_gen_m_yacht_01_mk1": {
+        "id": "turret_gen_m_yacht_01_mk1",
+        "name": "{20105,9004}",
+        "description": "{20105,9002}",
+        "group": "weapons",
+        "transport": "equipment",
+        "volume": "1",
+        "tags": "equipment noplayerblueprint turret",
+        "price": {
+          "min": "81192",
+          "average": "95520",
+          "max": "109848"
+        },
+        "production": [
+          {
+            "time": "20",
+            "amount": "1",
+            "method": "default",
+            "name": "{20206,101}",
+            "primary": {
+              "ware": [
+                {
+                  "ware": "advancedelectronics",
+                  "amount": "10"
+                },
+                {
+                  "ware": "energycells",
+                  "amount": "20"
+                },
+                {
+                  "ware": "turretcomponents",
+                  "amount": "20"
+                }
+              ]
+            }
+          },
+          {
+            "time": "20",
+            "amount": "1",
+            "method": "closedloop",
+            "name": "{20206,1201}",
+            "primary": {
+              "ware": [
+                {
+                  "ware": "claytronics",
+                  "amount": "4"
+                },
+                {
+                  "ware": "energycells",
+                  "amount": "145"
+                },
+                {
+                  "ware": "hullparts",
+                  "amount": "26"
+                }
+              ]
+            }
+          }
+        ],
+        "component": {
+          "ref": "turret_gen_m_yacht_01_mk1_macro",
+          "amount": "1"
+        },
+        "restriction": {
+          "licence": "generaluseequipment"
+        },
+        "use": {
+          "threshold": "0"
+        },
+        "owner": {
+          "faction": "loanshark"
+        }
+      },
+      "turret_pir_l_battleship_01_laser_01_mk1": {
+        "id": "turret_pir_l_battleship_01_laser_01_mk1",
+        "name": "{20105,9044}",
+        "description": "{20105,9042}",
+        "group": "turrets",
+        "transport": "equipment",
+        "volume": "1",
+        "tags": "equipment turret",
+        "price": {
+          "min": "12105",
+          "average": "14242",
+          "max": "16378"
+        },
+        "production": {
+          "time": "10",
+          "amount": "1",
+          "method": "default",
+          "name": "{20206,101}",
+          "primary": {
+            "ware": [
+              {
+                "ware": "advancedelectronics",
+                "amount": "4"
+              },
+              {
+                "ware": "energycells",
+                "amount": "15"
+              },
+              {
+                "ware": "turretcomponents",
+                "amount": "6"
+              }
+            ]
+          }
+        },
+        "component": {
+          "ref": "turret_pir_l_battleship_01_laser_01_mk1_macro",
+          "amount": "1"
+        },
+        "restriction": {
+          "licence": "capitalequipment"
+        },
+        "use": {
+          "threshold": "0"
+        },
+        "owner": {
+          "faction": "ownerless"
+        }
+      },
+      "turret_pir_m_battleship_01_gatling_02_mk1": {
+        "id": "turret_pir_m_battleship_01_gatling_02_mk1",
+        "name": "{20105,9054}",
+        "description": "{20105,9052}",
+        "group": "turrets",
+        "transport": "equipment",
+        "volume": "1",
+        "tags": "equipment turret",
+        "price": {
+          "min": "11451",
+          "average": "13471",
+          "max": "15492"
+        },
+        "production": {
+          "time": "10",
+          "amount": "1",
+          "method": "default",
+          "name": "{20206,101}",
+          "primary": {
+            "ware": [
+              {
+                "ware": "advancedelectronics",
+                "amount": "4"
+              },
+              {
+                "ware": "energycells",
+                "amount": "12"
+              },
+              {
+                "ware": "turretcomponents",
+                "amount": "5"
+              }
+            ]
+          }
+        },
+        "component": {
+          "ref": "turret_pir_m_battleship_01_gatling_02_mk1_macro",
+          "amount": "1"
+        },
+        "restriction": {
+          "licence": "capitalequipment"
+        },
+        "use": {
+          "threshold": "0"
+        },
+        "owner": {
+          "faction": "ownerless"
+        }
+      },
+      "weapon_gen_m_yacht_01_mk1": {
+        "id": "weapon_gen_m_yacht_01_mk1",
+        "name": "{20105,9014}",
+        "description": "{20105,9012}",
+        "group": "weapons",
+        "transport": "equipment",
+        "volume": "1",
+        "tags": "equipment noplayerblueprint weapon",
+        "price": {
+          "min": "116382",
+          "average": "136920",
+          "max": "157458"
+        },
+        "production": [
+          {
+            "time": "10",
+            "amount": "1",
+            "method": "default",
+            "name": "{20206,101}",
+            "primary": {
+              "ware": [
+                {
+                  "ware": "advancedelectronics",
+                  "amount": "30"
+                },
+                {
+                  "ware": "energycells",
+                  "amount": "200"
+                },
+                {
+                  "ware": "weaponcomponents",
+                  "amount": "120"
+                }
+              ]
+            }
+          },
+          {
+            "time": "10",
+            "amount": "1",
+            "method": "closedloop",
+            "name": "{20206,1201}",
+            "primary": {
+              "ware": [
+                {
+                  "ware": "claytronics",
+                  "amount": "19"
+                },
+                {
+                  "ware": "energycells",
+                  "amount": "340"
+                },
+                {
+                  "ware": "hullparts",
+                  "amount": "113"
+                }
+              ]
+            }
+          }
+        ],
+        "component": {
+          "ref": "weapon_gen_m_yacht_01_mk1_macro",
+          "amount": "1"
+        },
+        "icon": {
+          "video": "weapon_gen_m_yacht_01_mk1_video_macro"
+        },
+        "restriction": {
+          "licence": "generaluseequipment"
+        },
+        "use": {
+          "threshold": "0"
+        },
+        "owner": {
+          "faction": "loanshark"
+        }
+      },
+      "weapon_pir_xl_battleship_01_mk1": {
+        "id": "weapon_pir_xl_battleship_01_mk1",
+        "name": "{20105,9034}",
+        "description": "{20105,9032}",
+        "group": "weapons",
+        "transport": "equipment",
+        "volume": "1",
+        "tags": "equipment weapon",
+        "price": {
+          "min": "485683",
+          "average": "571392",
+          "max": "657101"
+        },
+        "production": {
+          "time": "10",
+          "amount": "1",
+          "method": "default",
+          "name": "{20206,101}",
+          "primary": {
+            "ware": [
+              {
+                "ware": "advancedelectronics",
+                "amount": "150"
+              },
+              {
+                "ware": "energycells",
+                "amount": "30"
+              },
+              {
+                "ware": "weaponcomponents",
+                "amount": "300"
+              }
+            ]
+          }
+        },
+        "component": {
+          "ref": "weapon_pir_xl_battleship_01_mk1_macro",
+          "amount": "1"
+        },
+        "restriction": {
+          "licence": "capitalequipment"
+        },
+        "use": {
+          "threshold": "0"
+        },
+        "owner": {
+          "faction": "ownerless"
+        }
       }
     }
   }

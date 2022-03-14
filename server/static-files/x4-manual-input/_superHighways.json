@@ -22,6 +22,8 @@
     {"origin": {"x": 1123, "y": -58}, "destination": {"x": 1152, "y": 64}},
     {"origin": {"x": 1336, "y": 353}, "destination": {"x": 1279, "y": 268}},
     {"origin": {"x": 1090, "y": 413}, "destination": {"x": 1173, "y": 448}},
-    {"origin": {"x": -2283, "y": 377}, "destination": {"x": -2210, "y": 408}}
+    {"origin": {"x": -2283, "y": 377}, "destination": {"x": -2210, "y": 408}},
+    {"origin": {"x": -38, "y": -245}, "destination": {"x": 20, "y": -242}},
+    {"origin": {"x": 47, "y": -239}, "destination": {"x": 18, "y": -187}}
   ]
 }

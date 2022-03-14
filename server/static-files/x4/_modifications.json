@@ -1511,7 +1511,7 @@
           "max": "1.3",
           "bonus": {
             "chance": "1.0",
-            "max": "5",
+            "max": "4",
             "forwardthrust": {
               "min": "1.05",
               "max": "1.15"
@@ -1921,7 +1921,7 @@
           "max": "1.5",
           "bonus": {
             "chance": "1.0",
-            "max": "3",
+            "max": "2",
             "forwardthrust": {
               "min": "1.05",
               "max": "1.15"
@@ -2290,6 +2290,170 @@
             },
             {
               "ware": "Basic Ship Nanoweave",
+              "amount": "1"
+            }
+          ]
+        }
+      ],
+      "radarcloak": [
+        {
+          "ware": "mod_ship_radarcloak_01_mk1",
+          "quality": "1",
+          "min": "-0.45",
+          "max": "-0.3",
+          "bonus": {
+            "chance": "1.0",
+            "max": "1",
+            "radarrange": {
+              "min": "0.55",
+              "max": "0.7"
+            }
+          },
+          "name": "Cloak",
+          "description": "Radar Visibility Mod - Basic Quality",
+          "production": [
+            {
+              "ware": "Nividium Crystallite",
+              "amount": "3"
+            },
+            {
+              "ware": "Basic Ship Nanoweave",
+              "amount": "1"
+            }
+          ]
+        },
+        {
+          "ware": "mod_ship_radarcloak_01_mk2",
+          "quality": "2",
+          "min": "-0.35",
+          "max": "-0.1",
+          "name": "Veil",
+          "description": "Radar Visibility Mod - Enhanced Quality",
+          "production": [
+            {
+              "ware": "Nividium Crystallite",
+              "amount": "3"
+            },
+            {
+              "ware": "Advanced Ship Nanoweave",
+              "amount": "1"
+            }
+          ]
+        },
+        {
+          "ware": "mod_ship_radarcloak_01_mk3",
+          "quality": "3",
+          "min": "-0.8",
+          "max": "-0.4",
+          "bonus": {
+            "chance": "1.0",
+            "max": "1",
+            "radarrange": {
+              "min": "1.1",
+              "max": "1.2"
+            }
+          },
+          "name": "Shroud",
+          "description": "Radar Visibility Mod - Exceptional Quality",
+          "production": [
+            {
+              "ware": "Nividium Crystallite",
+              "amount": "3"
+            },
+            {
+              "ware": "Exceptional Ship Nanoweave",
+              "amount": "1"
+            }
+          ]
+        }
+      ],
+      "regiondamage": [
+        {
+          "ware": "mod_ship_regiondamage_01_mk1",
+          "quality": "1",
+          "min": "0.6",
+          "max": "0.9",
+          "bonus": {
+            "chance": "1.0",
+            "max": "1",
+            "maxhull": {
+              "min": "0.6",
+              "max": "0.9"
+            }
+          },
+          "name": "Grit",
+          "description": "Hazardous Region Damage Reduction Mod - Basic Quality",
+          "production": [
+            {
+              "ware": "Nividium Crystallite",
+              "amount": "3"
+            },
+            {
+              "ware": "Basic Ship Nanoweave",
+              "amount": "1"
+            }
+          ]
+        },
+        {
+          "ware": "mod_ship_regiondamage_01_mk2",
+          "quality": "2",
+          "min": "0.4",
+          "max": "0.65",
+          "name": "Mettle",
+          "description": "Hazardous Region Damage Reduction Mod - Enhanced Quality",
+          "production": [
+            {
+              "ware": "Nividium Crystallite",
+              "amount": "3"
+            },
+            {
+              "ware": "Advanced Ship Nanoweave",
+              "amount": "1"
+            }
+          ]
+        },
+        {
+          "ware": "mod_ship_regiondamage_01_mk3",
+          "quality": "3",
+          "min": "1.0",
+          "max": "1.0",
+          "bonus": {
+            "chance": "1.0",
+            "max": "1",
+            "maxhull": {
+              "min": "1.1",
+              "max": "1.2"
+            }
+          },
+          "name": "Tenacity",
+          "description": "Hazardous Region Damage Reduction Mod - Exceptional Quality",
+          "production": [
+            {
+              "ware": "Nividium Crystallite",
+              "amount": "3"
+            },
+            {
+              "ware": "Exceptional Ship Nanoweave",
+              "amount": "1"
+            }
+          ]
+        }
+      ],
+      "hidecargochance": [
+        {
+          "ware": "mod_ship_hidecargo_01",
+          "quality": "3",
+          "min": "1.0",
+          "max": "1.0",
+          "name": "Mirage",
+          "description": "Illegal Ware Concealment Mod - Exceptional Quality",
+          "production": [
+            {
+              "ware": "Nividium Crystallite",
+              "amount": "3"
+            },
+            {
+              "ware": "Exceptional Ship Nanoweave",
               "amount": "1"
             }
           ]

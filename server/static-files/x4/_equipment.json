@@ -92,6 +92,29 @@
         "release": "37.5"
       }
     },
+    "engine_pir_xl_battleship_01_allround_01_mk1": {
+      "id": "engine_pir_xl_battleship_01_allround_01_mk1",
+      "name": "Erlking XL Engine",
+      "mk": "1",
+      "class": "engine",
+      "makerrace": "argon",
+      "thrust": {
+        "forward": "20560",
+        "reverse": "22616"
+      },
+      "boost": {
+        "duration": "29",
+        "thrust": "2",
+        "attack": "10",
+        "release": "1"
+      },
+      "travel": {
+        "charge": "30",
+        "thrust": "33",
+        "attack": "75",
+        "release": "22.5"
+      }
+    },
     "engine_spl_xl_allround_01_mk1": {
       "id": "engine_spl_xl_allround_01_mk1",
       "name": "SPL XL All-round Engine Mk1",
@@ -258,6 +281,20 @@
         "delay": "0"
       }
     },
+    "shield_pir_xl_battleship_01_standard_01_mk1": {
+      "id": "shield_pir_xl_battleship_01_standard_01_mk1",
+      "name": "Erlking XL Shield Generator",
+      "description": "Erlking Shield",
+      "hull": "8100",
+      "mk": "1",
+      "class": "shield",
+      "makerrace": "argon",
+      "recharge": {
+        "max": "158600",
+        "rate": "662",
+        "delay": "0"
+      }
+    },
     "shield_spl_xl_standard_01_mk1": {
       "id": "shield_spl_xl_standard_01_mk1",
       "name": "SPL XL Shield Generator Mk1",
@@ -362,7 +399,7 @@
       "class": "weapon",
       "bullet": {
         "properties": {
-          "speed": "10000",
+          "speed": "2.997925e+08",
           "lifetime": "7",
           "range": "14000",
           "amount": "1",
@@ -387,6 +424,46 @@
         "acceleration": "N/A"
       },
       "hull": "10000"
+    },
+    "weapon_pir_xl_battleship_01_mk1": {
+      "name": "Erlking Main Battery",
+      "heat": {
+        "overheat": "10000",
+        "cooldelay": "1.13",
+        "coolrate": "2000",
+        "reenable": "9500"
+      },
+      "mk": "1",
+      "class": "weapon",
+      "bullet": {
+        "properties": {
+          "speed": "2488.3",
+          "lifetime": "3.706",
+          "amount": "1",
+          "barrelamount": "1",
+          "icon": "weapon_laser_mk1",
+          "timediff": "0.001",
+          "angle": "0.03",
+          "maxhits": "1",
+          "ricochet": "0",
+          "scale": "0",
+          "attach": "0",
+          "chargetime": "1"
+        },
+        "damage": {
+          "value": "12979",
+          "repair": "0"
+        },
+        "reload": {
+          "time": "1.7"
+        },
+        "system": "weapon_standard"
+      },
+      "rotation": {
+        "speed": "93.3",
+        "acceleration": "186.6"
+      },
+      "hull": "12000"
     }
   },
   "large": {
@@ -817,7 +894,7 @@
       "class": "turret",
       "bullet": {
         "properties": {
-          "speed": "7000",
+          "speed": "2.997925e+08",
           "lifetime": "3",
           "range": "5000",
           "amount": "1",
@@ -996,7 +1073,7 @@
       "class": "turret",
       "bullet": {
         "properties": {
-          "speed": "7000",
+          "speed": "2.997925e+08",
           "lifetime": "3",
           "range": "5000",
           "amount": "1",
@@ -1168,6 +1245,78 @@
       },
       "hull": "3450"
     },
+    "turret_pir_l_battleship_01_laser_01_mk1": {
+      "name": "Erlking L Turret",
+      "makerrace": "argon",
+      "mk": "1",
+      "class": "turret",
+      "bullet": {
+        "properties": {
+          "speed": "2040.9",
+          "lifetime": "4.518",
+          "amount": "1",
+          "barrelamount": "2",
+          "icon": "weapon_laser_mk1",
+          "timediff": "0.001",
+          "angle": "0.02",
+          "maxhits": "1",
+          "ricochet": "0",
+          "restitution": "1",
+          "scale": "0",
+          "attach": "0",
+          "damagecurves": {
+            "time": {
+              "point": [
+                {
+                  "position": "0.2",
+                  "value": "1"
+                },
+                {
+                  "position": "0.5",
+                  "value": "0.7"
+                },
+                {
+                  "position": "1",
+                  "value": "0.1"
+                }
+              ]
+            },
+            "distance": {
+              "point": [
+                {
+                  "position": "0.2",
+                  "value": "1"
+                },
+                {
+                  "position": "0.5",
+                  "value": "0.7"
+                },
+                {
+                  "position": "1",
+                  "value": "0.1"
+                }
+              ]
+            }
+          }
+        },
+        "damage": {
+          "value": "2652",
+          "repair": "0"
+        },
+        "reload": {
+          "time": "2.3"
+        },
+        "system": null
+      },
+      "rotation": {
+        "speed": "76.5"
+      },
+      "reload": {
+        "rate": "0.5",
+        "time": "1"
+      },
+      "hull": "4140"
+    },
     "turret_spl_l_beam_01_mk1": {
       "name": "SPL L Beam Turret Mk1",
       "makerrace": "split",
@@ -1175,7 +1324,7 @@
       "class": "turret",
       "bullet": {
         "properties": {
-          "speed": "7000",
+          "speed": "2.997925e+08",
           "lifetime": "3",
           "range": "5000",
           "amount": "1",
@@ -1183,7 +1332,6 @@
           "icon": "weapon_beam_mk1",
           "maxhits": "1",
           "ricochet": "0",
-          "restitution": "1",
           "scale": "1",
           "attach": "1"
         },
@@ -1355,7 +1503,7 @@
       "class": "turret",
       "bullet": {
         "properties": {
-          "speed": "7000",
+          "speed": "2.997925e+08",
           "lifetime": "3",
           "range": "5000",
           "amount": "1",
@@ -1534,7 +1682,7 @@
       "class": "turret",
       "bullet": {
         "properties": {
-          "speed": "7000",
+          "speed": "2.997925e+08",
           "lifetime": "3",
           "range": "4615",
           "amount": "1",
@@ -2176,6 +2324,35 @@
         "attack": "45",
         "release": "30"
       }
+    },
+    "engine_gen_m_yacht_01_mk1": {
+      "id": "engine_gen_m_yacht_01_mk1",
+      "name": "Astrid M Engine",
+      "mk": "1",
+      "class": "engine",
+      "makerrace": "argon",
+      "thrust": {
+        "forward": "2415",
+        "reverse": "3139"
+      },
+      "boost": {
+        "duration": "10",
+        "thrust": "8",
+        "attack": "0.25",
+        "release": "1"
+      },
+      "travel": {
+        "charge": "0",
+        "thrust": "12",
+        "attack": "10",
+        "release": "15"
+      }
+    },
+    "engine_gen_m_yacht_01_mk1_video": {
+      "id": "engine_gen_m_yacht_01_mk1_video",
+      "name": "Astrid M Engine",
+      "class": "engine",
+      "makerrace": "argon"
     },
     "engine_par_m_allround_01_mk1": {
       "id": "engine_par_m_allround_01_mk1",
@@ -3261,7 +3438,7 @@
       "class": "turret",
       "bullet": {
         "properties": {
-          "speed": "7000",
+          "speed": "2.997925e+08",
           "lifetime": "1",
           "range": "2550",
           "amount": "1",
@@ -3296,7 +3473,7 @@
       "class": "turret",
       "bullet": {
         "properties": {
-          "speed": "7000",
+          "speed": "2.997925e+08",
           "lifetime": "1",
           "range": "2550",
           "amount": "1",
@@ -3827,6 +4004,72 @@
       },
       "hull": "500"
     },
+    "turret_gen_m_scrapbeam_01_mk1": {
+      "name": "Scrap Tractor",
+      "makerrace": "argon",
+      "mk": "1",
+      "class": "turret",
+      "bullet": {
+        "properties": {
+          "speed": "2.997925e+08",
+          "lifetime": "4",
+          "range": "4364",
+          "amount": "1",
+          "barrelamount": "1",
+          "icon": "weapon_tug_mk1",
+          "maxhits": "1",
+          "ricochet": "0",
+          "scale": "1",
+          "attach": "1",
+          "tug": "1"
+        },
+        "damage": {
+          "repair": "0"
+        },
+        "reload": {
+          "time": "4"
+        },
+        "system": null
+      },
+      "rotation": {
+        "speed": "90"
+      },
+      "reload": {}
+    },
+    "turret_gen_m_yacht_01_mk1": {
+      "name": "Astrid M Turret",
+      "makerrace": "argon",
+      "mk": "1",
+      "class": "turret",
+      "bullet": {
+        "properties": {
+          "speed": "45000",
+          "lifetime": "4",
+          "range": "4500",
+          "amount": "1",
+          "barrelamount": "1",
+          "maxhits": "1",
+          "ricochet": "0",
+          "scale": "1",
+          "attach": "1"
+        },
+        "damage": {
+          "value": "120",
+          "repair": "0"
+        },
+        "reload": {
+          "time": "4"
+        },
+        "system": "weapon_standard"
+      },
+      "rotation": {
+        "speed": "105"
+      },
+      "reload": {
+        "rate": "1",
+        "time": "1"
+      }
+    },
     "turret_kha_m_beam_01_mk1": {
       "name": "KHA M Kyon Turret Mk1",
       "makerrace": "khaak",
@@ -3834,7 +4077,7 @@
       "class": "turret",
       "bullet": {
         "properties": {
-          "speed": "7000",
+          "speed": "2.997925e+08",
           "lifetime": "0.7",
           "range": "4500",
           "amount": "1",
@@ -3871,7 +4114,7 @@
       "class": "turret",
       "bullet": {
         "properties": {
-          "speed": "7000",
+          "speed": "2.997925e+08",
           "lifetime": "1",
           "range": "2550",
           "amount": "1",
@@ -3906,7 +4149,7 @@
       "class": "turret",
       "bullet": {
         "properties": {
-          "speed": "7000",
+          "speed": "2.997925e+08",
           "lifetime": "1",
           "range": "2550",
           "amount": "1",
@@ -4362,6 +4605,78 @@
       },
       "hull": "750"
     },
+    "turret_pir_m_battleship_01_gatling_02_mk1": {
+      "name": "Erlking M Turret",
+      "makerrace": "argon",
+      "mk": "1",
+      "class": "turret",
+      "bullet": {
+        "properties": {
+          "speed": "3221.1",
+          "lifetime": "2.863",
+          "amount": "1",
+          "barrelamount": "2",
+          "icon": "weapon_gatling_mk1",
+          "timediff": "0.025",
+          "angle": "0.43",
+          "maxhits": "2",
+          "ricochet": "0.01",
+          "restitution": "0.3",
+          "scale": "0",
+          "attach": "0",
+          "damagecurves": {
+            "time": {
+              "point": [
+                {
+                  "position": "0.2",
+                  "value": "1"
+                },
+                {
+                  "position": "0.5",
+                  "value": "0.8"
+                },
+                {
+                  "position": "1",
+                  "value": "0.1"
+                }
+              ]
+            },
+            "distance": {
+              "point": [
+                {
+                  "position": "0.2",
+                  "value": "1"
+                },
+                {
+                  "position": "0.5",
+                  "value": "0.7"
+                },
+                {
+                  "position": "1",
+                  "value": "0.1"
+                }
+              ]
+            }
+          }
+        },
+        "damage": {
+          "value": "26",
+          "repair": "0"
+        },
+        "reload": {
+          "rate": "8"
+        },
+        "system": "turret_shortrange"
+      },
+      "rotation": {
+        "speed": "120.8"
+      },
+      "reload": {
+        "rate": "1",
+        "time": "1"
+      },
+      "hull": "900"
+    },
     "turret_spl_m_beam_01_mk1": {
       "name": "SPL M Beam Turret Mk1",
       "makerrace": "split",
@@ -4369,7 +4684,7 @@
       "class": "turret",
       "bullet": {
         "properties": {
-          "speed": "7000",
+          "speed": "2.997925e+08",
           "lifetime": "1",
           "range": "2550",
           "amount": "1",
@@ -4404,7 +4719,7 @@
       "class": "turret",
       "bullet": {
         "properties": {
-          "speed": "7000",
+          "speed": "2.997925e+08",
           "lifetime": "1",
           "range": "2550",
           "amount": "1",
@@ -4942,7 +5257,7 @@
       "class": "turret",
       "bullet": {
         "properties": {
-          "speed": "7000",
+          "speed": "2.997925e+08",
           "lifetime": "1",
           "range": "2550",
           "amount": "1",
@@ -4977,7 +5292,7 @@
       "class": "turret",
       "bullet": {
         "properties": {
-          "speed": "7000",
+          "speed": "2.997925e+08",
           "lifetime": "1",
           "range": "2550",
           "amount": "1",
@@ -5440,7 +5755,7 @@
       "class": "turret",
       "bullet": {
         "properties": {
-          "speed": "7000",
+          "speed": "2.997925e+08",
           "lifetime": "1",
           "range": "2550",
           "amount": "1",
@@ -5472,7 +5787,7 @@
       "class": "turret",
       "bullet": {
         "properties": {
-          "speed": "7000",
+          "speed": "2.997925e+08",
           "lifetime": "1",
           "range": "2550",
           "amount": "1",
@@ -5798,7 +6113,7 @@
       "class": "turret",
       "bullet": {
         "properties": {
-          "speed": "7000",
+          "speed": "2.997925e+08",
           "lifetime": "1",
           "range": "2200",
           "amount": "1",
@@ -5990,7 +6305,7 @@
       "class": "weapon",
       "bullet": {
         "properties": {
-          "speed": "7000",
+          "speed": "2.997925e+08",
           "lifetime": "4",
           "range": "4364",
           "amount": "1",
@@ -6028,7 +6343,7 @@
       "class": "weapon",
       "bullet": {
         "properties": {
-          "speed": "7000",
+          "speed": "2.997925e+08",
           "lifetime": "4",
           "range": "4364",
           "amount": "1",
@@ -6494,6 +6809,44 @@
       ],
       "hull": "1001"
     },
+    "weapon_gen_m_yacht_01_mk1": {
+      "name": "Astrid Primary Weapon",
+      "heat": {
+        "overheat": "10000",
+        "cooldelay": "1.13",
+        "coolrate": "2000",
+        "reenable": "9500"
+      },
+      "mk": "1",
+      "class": "weapon",
+      "bullet": {
+        "properties": {
+          "speed": "4500",
+          "lifetime": "1.1",
+          "amount": "1",
+          "barrelamount": "1",
+          "timediff": "0.01",
+          "angle": "0.3",
+          "maxhits": "1",
+          "ricochet": "0.8",
+          "restitution": "0.5",
+          "scale": "0",
+          "attach": "0"
+        },
+        "damage": {
+          "value": "10",
+          "repair": "0"
+        },
+        "reload": {
+          "rate": "10"
+        },
+        "system": "weapon_standard"
+      },
+      "rotation": {
+        "speed": "106.4",
+        "acceleration": "212.8"
+      }
+    },
     "weapon_kha_m_laser_01_mk1": {
       "name": "KHA M Kyon Emitter Mk1",
       "heat": {
@@ -6506,7 +6859,7 @@
       "class": "weapon",
       "bullet": {
         "properties": {
-          "speed": "7000",
+          "speed": "2.997925e+08",
           "lifetime": "0.7",
           "range": "4500",
           "amount": "1",
@@ -7023,7 +7376,7 @@
       "class": "weapon",
       "bullet": {
         "properties": {
-          "speed": "10000",
+          "speed": "2.997925e+08",
           "lifetime": "1.75",
           "range": "6800",
           "amount": "1",
@@ -7079,7 +7432,7 @@
       "class": "weapon",
       "bullet": {
         "properties": {
-          "speed": "10000",
+          "speed": "2.997925e+08",
           "lifetime": "1.75",
           "range": "6800",
           "amount": "1",
@@ -8771,7 +9124,7 @@
       "class": "weapon",
       "bullet": {
         "properties": {
-          "speed": "7000",
+          "speed": "2.997925e+08",
           "lifetime": "4",
           "range": "3000",
           "amount": "1",
@@ -8809,7 +9162,7 @@
       "class": "weapon",
       "bullet": {
         "properties": {
-          "speed": "7000",
+          "speed": "2.997925e+08",
           "lifetime": "4",
           "range": "3000",
           "amount": "1",
@@ -9459,7 +9812,7 @@
       "class": "weapon",
       "bullet": {
         "properties": {
-          "speed": "7000",
+          "speed": "2.997925e+08",
           "lifetime": "0.3",
           "range": "3000",
           "amount": "1",
@@ -9525,7 +9878,7 @@
       "hull": "500"
     },
     "weapon_par_s_railgun_01_mk2": {
-      "name": "PAR S Mass Driver Mk1",
+      "name": "PAR S Mass Driver Mk2",
       "heat": {
         "overheat": "10000",
         "cooldelay": "3",
@@ -9976,7 +10329,7 @@
       "class": "weapon",
       "bullet": {
         "properties": {
-          "speed": "10000",
+          "speed": "2.997925e+08",
           "lifetime": "1",
           "range": "4200",
           "amount": "1",
@@ -10032,7 +10385,7 @@
       "class": "weapon",
       "bullet": {
         "properties": {
-          "speed": "10000",
+          "speed": "2.997925e+08",
           "lifetime": "1",
           "range": "4200",
           "amount": "1",

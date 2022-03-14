@@ -113,19 +113,19 @@
           },
           "transformation": "S",
           "resources": {
-            "ore": 110781988620,
-            "silicon": 2884468640,
-            "nividium": 39740,
-            "hydrogen": 2329242187,
-            "ice": 212199750000
+            "ore": 432350418484,
+            "silicon": 5379282560,
+            "nividium": 15896,
+            "hydrogen": 76864992187,
+            "ice": 1273198500000
           },
           "relativeResources": {
-            "ore": 68,
+            "ore": 75,
             "silicon": 7,
             "nividium": 4,
             "volume": 91140100,
-            "hydrogen": 3,
-            "ice": 32
+            "hydrogen": 2,
+            "ice": 99
           }
         },
         {
@@ -280,12 +280,12 @@
           },
           "transformation": "S",
           "resources": {
-            "ice": 241479488,
-            "hydrogen": 70914937,
-            "helium": 41065312,
-            "methane": 59316562,
-            "ore": 82103625000,
-            "silicon": 44110575000
+            "ice": 1448876950,
+            "hydrogen": 2340192937,
+            "helium": 684421875,
+            "methane": 1140703125,
+            "ore": 161109000000,
+            "silicon": 86556600000
           },
           "relativeResources": {
             "ice": 2,
@@ -293,8 +293,8 @@
             "hydrogen": 2,
             "helium": 1,
             "methane": 1,
-            "ore": 48,
-            "silicon": 38
+            "ore": 26,
+            "silicon": 20
           }
         },
         {
@@ -370,14 +370,14 @@
           },
           "transformation": "S",
           "resources": {
-            "ore": 147045487155,
-            "silicon": 27489997160,
-            "nividium": 9935,
-            "hydrogen": 136884374
+            "ore": 367732348621,
+            "silicon": 68844388640,
+            "nividium": 3974,
+            "hydrogen": 4517184374
           },
           "relativeResources": {
-            "ore": 87,
-            "silicon": 25,
+            "ore": 60,
+            "silicon": 16,
             "nividium": 1,
             "volume": 162210000,
             "hydrogen": 2
@@ -593,32 +593,6 @@
               }
             },
             {
-              "name": "connection_ClusterGate002To308",
-              "ref": "gates",
-              "offset": {
-                "position": {
-                  "x": -37337.46484375,
-                  "y": 0,
-                  "z": 44244.28515625
-                },
-                "quaternion": {
-                  "qx": "0",
-                  "qy": "-0.8660253882",
-                  "qz": "0",
-                  "qw": "-0.5"
-                }
-              },
-              "macro": {
-                "ref": "props_gates_anc_gate_macro",
-                "connection": "space"
-              },
-              "zoneReference": "Zone001_Cluster_02_Sector001_macro",
-              "adjusted": {
-                "x": 147.80379873511905,
-                "z": 307.45751078869046
-              }
-            },
-            {
               "name": "connection_ClusterGate002To003",
               "ref": "gates",
               "offset": {
@@ -668,6 +642,32 @@
               "adjusted": {
                 "x": 170.33461458333332,
                 "z": 352.48656984747026
+              }
+            },
+            {
+              "name": "connection_ClusterGate002To501",
+              "ref": "gates",
+              "offset": {
+                "position": {
+                  "x": -38673.46484375,
+                  "y": 0,
+                  "z": 20791.28515625
+                },
+                "quaternion": {
+                  "qx": "0",
+                  "qy": "-0.8660253882",
+                  "qz": "0",
+                  "qw": "-0.5"
+                }
+              },
+              "macro": {
+                "ref": "props_gates_anc_gate_macro",
+                "connection": "space"
+              },
+              "zoneReference": "Zone004_Cluster_02_Sector001_macro",
+              "adjusted": {
+                "x": 138.34696726190478,
+                "z": 327.9916953125
               }
             }
           ],
@@ -858,10 +858,10 @@
             "z": 216.5
           },
           "resources": {
-            "ice": 120739744,
-            "ore": 79087155,
-            "silicon": 79597160,
-            "nividium": 9935
+            "ice": 724438475,
+            "ore": 316348621,
+            "silicon": 318388640,
+            "nividium": 3974
           },
           "relativeResources": {
             "ice": 1,
@@ -991,18 +991,18 @@
           },
           "transformation": "G",
           "resources": {
-            "ore": 9658304061,
-            "silicon": 9390272811,
-            "ice": 1715478514,
-            "nividium": 14601445,
-            "hydrogen": 55218750000
+            "ore": 1315997849,
+            "silicon": 1270304849,
+            "ice": 102928709,
+            "nividium": 5840578,
+            "hydrogen": 1822218750000
           },
           "relativeResources": {
-            "ore": 7,
-            "silicon": 9,
+            "ore": 2,
+            "silicon": 2,
             "ice": 2,
-            "nividium": 32,
-            "hydrogen": 37,
+            "nividium": 5,
+            "hydrogen": 19,
             "volume": 37001000
           }
         },
@@ -1219,10 +1219,10 @@
             "z": -216.5
           },
           "resources": {
-            "hydrogen": 60750000000
+            "hydrogen": 10125000000000
           },
           "relativeResources": {
-            "hydrogen": 41,
+            "hydrogen": 99,
             "volume": 27000000
           }
         }
@@ -1307,6 +1307,32 @@
                 "x": -234.55569986979165,
                 "z": -46.2464652157738
               }
+            },
+            {
+              "name": "connection_ClusterGate006To503",
+              "ref": "gates",
+              "offset": {
+                "position": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "quaternion": {
+                  "qx": "0",
+                  "qy": "1.0",
+                  "qz": "0",
+                  "qw": "0.0"
+                }
+              },
+              "macro": {
+                "ref": "props_gates_anc_gate_macro",
+                "connection": "space"
+              },
+              "zoneReference": "Zone004_Cluster_06_Sector001_macro",
+              "adjusted": {
+                "x": -216.25122526041667,
+                "z": -26.781938802083335
+              }
             }
           ],
           "stations": [
@@ -1335,12 +1361,12 @@
           },
           "transformation": "G",
           "resources": {
-            "hydrogen": 68442187,
-            "helium": 41065312,
-            "methane": 59316562,
-            "ore": 79087155,
-            "silicon": 79597160,
-            "nividium": 9935
+            "hydrogen": 2258592187,
+            "helium": 684421875,
+            "methane": 1140703125,
+            "ore": 316348621,
+            "silicon": 318388640,
+            "nividium": 3974
           },
           "relativeResources": {
             "hydrogen": 1,
@@ -1444,9 +1470,9 @@
           },
           "transformation": "G",
           "resources": {
-            "helium": 82130624,
-            "hydrogen": 136884374,
-            "methane": 59316562
+            "helium": 1368843750,
+            "hydrogen": 4517184374,
+            "methane": 1140703125
           },
           "relativeResources": {
             "helium": 2,
@@ -1568,7 +1594,7 @@
             "z": 433
           },
           "resources": {
-            "ore": 12565212889
+            "ore": 50260851561
           },
           "relativeResources": {
             "ore": 8,
@@ -1790,6 +1816,32 @@
                 "x": 17.636540829613097,
                 "z": 593.2904055059523
               }
+            },
+            {
+              "name": "connection_ClusterGate008To501",
+              "ref": "gates",
+              "offset": {
+                "position": {
+                  "x": -41242.138671875,
+                  "y": 0,
+                  "z": -40647.4609375
+                },
+                "quaternion": {
+                  "qx": "0",
+                  "qy": "-0.2164397687",
+                  "qz": "0",
+                  "qw": "0.9762960076"
+                }
+              },
+              "macro": {
+                "ref": "props_gates_anc_gate_macro",
+                "connection": "space"
+              },
+              "zoneReference": "Zone006_Cluster_08_Sector001_macro",
+              "adjusted": {
+                "x": -36.28719475446428,
+                "z": 582.9055074404762
+              }
             }
           ],
           "owner": "argon",
@@ -1799,14 +1851,14 @@
             "z": 649.5
           },
           "resources": {
-            "silicon": 18224998,
-            "nividium": 236250,
-            "hydrogen": 4050000000
+            "silicon": 105300000,
+            "nividium": 94500,
+            "hydrogen": 133650000000
           },
           "relativeResources": {
             "silicon": 1,
             "nividium": 1,
-            "hydrogen": 3,
+            "hydrogen": 2,
             "volume": 27000000
           }
         }
@@ -1816,7 +1868,7 @@
     {
       "id": "Cluster_09_macro",
       "area": {
-        "sunlight": 1,
+        "sunlight": 2,
         "economy": 0.75,
         "security": 0.5
       },
@@ -2428,13 +2480,13 @@
             "z": -649.5
           },
           "resources": {
-            "helium": 1642612500,
-            "hydrogen": 68442187,
-            "ice": 603698720,
-            "methane": 2372662500
+            "helium": 23726625000,
+            "hydrogen": 2258592187,
+            "ice": 3622192375,
+            "methane": 45628125000
           },
           "relativeResources": {
-            "helium": 2,
+            "helium": 1,
             "volume": 350000,
             "hydrogen": 1,
             "ice": 5,
@@ -2811,18 +2863,18 @@
             "z": 0
           },
           "resources": {
-            "ore": 106889287500,
-            "silicon": 823162500,
-            "ice": 88973437499,
-            "nividium": 22781250,
-            "hydrogen": 60750000000
+            "ore": 427557150000,
+            "silicon": 3292650000,
+            "ice": 533840624999,
+            "nividium": 9112500,
+            "hydrogen": 2004750000000
           },
           "relativeResources": {
-            "ore": 62,
+            "ore": 69,
             "silicon": 1,
-            "ice": 13,
-            "nividium": 47,
-            "hydrogen": 41,
+            "ice": 51,
+            "nividium": 5,
+            "hydrogen": 20,
             "volume": 27000100
           }
         }
@@ -3090,8 +3142,8 @@
             "z": 324.75
           },
           "resources": {
-            "ore": 208292715,
-            "silicon": 26732051
+            "ore": 1922702009,
+            "silicon": 356427370
           },
           "relativeResources": {
             "ore": 1,
@@ -3290,10 +3342,10 @@
           },
           "transformation": "H",
           "resources": {
-            "ice": 241479488,
-            "helium": 41065312,
-            "methane": 118633124,
-            "hydrogen": 68442187
+            "ice": 1448876950,
+            "helium": 684421875,
+            "methane": 2281406250,
+            "hydrogen": 2258592187
           },
           "relativeResources": {
             "ice": 2,
@@ -3346,10 +3398,10 @@
           },
           "transformation": "H",
           "resources": {
-            "ice": 362219232,
-            "ore": 237261465,
-            "silicon": 238791480,
-            "nividium": 29805
+            "ice": 2173315425,
+            "ore": 949045863,
+            "silicon": 955165920,
+            "nividium": 11922
           },
           "relativeResources": {
             "ice": 3,
@@ -3524,14 +3576,14 @@
             "z": 541.375
           },
           "resources": {
-            "ore": 10266750000,
-            "silicon": 6712875000,
-            "hydrogen": 60750000000
+            "ore": 4106700000,
+            "silicon": 2685150000,
+            "hydrogen": 2004750000000
           },
           "relativeResources": {
-            "ore": 6,
-            "silicon": 6,
-            "hydrogen": 41,
+            "ore": 1,
+            "silicon": 1,
+            "hydrogen": 20,
             "volume": 27000000
           }
         }
@@ -3657,16 +3709,16 @@
             "z": 649.5
           },
           "resources": {
-            "ore": 4938975000,
-            "silicon": 2469487500,
-            "nividium": 480937,
-            "methane": 52650000000
+            "ore": 1975590000,
+            "silicon": 987795000,
+            "nividium": 1923750,
+            "methane": 5062500000000
           },
           "relativeResources": {
-            "ore": 3,
-            "silicon": 2,
+            "ore": 1,
+            "silicon": 1,
             "nividium": 1,
-            "methane": 3,
+            "methane": 13,
             "volume": 27000000
           }
         }
@@ -3951,13 +4003,13 @@
             "z": 0
           },
           "resources": {
-            "ice": 241479488,
-            "hydrogen": 68442187,
-            "ore": 79087155,
-            "silicon": 79597160,
-            "nividium": 9935,
-            "methane": 59316562,
-            "helium": 41065312
+            "ice": 1448876950,
+            "hydrogen": 2258592187,
+            "ore": 316348621,
+            "silicon": 318388640,
+            "nividium": 3974,
+            "methane": 1140703125,
+            "helium": 684421875
           },
           "relativeResources": {
             "ice": 2,
@@ -4105,12 +4157,12 @@
           },
           "transformation": "H",
           "resources": {
-            "methane": 59316562,
-            "hydrogen": 68442187,
-            "helium": 41065312,
-            "ore": 158174310,
-            "silicon": 159194320,
-            "nividium": 19870
+            "methane": 1140703125,
+            "hydrogen": 2258592187,
+            "helium": 684421875,
+            "ore": 632697242,
+            "silicon": 636777280,
+            "nividium": 7948
           },
           "relativeResources": {
             "methane": 1,
@@ -4165,12 +4217,12 @@
           },
           "transformation": "H",
           "resources": {
-            "methane": 59316562,
-            "ore": 395435775,
-            "silicon": 397985800,
-            "nividium": 49675,
-            "helium": 41065312,
-            "hydrogen": 68442187
+            "methane": 1140703125,
+            "ore": 1581743105,
+            "silicon": 1591943200,
+            "nividium": 19870,
+            "helium": 684421875,
+            "hydrogen": 2258592187
           },
           "relativeResources": {
             "methane": 1,
@@ -4594,10 +4646,10 @@
           },
           "transformation": "E",
           "resources": {
-            "ore": 158174310,
-            "silicon": 159194320,
-            "nividium": 19870,
-            "hydrogen": 141300000
+            "ore": 632697242,
+            "silicon": 636777280,
+            "nividium": 7948,
+            "hydrogen": 4662900000
           },
           "relativeResources": {
             "ore": 2,
@@ -5391,13 +5443,13 @@
             "z": -541.375
           },
           "resources": {
-            "methane": 59316562,
-            "hydrogen": 68442187,
-            "helium": 41065312,
-            "ore": 237261465,
-            "silicon": 238791480,
-            "nividium": 29805,
-            "ice": 241479488
+            "methane": 1140703125,
+            "hydrogen": 2258592187,
+            "helium": 684421875,
+            "ore": 949045863,
+            "silicon": 955165920,
+            "nividium": 11922,
+            "ice": 1448876950
           },
           "relativeResources": {
             "methane": 1,
@@ -5530,14 +5582,14 @@
           },
           "transformation": "C",
           "resources": {
-            "ore": 11178000000,
-            "silicon": 10054125000,
-            "hydrogen": 60750000000
+            "ore": 44712000000,
+            "silicon": 40216500000,
+            "hydrogen": 2004750000000
           },
           "relativeResources": {
-            "ore": 7,
+            "ore": 8,
             "silicon": 9,
-            "hydrogen": 41,
+            "hydrogen": 20,
             "volume": 27000000
           }
         },
@@ -5614,14 +5666,14 @@
           },
           "transformation": "C",
           "resources": {
-            "ore": 111780000000,
-            "silicon": 100541250000,
-            "hydrogen": 60750000000
+            "ore": 447120000000,
+            "silicon": 402165000000,
+            "hydrogen": 2004750000000
           },
           "relativeResources": {
-            "ore": 64,
+            "ore": 71,
             "silicon": 81,
-            "hydrogen": 41,
+            "hydrogen": 20,
             "volume": 27000000
           }
         }
@@ -5774,14 +5826,14 @@
           },
           "transformation": "G",
           "resources": {
-            "ore": 74084624998,
-            "nividium": 48726562,
-            "hydrogen": 60750000000
+            "ore": 296338499998,
+            "nividium": 194906250,
+            "hydrogen": 2004750000000
           },
           "relativeResources": {
-            "ore": 42,
+            "ore": 47,
             "nividium": 99,
-            "hydrogen": 41,
+            "hydrogen": 20,
             "volume": 27000000
           }
         },
@@ -5854,16 +5906,16 @@
           },
           "transformation": "G",
           "resources": {
-            "ore": 157950000000,
-            "silicon": 54371250000,
-            "nividium": 48726562,
-            "hydrogen": 60750000000
+            "ore": 631800000000,
+            "silicon": 217485000000,
+            "nividium": 194906250,
+            "hydrogen": 2004750000000
           },
           "relativeResources": {
-            "ore": 90,
+            "ore": 99,
             "silicon": 44,
             "nividium": 99,
-            "hydrogen": 41,
+            "hydrogen": 20,
             "volume": 27000000
           }
         }
@@ -6077,22 +6129,22 @@
             "z": 216.5
           },
           "resources": {
-            "methane": 2879675775858,
-            "helium": 41065312,
-            "hydrogen": 19849918979,
-            "ore": 36296558443,
-            "silicon": 14843546861,
-            "ice": 24108674840,
-            "nividium": 7418053
+            "methane": 55378380304989,
+            "helium": 684421875,
+            "hydrogen": 655047326325,
+            "ore": 145186233777,
+            "silicon": 59374187452,
+            "ice": 14465204903,
+            "nividium": 29672215
           },
           "relativeResources": {
             "methane": 99,
             "volume": 210300000,
             "helium": 1,
-            "hydrogen": 15,
-            "ore": 22,
+            "hydrogen": 8,
+            "ore": 24,
             "silicon": 12,
-            "ice": 4,
+            "ice": 2,
             "nividium": 16
           }
         }
@@ -6325,21 +6377,21 @@
             "z": 108.25
           },
           "resources": {
-            "ore": 38264906250,
-            "silicon": 38211750000,
-            "ice": 77456250000,
-            "nividium": 45562500,
-            "hydrogen": 121500000000,
-            "helium": 1642612500
+            "ore": 152388337499,
+            "silicon": 152296200000,
+            "ice": 46473750000,
+            "nividium": 100237500,
+            "hydrogen": 4009500000000,
+            "helium": 23726625000
           },
           "relativeResources": {
-            "ore": 23,
+            "ore": 26,
             "silicon": 32,
-            "ice": 12,
-            "nividium": 94,
-            "hydrogen": 82,
+            "ice": 6,
+            "nividium": 52,
+            "hydrogen": 40,
             "volume": 54100000,
-            "helium": 2
+            "helium": 1
           }
         }
       ],
@@ -6595,20 +6647,20 @@
           },
           "transformation": "F",
           "resources": {
-            "methane": 59316562,
-            "ore": 7456124654,
-            "silicon": 5207609660,
-            "nividium": 46619310,
-            "helium": 82130624,
-            "ice": 241479488,
-            "hydrogen": 68442187
+            "methane": 1140703125,
+            "ore": 29824498620,
+            "silicon": 20830438640,
+            "nividium": 18647724,
+            "helium": 1368843750,
+            "ice": 1448876950,
+            "hydrogen": 2258592187
           },
           "relativeResources": {
             "methane": 1,
             "volume": 10430000,
             "ore": 6,
             "silicon": 6,
-            "nividium": 97,
+            "nividium": 11,
             "helium": 2,
             "ice": 2,
             "hydrogen": 1
@@ -6891,10 +6943,10 @@
             "z": 757.875
           },
           "resources": {
-            "ore": 47456929686
+            "ore": 189827718748
           },
           "relativeResources": {
-            "ore": 27,
+            "ore": 31,
             "volume": 10000000
           }
         }
@@ -7070,16 +7122,16 @@
           },
           "transformation": "A",
           "resources": {
-            "ore": 176404218749,
-            "silicon": 125182968750,
-            "nividium": 17478515,
-            "hydrogen": 44156250000
+            "ore": 70561687499,
+            "silicon": 500731875000,
+            "nividium": 6991406,
+            "hydrogen": 1457156250000
           },
           "relativeResources": {
-            "ore": 99,
+            "ore": 12,
             "silicon": 99,
-            "nividium": 36,
-            "hydrogen": 30,
+            "nividium": 4,
+            "hydrogen": 15,
             "volume": 100000000
           }
         },
@@ -7186,14 +7238,14 @@
           },
           "transformation": "A",
           "resources": {
-            "ore": 81253124999,
-            "silicon": 71229375000,
-            "hydrogen": 60750000000
+            "ore": 325012499999,
+            "silicon": 284917500000,
+            "hydrogen": 2004750000000
           },
           "relativeResources": {
-            "ore": 47,
+            "ore": 52,
             "silicon": 57,
-            "hydrogen": 41,
+            "hydrogen": 20,
             "volume": 27000000
           }
         }
@@ -7372,7 +7424,7 @@
             "z": 974.25
           },
           "resources": {
-            "hydrogen": 63938250
+            "hydrogen": 2109962250
           },
           "relativeResources": {
             "hydrogen": 2,
@@ -7664,15 +7716,15 @@
             "z": -866
           },
           "resources": {
-            "ore": 290136000,
-            "silicon": 82896000,
-            "ice": 3427506250,
-            "hydrogen": 1177500000
+            "ore": 116054400,
+            "silicon": 33158400,
+            "ice": 20565037500,
+            "hydrogen": 38857500000
           },
           "relativeResources": {
             "ore": 1,
             "silicon": 1,
-            "ice": 1,
+            "ice": 2,
             "hydrogen": 1,
             "volume": 1000000
           }
@@ -7789,14 +7841,14 @@
             "z": -758
           },
           "resources": {
-            "ore": 63455399999,
-            "silicon": 41585399999,
-            "hydrogen": 40500000000
+            "ore": 2538215999,
+            "silicon": 1663415999,
+            "hydrogen": 1336500000000
           },
           "relativeResources": {
-            "ore": 36,
-            "silicon": 34,
-            "hydrogen": 27,
+            "ore": 1,
+            "silicon": 1,
+            "hydrogen": 14,
             "volume": 27000000
           }
         }
@@ -7886,9 +7938,9 @@
             "z": -541.375
           },
           "resources": {
-            "ore": 187228124999,
-            "silicon": 177204375000,
-            "methane": 52650000000
+            "ore": 748912499999,
+            "silicon": 708817500000,
+            "methane": 1012500000000
           },
           "relativeResources": {
             "ore": 99,
@@ -7983,20 +8035,20 @@
             "z": -649.625
           },
           "resources": {
-            "ore": 231499350000,
-            "silicon": 214963200000,
-            "ice": 2075625,
-            "nividium": 506250,
-            "helium": 72900000000,
-            "hydrogen": 121500000000
+            "ore": 884672852399,
+            "silicon": 848428754400,
+            "ice": 1245375,
+            "nividium": 1150200,
+            "helium": 1215000000000,
+            "hydrogen": 4009500000000
           },
           "relativeResources": {
             "ore": 99,
             "silicon": 99,
             "ice": 2,
             "nividium": 2,
-            "helium": 76,
-            "hydrogen": 82,
+            "helium": 34,
+            "hydrogen": 40,
             "volume": 54000400
           }
         }
@@ -8146,14 +8198,14 @@
             "z": -108.25
           },
           "resources": {
-            "ore": 7630199999,
-            "silicon": 5510700000,
-            "nividium": 1236375
+            "ore": 30520799999,
+            "silicon": 22042800000,
+            "nividium": 494550
           },
           "relativeResources": {
             "ore": 5,
             "silicon": 5,
-            "nividium": 3,
+            "nividium": 1,
             "volume": 100000000
           }
         }
@@ -8217,8 +8269,8 @@
             "z": 108.25
           },
           "resources": {
-            "ore": 222547500,
-            "silicon": 148364999
+            "ore": 89019000,
+            "silicon": 59345999
           },
           "relativeResources": {
             "ore": 1,
@@ -8445,8 +8497,8 @@
             "z": 216.5
           },
           "resources": {
-            "ore": 721053900,
-            "silicon": 480702599
+            "ore": 288421560,
+            "silicon": 192281039
           },
           "relativeResources": {
             "ore": 1,
@@ -8540,10 +8592,10 @@
             "z": 757.75
           },
           "resources": {
-            "ore": 451980000,
-            "silicon": 243000000,
-            "ice": 182655000,
-            "nividium": 4455
+            "ore": 180792000,
+            "silicon": 97200000,
+            "ice": 1095930,
+            "nividium": 1782
           },
           "relativeResources": {
             "ore": 1,
@@ -8613,8 +8665,8 @@
             "z": 866
           },
           "resources": {
-            "ore": 72900000,
-            "silicon": 72900000
+            "ore": 2916000,
+            "silicon": 2916000
           },
           "relativeResources": {
             "ore": 1,
@@ -8682,21 +8734,21 @@
             "z": 757.75
           },
           "resources": {
-            "ore": 81007950144,
-            "silicon": 2690688400,
-            "ice": 64115588,
-            "nividium": 2451271,
-            "helium": 12003231854,
-            "hydrogen": 20005386423
+            "ore": 32403180057,
+            "silicon": 1084279648,
+            "ice": 38469353,
+            "nividium": 980508,
+            "helium": 200053864239,
+            "hydrogen": 660177751991
           },
           "relativeResources": {
-            "ore": 47,
-            "silicon": 4,
+            "ore": 6,
+            "silicon": 2,
             "ice": 2,
-            "nividium": 6,
+            "nividium": 2,
             "volume": 37000000,
-            "helium": 13,
-            "hydrogen": 14
+            "helium": 6,
+            "hydrogen": 7
           }
         }
       ],
@@ -8778,23 +8830,23 @@
             "z": 108.25
           },
           "resources": {
-            "ore": 51714406298,
-            "silicon": 2690130713,
-            "ice": 63992657,
-            "nividium": 19330320,
-            "helium": 7505758387,
-            "methane": 10841651004,
-            "hydrogen": 12509597312
+            "ore": 1215498341,
+            "silicon": 1081057458,
+            "ice": 39503443,
+            "nividium": 7732127,
+            "helium": 125095973132,
+            "methane": 208493288554,
+            "hydrogen": 412816711339
           },
           "relativeResources": {
-            "ore": 31,
-            "silicon": 5,
+            "ore": 3,
+            "silicon": 3,
             "ice": 3,
-            "nividium": 42,
+            "nividium": 6,
             "volume": 47000000,
-            "helium": 9,
+            "helium": 4,
             "methane": 2,
-            "hydrogen": 9
+            "hydrogen": 5
           }
         }
       ],
@@ -8883,18 +8935,18 @@
             "z": -108.25
           },
           "resources": {
-            "ore": 7337385000,
-            "silicon": 1360192500,
-            "hydrogen": 2025000000,
-            "helium": 1642612500,
-            "methane": 2372662500
+            "ore": 29349540000,
+            "silicon": 5440770000,
+            "hydrogen": 66825000000,
+            "helium": 23726625000,
+            "methane": 45628125000
           },
           "relativeResources": {
             "ore": 5,
             "silicon": 2,
-            "hydrogen": 2,
+            "hydrogen": 1,
             "volume": 27200000,
-            "helium": 2,
+            "helium": 1,
             "methane": 1
           }
         }
@@ -9010,14 +9062,14 @@
             "z": 433.125
           },
           "resources": {
-            "ore": 14968800000,
-            "silicon": 8553600000,
-            "ice": 176833125000
+            "ore": 5987520000,
+            "silicon": 3421440000,
+            "ice": 1060998750000
           },
           "relativeResources": {
-            "ore": 9,
-            "silicon": 7,
-            "ice": 26,
+            "ore": 1,
+            "silicon": 1,
+            "ice": 99,
             "volume": 27000000
           }
         }
@@ -9053,16 +9105,16 @@
           },
           "transformation": "G",
           "resources": {
-            "ore": 15795000000,
-            "silicon": 5437125000,
-            "nividium": 4872656,
-            "hydrogen": 60750000000
+            "ore": 63180000000,
+            "silicon": 21748500000,
+            "nividium": 1949062,
+            "hydrogen": 2004750000000
           },
           "relativeResources": {
-            "ore": 9,
+            "ore": 10,
             "silicon": 5,
-            "nividium": 10,
-            "hydrogen": 41,
+            "nividium": 1,
+            "hydrogen": 20,
             "volume": 27000000
           }
         },
@@ -9134,16 +9186,16 @@
           },
           "transformation": "G",
           "resources": {
-            "ore": 15795000000,
-            "silicon": 5437125000,
-            "nividium": 48726562,
-            "hydrogen": 60750000000
+            "ore": 63180000000,
+            "silicon": 21748500000,
+            "nividium": 19490625,
+            "hydrogen": 2004750000000
           },
           "relativeResources": {
-            "ore": 9,
+            "ore": 10,
             "silicon": 5,
-            "nividium": 99,
-            "hydrogen": 41,
+            "nividium": 10,
+            "hydrogen": 20,
             "volume": 27000000
           }
         }
@@ -9389,20 +9441,20 @@
             "z": 1082.5
           },
           "resources": {
-            "ore": 8183397977,
-            "silicon": 6619749570,
-            "nividium": 1246266,
-            "helium": 4985064000,
-            "methane": 7200648000,
-            "hydrogen": 8308440000
+            "ore": 32733591911,
+            "silicon": 26478998280,
+            "nividium": 4985064,
+            "helium": 83084400000,
+            "methane": 138474000000,
+            "hydrogen": 274178520000
           },
           "relativeResources": {
-            "ore": 5,
+            "ore": 6,
             "silicon": 6,
             "nividium": 3,
-            "helium": 6,
+            "helium": 3,
             "methane": 1,
-            "hydrogen": 6,
+            "hydrogen": 3,
             "volume": 10000000
           }
         }
@@ -9492,14 +9544,14 @@
             "z": 1299
           },
           "resources": {
-            "ore": 34214400000,
-            "silicon": 31363200000,
-            "ice": 706387500000
+            "ore": 136857600000,
+            "silicon": 125452800000,
+            "ice": 423832500000
           },
           "relativeResources": {
-            "ore": 20,
+            "ore": 22,
             "silicon": 26,
-            "ice": 99,
+            "ice": 40,
             "volume": 27000000
           }
         }
@@ -10281,9 +10333,9 @@
             "z": 866
           },
           "resources": {
-            "ore": 1236963750,
-            "silicon": 939056250,
-            "ice": 2112631250
+            "ore": 49478548,
+            "silicon": 375622500,
+            "ice": 126757875
           },
           "relativeResources": {
             "ore": 1,
@@ -10298,7 +10350,7 @@
     {
       "id": "Cluster_411_macro",
       "area": {
-        "sunlight": 1,
+        "sunlight": 2,
         "economy": 0.5,
         "security": 0.5
       },
@@ -10419,17 +10471,17 @@
             "z": 1082.5
           },
           "resources": {
-            "ice": 166109062500,
-            "hydrogen": 4050000000,
-            "ore": 21384000000,
-            "silicon": 12830400000
+            "ice": 99665437500,
+            "hydrogen": 133650000000,
+            "ore": 8553600000,
+            "silicon": 5132160000
           },
           "relativeResources": {
-            "ice": 24,
-            "hydrogen": 3,
+            "ice": 11,
+            "hydrogen": 2,
             "volume": 54000000,
-            "ore": 13,
-            "silicon": 11
+            "ore": 2,
+            "silicon": 2
           }
         }
       ],
@@ -10928,13 +10980,13 @@
             "z": 1082.5
           },
           "resources": {
-            "ore": 644200829,
-            "silicon": 52537695,
-            "ice": 118307350,
-            "nividium": 989,
-            "helium": 39564000,
-            "methane": 57148000,
-            "hydrogen": 65940000
+            "ore": 2576803319,
+            "silicon": 210150780,
+            "ice": 70984410,
+            "nividium": 395,
+            "helium": 659400000,
+            "methane": 1099000000,
+            "hydrogen": 2176020000
           },
           "relativeResources": {
             "ore": 1,
@@ -11347,10 +11399,10 @@
           },
           "transformation": "E",
           "resources": {
-            "ice": 7266375000
+            "ice": 4359825000
           },
           "relativeResources": {
-            "ice": 2,
+            "ice": 1,
             "volume": 27000000
           }
         }
@@ -11738,14 +11790,14 @@
             "z": 1082.5
           },
           "resources": {
-            "ore": 14968800000,
-            "silicon": 8553600000,
-            "ice": 176833125000
+            "ore": 5987520000,
+            "silicon": 3421440000,
+            "ice": 1060998750000
           },
           "relativeResources": {
-            "ore": 9,
-            "silicon": 7,
-            "ice": 26,
+            "ore": 1,
+            "silicon": 1,
+            "ice": 99,
             "volume": 27000000
           }
         }
@@ -12013,16 +12065,16 @@
             "z": 757.75
           },
           "resources": {
-            "ice": 7266375000,
-            "helium": 2430000000,
-            "methane": 3510000000,
-            "hydrogen": 4050000000
+            "ice": 4359825000,
+            "helium": 40500000000,
+            "methane": 67500000000,
+            "hydrogen": 133650000000
           },
           "relativeResources": {
-            "ice": 2,
-            "helium": 3,
+            "ice": 1,
+            "helium": 2,
             "methane": 1,
-            "hydrogen": 3,
+            "hydrogen": 2,
             "volume": 27000000
           }
         }
@@ -12086,16 +12138,16 @@
             "z": 866
           },
           "resources": {
-            "ice": 6817500000,
-            "helium": 97200000000,
-            "methane": 140400000000,
-            "hydrogen": 151200000000
+            "ice": 4090500000,
+            "helium": 3780000000000,
+            "methane": 13500000000000,
+            "hydrogen": 4860000000000
           },
           "relativeResources": {
             "ice": 1,
             "helium": 99,
-            "methane": 7,
-            "hydrogen": 99,
+            "methane": 34,
+            "hydrogen": 48,
             "volume": 27000000
           }
         }
@@ -12309,18 +12361,18 @@
             "z": 1623.75
           },
           "resources": {
-            "ore": 4256347499,
-            "silicon": 3226837500,
-            "ice": 7266375000,
-            "nividium": 60750,
-            "hydrogen": 4050000000
+            "ore": 170253899,
+            "silicon": 1290735000,
+            "ice": 435982500,
+            "nividium": 24300,
+            "hydrogen": 133650000000
           },
           "relativeResources": {
-            "ore": 3,
-            "silicon": 3,
-            "ice": 2,
+            "ore": 1,
+            "silicon": 1,
+            "ice": 1,
             "nividium": 1,
-            "hydrogen": 3,
+            "hydrogen": 2,
             "volume": 27000000
           }
         }
@@ -12442,12 +12494,12 @@
           },
           "transformation": "F",
           "resources": {
-            "ore": 3956647499,
-            "silicon": 3293662500
+            "ore": 158265899,
+            "silicon": 1317465000
           },
           "relativeResources": {
-            "ore": 3,
-            "silicon": 3,
+            "ore": 1,
+            "silicon": 1,
             "volume": 27000000
           }
         }
@@ -12571,12 +12623,12 @@
             "z": 1190.75
           },
           "resources": {
-            "ore": 3956647499,
-            "silicon": 3293662500
+            "ore": 158265899,
+            "silicon": 1317465000
           },
           "relativeResources": {
-            "ore": 3,
-            "silicon": 3,
+            "ore": 1,
+            "silicon": 1,
             "volume": 27000000
           }
         }
@@ -12692,22 +12744,22 @@
             "z": 0
           },
           "resources": {
-            "ore": 35151974999,
-            "silicon": 32268375000,
-            "ice": 3307500000,
-            "nividium": 60750,
-            "helium": 2430000000,
-            "methane": 3510000000,
-            "hydrogen": 4050000000
+            "ore": 14060789999,
+            "silicon": 12907350000,
+            "ice": 1984500000,
+            "nividium": 24300,
+            "helium": 135000000000,
+            "methane": 67500000000,
+            "hydrogen": 133650000000
           },
           "relativeResources": {
-            "ore": 20,
-            "silicon": 26,
+            "ore": 3,
+            "silicon": 3,
             "ice": 1,
             "nividium": 1,
-            "helium": 3,
+            "helium": 4,
             "methane": 1,
-            "hydrogen": 3,
+            "hydrogen": 2,
             "volume": 27000000
           }
         }
@@ -13207,7 +13259,7 @@
             "z": 433
           },
           "resources": {
-            "helium": 97200000000
+            "helium": 3780000000000
           },
           "relativeResources": {
             "helium": 99,
@@ -13325,7 +13377,7 @@
     {
       "id": "Cluster_108_macro",
       "area": {
-        "sunlight": 0.01,
+        "sunlight": 0.02,
         "economy": 0.25,
         "security": 0.25
       },
@@ -13441,12 +13493,12 @@
           },
           "transformation": "T",
           "resources": {
-            "methane": 3510000000,
-            "hydrogen": 4050000000
+            "methane": 337500000000,
+            "hydrogen": 675000000000
           },
           "relativeResources": {
             "methane": 1,
-            "hydrogen": 3,
+            "hydrogen": 7,
             "volume": 27000000
           }
         },
@@ -13464,18 +13516,18 @@
           },
           "transformation": "T",
           "resources": {
-            "ore": 87479999999,
-            "silicon": 18498375000,
-            "ice": 3543750000,
-            "helium": 4050000000,
-            "hydrogen": 5400000000
+            "ore": 349919999999,
+            "silicon": 73993500000,
+            "ice": 21262500000,
+            "helium": 81000000000,
+            "hydrogen": 178200000000
           },
           "relativeResources": {
-            "ore": 50,
+            "ore": 56,
             "silicon": 15,
-            "ice": 1,
-            "helium": 5,
-            "hydrogen": 4,
+            "ice": 3,
+            "helium": 3,
+            "hydrogen": 2,
             "volume": 27000000
           }
         }
@@ -13590,7 +13642,7 @@
     {
       "id": "Cluster_109_macro",
       "area": {
-        "sunlight": 0.002,
+        "sunlight": 0.02,
         "economy": 0.25,
         "security": 0.25
       },
@@ -13676,7 +13728,7 @@
     {
       "id": "Cluster_110_macro",
       "area": {
-        "sunlight": 0.001,
+        "sunlight": 0.02,
         "economy": 0.25,
         "security": 0.25
       },
@@ -13801,12 +13853,12 @@
             "z": -649.625
           },
           "resources": {
-            "helium": 2430000000,
-            "hydrogen": 4050000000
+            "helium": 40500000000,
+            "hydrogen": 133650000000
           },
           "relativeResources": {
-            "helium": 3,
-            "hydrogen": 3,
+            "helium": 2,
+            "hydrogen": 2,
             "volume": 27000000
           }
         }
@@ -13816,7 +13868,7 @@
     {
       "id": "Cluster_111_macro",
       "area": {
-        "sunlight": 0.0006,
+        "sunlight": 0.02,
         "economy": 0.25,
         "security": 0.25
       },
@@ -13992,20 +14044,20 @@
           },
           "transformation": "C",
           "resources": {
-            "ore": 2003141805,
-            "silicon": 1838819325,
-            "nividium": 34618,
-            "helium": 1384740000,
-            "methane": 2000180000,
-            "hydrogen": 2307900000
+            "ore": 801256721,
+            "silicon": 7355277300,
+            "nividium": 13847,
+            "helium": 23079000000,
+            "methane": 38465000000,
+            "hydrogen": 76160700000
           },
           "relativeResources": {
-            "ore": 2,
+            "ore": 1,
             "silicon": 2,
             "nividium": 1,
-            "helium": 2,
+            "helium": 1,
             "methane": 1,
-            "hydrogen": 2,
+            "hydrogen": 1,
             "volume": 100000000
           }
         },
@@ -14052,18 +14104,18 @@
           },
           "transformation": "C",
           "resources": {
-            "ore": 117173249,
-            "silicon": 107561250,
-            "nividium": 20250,
-            "helium": 810000000,
-            "methane": 1170000000,
-            "hydrogen": 1350000000
+            "ore": 468692999,
+            "silicon": 430245000,
+            "nividium": 8100,
+            "helium": 45000000000,
+            "methane": 22500000000,
+            "hydrogen": 44550000000
           },
           "relativeResources": {
             "ore": 1,
             "silicon": 1,
             "nividium": 1,
-            "helium": 1,
+            "helium": 2,
             "methane": 1,
             "hydrogen": 1,
             "volume": 10000000
@@ -14218,22 +14270,22 @@
             "z": -757.75
           },
           "resources": {
-            "ore": 2003141805,
-            "silicon": 1838819325,
-            "ice": 1961715000,
-            "nividium": 34618,
-            "helium": 1384740000,
-            "methane": 2000180000,
-            "hydrogen": 2307900000
+            "ore": 801256721,
+            "silicon": 7355277300,
+            "ice": 1177029000,
+            "nividium": 13847,
+            "helium": 23079000000,
+            "methane": 38465000000,
+            "hydrogen": 76160700000
           },
           "relativeResources": {
-            "ore": 2,
+            "ore": 1,
             "silicon": 2,
             "ice": 1,
             "nividium": 1,
-            "helium": 2,
+            "helium": 1,
             "methane": 1,
-            "hydrogen": 2,
+            "hydrogen": 1,
             "volume": 100000000
           }
         }
@@ -14342,20 +14394,20 @@
             "z": -866
           },
           "resources": {
-            "ore": 3515197499,
-            "silicon": 3226837500,
-            "nividium": 60750,
-            "helium": 2430000000,
-            "methane": 3510000000,
-            "hydrogen": 4050000000
+            "ore": 1406078999,
+            "silicon": 12907350000,
+            "nividium": 24300,
+            "helium": 40500000000,
+            "methane": 67500000000,
+            "hydrogen": 133650000000
           },
           "relativeResources": {
-            "ore": 2,
+            "ore": 1,
             "silicon": 3,
             "nividium": 1,
-            "helium": 3,
+            "helium": 2,
             "methane": 1,
-            "hydrogen": 3,
+            "hydrogen": 2,
             "volume": 27000000
           }
         }
@@ -14507,7 +14559,7 @@
     {
       "id": "Cluster_116_macro",
       "area": {
-        "sunlight": 0.000002,
+        "sunlight": 0.02,
         "economy": 0.25,
         "security": 0.25
       },
@@ -14561,23 +14613,751 @@
             "z": -866
           },
           "resources": {
-            "ore": 35151974999,
-            "silicon": 32268375000,
-            "ice": 2835000000,
-            "nividium": 60750,
-            "helium": 2430000000,
-            "methane": 3510000000,
-            "hydrogen": 4050000000
+            "ore": 1406078999,
+            "silicon": 12907350000,
+            "ice": 1701000000,
+            "nividium": 24300,
+            "helium": 135000000000,
+            "methane": 337500000000,
+            "hydrogen": 675000000000
           },
           "relativeResources": {
-            "ore": 20,
-            "silicon": 26,
+            "ore": 1,
+            "silicon": 3,
             "ice": 1,
             "nividium": 1,
-            "helium": 3,
+            "helium": 4,
             "methane": 1,
-            "hydrogen": 3,
+            "hydrogen": 7,
             "volume": 27000000
+          }
+        }
+      ],
+      "sechighways": []
+    },
+    {
+      "id": "Cluster_500_macro",
+      "area": {
+        "sunlight": 13.9,
+        "economy": 0.25,
+        "security": 0.75
+      },
+      "name": "Avarice",
+      "position": {
+        "x": 0,
+        "y": 0,
+        "z": 216.5
+      },
+      "sectors": [
+        {
+          "id": "Cluster_500_Sector001_macro",
+          "resources": {
+            "ore": 1512406931,
+            "silicon": 1310067351,
+            "nividium": 76785,
+            "ice": 1984500000,
+            "helium": 40500000000,
+            "methane": 67500000000,
+            "hydrogen": 133650000000
+          },
+          "area": {
+            "thewave": "true",
+            "sunlight": null,
+            "economy": null,
+            "security": null
+          },
+          "name": "Avarice I",
+          "position": {
+            "x": 0.0000375,
+            "y": 0,
+            "z": 0.0000625
+          },
+          "stations": [
+            {
+              "id": "scavenger_shipyard_01",
+              "race": "argon",
+              "owner": "scavenger",
+              "tags": "shipyard",
+              "zoneReference": "Zone004_Cluster_500_Sector001_macro",
+              "offset": {
+                "position": {
+                  "x": 0,
+                  "z": 0
+                }
+              },
+              "adjusted": {
+                "x": 49.19401666666667,
+                "z": 265.084635
+              }
+            },
+            {
+              "id": "scavenger_wharf_01",
+              "race": "argon",
+              "owner": "scavenger",
+              "tags": "wharf",
+              "zoneReference": "Cluster_500_Sector001_macro",
+              "offset": {
+                "position": {
+                  "x": 0,
+                  "z": 0
+                }
+              },
+              "adjusted": {
+                "x": 32,
+                "z": 270.5
+              }
+            }
+          ],
+          "owner": "scavenger",
+          "adjusted": {
+            "x": 32,
+            "z": 270.5
+          },
+          "transformation": "AV",
+          "relativeResources": {
+            "ore": 2,
+            "silicon": 2,
+            "nividium": 2,
+            "volume": 127000000,
+            "ice": 1,
+            "helium": 2,
+            "methane": 1,
+            "hydrogen": 2
+          }
+        },
+        {
+          "id": "Cluster_500_Sector002_macro",
+          "resources": {
+            "ore": 4447370400,
+            "silicon": 808612800,
+            "nividium": 13476
+          },
+          "area": {
+            "thewave": "true",
+            "sunlight": null,
+            "economy": null,
+            "security": null
+          },
+          "name": "Avarice V Dead End",
+          "position": {
+            "x": 12.3270875,
+            "y": 0,
+            "z": -0.000025
+          },
+          "owner": "scavenger",
+          "adjusted": {
+            "x": 32,
+            "z": 162.5
+          },
+          "transformation": "AV",
+          "relativeResources": {
+            "ore": 3,
+            "silicon": 3,
+            "nividium": 3,
+            "volume": 1200000
+          }
+        },
+        {
+          "id": "Cluster_500_Sector003_macro",
+          "resources": {},
+          "area": {
+            "thewave": "true",
+            "sunlight": null,
+            "economy": null,
+            "security": null
+          },
+          "name": "Avarice IV",
+          "position": {
+            "x": -0.0000125,
+            "y": 0,
+            "z": -0.00005
+          },
+          "zones": [
+            {
+              "name": "connection_ClusterGate500To502",
+              "ref": "gates",
+              "offset": {
+                "position": {
+                  "x": -35828.1,
+                  "y": 0,
+                  "z": -17789.1
+                },
+                "quaternion": {
+                  "qx": "0",
+                  "qy": "0.707107",
+                  "qz": "0",
+                  "qw": "0.707107"
+                }
+              },
+              "macro": {
+                "ref": "props_gates_anc_gate_macro",
+                "connection": "space"
+              },
+              "zoneReference": "Zone001_Cluster_500_Sector003_macro",
+              "adjusted": {
+                "x": -91.74441666666667,
+                "z": 225.183025
+              }
+            }
+          ],
+          "owner": "scavenger",
+          "adjusted": {
+            "x": -62,
+            "z": 216.5
+          },
+          "transformation": "AV",
+          "relativeResources": {}
+        }
+      ],
+      "sechighways": [
+        {
+          "id": "SuperHighway01_Cluster500_macro",
+          "position": {
+            "x": -0.0000375,
+            "y": 0,
+            "z": 57.2545625
+          },
+          "connection": [
+            {
+              "ref": "entrypoint",
+              "macro": {
+                "ref": "tzoneCluster_500_Sector001SHCon6_GateZone_macro",
+                "path": "../../Cluster_500_Sector001_connection/tzoneCluster_500_Sector001SHCon6_GateZone_connection",
+                "connection": "exitpoint1"
+              }
+            },
+            {
+              "ref": "exitpoint",
+              "macro": {
+                "ref": "tzoneCluster_500_Sector003SHCon5_GateZone_macro",
+                "path": "../../Cluster_500_Sector003_connection/tzoneCluster_500_Sector003SHCon5_GateZone_connection",
+                "connection": "entrypoint1"
+              }
+            }
+          ]
+        },
+        {
+          "id": "SuperHighway02_Cluster500_macro",
+          "position": {
+            "x": -0.0000375,
+            "y": 0,
+            "z": 57.2545625
+          },
+          "connection": [
+            {
+              "ref": "exitpoint",
+              "macro": {
+                "ref": "tzoneCluster_500_Sector001SHCon10_GateZone_macro",
+                "path": "../../Cluster_500_Sector001_connection/tzoneCluster_500_Sector001SHCon10_GateZone_connection",
+                "connection": "entrypoint1"
+              }
+            },
+            {
+              "ref": "entrypoint",
+              "macro": {
+                "ref": "tzoneCluster_500_Sector003SHCon9_GateZone_macro",
+                "path": "../../Cluster_500_Sector003_connection/tzoneCluster_500_Sector003SHCon9_GateZone_connection",
+                "connection": "exitpoint1"
+              }
+            }
+          ]
+        },
+        {
+          "id": "SuperHighway03_Cluster500_macro",
+          "position": {
+            "x": 225.25875,
+            "y": 0,
+            "z": -973.16375
+          },
+          "connection": [
+            {
+              "ref": "entrypoint",
+              "macro": {
+                "ref": "tzoneCluster_500_Sector001SHCon2_GateZone_macro",
+                "path": "../../Cluster_500_Sector001_connection/tzoneCluster_500_Sector001SHCon2_GateZone_connection",
+                "connection": "exitpoint1"
+              }
+            },
+            {
+              "ref": "exitpoint",
+              "macro": {
+                "ref": "tzoneCluster_500_Sector002SHCon5_GateZone_macro",
+                "path": "../../Cluster_500_Sector002_connection/tzoneCluster_500_Sector002SHCon5_GateZone_connection",
+                "connection": "entrypoint1"
+              }
+            }
+          ]
+        },
+        {
+          "id": "SuperHighway04_Cluster500_macro",
+          "position": {
+            "x": 225.30375,
+            "y": 0,
+            "z": -973.16375
+          },
+          "connection": [
+            {
+              "ref": "entrypoint",
+              "macro": {
+                "ref": "tzoneCluster_500_Sector002SHCon9_GateZone_macro",
+                "path": "../../Cluster_500_Sector002_connection/tzoneCluster_500_Sector002SHCon9_GateZone_connection",
+                "connection": "exitpoint1"
+              }
+            },
+            {
+              "ref": "exitpoint",
+              "macro": {
+                "ref": "tzoneCluster_500_Sector001SHCon4_GateZone_macro",
+                "path": "../../Cluster_500_Sector001_connection/tzoneCluster_500_Sector001SHCon4_GateZone_connection",
+                "connection": "entrypoint1"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "Cluster_501_macro",
+      "area": {
+        "sunlight": 0.13,
+        "economy": 0.25,
+        "security": 0.75
+      },
+      "name": "Windfall",
+      "position": {
+        "x": 0,
+        "y": 0,
+        "z": 433.125
+      },
+      "sectors": [
+        {
+          "id": "Cluster_501_Sector001_macro",
+          "name": "Windfall I Union Summit",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "zones": [
+            {
+              "name": "connection_ClusterGate501To008",
+              "ref": "gates",
+              "offset": {
+                "position": {
+                  "x": 10392.54,
+                  "y": 0,
+                  "z": 27418.67
+                },
+                "quaternion": {
+                  "qx": "0",
+                  "qy": "-1",
+                  "qz": "0",
+                  "qw": "-4.37e-08"
+                }
+              },
+              "macro": {
+                "ref": "props_gates_anc_gate_macro",
+                "connection": "space"
+              },
+              "zoneReference": "Zone002_Cluster_501_Sector001_macro",
+              "adjusted": {
+                "x": -0.6843495238095239,
+                "z": 478.3156723809524
+              }
+            },
+            {
+              "name": "connection_ClusterGate501To502",
+              "ref": "gates",
+              "offset": {
+                "position": {
+                  "x": -40308.53,
+                  "y": 0,
+                  "z": -38025.53
+                },
+                "quaternion": {
+                  "qx": "0",
+                  "qy": "0.3826833",
+                  "qz": "0",
+                  "qw": "0.9238796"
+                }
+              },
+              "macro": {
+                "ref": "props_gates_orb_accelerator_01_macro",
+                "connection": "space"
+              },
+              "zoneReference": "Zone003_Cluster_501_Sector001_macro",
+              "adjusted": {
+                "x": -44.149536190476184,
+                "z": 414.3829595238095
+              }
+            },
+            {
+              "name": "connection_ClusterGate501To002",
+              "ref": "gates",
+              "offset": {
+                "position": {
+                  "x": 26432.1,
+                  "y": 0,
+                  "z": -20776.15
+                },
+                "quaternion": {
+                  "qx": "0",
+                  "qy": "-0.6087614",
+                  "qz": "0",
+                  "qw": "0.7933534"
+                }
+              },
+              "macro": {
+                "ref": "props_gates_anc_gate_macro",
+                "connection": "space"
+              },
+              "zoneReference": "Zone004_Cluster_501_Sector001_macro",
+              "adjusted": {
+                "x": 41.940061904761905,
+                "z": 416.3582271428571
+              }
+            }
+          ],
+          "stations": [
+            {
+              "id": "loanshark_shipyard_01",
+              "race": "argon",
+              "owner": "loanshark",
+              "tags": "shipyard",
+              "zoneReference": "Cluster_501_Sector001_macro",
+              "offset": {
+                "position": {
+                  "x": 0,
+                  "z": 0
+                }
+              },
+              "adjusted": {
+                "x": 0,
+                "z": 433.125
+              }
+            },
+            {
+              "id": "loanshark_wharf_01",
+              "race": "argon",
+              "owner": "loanshark",
+              "tags": "wharf",
+              "zoneReference": "Cluster_501_Sector001_macro",
+              "offset": {
+                "position": {
+                  "x": 0,
+                  "z": 0
+                }
+              },
+              "adjusted": {
+                "x": 0,
+                "z": 433.125
+              }
+            }
+          ],
+          "owner": "loanshark",
+          "adjusted": {
+            "x": 0,
+            "y": 0,
+            "z": 433.125
+          },
+          "resources": {
+            "ore": 131976000,
+            "silicon": 24570000,
+            "ice": 141750000,
+            "nividium": 24975,
+            "hydrogen": 17820000000
+          },
+          "relativeResources": {
+            "ore": 1,
+            "silicon": 1,
+            "ice": 1,
+            "nividium": 1,
+            "hydrogen": 1,
+            "volume": 27000000
+          }
+        }
+      ],
+      "sechighways": []
+    },
+    {
+      "id": "Cluster_502_macro",
+      "area": {
+        "sunlight": 0.13,
+        "economy": 0.25,
+        "security": 0.75
+      },
+      "name": "Windfall",
+      "position": {
+        "x": -187.5,
+        "y": 0,
+        "z": 324.75
+      },
+      "sectors": [
+        {
+          "id": "Cluster_502_Sector001_macro",
+          "name": "Windfall III The Hoard",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "zones": [
+            {
+              "name": "connection_ClusterGate502To500",
+              "ref": "gates",
+              "offset": {
+                "position": {
+                  "x": 31813.4,
+                  "y": 0,
+                  "z": -6340.38
+                },
+                "quaternion": {
+                  "qx": "0",
+                  "qy": "-0.707107",
+                  "qz": "0",
+                  "qw": "0.707107"
+                }
+              },
+              "macro": {
+                "ref": "props_gates_anc_gate_macro",
+                "connection": "space"
+              },
+              "zoneReference": "Zone004_Cluster_502_Sector001_macro",
+              "adjusted": {
+                "x": -144.02242380952381,
+                "z": 312.1077328571428
+              }
+            },
+            {
+              "name": "connection_ClusterGate502To501",
+              "ref": "gates",
+              "offset": {
+                "position": {
+                  "x": 10392.53,
+                  "y": 0,
+                  "z": 27418.67
+                },
+                "quaternion": {
+                  "qx": "0",
+                  "qy": "-0.9396926",
+                  "qz": "0",
+                  "qw": "0.3420202"
+                }
+              },
+              "macro": {
+                "ref": "props_gates_orb_accelerator_01_macro",
+                "connection": "space"
+              },
+              "zoneReference": "Zone002_Cluster_502_Sector001_macro",
+              "adjusted": {
+                "x": -148.5276057142857,
+                "z": 371.2284723809524
+              }
+            },
+            {
+              "name": "connection_ClusterGate502To503",
+              "ref": "gates",
+              "offset": {
+                "position": {
+                  "x": -3366.623,
+                  "y": 0,
+                  "z": -22688.42
+                },
+                "quaternion": {
+                  "qx": "0",
+                  "qy": "1.51e-07",
+                  "qz": "0",
+                  "qw": "1"
+                }
+              },
+              "macro": {
+                "ref": "props_gates_orb_accelerator_01_macro",
+                "connection": "space"
+              },
+              "zoneReference": "Zone005_Cluster_502_Sector001_macro",
+              "adjusted": {
+                "x": -196.1363722857143,
+                "z": 264.8899942857143
+              }
+            }
+          ],
+          "stations": [
+            {
+              "id": "Story_ScrapyardStation",
+              "race": "teladi",
+              "owner": "loanshark",
+              "tags": "tradestation",
+              "zoneReference": "Zone006_Cluster_502_Sector001_macro",
+              "offset": {
+                "position": {
+                  "x": 0,
+                  "z": 0
+                }
+              },
+              "adjusted": {
+                "x": -171.83333333333334,
+                "z": 382.0833333333333
+              }
+            }
+          ],
+          "owner": "loanshark",
+          "adjusted": {
+            "x": -187.5,
+            "y": 0,
+            "z": 324.75
+          },
+          "resources": {
+            "hydrogen": 156258000000
+          },
+          "relativeResources": {
+            "hydrogen": 3,
+            "volume": 27100000
+          }
+        }
+      ],
+      "sechighways": []
+    },
+    {
+      "id": "Cluster_503_macro",
+      "area": {
+        "sunlight": 0.13,
+        "economy": 0.25,
+        "security": 0.75
+      },
+      "name": "Windfall",
+      "position": {
+        "x": -187.5,
+        "y": 0,
+        "z": 108.25
+      },
+      "sectors": [
+        {
+          "id": "Cluster_503_Sector001_macro",
+          "name": "Windfall IV Aurora's Dream",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "zones": [
+            {
+              "name": "connection_ClusterGate503To502",
+              "ref": "gates",
+              "offset": {
+                "position": {
+                  "x": 10392.54,
+                  "y": 0,
+                  "z": 27418.67
+                },
+                "quaternion": {
+                  "qx": "0",
+                  "qy": "-1",
+                  "qz": "0",
+                  "qw": "-4.37e-08"
+                }
+              },
+              "macro": {
+                "ref": "props_gates_orb_accelerator_01_macro",
+                "connection": "space"
+              },
+              "zoneReference": "Zone002_Cluster_503_Sector001_macro",
+              "adjusted": {
+                "x": -185.28710252380952,
+                "z": 171.33670571428573
+              }
+            },
+            {
+              "name": "connection_ClusterGate503To006",
+              "ref": "gates",
+              "offset": {
+                "position": {
+                  "x": -41869.49,
+                  "y": 0,
+                  "z": -23887.82
+                },
+                "quaternion": {
+                  "qx": "0",
+                  "qy": "0.08715588",
+                  "qz": "0",
+                  "qw": "0.9961947"
+                }
+              },
+              "macro": {
+                "ref": "props_gates_anc_gate_macro",
+                "connection": "space"
+              },
+              "zoneReference": "Zone005_Cluster_503_Sector001_macro",
+              "adjusted": {
+                "x": -207.1371914285714,
+                "z": 48.04730857142858
+              }
+            }
+          ],
+          "owner": "loanshark",
+          "adjusted": {
+            "x": -187.5,
+            "y": 0,
+            "z": 108.25
+          },
+          "resources": {
+            "hydrogen": 133650000000,
+            "ore": 2572186,
+            "silicon": 936671,
+            "ice": 332337600,
+            "nividium": 40
+          },
+          "relativeResources": {
+            "hydrogen": 2,
+            "volume": 29000000,
+            "ore": 2,
+            "silicon": 1,
+            "ice": 1,
+            "nividium": 1
+          }
+        }
+      ],
+      "sechighways": []
+    },
+    {
+      "id": "Cluster_504_macro",
+      "area": {
+        "sunlight": 0.13,
+        "economy": 0.25,
+        "security": 0.75,
+        "god": "false",
+        "jobs": "false",
+        "factionlogic": "false"
+      },
+      "name": "Unknown System",
+      "position": {
+        "x": 187.5,
+        "y": 0,
+        "z": 108.25
+      },
+      "sectors": [
+        {
+          "id": "Cluster_504_Sector001_macro",
+          "name": "Unknown System",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "adjusted": {
+            "x": 187.5,
+            "y": 0,
+            "z": 108.25
+          },
+          "resources": {
+            "ore": 131108532,
+            "silicon": 41796351,
+            "nividium": 76785
+          },
+          "relativeResources": {
+            "ore": 2,
+            "silicon": 2,
+            "nividium": 2,
+            "volume": 127000000
           }
         }
       ],
@@ -15881,6 +16661,78 @@
           "x": -602.1785399925595,
           "z": 958.064087983631
         }
+      },
+      {
+        "source": "connection_ClusterGate501To502",
+        "gateDestinations": "connection_ClusterGate502To501",
+        "start": {
+          "x": -44.149536190476184,
+          "z": 414.3829595238095
+        },
+        "end": {
+          "x": -148.5276057142857,
+          "z": 371.2284723809524
+        }
+      },
+      {
+        "source": "connection_ClusterGate502To503",
+        "gateDestinations": "connection_ClusterGate503To502",
+        "start": {
+          "x": -196.1363722857143,
+          "z": 264.8899942857143
+        },
+        "end": {
+          "x": -185.28710252380952,
+          "z": 171.33670571428573
+        }
+      },
+      {
+        "source": "connection_ClusterGate502To500",
+        "gateDestinations": "connection_ClusterGate500To502",
+        "start": {
+          "x": -144.02242380952381,
+          "z": 312.1077328571428
+        },
+        "end": {
+          "x": -91.74441666666667,
+          "z": 225.183025
+        }
+      },
+      {
+        "source": "connection_ClusterGate501To008",
+        "gateDestinations": "connection_ClusterGate008To501",
+        "start": {
+          "x": -0.6843495238095239,
+          "z": 478.3156723809524
+        },
+        "end": {
+          "x": -36.28719475446428,
+          "z": 582.9055074404762
+        }
+      },
+      {
+        "source": "connection_ClusterGate501To002",
+        "gateDestinations": "connection_ClusterGate002To501",
+        "start": {
+          "x": 41.940061904761905,
+          "z": 416.3582271428571
+        },
+        "end": {
+          "x": 138.34696726190478,
+          "z": 327.9916953125
+        }
+      },
+      {
+        "source": "connection_ClusterGate503To006",
+        "gateDestinations": "connection_ClusterGate006To503",
+        "start": {
+          "x": -207.1371914285714,
+          "z": 48.04730857142858
+        },
+        "end": {
+          "x": -216.25122526041667,
+          "z": -26.781938802083335
+        }
       }
     ]
   },
@@ -16113,6 +16965,26 @@
       "destination": {
         "x": -2210,
         "y": 408
+      }
+    },
+    {
+      "origin": {
+        "x": -38,
+        "y": -245
+      },
+      "destination": {
+        "x": 20,
+        "y": -242
+      }
+    },
+    {
+      "origin": {
+        "x": 47,
+        "y": -239
+      },
+      "destination": {
+        "x": 18,
+        "y": -187
       }
     }
   ]
