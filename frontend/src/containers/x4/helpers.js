@@ -8,7 +8,8 @@ export const maps = {
     {label: 'Teladi', value: 'tel'},
     {label: 'Terran', value: 'ter'},
     {label: 'Yaki', value: 'yak'},
-    {label: 'Xenon', value: 'xen'}
+    {label: 'Xenon', value: 'xen'},
+    {label: 'Pirate', value: 'pir'},
   ],
   size: {
     ship_xl: 'extralarge',
@@ -31,7 +32,8 @@ export const maps = {
     tel: 'Teladi',
     ter: 'Terran',
     yak: 'Yaki',
-    xen: 'Xenon'
+    xen: 'Xenon',
+    pir: "Pirate"
   },
   factions: {
     argon: 'Argon Federation',
@@ -46,6 +48,8 @@ export const maps = {
     scaleplate: 'Scale Plate Pact',
     split: 'Zyarth Patriarcy',
     pioneers: 'Segaris Pioneers',
+    scavenger: 'Riptide Rakers',
+    loanshark: 'Vigor Syndicate',
     yaki: 'Yaki',
     terran: 'Terran Protectorate'
 
@@ -65,7 +69,9 @@ export const maps = {
     pioneers: {color: '#41aa9a', border: '#66aa9a'},
     yaki: {color: '#fe8dfa', border: '#ffadfa'},
     terran: {color: '#bcd0fb', border: '#bcd0fb'},
-    none: {color: '#666', border: '#aaa'}
+    none: {color: '#666', border: '#aaa'},
+    scavenger: {color: '#5480a0', border: '#7480a0'},
+    loanshark: {color: '#978296', border: '#aa8296'}
   },
   resourceColors: {
     ore: '#ff8c00',

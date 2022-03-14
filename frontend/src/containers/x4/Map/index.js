@@ -95,7 +95,7 @@ const Map = (props) => {
   useEffect(() => {
     if (props.x4.map) seo({
       title: 'X4 Foundations Map',
-      metaDescription: 'X4 Foundations, Split Vendetta and Cradle of Humanity map.'
+      metaDescription: 'X4 Foundations, Split Vendetta, Cradle of Humanity map and Tides of Avarice.'
       //keywords: `${props.x4.map.systems.map(system => system.sectors.map(sector => sector.name).join(', '))}`
     });
   }, [props.x4.map]);
@@ -103,7 +103,7 @@ const Map = (props) => {
 
   return (
     <div className="x4__map">
-      <h1>X4 Foundations Map v4.2</h1>
+      <h1>X4 Foundations Map v5.0</h1>
       {props.x4.map && (
         <React.Fragment>
           <div className="x4__map-controls">

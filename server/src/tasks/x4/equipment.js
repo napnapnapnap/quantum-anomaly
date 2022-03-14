@@ -73,6 +73,7 @@ const getContent = async (paths, type, translations, bullets) => {
         hull: properties.hull.max
       };
     } else if (type === 'weapon' && data.class !== 'missilelauncher') {
+      if (data.name.replace('_macro', '').indexOf('_video') !== -1) return;
       result[size][data.name.replace('_macro', '')] = {
         name: translate(properties.identification.name, translations, true),
         heat: properties.heat,
@@ -95,6 +96,7 @@ const getContent = async (paths, type, translations, bullets) => {
         hull: properties.hull.max
       };
     } else if (type === 'engine') {
+      if (data.name.replace('_macro', '').indexOf('_video') !== -1) return;
       if (data.name.replace('_macro', '').indexOf('xen') !== -1) return;
       if (data.name.replace('_macro', '').indexOf('kha') !== -1) return;
       if (data.name.replace('_macro', '').indexOf('tfm') !== -1) return;
@@ -118,6 +120,7 @@ const getContent = async (paths, type, translations, bullets) => {
         thrust: properties.thrust
       };
     } else if (type === 'shield') {
+      if (data.name.replace('_macro', '').indexOf('shield_gen_m_yacht_01_mk1') !== -1) return;
       if (data.name.replace('_macro', '').indexOf('m_standard_01') !== -1) return;
       if (data.name.replace('_macro', '').indexOf('xen') !== -1) return;
       if (data.name.replace('_macro', '').indexOf('kha') !== -1) return;

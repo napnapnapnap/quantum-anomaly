@@ -2,7 +2,7 @@ import { promises as fs } from 'fs';
 import path from 'path';
 import xml2js from 'xml2js';
 import { roundToClosest } from '../../helpers';
-import { appLog, inspect } from "../../helpers/logger";
+import { appLog, inspect } from '../../helpers/logger';
 import { saveToFile } from './helpers';
 import { translateRecursiveTrim } from './translations';
 
@@ -57,21 +57,21 @@ function processGalaxy(galaxy) {
 
 function processClusters(clusters) {
   clusters.forEach(clusterItem => clusterItem.connections.connection.forEach(clusterConnection => {
-    const clusterName = clusterItem.name.replace("_macro", '').replace("_", '');
+    const clusterName = clusterItem.name.replace('_macro', '').replace('_', '');
     const macroName = clusterConnection.macro.name;
 
-    if (clusterName === 'Cluster110' && macroName === "Cluster108_Sector002_Region001_macro") {
+    if (clusterName === 'Cluster110' && macroName === 'Cluster108_Sector002_Region001_macro') {
       // invalid pointer for neptune_field
-      clusterConnection.macro.name = "Cluster110_Sector001_Region001_macro";
-      appLog("Fixing broken Neptune connection", "yellow");
-    } else if (clusterName === 'Cluster112' && macroName === "Cluster104_Sector001_Region002_macro") {
+      clusterConnection.macro.name = 'Cluster110_Sector001_Region001_macro';
+      appLog('Fixing broken Neptune connection', 'yellow');
+    } else if (clusterName === 'Cluster112' && macroName === 'Cluster104_Sector001_Region002_macro') {
       // invalid pointer for cluster112_s2_region01
-      clusterConnection.macro.name = "Cluster112_Sector002_Region001_macro'";
-      appLog("Fixing broken Savage Spur connection", "yellow");
-    } else if (clusterName === 'Cluster414' && macroName === "C415S01_Region02_macro") {
+      clusterConnection.macro.name = 'Cluster112_Sector002_Region001_macro\'';
+      appLog('Fixing broken Savage Spur connection', 'yellow');
+    } else if (clusterName === 'Cluster414' && macroName === 'C415S01_Region02_macro') {
       // invalid pointer for region_cluster_415_sector_001
-      clusterConnection.macro.name = "C414S01_Region02_macro'";
-      appLog("Fixing broken Rhy's Defiance connection", "yellow");
+      clusterConnection.macro.name = 'C414S01_Region02_macro\'';
+      appLog('Fixing broken Rhy\'s Defiance connection', 'yellow');
     }
   }));
 
@@ -131,14 +131,18 @@ function processRegions(regions, regionObjectGroupsObject, regionYieldsObject) {
   regions = regions.filter(region =>
     !region.name.includes('test') &&
     region.resources &&
-    region.name !== 'cluster113_region02' &&
     region.name !== 'region_cluster_414_sector_001' &&
     region.name !== 'region_cluster_418_sector_001_b' &&
     region.name !== 'region_cluster_418_sector_001_c' &&
-    region.name !== 'region_cluster_421_sector_001'
+    region.name !== 'region_cluster_421_sector_001' &&
+    region.name !== 'wave_main' &&
+    region.name !== 'wave_active' &&
+    region.name !== 'region504wave_active'
   );
 
   regions.forEach(region => {
+    if (!region.boundary) region.boundary = {};
+
     if (region.density) region.density = parseFloat(region.density);
     if (region.rotation) region.rotation = parseFloat(region.rotation);
     if (region.noisescale) region.noisescale = parseFloat(region.noisescale);
@@ -219,6 +223,7 @@ function processRegions(regions, regionObjectGroupsObject, regionYieldsObject) {
     }
     if (region.resources) {
       const resourcesObject = {};
+      if (typeof region.resources === 'string' || region.resources instanceof String) region.resources = { resource: [] };
       if (!Array.isArray(region.resources.resource)) region.resources.resource = [region.resources.resource];
       region.resources.resource.forEach(item => resourcesObject[item.ware] = regionYieldsObject[item.ware][item.yield]);
       region.resources = resourcesObject;
@@ -412,12 +417,22 @@ function applyCrazySectorTransformations(map, sectorsObjects) {
 
       // special flake2
       if (cluster.id === 'Cluster_108_macro') {
+        cluster.sectors[0].adjusted = { x: cluster.position.x + 62, z: cluster.position.z };
         cluster.sectors[1].adjusted = { x: cluster.position.x - 32, z: cluster.position.z - 54 };
         cluster.sectors[2].adjusted = { x: cluster.position.x - 32, z: cluster.position.z + 54 };
-        cluster.sectors[0].adjusted = { x: cluster.position.x + 62, z: cluster.position.z };
         cluster.sectors[0].transformation = 'T';
         cluster.sectors[1].transformation = 'T';
         cluster.sectors[2].transformation = 'T';
+      }
+
+      // special flake3
+      if (cluster.id === 'Cluster_500_macro') {
+        cluster.sectors[0].adjusted = { x: cluster.position.x + 32, z: cluster.position.z + 54 };
+        cluster.sectors[1].adjusted = { x: cluster.position.x + 32, z: cluster.position.z - 54 };
+        cluster.sectors[2].adjusted = { x: cluster.position.x - 62, z: cluster.position.z };
+        cluster.sectors[0].transformation = 'AV';
+        cluster.sectors[1].transformation = 'AV';
+        cluster.sectors[2].transformation = 'AV';
       }
     }
 
@@ -591,7 +606,8 @@ function processStations(stations) {
         id: station.id,
         race: station.race,
         owner: station.owner,
-        tags: station.type === 'tradingstation' ? 'tradestation' : station.station.select.tags.replace(/\[/, '').replace(/]/, ''),
+        tags: station.type === 'tradingstation' ? 'tradestation' : station.station.select.tags.replace(/\[/, '')
+          .replace(/]/, ''),
         position: station.position,
         zoneReference: station.location.macro.replace('zon', 'Zon').replace('clu', 'Clu').replace('sec', 'Sec')
       });
@@ -627,7 +643,8 @@ export async function getMap(sourceBasePath, translations) {
   const baseSourcePath = sourceBasePath;
   const splitSourcePath = path.join(sourceBasePath, 'extensions', 'ego_dlc_split');
   const terranSourcePath = path.join(sourceBasePath, 'extensions', 'ego_dlc_terran');
-  let base, split, terran;
+  const pirateSourcePath = path.join(sourceBasePath, 'extensions', 'ego_dlc_pirate');
+  let base, split, terran, pirate;
   let map = [];
 
   // ----------------------------------------------------------------------------------- mapDefaults - DONE
@@ -636,9 +653,10 @@ export async function getMap(sourceBasePath, translations) {
   base = await parseFile(path.join(baseSourcePath, 'libraries', 'mapdefaults.xml'));
   split = await parseFile(path.join(splitSourcePath, 'libraries', 'mapdefaults.xml'));
   terran = await parseFile(path.join(terranSourcePath, 'libraries', 'mapdefaults.xml'));
+  pirate = await parseFile(path.join(pirateSourcePath, 'libraries', 'mapdefaults.xml'));
 
   const mapDefaultsObjects = {};
-  processMapDefaults([...base.defaults.dataset, ...split.defaults.dataset, ...terran.defaults.dataset], translations)
+  processMapDefaults([...base.defaults.dataset, ...split.defaults.dataset, ...terran.defaults.dataset, ...pirate.defaults.dataset], translations)
     .forEach(item => mapDefaultsObjects[item.macro] = item.properties);
   SAVE_SUBSTEPS && await saveToFile(mapDefaultsObjects, 'mapStepMapDefaults');
 
@@ -647,11 +665,13 @@ export async function getMap(sourceBasePath, translations) {
   base = await parseFile(path.join(baseSourcePath, 'maps', 'xu_ep2_universe', 'galaxy.xml'));
   split = await parseFile(path.join(splitSourcePath, 'maps', 'xu_ep2_universe', 'galaxy.xml'));
   terran = await parseFile(path.join(terranSourcePath, 'maps', 'xu_ep2_universe', 'galaxy.xml'));
+  pirate = await parseFile(path.join(pirateSourcePath, 'maps', 'xu_ep2_universe', 'galaxy.xml'));
 
   let galaxyConnections = processGalaxy([
     ...base.macros.macro.connections.connection,
     ...split.diff.add.connection,
-    ...terran.diff.add.connection
+    ...terran.diff.add.connection,
+    ...pirate.diff.add.connection
   ]);
   SAVE_SUBSTEPS && await saveToFile(galaxyConnections, 'mapStepGalaxyConnections');
 
@@ -673,9 +693,10 @@ export async function getMap(sourceBasePath, translations) {
   base = await parseFile(path.join(baseSourcePath, 'maps', 'xu_ep2_universe', 'clusters.xml'));
   split = await parseFile(path.join(splitSourcePath, 'maps', 'xu_ep2_universe', 'dlc4_clusters.xml'));
   terran = await parseFile(path.join(terranSourcePath, 'maps', 'xu_ep2_universe', 'dlc_terran_clusters.xml'));
+  pirate = await parseFile(path.join(pirateSourcePath, 'maps', 'xu_ep2_universe', 'dlc_pirate_clusters.xml'));
 
   const clusterConnections = {};
-  processClusters([...base.macros.macro, ...split.macros.macro, ...terran.macros.macro])
+  processClusters([...base.macros.macro, ...split.macros.macro, ...terran.macros.macro, ...pirate.macros.macro])
     .forEach(item => clusterConnections[item.name] = item.connections.connection);
   SAVE_SUBSTEPS && await saveToFile(clusterConnections, 'mapStepClusterConnections');
 
@@ -684,10 +705,12 @@ export async function getMap(sourceBasePath, translations) {
   base = await parseFile(path.join(baseSourcePath, 'maps', 'xu_ep2_universe', 'sectors.xml'));
   split = await parseFile(path.join(splitSourcePath, 'maps', 'xu_ep2_universe', 'dlc4_sectors.xml'));
   terran = await parseFile(path.join(terranSourcePath, 'maps', 'xu_ep2_universe', 'dlc_terran_sectors.xml'));
+  pirate = await parseFile(path.join(pirateSourcePath, 'maps', 'xu_ep2_universe', 'dlc_pirate_sectors.xml'));
   const sectorObjects = processSectors([
     ...base.macros.macro,
     ...split.macros.macro,
-    ...terran.macros.macro
+    ...terran.macros.macro,
+    ...pirate.macros.macro
   ]);
   SAVE_SUBSTEPS && await saveToFile(sectorObjects, 'mapStepSectors');
 
@@ -697,6 +720,7 @@ export async function getMap(sourceBasePath, translations) {
   base = await parseFile(path.join(baseSourcePath, 'libraries', 'region_definitions.xml'));
   split = await parseFile(path.join(splitSourcePath, 'libraries', 'region_definitions.xml'));
   terran = await parseFile(path.join(terranSourcePath, 'libraries', 'region_definitions.xml'));
+  pirate = await parseFile(path.join(pirateSourcePath, 'libraries', 'region_definitions.xml'));
 
   // We also need to feed regionYields to get the yield modifiers
   const regionYields = await parseFile(path.join(baseSourcePath, 'libraries', 'regionyields.xml'));
@@ -711,7 +735,8 @@ export async function getMap(sourceBasePath, translations) {
   const regionDefinitions = processRegions([
     ...base.regions.region,
     ...split.regions.region,
-    ...terran.regions.region
+    ...terran.regions.region,
+    ...pirate.regions.region
   ], regionObjectGroupsObject, regionYieldsObject);
   SAVE_SUBSTEPS && await saveToFile(regionDefinitions, 'mapStepRegionDefinitions');
 
@@ -731,10 +756,12 @@ export async function getMap(sourceBasePath, translations) {
   base = await parseFile(path.join(baseSourcePath, 'maps', 'xu_ep2_universe', 'zones.xml'));
   split = await parseFile(path.join(splitSourcePath, 'maps', 'xu_ep2_universe', 'dlc4_zones.xml'));
   terran = await parseFile(path.join(terranSourcePath, 'maps', 'xu_ep2_universe', 'dlc_terran_zones.xml'));
+  pirate = await parseFile(path.join(pirateSourcePath, 'maps', 'xu_ep2_universe', 'dlc_pirate_zones.xml'));
   const zones = processZones([
     ...base.macros.macro,
     ...split.macros.macro,
-    ...terran.macros.macro
+    ...terran.macros.macro,
+    ...pirate.macros.macro
   ], components);
   SAVE_SUBSTEPS && await saveToFile(zones, 'mapStepZones');
 
@@ -742,18 +769,22 @@ export async function getMap(sourceBasePath, translations) {
   base = await parseFile(path.join(baseSourcePath, 'libraries', 'god.xml'));
   split = await parseFile(path.join(splitSourcePath, 'libraries', 'god.xml'));
   terran = await parseFile(path.join(terranSourcePath, 'libraries', 'god.xml'));
+  pirate = await parseFile(path.join(pirateSourcePath, 'libraries', 'god.xml'));
   const splitDlcStations = split.diff.add.filter(item => item.sel === '/god/stations');
   const terranDlcStations = terran.diff.add.filter(item => item.sel === '/god/stations');
+  const pirateDlcStations = pirate.diff.add.filter(item => item.sel === '/god/stations');
 
   const stations = processStations([
     ...base.god.stations.station,
     ...splitDlcStations[0].station,
-    ...terranDlcStations[0].station
+    ...terranDlcStations[0].station,
+    ...pirateDlcStations[0].station
   ]);
   const sectorOwners = calculateSectorOwners([
     ...base.god.stations.station,
     ...splitDlcStations[0].station,
-    ...terranDlcStations[0].station
+    ...terranDlcStations[0].station,
+    ...pirateDlcStations[0].station
   ]);
   SAVE_SUBSTEPS && await saveToFile(stations, 'mapStepStations');
 

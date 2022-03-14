@@ -28,6 +28,9 @@ async function processShips(macroPath, translations, defaults, storage, shipstor
   if (dataPath.indexOf('ego_dlc_terran') !== -1 && dataPath.indexOf('ship_arg_xl_builder_01') !== -1) {
     dataPath = dataPath.replace('extensions\\ego_dlc_terran\\', '');
   }
+  if (dataPath.indexOf('ego_dlc_pirate') !== -1 && dataPath.indexOf('ship_arg_xl_builder_01') !== -1) {
+    dataPath = dataPath.replace('extensions\\ego_dlc_pirate\\', '');
+  }
   const data = await parser.parseStringPromise(await fs.readFile(dataPath));
 
   ship = {...ship, ...addDataFromDataFile(data)};
@@ -58,6 +61,7 @@ export async function getShips(shipFileList, translations, defaults, equipment, 
     if (shipFile.indexOf('miningdrone') !== -1) return Promise.resolve();
     if (shipFile.indexOf('fightingdrone') !== -1) return Promise.resolve();
     if (shipFile.indexOf('tfm') !== -1) return Promise.resolve();
+    if (shipFile.indexOf('ship_pir_l_scrapper_01_macro') !== -1) return Promise.resolve();
 
     const ship = await processShips(shipFile, translations, defaults, equipment.storage, equipment.shipstorage, wares);
     ships[ship.class][ship.id] = ship;

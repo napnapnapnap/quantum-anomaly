@@ -37,7 +37,11 @@ export async function getTranslations(resourcesPath) {
     20299: pages[20299],
     20402: pages[20402],
     20403: pages[20403],
-    20404: pages[20404]
+    20404: pages[20404],
+    20221: pages[20221],
+    10201: pages[10201],
+    20102: pages[20102],
+    20109: pages[20109],
   };
 }
 

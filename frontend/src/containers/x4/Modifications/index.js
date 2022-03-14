@@ -16,9 +16,15 @@ const splitWords = arg => arg.replace('length', ' length')
   .replace('travel', ' travel ')
   .replace('recharge', ' recharge ')
   .replace('thrust', ' thrust')
+  .replace('regiondamage', 'region damage')
+  .replace('radarcloak', 'radar cloak')
+  .replace('hidecargochance', 'hide cargo chance')
   .replace(/  /g, ' ');
 
-const percent = arg => `${float((parseFloat(arg.min) - 1) * 100)} to ${float((parseFloat(arg.max) - 1) * 100)}%`;
+const percent = arg => {
+  if (arg.min === "1.0" && arg.max === "1.0") return "-100%";
+  return `${float((parseFloat(arg.min) - 1) * 100)} to ${float((parseFloat(arg.max) - 1) * 100)}%`;
+}
 const chance = arg => `${float((parseFloat(arg)) * 100)}%`;
 
 const RenderModifications = props => {
@@ -33,7 +39,9 @@ const RenderModifications = props => {
             <span className='x4-modifications__label'>
               {props.category} {mod.description.split(' - ')[0].replace(' Mod', '')}
             </span>
-            <span className='x4-modifications__values'>{percent({min: mod.min, max: mod.max})}</span><br/>
+            <span className='x4-modifications__values'>
+              {percent({min: mod.min, max: mod.max})}
+            </span><br/>
             {mod.bonus && (
               <div className='x4-modifications__bonus'>
                 <span>Up to {mod.bonus.max} extra modifiers</span>
