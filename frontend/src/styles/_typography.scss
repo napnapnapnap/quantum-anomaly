@@ -14,7 +14,7 @@ ul {
 }
 
 p, li {
-  margin: 0.3rem 0;
+  margin: 0 0 0.3rem;
   line-height: $base-line-height;
 }
 
@@ -61,6 +61,14 @@ h6 {
   margin: 0.5em 0;
 }
 
+.no-mb {
+  margin-bottom: 0;
+}
+
+.mt-1 {
+  margin-top: 1rem;
+}
+
 .bold {
   font-weight: bold;
 }
@@ -71,6 +79,10 @@ h6 {
 
 .muted {
   color: #999;
+}
+
+.capitalize {
+  text-transform: capitalize;
 }
 
 .small {
