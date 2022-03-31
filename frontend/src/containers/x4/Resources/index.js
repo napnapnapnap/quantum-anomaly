@@ -1,20 +1,26 @@
-import React, { useEffect, useState } from 'react';
-import { fetchX4Map } from '../../../redux/x4Actions';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { fetchX4Map } from "../../../redux/x4Actions";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
-import { int, maps } from '../helpers';
-import { dynamicSortMultiple, seo } from '../../../helpers';
-import './Resources.scss';
+import { float, int, maps } from "../helpers";
+import { dynamicSortMultiple, seo } from "../../../helpers";
+import "./Resources.scss";
+
+const ORE_SILICON_CAP = 1000000000;
+const ICE_CAP = 200000000;
+const NIVIDIUM_CAP = 8000000;
+const HYDROGEN_HELIUM_CAP = 2000000;
+const METHANE_CAP = 8000000;
 
 export const ResourcesTable = props => {
-  const [sort, setSort] = useState('name');
-  const [showEmpty, setShowEmpty] = useState('false');
+  const [sort, setSort] = useState("name");
+  const [showEmpty, setShowEmpty] = useState("false");
   const [sectors, setSectors] = useState([]);
   const sortBy = arg => setSort(arg === sort ? `-${arg}` : arg);
 
   useEffect(() => {
-    setSectors([...sectors].sort(dynamicSortMultiple(sort, 'name', 'owner')));
+    setSectors([...sectors].sort(dynamicSortMultiple(sort, "name", "owner")));
   }, [sort]);
 
   useEffect(() => {
@@ -24,34 +30,26 @@ export const ResourcesTable = props => {
       const orderedSectors = [];
       props.x4.map.clusters.forEach(cluster => cluster.sectors.forEach((sector =>
           orderedSectors.push({
-            id: sector.id,
-            name: sector.name,
-            owner: sector.owner || 'neutral',
-            ore: sector.relativeResources && sector.relativeResources.ore > 0 ? sector.relativeResources.ore : null,
-            silicon: sector.relativeResources && sector.relativeResources.silicon > 0 ? sector.relativeResources.silicon : null,
-            ice: sector.relativeResources && sector.relativeResources.ice > 0 ? sector.relativeResources.ice : null,
-            hydrogen: sector.relativeResources && sector.relativeResources.hydrogen > 0 ? sector.relativeResources.hydrogen : null,
-            helium: sector.relativeResources && sector.relativeResources.helium > 0 ? sector.relativeResources.helium : null,
-            methane: sector.relativeResources && sector.relativeResources.methane > 0 ? sector.relativeResources.methane : null,
-            nividium: sector.relativeResources && sector.relativeResources.nividium > 0 ? sector.relativeResources.nividium : null,
-            volume: sector.relativeResources && sector.relativeResources.volume ? sector.relativeResources.volume : null,
-            // yea... I know, fix later...
-            empty: !(sector.relativeResources && (
-              sector.relativeResources.ore ||
-              sector.relativeResources.silicon ||
-              sector.relativeResources.ice ||
-              sector.relativeResources.hydrogen ||
-              sector.relativeResources.helium ||
-              sector.relativeResources.methane ||
-              sector.relativeResources.nividium
-            ))
+            id: sector.name,
+            name: sector.label,
+            owner: sector.owner || "neutral",
+            ore: sector.resourcePoints && sector.resourcePoints.ore > 0 ? sector.resourcePoints.ore : null,
+            silicon: sector.resourcePoints && sector.resourcePoints.silicon > 0 ? sector.resourcePoints.silicon : null,
+            ice: sector.resourcePoints && sector.resourcePoints.ice > 0 ? sector.resourcePoints.ice : null,
+            hydrogen: sector.resourcePoints && sector.resourcePoints.hydrogen > 0 ? sector.resourcePoints.hydrogen : null,
+            helium: sector.resourcePoints && sector.resourcePoints.helium > 0 ? sector.resourcePoints.helium : null,
+            methane: sector.resourcePoints && sector.resourcePoints.methane > 0 ? sector.resourcePoints.methane : null,
+            nividium: sector.resourcePoints && sector.resourcePoints.nividium > 0 ? sector.resourcePoints.nividium : null,
+            numberOfFields: sector.resources ? sector.resources.length : 0,
+            fields: sector.resources ? sector.resources.map(r => `${r.name} - ${r.miningRegionVolume} km3`) : null,
+            empty: !sector.resourcePoints,
           })
       )));
-      orderedSectors.sort(dynamicSortMultiple('name', 'owner'));
+      orderedSectors.sort(dynamicSortMultiple("name", "owner"));
       seo({
-        title: 'X4 Foundations Resource Table',
-        metaDescription: 'X4 Foundations, Split Vendetta and Cradle of Humanity resource table.',
-        keywords: `${orderedSectors.map(sector => sector.name).join(',')}`
+        title: "X4 Foundations Resource Table",
+        metaDescription: "X4 Foundations, Split Vendetta and Cradle of Humanity resource table.",
+        keywords: `${orderedSectors.map(sector => sector.name).join(",")}`
       });
       setSectors(orderedSectors);
     }
@@ -59,108 +57,99 @@ export const ResourcesTable = props => {
 
   return (
     <div className="x4-resources-table">
-      <h1>X4 Resource table v4.1</h1>
+      <h1>X4 Resource table v5.0</h1>
       {props.x4.map && (
         <React.Fragment>
           <div className="x4-resources-table__wrapper">
             <div className="x4__map-controls">
-              <Link to={'/x4/map'} className="link">Go to interactive map</Link>
+              <Link to={"/x4/map"} className="link">Go to interactive map</Link>
               <span onClick={() => setShowEmpty(!showEmpty)}>
-              {!showEmpty ? 'Hide' : 'Show'} empty systems
+              {!showEmpty ? "Hide" : "Show"} empty systems
             </span>
             </div>
             <span className="x4-resources-table__method muted">Method explained under the table</span>
             <table>
               <thead>
-              <tr>
-                <th onClick={() => sortBy('name')}>System</th>
-                <th onClick={() => sortBy('owner')}>Owner</th>
-                <th onClick={() => sortBy('ore')} className="number">Ore</th>
-                <th onClick={() => sortBy('silicon')} className="number">Silicon</th>
-                <th onClick={() => sortBy('ice')} className="number">Ice</th>
-                <th onClick={() => sortBy('hydrogen')} className="number">Hydrogen</th>
-                <th onClick={() => sortBy('helium')} className="number">Helium</th>
-                <th onClick={() => sortBy('methane')} className="number">Methane</th>
-                <th onClick={() => sortBy('nividium')} className="number">Nividium</th>
-                <th onClick={() => sortBy('volume')} className="number">Volume (km³)</th>
-              </tr>
+                <tr>
+                  <th onClick={() => sortBy("name")}>System</th>
+                  <th onClick={() => sortBy("owner")}>Owner</th>
+                  <th onClick={() => sortBy("ore")} className="number">Ore</th>
+                  <th onClick={() => sortBy("silicon")} className="number">Silicon</th>
+                  <th onClick={() => sortBy("ice")} className="number">Ice</th>
+                  <th onClick={() => sortBy("hydrogen")} className="number">Hydrogen</th>
+                  <th onClick={() => sortBy("helium")} className="number">Helium</th>
+                  <th onClick={() => sortBy("methane")} className="number">Methane</th>
+                  <th onClick={() => sortBy("nividium")} className="number">Nividium</th>
+                  <th onClick={() => sortBy("numberOfFields")} className="number">Number of fields</th>
+                </tr>
               </thead>
               <tbody>
-              {sectors.map(sector => (
-                <React.Fragment key={sector.id}>
-                  {(!sector.empty || !showEmpty) && (
-                    <tr>
-                      <td title={sector.id}>
-                        {sector.name}<br/>
-                      </td>
-                      <td>{sector.owner !== 'neutral' ? maps.factions[sector.owner] : 'Neutral'}</td>
+                {sectors.map(sector => (
+                  <React.Fragment key={sector.id}>
+                    {(!sector.empty || !showEmpty) && (
+                      <tr>
+                        <td title={sector.id}>
+                          {sector.name}<br />
+                        </td>
+                        <td>{sector.owner !== "neutral" ? maps.factions[sector.owner] : "Neutral"}</td>
 
-                      {['ore', 'silicon', 'ice', 'hydrogen', 'helium', 'methane', 'nividium'].map(resource => (
-                        <td className="number" key={`${sector.id}${resource}`}>
-                          {sector[resource] &&
-                          <span title={resource} style={{ borderColor: maps.resourceColors[resource] }}>
+                        {["ore", "silicon", "ice", "hydrogen", "helium", "methane", "nividium"].map(resource => {
+                          let title = sector[resource] === 1 ? "Up to maximum of " : "At least ";
+
+                          if (resource === "ore" || resource === "silicon")
+                            title += `${int(sector[resource] / 100 * ORE_SILICON_CAP)} ${resource}`;
+                          if (resource === "ice")
+                            title += `${int(sector[resource] / 100 * ICE_CAP)} ${resource}`;
+                          if (resource === "nividium")
+                            title += `${int(sector[resource] / 100 * NIVIDIUM_CAP)} ${resource}`;
+                          if (resource === "hydrogen" || resource === "helium")
+                            title += `${int(sector[resource] / 100 * HYDROGEN_HELIUM_CAP)} ${resource}`;
+                          if (resource === "methane")
+                            title += `${int(sector[resource] / 100 * METHANE_CAP)} ${resource}`;
+
+                          return (
+                            <td className="number" key={`${sector.id}${resource}`}>
+                              {sector[resource] &&
+                                <span title={title} style={{ borderColor: maps.resourceColors[resource] }}>
                             {sector[resource]}
                           </span>}
+                            </td>
+                          );
+                        })}
+                        <td title={sector.numberOfFields !== 0 ? sector.fields.join('\n') : "No fields in this system"} className="number">
+                          {int(sector.numberOfFields)}
                         </td>
-                      ))}
-                      <td className="number">
-                        {int(sector.volume)}
-                      </td>
-                    </tr>
-                  )}
-                </React.Fragment>
-              ))}
+                      </tr>
+                    )}
+                  </React.Fragment>
+                ))}
               </tbody>
             </table>
           </div>
           <p className="long-text">
-            The game defines regions in each system. This is reference table which describes which resources you might
-            find in each sector. The game describes cylinders, spheres, spline tubes and cubes as potential region which
-            can have resources. For each of those regions volume was calculated and multiplied by density of the field.
+            Since some zones are huge, the maximum volume used in calculation is&nbsp;
+            <span className="bold">limited to 200 km x 200 km x 100 km</span>. This seems like good enough estimation
+            for relative calculations so that your ships don't have to fly to far out.
+          </p>
+          <p className="long-text">
             <span className="bold"> Falloff zones</span> were ignored in calculations. They will most likely be added in
             future. This means that extremes are a bit skewed, but still should provide good relative idea of what is
-            where and how much of it is there. Since some zones are huge, the maximum volume used in calculation
-            is:&nbsp;
-            <span className="bold">limited to 300 km in each direction</span>. This seems like good enough estimation
-            for
-            relative calculations later and out of 120 zones, 37 of them are clipped in this way.
+            where and how much of it is there.
           </p>
           <p className="long-text">
-            After that for each region we can have asteroids or a nebula. For each asteroid yield was calculated
-            together with the density of those types of asteroids, including their noise level average. For each nebula
-            similar was done, but game doesn't apply same rules there, so calculation is just based on region size
+            <span className="bold">What do the numbers mean?</span><br />
+            Each resource has a cap, this was done so that there can be relative number which displays how good the
+            system is for mining in comparison with other systems. These caps are set as following:<br /><br />
+            Ore and Silicon: {int(1000000000)}<br />
+            Ice: {int(200000000)}<br />
+            Nividium: {int(8000000)}<br />
+            Hydrogen and Helium: {int(2000000)}<br />
+            Methane: {int(8000000)}<br /><br />
+            This in effect means that each region which is marked as "99" will contain at least that amount of given
+            resource. The numbers were chosen based on observed gameplay and then adjusted slightly to have better
+            spread.
           </p>
-          <p className="long-text">
-            Each zone can be have resources in either one of these states: lowest, verylow, low, medium, high and very
-            high. These describe one more density modifier for asteroids and gather speed factor for nebula. They also
-            describe replenish time for each zone. <span className="bold">Replenish times</span> were ignored
-            in calculations.
-          </p>
-          <p className="long-text">
-            At the end for each system, each of the resources was added together in total tally. Largest number of each
-            resource was calculated on universe level. That number is fairly large for some systems which have
-            large zones. Then that number set as "100 points" and the rest of numbers are in relation to that maximum.
-            Since it could happen that a system might have more zones, there was risk of getting over 100 points,
-            so maximum was limited to 99, even if system has more due to containing more rich or large zones.
-          </p>
-          <h3>Things to be aware of</h3>
           <ul className="ul--packed long-text">
-            <li>
-              Just because something is high number of points, doesn't mean it is feasible, for example
-              Grand Exchange IV region is practically infinite in size, so take that information into consideration.
-            </li>
-            <li>
-              Each resource is tracked on it's own, 99 Ore and 99 Nividium doesn't mean there is as much Nividium as
-              Ore. It only means that this is biggest yield of both of them in universe. Highest theoretical Ore
-              yield is about 4 trillion units, while for Nividium is about 2 billion.
-            </li>
-            <li>
-              Volume shown is all the fields in sector added together, hover on the value to see number of fields.
-            </li>
-            <li>
-              File used for calculation are available here:&nbsp;
-              <a href="/api/x4/resources" className="link" target="_blank">Resources data</a>
-            </li>
             <li>
               Full map data is available here: <a href="/api/x4/map" className="link" target="_blank">Map data</a>
             </li>

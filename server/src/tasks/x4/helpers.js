@@ -9,8 +9,9 @@ const sizes = [
   'small'
 ];
 
-export async function saveToFile(data, fileName, label) {
-  const destinationBasePath = path.join(__dirname, '..', '..', '..', 'static-files', 'x4');
+export async function saveToFile(data, fileName, label, folder) {
+  let destinationBasePath = path.join(__dirname, '..', '..', '..', 'static-files', 'x4');
+  if (folder) destinationBasePath = path.join(destinationBasePath, folder);
   const destinationPath = path.join(destinationBasePath, `${fileName}.json`);
   appLog(`Saving ${label} at ${destinationPath}`, 'magenta');
   const file = await fs.open(destinationPath, 'w');
