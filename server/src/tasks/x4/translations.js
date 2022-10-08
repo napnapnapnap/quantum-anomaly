@@ -42,6 +42,8 @@ export async function getTranslations(resourcesPath) {
     10201: pages[10201],
     20102: pages[20102],
     20109: pages[20109],
+    1021: pages[1021],
+    20202: pages[20202],
   };
 }
 

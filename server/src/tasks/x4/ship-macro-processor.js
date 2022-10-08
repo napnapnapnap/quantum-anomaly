@@ -24,7 +24,17 @@ export function addDataFromMacroFile(data, translations, defaults, storage, ship
     race: getRace(data.macros.macro.name),
     name: translate(properties.identification.name, translations, true).replace(/\\/g, ''),
     basename: translateRecursive(properties.identification.basename, translations),
-    description: translateRecursive(properties.identification.description, translations).replace(/\(same(.*?)\)/g, ''),
+    description:
+      translateRecursive(properties.identification.description, translations)
+        .replace(/\(same(.*?)\)/g, '')
+        .replace("(The E-model ...)The E-model(\"E\" same as E)", "E-model")
+        .replace("\\(NT\\)", "")
+        .replace("(Prometheus)", "")
+        .replace("(Avarice Ship Building Situation)", "")
+        .replace("(Raleigh Condensate)", "")
+        .replace("(Raleigh Container)", "")
+        .replace("(Raven)", "")
+        .replace("(Windfall Ship Building Situation)(NT same as NT)", ""),
     shortvariation: translateRecursive(properties.identification.shortvariation, translations),
     variation: translateRecursive(properties.identification.variation, translations),
     type: properties.ship.type,

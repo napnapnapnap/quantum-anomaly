@@ -1,5 +1,4 @@
 import { checkSizeUniformity, getSizeFromTags } from './helpers';
-import { inspect } from '../../helpers/logger';
 
 function countArmaments(armament) {
   const result = { extralarge: 0, large: 0, medium: 0, small: 0 };
@@ -94,13 +93,14 @@ export function normalizeShip(ship, wares) {
       if (!manufacturer && item.faction !== 'buccaneers' && item.faction !== 'court' && item.faction !== 'hatikvah' && item.faction !== 'alliance') manufacturer = item.faction;
     });
   } else {
-    if (ware.id === 'ship_pir_l_scavenger_01_a_storyhighcapacity') manufacturer = 'loanshark';
-    else manufacturer = ware.owner.faction;
+    manufacturer = ware.owner.faction;
   }
   ship.manufacturer = manufacturer;
+  if (ship.manufacturer === "scavenger") ship.manufacturer = 'loanshark';
 
   if (ship.manufacturer === 'loanshark') ship.race = 'pir';
   if (ship.name === 'Erlking') ship.race = 'pir';
+  if (ship.name === 'Manticore') ship.race = 'pir';
 
   if (ship.storage.capacityType === 'container liquid solid') ship.storage.capacityType = 'Any type';
 
@@ -112,6 +112,8 @@ export function normalizeShip(ship, wares) {
   //    armaments: {weapons: {large: 0, medium: 0, small: 0}, turrets: {large: 0, medium: 0, small: 0}},
   ship.armaments.turrets = countArmaments(ship.turrets);
   ship.armaments.weapons = countArmaments(ship.weapons);
+
+  if(ship.production && ship.production.time) ship.production.time = Math.ceil(parseFloat(ship.production.time));
 
   return ship;
 }

@@ -61,7 +61,7 @@ export async function getShips(shipFileList, translations, defaults, equipment, 
     if (shipFile.indexOf('miningdrone') !== -1) return Promise.resolve();
     if (shipFile.indexOf('fightingdrone') !== -1) return Promise.resolve();
     if (shipFile.indexOf('tfm') !== -1) return Promise.resolve();
-    if (shipFile.indexOf('ship_pir_l_scrapper_01_macro') !== -1) return Promise.resolve();
+    if (shipFile.indexOf('ship_pir_l_scavenger_01_a_storyhighcapacity_macro') !== -1) return Promise.resolve();
 
     const ship = await processShips(shipFile, translations, defaults, equipment.storage, equipment.shipstorage, wares);
     ships[ship.class][ship.id] = ship;
