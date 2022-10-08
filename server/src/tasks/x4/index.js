@@ -113,8 +113,6 @@ async function start() {
   const modifications = await getModifications(sourceBasePath, wares, translations);
   await saveToFile(modifications, '_modifications', 'modifications');
 
-  return;
-
   let macrosIndex = await composeIndexTree('macros');
   macrosIndex = {...macrosIndex, ...await composeIndexTree('macros', 'split')};
   macrosIndex = {...macrosIndex, ...await composeIndexTree('macros', 'terran')};
