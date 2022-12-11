@@ -1,0 +1,36 @@
+@import 'src/styles/mixins/typography';
+
+.x4-terraform {
+  &__projects {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  &__project {
+    flex: 0 0 40%;
+  }
+
+  &__wares {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+
+  &__wares-quantity {
+    display: inline-block;
+    text-align: right;
+    width: 100px;
+    margin-right: 8px;
+  }
+
+  &__wares-name {
+    display: inline-block;
+    width: 150px;
+  }
+
+  &__wares-cost {
+    display: inline-block;
+    text-align: right;
+    width: 100px;
+  }
+}

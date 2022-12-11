@@ -2,7 +2,7 @@
 
 .x4-efficiency {
   &__table-wrapper {
-    overflow-x: scroll;
+    overflow-x: auto;
   }
 
   table {
@@ -21,6 +21,10 @@
 
     td {
       width: 80px;
+
+      > * {
+        margin: 0;
+      }
 
       &:nth-of-type(2) {
         width: 140px;

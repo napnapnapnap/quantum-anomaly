@@ -1,0 +1,28 @@
+{
+  "items": [
+    {
+      "url": "/epic-arcs",
+      "label": "EVE Epic Arcs"
+    },
+    {
+      "url": "/x4/ships",
+      "label": "X4 Ships"
+    },
+    {
+      "url": "/x4/map",
+      "label": "X4 Map"
+    },
+    {
+      "url": "/x4/resources",
+      "label": "X4 Resources"
+    },
+    {
+      "url": "/x4/modifications",
+      "label": "X4 Modifications"
+    },
+    {
+      "url": "/x4/efficiency",
+      "label": "X4 Efficiency"
+    }
+  ]
+}

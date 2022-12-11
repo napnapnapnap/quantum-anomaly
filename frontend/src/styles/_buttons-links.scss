@@ -56,6 +56,7 @@ button:focus {
   outline: none;
   text-decoration: none;
   color: #1957d8;
+  cursor: pointer;
 
   &:link, &:visited, &:hover, &:active {
     color: #1957d8;
@@ -75,7 +76,7 @@ button:focus {
 
     &:hover {
       color: #444;
-      text-decoration: none;
+      text-decoration: underline;
     }
   }
 }

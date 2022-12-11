@@ -673,10 +673,10 @@ export const data = {
     },
     {
       'name': 'History in the Making',
-      'agent': 'Arsten Takalo',
-      'source': 'Frarn system - Brutor Tribe Community Area',
+      'agent': 'Nilf Abruskur',
+      'source': 'Aldrat system - RSS Liaison Headquarters',
       'type': 'Travel',
-      'start': 'Frarn',
+      'start': 'Aldrat',
       'dest': 'Tanoo system, 13 jumps away',
       'desc': [
         'Report to Hiva Shesha in Tanoo at Krusal Mobile Library'
@@ -696,7 +696,10 @@ export const data = {
       'desc': [
         'Hack the container to get Blood Obsidian Orb (0.1 m³)',
         'Do not engage 5 neutral Amarr cruisers, they will warp off',
-        'If you engage them you will suffer Amarr Empire faction standings penalty'
+        'If you engage them you will suffer Amarr Empire faction standings penalty',
+        'When landing in site, if you have fast ship, you can make it through the gate before they web you',
+        'Best option is to use MJD to go left or right, then position to be 100km of acceleration gate and micro jump drive on top of it, then activate',
+        'In first pocket, burn away from the chapel, once you are about 200km off, go straight up for about 50-100km, then fly over the NPC\'s and head for the chapel'
       ],
       'enemy': 'Amarr Empire',
       'pockets': [
@@ -763,9 +766,10 @@ export const data = {
         'Hack the containers to get Engraved Blood Obsidian tablet (0.1 m³)',
         'Only Ammatar Navy Detectives cause standing loss to Ammatar',
         'You will have to take out the detectives or tank them while you loot/hack',
-        'You can also use alt in fast ship to burn 100-150km out and then draw them all the way out so you can hack in peace with your main',
+        'You can also use alt in fast ship to burn 100-150km in opposite direction and then draw them all the way out so you can hack in peace with your main',
+        'Warping on grid is allowed, so if using one character, burn 250km away from the can, then once the NPC\'s get close to you, just warp to the can',
         'Each can will spawn more next to it until there is 4 of them',
-        'Last one hacked will drop objective'
+        'Last one hacked will drop objective next to itself in a cargo cargo container'
       ],
       'enemy': 'Ammatar Mandate',
       'pockets': [
@@ -874,7 +878,7 @@ export const data = {
       'source': 'Tanoo - Krusal Mobile Library',
       'type': 'Combat and retrieve item',
       'start': 'Tanoo',
-      'dest': 'Zaid system, 3 jumps away',
+      'dest': 'Any system in constellation',
       'desc': [
         'Karkoti Rend will aggro up to 200 kilometers away',
         'Killing him will cause any remaining rats to disappear',

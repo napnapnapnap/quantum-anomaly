@@ -1,0 +1,58 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins/breakpoints';
+
+.overview {
+  $block: '.overview';
+  max-width: 800px;
+
+  &--arc {
+    margin-top: 0.7em;
+  }
+
+  &__item {
+    display: block;
+    margin: 2rem 0 0.5rem 0;
+
+    &:hover {
+      background: rgba(gray, 0.1);
+      border-radius: 0.5rem;
+    }
+  }
+
+  &__header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    padding: 0.3rem;
+    color: black;
+  }
+
+  &__logo {
+    flex: 0 0 48px;
+    margin-right: 1rem;
+
+    img {
+      background: black;
+      border-radius: 3px;
+      display: block;
+    }
+  }
+
+  &__tagline {
+    flex: 0 1 auto;
+  }
+
+  &__title {
+    display: inline-block;
+    margin: 0 0;
+    border-bottom: 1px solid black;
+  }
+
+  .link--secondary {
+    font-size: $font-size-small;
+  }
+
+  p, li {
+    color: black;
+  }
+}

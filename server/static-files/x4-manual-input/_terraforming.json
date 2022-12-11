@@ -1,0 +1,49 @@
+{
+  "jobs": {
+    "pwr_antimatter": {
+      "group": "power",
+      "name": "{20227,1270}",
+      "description": "{20227,1271}",
+      "discounts": {
+        "group": "energy",
+        "value": 50
+      },
+      "price": 50000000,
+      "costs": {
+        "advancedcomposites": 14980,
+        "antimatterconverters": 22470,
+        "hullparts": 37450,
+        "scanningarrays": 7490,
+        "superfluidcoolant": 48685
+      },
+      "costsOriginal": {
+        "advancedcomposites": 4,
+        "antimatterconverters": 6,
+        "hullparts": 10,
+        "scanningarrays": 2,
+        "superfluidcoolant": 13
+      },
+      "mediumShipsNeeded": 25,
+      "smallShipsNeeded": 100
+    },
+    "wat_import": {
+      "group": "water",
+      "name": "{20227,1060}",
+      "description": "{20227,1061}",
+      "price": 15000000,
+      "effects": {
+        "temperature": -1,
+        "humidity": 1
+      },
+      "costs": {
+        "ice": 2857142
+      },
+      "costsOriginal": {
+        "ice": 1
+      },
+      "mediumShipsNeeded": 200,
+      "smallShipsNeeded": 1000
+    }
+  },
+  "planets": {}
+}

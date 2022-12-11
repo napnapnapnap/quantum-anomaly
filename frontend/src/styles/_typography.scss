@@ -1,8 +1,8 @@
 body {
   font-size: $font-size-base;
-  -webkit-font-smoothing: antialiased;
-  font-family: 'Times New Roman', Segoe UI, system-ui, 'Helvetica', 'Arial', sans-serif;
   line-height: $base-line-height;
+  -webkit-font-smoothing: antialiased;
+  font-family: 'Helvetica', 'Arial', sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -11,54 +11,6 @@ h1, h2, h3, h4, h5, h6 {
 
 ul {
   margin: 0;
-}
-
-p, li {
-  margin: 0 0 0.3rem;
-  line-height: $base-line-height;
-}
-
-span, a {
-  line-height: $base-line-height;
-}
-
-h1 {
-  font-size: 2em;
-  line-height: 1.1em;
-  font-weight: bold;
-  margin: 0.7em 0;
-}
-
-h2 {
-  font-size: 2em;
-  line-height: 1.1em;
-  margin: 0.7em 0;
-}
-
-h3 {
-  font-size: 1.5em;
-  line-height: 1.1em;
-  font-weight: bold;
-  margin: 0.7em 0;
-}
-
-h4 {
-  font-size: 1.3em;
-  line-height: 1.1em;
-  margin: 0.7em 0;
-}
-
-h5 {
-  font-size: 1.2em;
-  line-height: 1.1em;
-  font-weight: bold;
-  margin: 0.5em 0;
-}
-
-h6 {
-  font-size: 1.1em;
-  line-height: 1.1em;
-  margin: 0.5em 0;
 }
 
 .no-mb {
@@ -117,4 +69,90 @@ code {
   padding: 0 3px;
   border-radius: 3px;
   font-family: monospace;
+}
+
+h1, .h1 {
+  font-weight: bold;
+  font-size: 1.75rem;
+  line-height: 1.75rem;
+  margin: 1rem 0;
+}
+
+h2, .h2 {
+  font-weight: bold;
+  font-size: 1.75rem;
+  line-height: 1.75rem;
+  margin: 1rem 0;
+}
+
+h3, .h3 {
+  font-weight: bold;
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+  margin: 1rem 0;
+}
+
+h4, .h4 {
+  font-weight: bold;
+  font-size: 1.25rem;
+  line-height: 1.5;
+  margin: 1rem 0;
+}
+
+h5, .h5 {
+  font-weight: bold;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  margin: 0.5rem 0;
+}
+
+h6, .h6 {
+  font-weight: bold;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 0.5rem 0;
+}
+
+.text {
+  font-size: $font-size-base;
+  line-height: $base-line-height;
+
+  &--large {
+    font-size: 1.2rem;
+    line-height: 1.5;
+  }
+
+  &--small {
+    font-size: 0.875rem;
+    line-height: 0.875rem;
+    letter-spacing: 0.01em;
+  }
+
+  &--smaller {
+    font-size: 0.775rem;
+    line-height: 0.775rem;
+    letter-spacing: 0.01em;
+  }
+
+  &--bold {
+    font-weight: bold;
+  }
+
+  &--muted {
+    color: #999;
+  }
+
+  &--long {
+    max-width: 750px;
+  }
+
+  &--capitalize {
+    text-transform: capitalize;
+  }
+}
+
+p, li, code, th, td {
+  font-size: $font-size-base;
+  line-height: $base-line-height;
+  margin-bottom: 0.5rem;
 }

@@ -2,107 +2,131 @@
 @import 'src/styles/mixins/breakpoints';
 
 .x4-ships {
-  .label {
-    &--row {
-      font-size: 13px;
+  &__wrapper {
+    padding-top: 1rem;
+  }
 
-      input[type=checkbox] {
-        height: 9px;
-      }
-    }
+  &__ship {
+    display: inline-block;
+    margin: 0 0 0.5rem;
+    padding: 0.5rem 0.5rem;
+    border-radius: 0.5rem;
 
-    &--small {
-      width: 60px;
-    }
-
-    &--medium {
-      width: 100px;
+    &:nth-of-type(odd) {
+      background: rgba(100, 100 , 100, 0.1);
     }
   }
 
-  &__equipment {
+  &__controls {
+    max-width: 1100px;
+  }
+
+  &__header {
+    display: flex;
+  }
+
+  &__details {
     display: flex;
     flex-wrap: wrap;
+    align-items: flex-start;
+    margin-left: 4.35rem;
   }
 
-  &__radio-group {
-    margin-bottom: 1rem;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    align-content: flex-start;
-    flex: 0 0 100%;
-
-    @include media-breakpoint-up(md) {
-      max-width: 325px;
-      margin-right: 2rem;
-    }
-
-    p {
-      flex: 0 0 100%;
-    }
-
-    label {
-      font-size: 11px;
-      margin: 0 0 3px 5px;
-    }
+  &__outfit {
+    font-family: monospace;
+    font-size: 11px;
+    margin-left: 5.35rem;
   }
 
-  &__table-wrapper {
-    overflow-x: scroll;
-  }
-
-  table {
-    min-width: 1700px;
-
-    th {
-      cursor: pointer;
-    }
-
-    td {
-      vertical-align: middle;
-      height: 80px;
-    }
-  }
-
-  .unit-shifted {
-    position: relative;
-    right: -4px;
-  }
-
-  &__ship-name {
-    display: flex;
-  }
-
-  &__materials-list {
-    font-size: 12px;
-  }
-
-  &__ship-description {
-    position: absolute;
-    top: 3px;
-    right: 3px;
-    color: black;
-    cursor: pointer;
-    background: white;
-    width: 0.6rem;
-    text-align: center;
-    border-radius: 50%;
-    font-size: 8px;
+  &__info {
+    background: #333;
+    display: inline-block;
+    color: white;
     font-weight: bold;
+    border-radius: 50%;
+    margin: 0 0.2rem;
+    padding: 2px;
+    cursor: pointer;
+    width: 9px;
+    font-size: 8px;
+    line-height: 7px;
+    text-align: center;
+    position: relative;
+    top: -2px
   }
 
   &__ship-image {
     display: block;
-    width: 64px;
-    height: 59px;
-    margin-right: 1rem;
+    margin-right: 0.8rem;
     position: relative;
+    flex: 0 0 64px;
 
     img {
       display: block;
+      width: 64px;
+      height: 59px;
       filter: brightness(2) contrast(1.1) saturate(1.2);
       border-radius: 10px;
     }
+  }
+
+  &__name {
+    padding-left: 0.5rem;
+    margin: 0 0 0.3rem;
+    align-self: flex-start;
+
+    .h6 {
+      line-height: 1;
+      margin: 0 0 0.3rem;
+    }
+  }
+
+
+  &__values {
+    width: 150px;
+    margin: 0 1rem 1rem;
+  }
+
+  &__label-value-pair {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+
+    > span {
+      flex: 1 0 auto;
+      text-align: right;
+      font-size: 13px;
+
+      &:first-of-type {
+        text-align: left;
+        flex: 0 1 auto;
+      }
+    }
+  }
+
+  .input-control {
+    font-size: 13px;
+    min-width: 102px;
+
+    &--select {
+      margin: 1rem 1rem 1rem 0;
+      width: 120px;
+
+      .select {
+        font-size: 13px;
+      }
+    }
+  }
+
+  .text {
+    line-height: 1.1;
+
+    &--small {
+      margin: 0;
+    }
+  }
+
+  .link {
+    vertical-align: baseline;
   }
 }

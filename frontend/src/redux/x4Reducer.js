@@ -24,6 +24,12 @@ export default function reducer(state = null, action) {
         modifications: {...action.payload}
       };
     }
+    case 'FETCH_X4_TERRAFORM': {
+      return {
+        ...state,
+        terraform: {...action.payload}
+      };
+    }
     default: {
       return {...state};
     }

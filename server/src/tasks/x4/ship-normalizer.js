@@ -1,8 +1,8 @@
-import { checkSizeUniformity, getSizeFromTags } from './helpers';
+import { checkSizeUniformity, getSizeFromTags } from "./helpers";
 
 function countArmaments(armament) {
   const result = { extralarge: 0, large: 0, medium: 0, small: 0 };
-  armament.forEach(item => {
+  armament.forEach((item) => {
     result[item.size] += item.quantity;
   });
   return result;
@@ -10,7 +10,7 @@ function countArmaments(armament) {
 
 export function normalizeShip(ship, wares) {
   if (ship.groups) {
-    Object.keys(ship.groups).forEach(groupKey => {
+    Object.keys(ship.groups).forEach((groupKey) => {
       // Here we will have things that we can easily transpose into usable properties without having
       // to do lookups in other files (we prepared this data from either macro or data file in units folder)
       // Assumption is that we will never have anything other than shields mixing up with other types of
@@ -21,28 +21,32 @@ export function normalizeShip(ship, wares) {
       // and then second one to actually map it properly
       let isEngineGroup = false;
       let isTurretGroup = false;
-      ship.groups[groupKey].forEach(group => {
+      ship.groups[groupKey].forEach((group) => {
         const tags = group.tags;
-        if (new RegExp('\\b(engine)\\b', 'i').test(tags)) isEngineGroup = true;
-        if (new RegExp('\\b(turret)\\b', 'i').test(tags)) isTurretGroup = true;
+        if (new RegExp("\\b(engine)\\b", "i").test(tags)) isEngineGroup = true;
+        if (new RegExp("\\b(turret)\\b", "i").test(tags)) isTurretGroup = true;
       });
-      if (isEngineGroup && isTurretGroup) throw new Error('Well... mother of all fups, ship normalizer found group with multiple types');
+      if (isEngineGroup && isTurretGroup)
+        throw new Error(
+          "Well... mother of all fups, ship normalizer found group with multiple types"
+        );
       // if (!isEngineGroup && !isTurretGroup) throw new Error('Empty groups, or not engine/turret type, double check source');
 
-      // for engines we already have placeholder object from s/m ships, since each ship has one
-      // engine group and we could create object ahead of time, so we are going to add info
+      // for engines, we already have placeholder object from s/m ships, since each ship has one
+      // engine group, and we could create object ahead of time, so we are going to add info
       // there and attach shields as object property if needed
       if (isEngineGroup) {
-        ship.groups[groupKey].forEach(group => {
+        ship.groups[groupKey].forEach((group) => {
           const tags = group.tags;
-          if (new RegExp('\\b(engine)\\b', 'i').test(tags)) {
+          if (new RegExp("\\b(engine)\\b", "i").test(tags)) {
             ship.engines.quantity++;
             const size = getSizeFromTags(tags);
             checkSizeUniformity(ship.engines.size, size, ship.name);
             ship.engines.size = size;
           }
-          if (new RegExp('\\b(shield)\\b', 'i').test(tags)) {
-            if (!ship.engines.shields) ship.engines.shields = { quantity: 0, size: null };
+          if (new RegExp("\\b(shield)\\b", "i").test(tags)) {
+            if (!ship.engines.shields)
+              ship.engines.shields = { quantity: 0, size: null };
             ship.engines.shields.quantity++;
             const size = getSizeFromTags(tags);
             checkSizeUniformity(ship.engines.shields.size, size, ship.name);
@@ -58,20 +62,23 @@ export function normalizeShip(ship, wares) {
           quantity: 0,
           size: null,
           standard: false,
-          missile: false
+          missile: false,
         };
-        ship.groups[groupKey].forEach(group => {
+        ship.groups[groupKey].forEach((group) => {
           const tags = group.tags;
-          if (new RegExp('\\b(turret)\\b', 'i').test(tags)) {
+          if (new RegExp("\\b(turret)\\b", "i").test(tags)) {
             turretGroup.quantity++;
             const size = getSizeFromTags(tags);
             checkSizeUniformity(turretGroup.size, size, ship.name);
             turretGroup.size = size;
-            if (new RegExp('\\b(standard)\\b', 'i').test(tags)) turretGroup.standard = true;
-            if (new RegExp('\\b(missile)\\b', 'i').test(tags)) turretGroup.missile = true;
+            if (new RegExp("\\b(standard)\\b", "i").test(tags))
+              turretGroup.standard = true;
+            if (new RegExp("\\b(missile)\\b", "i").test(tags))
+              turretGroup.missile = true;
           }
-          if (new RegExp('\\b(shield)\\b', 'i').test(tags)) {
-            if (!turretGroup.shields) turretGroup.shields = { quantity: 0, size: null };
+          if (new RegExp("\\b(shield)\\b", "i").test(tags)) {
+            if (!turretGroup.shields)
+              turretGroup.shields = { quantity: 0, size: null };
             turretGroup.shields.quantity++;
             const size = getSizeFromTags(tags);
             checkSizeUniformity(turretGroup.shields.size, size, ship.name);
@@ -83,26 +90,40 @@ export function normalizeShip(ship, wares) {
     });
   }
 
-  const ware = wares.wares.ware[ship.id.replace('_macro', '')];
-  ship.price = ware ? ware.price : 'N/A';
-  ship.production = ware ? ware.production : 'N/A';
+  const ware = wares.wares.ware[ship.id.replace("_macro", "")];
+  ship.price = ware
+    ? {
+        min: parseFloat(ware.price.min),
+        average: parseFloat(ware.price.average),
+        max: parseFloat(ware.price.max),
+      }
+    : "N/A";
+  ship.production = ware ? ware.production : "N/A";
 
   let manufacturer = null;
   if (Array.isArray(ware.owner)) {
-    ware.owner.forEach(item => {
-      if (!manufacturer && item.faction !== 'buccaneers' && item.faction !== 'court' && item.faction !== 'hatikvah' && item.faction !== 'alliance') manufacturer = item.faction;
+    ware.owner.forEach((item) => {
+      if (
+        !manufacturer &&
+        item.faction !== "buccaneers" &&
+        item.faction !== "court" &&
+        item.faction !== "hatikvah" &&
+        item.faction !== "alliance"
+      )
+        manufacturer = item.faction;
     });
   } else {
     manufacturer = ware.owner.faction;
   }
   ship.manufacturer = manufacturer;
-  if (ship.manufacturer === "scavenger") ship.manufacturer = 'loanshark';
+  if (ship.manufacturer === "scavenger") ship.manufacturer = "loanshark";
 
-  if (ship.manufacturer === 'loanshark') ship.race = 'pir';
-  if (ship.name === 'Erlking') ship.race = 'pir';
-  if (ship.name === 'Manticore') ship.race = 'pir';
+  if (ship.manufacturer === "loanshark") ship.race = "pir";
+  if (ship.name === "Erlking") ship.race = "pir";
+  if (ship.name === "Manticore") ship.race = "pir";
 
-  if (ship.storage.capacityType === 'container liquid solid') ship.storage.capacityType = 'Any type';
+  if (ship.storage.capacityType === "container liquid solid")
+    ship.storage.capacityType = "Any type";
 
   delete ship.groups;
   // this is some of the things that might be usefull later, but for now we get rid of it and we can comment out
@@ -113,7 +134,8 @@ export function normalizeShip(ship, wares) {
   ship.armaments.turrets = countArmaments(ship.turrets);
   ship.armaments.weapons = countArmaments(ship.weapons);
 
-  if(ship.production && ship.production.time) ship.production.time = Math.ceil(parseFloat(ship.production.time));
+  if (ship.production && ship.production.time)
+    ship.production.time = Math.ceil(parseFloat(ship.production.time));
 
   return ship;
 }

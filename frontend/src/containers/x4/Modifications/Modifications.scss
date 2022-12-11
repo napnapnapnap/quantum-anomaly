@@ -1,19 +1,19 @@
 .x4-modifications {
   &__types {
-    padding-left: 1rem;
+    // padding-left: 1rem;
   }
 
   &__mods {
-    margin: 0 0 1.5rem 0;
+    // margin: 0 0 1rem 0;
     display: flex;
     flex-wrap: wrap;
   }
 
   &__mod {
-    margin: 1rem 0 1rem 1rem;
+    margin: 0.5rem 0 0.5rem 1rem;
     background: rgba(gray, 0.05);
     border-radius: 8px;
-    padding: 1rem;
+    padding: 0 1rem 1rem;
     flex: 0 1 800px;
   }
 
