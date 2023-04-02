@@ -27,6 +27,13 @@
     justify-content: space-between;
   }
 
+  &__map-filters {
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    padding: 0.5rem 0 0;
+  }
+
   &__legend {
     font-size: 11px;
     position: absolute;

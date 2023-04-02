@@ -1,10 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 
+import Checkbox from '../../../components/Inputs/Checkbox';
 import { seo } from '../../../helpers';
 import { useAppDispatch, useAppSelector } from '../../../hooks';
 import LayoutClient from '../../../layouts/Client';
-import { getX4Map } from '../../../redux/x4/map';
+import { X4MapInterface, getX4Map } from '../../../redux/x4/map';
 import { backgroundLabelRectWidth, getHexagonPointsV2, maps } from '../x4-helpers';
 import './Map.scss';
 import Resources from './Resources';
@@ -18,6 +19,11 @@ const X4Map = () => {
   const [moved, setMoved] = useState({ x: 0, y: 0 });
   const [showLegend, setShowLegend] = useState(false);
   const [width, setWidth] = useState('100%');
+
+  const [cradleOfHumanity, setCradleOfHumanity] = useState(true);
+  const [splitVendetta, setSplitVendetta] = useState(true);
+  const [tidesOfAvarice, setTidesOfAvarice] = useState(true);
+  const [kingdomsEnd, setKingdomsEnd] = useState(false);
 
   const svg = useRef<SVGSVGElement>(null);
   const wrapper = useRef<HTMLDivElement>(null);
@@ -39,6 +45,15 @@ const X4Map = () => {
 
   let dx = 0;
   let dy = 0;
+
+  const shouldDisplay = (dlc: string[]) => {
+    return !(
+      (dlc.includes('cradleOfHumanity') && !cradleOfHumanity) ||
+      (dlc.includes('tidesOfAvarice') && !tidesOfAvarice) ||
+      (dlc.includes('splitVendetta') && !splitVendetta) ||
+      (dlc.includes('kingdomsEnd') && !kingdomsEnd)
+    );
+  };
 
   const mouseDownHandler = (e: MouseEvent) => {
     if (wrapper.current && svg.current) {
@@ -151,26 +166,29 @@ const X4Map = () => {
                 xmlns="http://www.w3.org/2000/svg"
                 style={{ transform: `scale(${scale}) translate(${moved.x}px, ${moved.y}px)` }}
               >
-                {map.clusters.map((cluster) =>
-                  cluster.sectors.map((sector) => (
-                    <polyline
-                      key={sector.name}
-                      stroke={sector.owner ? maps.colors[sector.owner].border : 'gray'}
-                      strokeWidth="2"
-                      fill={sector.owner ? maps.colors[sector.owner].border : 'gray'}
-                      fillOpacity="0.2"
-                      points={getHexagonPointsV2(
-                        {
-                          x: sector.adjusted.x,
-                          y: -sector.adjusted.z,
-                        },
-                        cluster.sectors.length < 2 ? 1 : 2
-                      )}
-                    />
-                  ))
+                {map.clusters.map(
+                  (cluster) =>
+                    shouldDisplay(cluster.dlc) &&
+                    cluster.sectors.map((sector) => (
+                      <polyline
+                        key={sector.name}
+                        stroke={sector.owner ? maps.colors[sector.owner].border : 'gray'}
+                        strokeWidth="2"
+                        fill={sector.owner ? maps.colors[sector.owner].border : 'gray'}
+                        fillOpacity="0.2"
+                        points={getHexagonPointsV2(
+                          {
+                            x: sector.adjusted.x,
+                            y: -sector.adjusted.z,
+                          },
+                          cluster.sectors.length < 2 ? 1 : 2
+                        )}
+                      />
+                    ))
                 )}
 
                 {map.clusters.map((cluster) => {
+                  if (!shouldDisplay(cluster.dlc)) return;
                   let color = cluster.sectors[0].owner ? maps.colors[cluster.sectors[0].owner].border : 'gray';
                   if (cluster.name === 'Cluster_29_macro') color = maps.colors['argon'].border;
                   return (
@@ -184,36 +202,41 @@ const X4Map = () => {
                   );
                 })}
 
-                {map.clusters.map((cluster) =>
-                  cluster.sectors.map((sector) =>
-                    sector.zones.map((zone) =>
-                      zone.gates.map((gate, index) => (
-                        <React.Fragment key={`${zone.zoneReference}-${index}`}>
-                          <circle
-                            cx={gate.position.x}
-                            cy={-gate.position.z}
-                            fill="gray"
-                            stroke="white"
-                            strokeWidth="1"
-                            r="5"
-                          />
-                        </React.Fragment>
-                      ))
+                {map.clusters.map(
+                  (cluster) =>
+                    shouldDisplay(cluster.dlc) &&
+                    cluster.sectors.map((sector) =>
+                      sector.zones.map((zone) =>
+                        zone.gates.map((gate, index) => (
+                          <React.Fragment key={`${zone.zoneReference}-${index}`}>
+                            <circle
+                              cx={gate.position.x}
+                              cy={-gate.position.z}
+                              fill="gray"
+                              stroke="white"
+                              strokeWidth="1"
+                              r="5"
+                            />
+                          </React.Fragment>
+                        ))
+                      )
                     )
-                  )
                 )}
 
-                {map.clusters.map((cluster) =>
-                  cluster.sectors.map((sector) =>
-                    sector.stations.map((station, index) => (
-                      <Station key={station.id} station={station} stationScale={scale === 1 ? 2.5 : 1.5} />
-                    ))
-                  )
+                {map.clusters.map(
+                  (cluster) =>
+                    shouldDisplay(cluster.dlc) &&
+                    cluster.sectors.map((sector) =>
+                      sector.stations.map((station, index) => (
+                        <Station key={station.id} station={station} stationScale={scale === 1 ? 2.5 : 1.5} />
+                      ))
+                    )
                 )}
 
                 {Object.values(map.gates).map(
                   (gate) =>
-                    gate.end && (
+                    gate.end &&
+                    shouldDisplay(gate.dlc) && (
                       <React.Fragment key={Math.random()}>
                         <line
                           x1={gate.start.x}
@@ -236,78 +259,116 @@ const X4Map = () => {
                     )
                 )}
 
-                {map.sectorHighways.map((highway) => (
-                  <React.Fragment key={Math.random()}>
-                    <circle
-                      cx={highway.origin.x}
-                      cy={highway.origin.y}
-                      fill="blue"
-                      stroke="white"
-                      strokeWidth="1"
-                      r="3"
-                    />
-                    <circle
-                      cx={highway.destination.x}
-                      cy={highway.destination.y}
-                      fill="blue"
-                      stroke="white"
-                      strokeWidth="1"
-                      r="3"
-                    />
-                    <line
-                      x1={highway.origin.x}
-                      y1={highway.origin.y}
-                      x2={highway.destination.x}
-                      y2={highway.destination.y}
-                      stroke="gray"
-                      strokeWidth="3"
-                    />
-                    <line
-                      x1={highway.origin.x}
-                      y1={highway.origin.y}
-                      x2={highway.destination.x}
-                      y2={highway.destination.y}
-                      stroke="blue"
-                      strokeDasharray="1"
-                    />
-                  </React.Fragment>
-                ))}
-
-                {map.clusters.map((cluster) =>
-                  cluster.sectors.map((sector) => <Resources sector={sector} key={sector.name} />)
+                {map.sectorHighways.map(
+                  (highway) =>
+                    shouldDisplay(highway.dlc) && (
+                      <React.Fragment key={Math.random()}>
+                        <circle
+                          cx={highway.origin.x}
+                          cy={highway.origin.y}
+                          fill="blue"
+                          stroke="white"
+                          strokeWidth="1"
+                          r="3"
+                        />
+                        <circle
+                          cx={highway.destination.x}
+                          cy={highway.destination.y}
+                          fill="blue"
+                          stroke="white"
+                          strokeWidth="1"
+                          r="3"
+                        />
+                        <line
+                          x1={highway.origin.x}
+                          y1={highway.origin.y}
+                          x2={highway.destination.x}
+                          y2={highway.destination.y}
+                          stroke="gray"
+                          strokeWidth="3"
+                        />
+                        <line
+                          x1={highway.origin.x}
+                          y1={highway.origin.y}
+                          x2={highway.destination.x}
+                          y2={highway.destination.y}
+                          stroke="blue"
+                          strokeDasharray="1"
+                        />
+                      </React.Fragment>
+                    )
                 )}
 
-                {map.clusters.map((cluster) =>
-                  cluster.sectors.map((sector) => {
-                    const backgroundWidth = sector.label.length * 3 - backgroundLabelRectWidth(sector.label);
-                    const verticalOffset = sector.transformation ? 45 : 95;
-                    return (
-                      <React.Fragment key={sector.label}>
-                        <rect
-                          x={sector.adjusted.x - backgroundWidth}
-                          y={-sector.adjusted.z - verticalOffset}
-                          width={backgroundWidth * 2}
-                          height="13"
-                          fill="black"
-                          stroke={sector.owner ? maps.colors[sector.owner].border : 'white'}
-                          strokeWidth="1"
-                        />
-                        <text
-                          x={sector.adjusted.x}
-                          y={-sector.adjusted.z - verticalOffset + 10}
-                          fontSize="12px"
-                          textAnchor="middle"
-                          fill="white"
-                        >
-                          {sector.label}
-                        </text>
-                      </React.Fragment>
-                    );
-                  })
+                {map.clusters.map(
+                  (cluster) =>
+                    shouldDisplay(cluster.dlc) &&
+                    cluster.sectors.map((sector) => <Resources sector={sector} key={sector.name} />)
+                )}
+
+                {map.clusters.map(
+                  (cluster) =>
+                    shouldDisplay(cluster.dlc) &&
+                    cluster.sectors.map((sector) => {
+                      const backgroundWidth = sector.label.length * 3 - backgroundLabelRectWidth(sector.label);
+                      const verticalOffset = sector.transformation ? 45 : 95;
+                      return (
+                        <React.Fragment key={sector.label}>
+                          <rect
+                            x={sector.adjusted.x - backgroundWidth}
+                            y={-sector.adjusted.z - verticalOffset}
+                            width={backgroundWidth * 2}
+                            height="13"
+                            fill="black"
+                            stroke={sector.owner ? maps.colors[sector.owner].border : 'white'}
+                            strokeWidth="1"
+                          />
+                          <text
+                            x={sector.adjusted.x}
+                            y={-sector.adjusted.z - verticalOffset + 10}
+                            fontSize="12px"
+                            textAnchor="middle"
+                            fill="white"
+                          >
+                            {sector.label}
+                          </text>
+                        </React.Fragment>
+                      );
+                    })
                 )}
               </svg>
             </div>
-            <div style={{ textAlign: 'right', padding: '3px' }}>
+            <div className="x4__map-filters">
+              <div>
+                <Checkbox
+                  label="Split Vendetta"
+                  name="splitVendetta"
+                  checked={splitVendetta}
+                  isInline
+                  handleInputChange={() => setSplitVendetta(!splitVendetta)}
+                />
+                <Checkbox
+                  label="Cradle Of Humanity"
+                  name="displayRace"
+                  checked={cradleOfHumanity}
+                  isInline
+                  handleInputChange={() => setCradleOfHumanity(!cradleOfHumanity)}
+                />
+                <Checkbox
+                  label="Tides Of Avarice"
+                  name="displayRace"
+                  checked={tidesOfAvarice}
+                  isInline
+                  handleInputChange={() => setTidesOfAvarice(!tidesOfAvarice)}
+                />
+                <Checkbox
+                  label="Kingdoms End"
+                  name="displayRace"
+                  checked={kingdomsEnd}
+                  isInline
+                  isDisabled
+                  handleInputChange={() => setKingdomsEnd(!kingdomsEnd)}
+                />
+              </div>
               <button onClick={downloadSvgFile} className="btn btn--cta">
                 Click here to download as svg
               </button>

@@ -40,6 +40,7 @@ export interface X4MapInterface {
   clusters: {
     name: string;
     position: { x: number; y: number; z: number };
+    dlc: string[];
     sechighways: {
       assigned: boolean;
       macro: {
@@ -62,9 +63,14 @@ export interface X4MapInterface {
     sectors: X4MapSector[];
   }[];
   gates: {
-    [key: number]: { start: { x: number; z: number }; end: { x: number; z: number } };
+    [key: number]: {
+      dlc: string[];
+      start: { x: number; z: number };
+      end: { x: number; z: number };
+    };
   };
   sectorHighways: {
+    dlc: string[];
     origin: { x: number; y: number };
     destination: { x: number; y: number };
   }[];

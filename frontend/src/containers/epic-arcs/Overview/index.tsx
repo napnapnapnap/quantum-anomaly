@@ -14,7 +14,7 @@ const Overview = () => {
   useEffect(() => {
     seo({
       title: 'EVE Online EveEpic Arcs Level 4',
-      metaDescription: `Guides for EVE Online EveEpic Arcs: Amarr Empire Right To Rule, Caldari State Penumbra, Gallente Federation Syndication and Minmatar Republic Wildfire. In depth guide for all level 4 eveEpic arc missions. Find all about the related missions, enemies, rewards, what to bring and how to start them...`,
+      metaDescription: `Guides for EVE Online Eve, Epic Arcs: Amarr Empire Right To Rule, Caldari State Penumbra, Gallente Federation Syndication and Minmatar Republic Wildfire. In depth guide for all level 4 eveEpic arc missions. Find all about the related missions, enemies, rewards, what to bring and how to start them...`,
       keywords: [
         'Penumbra',
         'Right To Rule',
@@ -22,7 +22,7 @@ const Overview = () => {
         'Wildfire',
         'Amarr Empire',
         'Caldari State',
-        'Gallente' + ' Federation',
+        'Gallente Federation',
         'Minmatar Republic',
         'EVE Epic Arcs',
       ],
