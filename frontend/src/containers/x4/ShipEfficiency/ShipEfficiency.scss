@@ -3,15 +3,35 @@
 .x4-efficiency {
   &__table-wrapper {
     overflow-x: auto;
+    margin-top: 1rem;
+  }
+
+  &__inputs {
+    margin: 0 1rem 1rem 0;
+
+    .input-control {
+      display: flex;
+      align-items: center;
+
+      input {
+        width: 70px;
+        margin-right: 4px;
+      }
+
+      &__text {
+        order: 2;
+      }
+    }
+  }
+
+  .input-control__radio-text {
+    text-transform: capitalize;
+    display: inline-block;
+    width: 55px;
   }
 
   table {
-    min-width: 800px !important;
-    max-width: 800px;
-  }
-
-  label {
-    font-size: 12px;
+    width: 800px;
   }
 
   tr {
@@ -27,7 +47,7 @@
       }
 
       &:nth-of-type(2) {
-        width: 140px;
+        width: 190px;
       }
 
       &:first-of-type {

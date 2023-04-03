@@ -55,11 +55,11 @@ button:focus {
   background: none;
   outline: none;
   text-decoration: none;
-  color: #1957d8;
+  color: var(--color-link);
   cursor: pointer;
 
   &:link, &:visited, &:hover, &:active {
-    color: #1957d8;
+    color: var(--color-link-hover);
   }
 
   &:hover {
@@ -71,11 +71,11 @@ button:focus {
   }
 
   &--secondary {
-    color: #999;
+    color: var(--color-link-secondary);
     text-decoration: underline;
 
     &:hover {
-      color: #444;
+      color: var(--color-link-secondary-hover);
       text-decoration: underline;
     }
   }

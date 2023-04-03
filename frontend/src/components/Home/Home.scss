@@ -12,10 +12,11 @@
     align-items: flex-start;
     margin: 2rem 0 1rem 0;
     padding: 0.3rem;
-    color: black;
+    color: var(--color-text);
+    border-radius: 4px;
 
     &:hover {
-      background: rgba(gray, 0.1);
+      background: var(--color-content-background-hover);
     }
   }
 
@@ -27,7 +28,7 @@
       max-width: 150px;
       max-height: 70px;
       display: block;
-      background: black;
+      background: var(--color-black);
       margin-bottom: 1rem;
     }
   }

@@ -1,6 +1,6 @@
-const env = process.env.NODE_ENV || 'development';
-
 import * as logger from '../helpers/logger';
+
+const env = process.env.NODE_ENV || 'development';
 
 function forceLiveDomain(req, res, next) {
   if (req.get('Host') === 'quantum-anomaly.herokuapp.com') {
@@ -18,7 +18,6 @@ function forceHttps(req, res, next) {
   }
   next();
 }
-
 
 export default function (app) {
   if (process.env.NODE_ENV === 'production') {

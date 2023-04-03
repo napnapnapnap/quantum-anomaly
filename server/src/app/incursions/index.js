@@ -1,19 +1,19 @@
-import {models} from '../../models';
 import * as helpers from '../../helpers';
+import { models } from '../../models';
 
 function getIncursionData(activeIncursions) {
-  let promiseArray = activeIncursions.map(incursion =>
-    models.IncursionMaps.findById(incursion.constellation_id).then(constellation => {
-      constellation               = constellation.dataValues.value;
-      incursion.factionID         = constellation.factionID;
-      incursion.factionName       = constellation.factionName;
+  let promiseArray = activeIncursions.map((incursion) =>
+    models.IncursionMaps.findById(incursion.constellation_id).then((constellation) => {
+      constellation = constellation.dataValues.value;
+      incursion.factionID = constellation.factionID;
+      incursion.factionName = constellation.factionName;
       incursion.constellationName = constellation.constellationName;
-      incursion.constellationID   = incursion.constellation_id;
-      incursion.systems           = constellation.systems;
-      incursion.influence         = Math.round(incursion.influence * 100);
+      incursion.constellationID = incursion.constellation_id;
+      incursion.systems = constellation.systems;
+      incursion.influence = Math.round(incursion.influence * 100);
 
       let systems = incursion.systems;
-      systems.forEach(system => {
+      systems.forEach((system) => {
         if (system.incursionType === 'HQ') system.typeSort = 0;
         else if (system.incursionType === 'AS') system.typeSort = 1;
         else if (system.incursionType === 'VG') system.typeSort = 2;
@@ -33,7 +33,7 @@ function getIncursionData(activeIncursions) {
 }
 
 export default function () {
-  return models.Incursions.get().then(activeIncursions => {
+  return models.Incursions.get().then((activeIncursions) => {
     return getIncursionData(activeIncursions);
   });
-};
+}

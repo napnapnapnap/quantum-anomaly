@@ -1,6 +1,6 @@
 export default function (sequelize) {
   let Incursions = sequelize.define('Incursions', {
-    data: sequelize.Sequelize.JSON
+    data: sequelize.Sequelize.JSON,
   });
 
   Incursions.get = getIncursions.bind(Incursions);
@@ -10,7 +10,6 @@ export default function (sequelize) {
 function getIncursions() {
   return this.findAll({
     limit: 1,
-    order: [['createdAt', 'DESC']]
-  }).then(incursions => incursions[0].dataValues.data);
+    order: [['createdAt', 'DESC']],
+  }).then((incursions) => incursions[0].dataValues.data);
 }
-

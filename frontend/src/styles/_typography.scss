@@ -1,3 +1,7 @@
+$font-size-base: 14px;
+$font-size-small: 11px;
+$base-line-height: 1.4;
+
 body {
   font-size: $font-size-base;
   line-height: $base-line-height;
@@ -65,24 +69,19 @@ strong {
 }
 
 code {
-  background: #ddd;
+  background: #ddd !important;
+  color: black !important;
   padding: 0 3px;
   border-radius: 3px;
   font-family: monospace;
 }
 
-h1, .h1 {
+h1, .h1, h2, .h2  {
   font-weight: bold;
   font-size: 1.75rem;
   line-height: 1.75rem;
   margin: 1rem 0;
-}
-
-h2, .h2 {
-  font-weight: bold;
-  font-size: 1.75rem;
-  line-height: 1.75rem;
-  margin: 1rem 0;
+  color: var(--color-text);
 }
 
 h3, .h3 {
@@ -90,6 +89,7 @@ h3, .h3 {
   font-size: 1.5rem;
   line-height: 1.5rem;
   margin: 1rem 0;
+  color: var(--color-text);
 }
 
 h4, .h4 {
@@ -97,6 +97,7 @@ h4, .h4 {
   font-size: 1.25rem;
   line-height: 1.5;
   margin: 1rem 0;
+  color: var(--color-text);
 }
 
 h5, .h5 {
@@ -104,6 +105,7 @@ h5, .h5 {
   font-size: 1.2rem;
   line-height: 1.5;
   margin: 0.5rem 0;
+  color: var(--color-text);
 }
 
 h6, .h6 {
@@ -111,11 +113,13 @@ h6, .h6 {
   font-size: 1rem;
   line-height: 1.5;
   margin: 0.5rem 0;
+  color: var(--color-text);
 }
 
 .text {
   font-size: $font-size-base;
   line-height: $base-line-height;
+  color: var(--color-text);
 
   &--large {
     font-size: 1.2rem;
@@ -139,11 +143,15 @@ h6, .h6 {
   }
 
   &--muted {
-    color: #999;
+    color: var(--color-mutted);
   }
 
   &--long {
     max-width: 750px;
+  }
+
+  &--right {
+    text-align: right;
   }
 
   &--capitalize {
@@ -151,8 +159,15 @@ h6, .h6 {
   }
 }
 
+span {
+  font-size: $font-size-base;
+  line-height: $base-line-height;
+  color: var(--color-text);
+}
+
 p, li, code, th, td {
   font-size: $font-size-base;
   line-height: $base-line-height;
   margin-bottom: 0.5rem;
+  color: var(--color-text);
 }

@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 
+import Input from '../../../components/Inputs/Input';
+import Radio from '../../../components/Inputs/Radio';
 import { seo } from '../../../helpers';
 import { useAppDispatch, useAppSelector } from '../../../hooks';
-import LayoutClient from '../../../layouts/Client';
+import LayoutBase from '../../../layouts/Base';
 import {
   X4ShipInterface,
   X4ShipInterfaceWithTradeAttributes,
@@ -31,6 +33,7 @@ const X4ShipEfficiency = () => {
   const [highwaySpeed, setHighwaySpeed] = useState(13500);
   const [highestScore, setHighestScore] = useState(0);
   const [sort, setSort] = useState('tradeScore');
+  const [type, setType] = useState('traders');
 
   const sortBy = (arg: string) => setSort(arg === sort ? `-${arg}` : arg);
 
@@ -83,7 +86,10 @@ const X4ShipEfficiency = () => {
         }
 
         if (!modifiedShip.isTrader && !modifiedShip.isMiner) return;
-        if (modifiedShip.isMiner) return;
+
+        if (modifiedShip.isMiner && type !== 'miners') return;
+        if (modifiedShip.isTrader && type !== 'traders') return;
+
         const isLargeShip = modifiedShip.class === 'ship_xl' || modifiedShip.class === 'ship_l';
 
         const engineId = getHighestAvailableEngineId(modifiedShip, activeEquipment);
@@ -138,72 +144,73 @@ const X4ShipEfficiency = () => {
         keywords: [...new Set(shipNames)],
       });
     }
-  }, [dispatch, ships, equipment, race, distance, jumpGates, percentHighway, highwaySpeed, sort]);
+  }, [dispatch, ships, equipment, race, distance, jumpGates, percentHighway, highwaySpeed, sort, type]);
 
   return (
-    <LayoutClient>
+    <LayoutBase>
       <div className="x4-efficiency">
         <h1>X4 Ship Efficiency</h1>
         <p className="text--small text--muted">Explanation of values is under the table</p>
 
         <div className="flex">
-          <div>
+          <div className="x4-efficiency__inputs">
             <p className="text--bold">Variables used for calculations</p>
-            <label>
-              <input
-                type="number"
-                defaultValue="1000"
-                min="10"
-                max="10000"
-                onChange={(e) => setDistance(parseInt(e.target.value, 10))}
-              />{' '}
-              km of total whole trip
-            </label>
-            <label>
-              <input
-                type="number"
-                defaultValue="4"
-                min="0"
-                max="15"
-                onChange={(e) => setJumpGates(parseInt(e.target.value, 10))}
-              />{' '}
-              jump gates
-            </label>
-            <label>
-              <input
-                type="number"
-                defaultValue="80"
-                min="0"
-                max="100"
-                onChange={(e) => setPercentHighway(parseInt(e.target.value, 10))}
-              />{' '}
-              percent of travel on highway
-            </label>
-            <label>
-              <input
-                type="number"
-                defaultValue="13500"
-                min="10000"
-                max="15000"
-                onChange={(e) => setHighwaySpeed(parseInt(e.target.value, 10))}
-              />{' '}
-              m/s highway speed
-            </label>
+            <Input
+              name="distance"
+              type="number"
+              value={distance}
+              min={10}
+              max={10000}
+              label="km of total whole trip"
+              handleInputChange={(e) => setDistance(parseInt(e.target.value, 10))}
+            />
+            <Input
+              name="jumpGates"
+              type="number"
+              value={jumpGates}
+              min={0}
+              max={15}
+              label="jump gates"
+              handleInputChange={(e) => setJumpGates(parseInt(e.target.value, 10))}
+            />
+            <Input
+              name="percentHighway"
+              type="number"
+              value={percentHighway}
+              min={0}
+              max={100}
+              label="percent of travel on highway"
+              handleInputChange={(e) => setPercentHighway(parseInt(e.target.value, 10))}
+            />
+            <Input
+              name="highwaySpeed"
+              type="number"
+              value={highwaySpeed}
+              min={10000}
+              max={15000}
+              label="m/s highway speed"
+              handleInputChange={(e) => setHighwaySpeed(parseInt(e.target.value, 10))}
+            />
           </div>
           <div>
             <p className="text--bold">Travel engines you want to use (highest Mk available for class)</p>
-            {ENGINE_RACES.map((race, index) => (
-              <label className="label--row" key={race}>
-                <input
-                  type="radio"
-                  name="engines"
-                  value={race}
-                  defaultChecked={index === 0}
-                  onChange={(e) => setRace(race)}
-                />{' '}
-                {translateRace(race)}
-              </label>
-            ))}
+            <Radio
+              name="engines"
+              value={race}
+              options={ENGINE_RACES.map((race) => ({ label: translateRace(race), value: race }))}
+              handleInputChange={(e) => setRace(e.target.value)}
+            />
+            <br />
+            <p className="text--bold">Traders or miners?</p>
+            <Radio
+              name="type"
+              value={type}
+              options={['traders', 'miners'].map((type) => ({ label: type, value: type }))}
+              handleInputChange={(e) => setType(e.target.value)}
+            />
+            <p className="text--bold text--smaller text--muted">
+              NOTICE: Miners are looked at as hauling ships, time to fill up is not factored in yet
+            </p>
           </div>
         </div>
 
@@ -277,7 +284,7 @@ const X4ShipEfficiency = () => {
         </div>
         <Description />
       </div>
-    </LayoutClient>
+    </LayoutBase>
   );
 };
 

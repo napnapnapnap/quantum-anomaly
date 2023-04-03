@@ -1,29 +1,29 @@
-const env = process.env.NODE_ENV || 'development';
-import dotenv from 'dotenv';
-if (env === 'development') dotenv.config();
-import 'regenerator-runtime/runtime'
-
-import express from 'express';
 import bodyParser from 'body-parser';
 import compression from 'compression';
 import cookieParser from 'cookie-parser';
+import dotenv from 'dotenv';
+import express from 'express';
 import methodOverride from 'method-override';
 import multer from 'multer';
+import 'regenerator-runtime/runtime';
 
+import database from './database';
+import * as logger from './helpers/logger';
 import auth from './middleware/auth';
 import cors from './middleware/cors';
 import forceHttps from './middleware/force-https';
-
-import * as logger from './helpers/logger';
-import routes from './routes';
-import database from './database';
 import models from './models';
+import routes from './routes';
 
-const PORT      = process.env.PORT || 3000,
-      app       = express(),
-      sequelize = database();
+const env = process.env.NODE_ENV || 'development';
 
-app.use(bodyParser.urlencoded({extended: true}));
+if (env === 'development') dotenv.config();
+
+const PORT = process.env.PORT || 3000,
+  app = express(),
+  sequelize = database();
+
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(multer().array());
 app.use(compression());

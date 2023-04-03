@@ -1,19 +1,24 @@
 {
-  "items": {
-    "eve": [
-      {
-        "url": "/epic-arcs",
-        "cover": "/images/eve-logo.png",
-        "label": "Epic arcs guide",
-        "content": "In depth guide for EVE Online level 4 epic arc missions. Find all about the related missions, enemies, rewards, what to bring and how to start them..."
-      }
-    ],
-    "x4": [
+  "items": [
+    {
+      "label": "EVE Online",
+      "items": [
+        {
+          "url": "/epic-arcs",
+          "cover": "/images/eve-logo.png",
+          "label": "Epic arcs guide",
+          "content": "In depth guide for EVE Online level 4 epic arc missions. Find all about the related missions, enemies, rewards, what to bring and how to start them..."
+        }
+      ]
+    },
+    {
+      "label": "X4 Foundations",
+      "items": [
       {
         "url": "/x4/map",
         "cover": "/images/x4/logo.png",
         "label": "Map",
-        "content": "Complete X4 map, together with X4 Split Vendetta and Cradle of Humanity systems (v4.1)."
+        "content": "Complete X4 map, together with X4 Split Vendetta and Cradle of Humanity systems."
       },
       {
         "url": "/x4/resources",
@@ -25,14 +30,15 @@
         "url": "/x4/ships",
         "cover": "/images/x4/logo.png",
         "label": "Ships",
-        "content": "List of ships with their stats. Still work in progress with aim at offering same equiping options as in game so that you can use this application to validate your fits beforehand."
+        "content": "List of ships with their stats. Still work in progress with the aim of offering the same equipment options as in game so that you can use this application to validate your fits beforehand."
       },
       {
         "url": "/x4/efficiency",
         "cover": "/images/x4/logo.png",
         "label": "Efficiency",
-        "content": "Analysis of trading ships currently in X4 Foundations version 3.3."
+        "content": "Analysis of trading ships currently in X4 Foundations."
       }
     ]
-  }
+    }
+  ]
 }

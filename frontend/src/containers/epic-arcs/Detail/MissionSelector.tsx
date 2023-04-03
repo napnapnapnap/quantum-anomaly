@@ -12,7 +12,7 @@ const missionType: { [key: string]: string } = {
 
 const EpicArcsDetailMissionSelector = ({ epicArc }: { epicArc: EveEpicArcInfo }) => {
   return (
-    <aside className="missions__selector">
+    <aside className="ea-missions__selector">
       <br />
       <NavLink
         to={`/epic-arcs/${epicArc.race}`}
@@ -34,7 +34,7 @@ const EpicArcsDetailMissionSelector = ({ epicArc }: { epicArc: EveEpicArcInfo })
                 {index + 1}. {name}
               </NavLink>
               {missionType[type] && (
-                <span className="missions__context" title={`Required for ${name}`}>
+                <span className="ea-missions__context" title={`Required for ${name}`}>
                   {missionType[type]}
                 </span>
               )}

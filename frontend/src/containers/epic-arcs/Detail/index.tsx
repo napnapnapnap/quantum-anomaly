@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 
 import { seo } from '../../../helpers';
 import { useAppDispatch, useAppSelector } from '../../../hooks';
-import LayoutClient from '../../../layouts/Client';
+import LayoutBase from '../../../layouts/Base';
 import {
   EveEpicArcFactions,
   EveEpicArcInfo,
@@ -13,11 +13,7 @@ import {
 import { getEveNpcs } from '../../../redux/eve/npcs';
 import { getAllNpcNames } from '../epic-arc-helpers';
 import './Detail.scss';
-import EpicArcsDetailGeneralNote from './GeneralNotes';
-import EpicArcsDetailHeader from './Header';
-import EpicArcsDetailMissionHeader from './MissionHeader';
-import EpicArcsDetailMissionPockets from './MissionPockets';
-import EpicArcsDetailMissionSelector from './MissionSelector';
+import Missions from './Missions';
 
 const EpicArc = () => {
   const dispatch = useAppDispatch();
@@ -69,30 +65,30 @@ const EpicArc = () => {
   }, [activeEpicArc, activeMissionIndex]);
 
   return (
-    <LayoutClient>
-      <>
-        <div className="overview overview--arc">
-          <EpicArcsDetailHeader epicArc={activeEpicArc} faction={faction} />
-        </div>
-        {activeEpicArc && (
-          <div className="missions">
-            {activeEpicArc && <EpicArcsDetailMissionSelector epicArc={activeEpicArc} />}
-            {activeMissionIndex === null ? (
-              <EpicArcsDetailGeneralNote epicArc={activeEpicArc} />
-            ) : (
-              <div className="missions__content">
-                <EpicArcsDetailMissionHeader epicArc={activeEpicArc} activeMissionIndex={activeMissionIndex} />
-                <EpicArcsDetailMissionPockets
-                  epicArc={activeEpicArc}
-                  eveNpcs={eveNpcs}
-                  activeMissionIndex={activeMissionIndex}
-                />
+    <LayoutBase>
+      {activeEpicArc ? (
+        <>
+          <div className="ea-details">
+            <header className="ea-details__header">
+              <div className="ea-details__logo">
+                <img src={`https://images.evetech.net/corporations/${activeEpicArc.iconID}/logo`} alt="faction" />
               </div>
-            )}
+              <div className="ea-details__tagline">
+                <h1 className="ea-details__title">{activeEpicArc.name}</h1>
+                <br />
+                {activeEpicArc && <span>{activeEpicArc.empire} </span>}
+                <NavLink to={`/epic-arcs`} className="link text--smaller">
+                  back to others
+                </NavLink>
+              </div>
+            </header>
+            <Missions activeMissionIndex={activeMissionIndex} activeEpicArc={activeEpicArc} />
           </div>
-        )}
-      </>
-    </LayoutClient>
+        </>
+      ) : (
+        <></>
+      )}
+    </LayoutBase>
   );
 };
 

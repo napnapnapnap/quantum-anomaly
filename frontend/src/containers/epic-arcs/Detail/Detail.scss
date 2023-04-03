@@ -1,62 +1,46 @@
 @import '../../../styles/variables';
 @import '../../../styles/mixins/breakpoints';
 
-.enemy-damage-profile {
-  &__icon {
-    position: absolute;
-    height: 18px;
-    width: 18px;
-    max-height: initial;
-    border-radius: 3px;
-    transform: translate(-24px, 0px);
+.ea-details {
+  &__header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    padding: 0.3rem;
   }
 
-  &__item {
-    position: relative;
-    padding: 0 4px 0 24px;
-  }
-
-  &__label {
-    display: inline-block;
-    width: 95px;
-  }
-
-  &__damage {
-    display: inline-block;
-    width: 30px;
-  }
-}
-
-.mission {
-  margin: 2rem 0;
-  flex: 1 1 100%;
-}
-
-.pocket {
-  display: flex;
-  flex-wrap: wrap;
-  padding-bottom: 0.5em;
-  margin-bottom: 3rem;
-}
-
-.wave {
-  flex: 0 0 330px;
-
-  @include media-breakpoint-up(md) {
+  &__logo {
+    flex: 0 0 48px;
     margin-right: 1rem;
+
+    img {
+      background: var(--color-black);
+      border-radius: 3px;
+      display: block;
+    }
+  }
+
+  &__tagline {
+    flex: 0 1 auto;
+  }
+
+  &__title {
+    display: inline-block;
+    margin: 0 0;
+    border-bottom: 1px solid var(--color-text);
   }
 }
 
-.enemies {
+.ea-enemies {
   display: flex;
   margin-bottom: 0.2em;
-  border: 1px solid #ddd;
+  border: 1px solid var(--color-border-light);
   border-radius: 10px;
   align-items: center;
-  background: linear-gradient(to bottom left, #fff 0%, rgba(#CCCCCC, 0.1) 50%, #fff 100%);
+  background: var(--gradient-primary);
 
   &__quantity {
-    border-right: 1px solid #ddd;
+    border-right: 1px solid var(--color-border-light);
     padding: 5px;
     margin-right: 5px;
     min-width: 26px;
@@ -98,7 +82,7 @@
       padding-left: 5px;
       width: 33px;
       margin-right: 5px;
-      border-left: 1px solid #ddd;
+      border-left: 1px solid var(--color-border-light);
     }
   }
 
@@ -106,57 +90,5 @@
     font-size: 11px;
     font-weight: bold;
     margin: 0;
-  }
-}
-
-.missions {
-  display: flex;
-  flex-wrap: wrap;
-
-  &__selector {
-    display: block;
-    padding: 0 1.5rem 1rem 0.5rem;
-    border-radius: 4px;
-    flex: 0 0 320px;
-  }
-
-  &__context {
-    opacity: 0.9;
-    font-size: 80%;
-    float: right;
-    position: relative;
-    transform: translateY(20%);
-    background: #eee;
-    padding: 0 3px;
-    border-radius: 3px;
-  }
-
-  &__content {
-    flex: 1 1 100%;
-  }
-
-  @include media-breakpoint-up(md) {
-    flex-wrap: nowrap;
-
-    &__content {
-      padding: 0 0 0 1.5rem;
-    }
-  }
-
-  @include media-breakpoint-up(lg) {
-    flex-wrap: nowrap;
-
-    &__content {
-      flex: 1 1 calc(100% - 1rem - 320px);
-      padding: 0 0 0 1.5rem;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-content: flex-start;
-    }
-
-    &__item {
-      flex: 0 0 48%;
-    }
   }
 }

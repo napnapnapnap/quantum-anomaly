@@ -3,14 +3,14 @@ export default function reducer(state, action) {
     case 'FETCH_SHIP_GROUPS': {
       return {
         ...state,
-        shipGroups: action.payload
+        shipGroups: action.payload,
       };
     }
     case 'FETCH_CURRENT_SHIP_GROUP': {
       return {
         ...state,
-        currentGroup: {...action.payload},
-        ship: null
+        currentGroup: { ...action.payload },
+        ship: null,
       };
     }
     case 'FETCH_SHIP': {
@@ -19,20 +19,20 @@ export default function reducer(state, action) {
         ship: action.payload,
         currentGroup: {
           id: action.payload.group_id,
-          name: action.payload.group_name
-        }
+          name: action.payload.group_name,
+        },
       };
     }
     case 'FETCH_MODULE_GROUPS': {
       return {
         ...state,
-        moduleGroups: action.payload
+        moduleGroups: action.payload,
       };
     }
     case 'FETCH_MODULE_GROUP': {
       return {
         ...state,
-        modules: action.payload
+        modules: action.payload,
       };
     }
     case 'FETCH_DOGMA': {
@@ -40,11 +40,11 @@ export default function reducer(state, action) {
         ...state,
         dogmaAttributes: action.payload.dogmaAttributes,
         dogmaEffects: action.payload.dogmaEffects,
-        dogmaReverseInfo: action.payload.dogmaReverseInfo
+        dogmaReverseInfo: action.payload.dogmaReverseInfo,
       };
     }
     default: {
-      return {...state};
+      return { ...state };
     }
   }
-};
+}

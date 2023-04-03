@@ -1,20 +1,20 @@
+import { dynamicSortMultiple } from '../../helpers';
 import * as logger from '../../helpers/logger';
-import {models} from '../../models';
-import {dynamicSortMultiple} from '../../helpers';
+import { models } from '../../models';
 
 const TABLE_GROUPS = {
-  6:  'EveShipGroups',
-  7:  'EveModuleGroups'
+  6: 'EveShipGroups',
+  7: 'EveModuleGroups',
 };
 
 const TABLE_ITEMS = {
-  6:  'EveShips',
-  7:  'EveModules'
+  6: 'EveShips',
+  7: 'EveModules',
 };
 
 const NAME = {
-  6:  'ship',
-  7:  'module'
+  6: 'ship',
+  7: 'module',
 };
 
 function getGroups(type) {
@@ -28,22 +28,24 @@ function getGroups(type) {
     }
   */
   return models.EsiUniverseGroups.findAll()
-    .then(groups =>
-      groups.filter(group => group.data.category_id === type && group.data.published)
-        .map(group => {
+    .then((groups) =>
+      groups
+        .filter((group) => group.data.category_id === type && group.data.published)
+        .map((group) => {
           return {
-            id:        group.data.group_id,
-            name:      group.data.name,
-            data:      group.data.types,
+            id: group.data.group_id,
+            name: group.data.name,
+            data: group.data.types,
             createdAt: new Date(),
-            updatedAt: new Date()
+            updatedAt: new Date(),
           };
-        }))
-    .catch(e => logger.inspect(e));
+        })
+    )
+    .catch((e) => logger.inspect(e));
 }
 
 function getMetaLevel(item) {
-  let metaLevel = item.data.dogma_attributes.filter(attr => attr.attribute_id === 633);
+  let metaLevel = item.data.dogma_attributes.filter((attr) => attr.attribute_id === 633);
   return metaLevel[0] ? metaLevel[0].value : 0;
 }
 
@@ -56,15 +58,15 @@ function getItems(group) {
       'updatedAt': '2018-11-12T17:28:43.218Z'
     };
    */
-  return Promise.all(
-    group.data.map((itemId, index) =>
-      models.EsiUniverseTypes.findOne({where: {id: itemId}})
-    )).then(items => items.filter(item => item.data.published === true))
-    .then(items => items.map(item => {
-      item.data.meta_level = getMetaLevel(item);
-      return item;
-    }))
-    .catch(e => logger.inspect(e));
+  return Promise.all(group.data.map((itemId, index) => models.EsiUniverseTypes.findOne({ where: { id: itemId } })))
+    .then((items) => items.filter((item) => item.data.published === true))
+    .then((items) =>
+      items.map((item) => {
+        item.data.meta_level = getMetaLevel(item);
+        return item;
+      })
+    )
+    .catch((e) => logger.inspect(e));
 }
 
 function addDetails(item) {
@@ -79,36 +81,36 @@ function addDetails(item) {
   */
 
   return {
-    id:         item.id,
-    name:       item.data.name,
-    meta_level: getMetaLevel(item)
+    id: item.id,
+    name: item.data.name,
+    meta_level: getMetaLevel(item),
   };
 }
 
 export default async function (type = 7) {
-  let items  = [],
-      groups = await getGroups(type);
+  let items = [],
+    groups = await getGroups(type);
 
   logger.action(`Started generating ${NAME[type]} data`);
 
   await Promise.all(
-    groups.map(async group => {
+    groups.map(async (group) => {
       let itemsInGroup = await getItems(group);
 
       // attach names and meta level to items inside group
-      group.data = itemsInGroup.map(item => addDetails(item));
+      group.data = itemsInGroup.map((item) => addDetails(item));
       group.data.sort(dynamicSortMultiple('meta_level', 'name'));
 
       // add these items into another array so we can dump them in database as bulk
-      itemsInGroup = itemsInGroup.map(item => {
+      itemsInGroup = itemsInGroup.map((item) => {
         item.data.group_name = group.name;
         return {
-          id:              item.data.type_id,
-          name:            item.data.name,
-          data:            item.data,
+          id: item.data.type_id,
+          name: item.data.name,
+          data: item.data,
           market_group_id: item.data.market_group_id || item.data.group_id,
-          createdAt:       new Date(),
-          updatedAt:       new Date()
+          createdAt: new Date(),
+          updatedAt: new Date(),
         };
       });
 
@@ -117,12 +119,12 @@ export default async function (type = 7) {
   );
 
   // remove groups which have no items
-  groups = groups.filter(group => group.data.length !== 0);
+  groups = groups.filter((group) => group.data.length !== 0);
 
-  await models[TABLE_GROUPS[type]].destroy({truncate: true});
+  await models[TABLE_GROUPS[type]].destroy({ truncate: true });
   logger.action(`Deleted ${NAME[type]} group table`);
 
-  await models[TABLE_ITEMS[type]].destroy({truncate: true});
+  await models[TABLE_ITEMS[type]].destroy({ truncate: true });
   logger.action(`Deleted ${NAME[type]} items table`);
 
   await models[TABLE_GROUPS[type]].bulkCreate(groups);

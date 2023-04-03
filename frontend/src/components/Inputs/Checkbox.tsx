@@ -1,15 +1,15 @@
 import clsx from 'clsx';
-
-import './Inputs.scss';
+import React from 'react';
 
 interface CheckboxProps {
   label: string;
   name: string;
   checked: boolean;
-  isInline?: boolean;
-  labelClassName?: string;
+  inputClassName?: string;
   className?: string;
+  labelClassName?: string;
   isDisabled?: boolean;
+  isRequired?: boolean;
   handleInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -17,29 +17,35 @@ function Checkbox({
   label,
   name,
   checked,
-  isInline,
+  inputClassName,
   labelClassName,
   className,
   isDisabled,
+  isRequired,
   handleInputChange,
 }: CheckboxProps) {
   return (
     <label
-      className={clsx('input-control input-control--checkbox text--capitalize', labelClassName, {
+      className={clsx('input-control input-control--checkbox', className, {
         'input-control--with-label': label,
-        'input-control--inline': isInline,
         'input-control--disabled': isDisabled,
       })}
     >
       <input
-        type="checkbox"
+        id={`checkbox-${name}`}
         name={name}
-        className={clsx('checkbox', className)}
-        disabled={isDisabled}
-        onChange={handleInputChange}
+        type="checkbox"
+        className={clsx('checkbox', inputClassName)}
         checked={checked}
+        disabled={isDisabled}
+        onChange={isDisabled ? () => {} : handleInputChange}
+        required={isRequired}
       />
-      {label && <span className="input-control__checkbox-text">{label}</span>}
+      {label && (
+        <span className={clsx('input-control__checkbox-text', labelClassName)}>
+          {label} {isRequired && ' *'}
+        </span>
+      )}
     </label>
   );
 }

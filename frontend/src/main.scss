@@ -4,10 +4,10 @@
 @import 'styles/mixins/breakpoints';
 @import 'styles/mixins/grid';
 
-@import 'styles/layout';
+@import 'layouts/Base';
+
 @import 'styles/ui-messages';
 @import 'styles/typography';
 @import 'styles/buttons-links';
 @import 'styles/forms';
 @import 'styles/tables';
-@import 'styles/dark-mode';

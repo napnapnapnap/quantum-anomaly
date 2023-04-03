@@ -2,7 +2,6 @@ import axios from 'axios';
 import React, { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-import * as auth from './auth';
 import Home from './components/Home';
 import NotFound from './components/NotFound';
 import StyleGuide from './components/StyleGuide';
@@ -13,10 +12,14 @@ import X4Modifications from './containers/x4/Modifications';
 import X4ResourcesTable from './containers/x4/Resources';
 import X4ShipEfficiency from './containers/x4/ShipEfficiency';
 import X4Ships from './containers/x4/Ships';
+import X4Terraform from './containers/x4/Terraform';
 import { hashUserId, updateCanonical } from './helpers';
 import { deleteCookie } from './helpers/cookies';
+import { AppContext, useAppContext } from './hooks/app-context';
 
 function App() {
+  const context = useAppContext();
+
   useEffect(() => {
     // if (auth.isLoggedIn()) this.props.getUserInfo();
     updateCanonical();
@@ -37,7 +40,7 @@ function App() {
   }, []);
 
   return (
-    <React.Fragment>
+    <AppContext.Provider value={context}>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/styleguide" element={<StyleGuide />} />
@@ -49,10 +52,11 @@ function App() {
         <Route path="/x4/map" element={<X4Map />} />
         <Route path="/x4/resources" element={<X4ResourcesTable />} />
         <Route path="/x4/modifications" element={<X4Modifications />} />
-        {/*<Route exact path="/x4/terraform" render={props => <X4Terraform {...props} />} />*/}
+        <Route path="/x4/terraform/:planet" element={<X4Terraform />} />
+        <Route path="/x4/terraform" element={<X4Terraform />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
-    </React.Fragment>
+    </AppContext.Provider>
   );
 }
 

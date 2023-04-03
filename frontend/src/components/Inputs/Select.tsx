@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import React from 'react';
 
 import './Inputs.scss';
 
@@ -10,36 +11,32 @@ interface SelectProps {
   name: string;
   formError?: boolean;
   autoFocus?: boolean;
-  placeholder?: string;
+  placeholder?: string | null;
   handleInputChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
   className?: string;
-  labelClassName?: string;
+  inputClassName?: string;
   isRequired?: boolean;
   isDisabled?: boolean;
-  hint?: string;
 }
 
 export default function Select({
   label,
   value,
   options,
-  defaultValue,
   name,
   formError,
   autoFocus,
   placeholder,
   handleInputChange,
   className,
-  labelClassName,
+  inputClassName,
   isRequired,
   isDisabled,
-  hint,
 }: SelectProps) {
   return (
     <label
-      className={clsx('input-control input-control--select', labelClassName, {
+      className={clsx('input-control input-control--select', className, {
         'input-control--with-label': label,
-        'input-control--with-hint': hint,
         'input-control--error': formError,
         'input-control--disabled': isDisabled,
         'input-control--none-selected': value === undefined && placeholder,
@@ -50,13 +47,13 @@ export default function Select({
         <select
           id={`select-${name}`}
           name={name}
-          className={clsx('select', className)}
+          className={clsx('select', inputClassName)}
           value={value}
           onChange={handleInputChange}
           disabled={isDisabled}
           required={isRequired}
           autoFocus={autoFocus}
-          defaultValue={defaultValue}
+          defaultValue={value ? undefined : ''}
         >
           {placeholder && (
             <option value="" disabled>
@@ -69,7 +66,6 @@ export default function Select({
             </option>
           ))}
         </select>
-        {hint && <span className="input-control__hint">{hint}</span>}
       </div>
     </label>
   );

@@ -1,18 +1,18 @@
-import xml2js from 'xml2js';
+import { promises as fs } from 'fs';
 import path from 'path';
-import {promises as fs} from 'fs';
+import xml2js from 'xml2js';
 
 export async function getTranslations(resourcesPath) {
   const pathToFile = path.join(resourcesPath, 't', '0001-l044.xml');
 
-  const parser = new xml2js.Parser({mergeAttrs: true, explicitArray: true});
+  const parser = new xml2js.Parser({ mergeAttrs: true, explicitArray: true });
   const parsed = await parser.parseStringPromise(await fs.readFile(pathToFile));
   const pages = {};
 
-  parsed.language.page.forEach(page => {
+  parsed.language.page.forEach((page) => {
     const translations = {};
-    page.t.forEach(translation => translations[translation.id] = translation['_']);
-    pages[page.id] = {title: page.title[0], translations: translations};
+    page.t.forEach((translation) => (translations[translation.id] = translation['_']));
+    pages[page.id] = { title: page.title[0], translations: translations };
   });
 
   return {
@@ -69,7 +69,7 @@ export function translateRecursive(string, translations) {
 
   if (match.length === 0) return translation;
 
-  match.forEach(match => {
+  match.forEach((match) => {
     const group = match[1].split(',');
     const pageId = group[0];
     const translationId = group[1];

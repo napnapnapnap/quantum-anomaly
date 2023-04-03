@@ -1,28 +1,27 @@
 import Sequelize from 'sequelize';
-import * as logger from '../helpers/logger';
+
 import * as helpers from '../helpers';
-
-import sessionsModel from './sessions';
-import usersModel from './users';
-import skillsModel from './skills';
-import incursionMapModel from './incursion-map';
-import incursionsModel from './incursions';
-
+import * as logger from '../helpers/logger';
+import esiDogmaAttributesModel from './esiDogmaAttributes';
+import esiDogmaEffectsModel from './esiDogmaEffects';
 // Data which get filled from EVE API
 import esiMarketGroupsModel from './esiMarketGroups';
 import esiUniverseCategoriesModel from './esiUniverseCategories';
-import esiUniverseTypesModel from './esiUniverseTypes';
 import esiUniverseModel from './esiUniverseGroups';
-import esiDogmaAttributesModel from './esiDogmaAttributes';
-import esiDogmaEffectsModel from './esiDogmaEffects';
-
+import esiUniverseTypesModel from './esiUniverseTypes';
+import eveUniverseCategoriesModel from './eve/universeCategories';
+import eveCacheModel from './eveCache';
+import eveModuleGroupsModel from './eveModuleGroups';
+import eveModulesModel from './eveModules';
+import eveNpcsModel from './eveNpcs';
+import eveShipGroupsModel from './eveShipGroups';
 // Custom data which gets created afterwards
 import eveShipsModel from './eveShips';
-import eveShipGroupsModel from './eveShipGroups';
-import eveModulesModel from './eveModules';
-import eveModuleGroupsModel from './eveModuleGroups';
-import eveNpcsModel from './eveNpcs';
-import eveCacheModel from './eveCache';
+import incursionMapModel from './incursion-map';
+import incursionsModel from './incursions';
+import sessionsModel from './sessions';
+import skillsModel from './skills';
+import usersModel from './users';
 
 function overwriteEntry(error, response, Model) {
   if (error) return;
@@ -39,14 +38,14 @@ function overwriteEntry(error, response, Model) {
   }
 
   Model.create({
-    data: JSON.parse(response.body)
+    data: JSON.parse(response.body),
   }).then(function (data) {
     Model.destroy({
       where: {
         id: {
-          [Sequelize.Op.ne]: data.get('id')
-        }
-      }
+          [Sequelize.Op.ne]: data.get('id'),
+        },
+      },
     });
   });
 }
@@ -56,9 +55,9 @@ function updateEntry(Model, modelName, timer) {
     incursions: 'https://esi.evetech.net/latest/incursions/?datasource=tranquility',
   };
 
-  helpers.request({url: urls[modelName]}, overwriteEntry, Model);
+  helpers.request({ url: urls[modelName] }, overwriteEntry, Model);
   setInterval(function () {
-    helpers.request({url: urls[modelName]}, overwriteEntry, Model);
+    helpers.request({ url: urls[modelName] }, overwriteEntry, Model);
   }, timer * 60 * 1000);
   logger.appLog(`Model ${modelName} started autoupdate every ${timer} minutes`, 'gray');
 }
@@ -83,7 +82,8 @@ export default async function (sequelize, silent) {
     Users: usersModel(sequelize),
     Skills: skillsModel(sequelize),
     IncursionMaps: incursionMapModel(sequelize),
-    Incursions: incursionsModel(sequelize)
+    Incursions: incursionsModel(sequelize),
+    EveUniverseCategories: eveUniverseCategoriesModel(sequelize),
   };
 
   await sequelize.sync().then(() => {
@@ -91,6 +91,6 @@ export default async function (sequelize, silent) {
     updateEntry(models.Incursions, 'incursions', 10);
     return models;
   });
-};
+}
 
-export {models};
+export { models };

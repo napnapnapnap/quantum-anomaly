@@ -7,7 +7,7 @@ $message-error-bg-color: #ddbbbb;
 .ui-messages {
   display: none;
   position: fixed;
-  top: calc(#{$navbar-height} + 1rem);
+  top: 1rem;
   left: 0;
   right: 0;
   z-index: 999;

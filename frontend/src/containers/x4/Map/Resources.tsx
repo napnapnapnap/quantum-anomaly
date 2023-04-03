@@ -37,8 +37,8 @@ const Resources = ({ sector }: { sector: X4MapSector }) => {
                 fontSize="12px"
                 fill="black"
                 fontWeight="bold"
-                x={sector.adjusted.x + offsets[resource].x + 1.5}
-                y={-sector.adjusted.z + offsets[resource].z}
+                x={sector.adjusted.x + offsets[resource].x + 2}
+                y={-sector.adjusted.z + offsets[resource].z + 0.5}
               >
                 {sector.resourcePoints[resource] > 99 ? 99 : sector.resourcePoints[resource]}
               </text>

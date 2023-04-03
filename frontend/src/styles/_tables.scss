@@ -1,6 +1,6 @@
 table {
   width: 100%;
-  background-color: #FFFFFF;
+  background-color: var(--color-table-background);
   border-radius: 5px;
   overflow: hidden;
 
@@ -18,7 +18,7 @@ table {
 
   thead {
     tr {
-      background-color: rgba(200, 200, 200, 0.4);
+      background-color: var(--color-table-background-hover);
     }
 
     th {
@@ -29,14 +29,18 @@ table {
 
   tbody {
     tr {
-      background-color: #FFFFFF;
+      background-color: var(--color-table-background);
 
       &:hover {
-        background: #DDD;
+        background: var(--color-table-background-hover);
       }
 
       &:nth-of-type(even) {
-        background-color: rgba(200, 200, 200, 0.2);
+        background-color: var(--color-table-background-alternate);
+
+        &:hover {
+          background: var(--color-table-background-hover);
+        }
       }
     }
 

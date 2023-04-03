@@ -1,8 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
+import Checkbox from '../../../components/Inputs/Checkbox';
+import Input from '../../../components/Inputs/Input';
 import { seo } from '../../../helpers';
 import { useAppDispatch, useAppSelector } from '../../../hooks';
-import LayoutClient from '../../../layouts/Client';
+import LayoutBase from '../../../layouts/Base';
 import {
   X4ModificationsGroupsInterface,
   X4ModificationsModInterface,
@@ -35,97 +37,120 @@ const percent = (arg: { min: string; max: string }) => {
 };
 const chance = (arg: string) => `${formatDecimal(parseFloat(arg) * 100)}%`;
 
+const applySearch = (category: string, mod: X4ModificationsModInterface, searchTerm: string) => {
+  let shouldDisplay = false;
+
+  if (searchTerm.length > 3) {
+    const modAttribute = mod.description.split(' - ')[0].replace(' Mod', '').toLowerCase();
+    const fullModAttribute = `${category.toLowerCase()} ${modAttribute}`;
+    if (fullModAttribute.indexOf(searchTerm.toLowerCase()) !== -1) shouldDisplay = true;
+
+    if (mod.bonus) {
+      Object.keys(mod.bonus).forEach((key) => {
+        const fullModAttribute = `${category.toLowerCase()} ${splitWords(key).toLowerCase()}`;
+        if (fullModAttribute.indexOf(searchTerm.toLowerCase()) !== -1) shouldDisplay = true;
+      });
+    }
+  } else return true;
+
+  return shouldDisplay;
+};
+
+const applyFilter = (basic: boolean, enhanced: boolean, exceptional: boolean, mod: X4ModificationsModInterface) => {
+  let shouldDisplay = false;
+  if (mod.description.split(' - ')[1] === 'Basic Quality' && basic) shouldDisplay = true;
+  if (mod.description.split(' - ')[1] === 'Enhanced Quality' && enhanced) shouldDisplay = true;
+  if (mod.description.split(' - ')[1] === 'Exceptional Quality' && exceptional) shouldDisplay = true;
+  return shouldDisplay;
+};
+
 const RenderModifications = ({
-  type,
   category,
   mods,
+  searchTerm,
+  basic,
+  enhanced,
+  exceptional,
 }: {
-  type: string;
   category: string;
   mods: X4ModificationsModInterface[];
+  searchTerm: string;
+  basic: boolean;
+  enhanced: boolean;
+  exceptional: boolean;
 }) => (
-  <div className="x4-modifications__types">
-    <h4 className="capitalize bold">
-      {category} {splitWords(type)}
-    </h4>
-    <div className="x4-modifications__mods">
-      {mods.map((mod) => (
-        <div key={mod.ware} className="x4-modifications__mod">
-          <h2 className="h6">
-            {mod.name} <span className="muted"> - {mod.description.split(' - ')[1]}</span>
-          </h2>
+  <>
+    {mods.map((mod) =>
+      applySearch(category, mod, searchTerm) && applyFilter(basic, enhanced, exceptional, mod) ? (
+        <tr key={mod.ware} className="x4-modifications__mod">
+          <td>
+            <span className="capitalize bold">{mod.name}</span>
+            <br />
+            <span>{mod.description.split(' - ')[1]}</span>
+          </td>
 
-          <div>
-            <p className="no-mb mt-1 text--bold">Main modifier:</p>
-            <p className="no-mb capitalize">
+          <td>
+            <span className="capitalize bold">
               {category} {mod.description.split(' - ')[0].replace(' Mod', '')}
-            </p>
-            <p className="x4-modifications__values">{percent({ min: mod.min, max: mod.max })}</p>
-          </div>
+            </span>
+            <br />
+            <span>Bonus: {percent({ min: mod.min, max: mod.max })} </span>
+          </td>
 
-          {mod.bonus && (
-            <div className="x4-modifications__bonus">
-              <p className="no-mb bold">
-                Extra modifiers&nbsp;
-                <span className="muted">(up to {mod.bonus.max} modifiers)</span>:
-                {/*<span className="muted">(total weight {mod.totalWeight})</span>*/}
-              </p>
-
-              {Object.keys(mod.bonus).map((key) => {
-                if (key === 'chance' || key === 'max') return null;
-                else
-                  return (
-                    <div key={key} className="x4-modifications__bonus-item">
-                      <p className="no-mb capitalize">
-                        {category} {splitWords(key)}
-                        {/*{mod.bonus[key].weight && <span className="muted"> ({mod.bonus[key].weight})</span>}*/}
-                      </p>
-                      <p className="no-mb">{percent({ min: mod.bonus[key].min, max: mod.bonus[key].max })}</p>
-                      {mod.bonus[key].weight && (
-                        <span className="text--muted text--small">
-                          Chance to get {chance(mod.bonus[key].chanceToGet)}
+          <td>
+            {mod.bonus && (
+              <>
+                {Object.keys(mod.bonus).map((key) => {
+                  if (key === 'chance' || key === 'max') return <React.Fragment key={key} />;
+                  else
+                    return (
+                      <React.Fragment key={key}>
+                        <div>
+                          <span className="bold capitalize">
+                            {category} {splitWords(key)}&nbsp;
+                          </span>
+                          {mod.bonus[key].weight && (
+                            <span className="text--muted text--smaller">
+                              (chance {chance(mod.bonus[key].chanceToGet)})
+                            </span>
+                          )}
+                        </div>
+                        <span className="no-mb">
+                          Bonus: {percent({ min: mod.bonus[key].min, max: mod.bonus[key].max })}
                         </span>
-                      )}
-                    </div>
-                  );
-              })}
-            </div>
-          )}
+                        <br />
+                      </React.Fragment>
+                    );
+                })}
+                <span className="muted bold">Maximum of {mod.bonus.max}</span> <br />
+              </>
+            )}
+          </td>
 
-          <div>
-            <p className="no-mb text--bold">Cost:</p>
+          <td>
             {mod.production.map((resource) => (
-              <span key={resource.ware} className="x4-modifications__mats">
+              <span key={resource.ware}>
                 {resource.amount} {resource.ware}
+                <br />
               </span>
             ))}
-          </div>
-        </div>
-      ))}
-    </div>
-  </div>
+          </td>
+        </tr>
+      ) : (
+        <React.Fragment key={mod.ware}></React.Fragment>
+      )
+    )}
+  </>
 );
-
-const ModificationsGroups = ({ modifications }: { modifications: X4ModificationsGroupsInterface }) => (
-  <React.Fragment>
-    {Object.keys(modifications.weapon).map((key) => (
-      <RenderModifications key={key} type={key} category="weapon" mods={modifications.weapon[key]} />
-    ))}
-    {Object.keys(modifications.engine).map((key) => (
-      <RenderModifications key={key} type={key} category="engine" mods={modifications.engine[key]} />
-    ))}
-    {Object.keys(modifications.ship).map((key) => (
-      <RenderModifications key={key} type={key} category="ship" mods={modifications.ship[key]} />
-    ))}
-    {Object.keys(modifications.shield).map((key) => (
-      <RenderModifications key={key} type={key} category="shield" mods={modifications.shield[key]} />
-    ))}
-  </React.Fragment>
-);
-
 const X4Modifications = () => {
   const dispatch = useAppDispatch();
   const { modifications } = useAppSelector((state) => state.x4Modifications);
+
+  const [searchTerm, setSearchTerm] = useState<string>('');
+
+  const [basic, setBasic] = useState(true);
+  const [enhanced, setEnhanced] = useState(true);
+  const [exceptional, setExceptional] = useState(true);
 
   useEffect(() => {
     if (Object.keys(modifications).length === 0) {
@@ -143,15 +168,100 @@ const X4Modifications = () => {
         keywords: modNames.join().split(', '),
       });
     }
-  }, [modifications]);
+  }, [dispatch, modifications]);
 
   return (
-    <LayoutClient>
+    <LayoutBase>
       <div className="x4-modifications">
         <h1>X4 Modifications</h1>
-        {Object.keys(modifications).length !== 0 && <ModificationsGroups modifications={modifications.equipmentmods} />}
+        <div className="x4-modifications__controls">
+          <Input
+            label="Search:"
+            placeholder="Weapon damage..."
+            type="text"
+            value={searchTerm}
+            name="searchTerm"
+            handleInputChange={(e) => setSearchTerm(e.target.value)}
+          />
+          <div>
+            <Checkbox label="Basic" name="basic" checked={basic} handleInputChange={() => setBasic(!basic)} />
+            <Checkbox
+              label="Enhanced"
+              name="basic"
+              checked={enhanced}
+              handleInputChange={() => setEnhanced(!enhanced)}
+            />
+            <Checkbox
+              label="Exceptional"
+              name="basic"
+              checked={exceptional}
+              handleInputChange={() => setExceptional(!exceptional)}
+            />
+          </div>
+        </div>
+        <br />
+        <div className="x4-modifications__wrapper">
+          {Object.keys(modifications).length !== 0 && (
+            <table className="x4-modifications__table">
+              <thead>
+                <tr>
+                  <td>Name</td>
+                  <td>Modifier</td>
+                  <td>Extra modifier</td>
+                  <td>Cost</td>
+                </tr>
+              </thead>
+              <tbody>
+                {Object.keys(modifications.equipmentmods.weapon).map((key) => (
+                  <RenderModifications
+                    basic={basic}
+                    enhanced={enhanced}
+                    exceptional={exceptional}
+                    searchTerm={searchTerm}
+                    key={key}
+                    category="weapon"
+                    mods={modifications.equipmentmods.weapon[key]}
+                  />
+                ))}
+                {Object.keys(modifications.equipmentmods.engine).map((key) => (
+                  <RenderModifications
+                    basic={basic}
+                    enhanced={enhanced}
+                    exceptional={exceptional}
+                    searchTerm={searchTerm}
+                    key={key}
+                    category="engine"
+                    mods={modifications.equipmentmods.engine[key]}
+                  />
+                ))}
+                {Object.keys(modifications.equipmentmods.ship).map((key) => (
+                  <RenderModifications
+                    basic={basic}
+                    enhanced={enhanced}
+                    exceptional={exceptional}
+                    searchTerm={searchTerm}
+                    key={key}
+                    category="ship"
+                    mods={modifications.equipmentmods.ship[key]}
+                  />
+                ))}
+                {Object.keys(modifications.equipmentmods.shield).map((key) => (
+                  <RenderModifications
+                    basic={basic}
+                    enhanced={enhanced}
+                    exceptional={exceptional}
+                    searchTerm={searchTerm}
+                    key={key}
+                    category="shield"
+                    mods={modifications.equipmentmods.shield[key]}
+                  />
+                ))}
+              </tbody>
+            </table>
+          )}
+        </div>
       </div>
-    </LayoutClient>
+    </LayoutBase>
   );
 };
 

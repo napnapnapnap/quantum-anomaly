@@ -1,41 +1,49 @@
 import axios from 'axios';
+
+import { wait } from '../../helpers';
 import * as logger from '../../helpers/logger';
-import {models} from '../../models';
-import {wait} from '../../helpers';
+import { models } from '../../models';
 
 const THROTTLE_MS = 30;
 
 const URLS = {
-  MarketGroups:       'https://esi.evetech.net/latest/markets/groups',
-  UniverseGroups:     'https://esi.evetech.net/latest/universe/groups',
+  MarketGroups: 'https://esi.evetech.net/latest/markets/groups',
+  UniverseGroups: 'https://esi.evetech.net/latest/universe/groups',
   UniverseCategories: 'https://esi.evetech.net/latest/universe/categories',
-  UniverseTypes:      'https://esi.evetech.net/latest/universe/types',
-  DogmaAttributes:    'https://esi.evetech.net/latest/dogma/attributes',
-  DogmaEffects:       'https://esi.evetech.net/latest/dogma/effects',
-  appendix:           '?datasource=tranquility&language=en-us'
+  UniverseTypes: 'https://esi.evetech.net/latest/universe/types',
+  DogmaAttributes: 'https://esi.evetech.net/latest/dogma/attributes',
+  DogmaEffects: 'https://esi.evetech.net/latest/dogma/effects',
+  appendix: '?datasource=tranquility&language=en-us',
 };
 
 const HEADER = process.env.USER_AGENT_CACHE;
 
 function requestIds(url, currentPage = 1, ids) {
-  return axios.get(`${url}&page=${currentPage}`, HEADER).then(response => {
-    ids = ids.concat(response.data);
+  console.log(`${url}&page=${currentPage}`);
+  return axios
+    .get(`${url}&page=${currentPage}`, HEADER)
+    .then((response) => {
+      ids = ids.concat(response.data);
 
-    if (currentPage <= parseInt(response.headers['x-pages'], 10)) return requestIds(url, currentPage + 1, ids);
-    else return ids;
-  }).catch(function (error) {
-    logger.error(`URL: ${url}&page=${currentPage}, ${error}`);
-  });
+      if (currentPage < parseInt(response.headers['x-pages'], 10)) return requestIds(url, currentPage + 1, ids);
+      else return ids;
+    })
+    .catch(function (error) {
+      logger.error(`URL: ${url}&page=${currentPage}, ${error}`);
+    });
 }
 
 function requestData(url) {
-  return axios.get(url, HEADER).then(response => {
-    if (response.data) return response.data;
-    else return null;
-  }).catch(function (error) {
-    logger.error(`URL: ${url}, ${error.message}`);
-    return null;
-  });
+  return axios
+    .get(url, HEADER)
+    .then((response) => {
+      if (response.data) return response.data;
+      else return null;
+    })
+    .catch(function (error) {
+      logger.error(`URL: ${url}, ${error.message}`);
+      return null;
+    });
 }
 
 async function getItem(id, index, table, length) {
@@ -43,22 +51,22 @@ async function getItem(id, index, table, length) {
 
   const data = await requestData(`${URLS[table]}/${id}/${URLS.appendix}`);
 
-  if (index === Math.ceil(length * 0.10)) logger.action(`Update of Esi${table} table at 10% ${index}/${length}`);
-  else if (index === Math.ceil(length * 0.20)) logger.action(`Update of Esi${table} table at 20% ${index}/${length}`);
-  else if (index === Math.ceil(length * 0.30)) logger.action(`Update of Esi${table} table at 30% ${index}/${length}`);
-  else if (index === Math.ceil(length * 0.40)) logger.action(`Update of Esi${table} table at 40% ${index}/${length}`);
-  else if (index === Math.ceil(length * 0.50)) logger.action(`Update of Esi${table} table at 50% ${index}/${length}`);
-  else if (index === Math.ceil(length * 0.60)) logger.action(`Update of Esi${table} table at 60% ${index}/${length}`);
-  else if (index === Math.ceil(length * 0.70)) logger.action(`Update of Esi${table} table at 70% ${index}/${length}`);
-  else if (index === Math.ceil(length * 0.80)) logger.action(`Update of Esi${table} table at 80% ${index}/${length}`);
-  else if (index === Math.ceil(length * 0.90)) logger.action(`Update of Esi${table} table at 90% ${index}/${length}`);
+  if (index === Math.ceil(length * 0.1)) logger.action(`Update of Esi${table} table at 10% ${index}/${length}`);
+  else if (index === Math.ceil(length * 0.2)) logger.action(`Update of Esi${table} table at 20% ${index}/${length}`);
+  else if (index === Math.ceil(length * 0.3)) logger.action(`Update of Esi${table} table at 30% ${index}/${length}`);
+  else if (index === Math.ceil(length * 0.4)) logger.action(`Update of Esi${table} table at 40% ${index}/${length}`);
+  else if (index === Math.ceil(length * 0.5)) logger.action(`Update of Esi${table} table at 50% ${index}/${length}`);
+  else if (index === Math.ceil(length * 0.6)) logger.action(`Update of Esi${table} table at 60% ${index}/${length}`);
+  else if (index === Math.ceil(length * 0.7)) logger.action(`Update of Esi${table} table at 70% ${index}/${length}`);
+  else if (index === Math.ceil(length * 0.8)) logger.action(`Update of Esi${table} table at 80% ${index}/${length}`);
+  else if (index === Math.ceil(length * 0.9)) logger.action(`Update of Esi${table} table at 90% ${index}/${length}`);
   else if (index === length - 1) logger.action(`Update of Esi${table} table at 100%`, 'yellow');
 
   return {
-    id:        id,
-    data:      data,
+    id: id,
+    data: data,
     createdAt: new Date(),
-    updatedAt: new Date()
+    updatedAt: new Date(),
   };
 }
 
@@ -78,40 +86,43 @@ async function fetchEndpoint(table) {
   const items = await Promise.all(listOfIds.map(async (id, index) => getItem(id, index, table, listOfIds.length)));
 
   logger.action(`Deleting all the data from Esi${table} table`);
-  await model.destroy({truncate: true});
+  await model.destroy({ truncate: true });
 
   logger.action(`Adding ${items.length} rows in Esi${table} table`);
   await model.bulkCreate(items);
 }
 
 async function updateItems(table) {
-  let model       = models[`Esi${table}`],
-      nullEntries = await model.findAll({where: {data: null}});
+  let model = models[`Esi${table}`],
+    nullEntries = await model.findAll({ where: { data: null } });
 
   if (!nullEntries.length) logger.appLog(`Esi${table} has no missing entries`, 'green');
   else {
     logger.appLog(`Found ${nullEntries.length} missing entries in Esi${table}`, 'red');
-    const items = await Promise.all(nullEntries.map(async (entry, index) => getItem(entry.id, index, table, nullEntries.length)));
-    items.forEach(item => {
-      model.update({
-        data: item.data
-      }, {where: {id: item.id}});
+    const items = await Promise.all(
+      nullEntries.map(async (entry, index) => getItem(entry.id, index, table, nullEntries.length))
+    );
+    items.forEach((item) => {
+      model.update(
+        {
+          data: item.data,
+        },
+        { where: { id: item.id } }
+      );
     });
   }
 }
 
 export async function fetchEndpoints(types) {
   // example of firing async/await in sequence
-  for (let i = 0; i < types.length; i++)
-    await fetchEndpoint(types[i]);
+  for (let i = 0; i < types.length; i++) await fetchEndpoint(types[i]);
 
   logger.action('Done creating all entries', 'green');
 }
 
 export async function updateEndpoints(types) {
   // example of firing async/await in sequence
-  for (let i = 0; i < types.length; i++)
-    await updateItems(types[i]);
+  for (let i = 0; i < types.length; i++) await updateItems(types[i]);
 
   logger.action('Done updating all entries', 'green');
 }

@@ -99,7 +99,15 @@ export const separateWords = (arg: string) =>
     .replace('heavy', 'heavy ')
     .replace('energy', 'energy ')
     .replace('computronic', 'computronic ')
+    .replace('advanced', 'advanced ')
+    .replace('medical', 'medical ')
     .replace('metallic', 'metallic ')
+    .replace('drone', 'drone ')
+    .replace('shield', 'shield ')
+    .replace('silicon', 'silicon ')
+    .replace('smart', 'smart ')
+    .replace('antimatter', 'antimatter ')
+    .replace('scanning', 'scanning ')
     .replace('hullparts', 'hull parts');
 
 export const translateRace = (arg: string) => (maps.reverseRace[arg] ? maps.reverseRace[arg] : arg);
@@ -133,16 +141,10 @@ export const backgroundLabelRectWidth = (label: string) => {
   const i = label.toLowerCase().match(/i/g);
   const l = label.toLowerCase().match(/l/g);
   const apo = label.toLowerCase().match(/'/g);
-  const m = label.toLowerCase().match(/M/g);
-  const bigZ = label.match(/Z/g);
-  const bigA = label.match(/A/g);
 
   if (i) numberOfShortLetters += i.length;
   if (l) numberOfShortLetters += l.length;
-  if (apo) numberOfShortLetters += apo.length * 2;
-  if (bigZ) numberOfShortLetters -= bigZ.length;
-  if (bigA) numberOfShortLetters -= bigA.length * 2;
-  if (m) numberOfShortLetters -= m.length * 2;
+  if (apo) numberOfShortLetters += apo.length;
 
   return numberOfShortLetters;
 };

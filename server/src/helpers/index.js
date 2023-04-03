@@ -7,8 +7,8 @@ export function roundToClosest(arg) {
 }
 
 function request(options, callback, args) {
-  options.headers = {'User-Agent': process.env.USER_AGENT};
-  if (!args) args = {options: options};
+  options.headers = { 'User-Agent': process.env.USER_AGENT };
+  if (!args) args = { options: options };
   remoteRequest(options, (error, response, body) => {
     if (!error) {
       logger.action(`Request for ${options.url} got response`, 'gray');
@@ -37,9 +37,14 @@ function dynamicSort(property, caseInsensitive) {
   return (a, b) => {
     let result;
     if (caseInsensitive) {
-      result = (a[property].toLocaleLowerCase() < b[property].toLocaleLowerCase()) ? -1 : (a[property].toLocaleLowerCase() > b[property].toLocaleLowerCase()) ? 1 : 0;
+      result =
+        a[property].toLocaleLowerCase() < b[property].toLocaleLowerCase()
+          ? -1
+          : a[property].toLocaleLowerCase() > b[property].toLocaleLowerCase()
+          ? 1
+          : 0;
     } else {
-      result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+      result = a[property] < b[property] ? -1 : a[property] > b[property] ? 1 : 0;
     }
     return result * sortOrder;
   };
@@ -58,7 +63,7 @@ function dynamicSortMultiple() {
 }
 
 function clone(obj) {
-  if (obj === null || typeof (obj) !== 'object') return obj;
+  if (obj === null || typeof obj !== 'object') return obj;
   let temp = new obj.constructor();
   for (let key in obj) if (obj.hasOwnProperty(key)) temp[key] = clone(obj[key]);
   return temp;
@@ -69,16 +74,9 @@ function capitalize(string) {
 }
 
 export async function wait(ms) {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     setTimeout(resolve, ms);
   });
 }
 
-export {
-  request,
-  repeat,
-  capitalize,
-  dynamicSort,
-  dynamicSortMultiple,
-  clone
-};
+export { request, repeat, capitalize, dynamicSort, dynamicSortMultiple, clone };

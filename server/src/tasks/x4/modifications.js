@@ -1,20 +1,21 @@
-import xml2js from 'xml2js';
+import { promises as fs } from 'fs';
 import path from 'path';
-import {promises as fs} from 'fs';
-import {translateRecursive} from './translations';
+import xml2js from 'xml2js';
+
+import { translateRecursive } from './translations';
 
 export async function getModifications(sourceBasePath, wares, translations) {
-  const parser = new xml2js.Parser({mergeAttrs: true, explicitArray: false});
+  const parser = new xml2js.Parser({ mergeAttrs: true, explicitArray: false });
   const pathToFile = path.join(sourceBasePath, 'libraries', 'equipmentmods.xml');
   const parsed = await parser.parseStringPromise(await fs.readFile(pathToFile));
 
-  Object.keys(parsed.equipmentmods).forEach(subsystemKey =>
+  Object.keys(parsed.equipmentmods).forEach((subsystemKey) =>
     // sbsKey -> weapons, engines, ship, shields
-    Object.keys(parsed.equipmentmods[subsystemKey]).forEach(typeKey => {
+    Object.keys(parsed.equipmentmods[subsystemKey]).forEach((typeKey) => {
       // typeKey -> damage, mass, drag...
       let types = parsed.equipmentmods[subsystemKey][typeKey];
       if (!Array.isArray(types)) types = [parsed.equipmentmods[subsystemKey][typeKey]];
-      parsed.equipmentmods[subsystemKey][typeKey] = types.map(mod => processModifications(mod, wares, translations));
+      parsed.equipmentmods[subsystemKey][typeKey] = types.map((mod) => processModifications(mod, wares, translations));
     })
   );
 
@@ -26,7 +27,8 @@ export function processModifications(mod, wares, translations) {
   const ware = wares.wares.ware[mod.ware];
 
   mod.name = translateRecursive(ware.shortname, translations);
-  mod.description = translateRecursive(ware.name, translations).replace(/\\/g, '')
+  mod.description = translateRecursive(ware.name, translations)
+    .replace(/\\/g, '')
     .replace(')', '')
     .replace('(', '')
     .replace(translateRecursive(ware.shortname, translations), '')
@@ -43,11 +45,11 @@ export function processModifications(mod, wares, translations) {
     mod.description = 'Surface Element Damage Mod - Exceptional Quality';
   }
 
-  mod.production = ware.production.primary.ware.map(item => {
+  mod.production = ware.production.primary.ware.map((item) => {
     const label = wares.wares.ware[item.ware].name;
     return {
       ware: translateRecursive(label, translations),
-      amount: item.amount
+      amount: item.amount,
     };
   });
 

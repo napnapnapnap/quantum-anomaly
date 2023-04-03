@@ -10,19 +10,19 @@ export default function () {
     dialectOptions: {
       ssl: {
         require: true,
-        rejectUnauthorized: false
-      }
+        rejectUnauthorized: false,
+      },
     },
     pool: {
       max: 5,
       min: 0,
       idle: 30000,
       maxConnections: 5,
-      maxIdleTime: 30
+      maxIdleTime: 30,
     },
-    logging: false
+    logging: false,
   });
 
   logger.appLog('Database connection established');
   return sequelize;
-};
+}

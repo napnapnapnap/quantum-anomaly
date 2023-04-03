@@ -37,7 +37,6 @@ const PreviewControls = ({
         label={`${maps.shipClass[shipClassKey as keyof typeof displayClass].replace('extralarge', 'XL')} Ships`}
         name="shipClass"
         checked={displayClass[shipClassKey as keyof typeof displayClass]}
-        isInline
         key={shipClassKey}
         handleInputChange={(e) =>
           setDisplayClass({
@@ -52,7 +51,6 @@ const PreviewControls = ({
         label={maps.variations[displayVariationKey]}
         name="displayVariations"
         checked={displayVariations[displayVariationKey]}
-        isInline
         key={displayVariationKey}
         handleInputChange={(e) =>
           setDisplayVariations({
@@ -69,26 +67,27 @@ const PreviewControls = ({
         onClick={() => {
           setDisplayRace(Object.fromEntries(Object.keys(displayRace).map((key) => [key, false])));
         }}
-        className="input-control link link--secondary"
+        className="link link--secondary text--smaller"
       >
         Uncheck all
       </button>
     </p>
-    {Object.keys(maps.reverseRace).map((raceKey) => (
-      <Checkbox
-        label={maps.reverseRace[raceKey]}
-        name="displayRace"
-        checked={displayRace[raceKey]}
-        isInline
-        key={raceKey}
-        handleInputChange={(e) =>
-          setDisplayRace({
-            ...displayRace,
-            [raceKey]: e.target.checked,
-          })
-        }
-      />
-    ))}
+    {Object.keys(maps.reverseRace)
+      .sort()
+      .map((raceKey) => (
+        <Checkbox
+          label={maps.reverseRace[raceKey]}
+          name="displayRace"
+          checked={displayRace[raceKey]}
+          key={raceKey}
+          handleInputChange={(e) =>
+            setDisplayRace({
+              ...displayRace,
+              [raceKey]: e.target.checked,
+            })
+          }
+        />
+      ))}
 
     <p className="mt-1">
       Types
@@ -96,27 +95,29 @@ const PreviewControls = ({
         onClick={() => {
           setDisplayTypes(Object.fromEntries(Object.keys(displayTypes).map((key) => [key, false])));
         }}
-        className="input-control link link--secondary"
+        className="link link--secondary text--smaller"
       >
         Uncheck all
       </button>
     </p>
-    {Object.keys(displayTypes).map((displayTypeKey) => (
-      <Checkbox
-        label={separateWords(displayTypeKey)}
-        name="displayTypes"
-        checked={displayTypes[displayTypeKey]}
-        isInline
-        key={displayTypeKey}
-        handleInputChange={(e) =>
-          setDisplayTypes({
-            ...displayTypes,
-            [displayTypeKey]: e.target.checked,
-          })
-        }
-      />
-    ))}
+    {Object.keys(displayTypes)
+      .sort()
+      .map((displayTypeKey) => (
+        <Checkbox
+          label={separateWords(displayTypeKey)}
+          name="displayTypes"
+          checked={displayTypes[displayTypeKey]}
+          key={displayTypeKey}
+          handleInputChange={(e) =>
+            setDisplayTypes({
+              ...displayTypes,
+              [displayTypeKey]: e.target.checked,
+            })
+          }
+        />
+      ))}
 
+    <br />
     <br />
     <Select
       value={sort}
@@ -233,7 +234,7 @@ const PreviewControls = ({
       If selected is not available for a given ship, it will use the next best thing. For example, Mk.4 engines are only
       available to Split in small and medium size. Selecting these engines will equip split Mk.1 versions on large
       ships. Combat engines do not exist on capitals, they will be translated into all-round engines. Under each ship
-      there is list of actually equipped modules.
+      there is a list of actually equipped modules.
     </p>
   </div>
 );

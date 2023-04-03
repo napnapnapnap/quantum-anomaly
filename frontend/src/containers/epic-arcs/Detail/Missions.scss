@@ -1,0 +1,74 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins/breakpoints';
+
+.ea-missions {
+  display: flex;
+  flex-wrap: wrap;
+
+  &__selector {
+    display: block;
+    padding: 0 1.5rem 1rem 0.5rem;
+    border-radius: 4px;
+    flex: 0 0 320px;
+  }
+
+  &__context {
+    opacity: 0.9;
+    font-size: 80%;
+    float: right;
+    position: relative;
+    transform: translateY(20%);
+    background: var(--gradient-primary);
+    padding: 0 3px;
+    border-radius: 3px;
+  }
+
+  &__content {
+    flex: 1 1 100%;
+  }
+
+  &__mission-pockets {
+    margin: 2rem 0;
+    flex: 1 1 100%;
+  }
+
+  &__pocket {
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 0.5em;
+    margin-bottom: 3rem;
+  }
+
+  &__wave {
+    flex: 0 0 330px;
+  }
+
+  @include media-breakpoint-up(md) {
+    flex-wrap: nowrap;
+
+    &__content {
+      padding: 0 0 0 1.5rem;
+    }
+
+    &__wave {
+      margin-right: 1rem;
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+    flex-wrap: nowrap;
+
+    &__content {
+      flex: 1 1 calc(100% - 1rem - 320px);
+      padding: 0 0 0 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-content: flex-start;
+    }
+
+    &__item {
+      flex: 0 0 48%;
+    }
+  }
+}

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { dynamicSortMultiple, seo } from '../../../helpers';
 import { useAppDispatch, useAppSelector } from '../../../hooks';
-import LayoutClient from '../../../layouts/Client';
+import LayoutBase from '../../../layouts/Base';
 import { getX4Map } from '../../../redux/x4/map';
 import { formatNumber, maps } from '../x4-helpers';
 import './Resources.scss';
@@ -65,6 +65,8 @@ export const X4ResourcesTable = () => {
             numberOfFields: sector.resources ? sector.resources.length : 0,
             fields: sector.resources ? sector.resources.map((r) => `${r.name} - ${r.miningRegionVolume} km3`) : null,
             empty: !sector.resourcePoints,
+            // @ts-ignore
+            dlc: cluster.dlc,
           })
         )
       );
@@ -79,13 +81,13 @@ export const X4ResourcesTable = () => {
   }, [dispatch, map]);
 
   return (
-    <LayoutClient>
+    <LayoutBase>
       <div className="x4-resources-table">
         <h1>X4 Resource table v5.0</h1>
         {map && (
           <React.Fragment>
             <div className="x4-resources-table__wrapper">
-              <div className="x4__map-controls">
+              <div className="x4-resources-table__controls">
                 <Link to={'/x4/map'} className="link">
                   Go to interactive map
                 </Link>
@@ -128,10 +130,7 @@ export const X4ResourcesTable = () => {
                     <React.Fragment key={sector.name}>
                       {(!sector.empty || !showEmpty) && (
                         <tr>
-                          <td title={sector.name}>
-                            {sector.label}
-                            <br />
-                          </td>
+                          <td title={sector.name}>{sector.label}</td>
                           <td>{sector.owner !== 'neutral' ? maps.factions[sector.owner] : 'Neutral'}</td>
 
                           {['ore', 'silicon', 'ice', 'hydrogen', 'helium', 'methane', 'nividium'].map((resource) => {
@@ -176,20 +175,20 @@ export const X4ResourcesTable = () => {
                 </tbody>
               </table>
             </div>
-            <p className="long-text">
+            <p className="text--long">
               Since some zones are huge, the maximum volume used in calculation is&nbsp;
               <span className="text--bold">limited to 200 km x 200 km x 100 km</span>. This seems like good enough
-              estimation for relative calculations so that your ships don't have to fly to far out.
+              estimation for relative calculations so that your ships don't have to fly too far out.
             </p>
-            <p className="long-text">
+            <p className="text--long">
               <span className="text--bold"> Falloff zones</span> were ignored in calculations. They will most likely be
-              added in future. This means that extremes are a bit skewed, but still should provide good relative idea of
-              what is where and how much of it is there.
+              added in future. This means that extremes are a bit skewed, but still should provide a good relative idea
+              of what is where and how much of it is there.
             </p>
-            <p className="long-text">
+            <p className="text--long">
               <span className="text--bold">What do the numbers mean?</span>
               <br />
-              Each resource has a cap, this was done so that there can be relative number which displays how good the
+              Each resource has a cap, this was done so that there can be a relative number which displays how good the
               system is for mining in comparison with other systems. These caps are set as following:
               <br />
               <br />
@@ -208,7 +207,7 @@ export const X4ResourcesTable = () => {
               resource. The numbers were chosen based on observed gameplay and then adjusted slightly to have better
               spread.
             </p>
-            <ul className="ul--packed long-text">
+            <ul className="ul--packed text--long">
               <li>
                 Full map data is available here:{' '}
                 <a href="/api/x4/map" className="link" target="_blank">
@@ -231,7 +230,7 @@ export const X4ResourcesTable = () => {
           </React.Fragment>
         )}
       </div>
-    </LayoutClient>
+    </LayoutBase>
   );
 };
 

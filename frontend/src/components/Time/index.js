@@ -1,4 +1,5 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+
 import './Time.scss';
 
 const getTimeClass = (time) => {
@@ -45,12 +46,12 @@ const getTimeString = (time, showSeconds = false) => {
 export default class Time extends Component {
   constructor(props) {
     super(props);
-    /* 
+    /*
      * This might be antipattern, but since this component is being used on lot's of places,
      * we don't want to send along so many functions to be able to do countdowns.
      */
     this.state = {
-      time: this.props.time
+      time: this.props.time,
     };
     if (this.props.showSeconds && this.state.time.minutes <= 5) {
       this.countdown();
@@ -59,7 +60,7 @@ export default class Time extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.time !== this.state.time) {
-      this.setState({time: nextProps.time});
+      this.setState({ time: nextProps.time });
     }
   }
 
@@ -84,7 +85,7 @@ export default class Time extends Component {
       if (timeObject.seconds === 0 && timeObject.minutes === 0 && timeObject.hours === 0 && timeObject.days === 0) {
         timeObject.future = false;
       }
-      this.setState({time: timeObject});
+      this.setState({ time: timeObject });
     }, 1000);
   }
 

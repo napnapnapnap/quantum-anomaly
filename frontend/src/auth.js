@@ -1,5 +1,6 @@
 import axios from 'axios';
-import {setCookie, deleteAllCookies, getCookie} from './helpers/cookies';
+
+import { deleteAllCookies, getCookie, setCookie } from './helpers/cookies';
 
 const JWT_COOKIE = 'JWT',
   JWT_COOKIE_BAKE_TIME = 24 * 60 * 60;

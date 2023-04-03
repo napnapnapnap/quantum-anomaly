@@ -2,40 +2,72 @@
 @import 'src/styles/mixins/breakpoints';
 
 .x4-ships {
+  $image-cell-width: 64px;
+  $cell-width: 240px;
+
   &__wrapper {
     padding-top: 1rem;
+    width: 100%;
+    overflow-x: auto;
   }
 
-  &__ship {
-    display: inline-block;
-    margin: 0 0 0.5rem;
-    padding: 0.5rem 0.5rem;
-    border-radius: 0.5rem;
+  &__table {
+    width: calc(#{$image-cell-width} + #{$cell-width} * 4);
 
-    &:nth-of-type(odd) {
-      background: rgba(100, 100 , 100, 0.1);
+    td {
+      vertical-align: top;
+      position: relative;
+
+      &:first-of-type {
+        border-radius: 8px 0 0 8px;
+        padding: 1rem 0 0 1rem;
+        width: calc(#{$image-cell-width} + 1rem);
+
+        > img {
+          display: block;
+          width: 64px;
+          height: 59px;
+          filter: brightness(2) contrast(1.1) saturate(1.2);
+          border-radius: 10px;
+        }
+      }
+
+      &:nth-of-type(2), &:nth-of-type(3), &:nth-of-type(4), &:nth-of-type(5) {
+        width: $cell-width;
+        padding: 1rem 1rem 2rem;
+      }
+
+      &:last-of-type {
+        border-radius: 0 8px 8px 0;
+      }
+    }
+
+    h2, p, span {
+      font-size: 13px;
+      line-height: 1.1;
+      margin: 0;
+    }
+
+    h2 {
+      font-size: 16px;
+      line-height: 0.9;
     }
   }
 
   &__controls {
     max-width: 1100px;
-  }
 
-  &__header {
-    display: flex;
-  }
-
-  &__details {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    margin-left: 4.35rem;
+    > p {
+      margin-bottom: 0.2rem;
+    }
   }
 
   &__outfit {
-    font-family: monospace;
-    font-size: 11px;
-    margin-left: 5.35rem;
+    font-size: 12px !important;
+    opacity: 0.6;
+    position: absolute;
+    width: calc(#{$cell-width} * 4);
+    bottom: 0.25rem;
   }
 
   &__info {
@@ -44,43 +76,16 @@
     color: white;
     font-weight: bold;
     border-radius: 50%;
-    margin: 0 0.2rem;
-    padding: 2px;
+    margin: 0 0.2rem !important;
+    padding: 2px !important;
     cursor: pointer;
     width: 9px;
-    font-size: 8px;
-    line-height: 7px;
+    font-size: 8px !important;
+    line-height: 7px !important;
     text-align: center;
     position: relative;
-    top: -2px
+    top: -2px;
   }
-
-  &__ship-image {
-    display: block;
-    margin-right: 0.8rem;
-    position: relative;
-    flex: 0 0 64px;
-
-    img {
-      display: block;
-      width: 64px;
-      height: 59px;
-      filter: brightness(2) contrast(1.1) saturate(1.2);
-      border-radius: 10px;
-    }
-  }
-
-  &__name {
-    padding-left: 0.5rem;
-    margin: 0 0 0.3rem;
-    align-self: flex-start;
-
-    .h6 {
-      line-height: 1;
-      margin: 0 0 0.3rem;
-    }
-  }
-
 
   &__values {
     width: 150px;
@@ -95,7 +100,6 @@
     > span {
       flex: 1 0 auto;
       text-align: right;
-      font-size: 13px;
 
       &:first-of-type {
         text-align: left;
@@ -105,28 +109,16 @@
   }
 
   .input-control {
-    font-size: 13px;
-    min-width: 102px;
+    &--checkbox {
+      width: 135px;
+      text-transform: capitalize;
+      margin-bottom: 4px;
+    }
 
     &--select {
-      margin: 1rem 1rem 1rem 0;
-      width: 120px;
-
-      .select {
-        font-size: 13px;
-      }
+      margin-bottom: 1rem;
+      margin-right: 5px;
+      width: 160px;
     }
-  }
-
-  .text {
-    line-height: 1.1;
-
-    &--small {
-      margin: 0;
-    }
-  }
-
-  .link {
-    vertical-align: baseline;
   }
 }

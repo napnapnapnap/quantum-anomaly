@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import Checkbox from '../../../components/Inputs/Checkbox';
 import { seo } from '../../../helpers';
 import { useAppDispatch, useAppSelector } from '../../../hooks';
-import LayoutClient from '../../../layouts/Client';
-import { X4MapInterface, getX4Map } from '../../../redux/x4/map';
+import LayoutBase from '../../../layouts/Base';
+import { getX4Map } from '../../../redux/x4/map';
 import { backgroundLabelRectWidth, getHexagonPointsV2, maps } from '../x4-helpers';
 import './Map.scss';
 import Resources from './Resources';
@@ -15,7 +15,7 @@ const X4Map = () => {
   const dispatch = useAppDispatch();
   const { map } = useAppSelector((state) => state.x4Map);
 
-  const [scale, setScale] = useState(3);
+  const [scale, setScale] = useState(1.5);
   const [moved, setMoved] = useState({ x: 0, y: 0 });
   const [showLegend, setShowLegend] = useState(false);
   const [width, setWidth] = useState('100%');
@@ -37,6 +37,7 @@ const X4Map = () => {
         metaDescription: 'X4 Foundations, Split Vendetta, Cradle of Humanity map and Tides of Avarice.',
         keywords: map.clusters.map((cluster) => cluster.sectors.map((sector) => sector.label).join(', ')),
       });
+      setMoved({ x: 30, y: 150 });
     }
   }, [dispatch, map]);
 
@@ -129,17 +130,11 @@ const X4Map = () => {
   }, [map, scale]);
 
   return (
-    <LayoutClient>
+    <LayoutBase>
       <div className="x4__map">
-        <h1>X4 Foundations Map v5.0</h1>
+        <h1>X4 Foundations Map v5.1</h1>
         {map && (
           <React.Fragment>
-            <div className="x4__map-controls">
-              <Link to={'/x4/resources'} className="link">
-                Go to resource table
-              </Link>
-              <span onClick={() => setShowLegend(!showLegend)}>{showLegend ? 'Hide' : 'Show'} legend</span>
-            </div>
             <div ref={wrapper} className="x4__map-wrapper">
               {showLegend && (
                 <div className="x4__legend">
@@ -166,9 +161,8 @@ const X4Map = () => {
                 xmlns="http://www.w3.org/2000/svg"
                 style={{ transform: `scale(${scale}) translate(${moved.x}px, ${moved.y}px)` }}
               >
-                {map.clusters.map(
-                  (cluster) =>
-                    shouldDisplay(cluster.dlc) &&
+                {map.clusters.map((cluster) =>
+                  shouldDisplay(cluster.dlc) ? (
                     cluster.sectors.map((sector) => (
                       <polyline
                         key={sector.name}
@@ -185,53 +179,46 @@ const X4Map = () => {
                         )}
                       />
                     ))
+                  ) : (
+                    <></>
+                  )
                 )}
 
                 {map.clusters.map((cluster) => {
-                  if (!shouldDisplay(cluster.dlc)) return;
+                  if (!shouldDisplay(cluster.dlc)) return <></>;
                   let color = cluster.sectors[0].owner ? maps.colors[cluster.sectors[0].owner].border : 'gray';
                   if (cluster.name === 'Cluster_29_macro') color = maps.colors['argon'].border;
                   return (
-                    <polyline
-                      key={cluster.name}
-                      fill="none"
-                      stroke={color}
-                      strokeWidth="2"
-                      points={getHexagonPointsV2({ x: cluster.position.x, y: -cluster.position.z })}
-                    />
+                    <React.Fragment key={cluster.name}>
+                      <polyline
+                        fill="none"
+                        stroke={color}
+                        strokeWidth="2"
+                        points={getHexagonPointsV2({ x: cluster.position.x, y: -cluster.position.z })}
+                      />
+                      {cluster.sectors.map((sector) => (
+                        <React.Fragment key={sector.name}>
+                          {sector.zones.map((zone) =>
+                            zone.gates.map((gate, index) => (
+                              <circle
+                                key={`${zone.zoneReference}-${index}`}
+                                cx={gate.position.x}
+                                cy={-gate.position.z}
+                                fill="gray"
+                                stroke="white"
+                                strokeWidth="1"
+                                r="5"
+                              />
+                            ))
+                          )}
+                          {sector.stations.map((station, index) => (
+                            <Station key={station.id} station={station} stationScale={scale === 1 ? 2.5 : 1.5} />
+                          ))}
+                        </React.Fragment>
+                      ))}
+                    </React.Fragment>
                   );
                 })}
-
-                {map.clusters.map(
-                  (cluster) =>
-                    shouldDisplay(cluster.dlc) &&
-                    cluster.sectors.map((sector) =>
-                      sector.zones.map((zone) =>
-                        zone.gates.map((gate, index) => (
-                          <React.Fragment key={`${zone.zoneReference}-${index}`}>
-                            <circle
-                              cx={gate.position.x}
-                              cy={-gate.position.z}
-                              fill="gray"
-                              stroke="white"
-                              strokeWidth="1"
-                              r="5"
-                            />
-                          </React.Fragment>
-                        ))
-                      )
-                    )
-                )}
-
-                {map.clusters.map(
-                  (cluster) =>
-                    shouldDisplay(cluster.dlc) &&
-                    cluster.sectors.map((sector) =>
-                      sector.stations.map((station, index) => (
-                        <Station key={station.id} station={station} stationScale={scale === 1 ? 2.5 : 1.5} />
-                      ))
-                    )
-                )}
 
                 {Object.values(map.gates).map(
                   (gate) =>
@@ -309,7 +296,7 @@ const X4Map = () => {
                   (cluster) =>
                     shouldDisplay(cluster.dlc) &&
                     cluster.sectors.map((sector) => {
-                      const backgroundWidth = sector.label.length * 3 - backgroundLabelRectWidth(sector.label);
+                      const backgroundWidth = sector.label.length * 3 - backgroundLabelRectWidth(sector.label) + 5;
                       const verticalOffset = sector.transformation ? 45 : 95;
                       return (
                         <React.Fragment key={sector.label}>
@@ -337,34 +324,37 @@ const X4Map = () => {
                 )}
               </svg>
             </div>
+
+            <div className="x4__map-controls">
+              <Link to={'/x4/resources'} className="link">
+                Go to resource table
+              </Link>
+              <span onClick={() => setShowLegend(!showLegend)}>{showLegend ? 'Hide' : 'Show'} legend</span>
+            </div>
             <div className="x4__map-filters">
               <div>
                 <Checkbox
                   label="Split Vendetta"
                   name="splitVendetta"
                   checked={splitVendetta}
-                  isInline
                   handleInputChange={() => setSplitVendetta(!splitVendetta)}
                 />
                 <Checkbox
                   label="Cradle Of Humanity"
                   name="displayRace"
                   checked={cradleOfHumanity}
-                  isInline
                   handleInputChange={() => setCradleOfHumanity(!cradleOfHumanity)}
                 />
                 <Checkbox
                   label="Tides Of Avarice"
                   name="displayRace"
                   checked={tidesOfAvarice}
-                  isInline
                   handleInputChange={() => setTidesOfAvarice(!tidesOfAvarice)}
                 />
                 <Checkbox
                   label="Kingdoms End"
                   name="displayRace"
                   checked={kingdomsEnd}
-                  isInline
                   isDisabled
                   handleInputChange={() => setKingdomsEnd(!kingdomsEnd)}
                 />
@@ -376,7 +366,7 @@ const X4Map = () => {
           </React.Fragment>
         )}
       </div>
-    </LayoutClient>
+    </LayoutBase>
   );
 };
 

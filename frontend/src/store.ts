@@ -2,18 +2,18 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
 import eveEpicArcsReducer from './redux/eve/epic-arcs';
 import eveNpcsReducer from './redux/eve/npcs';
-import uiReducer from './redux/ui';
 import x4FittingReducer from './redux/x4/fitting';
 import x4MapReducer from './redux/x4/map';
 import x4ModificationsReducer from './redux/x4/modifications';
+import X4TerraformReducer from './redux/x4/terraform';
 
 const rootReducer = combineReducers({
-  ui: uiReducer,
   eveEpicArcs: eveEpicArcsReducer,
   eveNpcs: eveNpcsReducer,
   x4Fitting: x4FittingReducer,
   x4Modifications: x4ModificationsReducer,
   x4Map: x4MapReducer,
+  x4Terraform: X4TerraformReducer,
 });
 
 export const store = configureStore({

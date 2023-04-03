@@ -1,36 +1,115 @@
-@import 'src/styles/mixins/typography';
+@import 'src/styles/variables';
+@import 'src/styles/mixins/breakpoints';
 
 .x4-terraform {
+  &__header {
+    margin-bottom: 1rem;
+  }
+
+  &__stats {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__stat {
+    flex: 0 0 200px;
+    margin-bottom: 1rem;
+
+    > p {
+      margin-bottom: 0;
+    }
+  }
+
+  &__body {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
   &__projects {
+    flex: 0 0 100%;
+  }
+
+  &__project-inner {
+    margin-bottom: 1.5rem;
+  }
+
+  &__project-name {
+    width: 475px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+
+    p {
+      margin-bottom: 0;
+    }
+
+    span {
+      margin-left: 0.5rem;
+    }
   }
 
-  &__project {
-    flex: 0 0 40%;
+  &__description {
+    margin: 0 2rem 0.5rem 1rem;
   }
 
-  &__wares {
+  &__project-stats {
     display: flex;
-    flex-wrap: nowrap;
-    align-items: center;
+    flex-wrap: wrap;
+    margin: 0.1rem 0 0;
+
+    &--discount {
+      margin: 0 0 0;
+    }
+
+    &--discounted {
+      span {
+        color: var(--color-mutted);
+        // font-size: 10px;
+        line-height: 0.6;
+        margin-bottom: 0.1rem;
+      }
+    }
   }
 
-  &__wares-quantity {
-    display: inline-block;
-    text-align: right;
-    width: 100px;
-    margin-right: 8px;
+  &__ware-name {
+    flex: 0 0 165px;
   }
 
-  &__wares-name {
-    display: inline-block;
-    width: 150px;
+  &__ware-quantity {
+    flex: 0 0 75px;
+    margin-bottom: 0.5rem;
   }
 
-  &__wares-cost {
-    display: inline-block;
-    text-align: right;
-    width: 100px;
+  &__ware-volume {
+    flex: 0 0 95px;
+  }
+
+  &__ware-price {
+    flex: 0 0 140px;
+  }
+
+  @include media-breakpoint-up(lg) {
+    &__header {
+      display: flex;
+    }
+
+    &__stats {
+      flex: 0 0 50%;
+      order: 2;
+      padding: 0 0 0 5rem;
+    }
+
+    &__checkboxes {
+      flex: 0 0 500px;
+      order: 1;
+    }
+
+    &__projects {
+      flex: 0 0 500px;
+      margin-right: 5rem;
+    }
+
+    &__totals {
+      flex: 0 0 500px;
+    }
   }
 }

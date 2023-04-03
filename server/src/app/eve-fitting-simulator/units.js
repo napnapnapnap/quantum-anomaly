@@ -3,295 +3,295 @@
 
 export default function () {
   return {
-    1:   {
-      name:        'Length',
+    1: {
+      name: 'Length',
       displayName: 'm',
-      description: 'Meter'
+      description: 'Meter',
     },
-    2:   {
-      name:        'Mass',
+    2: {
+      name: 'Mass',
       displayName: 'kg',
-      description: 'Kilogram'
+      description: 'Kilogram',
     },
-    3:   {
-      name:        'Time',
+    3: {
+      name: 'Time',
       displayName: 'sec',
-      description: 'Second'
+      description: 'Second',
     },
-    4:   {
-      name:        'Electric Current',
+    4: {
+      name: 'Electric Current',
       displayName: 'A',
-      description: 'Ampere'
+      description: 'Ampere',
     },
-    5:   {
-      name:        'Temperature',
+    5: {
+      name: 'Temperature',
       displayName: 'K',
-      description: 'Kelvin'
+      description: 'Kelvin',
     },
-    6:   {
-      name:        'Amount Of Substance',
+    6: {
+      name: 'Amount Of Substance',
       displayName: 'mol',
-      description: 'Mole'
+      description: 'Mole',
     },
-    7:   {
-      name:        'Luminous Intensity',
+    7: {
+      name: 'Luminous Intensity',
       displayName: 'cd',
-      description: 'Candela'
+      description: 'Candela',
     },
-    8:   {
-      name:        'Area',
+    8: {
+      name: 'Area',
       displayName: 'm2',
-      description: 'Square meter'
+      description: 'Square meter',
     },
-    9:   {
-      name:        'Volume',
+    9: {
+      name: 'Volume',
       displayName: 'm3',
-      description: 'Cubic meter'
+      description: 'Cubic meter',
     },
-    10:  {
-      name:        'Speed',
+    10: {
+      name: 'Speed',
       displayName: 'm/sec',
-      description: 'Meter per second'
+      description: 'Meter per second',
     },
-    11:  {
-      name:        'Acceleration',
+    11: {
+      name: 'Acceleration',
       displayName: 'm/sec',
-      description: 'Meter per second squared'
+      description: 'Meter per second squared',
     },
-    12:  {
-      name:        'Wave Number',
+    12: {
+      name: 'Wave Number',
       displayName: 'm-1',
-      description: 'Reciprocal meter'
+      description: 'Reciprocal meter',
     },
-    13:  {
-      name:        'Mass Density',
+    13: {
+      name: 'Mass Density',
       displayName: 'kg/m3',
-      description: 'Kilogram per cubic meter'
+      description: 'Kilogram per cubic meter',
     },
-    14:  {
-      name:        'Specific Volume',
+    14: {
+      name: 'Specific Volume',
       displayName: 'm3/kg',
-      description: 'Cubic meter per kilogram'
+      description: 'Cubic meter per kilogram',
     },
-    15:  {
-      name:        'Current Density',
+    15: {
+      name: 'Current Density',
       displayName: 'A/m2',
-      description: 'Ampere per square meter'
+      description: 'Ampere per square meter',
     },
-    16:  {
-      name:        'Magnetic Field Strength',
+    16: {
+      name: 'Magnetic Field Strength',
       displayName: 'A/m',
-      description: 'Ampere per meter'
+      description: 'Ampere per meter',
     },
-    17:  {
-      name:        'Amount-Of-Substance Concentration',
+    17: {
+      name: 'Amount-Of-Substance Concentration',
       displayName: 'mol/m3',
-      description: 'Mole per cubic meter'
+      description: 'Mole per cubic meter',
     },
-    18:  {
-      name:        'Luminance',
+    18: {
+      name: 'Luminance',
       displayName: 'cd/m2',
-      description: 'Candela per square meter'
+      description: 'Candela per square meter',
     },
-    19:  {
-      name:        'Mass Fraction',
+    19: {
+      name: 'Mass Fraction',
       displayName: 'kg/kg = 1',
-      description: 'Kilogram per kilogram, which may be represented by the number 1'
+      description: 'Kilogram per kilogram, which may be represented by the number 1',
     },
     101: {
-      name:        'Milliseconds',
+      name: 'Milliseconds',
       displayName: 's',
-      description: ''
+      description: '',
     },
     102: {
-      name:        'Millimeters',
+      name: 'Millimeters',
       displayName: 'mm',
-      description: ''
+      description: '',
     },
     103: {
-      name:        'MegaPascals',
+      name: 'MegaPascals',
       displayName: '',
-      description: ''
+      description: '',
     },
     104: {
-      name:        'Multiplier',
+      name: 'Multiplier',
       displayName: 'x',
-      description: 'Indicates that the unit is a multiplier.'
+      description: 'Indicates that the unit is a multiplier.',
     },
     105: {
-      name:        'Percentage',
+      name: 'Percentage',
       displayName: '%',
-      description: ''
+      description: '',
     },
     106: {
-      name:        'Teraflops',
+      name: 'Teraflops',
       displayName: 'tf',
-      description: ''
+      description: '',
     },
     107: {
-      name:        'MegaWatts',
+      name: 'MegaWatts',
       displayName: 'MW',
-      description: ''
+      description: '',
     },
     108: {
-      name:        'Inverse Absolute Percent',
+      name: 'Inverse Absolute Percent',
       displayName: '%',
-      description: 'Used for resistance.0.0 = 100% 1.0 = 0%'
+      description: 'Used for resistance.0.0 = 100% 1.0 = 0%',
     },
     109: {
-      name:        'Modifier Percent',
+      name: 'Modifier Percent',
       displayName: '%',
-      description: 'Used for multipliers displayed as %1.1 = +10%0.9 = -10%'
+      description: 'Used for multipliers displayed as %1.1 = +10%0.9 = -10%',
     },
     111: {
-      name:        'Inversed Modifier Percent',
+      name: 'Inversed Modifier Percent',
       displayName: '%',
-      description: 'Used to modify damage resistance. Damage resistance bonus.0.1 = 90%0.9 = 10%'
+      description: 'Used to modify damage resistance. Damage resistance bonus.0.1 = 90%0.9 = 10%',
     },
     112: {
-      name:        'Radians/Second',
+      name: 'Radians/Second',
       displayName: 'rad/sec',
-      description: 'Rotation speed.'
+      description: 'Rotation speed.',
     },
     113: {
-      name:        'Hitpoints',
+      name: 'Hitpoints',
       displayName: 'HP',
-      description: ''
+      description: '',
     },
     114: {
-      name:        'capacitor units',
+      name: 'capacitor units',
       displayName: 'GJ',
-      description: 'Giga Joule'
+      description: 'Giga Joule',
     },
     115: {
-      name:        'groupID',
+      name: 'groupID',
       displayName: 'groupID',
-      description: ''
+      description: '',
     },
     116: {
-      name:        'typeID',
+      name: 'typeID',
       displayName: 'typeID',
-      description: ''
+      description: '',
     },
     117: {
-      name:        'Sizeclass',
+      name: 'Sizeclass',
       displayName: '1=small;2=medium;3=large;4=capital',
-      description: ''
+      description: '',
     },
     118: {
-      name:        'Ore units',
+      name: 'Ore units',
       displayName: 'Ore units',
-      description: ''
+      description: '',
     },
     119: {
-      name:        'attributeID',
+      name: 'attributeID',
       displayName: 'attributeID',
-      description: ''
+      description: '',
     },
     120: {
-      name:        'attributePoints',
+      name: 'attributePoints',
       displayName: 'points',
-      description: ''
+      description: '',
     },
     121: {
-      name:        'realPercent',
+      name: 'realPercent',
       displayName: '%',
-      description: 'Used for real percentages, i.e. the number 5 is 5%'
+      description: 'Used for real percentages, i.e. the number 5 is 5%',
     },
     122: {
-      name:        'Fitting slots',
+      name: 'Fitting slots',
       displayName: '',
-      description: ''
+      description: '',
     },
     123: {
-      name:        'trueTime',
+      name: 'trueTime',
       displayName: 'sec',
-      description: 'Shows seconds directly'
+      description: 'Shows seconds directly',
     },
     124: {
-      name:        'Modifier Relative Percent',
+      name: 'Modifier Relative Percent',
       displayName: '%',
-      description: 'Used for relative percentages displayed as %'
+      description: 'Used for relative percentages displayed as %',
     },
     125: {
-      name:        'Newton',
+      name: 'Newton',
       displayName: 'N',
-      description: ''
+      description: '',
     },
     126: {
-      name:        'Light Year',
+      name: 'Light Year',
       displayName: 'ly',
-      description: ''
+      description: '',
     },
     127: {
-      name:        'Absolute Percent',
+      name: 'Absolute Percent',
       displayName: '%',
-      description: '0.0 = 0% 1.0 = 100%'
+      description: '0.0 = 0% 1.0 = 100%',
     },
     128: {
-      name:        'Drone bandwidth',
+      name: 'Drone bandwidth',
       displayName: 'Mbit/sec',
-      description: 'Mega bits per second'
+      description: 'Mega bits per second',
     },
     129: {
-      name:        'Hours',
+      name: 'Hours',
       displayName: '',
-      description: 'Hours'
+      description: 'Hours',
     },
     133: {
-      name:        'Money',
+      name: 'Money',
       displayName: 'ISK',
-      description: 'ISK'
+      description: 'ISK',
     },
     134: {
-      name:        'Logistical Capacity',
+      name: 'Logistical Capacity',
       displayName: 'm3/hour',
-      description: 'Bandwidth for PI'
+      description: 'Bandwidth for PI',
     },
     135: {
-      name:        'Astronomical Unit',
+      name: 'Astronomical Unit',
       displayName: 'AU',
-      description: 'Used to denote distance, 1AU = The distance from the Earth to the Sun.'
+      description: 'Used to denote distance, 1AU = The distance from the Earth to the Sun.',
     },
     136: {
-      name:        'Slot',
+      name: 'Slot',
       displayName: 'Slot',
-      description: 'Slot number prefix for various purposes'
+      description: 'Slot number prefix for various purposes',
     },
     137: {
-      name:        'Boolean',
+      name: 'Boolean',
       displayName: '1=True;0=False',
-      description: 'For displaying boolean flags'
+      description: 'For displaying boolean flags',
     },
     138: {
-      name:        'Units',
+      name: 'Units',
       displayName: 'units',
-      description: 'Units of something, for example fuel'
+      description: 'Units of something, for example fuel',
     },
     139: {
-      name:        'Bonus',
+      name: 'Bonus',
       displayName: '+',
-      description: 'Forces a plus sign for positive values'
+      description: 'Forces a plus sign for positive values',
     },
     140: {
-      name:        'Level',
+      name: 'Level',
       displayName: 'Level',
-      description: 'For anything which is divided by levels'
+      description: 'For anything which is divided by levels',
     },
     141: {
-      name:        'Hardpoints',
+      name: 'Hardpoints',
       displayName: 'hardpoints',
-      description: 'For various counts to do with turret, launcher and rig hardpoints'
+      description: 'For various counts to do with turret, launcher and rig hardpoints',
     },
     142: {
-      name:        'Sex',
+      name: 'Sex',
       displayName: '1=Male;2=Unisex;3=Female',
-      description: ''
+      description: '',
     },
     143: {
-      name:        'Datetime',
+      name: 'Datetime',
       displayName: '',
-      description: 'Date and time'
-    }
+      description: 'Date and time',
+    },
   };
 }

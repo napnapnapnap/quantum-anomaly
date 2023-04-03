@@ -1,9 +1,10 @@
 import c from 'ansi-colors';
 import util from 'util';
+
 import config from '../config';
 
 function addTime(message) {
-  let time = new Date().toLocaleString([], {hour: '2-digit', minute: '2-digit', second: '2-digit'});
+  let time = new Date().toLocaleString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
   return `[${time}] ${message}`;
 }
 

@@ -1,49 +1,287 @@
 {
-  "jobs": {
-    "pwr_antimatter": {
-      "group": "power",
-      "name": "{20227,1270}",
-      "description": "{20227,1271}",
-      "discounts": {
-        "group": "energy",
-        "value": 50
+  "planets": {
+    "getsu_fune": {
+      "system": "Getsu Fune",
+      "name": "Shiokaze",
+      "stats": {
+        "oxygen": 6,
+        "toxicity": 3,
+        "carbondioxide": 0,
+        "methane": 0,
+        "radioactivity": 0,
+        "seismicactivity": 0
       },
-      "price": 50000000,
-      "costs": {
-        "advancedcomposites": 14980,
-        "antimatterconverters": 22470,
-        "hullparts": 37450,
-        "scanningarrays": 7490,
-        "superfluidcoolant": 48685
+      "objectives": {
+        "population": 250000000,
+        "projects": [
+          "agr_fields_wheat",
+          "agr_vineyards",
+          "ame_finedining"
+        ]
       },
-      "costsOriginal": {
-        "advancedcomposites": 4,
-        "antimatterconverters": 6,
-        "hullparts": 10,
-        "scanningarrays": 2,
-        "superfluidcoolant": 13
-      },
-      "mediumShipsNeeded": 25,
-      "smallShipsNeeded": 100
+      "recommendedPath": [
+        "atm_toxin_cleanup",
+        "atm_toxin_cleanup",
+        "atm_toxin_cleanup",
+        "agr_fields_wheat",
+        "bio_toxicfruit_genemod",
+        "agr_vineyards",
+        "ame_finedining",
+        "res_housing_dense",
+        "res_housing_dense",
+        "res_housing_dense",
+        "res_arcology"
+      ],
+      "notes": "Fairly easy and good candidate for first terraforming due to proximity to the asteroid belt which makes it easy to upgrade HQ's production capabilities.",
+      "rewards": [
+        "Antigone tries to expand into Getsu Fune and gets increased quotas for their military ships",
+        "Antigone tries to build new trading station, with Getsu Fune being most likely the system they built it in"
+      ]
     },
-    "wat_import": {
-      "group": "water",
-      "name": "{20227,1060}",
-      "description": "{20227,1061}",
-      "price": 15000000,
-      "effects": {
-        "temperature": -1,
-        "humidity": 1
+    "frontier_edge": {
+      "system": "Frontier Edge",
+      "name": "Messner",
+      "stats": {
+        "temperature": 3,
+        "airpressure": 3,
+        "oxygen": 2,
+        "toxicity": 0,
+        "carbondioxide": 0,
+        "methane": 0,
+        "radioactivity": 0,
+        "seismicactivity": 1
       },
-      "costs": {
-        "ice": 2857142
+      "objectives": {
+        "population": 250000000,
+        "projects": [
+          "agr_fields_wheat",
+          "ame_resort_winter"
+        ]
       },
-      "costsOriginal": {
-        "ice": 1
+      "recommendedPath": [
+        "tmp_blackdust",
+        "ind_refineries_clean",
+        "ind_factories",
+        "ind_von_neumann",
+        "ter_tectonic_scaffolding",
+        "bio_tailored",
+        "agr_fertilize",
+        "agr_fields_wheat",
+        "agr_forestation",
+        "res_housing_dense",
+        "res_housing_dense",
+        "res_housing_dense",
+        "res_habmodule",
+        "res_arcology",
+        "ame_resort_winter"
+      ],
+      "notes": "Depending on your luck, you might need to defend this operation from Xenons a lot...",
+      "rewards": [
+        "Antigone tries to expand into Frontier Edge and gets increased quotas for their military ships",
+        "Antigone tries to build new Wharf, with Frontier Edge being most likely the system they built it in"
+      ]
+    },
+    "black_hole_sun": {
+      "system": "Black Hole Sun",
+      "name": "Hades",
+      "stats": {
+        "temperature": 6,
+        "oxygen": 0,
+        "toxicity": 0,
+        "carbondioxide": 0,
+        "methane": 1,
+        "humidity": 3,
+        "radioactivity": 0,
+        "seismicactivity": 0
       },
-      "mediumShipsNeeded": 200,
-      "smallShipsNeeded": 1000
+      "objectives": {
+        "population": 100000000,
+        "projects": [
+          "agr_fields_wheat",
+          "ame_resort_tropical"
+        ]
+      },
+      "recommendedPath": [
+        "ind_refineries_clean",
+        "ind_factories",
+        "atm_methane_oxidizers",
+        "wat_import",
+        "bio_tailored",
+        "agr_fertilize",
+        "agr_fields_wheat",
+        "agr_forestation",
+        "bio_cyanobacteria",
+        "res_arcology"
+      ],
+      "notes": "Fairly easy but rewards are not that great, so maybe as filler content while you build up production for harder projects.",
+      "rewards": [
+        "5 star Manager, she will appear in PHQ and you can comm her to assign her a position"
+      ]
+    },
+    "scale_plate_green": {
+      "system": "Scale Plate Green",
+      "name": "Nature's Profit",
+      "stats": {
+        "temperature": 3,
+        "oxygen": 3,
+        "toxicity": 0,
+        "carbondioxide": 1,
+        "methane": 0,
+        "humidity": 0,
+        "radioactivity": 3,
+        "seismicactivity": 0
+      },
+      "objectives": {
+        "population": 1000000000,
+        "projects": [
+          "agr_fields_sunrise",
+          "res_housing_luxury"
+        ]
+      },
+      "recommendedPath": [
+        "ind_refineries_clean",
+        "ind_factories",
+        "ind_von_neumann",
+        "ter_radioactive_cleanup",
+        "agr_forestation",
+        "ter_radioactive_cleanup",
+        "ter_radioactive_cleanup",
+        "res_arcology",
+        "res_arcology",
+        "agr_fields_sunrise",
+        "res_arcology",
+        "res_arcology",
+        "res_arcology",
+        "res_housing_luxury"
+      ],
+      "notes": "On its own, not that hard... But it's neck deep in Xenon territory and you have to manufacture most of the things yourself due to supply lines being too long. If you are hardcore and want to have some fun, it's supper fun to just collect all the materials beforehand, do a combat drop on Xenon Wharf, eliminate any capitals in person (they will swarm to your location due to obliterating Wharf) and then you can be out of sector until the projects finish if you so desire.",
+      "rewards": [
+        "Scale Plate Pact stops pirating your ships",
+        "Scale Plate Pact reputation mechanic unlocks",
+        "Ownership of a significant amount of the Pact's former ships. If you intend to sell those, remove all the modifications from them, they will have significant number of exceptional mods"
+      ]
+    },
+    "memory_of_profit": {
+      "system": "Memory of Profit",
+      "name": "Memory of Profit I",
+      "stats": {
+        "temperature": 6,
+        "oxygen": 0,
+        "toxicity": 0,
+        "carbondioxide": 0,
+        "methane": 3,
+        "humidity": 2,
+        "radioactivity": 0,
+        "seismicactivity": 0
+      },
+      "objectives": {
+        "population": 10000,
+        "projects": [
+          "eco_nividium"
+        ]
+      },
+      "recommendedPath": [
+        "res_bubblecity",
+        "eco_nividium"
+      ],
+      "notes": "Filler planet, will take longer to actually gather mats for teleporting PHQ. Just build the workshop and leave.",
+      "rewards": [
+        "Nividium workshop where you can sell nvidium for profit based on the planets population. Kinda pointless since you already should have more than enough resources and will most likely need PHQ somewhere and not in orbit of this planet."
+      ]
+    },
+    "eighteen_billion": {
+      "system": "Eighteen Billion",
+      "name": "Eighteen Billion C",
+      "stats": {
+        "airpressure": 4,
+        "temperature": 0,
+        "oxygen": 0,
+        "toxicity": 0,
+        "carbondioxide": 0,
+        "methane": 3,
+        "humidity": 1,
+        "radioactivity": 0,
+        "seismicactivity": 0
+      },
+      "objectives": {
+        "population": 100000000,
+        "projects": [
+          "agr_fields_sunrise",
+          "ame_art_college"
+        ]
+      },
+      "recommendedPath": [
+        "wat_import",
+        "wat_surfacing",
+        "bio_tailored",
+        "agr_fertilize",
+        "agr_forestation",
+        "agr_fields_sunrise",
+        "bio_cyanobacteria",
+        "res_arcology",
+        "ame_art_college"
+      ],
+      "notes": "Leave this one for later, you don't get any rewards. Or use it as filler while building up your PHQ.",
+      "rewards": [
+        "Sense of accomplishment?"
+      ]
+    },
+    "atiyas_misfortune": {
+      "system": "Atiya's Misfortune",
+      "name": "Atiya's Misfortune E",
+      "stats": {
+        "airpressure": 0,
+        "temperature": 9,
+        "oxygen": 0,
+        "toxicity": 0,
+        "carbondioxide": 0,
+        "methane": 2,
+        "humidity": 0,
+        "radioactivity": 0,
+        "seismicactivity": 3
+      },
+      "objectives": {
+        "population": 250000000,
+        "projects": [
+          "agr_fields_wheat",
+          "ame_resort_tropical"
+        ]
+      },
+      "recommendedPath": [
+        "ind_refineries_clean",
+        "ind_factories",
+        "ind_von_neumann",
+        "pwr_geothermal",
+        "atm_methane_oxidizers",
+        "atm_methane_oxidize",
+        "atm_methane_oxidize",
+        "atm_methane_oxidize",
+        "wat_surfacing",
+        "atm_carbon_mineralizers",
+        "atm_carbon_mineralize",
+        "atm_carbon_mineralize",
+        "wat_import",
+        "wat_import",
+        "tmp_cloudparticles",
+        "tmp_cloudparticles",
+        "wat_irrigation",
+        "bio_tailored",
+        "agr_fertilize",
+        "agr_fields_wheat",
+        "agr_forestation",
+        "bio_cyanobacteria",
+        "res_housing_dense",
+        "res_housing_dense",
+        "res_housing_dense",
+        "res_arcology",
+        "res_habmodule",
+        "ame_resort_tropical"
+      ],
+      "notes": "The big one, the crème de la crème, the pain reincarnated. Problem with Atiya are the earthquakes. They have the potential to prolong this endeavor by a lot. However, once a project is finished, it can't be destroyed, so there is only risk during the building phase. That means, get at least 7-8 shipyards on your PHQ and you can ignore the earthquakes and build between cycles. Oh, also, Xenons, a lot of them...",
+      "rewards": [
+        "Antigone tries to expand into Atiya's Misfortune and gets increased quotas for their military ships",
+        "Antigone tries to build new Shipyard, with Atiya's Misfortune being most likely the system they built it in"
+      ]
     }
-  },
-  "planets": {}
+  }
 }

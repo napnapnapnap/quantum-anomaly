@@ -1,11 +1,12 @@
-import {models} from '../models';
 import Sequelize from 'sequelize';
+
+import { models } from '../models';
 
 function simplifyType(type) {
   const simpleTypes = ['Frigate', 'Destroyer', 'Cruiser', 'Battlecruiser', 'Battleship'];
   let result = type;
 
-  simpleTypes.forEach(simpleType => {
+  simpleTypes.forEach((simpleType) => {
     if (type.toLowerCase().indexOf(simpleType.toLowerCase()) !== -1) result = simpleType;
   });
 
@@ -15,7 +16,7 @@ function simplifyType(type) {
 function checkForEffects(npc) {
   const result = {};
   if (!npc.dogma_effects || !npc.dogma_attributes) return null;
-  npc.dogma_effects.map(effect => {
+  npc.dogma_effects.map((effect) => {
     if (effect.name === 'warpScrambleForEntity') result.scram = true;
     if (effect.name === 'modifyTargetSpeed2') result.web = true;
     if (effect.name === 'npcEntityTrackingDisruptor') result.trackingDisr = true;
@@ -33,16 +34,16 @@ function checkForEffects(npc) {
 }
 
 export async function getNpcByIndex(req, res) {
-  const npcs   = await models.EveNpcs.findAll({where: {index: {[Sequelize.Op.or]: req.params.indices.split(';')}}}),
-        result = {};
+  const npcs = await models.EveNpcs.findAll({ where: { index: { [Sequelize.Op.or]: req.params.indices.split(';') } } }),
+    result = {};
 
-  npcs.forEach(npc => {
+  npcs.forEach((npc) => {
     result[npc.index] = {
       ...npc.data,
       flags: {
         ...checkForEffects(npc.data),
-        type: simplifyType(npc.data.group_name)
-      }
+        type: simplifyType(npc.data.group_name),
+      },
     };
     delete result[npc.index].description;
     delete result[npc.index].group_name;
@@ -58,5 +59,5 @@ export async function getNpcs(req, res) {
 }
 
 export async function getList(req, res) {
-  res.json(await models.EveNpcs.findAll().then(results => results.map(item => item.index)));
+  res.json(await models.EveNpcs.findAll().then((results) => results.map((item) => item.index)));
 }

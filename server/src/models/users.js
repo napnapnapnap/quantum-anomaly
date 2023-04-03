@@ -1,12 +1,13 @@
 import bcrypt from 'bcrypt-nodejs';
+
 import * as logger from '../helpers/logger';
 
 export default function (sequelize) {
   let Users = sequelize.define('Users', {
-    name:      sequelize.Sequelize.STRING,
+    name: sequelize.Sequelize.STRING,
     userGroup: sequelize.Sequelize.JSON,
-    email:     sequelize.Sequelize.STRING,
-    password:  sequelize.Sequelize.STRING
+    email: sequelize.Sequelize.STRING,
+    password: sequelize.Sequelize.STRING,
   });
 
   Users.findByEmail = findByEmail.bind(Users);
@@ -19,8 +20,8 @@ export default function (sequelize) {
 function findByEmail(email) {
   return this.findOne({
     where: {
-      email: email
-    }
+      email: email,
+    },
   });
 }
 
@@ -29,29 +30,28 @@ async function register(user) {
   if (existingUser) return login(user);
 
   return this.create({
-    name:      user.email.split('@')[0],
-    email:     user.email,
-    password:  generateHash(user.password),
-    userGroup: ['guest']
+    name: user.email.split('@')[0],
+    email: user.email,
+    password: generateHash(user.password),
+    userGroup: ['guest'],
   });
 }
 
 function login(user) {
   if (!user.email.length) {
     logger.error('Unauthorized login attempt - no email provided');
-    return {err: 'unauthorized'};
+    return { err: 'unauthorized' };
   }
 
-  return this.findByEmail(user.email)
-    .then((userRecord) => {
-      if (userRecord) {
-        logger.action(userRecord.email + ' logged in (group: ' + userRecord.userGroup + ')');
-        return userRecord;
-      } else {
-        logger.error('Unauthorized login attempt - not registered');
-        return {err: 'unauthorized'};
-      }
-    });
+  return this.findByEmail(user.email).then((userRecord) => {
+    if (userRecord) {
+      logger.action(userRecord.email + ' logged in (group: ' + userRecord.userGroup + ')');
+      return userRecord;
+    } else {
+      logger.error('Unauthorized login attempt - not registered');
+      return { err: 'unauthorized' };
+    }
+  });
 }
 
 export function validatePassword(passwordProvided, passwordUser) {

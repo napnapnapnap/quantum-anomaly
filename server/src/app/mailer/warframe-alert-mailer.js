@@ -1,15 +1,15 @@
-import sendMail from './index';
 import warframeStatus from '../warframe';
+import sendMail from './index';
 
 const mailQueue = [];
 
 function time(arg) {
-  let days        = arg.days,
-      hours       = arg.hours,
-      minutes     = arg.minutes,
-      seconds     = arg.seconds,
-      showSeconds = arg.showSeconds || false,
-      timeString  = '';
+  let days = arg.days,
+    hours = arg.hours,
+    minutes = arg.minutes,
+    seconds = arg.seconds,
+    showSeconds = arg.showSeconds || false,
+    timeString = '';
 
   if (arg.days === 0 && arg.hours === 0 && arg.minutes < 5 && showSeconds) {
     timeString += `${minutes}m ${seconds}s`;
@@ -26,8 +26,7 @@ function time(arg) {
     if (arg.hours !== 0) timeString += ` ${hours}`;
     timeString += ` ${minutes}`;
 
-    if (arg.days === 0 && arg.hours === 0 && arg.minutes === 0)
-      timeString = 'less than a minute';
+    if (arg.days === 0 && arg.hours === 0 && arg.minutes === 0) timeString = 'less than a minute';
   }
   return timeString;
 }
@@ -41,17 +40,19 @@ function removeExpired() {
          but it is still available on API so gets send again.
      */
     if (mailItem.mailType === 'invasion') {
-      if (mailItem.status <= 0 || mailItem.status >= 100)
-        mailQueue.splice(index, 1);
+      if (mailItem.status <= 0 || mailItem.status >= 100) mailQueue.splice(index, 1);
     }
   });
 }
 
 function getMailQueueMessages() {
   let message = '';
-  mailQueue.forEach(mailItem => {
+  mailQueue.forEach((mailItem) => {
     if (mailItem.notified !== true) {
-      if (mailItem.mailType === 'invasion') message += `Invasion at ${mailItem.node.value} offers ${mailItem.attackerRewards.join(', ')} for ${mailItem.attacker} and ${mailItem.defenderRewards.join(', ')} for ${mailItem.defender}<br/>`;
+      if (mailItem.mailType === 'invasion')
+        message += `Invasion at ${mailItem.node.value} offers ${mailItem.attackerRewards.join(', ')} for ${
+          mailItem.attacker
+        } and ${mailItem.defenderRewards.join(', ')} for ${mailItem.defender}<br/>`;
       mailItem.notified = true;
     }
   });
@@ -60,47 +61,52 @@ function getMailQueueMessages() {
 
 function checkMailQueue() {
   let queueHasUnsent = false;
-  mailQueue.forEach(mailItem => {
+  mailQueue.forEach((mailItem) => {
     if (mailItem.notified !== true) queueHasUnsent = true;
   });
 
   if (queueHasUnsent) {
     let htmlBody = `Interesting activities: <br/><br/>${getMailQueueMessages()}<br/>This message was auto generated, please do not reply`;
-    sendMail({
-      to:      process.env.WARFRAME_EMAILS,
-      subject: 'Warframe Alerts',
-      html:    htmlBody
-    }, 'Warframe Alert email sent out');
+    sendMail(
+      {
+        to: process.env.WARFRAME_EMAILS,
+        subject: 'Warframe Alerts',
+        html: htmlBody,
+      },
+      'Warframe Alert email sent out'
+    );
   }
 }
 
 function hasInterestingRewards(rewards) {
   let hasInterestingRewards = false;
-  rewards.forEach(reward => {
+  rewards.forEach((reward) => {
     if (
       reward.indexOf('Forma') !== -1 ||
       reward.indexOf('Exilus') !== -1 ||
       reward.indexOf('Orokin Reactor') !== -1 ||
       reward.indexOf('Orokin Catalyst') !== -1 ||
       reward.indexOf('Kavat') !== -1
-    ) hasInterestingRewards = true;
+    )
+      hasInterestingRewards = true;
   });
   return hasInterestingRewards;
 }
 
 function warframeAlerts() {
-  warframeStatus().then(data => {
-    Object.keys(data.invasions).forEach(key => {
-      data.invasions[key].forEach(invasion => {
+  warframeStatus().then((data) => {
+    Object.keys(data.invasions).forEach((key) => {
+      data.invasions[key].forEach((invasion) => {
         let shouldBeSent = true;
         if (invasion.status <= 0 || invasion.status >= 100) shouldBeSent = false;
-        mailQueue.forEach(sentMail => {
+        mailQueue.forEach((sentMail) => {
           if (sentMail.mailType === 'invasion')
-            if (sentMail.start === invasion.start && sentMail.node.value === invasion.node.value)
-              shouldBeSent = false;
+            if (sentMail.start === invasion.start && sentMail.node.value === invasion.node.value) shouldBeSent = false;
         });
         invasion.mailType = 'invasion';
-        if (shouldBeSent) shouldBeSent = hasInterestingRewards(invasion.attackerRewards) || hasInterestingRewards(invasion.defenderRewards);
+        if (shouldBeSent)
+          shouldBeSent =
+            hasInterestingRewards(invasion.attackerRewards) || hasInterestingRewards(invasion.defenderRewards);
         if (shouldBeSent) mailQueue.push(invasion);
       });
     });

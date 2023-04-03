@@ -1,0 +1,28 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins/breakpoints';
+
+.ea-enemy-damage-profile {
+  &__icon {
+    position: absolute;
+    height: 18px;
+    width: 18px;
+    max-height: initial;
+    border-radius: 3px;
+    transform: translate(-24px, 0px);
+  }
+
+  &__item {
+    position: relative;
+    padding: 0 4px 0 24px;
+  }
+
+  &__label {
+    display: inline-block;
+    width: 95px;
+  }
+
+  &__damage {
+    display: inline-block;
+    width: 30px;
+  }
+}

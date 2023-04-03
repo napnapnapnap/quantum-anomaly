@@ -11,9 +11,14 @@
     text-align: center;
   }
 
+  &__controls {
+    display: flex;
+    justify-content: space-between;
+  }
+
   table {
-    margin: 0 0 1em;
-    width: 850px;
+    margin: 0 0 1rem;
+    width: 100%;
   }
 
   tr {
@@ -27,7 +32,7 @@
       vertical-align: middle;
 
       &:nth-of-type(2) {
-        width: 100px;
+        width: 120px;
         font-size: 11px;
       }
 
@@ -42,12 +47,11 @@
 
     .number {
       > span {
-        border: 2px solid transparent;
+        border-bottom: 2px solid transparent;
         display: inline-block;
         padding: 2px;
         min-width: 24px;
         text-align: center;
-        border-radius: 35%;
       }
     }
   }

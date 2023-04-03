@@ -1,41 +1,63 @@
-import clsx from 'clsx';
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 
-import { useAppDispatch, useAppSelector } from '../hooks';
-import { setIsDarkMode, setIsNavigationOpen } from '../redux/ui';
+import { AppContext } from '../hooks/app-context';
+import useWindowSize from '../hooks/window-size';
 import './Navigation.scss';
 import navigation from './navigation.json';
 
 const Navigation = () => {
-  const dispatch = useAppDispatch();
-  const { isDarkMode, isNavigationOpen } = useAppSelector((state) => state.ui);
+  const context = useContext(AppContext);
+  const { isMobile, isTablet, isDesktop } = useWindowSize();
+  const isLargeScreen = !(isMobile || isTablet || isDesktop);
+
+  useEffect(() => {
+    if (!isLargeScreen) context.setNavOpen(false);
+  }, []);
 
   return (
-    <nav
-      className={clsx('navigation', {
-        'navigation--visible': isNavigationOpen,
-      })}
-    >
-      <span className="navigation__mobile" onClick={() => dispatch(setIsNavigationOpen(!isNavigationOpen))} />
-      <div className="navigation__title">
-        <a href="/">Quantum Anomaly</a>
-      </div>
-      <ul className="navigation__content">
-        {navigation.items.map((item) => (
-          <li className="navigation__link" key={item.url}>
-            <NavLink to={item.url} title={item.label} onClick={() => dispatch(setIsNavigationOpen(false))}>
-              {item.label}
-            </NavLink>
+    <>
+      <nav className="navigation">
+        <div className="navigation__title">
+          <a href="/">Quantum Anomaly</a>
+        </div>
+        <ul className="navigation__content">
+          {navigation.items.map((group) => (
+            <li key={group.label} className="navigation__group">
+              {group.label}
+              <ul className="navigation__content-nested">
+                {group.items.map((item) => (
+                  <li
+                    className="navigation__link"
+                    key={item.url}
+                    onClick={() => {
+                      if (!isLargeScreen) context.setNavOpen(false);
+                    }}
+                  >
+                    <NavLink to={item.url} title={item.label}>
+                      {item.label}
+                    </NavLink>
+                  </li>
+                ))}
+              </ul>
+            </li>
+          ))}
+        </ul>
+        <ul>
+          <li className="navigation__link">
+            <button
+              className="link"
+              onClick={() => {
+                context.setTheme(context.theme === 'Dark' ? 'Light' : 'Dark');
+                if (!isLargeScreen) context.setNavOpen(false);
+              }}
+            >
+              {context.theme === 'Dark' ? 'Light' : 'Dark'} mode
+            </button>
           </li>
-        ))}
-        <li className="navigation__link">
-          <a href="#" onClick={() => dispatch(setIsDarkMode(!isDarkMode))}>
-            {isDarkMode ? 'Light mode' : 'Dark mode'}
-          </a>
-        </li>
-      </ul>
-    </nav>
+        </ul>
+      </nav>
+    </>
   );
 };
 

@@ -1,24 +1,23 @@
-const env = process.env.NODE_ENV || 'development';
-
 import express from 'express';
 import multer from 'multer';
 import path from 'path';
 import serveStatic from 'serve-static';
 
-import {ensureAuthenticated} from '../middleware/auth';
 import * as logger from '../helpers/logger';
-
-import * as x4 from './x4';
-
+import { ensureAuthenticated } from '../middleware/auth';
 import * as admin from './admin';
 import * as epicArcs from './epic-arcs';
-import * as incursions from './incursions';
 import * as eveFittingSimulator from './eve-fitting-simulator';
 import * as eveNpcs from './eve-npcs';
+import { scrapeCategories } from './eve-scrapper';
+import * as incursions from './incursions';
 import * as tasks from './tasks';
+import * as x4 from './x4';
+
+const env = process.env.NODE_ENV || 'development';
 
 const router = express.Router(),
-  upload = multer({dest: 'uploads/'}),
+  upload = multer({ dest: 'uploads/' }),
   root = path.join(__dirname, '..', '..');
 
 export default function (app) {
@@ -45,6 +44,7 @@ export default function (app) {
   router.get('/api/x4/resources', x4.getResourcesInField);
 
   router.use('/api/get-incursions', incursions.getIncursions);
+  router.use('/api/scrape', scrapeCategories);
 
   router.use('/api/eve-fitting-simulator/group', eveFittingSimulator.getShipGroup);
   router.use('/api/eve-fitting-simulator/groups', eveFittingSimulator.getShipGroups);
@@ -55,8 +55,8 @@ export default function (app) {
 
   router.use('/admin/esi/information', ensureAuthenticated, admin.getEsiInformation);
   router.use('/admin/esi/running-job', ensureAuthenticated, admin.getCurrentJob);
-  router.use('/admin/esi/fetch-endpoints', ensureAuthenticated, admin.fetchEndpoints);
-  router.use('/admin/esi/update-endpoints', ensureAuthenticated, admin.updateEndpoints);
+  router.use('/admin/esi/fetch-endpoints', admin.fetchEndpoints);
+  router.use('/admin/esi/update-endpoints', admin.updateEndpoints);
 
   // for time being, poor flag until we get user roles setup (to enable these
   // routes, flip the env variable on server)
@@ -67,9 +67,8 @@ export default function (app) {
     logger.appWarning('ESI tasks routes are loaded', 'red');
   }
 
-  router.use('*', serveStatic(frontendPublicPath));
-  logger.appLog(`React build files from ${frontendPublicPath} loaded on '*' route`);
+  router.use('*', (req, res) => res.sendFile(`${frontendPublicPath}/index.html`));
 
   app.use('/', router);
   logger.appLog('Application router fully loaded');
-};
+}

@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Typography = () => (
-  <React.Fragment>
+  <>
     <h1>Styleguide Typography</h1>
     <section className="styleguide__section styleguide__section--small">
       <h1>Styleguide</h1>
@@ -37,8 +37,8 @@ const Typography = () => (
         feugiat. Praesent vitae erat a mi vestibulum aliquam sed eu ante. Morbi euismod dui rhoncus vestibulum
         tincidunt. Ut ligula diam, commodo quis lacus ut, sollicitudin sagittis sapien.
       </p>
-      <p className="long-text">
-        Paragraph <code>className='long-text'</code>. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
+      <p className="text--long">
+        Paragraph <code>className='text--long'</code>. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
         ultricies, tortor id aliquam aliquet, urna ipsum hendrerit augue, sed facilisis mauris nibh non ligula. Duis
         arcu velit, malesuada sed odio eu, sodales mattis leo. Integer vitae metus sodales, tincidunt justo quis,
         hendrerit eros. Aenean luctus mi vitae nunc cursus feugiat. Praesent vitae erat a mi vestibulum aliquam sed eu
@@ -106,7 +106,7 @@ const Typography = () => (
         </section>
       </div>
     </section>
-  </React.Fragment>
+  </>
 );
 
 export default Typography;
