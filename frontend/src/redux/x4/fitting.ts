@@ -17,6 +17,7 @@ export interface X4ShipInterface {
   mass: number;
   variation: string;
   shortvariation: string;
+  dlc: string;
   engines: {
     quantity: number;
   };

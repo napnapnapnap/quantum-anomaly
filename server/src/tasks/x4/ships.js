@@ -13,6 +13,12 @@ async function processShips(macroPath, translations, defaults, storage, shipstor
 
   let ship = addDataFromMacroFile(macroData, translations, defaults, storage, shipstorage);
 
+  ship.dlc = 'base';
+  if (macroPath.indexOf('dlc_terran') !== -1) ship.dlc = 'cradleOfHumanity';
+  if (macroPath.indexOf('dlc_pirate') !== -1) ship.dlc = 'tidesOfAvarice';
+  if (macroPath.indexOf('dlc_split') !== -1) ship.dlc = 'splitVendetta';
+  if (macroPath.indexOf('dlc_boron') !== -1) ship.dlc = 'kingdomsEnd';
+
   // from last step we have ships most specific information, now we look at the ref file which the
   // ship shares with other ships to get more information
   parser = new xml2js.Parser({ mergeAttrs: true, explicitArray: false });

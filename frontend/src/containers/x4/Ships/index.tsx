@@ -17,6 +17,7 @@ import {
   getHighestAvailableThrusterId,
   initialActiveEquipment,
   initialStateDisplayClass,
+  initialStateDisplayDlcs,
   initialStateDisplayRaces,
   initialStateDisplayVariations,
 } from './x4-ship-helpers';
@@ -60,6 +61,7 @@ const X4Ships = () => {
   const [displayClass, setDisplayClass] = useState<{ [key in X4ShipClassEnum]: boolean }>(initialStateDisplayClass);
   const [displayRace, setDisplayRace] = useState<{ [key: string]: boolean }>(initialStateDisplayRaces);
   const [displayTypes, setDisplayTypes] = useState<{ [key: string]: boolean }>({});
+  const [displayDlcs, setDisplayDlcs] = useState<{ [key: string]: boolean }>(initialStateDisplayDlcs);
   const [displayVariations, setDisplayVariations] = useState<{ [key: string]: boolean }>(initialStateDisplayVariations);
   const [activeEquipment, setActiveEquipment] = useState<ActiveEquipment>(initialActiveEquipment);
   const [sort, setSort] = useState('class');
@@ -74,6 +76,7 @@ const X4Ships = () => {
         if (!displayRace[ship.race]) return;
         if (!displayTypes[ship.type]) return;
         if (!displayVariations[ship.shortvariation]) return;
+        if (!displayDlcs[ship.dlc]) return;
 
         const modifiedShip = { ...ship };
         const thrusterId = getHighestAvailableThrusterId(modifiedShip, activeEquipment);
@@ -95,7 +98,17 @@ const X4Ships = () => {
 
       setShipsToDisplay(sortShips(filteredShips, sort));
     }
-  }, [ships, equipment, displayClass, displayRace, displayTypes, displayVariations, sort, activeEquipment]);
+  }, [
+    ships,
+    equipment,
+    displayClass,
+    displayRace,
+    displayTypes,
+    displayVariations,
+    sort,
+    activeEquipment,
+    displayDlcs,
+  ]);
 
   useEffect(() => {
     if (ships && Object.keys(displayTypes).length === 0) {
@@ -140,9 +153,12 @@ const X4Ships = () => {
           setDisplayTypes={setDisplayTypes}
           activeEquipment={activeEquipment}
           setActiveEquipment={setActiveEquipment}
+          displayDlcs={displayDlcs}
+          setDisplayDlcs={setDisplayDlcs}
         />
 
         <div className="x4-ships__wrapper">
+          <p className="text--smaller text--muted">Displayed {shipsToDisplay.length} ships</p>
           <table className="x4-ships__table">
             <tbody>
               {shipsToDisplay &&

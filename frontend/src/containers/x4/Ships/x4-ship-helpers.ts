@@ -13,6 +13,14 @@ export const initialStateDisplayRaces: { [key: string]: boolean } = {
   pir: true,
 };
 
+export const initialStateDisplayDlcs: { [key: string]: boolean } = {
+  base: true,
+  cradleOfHumanity: true,
+  tidesOfAvarice: true,
+  splitVendetta: true,
+  kingdomsEnd: false,
+};
+
 export const initialStateDisplayVariations = { BV: true, VA: true, ST: true, RD: true };
 
 export const initialStateDisplayClass: { [key in X4ShipClassEnum]: boolean } = {

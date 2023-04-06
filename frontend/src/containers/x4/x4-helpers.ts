@@ -4,6 +4,7 @@ export const maps: {
   race: { label: string; value: string }[];
   reverseRace: { [key: string]: string };
   shipClass: { [key in X4ShipClassEnum]: string };
+  dlcs: { [key: string]: string };
   variations: { [key: string]: string };
   factions: { [key: string]: string };
   colors: { [key: string]: { color: string; border: string } };
@@ -38,6 +39,13 @@ export const maps: {
     ship_l: 'large',
     ship_m: 'medium',
     ship_s: 'small',
+  },
+  dlcs: {
+    base: 'Base Game',
+    cradleOfHumanity: 'CoH',
+    tidesOfAvarice: 'ToA',
+    splitVendetta: 'SV',
+    kingdomsEnd: 'KE',
   },
   variations: {
     BV: 'Base',

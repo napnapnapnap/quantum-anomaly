@@ -16,6 +16,8 @@ const PreviewControls = ({
   setSort,
   activeEquipment,
   setActiveEquipment,
+  displayDlcs,
+  setDisplayDlcs,
 }: {
   displayClass: { [key in X4ShipClassEnum]: boolean };
   setDisplayClass: (arg: any) => void;
@@ -29,6 +31,8 @@ const PreviewControls = ({
   setSort: (arg: any) => void;
   activeEquipment: any;
   setActiveEquipment: (arg: any) => void;
+  displayDlcs: { [key: string]: boolean };
+  setDisplayDlcs: (arg: any) => void;
 }) => (
   <div className="x4-ships__controls">
     <p className="">Ship class and types</p>
@@ -60,7 +64,6 @@ const PreviewControls = ({
         }
       />
     ))}
-
     <p className="mt-1">
       Faction{' '}
       <button
@@ -116,6 +119,24 @@ const PreviewControls = ({
           }
         />
       ))}
+
+    <p className="mt-1">DLC</p>
+    {Object.keys(maps.dlcs).map((dlcKey) => (
+      <Checkbox
+        label={maps.dlcs[dlcKey]}
+        name="displayDlcs"
+        checked={displayDlcs[dlcKey]}
+        key={dlcKey}
+        className="x4-ships__dlc-checkbox"
+        isDisabled={dlcKey === 'kingdomsEnd'}
+        handleInputChange={(e) =>
+          setDisplayDlcs({
+            ...displayDlcs,
+            [dlcKey]: e.target.checked,
+          })
+        }
+      />
+    ))}
 
     <br />
     <br />
