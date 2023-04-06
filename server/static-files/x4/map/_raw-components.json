@@ -1,1 +1,610 @@
-[{"name":"standardzone","class":"zone","connections":{"connection":[{"name":"sector","tags":"zone","value":"0","optional":"0"},{"name":"visiblezones","tags":"visible zone","value":"0","optional":"1"},{"name":"occludedzones","tags":"occluded zone","value":"0","optional":"1"},{"name":"stations","tags":"station","value":"0","optional":"1"},{"name":"ships","tags":"ship","value":"0","optional":"1"},{"name":"gates","tags":"gate","value":"0","optional":"1"},{"name":"sh","tags":"sechighway","value":"0","optional":"1"},{"name":"lights","tags":"light","value":"0","optional":"1"},{"name":"lensflares","tags":"lensflare","value":"0","optional":"1"},{"name":"bullets","tags":"bullet","value":"0","optional":"1"},{"name":"countermeasures","tags":"countermeasure","value":"0","optional":"1"},{"name":"missiles","tags":"missile","value":"0","optional":"1"},{"name":"asteroids","tags":"asteroid","value":"0","optional":"1"},{"name":"stardust","tags":"stardust"},{"name":"entrypoint1","tags":"exit","value":"-1","optional":"1"},{"name":"entrypoint2","tags":"exit","value":"-1","optional":"1"},{"name":"entrypoint3","tags":"exit","value":"-1","optional":"1"},{"name":"entrypoint4","tags":"exit","value":"-1","optional":"1"},{"name":"entrypoint5","tags":"exit","value":"-1","optional":"1"},{"name":"entrypoint6","tags":"exit","value":"-1","optional":"1"},{"name":"entrypoint7","tags":"exit","value":"-1","optional":"1"},{"name":"entrypoint8","tags":"exit","value":"-1","optional":"1"},{"name":"entrypoint9","tags":"exit","value":"-1","optional":"1"},{"name":"entrypoint10","tags":"exit","value":"-1","optional":"1"},{"name":"entrypoint11","tags":"exit","value":"-1","optional":"1"},{"name":"entrypoint12","tags":"exit","value":"-1","optional":"1"},{"name":"exitpoint1","tags":"entry","value":"1","optional":"1"},{"name":"exitpoint2","tags":"entry","value":"1","optional":"1"},{"name":"exitpoint3","tags":"entry","value":"1","optional":"1"},{"name":"exitpoint4","tags":"entry","value":"1","optional":"1"},{"name":"exitpoint5","tags":"entry","value":"1","optional":"1"},{"name":"exitpoint6","tags":"entry","value":"1","optional":"1"},{"name":"exitpoint7","tags":"entry","value":"1","optional":"1"},{"name":"exitpoint8","tags":"entry","value":"1","optional":"1"},{"name":"exitpoint9","tags":"entry","value":"1","optional":"1"},{"name":"exitpoint10","tags":"entry","value":"1","optional":"1"},{"name":"exitpoint11","tags":"entry","value":"1","optional":"1"},{"name":"exitpoint12","tags":"entry","value":"1","optional":"1"},{"name":"rendereffects","tags":"rendereffect"},{"name":"scaneffects","tags":"scaneffect"},{"name":"turrets","tags":"turret","value":"0","optional":"1"},{"name":"positionals","tags":"positional position","value":"0","optional":"1"},{"name":"anything","tags":"anything","value":"0","optional":"1"},{"name":"SHCon1_Gate","tags":"sechighway","value":"0","optional":"1","offset":{"position":{"x":"-20000","y":"0","z":"20000"}}},{"name":"SHCon2_Gate","tags":"sechighway","value":"0","optional":"1","offset":{"position":{"x":"-20000","y":"0","z":"-20000"}}},{"name":"SHCon3_Gate","tags":"sechighway","value":"0","optional":"1","offset":{"position":{"x":"20000","y":"0","z":"20000"}}},{"name":"SHCon4_Gate","tags":"sechighway","value":"0","optional":"1","offset":{"position":{"x":"20000","y":"0","z":"-20000"}}},{"name":"SHCon5_Gate","tags":"sechighway","value":"0","optional":"1","offset":{"position":{"x":"-5000","y":"0","z":"20000"}}},{"name":"SHCon6_Gate","tags":"sechighway","value":"0","optional":"1","offset":{"position":{"x":"-5000","y":"0","z":"-20000"}}},{"name":"SHCon7_Gate","tags":"sechighway","value":"0","optional":"1","offset":{"position":{"x":"-20000","y":"0","z":"5000"}}},{"name":"SHCon8_Gate","tags":"sechighway","value":"0","optional":"1","offset":{"position":{"x":"-20000","y":"0","z":"-5000"}}},{"name":"SHCon9_Gate","tags":"sechighway","value":"0","optional":"1","offset":{"position":{"x":"5000","y":"0","z":"20000"}}},{"name":"SHCon10_Gate","tags":"sechighway","value":"0","optional":"1","offset":{"position":{"x":"5000","y":"0","z":"-20000"}}},{"name":"SHCon11_Gate","tags":"sechighway","value":"0","optional":"1","offset":{"position":{"x":"20000","y":"0","z":"5000"}}},{"name":"SHCon12_Gate","tags":"sechighway","value":"0","optional":"1","offset":{"position":{"x":"20000","y":"0","z":"-5000"}}},{"name":"highway01connection01_gate","tags":"entry","value":"1","optional":"1"},{"name":"highway01connection02_gate","tags":"exit","value":"-1","optional":"1"},{"name":"highway02connection01_gate","tags":"entry","value":"1","optional":"1"},{"name":"highway02connection02_gate","tags":"exit","value":"-1","optional":"1"},{"name":"highway03connection01_gate","tags":"entry","value":"1","optional":"1"},{"name":"highway03connection02_gate","tags":"exit","value":"-1","optional":"1"},{"name":"highway04connection01_gate","tags":"entry","value":"1","optional":"1"},{"name":"highway04connection02_gate","tags":"exit","value":"-1","optional":"1"},{"name":"highway05connection01_gate","tags":"entry","value":"1","optional":"1"},{"name":"highway05connection02_gate","tags":"exit","value":"-1","optional":"1"},{"name":"highway06connection01_gate","tags":"entry","value":"1","optional":"1"},{"name":"highway06connection02_gate","tags":"exit","value":"-1","optional":"1"},{"name":"highway07connection01_gate","tags":"entry","value":"1","optional":"1"},{"name":"highway07connection02_gate","tags":"exit","value":"-1","optional":"1"},{"name":"highway08connection01_gate","tags":"entry","value":"1","optional":"1"},{"name":"highway08connection02_gate","tags":"exit","value":"-1","optional":"1"},{"name":"highway09connection01_gate","tags":"entry","value":"1","optional":"1"},{"name":"highway09connection02_gate","tags":"exit","value":"-1","optional":"1"},{"name":"highway10connection01_gate","tags":"entry","value":"1","optional":"1"},{"name":"highway10connection02_gate","tags":"exit","value":"-1","optional":"1"},{"name":"highway11connection01_gate","tags":"entry","value":"1","optional":"1"},{"name":"highway11connection02_gate","tags":"exit","value":"-1","optional":"1"},{"name":"highway12connection01_gate","tags":"entry","value":"1","optional":"1"},{"name":"highway12connection02_gate","tags":"exit","value":"-1","optional":"1"},{"name":"highway13connection01_gate","tags":"entry","value":"1","optional":"1"},{"name":"highway13connection02_gate","tags":"exit","value":"-1","optional":"1"},{"name":"highway14connection01_gate","tags":"entry","value":"1","optional":"1"},{"name":"highway14connection02_gate","tags":"exit","value":"-1","optional":"1"},{"name":"highway15connection01_gate","tags":"entry","value":"1","optional":"1"},{"name":"highway15connection02_gate","tags":"exit","value":"-1","optional":"1"},{"name":"highway16connection01_gate","tags":"entry","value":"1","optional":"1"},{"name":"highway16connection02_gate","tags":"exit","value":"-1","optional":"1"}]}}]
+[
+  {
+    "name": "standardzone",
+    "class": "zone",
+    "connections": {
+      "connection": [
+        {
+          "name": "sector",
+          "tags": "zone",
+          "value": "0",
+          "optional": "0"
+        },
+        {
+          "name": "visiblezones",
+          "tags": "visible zone",
+          "value": "0",
+          "optional": "1"
+        },
+        {
+          "name": "occludedzones",
+          "tags": "occluded zone",
+          "value": "0",
+          "optional": "1"
+        },
+        {
+          "name": "stations",
+          "tags": "station",
+          "value": "0",
+          "optional": "1"
+        },
+        {
+          "name": "ships",
+          "tags": "ship",
+          "value": "0",
+          "optional": "1"
+        },
+        {
+          "name": "gates",
+          "tags": "gate",
+          "value": "0",
+          "optional": "1"
+        },
+        {
+          "name": "sh",
+          "tags": "sechighway",
+          "value": "0",
+          "optional": "1"
+        },
+        {
+          "name": "lights",
+          "tags": "light",
+          "value": "0",
+          "optional": "1"
+        },
+        {
+          "name": "lensflares",
+          "tags": "lensflare",
+          "value": "0",
+          "optional": "1"
+        },
+        {
+          "name": "bullets",
+          "tags": "bullet",
+          "value": "0",
+          "optional": "1"
+        },
+        {
+          "name": "countermeasures",
+          "tags": "countermeasure",
+          "value": "0",
+          "optional": "1"
+        },
+        {
+          "name": "missiles",
+          "tags": "missile",
+          "value": "0",
+          "optional": "1"
+        },
+        {
+          "name": "asteroids",
+          "tags": "asteroid",
+          "value": "0",
+          "optional": "1"
+        },
+        {
+          "name": "stardust",
+          "tags": "stardust"
+        },
+        {
+          "name": "entrypoint1",
+          "tags": "exit",
+          "value": "-1",
+          "optional": "1"
+        },
+        {
+          "name": "entrypoint2",
+          "tags": "exit",
+          "value": "-1",
+          "optional": "1"
+        },
+        {
+          "name": "entrypoint3",
+          "tags": "exit",
+          "value": "-1",
+          "optional": "1"
+        },
+        {
+          "name": "entrypoint4",
+          "tags": "exit",
+          "value": "-1",
+          "optional": "1"
+        },
+        {
+          "name": "entrypoint5",
+          "tags": "exit",
+          "value": "-1",
+          "optional": "1"
+        },
+        {
+          "name": "entrypoint6",
+          "tags": "exit",
+          "value": "-1",
+          "optional": "1"
+        },
+        {
+          "name": "entrypoint7",
+          "tags": "exit",
+          "value": "-1",
+          "optional": "1"
+        },
+        {
+          "name": "entrypoint8",
+          "tags": "exit",
+          "value": "-1",
+          "optional": "1"
+        },
+        {
+          "name": "entrypoint9",
+          "tags": "exit",
+          "value": "-1",
+          "optional": "1"
+        },
+        {
+          "name": "entrypoint10",
+          "tags": "exit",
+          "value": "-1",
+          "optional": "1"
+        },
+        {
+          "name": "entrypoint11",
+          "tags": "exit",
+          "value": "-1",
+          "optional": "1"
+        },
+        {
+          "name": "entrypoint12",
+          "tags": "exit",
+          "value": "-1",
+          "optional": "1"
+        },
+        {
+          "name": "exitpoint1",
+          "tags": "entry",
+          "value": "1",
+          "optional": "1"
+        },
+        {
+          "name": "exitpoint2",
+          "tags": "entry",
+          "value": "1",
+          "optional": "1"
+        },
+        {
+          "name": "exitpoint3",
+          "tags": "entry",
+          "value": "1",
+          "optional": "1"
+        },
+        {
+          "name": "exitpoint4",
+          "tags": "entry",
+          "value": "1",
+          "optional": "1"
+        },
+        {
+          "name": "exitpoint5",
+          "tags": "entry",
+          "value": "1",
+          "optional": "1"
+        },
+        {
+          "name": "exitpoint6",
+          "tags": "entry",
+          "value": "1",
+          "optional": "1"
+        },
+        {
+          "name": "exitpoint7",
+          "tags": "entry",
+          "value": "1",
+          "optional": "1"
+        },
+        {
+          "name": "exitpoint8",
+          "tags": "entry",
+          "value": "1",
+          "optional": "1"
+        },
+        {
+          "name": "exitpoint9",
+          "tags": "entry",
+          "value": "1",
+          "optional": "1"
+        },
+        {
+          "name": "exitpoint10",
+          "tags": "entry",
+          "value": "1",
+          "optional": "1"
+        },
+        {
+          "name": "exitpoint11",
+          "tags": "entry",
+          "value": "1",
+          "optional": "1"
+        },
+        {
+          "name": "exitpoint12",
+          "tags": "entry",
+          "value": "1",
+          "optional": "1"
+        },
+        {
+          "name": "rendereffects",
+          "tags": "rendereffect"
+        },
+        {
+          "name": "scaneffects",
+          "tags": "scaneffect"
+        },
+        {
+          "name": "turrets",
+          "tags": "turret",
+          "value": "0",
+          "optional": "1"
+        },
+        {
+          "name": "positionals",
+          "tags": "positional position",
+          "value": "0",
+          "optional": "1"
+        },
+        {
+          "name": "anything",
+          "tags": "anything",
+          "value": "0",
+          "optional": "1"
+        },
+        {
+          "name": "SHCon1_Gate",
+          "tags": "sechighway",
+          "value": "0",
+          "optional": "1",
+          "offset": {
+            "position": {
+              "x": "-20000",
+              "y": "0",
+              "z": "20000"
+            }
+          }
+        },
+        {
+          "name": "SHCon2_Gate",
+          "tags": "sechighway",
+          "value": "0",
+          "optional": "1",
+          "offset": {
+            "position": {
+              "x": "-20000",
+              "y": "0",
+              "z": "-20000"
+            }
+          }
+        },
+        {
+          "name": "SHCon3_Gate",
+          "tags": "sechighway",
+          "value": "0",
+          "optional": "1",
+          "offset": {
+            "position": {
+              "x": "20000",
+              "y": "0",
+              "z": "20000"
+            }
+          }
+        },
+        {
+          "name": "SHCon4_Gate",
+          "tags": "sechighway",
+          "value": "0",
+          "optional": "1",
+          "offset": {
+            "position": {
+              "x": "20000",
+              "y": "0",
+              "z": "-20000"
+            }
+          }
+        },
+        {
+          "name": "SHCon5_Gate",
+          "tags": "sechighway",
+          "value": "0",
+          "optional": "1",
+          "offset": {
+            "position": {
+              "x": "-5000",
+              "y": "0",
+              "z": "20000"
+            }
+          }
+        },
+        {
+          "name": "SHCon6_Gate",
+          "tags": "sechighway",
+          "value": "0",
+          "optional": "1",
+          "offset": {
+            "position": {
+              "x": "-5000",
+              "y": "0",
+              "z": "-20000"
+            }
+          }
+        },
+        {
+          "name": "SHCon7_Gate",
+          "tags": "sechighway",
+          "value": "0",
+          "optional": "1",
+          "offset": {
+            "position": {
+              "x": "-20000",
+              "y": "0",
+              "z": "5000"
+            }
+          }
+        },
+        {
+          "name": "SHCon8_Gate",
+          "tags": "sechighway",
+          "value": "0",
+          "optional": "1",
+          "offset": {
+            "position": {
+              "x": "-20000",
+              "y": "0",
+              "z": "-5000"
+            }
+          }
+        },
+        {
+          "name": "SHCon9_Gate",
+          "tags": "sechighway",
+          "value": "0",
+          "optional": "1",
+          "offset": {
+            "position": {
+              "x": "5000",
+              "y": "0",
+              "z": "20000"
+            }
+          }
+        },
+        {
+          "name": "SHCon10_Gate",
+          "tags": "sechighway",
+          "value": "0",
+          "optional": "1",
+          "offset": {
+            "position": {
+              "x": "5000",
+              "y": "0",
+              "z": "-20000"
+            }
+          }
+        },
+        {
+          "name": "SHCon11_Gate",
+          "tags": "sechighway",
+          "value": "0",
+          "optional": "1",
+          "offset": {
+            "position": {
+              "x": "20000",
+              "y": "0",
+              "z": "5000"
+            }
+          }
+        },
+        {
+          "name": "SHCon12_Gate",
+          "tags": "sechighway",
+          "value": "0",
+          "optional": "1",
+          "offset": {
+            "position": {
+              "x": "20000",
+              "y": "0",
+              "z": "-5000"
+            }
+          }
+        },
+        {
+          "name": "highway01connection01_gate",
+          "tags": "entry",
+          "value": "1",
+          "optional": "1"
+        },
+        {
+          "name": "highway01connection02_gate",
+          "tags": "exit",
+          "value": "-1",
+          "optional": "1"
+        },
+        {
+          "name": "highway02connection01_gate",
+          "tags": "entry",
+          "value": "1",
+          "optional": "1"
+        },
+        {
+          "name": "highway02connection02_gate",
+          "tags": "exit",
+          "value": "-1",
+          "optional": "1"
+        },
+        {
+          "name": "highway03connection01_gate",
+          "tags": "entry",
+          "value": "1",
+          "optional": "1"
+        },
+        {
+          "name": "highway03connection02_gate",
+          "tags": "exit",
+          "value": "-1",
+          "optional": "1"
+        },
+        {
+          "name": "highway04connection01_gate",
+          "tags": "entry",
+          "value": "1",
+          "optional": "1"
+        },
+        {
+          "name": "highway04connection02_gate",
+          "tags": "exit",
+          "value": "-1",
+          "optional": "1"
+        },
+        {
+          "name": "highway05connection01_gate",
+          "tags": "entry",
+          "value": "1",
+          "optional": "1"
+        },
+        {
+          "name": "highway05connection02_gate",
+          "tags": "exit",
+          "value": "-1",
+          "optional": "1"
+        },
+        {
+          "name": "highway06connection01_gate",
+          "tags": "entry",
+          "value": "1",
+          "optional": "1"
+        },
+        {
+          "name": "highway06connection02_gate",
+          "tags": "exit",
+          "value": "-1",
+          "optional": "1"
+        },
+        {
+          "name": "highway07connection01_gate",
+          "tags": "entry",
+          "value": "1",
+          "optional": "1"
+        },
+        {
+          "name": "highway07connection02_gate",
+          "tags": "exit",
+          "value": "-1",
+          "optional": "1"
+        },
+        {
+          "name": "highway08connection01_gate",
+          "tags": "entry",
+          "value": "1",
+          "optional": "1"
+        },
+        {
+          "name": "highway08connection02_gate",
+          "tags": "exit",
+          "value": "-1",
+          "optional": "1"
+        },
+        {
+          "name": "highway09connection01_gate",
+          "tags": "entry",
+          "value": "1",
+          "optional": "1"
+        },
+        {
+          "name": "highway09connection02_gate",
+          "tags": "exit",
+          "value": "-1",
+          "optional": "1"
+        },
+        {
+          "name": "highway10connection01_gate",
+          "tags": "entry",
+          "value": "1",
+          "optional": "1"
+        },
+        {
+          "name": "highway10connection02_gate",
+          "tags": "exit",
+          "value": "-1",
+          "optional": "1"
+        },
+        {
+          "name": "highway11connection01_gate",
+          "tags": "entry",
+          "value": "1",
+          "optional": "1"
+        },
+        {
+          "name": "highway11connection02_gate",
+          "tags": "exit",
+          "value": "-1",
+          "optional": "1"
+        },
+        {
+          "name": "highway12connection01_gate",
+          "tags": "entry",
+          "value": "1",
+          "optional": "1"
+        },
+        {
+          "name": "highway12connection02_gate",
+          "tags": "exit",
+          "value": "-1",
+          "optional": "1"
+        },
+        {
+          "name": "highway13connection01_gate",
+          "tags": "entry",
+          "value": "1",
+          "optional": "1"
+        },
+        {
+          "name": "highway13connection02_gate",
+          "tags": "exit",
+          "value": "-1",
+          "optional": "1"
+        },
+        {
+          "name": "highway14connection01_gate",
+          "tags": "entry",
+          "value": "1",
+          "optional": "1"
+        },
+        {
+          "name": "highway14connection02_gate",
+          "tags": "exit",
+          "value": "-1",
+          "optional": "1"
+        },
+        {
+          "name": "highway15connection01_gate",
+          "tags": "entry",
+          "value": "1",
+          "optional": "1"
+        },
+        {
+          "name": "highway15connection02_gate",
+          "tags": "exit",
+          "value": "-1",
+          "optional": "1"
+        },
+        {
+          "name": "highway16connection01_gate",
+          "tags": "entry",
+          "value": "1",
+          "optional": "1"
+        },
+        {
+          "name": "highway16connection02_gate",
+          "tags": "exit",
+          "value": "-1",
+          "optional": "1"
+        }
+      ]
+    }
+  }
+]
