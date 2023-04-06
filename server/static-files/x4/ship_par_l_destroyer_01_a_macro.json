@@ -4,7 +4,7 @@
   "race": "par",
   "name": "Odysseus Vanguard",
   "basename": "Odysseus",
-  "description": null,
+  "description": "The Paranid Odysseus is a highly regarded destroyer with an often consequential presence in large scale engagements.\\n\\nThe latest version's architect is the notoriously sensitive Olmanckabssit, who is reputed to fly into a rage at the slightest mention of the vessel's resemblance to a hair dryer.\\n\\nThe Odysseus Vanguard has enhanced speed.",
   "shortvariation": "VA",
   "variation": "Vanguard",
   "type": "destroyer",
@@ -166,13 +166,11 @@
     {
       "quantity": 1,
       "size": "large",
-      "standard": true,
       "capitalGun": "par_destroyer_01"
     },
     {
       "quantity": 1,
       "size": "large",
-      "standard": true,
       "capitalGun": "par_destroyer_01"
     }
   ],

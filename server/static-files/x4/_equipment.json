@@ -1921,45 +1921,6 @@
       },
       "hull": "8000"
     },
-    "weapon_gen_l_laser_01_mk1": {
-      "name": null,
-      "heat": {
-        "overheat": "10000",
-        "cooldelay": "1.13",
-        "coolrate": "2000",
-        "reenable": "9500"
-      },
-      "mk": "1",
-      "class": "weapon",
-      "bullet": {
-        "properties": {
-          "speed": "1659",
-          "lifetime": "6.3",
-          "amount": "1",
-          "barrelamount": "1",
-          "icon": "weapon_laser_mk1",
-          "timediff": "0.002",
-          "angle": "0.03",
-          "maxhits": "1",
-          "ricochet": "0",
-          "scale": "0",
-          "attach": "0"
-        },
-        "damage": {
-          "value": "2588",
-          "repair": "0"
-        },
-        "reload": {
-          "rate": "1.2"
-        },
-        "system": "weapon_standard"
-      },
-      "rotation": {
-        "speed": "32.3",
-        "acceleration": "64.6"
-      },
-      "hull": "8000"
-    },
     "weapon_par_l_destroyer_01_mk1": {
       "name": "PAR Odysseus Main Battery",
       "heat": {

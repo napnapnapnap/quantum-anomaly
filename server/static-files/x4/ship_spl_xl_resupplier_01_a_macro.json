@@ -4,7 +4,7 @@
   "race": "spl",
   "name": "Monitor",
   "basename": "Monitor",
-  "description": null,
+  "description": "The Split Monitor is a well-armed and well-armoured auxiliary vessel. This class of ship, if properly crewed and maintained, allows for the continuous rearming, resupply and repair that is necessary for an active war fleet.",
   "shortvariation": "BV",
   "variation": "Base Variation",
   "type": "resupplier",

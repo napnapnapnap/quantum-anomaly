@@ -4,7 +4,7 @@
   "race": "tel",
   "name": "Osprey Vanguard",
   "basename": "Osprey",
-  "description": null,
+  "description": "The Teladi Osprey is a surprisingly effective frigate with significant cargo capacity. On this basis, it can be used as a well-armed and speedy alternative to a standard freighter for trade runs where prejudice is anticipated.\\n\\nThe Vanguard model enhances speed, and as a consequence, the potential profitability of trading routes.",
   "shortvariation": "VA",
   "variation": "Vanguard",
   "type": "frigate",

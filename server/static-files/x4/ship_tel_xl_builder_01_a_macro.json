@@ -4,13 +4,13 @@
   "race": "tel",
   "name": "Albatross Vanguard",
   "basename": "Albatross",
-  "description": null,
+  "description": "The Teladi Albatross is a giant, station-building ship. It is not a work of art, however, it functions well and provides the infrastructure for much of the Teladi growth economy.\\n\\nThe Vanguard variant provides a little extra speed, for when a station needs to be placed in a hurry.",
   "shortvariation": "VA",
   "variation": "Vanguard",
   "type": "builder",
   "radarRange": "40000",
   "docksize": "dock_xl",
-  "hull": 115000,
+  "hull": 128000,
   "shield": {
     "max": 0,
     "rate": 0,
@@ -40,7 +40,7 @@
     }
   },
   "storage": {
-    "unit": 100,
+    "unit": 202,
     "missile": 40,
     "people": 219,
     "countermeasure": 40,
@@ -48,20 +48,20 @@
     "capacity": 50,
     "capacityType": "container"
   },
-  "mass": 984.137,
+  "mass": 982.947,
   "inertia": {
-    "pitch": 612.235,
-    "yaw": 612.235,
-    "roll": 489.788
+    "pitch": 679.259,
+    "yaw": 679.259,
+    "roll": 543.407
   },
   "drag": {
-    "forward": 276.827,
-    "reverse": 1107.31,
-    "horizontal": 519.018,
-    "vertical": 519.018,
-    "pitch": 896.827,
-    "yaw": 896.827,
-    "roll": 896.827
+    "forward": 228.186,
+    "reverse": 912.745,
+    "horizontal": 467.397,
+    "vertical": 467.397,
+    "pitch": 896.589,
+    "yaw": 896.589,
+    "roll": 896.589
   },
   "thrusters": {
     "size": "extralarge"
@@ -119,7 +119,7 @@
   },
   "engines": {
     "size": "extralarge",
-    "quantity": 2,
+    "quantity": 1,
     "shields": {
       "quantity": 1,
       "size": "medium"

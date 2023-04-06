@@ -4,7 +4,7 @@
   "race": "tel",
   "name": "Vulture Sentinel",
   "basename": "Vulture",
-  "description": null,
+  "description": "The Teladi Vulture medium freighter, while generally unassuming, remains a popular choice for independent traders in particular. It has excellent cargo capacity, more than making up for its lack of speed, on an analysis of trade route profitability.\\n\\nThe Sentinel variant has perhaps the largest cargo space of any medium freighter, meriting consideration from any mogul seeking to optimise profits.",
   "shortvariation": "ST",
   "variation": "Sentinel",
   "type": "transporter",
@@ -45,7 +45,7 @@
     "people": 13,
     "countermeasure": 8,
     "deployable": 100,
-    "capacity": 12240,
+    "capacity": 15100,
     "capacityType": "container"
   },
   "mass": 75.756,

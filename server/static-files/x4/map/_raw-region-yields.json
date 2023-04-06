@@ -30,6 +30,14 @@
         "scaneffectintensity": "1.0"
       },
       {
+        "name": "medlow",
+        "resourcedensity": "4",
+        "replenishtime": "2000",
+        "scaneffect": "scfx_dynamic_normalyield_01",
+        "scaneffectdensity": "0.01",
+        "scaneffectintensity": "1.0"
+      },
+      {
         "name": "medium",
         "resourcedensity": "6",
         "replenishtime": "2400",
@@ -40,6 +48,14 @@
       {
         "name": "high",
         "resourcedensity": "60",
+        "replenishtime": "3600",
+        "scaneffect": "scfx_dynamic_highyield_01",
+        "scaneffectdensity": "0.01",
+        "scaneffectintensity": "1.0"
+      },
+      {
+        "name": "highplus",
+        "resourcedensity": "120",
         "replenishtime": "3600",
         "scaneffect": "scfx_dynamic_highyield_01",
         "scaneffectdensity": "0.01",
@@ -86,6 +102,14 @@
         "scaneffectintensity": "1.0"
       },
       {
+        "name": "medlow",
+        "resourcedensity": "4",
+        "replenishtime": "2000",
+        "scaneffect": "scfx_dynamic_normalyield_01",
+        "scaneffectdensity": "0.01",
+        "scaneffectintensity": "1.0"
+      },
+      {
         "name": "medium",
         "resourcedensity": "6",
         "replenishtime": "2400",
@@ -96,6 +120,14 @@
       {
         "name": "high",
         "resourcedensity": "60",
+        "replenishtime": "3600",
+        "scaneffect": "scfx_dynamic_highyield_01",
+        "scaneffectdensity": "0.01",
+        "scaneffectintensity": "1.0"
+      },
+      {
+        "name": "highplus",
+        "resourcedensity": "120",
         "replenishtime": "3600",
         "scaneffect": "scfx_dynamic_highyield_01",
         "scaneffectdensity": "0.01",
@@ -150,9 +182,17 @@
         "scaneffectintensity": "1.0"
       },
       {
+        "name": "medhigh",
+        "resourcedensity": "60",
+        "replenishtime": "600",
+        "scaneffect": "scfx_dynamic_normalyield_01",
+        "scaneffectdensity": "0.01",
+        "scaneffectintensity": "1.0"
+      },
+      {
         "name": "high",
         "resourcedensity": "150",
-        "replenishtime": "480",
+        "replenishtime": "1200",
         "scaneffect": "scfx_dynamic_highyield_01",
         "scaneffectdensity": "0.01",
         "scaneffectintensity": "1.0"

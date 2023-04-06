@@ -4,7 +4,7 @@
   "race": "xen",
   "name": "M",
   "basename": null,
-  "description": null,
+  "description": "The Xenon M is, alone, a robust heavy fighter. Unfortunately, it rarely is alone, commonly engaging as part of a fleet or \"swarm\" of M and N vessels.",
   "shortvariation": "BV",
   "variation": "Base Variation",
   "type": "heavyfighter",

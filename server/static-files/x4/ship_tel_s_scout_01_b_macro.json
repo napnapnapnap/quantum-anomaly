@@ -4,7 +4,7 @@
   "race": "tel",
   "name": "Kestrel Sentinel",
   "basename": "Kestrel",
-  "description": null,
+  "description": "There are faster scouts than the Teladi Kestrel, yet it still manages to function respectably. It is more solid that most of its competitors, and has respectable shield energy.\\n\\nThe Kestrel Sentinel is thought by some to be a compromise too far, in terms of speed. However, there are those who prefer the toughened hull that it offers.",
   "shortvariation": "ST",
   "variation": "Sentinel",
   "type": "scout",

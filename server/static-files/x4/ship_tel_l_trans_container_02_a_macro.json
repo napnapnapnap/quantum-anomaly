@@ -4,7 +4,7 @@
   "race": "tel",
   "name": "Heron Vanguard",
   "basename": "Heron",
-  "description": null,
+  "description": "The Teladi Company's Heron is a large freighter. It is noted for its somewhat relaxed pace, which is in keeping with mainstream Teladi design values.\\n\\nThe Vanguard model marginally improves the Heron's speed, but the vessel remains unsuited to express delivery.",
   "shortvariation": "VA",
   "variation": "Vanguard",
   "type": "freighter",
@@ -45,7 +45,7 @@
     "people": 101,
     "countermeasure": 20,
     "deployable": 250,
-    "capacity": 31000,
+    "capacity": 36800,
     "capacityType": "container"
   },
   "mass": 367.5,

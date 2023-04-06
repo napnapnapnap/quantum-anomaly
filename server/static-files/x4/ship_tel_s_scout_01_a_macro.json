@@ -4,7 +4,7 @@
   "race": "tel",
   "name": "Kestrel Vanguard",
   "basename": "Kestrel",
-  "description": null,
+  "description": "There are faster scouts than the Teladi Kestrel, yet it still manages to function respectably. It is more solid that most of its competitors, and has respectable shield energy.\\n\\nPilots commonly opt for the somewhat faster Vanguard model.",
   "shortvariation": "VA",
   "variation": "Vanguard",
   "type": "scout",

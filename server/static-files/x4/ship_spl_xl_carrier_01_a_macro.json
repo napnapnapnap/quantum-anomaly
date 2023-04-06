@@ -4,7 +4,7 @@
   "race": "spl",
   "name": "Raptor",
   "basename": "Raptor",
-  "description": null,
+  "description": "Empire builders report fondness for the Split Raptor carrier. Hideously well armed, the Raptor eschews prosaic trivialities such as shielding and reinforced hulls in favour of violently dismantling anything that enters its vicinity.\\n\\nHowever, any antagonist that can remain functional for more than twenty seconds in the Raptor's presence does have the possibility of taking advantage of the vessels cursory defences.",
   "shortvariation": "BV",
   "variation": "Base Variation",
   "type": "carrier",

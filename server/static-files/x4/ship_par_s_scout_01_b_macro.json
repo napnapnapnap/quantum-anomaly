@@ -4,7 +4,7 @@
   "race": "par",
   "name": "Pegasus Sentinel",
   "basename": "Pegasus",
-  "description": null,
+  "description": "The Paranid Pegasus scout is extraordinarily fast, ensuring the \"Peggy's\" enduring popularity with explorers in particular. Unfortunately, being followed by such a speedy vessel risks inviting a rear end collision, an eventuality known by pilots as being \"peggied\".\\n\\nThe Sentinel model marginally increases the scout's cargo space and resilience. However, these enhancements seem to be cursory rather than conferring any practical value.",
   "shortvariation": "ST",
   "variation": "Sentinel",
   "type": "scout",

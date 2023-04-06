@@ -4,7 +4,7 @@
   "race": "par",
   "name": "Theseus Sentinel",
   "basename": "Theseus",
-  "description": null,
+  "description": "The Paranid Theseus is a solid, all-round performer with deadly firepower, built upon a solid chassis. If it is lacking anywhere it is in speed, though there are many tactical deployments where this is not a major issue.\\n\\nGiven the Theseus' relaxed pace, many captains opt for the Sentinel model, which improves the vessel's ability to withstand attack.",
   "shortvariation": "ST",
   "variation": "Sentinel",
   "type": "fighter",

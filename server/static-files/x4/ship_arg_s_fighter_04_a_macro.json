@@ -4,7 +4,7 @@
   "race": "arg",
   "name": "Quasar Vanguard",
   "basename": "Quasar",
-  "description": null,
+  "description": "In the midst of the Terran War, the Argon Federation floundered somewhat in their ship design output. Perhaps their worst effort was the Quasar fighter, which, named after a powerful cosmic force, failed to fully live up to expectations.\\n\\nThe Quasar Vanguard was commissioned to breathe some useful function into the model. However, the variant has failed to achieve popularity.",
   "shortvariation": "VA",
   "variation": "Vanguard",
   "type": "heavyfighter",

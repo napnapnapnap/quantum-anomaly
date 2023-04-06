@@ -4,7 +4,7 @@
   "race": "tel",
   "name": "Peregrine Vanguard",
   "basename": "Peregrine",
-  "description": null,
+  "description": "While originally designed as a bomber, the Teladi Peregrine has recently found popularity in the role of an escort ship. Its primary tactical advantage in this regard is its excellent turret coverage, which can be highly effective when appropriately armed.\\n\\nThe Vanguard model, with additional speed, was an attempt to retrofit the Peregrine to make it more suitable for its original intended role. Debate continues as to whether this was a success.",
   "shortvariation": "VA",
   "variation": "Vanguard",
   "type": "gunboat",

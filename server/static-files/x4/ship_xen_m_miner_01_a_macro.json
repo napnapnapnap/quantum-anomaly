@@ -4,7 +4,7 @@
   "race": "xen",
   "name": "S",
   "basename": null,
-  "description": null,
+  "description": "The Xenon S is a light miner/freighter supporting the AI collective's primary resource logistics.",
   "shortvariation": "BV",
   "variation": "Base Variation",
   "type": "miner",
@@ -79,7 +79,8 @@
   "weapons": [
     {
       "quantity": 1,
-      "size": "medium"
+      "size": "medium",
+      "standard": true
     }
   ],
   "shields": {

@@ -4,7 +4,7 @@
   "race": "par",
   "name": "Chthonios E (Mineral)",
   "basename": null,
-  "description": "E-model variation was introduced at a later date, and updated the superficial design to bring it up to par with Commonwealth standards that were established during the period of disconnection. The precursor version is slowly being phased out, but will remain available for interested third parties.",
+  "description": "The Chthonios miner boasts impressive speed. The economics of running a large production empire require the optimisation of miners' speed versus cargo space. With sufficient speed, a constant stream of smaller deliveries of resources can keep mega-factories running more efficiently than if they are left waiting for larger shipments.\\n\\nThe Chthonios is tailored for just this style of \"just-in-time\" logistics management, and is available in models able to collect gases or minerals.\\n\\nThe E-model(\"E\" same as E) variation was introduced at a later date, and updated the superficial design to bring it up to par with Commonwealth standards that were established during the period of disconnection. The precursor version is slowly being phased out, but will remain available for interested third parties.",
   "shortvariation": "BV",
   "variation": "Base Variation",
   "type": "largeminer",
@@ -104,7 +104,7 @@
     {
       "quantity": 1,
       "size": "large",
-      "standard": false,
+      "standard": true,
       "missile": false,
       "shields": {
         "quantity": 2,

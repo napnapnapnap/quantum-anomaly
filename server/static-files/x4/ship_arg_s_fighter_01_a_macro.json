@@ -4,7 +4,7 @@
   "race": "arg",
   "name": "Nova Vanguard",
   "basename": "Nova",
-  "description": "Though the prototype for the new-model Nova-class dogfighter was in development as far back as the Terran Conflict, it never reached mass-production before the Jump Gate shutdown. As such, its first major role was as an escort to Argon Federation exploratory groups that were sent out into newly discovered or rediscovered areas of space as the Jump Gates began to realign.\\n\\nIn terms of its class, the new-look Nova is a major step up in ship design, with rotatable engines that make it formidable in keeping up with and tracking targets of a similar size.",
+  "description": "Though the prototype for the new-model Nova-class fighter was in development as far back as the Terran Conflict, it failed to reach production before the Jump Gate shutdown. Its first major role was escorting Argon Federation exploratory groups sent into newly discovered or rediscovered areas of space as the Jump Gates began to realign.\\n\\nThe new-look Nova is a major step up in ship design, with rotatable engines that make it formidable in strafing targets of a similar size. The Nova's redesign caused considerable controversy in the piloting community, when the rear turret was abandoned in favour of increased laser energy and strafing performance.\\n\\nDespite being a sound dogfighter, the Nova lacks the firepower required by full-time combatants. The Vanguard model improves the speed of the Nova. However, some pilots have suggested a portion of the upgrade budget might have been better spent on an aesthetic redesign.",
   "shortvariation": "VA",
   "variation": "Vanguard",
   "type": "fighter",

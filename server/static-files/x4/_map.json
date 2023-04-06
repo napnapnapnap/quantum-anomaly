@@ -210,6 +210,16 @@
               }
             },
             {
+              "id": "x4ep1_gamestart_boso_hq",
+              "race": "argon",
+              "owner": "player",
+              "tags": "station",
+              "position": {
+                "x": 53.33333333333333,
+                "z": -21
+              }
+            },
+            {
               "id": "tel_defence_cluster_01_sector001",
               "race": "teladi",
               "owner": "teladi",
@@ -3517,7 +3527,7 @@
               "assigned": true
             }
           ],
-          "sunlight": 1,
+          "sunlight": 2,
           "label": "Bright Promise",
           "stations": [
             {
@@ -10604,7 +10614,7 @@
               }
             }
           ],
-          "description": "This is a quiet sector, situated on the edge of the sphere of influence belonging to Morning Star III. It is sparsely populated and its traffic usually consists of those travelling from the planet to other Argon systems and mining ships on their way to the asteroid fields above Morning Star IV. ",
+          "description": "This is a quiet sector, situated on the edge of the sphere of influence belonging to Morning Star III. It is sparsely populated and its traffic usually consists of those travelling from the planet to other Argon systems and mining ships on their way to the asteroid fields above Morning Star IV.",
           "position": {
             "x": 0,
             "y": 0,
@@ -10681,7 +10691,7 @@
               },
               "gates": [
                 {
-                  "name": "connection_ClusterGate031To315",
+                  "name": "connection_ClusterGate031To601b",
                   "position": {
                     "x": -979.737,
                     "z": 808.3316666666666
@@ -14945,8 +14955,8 @@
               "owner": "split",
               "tags": "defence",
               "position": {
-                "x": -383.38733333333334,
-                "z": 1123.2136666666668
+                "x": -420.19466666666665,
+                "z": 1093.2123333333334
               }
             },
             {
@@ -15103,8 +15113,18 @@
               "owner": "split",
               "tags": "defence",
               "position": {
-                "x": -382.30533333333335,
-                "z": 1335.3146666666667
+                "x": -386.1053333333333,
+                "z": 1334.7146666666667
+              }
+            },
+            {
+              "id": "spl_defence_cluster_402_sector001_2",
+              "race": "split",
+              "owner": "split",
+              "tags": "defence",
+              "position": {
+                "x": -351.5973333333333,
+                "z": 1253.3043333333333
               }
             }
           ],
@@ -15265,8 +15285,8 @@
               "owner": "split",
               "tags": "defence",
               "position": {
-                "x": -975.551,
-                "z": 1012.956
+                "x": -917.1663333333333,
+                "z": 967.6453333333334
               }
             }
           ],
@@ -15391,8 +15411,8 @@
               "owner": "split",
               "tags": "defence",
               "position": {
-                "x": -788.051,
-                "z": 1066.8676666666668
+                "x": -748.8333333333334,
+                "z": 1065.8333333333333
               }
             }
           ],
@@ -16367,7 +16387,7 @@
             }
           ],
           "zonehighways": [],
-          "sunlight": 1,
+          "sunlight": 2,
           "label": "Heart of Acrimony II",
           "stations": [
             {
@@ -16537,7 +16557,7 @@
             }
           ],
           "zonehighways": [],
-          "sunlight": 1,
+          "sunlight": 2.1,
           "label": "Zyarth's Dominion IV",
           "stations": [
             {
@@ -16551,6 +16571,16 @@
               }
             },
             {
+              "id": "shipyard_split_warforge_01",
+              "race": "split",
+              "owner": "split",
+              "tags": "shipyard",
+              "position": {
+                "x": 623.8,
+                "z": 1149.6166666666666
+              }
+            },
+            {
               "id": "wharf_split_01",
               "race": "split",
               "owner": "split",
@@ -16561,13 +16591,23 @@
               }
             },
             {
+              "id": "spl_hullparts_landmark",
+              "race": "split",
+              "owner": "split",
+              "tags": "hullpartslandmark",
+              "position": {
+                "x": 562.5,
+                "z": 1190.75
+              }
+            },
+            {
               "id": "spl_defence_cluster_405_sector001",
               "race": "split",
               "owner": "split",
               "tags": "defence",
               "position": {
-                "x": 524.449,
-                "z": 1229.456
+                "x": 581.336,
+                "z": 1144.9543333333334
               }
             }
           ],
@@ -16694,7 +16734,7 @@
             }
           ],
           "zonehighways": [],
-          "sunlight": 1,
+          "sunlight": 1.51,
           "label": "Zyarth's Dominion X",
           "stations": [
             {
@@ -16713,8 +16753,18 @@
               "owner": "split",
               "tags": "defence",
               "position": {
-                "x": 593.5723333333333,
-                "z": 1443.3966666666668
+                "x": 585.8056666666666,
+                "z": 1443.5133333333333
+              }
+            },
+            {
+              "id": "spl_defence_cluster_406_sector001_2",
+              "race": "split",
+              "owner": "split",
+              "tags": "defence",
+              "position": {
+                "x": 545.5766666666667,
+                "z": 1413.5166666666667
               }
             }
           ],
@@ -16841,7 +16891,7 @@
             }
           ],
           "zonehighways": [],
-          "sunlight": 1,
+          "sunlight": 1.42,
           "label": "Zyarth's Dominion I",
           "stations": [
             {
@@ -16860,8 +16910,18 @@
               "owner": "split",
               "tags": "defence",
               "position": {
-                "x": 336.949,
-                "z": 1337.706
+                "x": 335.6156666666667,
+                "z": 1334.906
+              }
+            },
+            {
+              "id": "spl_defence_cluster_404_sector001_2",
+              "race": "split",
+              "owner": "split",
+              "tags": "defence",
+              "position": {
+                "x": 372.234,
+                "z": 1297.342
               }
             }
           ],
@@ -17008,8 +17068,18 @@
               "owner": "split",
               "tags": "defence",
               "position": {
-                "x": 331.457,
-                "z": 1098.3426666666667
+                "x": 334.1236666666667,
+                "z": 1086.476
+              }
+            },
+            {
+              "id": "spl_defence_cluster_418_sector001_2",
+              "race": "split",
+              "owner": "split",
+              "tags": "defence",
+              "position": {
+                "x": 421.35766666666666,
+                "z": 1057.1106666666667
               }
             }
           ],
@@ -17038,7 +17108,7 @@
               "name": "region_cluster_418_sector_001_d",
               "miningRegionVolume": 109900,
               "resourceQuantities": {
-                "ore": 740110560,
+                "ore": 3400262040,
                 "silicon": 60361476,
                 "ice": 20398539,
                 "hydrogen": 3614,
@@ -17050,7 +17120,7 @@
           ],
           "owner": "split",
           "resourcePoints": {
-            "ore": 75,
+            "ore": 100,
             "silicon": 7,
             "ice": 100,
             "hydrogen": 1,
@@ -17352,7 +17422,21 @@
             "y": 0,
             "z": 0
           },
+          "resources": [
+            {
+              "name": "region_cluster_420_sector_001",
+              "miningRegionVolume": 4000000,
+              "resourceQuantities": {
+                "ore": 9397800000,
+                "silicon": 7555500000
+              }
+            }
+          ],
           "owner": "teladi",
+          "resourcePoints": {
+            "ore": 100,
+            "silicon": 100
+          },
           "adjusted": {
             "x": 750,
             "y": 0,
@@ -17517,7 +17601,7 @@
               }
             }
           ],
-          "description": "Initially, the Argon Federation rushed to claim this system for its resources in anticipation of a potential conflict with the Terran Navy. At first, the colonists were weary of the vulnerability their remote position brought with it, but since those early stages of settlement, they managed to developed a sizeable industry, capable of sustaining and defending the system despite the distance to the heart of the Federation.\\n\\nThis self-reliance would prove critical when the Jump Gates disrupted the exchange of supplies between Guiding Star  and the rest of the Federation. It also gave the colonists a fighting chance against Split families looking to gain a foothold in the system and enslaving its inhabitants.",
+          "description": "Initially, the Argon Federation rushed to claim this system for its resources in anticipation of a potential conflict with the Terran Navy. At first, the colonists were wary of the vulnerability their remote position brought with it, but since those early stages of settlement, they managed to developed a sizeable industry, capable of sustaining and defending the system despite the distance to the heart of the Federation.\\n\\nThis self-reliance would prove critical when the Jump Gates disrupted the exchange of supplies between Guiding Star  and the rest of the Federation. It also gave the colonists a fighting chance against Split families looking to gain a foothold in the system and enslaving its inhabitants.",
           "position": {
             "x": 0,
             "y": 0,
@@ -17684,7 +17768,7 @@
               }
             }
           ],
-          "description": "Initially, the Argon Federation rushed to claim this system for its resources in anticipation of a potential conflict with the Terran Navy. At first, the colonists were weary of the vulnerability their remote position brought with it, but since those early stages of settlement, they managed to developed a sizeable industry, capable of sustaining and defending the system despite the distance to the heart of the Federation.\\n\\nThis self-reliance would prove critical when the Jump Gates disrupted the exchange of supplies between Guiding Star  and the rest of the Federation. It also gave the colonists a fighting chance against Split families looking to gain a foothold in the system and enslaving its inhabitants.",
+          "description": "Initially, the Argon Federation rushed to claim this system for its resources in anticipation of a potential conflict with the Terran Navy. At first, the colonists were wary of the vulnerability their remote position brought with it, but since those early stages of settlement, they managed to developed a sizeable industry, capable of sustaining and defending the system despite the distance to the heart of the Federation.\\n\\nThis self-reliance would prove critical when the Jump Gates disrupted the exchange of supplies between Guiding Star  and the rest of the Federation. It also gave the colonists a fighting chance against Split families looking to gain a foothold in the system and enslaving its inhabitants.",
           "position": {
             "x": -119.09,
             "y": 121.19,
@@ -19675,7 +19759,7 @@
             }
           ],
           "zonehighways": [],
-          "sunlight": 1,
+          "sunlight": 0.6,
           "label": "Heart of Acrimony I The Boneyard",
           "stations": [],
           "description": "Hidden behind a Split funeral accelerator lies The Boneyard. Shrouded in silence, it is the tranquil resting place of many of the great Patriarchs. The living are not meant to interfere with their final slumber, and yet this sector lies at the heart of a conspiracy to topple the current ways of Split society.",
@@ -19813,7 +19897,7 @@
             }
           ],
           "zonehighways": [],
-          "sunlight": 1,
+          "sunlight": 0.13,
           "label": "Asteroid Belt",
           "stations": [
             {
@@ -19838,8 +19922,8 @@
               "name": "asteroidbelt_main",
               "miningRegionVolume": 4000000,
               "resourceQuantities": {
-                "ore": 597540000,
-                "silicon": 549240000,
+                "ore": 398360000,
+                "silicon": 366160000,
                 "ice": 84524999,
                 "nividium": 919,
                 "hydrogen": 68999,
@@ -19850,8 +19934,8 @@
           ],
           "owner": "terran",
           "resourcePoints": {
-            "ore": 60,
-            "silicon": 55,
+            "ore": 40,
+            "silicon": 37,
             "ice": 100,
             "nividium": 1,
             "hydrogen": 4,
@@ -19963,7 +20047,7 @@
             }
           ],
           "zonehighways": [],
-          "sunlight": 1,
+          "sunlight": 0.44,
           "label": "Mars",
           "stations": [
             {
@@ -20120,7 +20204,7 @@
             }
           ],
           "zonehighways": [],
-          "sunlight": 1,
+          "sunlight": 1.9,
           "label": "Venus",
           "stations": [
             {
@@ -20616,7 +20700,7 @@
             }
           ],
           "zonehighways": [],
-          "sunlight": 1,
+          "sunlight": 6.8,
           "label": "Mercury",
           "stations": [
             {
@@ -20753,7 +20837,7 @@
             }
           ],
           "zonehighways": [],
-          "sunlight": 1,
+          "sunlight": 0.03,
           "label": "Jupiter",
           "stations": [
             {
@@ -20980,7 +21064,7 @@
             }
           ],
           "zonehighways": [],
-          "sunlight": 1,
+          "sunlight": 0.02,
           "label": "Saturn 1",
           "stations": [
             {
@@ -21123,7 +21207,7 @@
             }
           ],
           "zonehighways": [],
-          "sunlight": 1,
+          "sunlight": 0.02,
           "label": "Titan",
           "stations": [
             {
@@ -21270,7 +21354,7 @@
             }
           ],
           "zonehighways": [],
-          "sunlight": 1,
+          "sunlight": 0.02,
           "label": "Saturn 2",
           "stations": [],
           "description": "The imposing, yet beautiful, planet Saturn is the planet furthest removed from Earth that can still be observed from there with the naked eye. As such, it has always held a special place in the hearts of the Terran people, even before they were able to make their homes among the stars.\\n\\nHistorically, Saturn hosted a Research Station under joint ATF and USC command. Their focus was the identification and analysis of potential threats to Terran security, especially those posed by outside species and technologies. When the Sol system fell back into the isolation and the Terran government reorganised itself, the assignment of threat assessment was gradually shifted to the Mars-based Terran Secret Service.\\n\\nIn the aftermath of the Torus incident, the Terran government was keen to severely limit access to Earth by travellers and workers from all over the universe, so Saturn now acts as the administrative hub of the Sol system.",
@@ -21284,8 +21368,8 @@
               "name": "saturn_field",
               "miningRegionVolume": 4000000,
               "resourceQuantities": {
-                "ore": 14890199999,
-                "silicon": 3146399999,
+                "ore": 9926800000,
+                "silicon": 2097600000,
                 "ice": 903899999,
                 "hydrogen": 690000,
                 "helium": 690000
@@ -21527,7 +21611,7 @@
             }
           ],
           "zonehighways": [],
-          "sunlight": 1,
+          "sunlight": 0.02,
           "label": "Uranus",
           "stations": [
             {
@@ -21664,7 +21748,7 @@
             }
           ],
           "zonehighways": [],
-          "sunlight": 1,
+          "sunlight": 0.02,
           "label": "Neptune",
           "stations": [
             {
@@ -21813,7 +21897,7 @@
             }
           ],
           "zonehighways": [],
-          "sunlight": 1,
+          "sunlight": 0.02,
           "label": "Pluto",
           "stations": [
             {
@@ -21948,7 +22032,7 @@
             }
           ],
           "zonehighways": [],
-          "sunlight": 1,
+          "sunlight": 1.22,
           "label": "Savage Spur I",
           "stations": [
             {
@@ -22004,7 +22088,7 @@
               "miningRegionVolume": 4000000,
               "resourceQuantities": {
                 "ore": 59754000,
-                "silicon": 549240000,
+                "silicon": 366160000,
                 "nividium": 919,
                 "hydrogen": 68999,
                 "helium": 68999,
@@ -22015,7 +22099,7 @@
           "owner": "xenon",
           "resourcePoints": {
             "ore": 6,
-            "silicon": 55,
+            "silicon": 37,
             "nividium": 1,
             "hydrogen": 4,
             "helium": 4,
@@ -22121,7 +22205,7 @@
             }
           ],
           "zonehighways": [],
-          "sunlight": 1,
+          "sunlight": 1.22,
           "label": "Savage Spur II",
           "stations": [
             {
@@ -22306,7 +22390,7 @@
             }
           ],
           "zonehighways": [],
-          "sunlight": 1,
+          "sunlight": 1.86,
           "label": "Segaris",
           "stations": [
             {
@@ -22352,7 +22436,7 @@
               "miningRegionVolume": 4000000,
               "resourceQuantities": {
                 "ore": 59754000,
-                "silicon": 549240000,
+                "silicon": 366160000,
                 "nividium": 919,
                 "hydrogen": 68999,
                 "helium": 68999,
@@ -22364,7 +22448,7 @@
           "owner": "pioneers",
           "resourcePoints": {
             "ore": 6,
-            "silicon": 55,
+            "silicon": 37,
             "nividium": 1,
             "hydrogen": 4,
             "helium": 4,
@@ -22476,7 +22560,7 @@
             }
           ],
           "zonehighways": [],
-          "sunlight": 1,
+          "sunlight": 1.86,
           "label": "Gaian Prophecy",
           "stations": [
             {
@@ -22532,7 +22616,7 @@
               "miningRegionVolume": 4000000,
               "resourceQuantities": {
                 "ore": 59754000,
-                "silicon": 549240000,
+                "silicon": 366160000,
                 "nividium": 919,
                 "hydrogen": 68999,
                 "helium": 68999,
@@ -22543,7 +22627,7 @@
           "owner": "pioneers",
           "resourcePoints": {
             "ore": 6,
-            "silicon": 55,
+            "silicon": 37,
             "nividium": 1,
             "hydrogen": 4,
             "helium": 4,
@@ -22675,7 +22759,7 @@
             }
           ],
           "zonehighways": [],
-          "sunlight": 1,
+          "sunlight": 1.21,
           "label": "Brennan's Triumph",
           "stations": [
             {
@@ -22808,7 +22892,7 @@
             }
           ],
           "zonehighways": [],
-          "sunlight": 1,
+          "sunlight": 0.02,
           "label": "Oort Cloud",
           "stations": [
             {
@@ -22834,7 +22918,7 @@
               "miningRegionVolume": 4000000,
               "resourceQuantities": {
                 "ore": 59754000,
-                "silicon": 549240000,
+                "silicon": 366160000,
                 "nividium": 919,
                 "ice": 72105000,
                 "hydrogen": 68999,
@@ -22846,7 +22930,7 @@
           "owner": "terran",
           "resourcePoints": {
             "ore": 6,
-            "silicon": 55,
+            "silicon": 37,
             "nividium": 1,
             "ice": 100,
             "hydrogen": 4,
@@ -23025,7 +23109,7 @@
             }
           ],
           "zonehighways": [],
-          "sunlight": 1,
+          "sunlight": 13.9,
           "label": "Avarice I",
           "stations": [
             {
@@ -23222,7 +23306,7 @@
             }
           ],
           "zonehighways": [],
-          "sunlight": 1,
+          "sunlight": 13.9,
           "label": "Avarice V Dead End",
           "stations": [
             {
@@ -23401,7 +23485,7 @@
             }
           ],
           "zonehighways": [],
-          "sunlight": 1,
+          "sunlight": 13.9,
           "label": "Avarice IV",
           "stations": [
             {
@@ -23691,7 +23775,7 @@
             }
           ],
           "zonehighways": [],
-          "sunlight": 1,
+          "sunlight": 0.13,
           "label": "Windfall I Union Summit",
           "stations": [
             {
@@ -23891,7 +23975,7 @@
             }
           ],
           "zonehighways": [],
-          "sunlight": 1,
+          "sunlight": 0.13,
           "label": "Windfall III The Hoard",
           "stations": [
             {
@@ -24044,7 +24128,7 @@
             }
           ],
           "zonehighways": [],
-          "sunlight": 1,
+          "sunlight": 0.13,
           "label": "Windfall IV Aurora's Dream",
           "stations": [
             {
@@ -24200,7 +24284,7 @@
             }
           ],
           "zonehighways": [],
-          "sunlight": 1,
+          "sunlight": 0.13,
           "label": "Unknown System",
           "stations": [
             {
@@ -25592,7 +25676,7 @@
         "z": 921.736
       }
     },
-    "031315": {
+    "031601b": {
       "dlc": [],
       "start": {
         "x": -979.737,

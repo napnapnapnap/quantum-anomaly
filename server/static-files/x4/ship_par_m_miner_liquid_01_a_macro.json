@@ -4,7 +4,7 @@
   "race": "par",
   "name": "Plutus (Gas) Vanguard",
   "basename": "Plutus",
-  "description": null,
+  "description": "The Paranid Plutus is a decidedly humble, medium-sized resource extractor, available in both mineral and gas extraction formats.\\n\\nThe Plutus is available in the Vanguard variation. This gas extractor is therefore marginally faster than its sister vessels.",
   "shortvariation": "VA",
   "variation": "Vanguard",
   "type": "miner",

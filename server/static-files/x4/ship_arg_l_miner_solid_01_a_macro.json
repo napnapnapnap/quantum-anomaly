@@ -84,7 +84,7 @@
     {
       "quantity": 1,
       "size": "large",
-      "standard": false,
+      "standard": true,
       "missile": false,
       "shields": {
         "quantity": 2,

@@ -4,6 +4,7 @@
     "race": "teladi",
     "owner": "player",
     "type": "factory",
+    "encyclopedia": "true",
     "quotas": {
       "quota": {
         "galaxy": "1",
@@ -2450,7 +2451,10 @@
     },
     "location": {
       "class": "zone",
-      "macro": "zone003_cluster_32_sector001_macro"
+      "macro": "zone003_cluster_32_sector001_macro",
+      "region": {
+        "allowhazardous": "true"
+      }
     },
     "station": {
       "select": {
@@ -2732,7 +2736,10 @@
     },
     "location": {
       "class": "zone",
-      "macro": "zone002_cluster_32_sector001_macro"
+      "macro": "zone002_cluster_32_sector001_macro",
+      "region": {
+        "allowhazardous": "true"
+      }
     },
     "position": {
       "x": "8143.45703125",
@@ -2764,7 +2771,10 @@
     },
     "location": {
       "class": "zone",
-      "macro": "zone001_cluster_32_sector001_macro"
+      "macro": "zone001_cluster_32_sector001_macro",
+      "region": {
+        "allowhazardous": "true"
+      }
     },
     "position": {
       "x": "-6552.45703125",
@@ -2796,7 +2806,10 @@
     },
     "location": {
       "class": "zone",
-      "macro": "zone004_cluster_32_sector001_macro"
+      "macro": "zone004_cluster_32_sector001_macro",
+      "region": {
+        "allowhazardous": "true"
+      }
     },
     "position": {
       "x": "30902.45703125",
@@ -2860,7 +2873,10 @@
     },
     "location": {
       "class": "zone",
-      "macro": "zone002_cluster_32_sector001_macro"
+      "macro": "zone002_cluster_32_sector001_macro",
+      "region": {
+        "allowhazardous": "true"
+      }
     },
     "position": {
       "x": "-23585.44921875",
@@ -2892,7 +2908,10 @@
     },
     "location": {
       "class": "zone",
-      "macro": "zone001_cluster_32_sector001_macro"
+      "macro": "zone001_cluster_32_sector001_macro",
+      "region": {
+        "allowhazardous": "true"
+      }
     },
     "position": {
       "x": "9684.72265625",
@@ -2924,7 +2943,10 @@
     },
     "location": {
       "class": "zone",
-      "macro": "zone003_cluster_32_sector001_macro"
+      "macro": "zone003_cluster_32_sector001_macro",
+      "region": {
+        "allowhazardous": "true"
+      }
     },
     "position": {
       "x": "-10775.0859375",
@@ -2956,7 +2978,10 @@
     },
     "location": {
       "class": "zone",
-      "macro": "zone003_cluster_32_sector001_macro"
+      "macro": "zone003_cluster_32_sector001_macro",
+      "region": {
+        "allowhazardous": "true"
+      }
     },
     "position": {
       "x": "4733.490234375",
@@ -2988,7 +3013,10 @@
     },
     "location": {
       "class": "zone",
-      "macro": "zone004_cluster_32_sector001_macro"
+      "macro": "zone004_cluster_32_sector001_macro",
+      "region": {
+        "allowhazardous": "true"
+      }
     },
     "position": {
       "x": "-11064.0712890625",
@@ -3020,7 +3048,10 @@
     },
     "location": {
       "class": "zone",
-      "macro": "zone002_cluster_32_sector001_macro"
+      "macro": "zone002_cluster_32_sector001_macro",
+      "region": {
+        "allowhazardous": "true"
+      }
     },
     "position": {
       "x": "-26501.45703125",
@@ -3052,7 +3083,10 @@
     },
     "location": {
       "class": "zone",
-      "macro": "zone001_cluster_32_sector001_macro"
+      "macro": "zone001_cluster_32_sector001_macro",
+      "region": {
+        "allowhazardous": "true"
+      }
     },
     "position": {
       "x": "-3006.45703125",
@@ -3716,7 +3750,7 @@
     "race": "argon",
     "type": "piratebase",
     "quota": {
-      "galaxy": "6",
+      "galaxy": "5",
       "sector": "1"
     },
     "location": {
@@ -3779,6 +3813,39 @@
     }
   },
   {
+    "id": "x4ep1_gamestart_boso_hq",
+    "race": "argon",
+    "owner": "player",
+    "type": "headquarters",
+    "quotas": {
+      "quota": {
+        "galaxy": "1",
+        "zone": "1",
+        "gamestart": "x4ep1_gamestart_boso"
+      }
+    },
+    "location": {
+      "class": "sector",
+      "macro": "cluster_01_sector001_macro"
+    },
+    "position": {
+      "x": "128000",
+      "y": "0",
+      "z": "198000",
+      "pitch": "0",
+      "roll": "0",
+      "yaw": "0"
+    },
+    "station": {
+      "constructionplan": "'x4ep1_playerheadquarters_with_dock'",
+      "loadout": {
+        "level": {
+          "exact": "0.2"
+        }
+      }
+    }
+  },
+  {
     "id": "test_recycling_station",
     "race": "teladi",
     "owner": "player",
@@ -3808,6 +3875,360 @@
     }
   },
   {
+    "id": "spl_defence_cluster_400_sector001",
+    "race": "split",
+    "owner": "split",
+    "type": "factory",
+    "quotas": {
+      "quota": {
+        "galaxy": "1",
+        "zone": "1"
+      }
+    },
+    "location": {
+      "class": "sector",
+      "macro": "cluster_400_sector001_macro"
+    },
+    "position": {
+      "x": "3500",
+      "y": "0",
+      "z": "-50000",
+      "pitch": "0",
+      "roll": "0",
+      "yaw": "0"
+    },
+    "station": {
+      "select": {
+        "faction": "split",
+        "tags": "[defence]"
+      },
+      "loadout": {
+        "useplanloadout": "true"
+      }
+    }
+  },
+  {
+    "id": "equipmentdock_split_02",
+    "race": "split",
+    "owner": "split",
+    "type": "factory",
+    "quotas": {
+      "quota": {
+        "galaxy": "1",
+        "zone": "1"
+      }
+    },
+    "location": {
+      "class": "sector",
+      "macro": "cluster_401_sector001_macro"
+    },
+    "station": {
+      "select": {
+        "faction": "split",
+        "tags": "[equipmentdock]"
+      },
+      "loadout": {
+        "level": {
+          "exact": "1.0"
+        }
+      }
+    }
+  },
+  {
+    "id": "spl_defence_cluster_401_sector001",
+    "race": "split",
+    "owner": "split",
+    "type": "factory",
+    "quotas": {
+      "quota": {
+        "galaxy": "1",
+        "zone": "1"
+      }
+    },
+    "location": {
+      "class": "zone",
+      "macro": "zone001_cluster_401_sector001_macro"
+    },
+    "position": {
+      "x": "-10000",
+      "y": "0",
+      "z": "12000",
+      "pitch": "0",
+      "roll": "0",
+      "yaw": "0"
+    },
+    "station": {
+      "select": {
+        "faction": "split",
+        "tags": "[defence]"
+      },
+      "loadout": {
+        "useplanloadout": "true"
+      }
+    }
+  },
+  {
+    "id": "spl_defence_cluster_401_sector001_2",
+    "race": "split",
+    "owner": "split",
+    "type": "factory",
+    "quotas": {
+      "quota": {
+        "galaxy": "1",
+        "zone": "1"
+      }
+    },
+    "location": {
+      "class": "zone",
+      "macro": "zone005_cluster_401_sector001_macro"
+    },
+    "position": {
+      "x": "4506",
+      "y": "0",
+      "z": "6992",
+      "pitch": "0",
+      "roll": "0",
+      "yaw": "0"
+    },
+    "station": {
+      "select": {
+        "faction": "split",
+        "tags": "[defence]"
+      },
+      "loadout": {
+        "useplanloadout": "true"
+      }
+    }
+  },
+  {
+    "id": "spl_defence_cluster_402_sector001",
+    "race": "split",
+    "owner": "split",
+    "type": "factory",
+    "quotas": {
+      "quota": {
+        "galaxy": "1",
+        "zone": "1"
+      }
+    },
+    "location": {
+      "class": "zone",
+      "macro": "zone002_cluster_402_sector001_macro"
+    },
+    "position": {
+      "x": "-11400",
+      "y": "0",
+      "z": "-1800",
+      "pitch": "0",
+      "roll": "0",
+      "yaw": "0"
+    },
+    "station": {
+      "select": {
+        "faction": "split",
+        "tags": "[defence]"
+      },
+      "loadout": {
+        "useplanloadout": "true"
+      }
+    }
+  },
+  {
+    "id": "spl_defence_cluster_402_sector001_2",
+    "race": "split",
+    "owner": "split",
+    "type": "factory",
+    "quotas": {
+      "quota": {
+        "galaxy": "1",
+        "zone": "1"
+      }
+    },
+    "location": {
+      "class": "zone",
+      "macro": "zone005_cluster_402_sector001_macro"
+    },
+    "position": {
+      "x": "-5200",
+      "y": "0",
+      "z": "-11000",
+      "pitch": "0",
+      "roll": "0",
+      "yaw": "0"
+    },
+    "station": {
+      "select": {
+        "faction": "split",
+        "tags": "[defence]"
+      },
+      "loadout": {
+        "useplanloadout": "true"
+      }
+    }
+  },
+  {
+    "id": "wharf_split_02",
+    "race": "split",
+    "owner": "split",
+    "type": "factory",
+    "quotas": {
+      "quota": {
+        "galaxy": "1",
+        "zone": "1"
+      }
+    },
+    "location": {
+      "class": "sector",
+      "macro": "cluster_403_sector001_macro"
+    },
+    "position": {
+      "x": "-107418.086",
+      "z": "-33812.773",
+      "pitch": "0",
+      "roll": "0"
+    },
+    "station": {
+      "select": {
+        "faction": "split",
+        "tags": "[wharf]"
+      },
+      "loadout": {
+        "level": {
+          "exact": "1.0"
+        }
+      }
+    }
+  },
+  {
+    "id": "spl_defence_cluster_403_sector001",
+    "race": "split",
+    "owner": "split",
+    "type": "factory",
+    "quotas": {
+      "quota": {
+        "galaxy": "1",
+        "zone": "1"
+      }
+    },
+    "location": {
+      "class": "zone",
+      "macro": "zone004_cluster_403_sector001_macro"
+    },
+    "position": {
+      "x": "-31200",
+      "z": "15800",
+      "pitch": "0",
+      "roll": "0"
+    },
+    "station": {
+      "select": {
+        "faction": "split",
+        "tags": "[defence]"
+      },
+      "loadout": {
+        "useplanloadout": "true"
+      }
+    }
+  },
+  {
+    "id": "equipmentdock_split_01",
+    "race": "split",
+    "owner": "split",
+    "type": "factory",
+    "quotas": {
+      "quota": {
+        "galaxy": "1",
+        "zone": "1"
+      }
+    },
+    "location": {
+      "class": "sector",
+      "macro": "cluster_404_sector001_macro"
+    },
+    "position": {
+      "x": "48011.633",
+      "y": "5000",
+      "z": "12045.338",
+      "roll": "0",
+      "pitch": "0"
+    },
+    "station": {
+      "select": {
+        "faction": "split",
+        "tags": "[equipmentdock]"
+      },
+      "loadout": {
+        "level": {
+          "exact": "1.0"
+        }
+      }
+    }
+  },
+  {
+    "id": "spl_defence_cluster_404_sector001",
+    "race": "split",
+    "owner": "split",
+    "type": "factory",
+    "quotas": {
+      "quota": {
+        "galaxy": "1",
+        "zone": "1"
+      }
+    },
+    "location": {
+      "class": "zone",
+      "macro": "zone001_cluster_404_sector001_macro"
+    },
+    "position": {
+      "x": "-4000",
+      "y": "0",
+      "z": "-8400",
+      "roll": "0",
+      "pitch": "0"
+    },
+    "station": {
+      "select": {
+        "faction": "split",
+        "tags": "[defence]"
+      },
+      "loadout": {
+        "useplanloadout": "true"
+      }
+    }
+  },
+  {
+    "id": "spl_defence_cluster_404_sector001_2",
+    "race": "split",
+    "owner": "split",
+    "type": "factory",
+    "quotas": {
+      "quota": {
+        "galaxy": "1",
+        "zone": "1"
+      }
+    },
+    "location": {
+      "class": "zone",
+      "macro": "zone004_cluster_404_sector001_macro"
+    },
+    "position": {
+      "x": "16740",
+      "y": "0",
+      "z": "9700",
+      "roll": "0",
+      "pitch": "0"
+    },
+    "station": {
+      "select": {
+        "faction": "split",
+        "tags": "[defence]"
+      },
+      "loadout": {
+        "useplanloadout": "true"
+      }
+    }
+  },
+  {
     "id": "shipyard_split_01",
     "race": "split",
     "owner": "split",
@@ -3829,6 +4250,42 @@
       "pitch": "0"
     },
     "station": {
+      "select": {
+        "faction": "split",
+        "tags": "[shipyard]"
+      },
+      "loadout": {
+        "level": {
+          "exact": "1.0"
+        }
+      }
+    }
+  },
+  {
+    "id": "shipyard_split_warforge_01",
+    "race": "split",
+    "owner": "split",
+    "type": "factory",
+    "quotas": {
+      "quota": {
+        "galaxy": "1",
+        "zone": "1"
+      }
+    },
+    "location": {
+      "class": "sector",
+      "macro": "cluster_405_sector001_macro",
+      "solitary": "1"
+    },
+    "position": {
+      "x": "183900",
+      "z": "-123400",
+      "roll": "0",
+      "pitch": "0",
+      "yaw": "60"
+    },
+    "station": {
+      "constructionplan": "spl_shipyard_warforge",
       "select": {
         "faction": "split",
         "tags": "[shipyard]"
@@ -3874,7 +4331,7 @@
     }
   },
   {
-    "id": "wharf_split_02",
+    "id": "spl_defence_cluster_405_sector001",
     "race": "split",
     "owner": "split",
     "type": "factory",
@@ -3885,63 +4342,28 @@
       }
     },
     "location": {
-      "class": "sector",
-      "macro": "cluster_403_sector001_macro"
+      "class": "zone",
+      "macro": "zone005_cluster_405_sector001_macro"
     },
     "position": {
-      "x": "-107418.086",
-      "z": "-33812.773",
-      "pitch": "0",
-      "roll": "0"
-    },
-    "station": {
-      "select": {
-        "faction": "split",
-        "tags": "[wharf]"
-      },
-      "loadout": {
-        "level": {
-          "exact": "1.0"
-        }
-      }
-    }
-  },
-  {
-    "id": "equipmentdock_split_01",
-    "race": "split",
-    "owner": "split",
-    "type": "factory",
-    "quotas": {
-      "quota": {
-        "galaxy": "1",
-        "zone": "1"
-      }
-    },
-    "location": {
-      "class": "sector",
-      "macro": "cluster_404_sector001_macro"
-    },
-    "position": {
-      "x": "48011.633",
-      "y": "5000",
-      "z": "12045.338",
+      "x": "-18900",
+      "y": "0",
+      "z": "-11300",
       "roll": "0",
       "pitch": "0"
     },
     "station": {
       "select": {
         "faction": "split",
-        "tags": "[equipmentdock]"
+        "tags": "[defence]"
       },
       "loadout": {
-        "level": {
-          "exact": "1.0"
-        }
+        "useplanloadout": "true"
       }
     }
   },
   {
-    "id": "equipmentdock_split_02",
+    "id": "spl_hullparts_landmark",
     "race": "split",
     "owner": "split",
     "type": "factory",
@@ -3953,16 +4375,16 @@
     },
     "location": {
       "class": "sector",
-      "macro": "cluster_401_sector001_macro"
+      "macro": "cluster_405_sector001_macro"
     },
     "station": {
       "select": {
         "faction": "split",
-        "tags": "[equipmentdock]"
+        "tags": "[hullpartslandmark]"
       },
       "loadout": {
         "level": {
-          "exact": "1.0"
+          "exact": "0.8"
         }
       }
     }
@@ -3995,191 +4417,6 @@
     }
   },
   {
-    "id": "spl_defence_cluster_400_sector001",
-    "race": "split",
-    "owner": "split",
-    "type": "factory",
-    "quotas": {
-      "quota": {
-        "galaxy": "1",
-        "zone": "1"
-      }
-    },
-    "location": {
-      "class": "zone",
-      "macro": "zone001_cluster_400_sector001_macro"
-    },
-    "station": {
-      "select": {
-        "faction": "split",
-        "tags": "[defence]"
-      },
-      "loadout": {
-        "level": {
-          "exact": "0.75"
-        }
-      }
-    }
-  },
-  {
-    "id": "spl_defence_cluster_401_sector001",
-    "race": "split",
-    "owner": "split",
-    "type": "factory",
-    "quotas": {
-      "quota": {
-        "galaxy": "1",
-        "zone": "1"
-      }
-    },
-    "location": {
-      "class": "zone",
-      "macro": "zone002_cluster_401_sector001_macro"
-    },
-    "position": {
-      "x": "-3246",
-      "y": "0",
-      "z": "13197",
-      "pitch": "0",
-      "roll": "0",
-      "yaw": "0"
-    },
-    "station": {
-      "select": {
-        "faction": "split",
-        "tags": "[defence]",
-        "loadout": {
-          "level": {
-            "exact": "1"
-          }
-        }
-      }
-    }
-  },
-  {
-    "id": "spl_defence_cluster_401_sector001_2",
-    "race": "split",
-    "owner": "split",
-    "type": "factory",
-    "quotas": {
-      "quota": {
-        "galaxy": "1",
-        "zone": "1"
-      }
-    },
-    "location": {
-      "class": "zone",
-      "macro": "zone005_cluster_401_sector001_macro"
-    },
-    "position": {
-      "x": "4506",
-      "y": "0",
-      "z": "6992",
-      "pitch": "0",
-      "roll": "0",
-      "yaw": "0"
-    },
-    "station": {
-      "select": {
-        "faction": "split",
-        "tags": "[defence]",
-        "loadout": {
-          "level": {
-            "exact": "1"
-          }
-        }
-      }
-    }
-  },
-  {
-    "id": "spl_defence_cluster_402_sector001",
-    "race": "split",
-    "owner": "split",
-    "type": "factory",
-    "quotas": {
-      "quota": {
-        "galaxy": "1",
-        "zone": "1"
-      }
-    },
-    "location": {
-      "class": "zone",
-      "macro": "zone002_cluster_402_sector001_macro"
-    },
-    "station": {
-      "select": {
-        "faction": "split",
-        "tags": "[defence]"
-      }
-    }
-  },
-  {
-    "id": "spl_defence_cluster_403_sector001",
-    "race": "split",
-    "owner": "split",
-    "type": "factory",
-    "quotas": {
-      "quota": {
-        "galaxy": "1",
-        "zone": "1"
-      }
-    },
-    "location": {
-      "class": "zone",
-      "macro": "zone001_cluster_403_sector001_macro"
-    },
-    "station": {
-      "select": {
-        "faction": "split",
-        "tags": "[defence]"
-      }
-    }
-  },
-  {
-    "id": "spl_defence_cluster_404_sector001",
-    "race": "split",
-    "owner": "split",
-    "type": "factory",
-    "quotas": {
-      "quota": {
-        "galaxy": "1",
-        "zone": "1"
-      }
-    },
-    "location": {
-      "class": "zone",
-      "macro": "zone001_cluster_404_sector001_macro"
-    },
-    "station": {
-      "select": {
-        "faction": "split",
-        "tags": "[defence]"
-      }
-    }
-  },
-  {
-    "id": "spl_defence_cluster_405_sector001",
-    "race": "split",
-    "owner": "split",
-    "type": "factory",
-    "quotas": {
-      "quota": {
-        "galaxy": "1",
-        "zone": "1"
-      }
-    },
-    "location": {
-      "class": "zone",
-      "macro": "zone001_cluster_405_sector001_macro"
-    },
-    "station": {
-      "select": {
-        "faction": "split",
-        "tags": "[defence]"
-      }
-    }
-  },
-  {
     "id": "spl_defence_cluster_406_sector001",
     "race": "split",
     "owner": "split",
@@ -4194,10 +4431,52 @@
       "class": "zone",
       "macro": "zone003_cluster_406_sector001_macro"
     },
+    "position": {
+      "x": "-23300",
+      "y": "0",
+      "z": "350",
+      "roll": "0",
+      "pitch": "0"
+    },
     "station": {
       "select": {
         "faction": "split",
         "tags": "[defence]"
+      },
+      "loadout": {
+        "useplanloadout": "true"
+      }
+    }
+  },
+  {
+    "id": "spl_defence_cluster_406_sector001_2",
+    "race": "split",
+    "owner": "split",
+    "type": "factory",
+    "quotas": {
+      "quota": {
+        "galaxy": "1",
+        "zone": "1"
+      }
+    },
+    "location": {
+      "class": "sector",
+      "macro": "cluster_406_sector001_macro"
+    },
+    "position": {
+      "x": "-50770",
+      "y": "0",
+      "z": "18800",
+      "roll": "0",
+      "pitch": "0"
+    },
+    "station": {
+      "select": {
+        "faction": "split",
+        "tags": "[defence]"
+      },
+      "loadout": {
+        "useplanloadout": "true"
       }
     }
   },
@@ -4216,10 +4495,52 @@
       "class": "zone",
       "macro": "zone001_cluster_418_sector001_macro"
     },
+    "position": {
+      "x": "8000",
+      "y": "0",
+      "z": "-35600",
+      "roll": "0",
+      "pitch": "0"
+    },
     "station": {
       "select": {
         "faction": "split",
         "tags": "[defence]"
+      },
+      "loadout": {
+        "useplanloadout": "true"
+      }
+    }
+  },
+  {
+    "id": "spl_defence_cluster_418_sector001_2",
+    "race": "split",
+    "owner": "split",
+    "type": "factory",
+    "quotas": {
+      "quota": {
+        "galaxy": "1",
+        "zone": "1"
+      }
+    },
+    "location": {
+      "class": "zone",
+      "macro": "zone004_cluster_418_sector001_macro"
+    },
+    "position": {
+      "x": "13000",
+      "y": "0",
+      "z": "16300",
+      "roll": "0",
+      "pitch": "0"
+    },
+    "station": {
+      "select": {
+        "faction": "split",
+        "tags": "[defence]"
+      },
+      "loadout": {
+        "useplanloadout": "true"
       }
     }
   },
@@ -4648,7 +4969,7 @@
     "quotas": {
       "quota": {
         "galaxy": "2",
-        "zone": "1"
+        "zone": "2"
       }
     },
     "location": {
@@ -5821,6 +6142,7 @@
     "race": "terran",
     "owner": "pioneers",
     "type": "tradingstation",
+    "encyclopedia": "true",
     "quotas": {
       "quota": {
         "galaxy": "1",
@@ -5928,6 +6250,7 @@
     "race": "terran",
     "owner": "pioneers",
     "type": "headquarters",
+    "encyclopedia": "true",
     "quotas": {
       "quota": [
         {
@@ -6335,6 +6658,7 @@
     "race": "teladi",
     "owner": "ministry",
     "type": "factory",
+    "encyclopedia": "true",
     "quotas": {
       "quota": {
         "galaxy": "1"
@@ -6438,6 +6762,7 @@
     "race": "argon",
     "owner": "loanshark",
     "type": "factory",
+    "encyclopedia": "true",
     "quotas": {
       "quota": {
         "galaxy": "1"
@@ -6464,6 +6789,7 @@
     "race": "argon",
     "owner": "loanshark",
     "type": "factory",
+    "encyclopedia": "true",
     "quotas": {
       "quota": {
         "galaxy": "1",
@@ -6690,6 +7016,7 @@
     "race": "teladi",
     "owner": "loanshark",
     "type": "tradingstation",
+    "encyclopedia": "true",
     "quotas": {
       "quota": {
         "galaxy": "1",
@@ -6731,11 +7058,7 @@
     },
     "location": {
       "class": "zone",
-      "macro": "zone004_cluster_500_sector001_macro",
-      "corerange": {
-        "min": "0.8",
-        "max": "1.2"
-      }
+      "macro": "zone004_cluster_500_sector001_macro"
     },
     "position": {
       "x": "38717.664",
@@ -6769,11 +7092,7 @@
     },
     "location": {
       "class": "sector",
-      "macro": "cluster_500_sector001_macro",
-      "corerange": {
-        "min": "0.8",
-        "max": "1.2"
-      }
+      "macro": "cluster_500_sector001_macro"
     },
     "position": {
       "x": "-114264.586",
@@ -6808,10 +7127,7 @@
     "location": {
       "class": "zone",
       "macro": "zone005_cluster_500_sector001_macro",
-      "solitary": "true",
-      "corerange": {
-        "max": "1"
-      }
+      "solitary": "true"
     },
     "position": {
       "x": "38437.68",
@@ -6846,10 +7162,7 @@
     "location": {
       "class": "zone",
       "macro": "zone001_cluster_500_sector002_macro",
-      "solitary": "true",
-      "corerange": {
-        "max": "1"
-      }
+      "solitary": "true"
     },
     "position": {
       "x": "21098.273",
@@ -6884,10 +7197,7 @@
     "location": {
       "class": "zone",
       "macro": "zone001_cluster_500_sector003_macro",
-      "solitary": "true",
-      "corerange": {
-        "max": "1"
-      }
+      "solitary": "true"
     },
     "position": {
       "x": "-6235.023",

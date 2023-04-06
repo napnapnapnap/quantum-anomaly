@@ -175,8 +175,7 @@
   "weapons": [
     {
       "quantity": 1,
-      "size": "extralarge",
-      "standard": true
+      "size": "extralarge"
     }
   ],
   "shields": {

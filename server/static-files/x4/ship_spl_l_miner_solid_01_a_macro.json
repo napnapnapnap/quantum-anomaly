@@ -4,7 +4,7 @@
   "race": "spl",
   "name": "Wyvern (Mineral)",
   "basename": "Wyvern",
-  "description": null,
+  "description": "The Split Wyvern is a large resource-harvesting vessel, with the firepower necessary for more challenging environments. This model is fitted for asteroid mining.",
   "shortvariation": "BV",
   "variation": "Base Variation",
   "type": "largeminer",
@@ -114,7 +114,7 @@
     {
       "quantity": 1,
       "size": "large",
-      "standard": false,
+      "standard": true,
       "missile": false,
       "shields": {
         "quantity": 1,
@@ -124,7 +124,7 @@
     {
       "quantity": 1,
       "size": "large",
-      "standard": false,
+      "standard": true,
       "missile": false,
       "shields": {
         "quantity": 1,

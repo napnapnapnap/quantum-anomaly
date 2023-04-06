@@ -4,7 +4,7 @@
   "race": "par",
   "name": "Gorgon Vanguard",
   "basename": "Gorgon",
-  "description": null,
+  "description": "The Gorgon is a high performance Paranid frigate, developed in response to the threat posed by the Split Dragon.\\n\\nA popular escort vessel for capital ships, it can also provide the backbone for offensive fleets.\\n\\nThe Vanguard model is generally preferred for tactical offence.",
   "shortvariation": "VA",
   "variation": "Vanguard",
   "type": "frigate",

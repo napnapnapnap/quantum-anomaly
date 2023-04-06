@@ -487,6 +487,195 @@
     ]
   },
   {
+    "name": "asteroid_ore_nores_xxl",
+    "select": {
+      "macro": "env_ast_ore_xxl_01_macro"
+    }
+  },
+  {
+    "name": "asteroid_ore_nores_xl",
+    "select": [
+      {
+        "macro": "env_ast_ore_xl_01_macro"
+      },
+      {
+        "macro": "env_ast_ore_xl_02_macro"
+      }
+    ]
+  },
+  {
+    "name": "asteroid_ore_nores_l",
+    "select": [
+      {
+        "macro": "env_ast_ore_l_01_macro"
+      },
+      {
+        "macro": "env_ast_ore_l_02_macro"
+      },
+      {
+        "macro": "env_ast_ore_l_03_macro"
+      },
+      {
+        "macro": "env_ast_ore_l_04_macro"
+      },
+      {
+        "macro": "env_ast_ore_l_05_macro"
+      }
+    ]
+  },
+  {
+    "name": "asteroid_ore_nores_m",
+    "select": [
+      {
+        "macro": "env_ast_ore_m_01_macro"
+      },
+      {
+        "macro": "env_ast_ore_m_02_macro"
+      },
+      {
+        "macro": "env_ast_ore_m_03_macro"
+      },
+      {
+        "macro": "env_ast_ore_m_04_macro"
+      },
+      {
+        "macro": "env_ast_ore_m_05_macro"
+      },
+      {
+        "macro": "env_ast_ore_m_06_macro"
+      }
+    ]
+  },
+  {
+    "name": "asteroid_ore_nores_s",
+    "select": [
+      {
+        "macro": "env_ast_ore_s_01_macro"
+      },
+      {
+        "macro": "env_ast_ore_s_02_macro"
+      },
+      {
+        "macro": "env_ast_ore_s_03_macro"
+      },
+      {
+        "macro": "env_ast_ore_s_04_macro"
+      },
+      {
+        "macro": "env_ast_ore_s_05_macro"
+      }
+    ]
+  },
+  {
+    "name": "asteroid_ore_nores_xs",
+    "select": [
+      {
+        "macro": "env_ast_ore_xs_01_macro"
+      },
+      {
+        "macro": "env_ast_ore_xs_02_macro"
+      },
+      {
+        "macro": "env_ast_ore_xs_03_macro"
+      },
+      {
+        "macro": "env_ast_ore_xs_04_macro"
+      },
+      {
+        "macro": "env_ast_ore_xs_05_macro"
+      }
+    ]
+  },
+  {
+    "name": "asteroid_silicon_nores_xl",
+    "select": {
+      "macro": "env_ast_crystal_xl_01_macro"
+    }
+  },
+  {
+    "name": "asteroid_silicon_nores_l",
+    "select": [
+      {
+        "macro": "env_ast_crystal_l_01_macro"
+      },
+      {
+        "macro": "env_ast_crystal_l_02_macro"
+      },
+      {
+        "macro": "env_ast_crystal_l_03_macro"
+      }
+    ]
+  },
+  {
+    "name": "asteroid_silicon_nores_m",
+    "select": [
+      {
+        "macro": "env_ast_crystal_m_01_macro"
+      },
+      {
+        "macro": "env_ast_crystal_m_02_macro"
+      },
+      {
+        "macro": "env_ast_crystal_m_03_macro"
+      },
+      {
+        "macro": "env_ast_crystal_m_04_macro"
+      },
+      {
+        "macro": "env_ast_crystal_m_05_macro"
+      },
+      {
+        "macro": "env_ast_crystal_m_06_macro"
+      }
+    ]
+  },
+  {
+    "name": "asteroid_silicon_nores_s",
+    "select": [
+      {
+        "macro": "env_ast_crystal_s_01_macro"
+      },
+      {
+        "macro": "env_ast_crystal_s_02_macro"
+      },
+      {
+        "macro": "env_ast_crystal_s_03_macro"
+      },
+      {
+        "macro": "env_ast_crystal_s_04_macro"
+      },
+      {
+        "macro": "env_ast_crystal_s_05_macro"
+      },
+      {
+        "macro": "env_ast_crystal_s_06_macro"
+      }
+    ]
+  },
+  {
+    "name": "asteroid_silicon_nores_xs",
+    "select": [
+      {
+        "macro": "env_ast_crystal_xs_01_macro"
+      },
+      {
+        "macro": "env_ast_crystal_xs_02_macro"
+      },
+      {
+        "macro": "env_ast_crystal_xs_03_macro"
+      },
+      {
+        "macro": "env_ast_crystal_xs_04_macro"
+      },
+      {
+        "macro": "env_ast_crystal_xs_05_macro"
+      },
+      {
+        "macro": "env_ast_crystal_xs_06_macro"
+      }
+    ]
+  },
+  {
     "name": "asteroid_xenon_xxl",
     "select": [
       {

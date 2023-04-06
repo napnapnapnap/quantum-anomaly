@@ -92,10 +92,10 @@ const X4Map = () => {
 
   const wheelHandler = (e: WheelEvent) => {
     e.preventDefault();
-    if (e.deltaY < 0 && scale > 8) return null;
+    if (e.deltaY < 0 && scale > 10) return null;
     if (e.deltaY > 0 && scale < 1.25) return null;
     e.deltaY < 0
-      ? setScale((prevScale) => (prevScale < 8 ? prevScale + 0.5 : 8))
+      ? setScale((prevScale) => (prevScale < 8 ? prevScale + 0.5 : 10))
       : setScale((prevScale) => (prevScale > 1 ? prevScale - 0.5 : 1));
   };
 
@@ -132,7 +132,7 @@ const X4Map = () => {
   return (
     <LayoutBase>
       <div className="x4__map">
-        <h1>X4 Foundations Map v5.1</h1>
+        <h1>X4 Foundations Map</h1>
         {map && (
           <React.Fragment>
             <div ref={wrapper} className="x4__map-wrapper">

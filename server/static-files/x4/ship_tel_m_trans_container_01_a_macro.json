@@ -4,7 +4,7 @@
   "race": "tel",
   "name": "Vulture Vanguard",
   "basename": "Vulture",
-  "description": null,
+  "description": "The Teladi Vulture medium freighter, while generally unassuming, remains a popular choice for independent traders in particular. It has excellent cargo capacity, more than making up for its lack of speed, on an analysis of trade route profitability.\\n\\nThe Vanguard model increases speed marginally, however, this comes with a reduction in cargo space.",
   "shortvariation": "VA",
   "variation": "Vanguard",
   "type": "transporter",
@@ -45,7 +45,7 @@
     "people": 16,
     "countermeasure": 8,
     "deployable": 100,
-    "capacity": 10200,
+    "capacity": 12080,
     "capacityType": "container"
   },
   "mass": 63.13,

@@ -4,7 +4,7 @@
   "race": "par",
   "name": "Selene Sentinel",
   "basename": "Selene",
-  "description": null,
+  "description": "The Paranid Selene is a modest heavy freighter lacking notable characteristics. If traders wish to move things, it does so without fanfare.\\n\\nThe Sentinel model raises the logistical performance of the Selene to levels that are generally considered to be adequate.",
   "shortvariation": "ST",
   "variation": "Sentinel",
   "type": "freighter",

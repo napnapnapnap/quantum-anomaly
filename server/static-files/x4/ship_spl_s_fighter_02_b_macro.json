@@ -4,7 +4,7 @@
   "race": "spl",
   "name": "Asp Raider",
   "basename": "Asp",
-  "description": null,
+  "description": "The Asp is a highly manoeuvrable medium-sized fighter, and a commonly preferred ship for Split mercenaries.\\n\\nShipwright Qal t'Kzt of the Split Free Families designed the Raider variant of the Asp. It is thought to be the answer to t'Kzt's burning question, \"How much hull does Asp really need?\".",
   "shortvariation": "RD",
   "variation": "Raider",
   "type": "fighter",

@@ -4,7 +4,7 @@
   "race": "par",
   "name": "Theseus Vanguard",
   "basename": "Theseus",
-  "description": null,
+  "description": "The Paranid Theseus is a solid, all-round performer with deadly firepower, built upon a solid chassis. If it is lacking anywhere it is in speed, though there are many tactical deployments where this is not a major issue.\\n\\nThe Vanguard model aims to rectify the speed issue, though it is debateable whether this is achieved, or even necessary.",
   "shortvariation": "VA",
   "variation": "Vanguard",
   "type": "fighter",

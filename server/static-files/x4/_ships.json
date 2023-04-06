@@ -137,13 +137,11 @@
       {
         "quantity": 1,
         "size": "large",
-        "standard": true,
         "capitalGun": "arg_destroyer_01"
       },
       {
         "quantity": 1,
         "size": "large",
-        "standard": true,
         "capitalGun": "arg_destroyer_01"
       }
     ],
@@ -323,13 +321,11 @@
       {
         "quantity": 1,
         "size": "large",
-        "standard": true,
         "capitalGun": "arg_destroyer_01"
       },
       {
         "quantity": 1,
         "size": "large",
-        "standard": true,
         "capitalGun": "arg_destroyer_01"
       }
     ],
@@ -783,7 +779,7 @@
       {
         "quantity": 1,
         "size": "large",
-        "standard": false,
+        "standard": true,
         "missile": false,
         "shields": {
           "quantity": 2,
@@ -956,7 +952,7 @@
       {
         "quantity": 1,
         "size": "large",
-        "standard": false,
+        "standard": true,
         "missile": false,
         "shields": {
           "quantity": 2,
@@ -2659,7 +2655,7 @@
     "race": "par",
     "name": "Odysseus Vanguard",
     "basename": "Odysseus",
-    "description": null,
+    "description": "The Paranid Odysseus is a highly regarded destroyer with an often consequential presence in large scale engagements.\\n\\nThe latest version's architect is the notoriously sensitive Olmanckabssit, who is reputed to fly into a rage at the slightest mention of the vessel's resemblance to a hair dryer.\\n\\nThe Odysseus Vanguard has enhanced speed.",
     "shortvariation": "VA",
     "variation": "Vanguard",
     "type": "destroyer",
@@ -2821,13 +2817,11 @@
       {
         "quantity": 1,
         "size": "large",
-        "standard": true,
         "capitalGun": "par_destroyer_01"
       },
       {
         "quantity": 1,
         "size": "large",
-        "standard": true,
         "capitalGun": "par_destroyer_01"
       }
     ],
@@ -2875,7 +2869,7 @@
     "race": "par",
     "name": "Odysseus Sentinel",
     "basename": "Odysseus",
-    "description": null,
+    "description": "The Paranid Odysseus is a highly regarded destroyer with an often consequential presence in large scale engagements.\\n\\nThe latest version's architect is the notoriously sensitive Olmanckabssit, who is reputed to fly into a rage at the slightest mention of the vessel's resemblance to a hair dryer.\\n\\nThe Sentinel model boasts greater resilience.",
     "shortvariation": "ST",
     "variation": "Sentinel",
     "type": "destroyer",
@@ -3037,13 +3031,11 @@
       {
         "quantity": 1,
         "size": "large",
-        "standard": true,
         "capitalGun": "par_destroyer_01"
       },
       {
         "quantity": 1,
         "size": "large",
-        "standard": true,
         "capitalGun": "par_destroyer_01"
       }
     ],
@@ -3091,7 +3083,7 @@
     "race": "par",
     "name": "Odysseus E",
     "basename": null,
-    "description": "E-model variation was introduced at a later date, and updated the superficial design to bring it up to par with Commonwealth standards that were established during the period of disconnection. The precursor version is slowly being phased out, but will remain available for interested third parties.",
+    "description": "The Paranid Odysseus is a highly regarded destroyer with an often consequential presence in large scale engagements.\\n\\nThe E-model(\"E\" same as E) variation was introduced at a later date, and updated the superficial design to bring it up to par with Commonwealth standards that were established during the period of disconnection. The precursor version is slowly being phased out, but will remain available for interested third parties.\\n\\nThe Odysseus E-model prioritises hardpoints, however, it suffers from reduced storage capacity as a consequence.",
     "shortvariation": "BV",
     "variation": "Base Variation",
     "type": "destroyer",
@@ -3253,13 +3245,11 @@
       {
         "quantity": 1,
         "size": "large",
-        "standard": true,
         "capitalGun": "par_destroyer_01"
       },
       {
         "quantity": 1,
         "size": "large",
-        "standard": true,
         "capitalGun": "par_destroyer_01"
       }
     ],
@@ -3307,7 +3297,7 @@
     "race": "par",
     "name": "Chthonios (Gas) Vanguard",
     "basename": "Chthonios",
-    "description": null,
+    "description": "The Chthonios miner boasts impressive speed. The economics of running a large production empire require the optimisation of miners' speed versus cargo space. With sufficient speed, a constant stream of smaller deliveries of resources can keep mega-factories running more efficiently than if they are left waiting for larger shipments.\\n\\nThe Chthonios is tailored for just this style of \"just-in-time\" logistics management, and is available in models able to collect gases or minerals. The Vanguard variant adds even more speed.",
     "shortvariation": "VA",
     "variation": "Vanguard",
     "type": "largeminer",
@@ -3450,7 +3440,7 @@
     "race": "par",
     "name": "Chthonios (Gas) Sentinel",
     "basename": "Chthonios",
-    "description": null,
+    "description": "The Chthonios miner boasts impressive speed. The economics of running a large production empire require the optimisation of miners' speed versus cargo space. With sufficient speed, a constant stream of smaller deliveries of resources can keep mega-factories running more efficiently than if they are left waiting for larger shipments.\\n\\nThe Chthonios is tailored for just this style of \"just-in-time\" logistics management, and is available in models able to collect gases or minerals. The Sentinel variant enhances structural robustness in case miners encounter hostiles.",
     "shortvariation": "ST",
     "variation": "Sentinel",
     "type": "largeminer",
@@ -3593,7 +3583,7 @@
     "race": "par",
     "name": "Chthonios E (Gas)",
     "basename": null,
-    "description": "E-model variation was introduced at a later date, and updated the superficial design to bring it up to par with Commonwealth standards that were established during the period of disconnection. The precursor version is slowly being phased out, but will remain available for interested third parties.",
+    "description": "The Chthonios miner boasts impressive speed. The economics of running a large production empire require the optimisation of miners' speed versus cargo space. With sufficient speed, a constant stream of smaller deliveries of resources can keep mega-factories running more efficiently than if they are left waiting for larger shipments.\\n\\nThe Chthonios is tailored for just this style of \"just-in-time\" logistics management, and is available in models able to collect gases or minerals.\\n\\nThe E-model(\"E\" same as E) variation was introduced at a later date, and updated the superficial design to bring it up to par with Commonwealth standards that were established during the period of disconnection. The precursor version is slowly being phased out, but will remain available for interested third parties.",
     "shortvariation": "BV",
     "variation": "Base Variation",
     "type": "largeminer",
@@ -3736,7 +3726,7 @@
     "race": "par",
     "name": "Chthonios (Mineral) Vanguard",
     "basename": "Chthonios",
-    "description": null,
+    "description": "The Chthonios miner boasts impressive speed. The economics of running a large production empire require the optimisation of miners' speed versus cargo space. With sufficient speed, a constant stream of smaller deliveries of resources can keep mega-factories running more efficiently than if they are left waiting for larger shipments.\\n\\nThe Chthonios is tailored for just this style of \"just-in-time\" logistics management, and is available in models able to collect gases or minerals. The Vanguard variant adds even more speed.",
     "shortvariation": "VA",
     "variation": "Vanguard",
     "type": "largeminer",
@@ -3836,7 +3826,7 @@
       {
         "quantity": 1,
         "size": "large",
-        "standard": false,
+        "standard": true,
         "missile": false,
         "shields": {
           "quantity": 2,
@@ -3889,7 +3879,7 @@
     "race": "par",
     "name": "Chthonios (Mineral) Sentinel",
     "basename": "Chthonios",
-    "description": null,
+    "description": "The Chthonios miner boasts impressive speed. The economics of running a large production empire require the optimisation of miners' speed versus cargo space. With sufficient speed, a constant stream of smaller deliveries of resources can keep mega-factories running more efficiently than if they are left waiting for larger shipments.\\n\\nThe Chthonios is tailored for just this style of \"just-in-time\" logistics management, and is available in models able to collect gases or minerals. The Sentinel variant enhances structural robustness in case miners encounter hostiles.",
     "shortvariation": "ST",
     "variation": "Sentinel",
     "type": "largeminer",
@@ -3989,7 +3979,7 @@
       {
         "quantity": 1,
         "size": "large",
-        "standard": false,
+        "standard": true,
         "missile": false,
         "shields": {
           "quantity": 2,
@@ -4042,7 +4032,7 @@
     "race": "par",
     "name": "Chthonios E (Mineral)",
     "basename": null,
-    "description": "E-model variation was introduced at a later date, and updated the superficial design to bring it up to par with Commonwealth standards that were established during the period of disconnection. The precursor version is slowly being phased out, but will remain available for interested third parties.",
+    "description": "The Chthonios miner boasts impressive speed. The economics of running a large production empire require the optimisation of miners' speed versus cargo space. With sufficient speed, a constant stream of smaller deliveries of resources can keep mega-factories running more efficiently than if they are left waiting for larger shipments.\\n\\nThe Chthonios is tailored for just this style of \"just-in-time\" logistics management, and is available in models able to collect gases or minerals.\\n\\nThe E-model(\"E\" same as E) variation was introduced at a later date, and updated the superficial design to bring it up to par with Commonwealth standards that were established during the period of disconnection. The precursor version is slowly being phased out, but will remain available for interested third parties.",
     "shortvariation": "BV",
     "variation": "Base Variation",
     "type": "largeminer",
@@ -4142,7 +4132,7 @@
       {
         "quantity": 1,
         "size": "large",
-        "standard": false,
+        "standard": true,
         "missile": false,
         "shields": {
           "quantity": 2,
@@ -4195,7 +4185,7 @@
     "race": "par",
     "name": "Helios Vanguard",
     "basename": "Helios",
-    "description": null,
+    "description": "The reasonably fast Helios freighter is a staple of Paranid logistics operations. While it cannot be said to be best-in-class on any single performance metric, it remains a sound choice overall.\\n\\nThe enduring popularity of this heavy freighter is believed to be founded on its sleek lines and attractive profile. Freighter captains are no rock stars, but the Helios does turn heads. It is not uncommon for youngsters to seek out berthing Helios vessels, begging for a ship tour.\\n\\nThe Vanguard model is the fastest ship in the Helios line.",
     "shortvariation": "VA",
     "variation": "Vanguard",
     "type": "freighter",
@@ -4358,7 +4348,7 @@
     "race": "par",
     "name": "Helios Sentinel",
     "basename": "Helios",
-    "description": null,
+    "description": "The reasonably fast Helios freighter is a staple of Paranid logistics operations. While it cannot be said to be best-in-class on any single performance metric, it remains a sound choice overall.\\n\\nThe enduring popularity of this heavy freighter is believed to be founded on its sleek lines and attractive profile. Freighter captains are no rock stars, but the Helios does turn heads. It is not uncommon for youngsters to seek out berthing Helios vessels, begging for a ship tour.\\n\\nThe additional cargo space offered by the Helios Sentinel improves long term trading efficiency.",
     "shortvariation": "ST",
     "variation": "Sentinel",
     "type": "freighter",
@@ -4521,7 +4511,7 @@
     "race": "par",
     "name": "Selene Vanguard",
     "basename": "Selene",
-    "description": null,
+    "description": "The Paranid Selene is a modest heavy freighter lacking notable characteristics. If traders wish to move things, it does so without fanfare.\\n\\nThe Vanguard model was developed in an attempt to inspire some excitement around the Selene. Most commentators agree that this failed.",
     "shortvariation": "VA",
     "variation": "Vanguard",
     "type": "freighter",
@@ -4684,7 +4674,7 @@
     "race": "par",
     "name": "Selene Sentinel",
     "basename": "Selene",
-    "description": null,
+    "description": "The Paranid Selene is a modest heavy freighter lacking notable characteristics. If traders wish to move things, it does so without fanfare.\\n\\nThe Sentinel model raises the logistical performance of the Selene to levels that are generally considered to be adequate.",
     "shortvariation": "ST",
     "variation": "Sentinel",
     "type": "freighter",
@@ -4847,7 +4837,7 @@
     "race": "par",
     "name": "Helios E",
     "basename": null,
-    "description": "E-model variation was introduced at a later date, and updated the superficial design to bring it up to par with Commonwealth standards that were established during the period of disconnection. The precursor version is slowly being phased out, but will remain available for interested third parties.",
+    "description": "The reasonably fast Helios freighter is a staple of Paranid logistics operations. While it cannot be said to be best-in-class on any single performance metric, it remains a sound choice overall.\\n\\nThe enduring popularity of this heavy freighter is believed to be founded on its sleek lines and attractive profile. Freighter captains are no rock stars, but the Helios does turn heads. It is not uncommon for youngsters to seek out berthing Helios vessels, begging for a ship tour.\\n\\nundefined(The E-model ...)",
     "shortvariation": "BV",
     "variation": "Base Variation",
     "type": "freighter",
@@ -5010,7 +5000,7 @@
     "race": "tel",
     "name": "Phoenix Vanguard",
     "basename": "Phoenix",
-    "description": null,
+    "description": "When the Teladi Company commissioned a redesign of the Phoenix destroyer, their goal wasn't to create an all-conquering super weapon. Instead, their focus was to build a robust capital ship able to withstand the rigours of battle long enough for reinforcements to arrive.\\n\\nIn this regard, commanders concede that, as a defensive platform, the designers succeeded. The Phoenix is built on a steadfast chassis. The designers are said to be particularly proud of an intelligently dispersed engine placement, where the previous model's cluster resembled an enticing invitation for torpedo targeting.\\n\\nThe Vanguard model marginally negates the Phoenix's lack of speed and agility.",
     "shortvariation": "VA",
     "variation": "Vanguard",
     "type": "destroyer",
@@ -5162,13 +5152,11 @@
       {
         "quantity": 1,
         "size": "large",
-        "standard": true,
         "capitalGun": "tel_destroyer_01"
       },
       {
         "quantity": 1,
         "size": "large",
-        "standard": true,
         "capitalGun": "tel_destroyer_01"
       }
     ],
@@ -5216,7 +5204,7 @@
     "race": "tel",
     "name": "Phoenix Sentinel",
     "basename": "Phoenix",
-    "description": null,
+    "description": "When the Teladi Company commissioned a redesign of the Phoenix destroyer, their goal wasn't to create an all-conquering super weapon. Instead, their focus was to build a robust capital ship able to withstand the rigours of battle long enough for reinforcements to arrive.\\n\\nIn this regard, commanders concede that, as a defensive platform, the designers succeeded. The Phoenix is built on a steadfast chassis. The designers are said to be particularly proud of an intelligently dispersed engine placement, where the previous model's cluster resembled an enticing invitation for torpedo targeting.\\n\\nThe increased resilience afforded by the Sentinel model comes with a reduction in speed and agility that has caused some pilots to refer to the vessel as an asteroid with guns.",
     "shortvariation": "ST",
     "variation": "Sentinel",
     "type": "destroyer",
@@ -5368,13 +5356,11 @@
       {
         "quantity": 1,
         "size": "large",
-        "standard": true,
         "capitalGun": "tel_destroyer_01"
       },
       {
         "quantity": 1,
         "size": "large",
-        "standard": true,
         "capitalGun": "tel_destroyer_01"
       }
     ],
@@ -5422,7 +5408,7 @@
     "race": "tel",
     "name": "Crane (Gas) Vanguard",
     "basename": "Crane",
-    "description": null,
+    "description": "The Teladi Crane is a large miner with truly impressive load carrying capacity. Fulfilling a major part of Teladi primary resource acquisition, the Crane is available in models optimised for either mineral or gas collection.\\n\\nThe Vanguard variant enhances the Crane's speed, which may benefit entrepreneurs who are mining resources far from where they are required.",
     "shortvariation": "VA",
     "variation": "Vanguard",
     "type": "largeminer",
@@ -5595,7 +5581,7 @@
     "race": "tel",
     "name": "Crane (Gas) Sentinel",
     "basename": "Crane",
-    "description": null,
+    "description": "The Teladi Crane is a large miner with truly impressive load carrying capacity. Fulfilling a major part of Teladi primary resource acquisition, the Crane is available in models optimised for either mineral or gas collection.\\n\\nThe Sentinel variant enhances the Crane's cargo hold even further, though pilots should be aware that this may make them an attractive proposition for pirates.",
     "shortvariation": "ST",
     "variation": "Sentinel",
     "type": "largeminer",
@@ -5768,7 +5754,7 @@
     "race": "tel",
     "name": "Crane (Mineral) Vanguard",
     "basename": "Crane",
-    "description": null,
+    "description": "The Teladi Crane is a large miner with truly impressive load carrying capacity. Fulfilling a major part of Teladi primary resource acquisition, the Crane is available in models optimised for either mineral or gas collection.\\n\\nThe Vanguard variant enhances the Crane's speed, which may benefit entrepreneurs who are mining resources far from where they are required.",
     "shortvariation": "VA",
     "variation": "Vanguard",
     "type": "largeminer",
@@ -5868,7 +5854,7 @@
       {
         "quantity": 1,
         "size": "medium",
-        "standard": false,
+        "standard": true,
         "missile": false,
         "shields": {
           "quantity": 1,
@@ -5878,7 +5864,7 @@
       {
         "quantity": 1,
         "size": "medium",
-        "standard": false,
+        "standard": true,
         "missile": false,
         "shields": {
           "quantity": 1,
@@ -5888,7 +5874,7 @@
       {
         "quantity": 1,
         "size": "medium",
-        "standard": false,
+        "standard": true,
         "missile": false,
         "shields": {
           "quantity": 1,
@@ -5941,7 +5927,7 @@
     "race": "tel",
     "name": "Crane (Mineral) Sentinel",
     "basename": "Crane",
-    "description": null,
+    "description": "The Teladi Crane is a large miner with truly impressive load carrying capacity. Fulfilling a major part of Teladi primary resource acquisition, the Crane is available in models optimised for either mineral or gas collection.\\n\\nThe Sentinel variant enhances the Crane's cargo hold even further, though pilots should be aware that this may make them an attractive proposition for pirates.",
     "shortvariation": "ST",
     "variation": "Sentinel",
     "type": "largeminer",
@@ -6041,7 +6027,7 @@
       {
         "quantity": 1,
         "size": "medium",
-        "standard": false,
+        "standard": true,
         "missile": false,
         "shields": {
           "quantity": 1,
@@ -6051,7 +6037,7 @@
       {
         "quantity": 1,
         "size": "medium",
-        "standard": false,
+        "standard": true,
         "missile": false,
         "shields": {
           "quantity": 1,
@@ -6061,7 +6047,7 @@
       {
         "quantity": 1,
         "size": "medium",
-        "standard": false,
+        "standard": true,
         "missile": false,
         "shields": {
           "quantity": 1,
@@ -6114,7 +6100,7 @@
     "race": "tel",
     "name": "Pelican Vanguard",
     "basename": "Pelican",
-    "description": null,
+    "description": "The Teladi Pelican is notable for its mediocrity as a freighter. It has taken to the level of an art form the capacity to be neither outstandingly good nor bad on any single metric. The single greatest mystery is why Teladi traders themselves use this ship, when there are many other more profitable options available.\\n\\nThe Vanguard model's increased speed manages to make the vessel even less profitable due to a reduction in cargo space.",
     "shortvariation": "VA",
     "variation": "Vanguard",
     "type": "freighter",
@@ -6155,7 +6141,7 @@
       "people": 100,
       "countermeasure": 20,
       "deployable": 250,
-      "capacity": 34000,
+      "capacity": 40800,
       "capacityType": "container"
     },
     "mass": 402.059,
@@ -6287,7 +6273,7 @@
     "race": "tel",
     "name": "Pelican Sentinel",
     "basename": "Pelican",
-    "description": null,
+    "description": "The Teladi Pelican is notable for its mediocrity as a freighter. It has taken to the level of an art form the capacity to be neither outstandingly good nor bad on any single metric. The single greatest mystery is why Teladi traders themselves use this ship, when there are many other more profitable options available.\\n\\nRecognising the commercial weakness of the Pelican, the Sentinel model boasts increased cargo space, improving the ship's overall trade run profitability.",
     "shortvariation": "ST",
     "variation": "Sentinel",
     "type": "freighter",
@@ -6328,7 +6314,7 @@
       "people": 83,
       "countermeasure": 20,
       "deployable": 250,
-      "capacity": 40800,
+      "capacity": 51000,
       "capacityType": "container"
     },
     "mass": 482.471,
@@ -6460,7 +6446,7 @@
     "race": "tel",
     "name": "Heron Vanguard",
     "basename": "Heron",
-    "description": null,
+    "description": "The Teladi Company's Heron is a large freighter. It is noted for its somewhat relaxed pace, which is in keeping with mainstream Teladi design values.\\n\\nThe Vanguard model marginally improves the Heron's speed, but the vessel remains unsuited to express delivery.",
     "shortvariation": "VA",
     "variation": "Vanguard",
     "type": "freighter",
@@ -6501,7 +6487,7 @@
       "people": 101,
       "countermeasure": 20,
       "deployable": 250,
-      "capacity": 31000,
+      "capacity": 36800,
       "capacityType": "container"
     },
     "mass": 367.5,
@@ -6633,7 +6619,7 @@
     "race": "tel",
     "name": "Heron Sentinel",
     "basename": "Heron",
-    "description": null,
+    "description": "The Teladi Company's Heron is a large freighter. It is noted for its somewhat relaxed pace, which is in keeping with mainstream Teladi design values.\\n\\nThe Sentinel model is popular in military academies for use in remedial target practice.",
     "shortvariation": "ST",
     "variation": "Sentinel",
     "type": "freighter",
@@ -6674,7 +6660,7 @@
       "people": 84,
       "countermeasure": 20,
       "deployable": 250,
-      "capacity": 37200,
+      "capacity": 46000,
       "capacityType": "container"
     },
     "mass": 441,
@@ -8559,7 +8545,7 @@
     "race": "kha",
     "name": "Queen's Guard",
     "basename": null,
-    "description": null,
+    "description": "Armed with the frighteningly accurate Kyon Emitter, the Kha'ak Queen's Guard most commonly attacks in swarm formation to devastating effect.\\n\\nThe pseudo-insectile nature of the Kha'ak gave rise to the theory that they are directly or indirectly controlled by a Queen. This, in turn, inspired the name given to this vessel. However, the theory is as yet unverified.",
     "shortvariation": "BV",
     "variation": "Base Variation",
     "type": "heavyfighter",
@@ -8662,7 +8648,7 @@
     "race": "kha",
     "name": "Hive Guard",
     "basename": null,
-    "description": null,
+    "description": "The diabolical pyramids of the Kha'ak are a perpetual threat. The Hive Guard is a heavy fighter and one of the more disturbing Kha'ak ships that may appear on a pilot's scanner.",
     "shortvariation": "BV",
     "variation": "Base Variation",
     "type": "heavyfighter",
@@ -8759,7 +8745,7 @@
     "race": "par",
     "name": "Nemesis Vanguard",
     "basename": "Nemesis",
-    "description": null,
+    "description": "The Paranid Nemesis is a highly sought-after corvette, boasting an attractive balance of speed, firepower and general versatility. The overall adaptability and build quality of the production line vessel ensure that the loadout options selected by owners can have a tangible impact on the tactical use-cases available.\\n\\nThe surprisingly fleet-footed base vessel can itself be optimised for speed by securing the Vanguard model.",
     "shortvariation": "VA",
     "variation": "Vanguard",
     "type": "corvette",
@@ -8907,7 +8893,7 @@
     "race": "par",
     "name": "Nemesis Sentinel",
     "basename": "Nemesis",
-    "description": null,
+    "description": "The Paranid Nemesis is a highly sought-after corvette, boasting an attractive balance of speed, firepower and general versatility. The overall adaptability and build quality of the production line vessel ensure that the loadout options selected by owners can have a tangible impact on the tactical use-cases available.\\n\\nThe Sentinel edition of the Nemesis offers additional resilience, which may be preferred by those operating in live fire environments.",
     "shortvariation": "ST",
     "variation": "Sentinel",
     "type": "corvette",
@@ -9055,7 +9041,7 @@
     "race": "par",
     "name": "Gorgon Vanguard",
     "basename": "Gorgon",
-    "description": null,
+    "description": "The Gorgon is a high performance Paranid frigate, developed in response to the threat posed by the Split Dragon.\\n\\nA popular escort vessel for capital ships, it can also provide the backbone for offensive fleets.\\n\\nThe Vanguard model is generally preferred for tactical offence.",
     "shortvariation": "VA",
     "variation": "Vanguard",
     "type": "frigate",
@@ -9193,7 +9179,7 @@
     "race": "par",
     "name": "Gorgon Sentinel",
     "basename": "Gorgon",
-    "description": null,
+    "description": "The Gorgon is a high performance Paranid frigate, developed in response to the threat posed by the Split Dragon.\\n\\nA popular escort vessel for capital ships, it can also provide the backbone for offensive fleets.\\n\\nThe Gorgon Sentinel is tailored for defensive operations, such as escort missions or station patrol.",
     "shortvariation": "ST",
     "variation": "Sentinel",
     "type": "frigate",
@@ -9331,7 +9317,7 @@
     "race": "par",
     "name": "Plutus (Gas) Vanguard",
     "basename": "Plutus",
-    "description": null,
+    "description": "The Paranid Plutus is a decidedly humble, medium-sized resource extractor, available in both mineral and gas extraction formats.\\n\\nThe Plutus is available in the Vanguard variation. This gas extractor is therefore marginally faster than its sister vessels.",
     "shortvariation": "VA",
     "variation": "Vanguard",
     "type": "miner",
@@ -9448,7 +9434,7 @@
     "race": "par",
     "name": "Plutus (Gas) Sentinel",
     "basename": "Plutus",
-    "description": null,
+    "description": "The Paranid Plutus is a decidedly humble, medium-sized resource extractor, available in both mineral and gas extraction formats.\\n\\nThis gas collector boasts increased resource storage capacity in the Sentinel model.",
     "shortvariation": "ST",
     "variation": "Sentinel",
     "type": "miner",
@@ -9565,7 +9551,7 @@
     "race": "par",
     "name": "Plutus (Mineral) Vanguard",
     "basename": "Plutus",
-    "description": null,
+    "description": "The Paranid Plutus is a decidedly humble, medium-sized resource extractor, available in both mineral and gas extraction formats.\\n\\nThe asteroid mining Vanguard model's enhancements do little to negate the vessel's understated presence. The ship remains eminently forgettable.",
     "shortvariation": "VA",
     "variation": "Vanguard",
     "type": "miner",
@@ -9689,7 +9675,7 @@
     "race": "par",
     "name": "Plutus (Mineral) Sentinel",
     "basename": "Plutus",
-    "description": null,
+    "description": "The Paranid Plutus is a decidedly humble, medium-sized resource extractor, available in both mineral and gas extraction formats.\\n\\nThe mining variant is available in a Sentinel model, which provides a helpful increase in solid storage capacity.",
     "shortvariation": "ST",
     "variation": "Sentinel",
     "type": "miner",
@@ -9813,7 +9799,7 @@
     "race": "par",
     "name": "Demeter Vanguard",
     "basename": "Demeter",
-    "description": null,
+    "description": "This light freighter has a dark reputation. While verifiable facts are absent, pilots talk in hushed voices of an early Demeter outing. An apparently wealthy, yet eccentric and reclusive, Teladi mogul commissioned a freelance Demeter Captain to transport him and his cargo from Ianamus Zura to Argon Prime.\\n\\nRumour has it that the ship was subsequently found floating in space in the Silent Witness system. The Demeter was found with no Captain, crew, customer or cargo; no sign of attack or damage, and with completely cleared ship logs. No-one has heard from any of them since.\\n\\nThe Demeter remains popular with freighter captains untroubled by superstition. The Vanguard offers enhanced offensive capability for operations in more challenging sectors.",
     "shortvariation": "VA",
     "variation": "Vanguard",
     "type": "transporter",
@@ -9926,7 +9912,7 @@
     "race": "par",
     "name": "Demeter Sentinel",
     "basename": "Demeter",
-    "description": null,
+    "description": "This light freighter has a dark reputation. While verifiable facts are absent, pilots talk in hushed voices of an early Demeter outing. An apparently wealthy, yet eccentric and reclusive, Teladi mogul commissioned a freelance Demeter Captain to transport him and his cargo from Ianamus Zura to Argon Prime.\\n\\nRumour has it that the ship was subsequently found floating in space in the Silent Witness system. The Demeter was found with no Captain, crew, customer or cargo; no sign of attack or damage, and with completely cleared ship logs. No-one has heard from any of them since.\\n\\nThe Demeter remains popular with freighter captains untroubled by superstition. The Sentinel model boasts additional resilience, tailored for commanders operating trade runs under fire.",
     "shortvariation": "ST",
     "variation": "Sentinel",
     "type": "transporter",
@@ -10039,7 +10025,7 @@
     "race": "par",
     "name": "Hermes Vanguard",
     "basename": "Hermes",
-    "description": null,
+    "description": "The Hermes is a medium-sized Paranid-designed journeyman freighter with reasonable performance.\\n\\nWhile the Vanguard offers additional speed, even this model is widely considered to be unsuited to blockade running.",
     "shortvariation": "VA",
     "variation": "Vanguard",
     "type": "transporter",
@@ -10152,7 +10138,7 @@
     "race": "par",
     "name": "Hermes Sentinel",
     "basename": "Hermes",
-    "description": null,
+    "description": "The Hermes is a medium-sized Paranid-designed journeyman freighter with reasonable performance.\\n\\nThe Sentinel model has improved cargo capacity and a somewhat hardened chassis.",
     "shortvariation": "ST",
     "variation": "Sentinel",
     "type": "transporter",
@@ -10405,7 +10391,7 @@
     "race": "tel",
     "name": "Peregrine Vanguard",
     "basename": "Peregrine",
-    "description": null,
+    "description": "While originally designed as a bomber, the Teladi Peregrine has recently found popularity in the role of an escort ship. Its primary tactical advantage in this regard is its excellent turret coverage, which can be highly effective when appropriately armed.\\n\\nThe Vanguard model, with additional speed, was an attempt to retrofit the Peregrine to make it more suitable for its original intended role. Debate continues as to whether this was a success.",
     "shortvariation": "VA",
     "variation": "Vanguard",
     "type": "gunboat",
@@ -10543,7 +10529,7 @@
     "race": "tel",
     "name": "Peregrine Sentinel",
     "basename": "Peregrine",
-    "description": null,
+    "description": "While originally designed as a bomber, the Teladi Peregrine has recently found popularity in the role of an escort ship. Its primary tactical advantage in this regard is its excellent turret coverage, which can be highly effective when appropriately armed.\\n\\nThe Peregrine Sentinel leans into this novel escort role, offering increased superstructure resilience.",
     "shortvariation": "ST",
     "variation": "Sentinel",
     "type": "gunboat",
@@ -10681,7 +10667,7 @@
     "race": "tel",
     "name": "Osprey Vanguard",
     "basename": "Osprey",
-    "description": null,
+    "description": "The Teladi Osprey is a surprisingly effective frigate with significant cargo capacity. On this basis, it can be used as a well-armed and speedy alternative to a standard freighter for trade runs where prejudice is anticipated.\\n\\nThe Vanguard model enhances speed, and as a consequence, the potential profitability of trading routes.",
     "shortvariation": "VA",
     "variation": "Vanguard",
     "type": "frigate",
@@ -10819,7 +10805,7 @@
     "race": "tel",
     "name": "Osprey Sentinel",
     "basename": "Osprey",
-    "description": null,
+    "description": "The Teladi Osprey is a surprisingly effective frigate with significant cargo capacity. On this basis, it can be used as a well-armed and speedy alternative to a standard freighter for trade runs where prejudice is anticipated.\\n\\nThe Sentinel variation compromises speed in favour of additional cargo space.",
     "shortvariation": "ST",
     "variation": "Sentinel",
     "type": "frigate",
@@ -10957,7 +10943,7 @@
     "race": "tel",
     "name": "Manorina (Gas) Vanguard",
     "basename": "Manorina",
-    "description": null,
+    "description": "While ostensibly a resource harvester, some enterprising captains have repurposed the Teladi Manorina as a low-cost gunship, taking full advantage of its outstanding shielding capacity. Some even go as far as retaining the mining drill as a weapon, due to its extended range. Suspicions are occasionally expressed that this is a Teladi artifice for trading a weapon of war under civilian guise, avoiding the requirement for a military licence.\\n\\nThe Manorina can also be used to collect gas, and the Vanguard model adds a useful degree of speed.",
     "shortvariation": "VA",
     "variation": "Vanguard",
     "type": "miner",
@@ -11074,7 +11060,7 @@
     "race": "tel",
     "name": "Manorina (Gas) Sentinel",
     "basename": "Manorina",
-    "description": null,
+    "description": "While ostensibly a resource harvester, some enterprising captains have repurposed the Teladi Manorina as a low-cost gunship, taking full advantage of its outstanding shielding capacity. Some even go as far as retaining the mining drill as a weapon, due to its extended range. Suspicions are occasionally expressed that this is a Teladi artifice for trading a weapon of war under civilian guise, avoiding the requirement for a military licence.\\n\\nThe Manorina can also be used for harmless gas collection. The Sentinel model boasts increased storage capacity.",
     "shortvariation": "ST",
     "variation": "Sentinel",
     "type": "miner",
@@ -11191,7 +11177,7 @@
     "race": "tel",
     "name": "Manorina (Mineral) Vanguard",
     "basename": "Manorina",
-    "description": null,
+    "description": "While ostensibly a resource harvester, some enterprising captains have repurposed the Teladi Manorina as a low-cost gunship, taking full advantage of its outstanding shielding capacity. Some even go as far as retaining the mining drill as a weapon, due to its extended range. Suspicions are occasionally expressed that this is a Teladi artifice for trading a weapon of war under civilian guise, avoiding the requirement for a military licence.\\n\\nThe Manorina can also be used to mine asteroids, and the Vanguard model adds a degree of speed in either use case.",
     "shortvariation": "VA",
     "variation": "Vanguard",
     "type": "miner",
@@ -11315,7 +11301,7 @@
     "race": "tel",
     "name": "Manorina (Mineral) Sentinel",
     "basename": "Manorina",
-    "description": null,
+    "description": "While ostensibly a resource harvester, some enterprising captains have repurposed the Teladi Manorina as a low-cost gunship, taking full advantage of its outstanding shielding capacity. Some even go as far as retaining the mining drill as a weapon, due to its extended range. Suspicions are occasionally expressed that this is a Teladi artifice for trading a weapon of war under civilian guise, avoiding the requirement for a military licence.\\n\\nThe Manorina can also be used to mine asteroids, and the Sentinel variation adds some resilience to stray rocks or foes alike.",
     "shortvariation": "ST",
     "variation": "Sentinel",
     "type": "miner",
@@ -11439,7 +11425,7 @@
     "race": "tel",
     "name": "Vulture Vanguard",
     "basename": "Vulture",
-    "description": null,
+    "description": "The Teladi Vulture medium freighter, while generally unassuming, remains a popular choice for independent traders in particular. It has excellent cargo capacity, more than making up for its lack of speed, on an analysis of trade route profitability.\\n\\nThe Vanguard model increases speed marginally, however, this comes with a reduction in cargo space.",
     "shortvariation": "VA",
     "variation": "Vanguard",
     "type": "transporter",
@@ -11480,7 +11466,7 @@
       "people": 16,
       "countermeasure": 8,
       "deployable": 100,
-      "capacity": 10200,
+      "capacity": 12080,
       "capacityType": "container"
     },
     "mass": 63.13,
@@ -11552,7 +11538,7 @@
     "race": "tel",
     "name": "Vulture Sentinel",
     "basename": "Vulture",
-    "description": null,
+    "description": "The Teladi Vulture medium freighter, while generally unassuming, remains a popular choice for independent traders in particular. It has excellent cargo capacity, more than making up for its lack of speed, on an analysis of trade route profitability.\\n\\nThe Sentinel variant has perhaps the largest cargo space of any medium freighter, meriting consideration from any mogul seeking to optimise profits.",
     "shortvariation": "ST",
     "variation": "Sentinel",
     "type": "transporter",
@@ -11593,7 +11579,7 @@
       "people": 13,
       "countermeasure": 8,
       "deployable": 100,
-      "capacity": 12240,
+      "capacity": 15100,
       "capacityType": "container"
     },
     "mass": 75.756,
@@ -11665,7 +11651,7 @@
     "race": "tel",
     "name": "Tern Vanguard",
     "basename": "Tern",
-    "description": null,
+    "description": "The Teladi Tern is a surprisingly cost effective and efficient freighter, a staple of many trading corporations. Its affordability and solid performance make it one of the more popular Teladi vessel designs.\\n\\nThe Vanguard model is optimised for speed, however, the reduction in cargo capacity reduces the Tern's overall trading performance.",
     "shortvariation": "VA",
     "variation": "Vanguard",
     "type": "transporter",
@@ -11706,7 +11692,7 @@
       "people": 20,
       "countermeasure": 8,
       "deployable": 100,
-      "capacity": 9200,
+      "capacity": 10880,
       "capacityType": "container"
     },
     "mass": 56.817,
@@ -11778,7 +11764,7 @@
     "race": "tel",
     "name": "Tern Sentinel",
     "basename": "Tern",
-    "description": null,
+    "description": "The Teladi Tern is a surprisingly cost effective and efficient freighter, a staple of many trading corporations. Its affordability and solid performance make it one of the more popular Teladi vessel designs.\\n\\nThe Tern Sentinel variant has a hardened hull composite, and is favoured by many traders.",
     "shortvariation": "ST",
     "variation": "Sentinel",
     "type": "transporter",
@@ -11819,7 +11805,7 @@
       "people": 16,
       "countermeasure": 8,
       "deployable": 100,
-      "capacity": 11040,
+      "capacity": 13600,
       "capacityType": "container"
     },
     "mass": 68.18,
@@ -11891,7 +11877,7 @@
     "race": "tel",
     "name": "Cormorant Vanguard",
     "basename": "Cormorant",
-    "description": null,
+    "description": "The Cormorant is unusual for a Teladi ship as it is tailored for freelancers. A light freighter with very basic construction specifications, it is inexpensive and accessible for most entrepreneurs starting out in business.\\n\\nThe Cormorant Vanguard is not well armed, however, it is resilient. Many of the fittings successfully remain attached during spaceflight.",
     "shortvariation": "VA",
     "variation": "Vanguard",
     "type": "transporter",
@@ -12015,7 +12001,7 @@
     "race": "xen",
     "name": "P",
     "basename": null,
-    "description": null,
+    "description": "The lack of intel or communication about the Xenon renders even the most basic questions unanswerable. For example, why does the Xenon P corvette resemble an Earth trilobite?\\n\\nRegardless of the inscrutability of Xenon design philosophy, the P remains a fearsome adversary in battle.",
     "shortvariation": "BV",
     "variation": "Base Variation",
     "type": "corvette",
@@ -12149,7 +12135,7 @@
     "race": "xen",
     "name": "S",
     "basename": null,
-    "description": null,
+    "description": "The Xenon S is a light miner/freighter supporting the AI collective's primary resource logistics.",
     "shortvariation": "BV",
     "variation": "Base Variation",
     "type": "miner",
@@ -12224,7 +12210,8 @@
     "weapons": [
       {
         "quantity": 1,
-        "size": "medium"
+        "size": "medium",
+        "standard": true
       }
     ],
     "shields": {
@@ -12273,7 +12260,7 @@
     "race": "arg",
     "name": "Nova Vanguard",
     "basename": "Nova",
-    "description": "Though the prototype for the new-model Nova-class dogfighter was in development as far back as the Terran Conflict, it never reached mass-production before the Jump Gate shutdown. As such, its first major role was as an escort to Argon Federation exploratory groups that were sent out into newly discovered or rediscovered areas of space as the Jump Gates began to realign.\\n\\nIn terms of its class, the new-look Nova is a major step up in ship design, with rotatable engines that make it formidable in keeping up with and tracking targets of a similar size.",
+    "description": "Though the prototype for the new-model Nova-class fighter was in development as far back as the Terran Conflict, it failed to reach production before the Jump Gate shutdown. Its first major role was escorting Argon Federation exploratory groups sent into newly discovered or rediscovered areas of space as the Jump Gates began to realign.\\n\\nThe new-look Nova is a major step up in ship design, with rotatable engines that make it formidable in strafing targets of a similar size. The Nova's redesign caused considerable controversy in the piloting community, when the rear turret was abandoned in favour of increased laser energy and strafing performance.\\n\\nDespite being a sound dogfighter, the Nova lacks the firepower required by full-time combatants. The Vanguard model improves the speed of the Nova. However, some pilots have suggested a portion of the upgrade budget might have been better spent on an aesthetic redesign.",
     "shortvariation": "VA",
     "variation": "Vanguard",
     "type": "fighter",
@@ -12394,7 +12381,7 @@
     "race": "arg",
     "name": "Nova Sentinel",
     "basename": "Nova",
-    "description": "Though the prototype for the new-model Nova-class dogfighter was in development as far back as the Terran Conflict, it never reached mass-production before the Jump Gate shutdown. As such, its first major role was as an escort to Argon Federation exploratory groups that were sent out into newly discovered or rediscovered areas of space as the Jump Gates began to realign.\\n\\nIn terms of its class, the new-look Nova is a major step up in ship design, with rotatable engines that make it formidable in keeping up with and tracking targets of a similar size.",
+    "description": "Though the prototype for the new-model Nova-class fighter was in development as far back as the Terran Conflict, it failed to reach production before the Jump Gate shutdown. Its first major role was escorting Argon Federation exploratory groups sent into newly discovered or rediscovered areas of space as the Jump Gates began to realign.\\n\\nThe new-look Nova is a major step up in ship design, with rotatable engines that make it formidable in strafing targets of a similar size. The Nova's redesign caused considerable controversy in the piloting community, when the rear turret was abandoned in favour of increased laser energy and strafing performance.\\n\\nDespite being a sound dogfighter, the Nova lacks the firepower required by full-time combatants. The Nova's Sentinel variant has a hardened hull, adding resilience, though this comes at a marginal cost to speed.",
     "shortvariation": "ST",
     "variation": "Sentinel",
     "type": "fighter",
@@ -12745,7 +12732,7 @@
     "race": "arg",
     "name": "Pulsar Vanguard",
     "basename": "Pulsar",
-    "description": null,
+    "description": "When the Xenon destroyed a food production facility in Antigone Memorial, the sole survivor was protein engineer Tracie Harben. Having lost her entire family, and fuelled by vengeance, she dedicated herself to the creation of tools of destruction.\\n\\nHarben's most popular design is the Pulsar fighter, also known as the \"Glass Cannon\". A highly aggressive vessel, it prioritises armaments and speed above all else.\\n\\nNo-one knew the Pulsar could be even more aggressively optimised until Harben surprised observers by releasing the Vanguard model.",
     "shortvariation": "VA",
     "variation": "Vanguard",
     "type": "heavyfighter",
@@ -12890,7 +12877,7 @@
     "race": "arg",
     "name": "Quasar Vanguard",
     "basename": "Quasar",
-    "description": null,
+    "description": "In the midst of the Terran War, the Argon Federation floundered somewhat in their ship design output. Perhaps their worst effort was the Quasar fighter, which, named after a powerful cosmic force, failed to fully live up to expectations.\\n\\nThe Quasar Vanguard was commissioned to breathe some useful function into the model. However, the variant has failed to achieve popularity.",
     "shortvariation": "VA",
     "variation": "Vanguard",
     "type": "heavyfighter",
@@ -14009,7 +13996,7 @@
     "race": "arg",
     "name": "Callisto Vanguard",
     "basename": "Callisto",
-    "description": null,
+    "description": "While largely superseded by more modern courier designs, the Argon Callisto has a strange, cult attraction. In no area does this ship excel, and yet thousands of owners gather periodically at Hatikvah's Choice to show off their various paint jobs and module modifications.\\n\\nThe release of a Vanguard model did not make the ship materially more useful, however, Callisto aficionados do seem to appreciate it.",
     "shortvariation": "VA",
     "variation": "Vanguard",
     "type": "courier",
@@ -14130,7 +14117,7 @@
     "race": "arg",
     "name": "Callisto Sentinel",
     "basename": "Callisto",
-    "description": null,
+    "description": "While largely superseded by more modern courier designs, the Argon Callisto has a strange, cult attraction. In no area does this ship excel, and yet thousands of owners gather periodically at Hatikvah's Choice to show off their various paint jobs and module modifications.\\n\\nThe release of a Sentinel variant is seen by some as evidence that the manufacturer has found a means of monetising the Callisto's enthusiastic fan base, rather than an attempt to build a performance spacecraft.",
     "shortvariation": "ST",
     "variation": "Sentinel",
     "type": "courier",
@@ -14251,7 +14238,7 @@
     "race": "ter",
     "name": "Nodan Vanguard",
     "basename": "Nodan",
-    "description": null,
+    "description": "Perhaps the most interesting thing about the Nodan fighter is the lack of information available regarding its existence. It is only known to be available from the Alliance of the Word, and the organisation has remained tight-lipped as to the vessel's inception and design.\\n\\nThe design is somewhat quirky, with no clear antecedence related to other faction architecture. However, the Nodan has earned itself plaudits from committed dogfighters, based on its impressive speed, agility and deceleration.\\n\\nFor those seeking additional speed, the Nodan Vanguard model is available.",
     "shortvariation": "VA",
     "variation": "Vanguard",
     "type": "fighter",
@@ -14372,7 +14359,7 @@
     "race": "ter",
     "name": "Nodan Sentinel",
     "basename": "Nodan",
-    "description": null,
+    "description": "Perhaps the most interesting thing about the Nodan fighter is the lack of information available regarding its existence. It is only known to be available from the Alliance of the Word, and the organisation has remained tight-lipped as to the vessel's inception and design.\\n\\nThe design is somewhat quirky, with no clear antecedence related to other faction architecture. However, the Nodan has earned itself plaudits from committed dogfighters, based on its impressive speed, agility and deceleration.\\n\\nThe Sentinel model provides the ship with a hardened superstructure.",
     "shortvariation": "ST",
     "variation": "Sentinel",
     "type": "fighter",
@@ -14493,7 +14480,7 @@
     "race": "kha",
     "name": "Forager",
     "basename": null,
-    "description": null,
+    "description": "The Kha'ak Forager is a lightning fast and highly manoeuvrable scout ship, with little accompanying weaponry. While notionally fragile, Commonwealth pilots report that the Forager is notoriously hard to catch and target.",
     "shortvariation": "BV",
     "variation": "Base Variation",
     "type": "fighter",
@@ -14590,7 +14577,7 @@
     "race": "par",
     "name": "Perseus Vanguard",
     "basename": "Perseus",
-    "description": null,
+    "description": "A fast, small fighter, with respectable hardpoints, the Paranid Perseus has a reasonable following among fighter pilots and explorers alike. Recommended to young captains in search of their second ship.\\n\\nThe Perseus Vanguard opts for a focus on speed.",
     "shortvariation": "VA",
     "variation": "Vanguard",
     "type": "fighter",
@@ -14711,7 +14698,7 @@
     "race": "par",
     "name": "Perseus Sentinel",
     "basename": "Perseus",
-    "description": null,
+    "description": "A fast, small fighter, with respectable hardpoints, the Paranid Perseus has a reasonable following among fighter pilots and explorers alike. Recommended to young captains in search of their second ship.\\n\\nThe Perseus Sentinel has additional superstructure reinforcement at the cost of speed.",
     "shortvariation": "ST",
     "variation": "Sentinel",
     "type": "fighter",
@@ -14832,7 +14819,7 @@
     "race": "par",
     "name": "Theseus Vanguard",
     "basename": "Theseus",
-    "description": null,
+    "description": "The Paranid Theseus is a solid, all-round performer with deadly firepower, built upon a solid chassis. If it is lacking anywhere it is in speed, though there are many tactical deployments where this is not a major issue.\\n\\nThe Vanguard model aims to rectify the speed issue, though it is debateable whether this is achieved, or even necessary.",
     "shortvariation": "VA",
     "variation": "Vanguard",
     "type": "fighter",
@@ -14959,7 +14946,7 @@
     "race": "par",
     "name": "Theseus Sentinel",
     "basename": "Theseus",
-    "description": null,
+    "description": "The Paranid Theseus is a solid, all-round performer with deadly firepower, built upon a solid chassis. If it is lacking anywhere it is in speed, though there are many tactical deployments where this is not a major issue.\\n\\nGiven the Theseus' relaxed pace, many captains opt for the Sentinel model, which improves the vessel's ability to withstand attack.",
     "shortvariation": "ST",
     "variation": "Sentinel",
     "type": "fighter",
@@ -15086,7 +15073,7 @@
     "race": "par",
     "name": "Ares",
     "basename": "Ares",
-    "description": null,
+    "description": "The Ares meets the much demanded need for a Paranid Heavy Fighter. Loaded with weapon hard points and shield generators, the Ares can both take and deliver a beating.",
     "shortvariation": "BV",
     "variation": "Base Variation",
     "type": "heavyfighter",
@@ -15340,7 +15327,7 @@
     "race": "par",
     "name": "Pegasus Vanguard",
     "basename": "Pegasus",
-    "description": null,
+    "description": "The Paranid Pegasus scout is extraordinarily fast, ensuring the \"Peggy's\" enduring popularity with explorers in particular. Unfortunately, being followed by such a speedy vessel risks inviting a rear end collision, an eventuality known by pilots as being \"peggied\".\\n\\nIn response to demand from the most speed-addicted customers, the Pegasus was eventually released in a Vanguard model.",
     "shortvariation": "VA",
     "variation": "Vanguard",
     "type": "scout",
@@ -15455,7 +15442,7 @@
     "race": "par",
     "name": "Pegasus Sentinel",
     "basename": "Pegasus",
-    "description": null,
+    "description": "The Paranid Pegasus scout is extraordinarily fast, ensuring the \"Peggy's\" enduring popularity with explorers in particular. Unfortunately, being followed by such a speedy vessel risks inviting a rear end collision, an eventuality known by pilots as being \"peggied\".\\n\\nThe Sentinel model marginally increases the scout's cargo space and resilience. However, these enhancements seem to be cursory rather than conferring any practical value.",
     "shortvariation": "ST",
     "variation": "Sentinel",
     "type": "scout",
@@ -15812,7 +15799,7 @@
     "race": "tel",
     "name": "Falcon Vanguard",
     "basename": "Falcon",
-    "description": null,
+    "description": "The Teladi Falcon is a well regarded fighter. Its excellent speed, paired with reasonable strength and weaponry, make it a popular choice for fighter pilots on a budget.\\n\\nThe additional speed conferred by the Vanguard model opens up the possibility of the Falcon being used as a tactical interceptor.",
     "shortvariation": "VA",
     "variation": "Vanguard",
     "type": "fighter",
@@ -15933,7 +15920,7 @@
     "race": "tel",
     "name": "Falcon Sentinel",
     "basename": "Falcon",
-    "description": null,
+    "description": "The Teladi Falcon is a well regarded fighter. Its excellent speed, paired with reasonable strength and weaponry, make it a popular choice for fighter pilots on a budget.\\n\\nThe Falcon Sentinel is thought by many to be a compromise too far, with reduced speed and increased resilience rendering the overall performance somewhat mediocre.",
     "shortvariation": "ST",
     "variation": "Sentinel",
     "type": "fighter",
@@ -16423,7 +16410,7 @@
     "race": "tel",
     "name": "Kestrel Vanguard",
     "basename": "Kestrel",
-    "description": null,
+    "description": "There are faster scouts than the Teladi Kestrel, yet it still manages to function respectably. It is more solid that most of its competitors, and has respectable shield energy.\\n\\nPilots commonly opt for the somewhat faster Vanguard model.",
     "shortvariation": "VA",
     "variation": "Vanguard",
     "type": "scout",
@@ -16538,7 +16525,7 @@
     "race": "tel",
     "name": "Kestrel Sentinel",
     "basename": "Kestrel",
-    "description": null,
+    "description": "There are faster scouts than the Teladi Kestrel, yet it still manages to function respectably. It is more solid that most of its competitors, and has respectable shield energy.\\n\\nThe Kestrel Sentinel is thought by some to be a compromise too far, in terms of speed. However, there are those who prefer the toughened hull that it offers.",
     "shortvariation": "ST",
     "variation": "Sentinel",
     "type": "scout",
@@ -16653,7 +16640,7 @@
     "race": "tel",
     "name": "Guillemot Vanguard",
     "basename": "Guillemot",
-    "description": null,
+    "description": "Teladi playboy adventurer Yayasisos Tumulis Wegoras V popularised the Guillemot through his atypical antics. Unlike his entrepreneurial peers, \"Yaya\" built his wealth through a series of daring scout and courier missions, investing his rewards in other businesses.\\n\\nWhile Teladi youth venerate Yaya for his adventures, few diverge from the traditional mining, manufacturing and trading expectations of their parents.\\n\\nYaya himself is a somewhat shadowy figure, whose purported wealth is obfuscated by an unknown number of shell companies. It is believed that many of his exploits are entirely fictional and, though there are no arrest warrants in his name, it is believed that several police forces would like to have a word with him.\\n\\nThe Guillemot Vanguard is somewhat faster than the basic model and, as such, is thought to be Yaya's preference.",
     "shortvariation": "VA",
     "variation": "Vanguard",
     "type": "scout",
@@ -16768,7 +16755,7 @@
     "race": "tel",
     "name": "Guillemot Sentinel",
     "basename": "Guillemot",
-    "description": null,
+    "description": "Teladi playboy adventurer Yayasisos Tumulis Wegoras V popularised the Guillemot through his atypical antics. Unlike his entrepreneurial peers, \"Yaya\" built his wealth through a series of daring scout and courier missions, investing his rewards in other businesses.\\n\\nWhile Teladi youth venerate Yaya for his adventures, few diverge from the traditional mining, manufacturing and trading expectations of their parents.\\n\\nYaya himself is a somewhat shadowy figure, whose purported wealth is obfuscated by an unknown number of shell companies. It is believed that many of his exploits are entirely fictional and, though there are no arrest warrants in his name, it is believed that several police forces would like to have a word with him.\\n\\nThe Guillemot Sentinel is a less romanticised model, though more practical for everyday use.",
     "shortvariation": "ST",
     "variation": "Sentinel",
     "type": "scout",
@@ -16924,7 +16911,7 @@
       "people": 7,
       "countermeasure": 4,
       "deployable": 50,
-      "capacity": 2630,
+      "capacity": 3096,
       "capacityType": "container"
     },
     "mass": 18.466,
@@ -17039,7 +17026,7 @@
       "people": 5,
       "countermeasure": 4,
       "deployable": 50,
-      "capacity": 3156,
+      "capacity": 3870,
       "capacityType": "container"
     },
     "mass": 22.159,
@@ -17154,7 +17141,7 @@
       "people": 5,
       "countermeasure": 4,
       "deployable": 50,
-      "capacity": 1760,
+      "capacity": 2580,
       "capacityType": "container"
     },
     "mass": 30.818,
@@ -17234,7 +17221,7 @@
     "race": "xen",
     "name": "N",
     "basename": null,
-    "description": null,
+    "description": "While the N is one of the more palatable Xenon adversaries a captain may face, this fighter is disappointingly rarely found alone. It is common to encounter the Xenon N in a fleet or \"swarm\", which may also include the heavier, M class fighter.",
     "shortvariation": "BV",
     "variation": "Base Variation",
     "type": "fighter",
@@ -17361,7 +17348,7 @@
     "race": "xen",
     "name": "M",
     "basename": null,
-    "description": null,
+    "description": "The Xenon M is, alone, a robust heavy fighter. Unfortunately, it rarely is alone, commonly engaging as part of a fleet or \"swarm\" of M and N vessels.",
     "shortvariation": "BV",
     "variation": "Base Variation",
     "type": "heavyfighter",
@@ -17488,7 +17475,7 @@
     "race": "xen",
     "name": "T",
     "basename": null,
-    "description": null,
+    "description": "Unlike most Xenon ships, the T scout can be destroyed quite easily, if it can be caught. The T is extraordinarily fast, with an extreme optimisation for speed over all other criteria.",
     "shortvariation": "BV",
     "variation": "Base Variation",
     "type": "scout",
@@ -18627,13 +18614,13 @@
     "race": "par",
     "name": "Heracles Vanguard",
     "basename": "Heracles",
-    "description": null,
+    "description": "The Paranid Heracles is an enormous station-building ship, and as such, is the foundation of an economic empire.\\n\\nThe Heracles Vanguard offers additional speed, though it remains somewhat pedestrian.",
     "shortvariation": "VA",
     "variation": "Vanguard",
     "type": "builder",
     "radarRange": "40000",
     "docksize": "dock_xl",
-    "hull": 115000,
+    "hull": 149000,
     "shield": {
       "max": 0,
       "rate": 0,
@@ -18663,7 +18650,7 @@
       }
     },
     "storage": {
-      "unit": 100,
+      "unit": 128,
       "missile": 40,
       "people": 219,
       "countermeasure": 40,
@@ -18671,20 +18658,20 @@
       "capacity": 50,
       "capacityType": "container"
     },
-    "mass": 885.723,
+    "mass": 1137.601,
     "inertia": {
-      "pitch": 598.799,
-      "yaw": 598.799,
-      "roll": 479.039
+      "pitch": 813.251,
+      "yaw": 813.251,
+      "roll": 650.601
     },
     "drag": {
-      "forward": 257.145,
-      "reverse": 1028.579,
-      "horizontal": 467.116,
-      "vertical": 467.116,
-      "pitch": 877.145,
-      "yaw": 877.145,
-      "roll": 877.145
+      "forward": 230.64,
+      "reverse": 922.561,
+      "horizontal": 447.058,
+      "vertical": 447.058,
+      "pitch": 927.52,
+      "yaw": 927.52,
+      "roll": 927.52
     },
     "thrusters": {
       "size": "extralarge"
@@ -18780,13 +18767,13 @@
     "race": "par",
     "name": "Heracles Sentinel",
     "basename": "Heracles",
-    "description": null,
+    "description": "The Paranid Heracles is an enormous station-building ship, and as such, is the foundation of an economic empire.\\n\\nThe Sentinel model is a hardened version of the Heracles.",
     "shortvariation": "ST",
     "variation": "Sentinel",
     "type": "builder",
     "radarRange": "40000",
     "docksize": "dock_xl",
-    "hull": 138000,
+    "hull": 178000,
     "shield": {
       "max": 0,
       "rate": 0,
@@ -18816,7 +18803,7 @@
       }
     },
     "storage": {
-      "unit": 100,
+      "unit": 154,
       "missile": 40,
       "people": 182,
       "countermeasure": 40,
@@ -18824,20 +18811,20 @@
       "capacity": 50,
       "capacityType": "container"
     },
-    "mass": 1062.868,
+    "mass": 1365.121,
     "inertia": {
-      "pitch": 622.985,
-      "yaw": 622.985,
-      "roll": 498.388
+      "pitch": 853.149,
+      "yaw": 853.149,
+      "roll": 682.52
     },
     "drag": {
-      "forward": 292.574,
-      "reverse": 1170.294,
-      "horizontal": 560.539,
-      "vertical": 560.539,
-      "pitch": 912.574,
-      "yaw": 912.574,
-      "roll": 912.574
+      "forward": 264.768,
+      "reverse": 1059.073,
+      "horizontal": 536.47,
+      "vertical": 536.47,
+      "pitch": 973.024,
+      "yaw": 973.024,
+      "roll": 973.024
     },
     "thrusters": {
       "size": "extralarge"
@@ -18933,7 +18920,7 @@
     "race": "par",
     "name": "Zeus Vanguard",
     "basename": "Zeus",
-    "description": null,
+    "description": "The Paranid Zeus is perhaps one of the fastest carriers available, making it an excellent choice as the keystone of any defensive or offensive fleet. The Zeus was designed specifically with this in mind, to allay growing Paranid concerns over the military growth of their many rivals.\\n\\nThe Zeus Vanguard is even faster, and is often the strategic choice in offensive operations.",
     "shortvariation": "VA",
     "variation": "Vanguard",
     "type": "carrier",
@@ -19146,7 +19133,7 @@
     "race": "par",
     "name": "Zeus Sentinel",
     "basename": "Zeus",
-    "description": null,
+    "description": "The Paranid Zeus is perhaps one of the fastest carriers available, making it an excellent choice as the keystone of any defensive or offensive fleet. The Zeus was designed specifically with this in mind, to allay growing Paranid concerns over the military growth of their many rivals.\\n\\nThe Zeus is available in a Sentinel model, with a hardened superstructure for increased battle resilience.",
     "shortvariation": "ST",
     "variation": "Sentinel",
     "type": "carrier",
@@ -19359,7 +19346,7 @@
     "race": "par",
     "name": "Zeus E",
     "basename": null,
-    "description": "E-model variation was introduced at a later date, and updated the superficial design to bring it up to par with Commonwealth standards that were established during the period of disconnection. The precursor version is slowly being phased out, but will remain available for interested third parties.",
+    "description": "The Paranid Zeus is perhaps one of the fastest carriers available, making it an excellent choice as the keystone of any defensive or offensive fleet. The Zeus was designed specifically with this in mind, to allay growing Paranid concerns over the military growth of their many rivals.\\n\\nThe E-model(\"E\" same as E) variation was introduced at a later date, and updated the superficial design to bring it up to par with Commonwealth standards that were established during the period of disconnection. The precursor version is slowly being phased out, but will remain available for interested third parties.(The E-model ...)",
     "shortvariation": "BV",
     "variation": "Base Variation",
     "type": "carrier",
@@ -19572,7 +19559,7 @@
     "race": "par",
     "name": "Atlas Vanguard",
     "basename": "Atlas",
-    "description": null,
+    "description": "The Paranid Atlas is a large spaceship, specifically designed to repair and resupply fleets. This advanced vessel is equipped with cutting-edge robotics technology, and capacity for an ample supply of materials and resources. It can travel throughout space, effectively operating as a limited, but mobile, Equipment Dock.\\n\\nThe upgraded Atlas Vanguard is faster and more agile than its predecessor, supporting quicker and more efficient martial campaigns.",
     "shortvariation": "VA",
     "variation": "Vanguard",
     "type": "resupplier",
@@ -19725,7 +19712,7 @@
     "race": "par",
     "name": "Atlas Sentinel",
     "basename": "Atlas",
-    "description": null,
+    "description": "The Paranid Atlas is a large spaceship, specifically designed to repair and resupply fleets. This advanced vessel is equipped with cutting-edge robotics technology, and capacity for an ample supply of materials and resources. It can travel throughout space, effectively operating as a limited, but mobile, Equipment Dock.\\n\\nThe Atlas Sentinel is a variant with a reinforced hull for increased durability and protection. The hardened structure allows the Atlas Sentinel to operate in more hazardous environments, and increase its longevity.",
     "shortvariation": "ST",
     "variation": "Sentinel",
     "type": "resupplier",
@@ -19878,7 +19865,7 @@
     "race": "par",
     "name": "Atlas E",
     "basename": null,
-    "description": "E-model variation was introduced at a later date, and updated the superficial design to bring it up to par with Commonwealth standards that were established during the period of disconnection. The precursor version is slowly being phased out, but will remain available for interested third parties.",
+    "description": "The Paranid Atlas is a large spaceship, specifically designed to repair and resupply fleets. This advanced vessel is equipped with cutting-edge robotics technology, and capacity for an ample supply of materials and resources. It can travel throughout space, effectively operating as a limited, but mobile, Equipment Dock.\\n\\nThe E-model(\"E\" same as E) variation was introduced at a later date, and updated the superficial design to bring it up to par with Commonwealth standards that were established during the period of disconnection. The precursor version is slowly being phased out, but will remain available for interested third parties.(The E-model ...)",
     "shortvariation": "BV",
     "variation": "Base Variation",
     "type": "resupplier",
@@ -20031,13 +20018,13 @@
     "race": "tel",
     "name": "Albatross Vanguard",
     "basename": "Albatross",
-    "description": null,
+    "description": "The Teladi Albatross is a giant, station-building ship. It is not a work of art, however, it functions well and provides the infrastructure for much of the Teladi growth economy.\\n\\nThe Vanguard variant provides a little extra speed, for when a station needs to be placed in a hurry.",
     "shortvariation": "VA",
     "variation": "Vanguard",
     "type": "builder",
     "radarRange": "40000",
     "docksize": "dock_xl",
-    "hull": 115000,
+    "hull": 128000,
     "shield": {
       "max": 0,
       "rate": 0,
@@ -20067,7 +20054,7 @@
       }
     },
     "storage": {
-      "unit": 100,
+      "unit": 202,
       "missile": 40,
       "people": 219,
       "countermeasure": 40,
@@ -20075,20 +20062,20 @@
       "capacity": 50,
       "capacityType": "container"
     },
-    "mass": 984.137,
+    "mass": 982.947,
     "inertia": {
-      "pitch": 612.235,
-      "yaw": 612.235,
-      "roll": 489.788
+      "pitch": 679.259,
+      "yaw": 679.259,
+      "roll": 543.407
     },
     "drag": {
-      "forward": 276.827,
-      "reverse": 1107.31,
-      "horizontal": 519.018,
-      "vertical": 519.018,
-      "pitch": 896.827,
-      "yaw": 896.827,
-      "roll": 896.827
+      "forward": 228.186,
+      "reverse": 912.745,
+      "horizontal": 467.397,
+      "vertical": 467.397,
+      "pitch": 896.589,
+      "yaw": 896.589,
+      "roll": 896.589
     },
     "thrusters": {
       "size": "extralarge"
@@ -20146,7 +20133,7 @@
     },
     "engines": {
       "size": "extralarge",
-      "quantity": 2,
+      "quantity": 1,
       "shields": {
         "quantity": 1,
         "size": "medium"
@@ -20184,13 +20171,13 @@
     "race": "tel",
     "name": "Albatross Sentinel",
     "basename": "Albatross",
-    "description": null,
+    "description": "The Teladi Albatross is a giant, station-building ship. It is not a work of art, however, it functions well and provides the infrastructure for much of the Teladi growth economy.\\n\\nThe Sentinel model has improved defensive capabilities, and may be a more suitable option when developing frontier regions.",
     "shortvariation": "ST",
     "variation": "Sentinel",
     "type": "builder",
     "radarRange": "40000",
     "docksize": "dock_xl",
-    "hull": 138000,
+    "hull": 154000,
     "shield": {
       "max": 0,
       "rate": 0,
@@ -20220,7 +20207,7 @@
       }
     },
     "storage": {
-      "unit": 100,
+      "unit": 243,
       "missile": 40,
       "people": 182,
       "countermeasure": 40,
@@ -20228,20 +20215,20 @@
       "capacity": 50,
       "capacityType": "container"
     },
-    "mass": 1180.964,
+    "mass": 1179.536,
     "inertia": {
-      "pitch": 639.109,
-      "yaw": 639.109,
-      "roll": 511.287
+      "pitch": 709.046,
+      "yaw": 709.046,
+      "roll": 567.237
     },
     "drag": {
-      "forward": 316.193,
-      "reverse": 1264.772,
-      "horizontal": 622.821,
-      "vertical": 622.821,
-      "pitch": 936.193,
-      "yaw": 936.193,
-      "roll": 936.193
+      "forward": 260.624,
+      "reverse": 1042.494,
+      "horizontal": 560.876,
+      "vertical": 560.876,
+      "pitch": 935.907,
+      "yaw": 935.907,
+      "roll": 935.907
     },
     "thrusters": {
       "size": "extralarge"
@@ -20299,7 +20286,7 @@
     },
     "engines": {
       "size": "extralarge",
-      "quantity": 2,
+      "quantity": 1,
       "shields": {
         "quantity": 1,
         "size": "medium"
@@ -20337,7 +20324,7 @@
     "race": "tel",
     "name": "Condor Vanguard",
     "basename": "Condor",
-    "description": null,
+    "description": "The Ministry of Finance commissioned the Condor to be the mainstay of a carrier fleet. While the ship borrows heavily from Split technology, its implementation could not result in a less \"Split\" vessel.\\n\\nHeavily reinforced, the Condor is capable of launching a battle fleet under heavy fire. The Vanguard variant provides additional speed, allowing the Condor to get into, and out of, difficult situations with a little more ease.",
     "shortvariation": "VA",
     "variation": "Vanguard",
     "type": "carrier",
@@ -20550,7 +20537,7 @@
     "race": "tel",
     "name": "Condor Sentinel",
     "basename": "Condor",
-    "description": null,
+    "description": "The Ministry of Finance commissioned the Condor to be the mainstay of a carrier fleet. While the ship borrows heavily from Split technology, its implementation could not result in a less \"Split\" vessel.\\n\\nHeavily reinforced, the Condor is capable of launching a battle fleet under heavy fire. The Sentinel variant braces the ship further, providing a daunting resilience to attack.",
     "shortvariation": "ST",
     "variation": "Sentinel",
     "type": "carrier",
@@ -20763,7 +20750,7 @@
     "race": "tel",
     "name": "Stork Vanguard",
     "basename": "Stork",
-    "description": null,
+    "description": "Auxiliary vessels are essential for fleet management and are able to repair and resupply fleets of all sizes, including carriers. The Teladi Stork fulfils this function passably well. Its lack of general popularity within its class often means it is available at a reasonable price. Fleet managers are advised to keep the Stork well escorted as it is vulnerable to attack.\\n\\nThe Vanguard model enhances the Stork's speed, which enables it to remain in fleet formation more easily.",
     "shortvariation": "VA",
     "variation": "Vanguard",
     "type": "resupplier",
@@ -20966,7 +20953,7 @@
     "race": "tel",
     "name": "Stork Sentinel",
     "basename": "Stork",
-    "description": null,
+    "description": "Auxiliary vessels are essential for fleet management and are able to repair and resupply fleets of all sizes, including carriers. The Teladi Stork fulfils this function passably well. Its lack of general popularity within its class often means it is available at a reasonable price. Fleet managers are advised to keep the Stork well escorted as it is vulnerable to attack.\\n\\nThe Stork Sentinel has increased resilience, though not to the degree that it should be left unattended in hostile space.",
     "shortvariation": "ST",
     "variation": "Sentinel",
     "type": "resupplier",
@@ -21169,7 +21156,7 @@
     "race": "xen",
     "name": "I",
     "basename": null,
-    "description": null,
+    "description": "The Xenon I is a station commander's worst nightmare. Armed with graviton turrets, which are among the most powerful weapons known in their class, the appearance of this battleship inevitably heralds an imminent and catastrophic hull depletion event.\\n\\nThose who are operating facilities under attack by the Xenon I rarely have reactive tactical options beyond a speedy evacuation. Station commanders are advised to prepare defences well in advance, rather than waiting for intelligence indicating increased Xenon activity.\\n\\nSaving credits on defensive preparations will, without doubt, prove costly in the event of a Xenon I assault.",
     "shortvariation": "BV",
     "variation": "Base Variation",
     "type": "battleship",
@@ -21458,7 +21445,7 @@
     "race": "xen",
     "name": "K",
     "basename": null,
-    "description": null,
+    "description": "The Xenon K is an unfortunately impressive destroyer with armaments sufficient to wipe out capital ships and stations alike. Its formidable shielding should be accounted for when devising counter-tactics.\\n\\nNotable Split warrior Ya t'Plp has earned the soubriquet \"K-Dog\" for her proficiency in engaging the Xenon K. Her widely published engagement records are required reading in military academies across the known galaxy.\\n\\nt'Plp's guidance on the K is \"Destroy escorts first, then neutralise engines. Then attack, attack, attack. Must waste shields and hull before engines regenerate. Many guns will be needed.\"",
     "shortvariation": "BV",
     "variation": "Base Variation",
     "type": "destroyer",
@@ -21727,7 +21714,7 @@
       {
         "quantity": 1,
         "size": "large",
-        "standard": false,
+        "standard": true,
         "missile": false,
         "shields": {
           "quantity": 2,
@@ -21747,7 +21734,7 @@
       {
         "quantity": 1,
         "size": "large",
-        "standard": false,
+        "standard": true,
         "missile": false,
         "shields": {
           "quantity": 2,
@@ -22530,7 +22517,7 @@
     "race": "pir",
     "name": "Shih",
     "basename": null,
-    "description": "The Dark left the Windfall system not only isolated, but also ill-equipped for ship building, since it lacked both a wharf and capable engineers. For nearly four decades, the inhabitants largely had to make do with an aging fleet of stranded ships that were taken by surprise by the Jump Gate shutdown. The few remaining engineers in the system were mainly occupied with maintenance, but experimented when they could with custom ship designs. They slowly learned the craft, and became creative with the resources they had to hand. Most of their custom creations were built from repurposed luxury mass traffic vehicles, spare engines disassembled from the leftover fleet, and various parts from scrapped ships that were beyond repair. It was only in 821 , after the Jump Gate to Avarice opened, that a proper supply of resources allowed the engineers to finally abandon their custom creations and develop blueprints for mass production. Arguably, those blueprints still bear the hallmarks of the haphazard designs of the past.(Windfall Ship Building)\\n\\n(Shih)In response to the turmoil caused by the introduction of the Lux fighter, the Syndicate leadership commissioned Scrapyard engineers to develop a heavy fighter. The Syndicate plans was for it to outperform the light fighters, forcing them off the field of combat, while being too expensive for smaller gangs to afford in significant numbers. The Scrapyard engineers based their design on the Kyd, and in 824 \\(NT\\) proudly introduced the heavy fighter, the Shih. With a strong focus on durability, the Shih manages to power up to three shield generators. Although they managed to double the firepower of the Kyd, the engineers failed to increase it sufficiently to match that of the major Commonwealth factions. Despite its shortcomings, the Shih was regarded as a major success, and was widely deployed to protect Syndicate property and territory, further securing their power and stabilising the system.",
+    "description": "The Dark left the Windfall system not only isolated, but also ill-equipped for ship building, since it lacked both a wharf and capable engineers. For nearly four decades, the inhabitants largely had to make do with an aging fleet of stranded ships that were taken by surprise by the Jump Gate shutdown. The few remaining engineers in the system were mainly occupied with maintenance, but experimented when they could with custom ship designs. They slowly learned the craft, and became creative with the resources they had to hand. Most of their custom creations were built from repurposed luxury mass traffic vehicles, spare engines disassembled from the leftover fleet, and various parts from scrapped ships that were beyond repair. It was only in 821 , after the Jump Gate to Avarice opened, that a proper supply of resources allowed the engineers to finally abandon their custom creations and develop blueprints for mass production. Arguably, those blueprints still bear the hallmarks of the haphazard designs of the past.(Windfall Ship Building)\\n\\n(Shih)In response to the turmoil caused by the introduction of the Lux fighter, the Syndicate leadership commissioned Scrapyard engineers to develop a heavy fighter. The Syndicate plan was for it to outperform the light fighters, forcing them off the field of combat, while being too expensive for smaller gangs to afford in significant numbers. The Scrapyard engineers based their design on the Kyd, and in 824 \\(NT\\) proudly introduced the heavy fighter, the Shih. With a strong focus on durability, the Shih manages to power up to three shield generators. Although they managed to double the firepower of the Kyd, the engineers failed to increase it sufficiently to match that of the major Commonwealth factions. Despite its shortcomings, the Shih was regarded as a major success, and was widely deployed to protect Syndicate property and territory, further securing their power and stabilising the system.",
     "shortvariation": "BV",
     "variation": "Base Variation",
     "type": "heavyfighter",
@@ -23064,8 +23051,7 @@
     "weapons": [
       {
         "quantity": 1,
-        "size": "extralarge",
-        "standard": true
+        "size": "extralarge"
       }
     ],
     "shields": {
@@ -23117,7 +23103,7 @@
     "race": "pir",
     "name": "Gannascus",
     "basename": null,
-    "description": null,
+    "description": "The inception of the Gannascus construction ship is credited with catalysing unity within the murky Vigor Syndicate of the Windfall system.\\n\\nThe need for the vying factions to work together on this feat suppressed otherwise brutal rivalries, turning the loose collection of bandit cadres into a somewhat more cohesive organised crime collective.\\n\\nMost observers consider the Vigor Syndicate's ship and station building capacity to be the key factor in its overall threat level.",
     "shortvariation": "BV",
     "variation": "Base Variation",
     "type": "builder",
@@ -23270,7 +23256,7 @@
     "race": "spl",
     "name": "Rattlesnake",
     "basename": "Rattlesnake",
-    "description": null,
+    "description": "For sheer firepower, the Split Rattlesnake is eye-watering. This is the ideal ship choice for pilots whose preferred battle technique is shock-and-awe.",
     "shortvariation": "BV",
     "variation": "Base Variation",
     "type": "destroyer",
@@ -23422,25 +23408,21 @@
       {
         "quantity": 1,
         "size": "large",
-        "standard": true,
         "capitalGun": "spl_destroyer_01"
       },
       {
         "quantity": 1,
         "size": "large",
-        "standard": true,
         "capitalGun": "spl_destroyer_01"
       },
       {
         "quantity": 1,
         "size": "large",
-        "standard": true,
         "capitalGun": "spl_destroyer_01"
       },
       {
         "quantity": 1,
         "size": "large",
-        "standard": true,
         "capitalGun": "spl_destroyer_01"
       }
     ],
@@ -23488,7 +23470,7 @@
     "race": "spl",
     "name": "Wyvern (Gas)",
     "basename": "Wyvern",
-    "description": null,
+    "description": "The Split Wyvern is a large resource-harvesting vessel, with the firepower necessary for more challenging environments. This model is fitted for gas mining.",
     "shortvariation": "BV",
     "variation": "Base Variation",
     "type": "largeminer",
@@ -23641,7 +23623,7 @@
     "race": "spl",
     "name": "Wyvern (Mineral)",
     "basename": "Wyvern",
-    "description": null,
+    "description": "The Split Wyvern is a large resource-harvesting vessel, with the firepower necessary for more challenging environments. This model is fitted for asteroid mining.",
     "shortvariation": "BV",
     "variation": "Base Variation",
     "type": "largeminer",
@@ -23751,7 +23733,7 @@
       {
         "quantity": 1,
         "size": "large",
-        "standard": false,
+        "standard": true,
         "missile": false,
         "shields": {
           "quantity": 1,
@@ -23761,7 +23743,7 @@
       {
         "quantity": 1,
         "size": "large",
-        "standard": false,
+        "standard": true,
         "missile": false,
         "shields": {
           "quantity": 1,
@@ -23814,7 +23796,7 @@
     "race": "spl",
     "name": "Buffalo",
     "basename": "Buffalo",
-    "description": null,
+    "description": "The Split Buffalo is admittedly unattractive. But with a useful turn of speed, and a large turret emplacement, this ugly freighter can survive more hazards than most.",
     "shortvariation": "BV",
     "variation": "Base Variation",
     "type": "freighter",
@@ -23987,7 +23969,7 @@
     "race": "spl",
     "name": "Dragon",
     "basename": "Dragon",
-    "description": null,
+    "description": "Early tragedies stoked a general sentiment among Split pilots that the Dragon is a cursed vessel. However, it has, over the decades, become recognised as a formidable warship. The Dragon cannot be discounted in a one-on-one battle with any ship in the known universe.",
     "shortvariation": "BV",
     "variation": "Base Variation",
     "type": "corvette",
@@ -24141,7 +24123,7 @@
     "race": "spl",
     "name": "Dragon Raider",
     "basename": "Dragon",
-    "description": null,
+    "description": "Early tragedies stoked a general sentiment among Split pilots that the Dragon is a cursed vessel. However, it has, over the decades, become recognised as a formidable warship. The Dragon cannot be discounted in a one-on-one battle with any ship in the known universe.\\n\\nSomething that started out as nothing more than a Split Free Families Dragon modifying competition, eventually resulted in the specification of the Dragon Raider. A fleet of these particular beasts is sufficient to terrorise the most well-defended systems.",
     "shortvariation": "RD",
     "variation": "Raider",
     "type": "corvette",
@@ -24295,7 +24277,7 @@
     "race": "spl",
     "name": "Cobra",
     "basename": "Cobra",
-    "description": null,
+    "description": "Famed privateer Ra t'Knt built her infamous career on the decks of the Cobra. Starting out as a debt collector, she would swoop in and snipe turrets from her clients' debtors. This typically left them no choice but to repay, with interest and fees, or they would lose their ship as collateral.\\n\\nAfter some time, Ra t'Knt's known whereabouts became more sporadic, until they ended altogether. Split speculation is that, under an assumed identity, she now runs a fleet of Cobras and no longer requires a tiresome, legal basis when separating pilots from their vehicles.",
     "shortvariation": "BV",
     "variation": "Base Variation",
     "type": "frigate",
@@ -24439,7 +24421,7 @@
     "race": "spl",
     "name": "Alligator (Gas)",
     "basename": "Alligator",
-    "description": null,
+    "description": "The Split Alligator is a light miner, suitable for a range of resource harvesting needs. Function is prioritised over comfort, so pilots may wish to bring a cushion.\\n\\nThis version of the Alligator is optimised for gas collection.",
     "shortvariation": "BV",
     "variation": "Base Variation",
     "type": "miner",
@@ -24556,7 +24538,7 @@
     "race": "spl",
     "name": "Alligator (Mineral)",
     "basename": "Alligator",
-    "description": null,
+    "description": "The Split Alligator is a light miner, suitable for a range of resource harvesting needs. Function is prioritised over comfort, so pilots may wish to bring a cushion.\\n\\nThis version of the Alligator is optimised for asteroid mining.",
     "shortvariation": "BV",
     "variation": "Base Variation",
     "type": "miner",
@@ -24686,7 +24668,7 @@
     "race": "spl",
     "name": "Boa",
     "basename": "Boa",
-    "description": null,
+    "description": "Nowhere in the owner's manual is the Boa explicitly described as a smuggling vessel. Law-abiding pilots insist that the ship's surprising speed is used to outrun pirates.",
     "shortvariation": "BV",
     "variation": "Base Variation",
     "type": "transporter",
@@ -24803,7 +24785,7 @@
     "race": "spl",
     "name": "Mamba",
     "basename": "Mamba",
-    "description": null,
+    "description": "The Split Mamba is a versatile, all-round workhorse with reasonable speed and weaponry. While suitable for those with diverse interests, in time, many pilots opt for something more specialised.",
     "shortvariation": "BV",
     "variation": "Base Variation",
     "type": "fighter",
@@ -24924,7 +24906,7 @@
     "race": "spl",
     "name": "Asp",
     "basename": "Asp",
-    "description": null,
+    "description": "The Asp is a highly manoeuvrable medium-sized fighter, and a commonly preferred ship for Split mercenaries.",
     "shortvariation": "BV",
     "variation": "Base Variation",
     "type": "fighter",
@@ -25051,7 +25033,7 @@
     "race": "spl",
     "name": "Asp Raider",
     "basename": "Asp",
-    "description": null,
+    "description": "The Asp is a highly manoeuvrable medium-sized fighter, and a commonly preferred ship for Split mercenaries.\\n\\nShipwright Qal t'Kzt of the Split Free Families designed the Raider variant of the Asp. It is thought to be the answer to t'Kzt's burning question, \"How much hull does Asp really need?\".",
     "shortvariation": "RD",
     "variation": "Raider",
     "type": "fighter",
@@ -25178,7 +25160,7 @@
     "race": "spl",
     "name": "Chimera",
     "basename": "Chimera",
-    "description": null,
+    "description": "The Split Chimera was developed by Bala Gi Research Inc., with the aim of improving long-range performance over the Mamba. However, the large ship profile makes it an easy target, even for less competent gunnery personnel.",
     "shortvariation": "BV",
     "variation": "Base Variation",
     "type": "heavyfighter",
@@ -25317,7 +25299,7 @@
     "race": "spl",
     "name": "Balaur",
     "basename": "Balaur",
-    "description": null,
+    "description": "Acclaimed Free Families shipwright Qal t'Kzt considers the Balaur her finest achievement. Her guidance to its pilots is to \"hit hard, hit fast, then run\".",
     "shortvariation": "BV",
     "variation": "Base Variation",
     "type": "heavyfighter",
@@ -25450,7 +25432,7 @@
     "race": "spl",
     "name": "Tuatara (Mineral)",
     "basename": "Tuatara",
-    "description": null,
+    "description": "When billionaire heir Soa t'Snt announced his venture into ship design, no-one believed he could fail.\\n\\nHow wrong they were.\\n\\nDespite many attempts, the only vessel to make it off dry dock to date is the Tuatara. For its class, it is indeed fast, but not notably so. The Tuatara also lacks a generous hold and is, frankly, somewhat on the expensive side.\\n\\nThe enduring surprise is that anyone at all purchases this vessel. And yet, it does look attractive and there are always some fundamentalists who will only buy Split technology.\\n\\nThe mining variant fails to deliver sufficient speed to make up for the Tuatara's pitiful hold capacity.",
     "shortvariation": "BV",
     "variation": "Base Variation",
     "type": "miner",
@@ -25571,7 +25553,7 @@
     "race": "spl",
     "name": "Jaguar",
     "basename": "Jaguar",
-    "description": null,
+    "description": "The Split Jaguar is a scout ship with truly phenomenal speed. As such, it is popular with racers, couriers and getaway drivers.",
     "shortvariation": "BV",
     "variation": "Base Variation",
     "type": "scout",
@@ -25686,7 +25668,7 @@
     "race": "spl",
     "name": "Tuatara",
     "basename": "Tuatara",
-    "description": null,
+    "description": "When billionaire heir Soa t'Snt announced his venture into ship design, no-one believed he could fail.\\n\\nHow wrong they were.\\n\\nDespite many attempts, the only vessel to make it off dry dock to date is the Tuatara. For its class, it is indeed fast, but not notably so. The Tuatara also lacks a generous hold and is, frankly, somewhat on the expensive side.\\n\\nThe enduring surprise is that anyone at all purchases this vessel. And yet, it does look attractive and there are always some fundamentalists who will only buy Split technology.",
     "shortvariation": "BV",
     "variation": "Base Variation",
     "type": "courier",
@@ -25807,13 +25789,13 @@
     "race": "spl",
     "name": "Elephant",
     "basename": "Elephant",
-    "description": null,
+    "description": "The Split Elephant is a well-armoured station construction vessel, suited to developing sites in hazardous conditions. While undertaking building works, the Elephant can house a small fleet of building drones to facilitate its endeavours.",
     "shortvariation": "BV",
     "variation": "Base Variation",
     "type": "builder",
     "radarRange": "40000",
     "docksize": "dock_xl",
-    "hull": 138000,
+    "hull": 181000,
     "shield": {
       "max": 0,
       "rate": 0,
@@ -25843,7 +25825,7 @@
       }
     },
     "storage": {
-      "unit": 100,
+      "unit": 130,
       "missile": 40,
       "people": 182,
       "countermeasure": 40,
@@ -25851,20 +25833,20 @@
       "capacity": 50,
       "capacityType": "container"
     },
-    "mass": 1062.868,
+    "mass": 1151.849,
     "inertia": {
-      "pitch": 622.985,
-      "yaw": 622.985,
-      "roll": 498.388
+      "pitch": 825.967,
+      "yaw": 825.967,
+      "roll": 660.774
     },
     "drag": {
-      "forward": 292.574,
-      "reverse": 1170.294,
-      "horizontal": 560.539,
-      "vertical": 560.539,
-      "pitch": 912.574,
-      "yaw": 912.574,
-      "roll": 912.574
+      "forward": 151.305,
+      "reverse": 605.221,
+      "horizontal": 443.9,
+      "vertical": 443.9,
+      "pitch": 930.37,
+      "yaw": 930.37,
+      "roll": 930.37
     },
     "thrusters": {
       "size": "extralarge"
@@ -25922,7 +25904,7 @@
     },
     "engines": {
       "size": "extralarge",
-      "quantity": 2,
+      "quantity": 1,
       "shields": {
         "quantity": 1,
         "size": "medium"
@@ -25960,7 +25942,7 @@
     "race": "spl",
     "name": "Raptor",
     "basename": "Raptor",
-    "description": null,
+    "description": "Empire builders report fondness for the Split Raptor carrier. Hideously well armed, the Raptor eschews prosaic trivialities such as shielding and reinforced hulls in favour of violently dismantling anything that enters its vicinity.\\n\\nHowever, any antagonist that can remain functional for more than twenty seconds in the Raptor's presence does have the possibility of taking advantage of the vessels cursory defences.",
     "shortvariation": "BV",
     "variation": "Base Variation",
     "type": "carrier",
@@ -26263,7 +26245,7 @@
     "race": "spl",
     "name": "Monitor",
     "basename": "Monitor",
-    "description": null,
+    "description": "The Split Monitor is a well-armed and well-armoured auxiliary vessel. This class of ship, if properly crewed and maintained, allows for the continuous rearming, resupply and repair that is necessary for an active war fleet.",
     "shortvariation": "BV",
     "variation": "Base Variation",
     "type": "resupplier",
@@ -26607,18 +26589,15 @@
     "weapons": [
       {
         "quantity": 1,
-        "size": "large",
-        "standard": true
+        "size": "large"
       },
       {
         "quantity": 1,
-        "size": "large",
-        "standard": true
+        "size": "large"
       },
       {
         "quantity": 1,
-        "size": "large",
-        "standard": true
+        "size": "large"
       }
     ],
     "shields": {
@@ -26830,13 +26809,11 @@
     "weapons": [
       {
         "quantity": 1,
-        "size": "large",
-        "standard": true
+        "size": "large"
       },
       {
         "quantity": 1,
-        "size": "large",
-        "standard": true
+        "size": "large"
       }
     ],
     "shields": {
@@ -27124,7 +27101,7 @@
       {
         "quantity": 1,
         "size": "large",
-        "standard": false,
+        "standard": true,
         "missile": false,
         "shields": {
           "quantity": 1,
@@ -29653,18 +29630,15 @@
     "weapons": [
       {
         "quantity": 1,
-        "size": "large",
-        "standard": true
+        "size": "large"
       },
       {
         "quantity": 1,
-        "size": "large",
-        "standard": true
+        "size": "large"
       },
       {
         "quantity": 1,
-        "size": "extralarge",
-        "standard": true
+        "size": "extralarge"
       }
     ],
     "shields": {
@@ -29721,7 +29695,7 @@
     "type": "builder",
     "radarRange": "40000",
     "docksize": "dock_xl",
-    "hull": 115000,
+    "hull": 153000,
     "shield": {
       "max": 0,
       "rate": 0,
@@ -29751,7 +29725,7 @@
       }
     },
     "storage": {
-      "unit": 100,
+      "unit": 132,
       "missile": 40,
       "people": 219,
       "countermeasure": 40,
@@ -29759,20 +29733,20 @@
       "capacity": 50,
       "capacityType": "container"
     },
-    "mass": 885.723,
+    "mass": 1170.425,
     "inertia": {
-      "pitch": 598.799,
-      "yaw": 598.799,
-      "roll": 479.039
+      "pitch": 842.639,
+      "yaw": 842.639,
+      "roll": 674.111
     },
     "drag": {
-      "forward": 257.145,
-      "reverse": 1028.579,
-      "horizontal": 467.116,
-      "vertical": 467.116,
-      "pitch": 877.145,
-      "yaw": 877.145,
-      "roll": 877.145
+      "forward": 235.564,
+      "reverse": 942.255,
+      "horizontal": 439.458,
+      "vertical": 439.458,
+      "pitch": 934.085,
+      "yaw": 934.085,
+      "roll": 934.085
     },
     "thrusters": {
       "size": "extralarge"
@@ -29830,7 +29804,7 @@
     },
     "engines": {
       "size": "extralarge",
-      "quantity": 2,
+      "quantity": 1,
       "shields": {
         "quantity": 1,
         "size": "medium"

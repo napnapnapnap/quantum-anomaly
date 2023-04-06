@@ -90,6 +90,7 @@ export const maps: {
     hydrogen: '#c5ffff',
     helium: '#ffeec1',
     methane: '#367ca2',
+    sun: '#FFFF00',
   },
 };
 

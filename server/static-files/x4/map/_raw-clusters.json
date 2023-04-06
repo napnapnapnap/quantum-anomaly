@@ -8347,6 +8347,29 @@
           }
         },
         {
+          "name": "C420S01_Region002_connection",
+          "ref": "regions",
+          "offset": {
+            "position": {
+              "x": "-274472.4125976562",
+              "y": "0",
+              "z": "153426.01953125"
+            }
+          },
+          "macro": {
+            "name": "C420S01_Region002_macro",
+            "component": {
+              "connection": "cluster",
+              "ref": "standardregion"
+            },
+            "properties": {
+              "region": {
+                "ref": "region_cluster_420_sector_001"
+              }
+            }
+          }
+        },
+        {
           "ref": "content",
           "macro": {
             "component": {

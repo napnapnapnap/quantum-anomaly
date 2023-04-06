@@ -4,7 +4,7 @@
   "race": "tel",
   "name": "Falcon Vanguard",
   "basename": "Falcon",
-  "description": null,
+  "description": "The Teladi Falcon is a well regarded fighter. Its excellent speed, paired with reasonable strength and weaponry, make it a popular choice for fighter pilots on a budget.\\n\\nThe additional speed conferred by the Vanguard model opens up the possibility of the Falcon being used as a tactical interceptor.",
   "shortvariation": "VA",
   "variation": "Vanguard",
   "type": "fighter",

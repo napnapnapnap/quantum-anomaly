@@ -44,6 +44,7 @@
             "atmosphere": "{1042,10011}(None)",
             "population": "{1042,10011}(None)",
             "settlements": "{1042,10011}(None)",
+            "part": "planet001",
             "moons": {
               "moon": {
                 "name": "{20005,6054} {20402,1}(I)",
@@ -208,6 +209,7 @@
             "atmosphere": "{1042,10011}(None)",
             "population": "{1042,10011}(None)",
             "settlements": "{1042,10011}(None)",
+            "part": "planet001",
             "moons": {
               "moon": [
                 {
@@ -494,7 +496,8 @@
             "geology": "{1042,10011}(None)",
             "atmosphere": "{1042,10011}(None)",
             "population": "{1042,10011}(None)",
-            "settlements": "{1042,10011}(None)"
+            "settlements": "{1042,10011}(None)",
+            "part": "planet001"
           }
         }
       }
@@ -790,7 +793,8 @@
             "geology": "{1042,10011}(None)",
             "atmosphere": "{1042,10011}(None)",
             "population": "{1042,10011}(None)",
-            "settlements": "{1042,10011}(None)"
+            "settlements": "{1042,10011}(None)",
+            "part": "planet001"
           }
         }
       }
@@ -896,6 +900,7 @@
             "atmosphere": "{1042,10011}(None)",
             "population": "{1042,10011}(None)",
             "settlements": "{1042,10011}(None)",
+            "part": "planet001b",
             "moons": {
               "moon": {
                 "name": "{20003,100001} {20403,103}(c) {20402,1}(I)",
@@ -1020,7 +1025,8 @@
             "geology": "{1042,15061}(Canyons)",
             "atmosphere": "{1042,11041}(Nitrogen)",
             "population": "{1042,10011}(None)",
-            "settlements": "{1042,10011}(None)"
+            "settlements": "{1042,10011}(None)",
+            "part": "planet001"
           }
         }
       }
@@ -1139,7 +1145,8 @@
                 "geology": "{1042,15071}(Rocks)",
                 "atmosphere": "{1042,11081}(Carbon Dioxide)",
                 "population": "{1042,16011}(Uninhabited)",
-                "settlements": "{1042,10011}(None)"
+                "settlements": "{1042,10011}(None)",
+                "part": "sphere003"
               }
             }
           }
@@ -1276,6 +1283,7 @@
             "atmosphere": "{1042,10011}(None)",
             "population": "{1042,10011}(None)",
             "settlements": "{1042,10011}(None)",
+            "part": "planet001",
             "moons": {
               "moon": {
                 "name": "{20003,160001}{20403,108}(h) {20402,1}(I)",
@@ -1333,7 +1341,8 @@
             "geology": "{1042,15101}(Barren)",
             "atmosphere": "{1042,11041}(Nitrogen)",
             "population": "{1042,10011}(None)",
-            "settlements": "{1042,10011}(None)"
+            "settlements": "{1042,10011}(None)",
+            "part": "planet"
           }
         }
       }
@@ -1379,6 +1388,7 @@
             "atmosphere": "{1042,10011}(None)",
             "population": "{1042,10011}(None)",
             "settlements": "{1042,10011}(None)",
+            "part": "gasgiant",
             "moons": {
               "moon": [
                 {
@@ -1535,7 +1545,8 @@
             "geology": "{1042,10011}(None)",
             "atmosphere": "{1042,10011}(None)",
             "population": "{1042,10011}(None)",
-            "settlements": "{1042,10011}(None)"
+            "settlements": "{1042,10011}(None)",
+            "part": "planet001"
           }
         }
       }
@@ -1734,6 +1745,7 @@
             "atmosphere": "{1042,11061}(Methane/Hydrogen)",
             "population": "{1042,10011}(None)",
             "settlements": "{1042,10011}(None)",
+            "part": "planet",
             "moons": {
               "moon": {
                 "name": "{20003,220001} {20403,102}(b) {20402,1}(I)",
@@ -2081,6 +2093,7 @@
             "atmosphere": "{1042,10011}(None)",
             "population": "{1042,10011}(None)",
             "settlements": "{1042,10011}(None)",
+            "part": "planet001",
             "moons": {
               "moon": [
                 {
@@ -2088,21 +2101,24 @@
                   "geology": "{1042,15111}(Desert)",
                   "atmosphere": "{1042,11041}(Nitrogen)",
                   "population": "{1042,16011}(Uninhabited)",
-                  "settlements": "{1042,10011}(None)"
+                  "settlements": "{1042,10011}(None)",
+                  "part": "moon001"
                 },
                 {
                   "name": "{20003,270001} {20403,109}(i) {20402,2}(II)",
                   "geology": "{1042,15071}(Rocks)",
                   "atmosphere": "{1042,10011}(None)",
                   "population": "{1042,16011}(Uninhabited)",
-                  "settlements": "{1042,10011}(None)"
+                  "settlements": "{1042,10011}(None)",
+                  "part": "moon002"
                 },
                 {
                   "name": "{20003,270001} {20403,109}(i) {20402,3}(III)",
                   "geology": "{1042,15091}(Craters)",
                   "atmosphere": "{1042,10011}(None)",
                   "population": "{1042,16011}(Uninhabited)",
-                  "settlements": "{1042,10011}(None)"
+                  "settlements": "{1042,10011}(None)",
+                  "part": "moon003"
                 }
               ]
             }
@@ -2223,7 +2239,8 @@
             "geology": "{1042,10011}(None)",
             "atmosphere": "{1042,10011}(None)",
             "population": "{1042,10011}(None)",
-            "settlements": "{1042,10011}(None)"
+            "settlements": "{1042,10011}(None)",
+            "part": "planet001"
           }
         }
       }
@@ -2661,7 +2678,8 @@
             "geology": "{1042,10011}(None)",
             "atmosphere": "{1042,10011}(None)",
             "population": "{1042,10011}(None)",
-            "settlements": "{1042,10011}(None)"
+            "settlements": "{1042,10011}(None)",
+            "part": "planet001"
           }
         }
       }
@@ -3408,6 +3426,7 @@
             "atmosphere": "{1042,10011}(None)",
             "population": "{1042,10011}(None)",
             "settlements": "{1042,10011}(None)",
+            "part": "part_gasgiant",
             "moons": {
               "moon": {
                 "name": "{20003,4010001} {20403,104}(d) {20402,1}(I)",
@@ -3472,7 +3491,8 @@
             "geology": "{1042,10011}(None)",
             "atmosphere": "{1042,10011}(None)",
             "population": "{1042,10011}(None)",
-            "settlements": "{1042,10011}(None)"
+            "settlements": "{1042,10011}(None)",
+            "part": "part_gasgiant"
           }
         }
       }
@@ -3532,7 +3552,7 @@
         }
       },
       "area": {
-        "sunlight": "1",
+        "sunlight": "1.42",
         "economy": "0.5",
         "security": "0.5"
       },
@@ -3578,7 +3598,7 @@
         }
       },
       "area": {
-        "sunlight": "1",
+        "sunlight": "2.1",
         "economy": "0.75",
         "security": "0.75"
       }
@@ -3608,7 +3628,7 @@
         }
       },
       "area": {
-        "sunlight": "1",
+        "sunlight": "1.51",
         "economy": "0.25",
         "security": "0.5"
       }
@@ -3657,7 +3677,8 @@
             "geology": "{1042,10011}(None)",
             "atmosphere": "{1042,10011}(None)",
             "population": "{1042,10011}(None)",
-            "settlements": "{1042,10011}(None)"
+            "settlements": "{1042,10011}(None)",
+            "part": "part_gasgiant"
           }
         }
       }
@@ -3701,7 +3722,8 @@
             "geology": "{1042,15071}(Rocks)",
             "atmosphere": "{1042,11041}(Nitrogen)",
             "population": "{1042,10011}(None)",
-            "settlements": "{1042,16011}(Uninhabited)"
+            "settlements": "{1042,16011}(Uninhabited)",
+            "part": "planet001"
           }
         }
       }
@@ -3781,7 +3803,8 @@
               "geology": "{1042,10011}(None)",
               "atmosphere": "{1042,10011}(None)",
               "population": "{1042,10011}(None)",
-              "settlements": "{1042,10011}(None)"
+              "settlements": "{1042,10011}(None)",
+              "part": "part_gasgiant"
             }
           ]
         }
@@ -4033,13 +4056,15 @@
             "atmosphere": "{1042,11011}(Methane)",
             "population": "{1042,10011}(None)",
             "settlements": "{1042,16011}(Uninhabited)",
+            "part": "part_earthlike",
             "moons": {
               "moon": {
                 "name": "{20003,4150001} {20403,102}(b) {20402,1}(I) ",
                 "geology": "{1042,15061}(Canyons)",
                 "atmosphere": "{1042,11041}(Nitrogen)",
                 "population": "{1042,10011}(None)",
-                "settlements": "{1042,16011}(Uninhabited)"
+                "settlements": "{1042,16011}(Uninhabited)",
+                "part": "moon"
               }
             }
           }
@@ -4085,7 +4110,8 @@
             "geology": "{1042,10011}(None)",
             "atmosphere": "{1042,10011}(None)",
             "population": "{1042,10011}(None)",
-            "settlements": "{1042,10011}(None)"
+            "settlements": "{1042,10011}(None)",
+            "part": "part_gasgiant_atmo"
           }
         }
       }
@@ -4274,6 +4300,7 @@
             "atmosphere": "{1042,10011}(None)",
             "population": "{1042,10011}(None)",
             "settlements": "{1042,10011}(None)",
+            "part": "anim_Sphere01",
             "moons": {
               "moon": [
                 {
@@ -4281,14 +4308,16 @@
                   "geology": "{1042,15091}(Craters)",
                   "atmosphere": "{1042,10011}(None)",
                   "population": "{1042,10011}(None)",
-                  "settlements": "{1042,16011}(Uninhabited)"
+                  "settlements": "{1042,16011}(Uninhabited)",
+                  "part": "part_moon"
                 },
                 {
                   "name": "{20003,4190001} {20403,107}(g) {20402,2}(II)",
                   "geology": "{1042,15081}(Ice)",
                   "atmosphere": "{1042,11011}(Methane)",
                   "population": "{1042,10011}(None)",
-                  "settlements": "{1042,16011}(Uninhabited)"
+                  "settlements": "{1042,16011}(Uninhabited)",
+                  "part": "part_moon2"
                 }
               ]
             }
@@ -4405,7 +4434,8 @@
             "geology": "{1042,15031}(Volcanic)",
             "atmosphere": "{1042,11061}(Methane/Hydrogen)",
             "population": "{1042,10011}(None)",
-            "settlements": "{1042,16011}(Uninhabited)"
+            "settlements": "{1042,16011}(Uninhabited)",
+            "part": "planet001"
           }
         }
       }

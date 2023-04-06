@@ -4,7 +4,7 @@
   "race": "tel",
   "name": "Condor Vanguard",
   "basename": "Condor",
-  "description": null,
+  "description": "The Ministry of Finance commissioned the Condor to be the mainstay of a carrier fleet. While the ship borrows heavily from Split technology, its implementation could not result in a less \"Split\" vessel.\\n\\nHeavily reinforced, the Condor is capable of launching a battle fleet under heavy fire. The Vanguard variant provides additional speed, allowing the Condor to get into, and out of, difficult situations with a little more ease.",
   "shortvariation": "VA",
   "variation": "Vanguard",
   "type": "carrier",

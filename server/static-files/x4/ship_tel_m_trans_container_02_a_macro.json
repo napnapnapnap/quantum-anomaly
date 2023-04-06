@@ -4,7 +4,7 @@
   "race": "tel",
   "name": "Tern Vanguard",
   "basename": "Tern",
-  "description": null,
+  "description": "The Teladi Tern is a surprisingly cost effective and efficient freighter, a staple of many trading corporations. Its affordability and solid performance make it one of the more popular Teladi vessel designs.\\n\\nThe Vanguard model is optimised for speed, however, the reduction in cargo capacity reduces the Tern's overall trading performance.",
   "shortvariation": "VA",
   "variation": "Vanguard",
   "type": "transporter",
@@ -45,7 +45,7 @@
     "people": 20,
     "countermeasure": 8,
     "deployable": 100,
-    "capacity": 9200,
+    "capacity": 10880,
     "capacityType": "container"
   },
   "mass": 56.817,

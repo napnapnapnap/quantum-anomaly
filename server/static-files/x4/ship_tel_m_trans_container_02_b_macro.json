@@ -4,7 +4,7 @@
   "race": "tel",
   "name": "Tern Sentinel",
   "basename": "Tern",
-  "description": null,
+  "description": "The Teladi Tern is a surprisingly cost effective and efficient freighter, a staple of many trading corporations. Its affordability and solid performance make it one of the more popular Teladi vessel designs.\\n\\nThe Tern Sentinel variant has a hardened hull composite, and is favoured by many traders.",
   "shortvariation": "ST",
   "variation": "Sentinel",
   "type": "transporter",
@@ -45,7 +45,7 @@
     "people": 16,
     "countermeasure": 8,
     "deployable": 100,
-    "capacity": 11040,
+    "capacity": 13600,
     "capacityType": "container"
   },
   "mass": 68.18,

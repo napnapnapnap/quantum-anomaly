@@ -4,7 +4,7 @@
   "race": "par",
   "name": "Perseus Sentinel",
   "basename": "Perseus",
-  "description": null,
+  "description": "A fast, small fighter, with respectable hardpoints, the Paranid Perseus has a reasonable following among fighter pilots and explorers alike. Recommended to young captains in search of their second ship.\\n\\nThe Perseus Sentinel has additional superstructure reinforcement at the cost of speed.",
   "shortvariation": "ST",
   "variation": "Sentinel",
   "type": "fighter",

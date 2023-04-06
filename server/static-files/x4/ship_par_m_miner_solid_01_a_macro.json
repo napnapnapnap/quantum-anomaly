@@ -4,7 +4,7 @@
   "race": "par",
   "name": "Plutus (Mineral) Vanguard",
   "basename": "Plutus",
-  "description": null,
+  "description": "The Paranid Plutus is a decidedly humble, medium-sized resource extractor, available in both mineral and gas extraction formats.\\n\\nThe asteroid mining Vanguard model's enhancements do little to negate the vessel's understated presence. The ship remains eminently forgettable.",
   "shortvariation": "VA",
   "variation": "Vanguard",
   "type": "miner",

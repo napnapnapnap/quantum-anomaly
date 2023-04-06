@@ -4,7 +4,7 @@
   "race": "par",
   "name": "Hermes Vanguard",
   "basename": "Hermes",
-  "description": null,
+  "description": "The Hermes is a medium-sized Paranid-designed journeyman freighter with reasonable performance.\\n\\nWhile the Vanguard offers additional speed, even this model is widely considered to be unsuited to blockade running.",
   "shortvariation": "VA",
   "variation": "Vanguard",
   "type": "transporter",

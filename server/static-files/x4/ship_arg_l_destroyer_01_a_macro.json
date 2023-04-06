@@ -136,13 +136,11 @@
     {
       "quantity": 1,
       "size": "large",
-      "standard": true,
       "capitalGun": "arg_destroyer_01"
     },
     {
       "quantity": 1,
       "size": "large",
-      "standard": true,
       "capitalGun": "arg_destroyer_01"
     }
   ],

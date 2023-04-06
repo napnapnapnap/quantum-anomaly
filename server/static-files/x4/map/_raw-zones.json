@@ -5303,7 +5303,7 @@
     },
     "connections": {
       "connection": {
-        "name": "connection_ClusterGate031To315",
+        "name": "connection_ClusterGate031To601b",
         "ref": "gates",
         "offset": {
           "position": {
@@ -5319,8 +5319,13 @@
           }
         },
         "macro": {
-          "ref": "props_gates_anc_gate_macro",
-          "connection": "space"
+          "ref": "props_gates_anc_gate_anim_macro",
+          "connection": "space",
+          "properties": {
+            "state": {
+              "active": "false"
+            }
+          }
         }
       }
     }

@@ -165,13 +165,11 @@
   "weapons": [
     {
       "quantity": 1,
-      "size": "large",
-      "standard": true
+      "size": "large"
     },
     {
       "quantity": 1,
-      "size": "large",
-      "standard": true
+      "size": "large"
     }
   ],
   "shields": {

@@ -4,7 +4,7 @@
   "race": "tel",
   "name": "Cormorant Vanguard",
   "basename": "Cormorant",
-  "description": null,
+  "description": "The Cormorant is unusual for a Teladi ship as it is tailored for freelancers. A light freighter with very basic construction specifications, it is inexpensive and accessible for most entrepreneurs starting out in business.\\n\\nThe Cormorant Vanguard is not well armed, however, it is resilient. Many of the fittings successfully remain attached during spaceflight.",
   "shortvariation": "VA",
   "variation": "Vanguard",
   "type": "transporter",

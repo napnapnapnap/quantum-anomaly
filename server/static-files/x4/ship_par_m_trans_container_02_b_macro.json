@@ -4,7 +4,7 @@
   "race": "par",
   "name": "Hermes Sentinel",
   "basename": "Hermes",
-  "description": null,
+  "description": "The Hermes is a medium-sized Paranid-designed journeyman freighter with reasonable performance.\\n\\nThe Sentinel model has improved cargo capacity and a somewhat hardened chassis.",
   "shortvariation": "ST",
   "variation": "Sentinel",
   "type": "transporter",

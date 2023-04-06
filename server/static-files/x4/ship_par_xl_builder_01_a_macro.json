@@ -4,13 +4,13 @@
   "race": "par",
   "name": "Heracles Vanguard",
   "basename": "Heracles",
-  "description": null,
+  "description": "The Paranid Heracles is an enormous station-building ship, and as such, is the foundation of an economic empire.\\n\\nThe Heracles Vanguard offers additional speed, though it remains somewhat pedestrian.",
   "shortvariation": "VA",
   "variation": "Vanguard",
   "type": "builder",
   "radarRange": "40000",
   "docksize": "dock_xl",
-  "hull": 115000,
+  "hull": 149000,
   "shield": {
     "max": 0,
     "rate": 0,
@@ -40,7 +40,7 @@
     }
   },
   "storage": {
-    "unit": 100,
+    "unit": 128,
     "missile": 40,
     "people": 219,
     "countermeasure": 40,
@@ -48,20 +48,20 @@
     "capacity": 50,
     "capacityType": "container"
   },
-  "mass": 885.723,
+  "mass": 1137.601,
   "inertia": {
-    "pitch": 598.799,
-    "yaw": 598.799,
-    "roll": 479.039
+    "pitch": 813.251,
+    "yaw": 813.251,
+    "roll": 650.601
   },
   "drag": {
-    "forward": 257.145,
-    "reverse": 1028.579,
-    "horizontal": 467.116,
-    "vertical": 467.116,
-    "pitch": 877.145,
-    "yaw": 877.145,
-    "roll": 877.145
+    "forward": 230.64,
+    "reverse": 922.561,
+    "horizontal": 447.058,
+    "vertical": 447.058,
+    "pitch": 927.52,
+    "yaw": 927.52,
+    "roll": 927.52
   },
   "thrusters": {
     "size": "extralarge"

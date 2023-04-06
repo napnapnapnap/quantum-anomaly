@@ -4,7 +4,7 @@
   "race": "spl",
   "name": "Wyvern (Gas)",
   "basename": "Wyvern",
-  "description": null,
+  "description": "The Split Wyvern is a large resource-harvesting vessel, with the firepower necessary for more challenging environments. This model is fitted for gas mining.",
   "shortvariation": "BV",
   "variation": "Base Variation",
   "type": "largeminer",

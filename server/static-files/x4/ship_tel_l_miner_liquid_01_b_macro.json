@@ -4,7 +4,7 @@
   "race": "tel",
   "name": "Crane (Gas) Sentinel",
   "basename": "Crane",
-  "description": null,
+  "description": "The Teladi Crane is a large miner with truly impressive load carrying capacity. Fulfilling a major part of Teladi primary resource acquisition, the Crane is available in models optimised for either mineral or gas collection.\\n\\nThe Sentinel variant enhances the Crane's cargo hold even further, though pilots should be aware that this may make them an attractive proposition for pirates.",
   "shortvariation": "ST",
   "variation": "Sentinel",
   "type": "largeminer",

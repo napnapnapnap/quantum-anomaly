@@ -4,7 +4,7 @@
   "race": "tel",
   "name": "Condor Sentinel",
   "basename": "Condor",
-  "description": null,
+  "description": "The Ministry of Finance commissioned the Condor to be the mainstay of a carrier fleet. While the ship borrows heavily from Split technology, its implementation could not result in a less \"Split\" vessel.\\n\\nHeavily reinforced, the Condor is capable of launching a battle fleet under heavy fire. The Sentinel variant braces the ship further, providing a daunting resilience to attack.",
   "shortvariation": "ST",
   "variation": "Sentinel",
   "type": "carrier",

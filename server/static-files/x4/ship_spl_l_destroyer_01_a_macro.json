@@ -4,7 +4,7 @@
   "race": "spl",
   "name": "Rattlesnake",
   "basename": "Rattlesnake",
-  "description": null,
+  "description": "For sheer firepower, the Split Rattlesnake is eye-watering. This is the ideal ship choice for pilots whose preferred battle technique is shock-and-awe.",
   "shortvariation": "BV",
   "variation": "Base Variation",
   "type": "destroyer",
@@ -156,25 +156,21 @@
     {
       "quantity": 1,
       "size": "large",
-      "standard": true,
       "capitalGun": "spl_destroyer_01"
     },
     {
       "quantity": 1,
       "size": "large",
-      "standard": true,
       "capitalGun": "spl_destroyer_01"
     },
     {
       "quantity": 1,
       "size": "large",
-      "standard": true,
       "capitalGun": "spl_destroyer_01"
     },
     {
       "quantity": 1,
       "size": "large",
-      "standard": true,
       "capitalGun": "spl_destroyer_01"
     }
   ],

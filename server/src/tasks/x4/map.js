@@ -376,6 +376,13 @@ export async function getMap(sourceBasePath, translations) {
                   sector.stations = [];
 
                   mapDefaults.forEach((mapDefault) => {
+                    if (cluster.name === mapDefault.macro) {
+                      if (mapDefault.properties.area) {
+                        if (mapDefault.properties.area.sunlight)
+                          sector.sunlight = parseFloat(mapDefault.properties.area.sunlight);
+                      }
+                    }
+
                     if (sector.name === mapDefault.macro) {
                       sector.label = translateRecursiveTrim(mapDefault.properties.identification.name, translations);
                       sector.description = translateRecursiveTrim(

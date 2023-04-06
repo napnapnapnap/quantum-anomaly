@@ -4,7 +4,7 @@
   "race": "tel",
   "name": "Pelican Vanguard",
   "basename": "Pelican",
-  "description": null,
+  "description": "The Teladi Pelican is notable for its mediocrity as a freighter. It has taken to the level of an art form the capacity to be neither outstandingly good nor bad on any single metric. The single greatest mystery is why Teladi traders themselves use this ship, when there are many other more profitable options available.\\n\\nThe Vanguard model's increased speed manages to make the vessel even less profitable due to a reduction in cargo space.",
   "shortvariation": "VA",
   "variation": "Vanguard",
   "type": "freighter",
@@ -45,7 +45,7 @@
     "people": 100,
     "countermeasure": 20,
     "deployable": 250,
-    "capacity": 34000,
+    "capacity": 40800,
     "capacityType": "container"
   },
   "mass": 402.059,

@@ -4,7 +4,7 @@
   "race": "tel",
   "name": "Peregrine Sentinel",
   "basename": "Peregrine",
-  "description": null,
+  "description": "While originally designed as a bomber, the Teladi Peregrine has recently found popularity in the role of an escort ship. Its primary tactical advantage in this regard is its excellent turret coverage, which can be highly effective when appropriately armed.\\n\\nThe Peregrine Sentinel leans into this novel escort role, offering increased superstructure resilience.",
   "shortvariation": "ST",
   "variation": "Sentinel",
   "type": "gunboat",

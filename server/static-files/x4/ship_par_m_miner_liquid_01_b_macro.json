@@ -4,7 +4,7 @@
   "race": "par",
   "name": "Plutus (Gas) Sentinel",
   "basename": "Plutus",
-  "description": null,
+  "description": "The Paranid Plutus is a decidedly humble, medium-sized resource extractor, available in both mineral and gas extraction formats.\\n\\nThis gas collector boasts increased resource storage capacity in the Sentinel model.",
   "shortvariation": "ST",
   "variation": "Sentinel",
   "type": "miner",

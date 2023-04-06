@@ -4,7 +4,7 @@
   "race": "tel",
   "name": "Manorina (Gas) Sentinel",
   "basename": "Manorina",
-  "description": null,
+  "description": "While ostensibly a resource harvester, some enterprising captains have repurposed the Teladi Manorina as a low-cost gunship, taking full advantage of its outstanding shielding capacity. Some even go as far as retaining the mining drill as a weapon, due to its extended range. Suspicions are occasionally expressed that this is a Teladi artifice for trading a weapon of war under civilian guise, avoiding the requirement for a military licence.\\n\\nThe Manorina can also be used for harmless gas collection. The Sentinel model boasts increased storage capacity.",
   "shortvariation": "ST",
   "variation": "Sentinel",
   "type": "miner",

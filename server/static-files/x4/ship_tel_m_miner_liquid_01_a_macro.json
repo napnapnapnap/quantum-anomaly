@@ -4,7 +4,7 @@
   "race": "tel",
   "name": "Manorina (Gas) Vanguard",
   "basename": "Manorina",
-  "description": null,
+  "description": "While ostensibly a resource harvester, some enterprising captains have repurposed the Teladi Manorina as a low-cost gunship, taking full advantage of its outstanding shielding capacity. Some even go as far as retaining the mining drill as a weapon, due to its extended range. Suspicions are occasionally expressed that this is a Teladi artifice for trading a weapon of war under civilian guise, avoiding the requirement for a military licence.\\n\\nThe Manorina can also be used to collect gas, and the Vanguard model adds a useful degree of speed.",
   "shortvariation": "VA",
   "variation": "Vanguard",
   "type": "miner",

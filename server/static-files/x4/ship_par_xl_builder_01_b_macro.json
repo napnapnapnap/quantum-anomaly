@@ -4,13 +4,13 @@
   "race": "par",
   "name": "Heracles Sentinel",
   "basename": "Heracles",
-  "description": null,
+  "description": "The Paranid Heracles is an enormous station-building ship, and as such, is the foundation of an economic empire.\\n\\nThe Sentinel model is a hardened version of the Heracles.",
   "shortvariation": "ST",
   "variation": "Sentinel",
   "type": "builder",
   "radarRange": "40000",
   "docksize": "dock_xl",
-  "hull": 138000,
+  "hull": 178000,
   "shield": {
     "max": 0,
     "rate": 0,
@@ -40,7 +40,7 @@
     }
   },
   "storage": {
-    "unit": 100,
+    "unit": 154,
     "missile": 40,
     "people": 182,
     "countermeasure": 40,
@@ -48,20 +48,20 @@
     "capacity": 50,
     "capacityType": "container"
   },
-  "mass": 1062.868,
+  "mass": 1365.121,
   "inertia": {
-    "pitch": 622.985,
-    "yaw": 622.985,
-    "roll": 498.388
+    "pitch": 853.149,
+    "yaw": 853.149,
+    "roll": 682.52
   },
   "drag": {
-    "forward": 292.574,
-    "reverse": 1170.294,
-    "horizontal": 560.539,
-    "vertical": 560.539,
-    "pitch": 912.574,
-    "yaw": 912.574,
-    "roll": 912.574
+    "forward": 264.768,
+    "reverse": 1059.073,
+    "horizontal": 536.47,
+    "vertical": 536.47,
+    "pitch": 973.024,
+    "yaw": 973.024,
+    "roll": 973.024
   },
   "thrusters": {
     "size": "extralarge"

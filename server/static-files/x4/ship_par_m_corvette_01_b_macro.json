@@ -4,7 +4,7 @@
   "race": "par",
   "name": "Nemesis Sentinel",
   "basename": "Nemesis",
-  "description": null,
+  "description": "The Paranid Nemesis is a highly sought-after corvette, boasting an attractive balance of speed, firepower and general versatility. The overall adaptability and build quality of the production line vessel ensure that the loadout options selected by owners can have a tangible impact on the tactical use-cases available.\\n\\nThe Sentinel edition of the Nemesis offers additional resilience, which may be preferred by those operating in live fire environments.",
   "shortvariation": "ST",
   "variation": "Sentinel",
   "type": "corvette",

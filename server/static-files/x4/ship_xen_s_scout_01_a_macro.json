@@ -4,7 +4,7 @@
   "race": "xen",
   "name": "T",
   "basename": null,
-  "description": null,
+  "description": "Unlike most Xenon ships, the T scout can be destroyed quite easily, if it can be caught. The T is extraordinarily fast, with an extreme optimisation for speed over all other criteria.",
   "shortvariation": "BV",
   "variation": "Base Variation",
   "type": "scout",

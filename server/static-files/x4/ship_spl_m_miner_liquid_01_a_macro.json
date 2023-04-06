@@ -4,7 +4,7 @@
   "race": "spl",
   "name": "Alligator (Gas)",
   "basename": "Alligator",
-  "description": null,
+  "description": "The Split Alligator is a light miner, suitable for a range of resource harvesting needs. Function is prioritised over comfort, so pilots may wish to bring a cushion.\\n\\nThis version of the Alligator is optimised for gas collection.",
   "shortvariation": "BV",
   "variation": "Base Variation",
   "type": "miner",

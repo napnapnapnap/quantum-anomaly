@@ -4,7 +4,7 @@
   "race": "tel",
   "name": "Osprey Sentinel",
   "basename": "Osprey",
-  "description": null,
+  "description": "The Teladi Osprey is a surprisingly effective frigate with significant cargo capacity. On this basis, it can be used as a well-armed and speedy alternative to a standard freighter for trade runs where prejudice is anticipated.\\n\\nThe Sentinel variation compromises speed in favour of additional cargo space.",
   "shortvariation": "ST",
   "variation": "Sentinel",
   "type": "frigate",

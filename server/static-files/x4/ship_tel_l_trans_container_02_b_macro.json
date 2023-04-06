@@ -4,7 +4,7 @@
   "race": "tel",
   "name": "Heron Sentinel",
   "basename": "Heron",
-  "description": null,
+  "description": "The Teladi Company's Heron is a large freighter. It is noted for its somewhat relaxed pace, which is in keeping with mainstream Teladi design values.\\n\\nThe Sentinel model is popular in military academies for use in remedial target practice.",
   "shortvariation": "ST",
   "variation": "Sentinel",
   "type": "freighter",
@@ -45,7 +45,7 @@
     "people": 84,
     "countermeasure": 20,
     "deployable": 250,
-    "capacity": 37200,
+    "capacity": 46000,
     "capacityType": "container"
   },
   "mass": 441,
