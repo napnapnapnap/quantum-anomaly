@@ -1,1 +1,154 @@
-{"id":"ship_par_xl_builder_01_a_macro","class":"ship_xl","race":"par","name":"Heracles Vanguard","basename":"Heracles","description":"The Paranid Heracles is an enormous station-building ship, and as such, is the foundation of an economic empire.\\n\\nThe Heracles Vanguard offers additional speed, though it remains somewhat pedestrian.","shortvariation":"VA","variation":"Vanguard","type":"builder","radarRange":"40000","docksize":"dock_xl","hull":149000,"shield":{"max":0,"rate":0,"delay":0},"speed":{"forward":0,"acceleration":0,"boost":0,"travel":0,"pitch":0,"roll":0,"yaw":0},"armaments":{"weapons":{"extralarge":0,"large":0,"medium":0,"small":0},"turrets":{"extralarge":0,"large":0,"medium":8,"small":0}},"storage":{"unit":128,"missile":40,"people":219,"countermeasure":40,"deployable":450,"capacity":50,"capacityType":"container"},"mass":1137.601,"inertia":{"pitch":813.251,"yaw":813.251,"roll":650.601},"drag":{"forward":230.64,"reverse":922.561,"horizontal":447.058,"vertical":447.058,"pitch":927.52,"yaw":927.52,"roll":927.52},"thrusters":{"size":"extralarge"},"shipstorage":{"dock_m":10,"dock_s":40},"dlc":"base","turrets":[{"quantity":2,"size":"medium","standard":true,"missile":true,"shields":{"quantity":1,"size":"medium"}},{"quantity":2,"size":"medium","standard":true,"missile":true,"shields":{"quantity":1,"size":"medium"}},{"quantity":2,"size":"medium","standard":true,"missile":true,"shields":{"quantity":1,"size":"medium"}},{"quantity":2,"size":"medium","standard":true,"missile":true,"shields":{"quantity":1,"size":"medium"}}],"weapons":[],"shields":{"size":"extralarge","quantity":2},"engines":{"size":"extralarge","quantity":2,"shields":{"quantity":1,"size":"medium"}},"specialExit":false,"price":{"min":7755200,"average":9123765,"max":10492330},"production":{"time":439,"amount":"1","method":"default","name":"{20206,101}","primary":{"ware":[{"ware":"energycells","amount":"2428"},{"ware":"hullparts","amount":"8545"}]}},"manufacturer":"paranid"}
+{
+  "id": "ship_par_xl_builder_01_a_macro",
+  "class": "ship_xl",
+  "race": "par",
+  "name": "Heracles Vanguard",
+  "basename": "Heracles",
+  "description": "The Paranid Heracles is an enormous station-building ship, and as such, is the foundation of an economic empire.\\n\\nThe Heracles Vanguard offers additional speed, though it remains somewhat pedestrian.",
+  "shortvariation": "VA",
+  "variation": "Vanguard",
+  "type": "builder",
+  "radarRange": "40000",
+  "docksize": "dock_xl",
+  "hull": 149000,
+  "shield": {
+    "max": 0,
+    "rate": 0,
+    "delay": 0
+  },
+  "speed": {
+    "forward": 0,
+    "acceleration": 0,
+    "boost": 0,
+    "travel": 0,
+    "pitch": 0,
+    "roll": 0,
+    "yaw": 0
+  },
+  "armaments": {
+    "weapons": {
+      "extralarge": 0,
+      "large": 0,
+      "medium": 0,
+      "small": 0
+    },
+    "turrets": {
+      "extralarge": 0,
+      "large": 0,
+      "medium": 8,
+      "small": 0
+    }
+  },
+  "storage": {
+    "unit": 128,
+    "missile": 40,
+    "people": 219,
+    "countermeasure": 40,
+    "deployable": 450,
+    "capacity": 50,
+    "capacityType": "container"
+  },
+  "mass": 1137.601,
+  "inertia": {
+    "pitch": 813.251,
+    "yaw": 813.251,
+    "roll": 650.601
+  },
+  "drag": {
+    "forward": 230.64,
+    "reverse": 922.561,
+    "horizontal": 447.058,
+    "vertical": 447.058,
+    "pitch": 927.52,
+    "yaw": 927.52,
+    "roll": 927.52
+  },
+  "thrusters": {
+    "size": "extralarge"
+  },
+  "shipstorage": {
+    "dock_m": 10,
+    "dock_s": 40
+  },
+  "dlc": "base",
+  "turrets": [
+    {
+      "quantity": 2,
+      "size": "medium",
+      "standard": true,
+      "missile": true,
+      "shields": {
+        "quantity": 1,
+        "size": "medium"
+      }
+    },
+    {
+      "quantity": 2,
+      "size": "medium",
+      "standard": true,
+      "missile": true,
+      "shields": {
+        "quantity": 1,
+        "size": "medium"
+      }
+    },
+    {
+      "quantity": 2,
+      "size": "medium",
+      "standard": true,
+      "missile": true,
+      "shields": {
+        "quantity": 1,
+        "size": "medium"
+      }
+    },
+    {
+      "quantity": 2,
+      "size": "medium",
+      "standard": true,
+      "missile": true,
+      "shields": {
+        "quantity": 1,
+        "size": "medium"
+      }
+    }
+  ],
+  "weapons": [],
+  "shields": {
+    "size": "extralarge",
+    "quantity": 2
+  },
+  "engines": {
+    "size": "extralarge",
+    "quantity": 2,
+    "shields": {
+      "quantity": 1,
+      "size": "medium"
+    }
+  },
+  "specialExit": false,
+  "price": {
+    "min": 7755200,
+    "average": 9123765,
+    "max": 10492330
+  },
+  "production": {
+    "time": 439,
+    "amount": "1",
+    "method": "default",
+    "name": "{20206,101}",
+    "primary": {
+      "ware": [
+        {
+          "ware": "energycells",
+          "amount": "2428"
+        },
+        {
+          "ware": "hullparts",
+          "amount": "8545"
+        }
+      ]
+    }
+  },
+  "manufacturer": "paranid"
+}

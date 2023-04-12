@@ -1,1 +1,214 @@
-{"id":"ship_tel_xl_carrier_01_a_macro","class":"ship_xl","race":"tel","name":"Condor Vanguard","basename":"Condor","description":"The Ministry of Finance commissioned the Condor to be the mainstay of a carrier fleet. While the ship borrows heavily from Split technology, its implementation could not result in a less \"Split\" vessel.\\n\\nHeavily reinforced, the Condor is capable of launching a battle fleet under heavy fire. The Vanguard variant provides additional speed, allowing the Condor to get into, and out of, difficult situations with a little more ease.","shortvariation":"VA","variation":"Vanguard","type":"carrier","radarRange":"40000","docksize":"dock_xl","hull":239000,"shield":{"max":0,"rate":0,"delay":0},"speed":{"forward":0,"acceleration":0,"boost":0,"travel":0,"pitch":0,"roll":0,"yaw":0},"armaments":{"weapons":{"extralarge":0,"large":0,"medium":0,"small":0},"turrets":{"extralarge":0,"large":1,"medium":12,"small":0}},"storage":{"unit":20,"missile":400,"people":135,"countermeasure":40,"deployable":450,"capacity":28000,"capacityType":"container"},"mass":608.398,"inertia":{"pitch":693.545,"yaw":693.545,"roll":554.836},"drag":{"forward":277.309,"reverse":1109.238,"horizontal":252.882,"vertical":252.882,"pitch":821.68,"yaw":821.68,"roll":821.68},"thrusters":{"size":"extralarge"},"shipstorage":{"dock_m":10,"dock_s":40},"dlc":"base","turrets":[{"quantity":1,"size":"medium","standard":true,"missile":true,"shields":{"quantity":1,"size":"medium"}},{"quantity":2,"size":"medium","standard":true,"missile":true,"shields":{"quantity":1,"size":"medium"}},{"quantity":1,"size":"large","standard":true,"missile":true,"shields":{"quantity":2,"size":"medium"}},{"quantity":1,"size":"medium","standard":true,"missile":true,"shields":{"quantity":1,"size":"medium"}},{"quantity":1,"size":"medium","standard":true,"missile":true,"shields":{"quantity":1,"size":"medium"}},{"quantity":2,"size":"medium","standard":true,"missile":true,"shields":{"quantity":1,"size":"medium"}},{"quantity":2,"size":"medium","standard":true,"missile":true,"shields":{"quantity":1,"size":"medium"}},{"quantity":1,"size":"medium","standard":true,"missile":true,"shields":{"quantity":1,"size":"medium"}},{"quantity":1,"size":"medium","standard":true,"missile":true,"shields":{"quantity":1,"size":"medium"}},{"quantity":1,"size":"medium","standard":true,"missile":true,"shields":{"quantity":1,"size":"medium"}}],"weapons":[],"shields":{"size":"extralarge","quantity":2},"engines":{"size":"extralarge","quantity":3,"shields":{"quantity":3,"size":"medium"}},"specialExit":false,"price":{"min":9494968,"average":11170550,"max":12846133},"production":{"time":538,"amount":"1","method":"default","name":"{20206,101}","primary":{"ware":[{"ware":"energycells","amount":"2972"},{"ware":"hullparts","amount":"10462"}]}},"manufacturer":"teladi"}
+{
+  "id": "ship_tel_xl_carrier_01_a_macro",
+  "class": "ship_xl",
+  "race": "tel",
+  "name": "Condor Vanguard",
+  "basename": "Condor",
+  "description": "The Ministry of Finance commissioned the Condor to be the mainstay of a carrier fleet. While the ship borrows heavily from Split technology, its implementation could not result in a less \"Split\" vessel.\\n\\nHeavily reinforced, the Condor is capable of launching a battle fleet under heavy fire. The Vanguard variant provides additional speed, allowing the Condor to get into, and out of, difficult situations with a little more ease.",
+  "shortvariation": "VA",
+  "variation": "Vanguard",
+  "type": "carrier",
+  "radarRange": "40000",
+  "docksize": "dock_xl",
+  "hull": 239000,
+  "shield": {
+    "max": 0,
+    "rate": 0,
+    "delay": 0
+  },
+  "speed": {
+    "forward": 0,
+    "acceleration": 0,
+    "boost": 0,
+    "travel": 0,
+    "pitch": 0,
+    "roll": 0,
+    "yaw": 0
+  },
+  "armaments": {
+    "weapons": {
+      "extralarge": 0,
+      "large": 0,
+      "medium": 0,
+      "small": 0
+    },
+    "turrets": {
+      "extralarge": 0,
+      "large": 1,
+      "medium": 12,
+      "small": 0
+    }
+  },
+  "storage": {
+    "unit": 20,
+    "missile": 400,
+    "people": 135,
+    "countermeasure": 40,
+    "deployable": 450,
+    "capacity": 28000,
+    "capacityType": "container"
+  },
+  "mass": 608.398,
+  "inertia": {
+    "pitch": 693.545,
+    "yaw": 693.545,
+    "roll": 554.836
+  },
+  "drag": {
+    "forward": 277.309,
+    "reverse": 1109.238,
+    "horizontal": 252.882,
+    "vertical": 252.882,
+    "pitch": 821.68,
+    "yaw": 821.68,
+    "roll": 821.68
+  },
+  "thrusters": {
+    "size": "extralarge"
+  },
+  "shipstorage": {
+    "dock_m": 10,
+    "dock_s": 40
+  },
+  "dlc": "base",
+  "turrets": [
+    {
+      "quantity": 1,
+      "size": "medium",
+      "standard": true,
+      "missile": true,
+      "shields": {
+        "quantity": 1,
+        "size": "medium"
+      }
+    },
+    {
+      "quantity": 2,
+      "size": "medium",
+      "standard": true,
+      "missile": true,
+      "shields": {
+        "quantity": 1,
+        "size": "medium"
+      }
+    },
+    {
+      "quantity": 1,
+      "size": "large",
+      "standard": true,
+      "missile": true,
+      "shields": {
+        "quantity": 2,
+        "size": "medium"
+      }
+    },
+    {
+      "quantity": 1,
+      "size": "medium",
+      "standard": true,
+      "missile": true,
+      "shields": {
+        "quantity": 1,
+        "size": "medium"
+      }
+    },
+    {
+      "quantity": 1,
+      "size": "medium",
+      "standard": true,
+      "missile": true,
+      "shields": {
+        "quantity": 1,
+        "size": "medium"
+      }
+    },
+    {
+      "quantity": 2,
+      "size": "medium",
+      "standard": true,
+      "missile": true,
+      "shields": {
+        "quantity": 1,
+        "size": "medium"
+      }
+    },
+    {
+      "quantity": 2,
+      "size": "medium",
+      "standard": true,
+      "missile": true,
+      "shields": {
+        "quantity": 1,
+        "size": "medium"
+      }
+    },
+    {
+      "quantity": 1,
+      "size": "medium",
+      "standard": true,
+      "missile": true,
+      "shields": {
+        "quantity": 1,
+        "size": "medium"
+      }
+    },
+    {
+      "quantity": 1,
+      "size": "medium",
+      "standard": true,
+      "missile": true,
+      "shields": {
+        "quantity": 1,
+        "size": "medium"
+      }
+    },
+    {
+      "quantity": 1,
+      "size": "medium",
+      "standard": true,
+      "missile": true,
+      "shields": {
+        "quantity": 1,
+        "size": "medium"
+      }
+    }
+  ],
+  "weapons": [],
+  "shields": {
+    "size": "extralarge",
+    "quantity": 2
+  },
+  "engines": {
+    "size": "extralarge",
+    "quantity": 3,
+    "shields": {
+      "quantity": 3,
+      "size": "medium"
+    }
+  },
+  "specialExit": false,
+  "price": {
+    "min": 9494968,
+    "average": 11170550,
+    "max": 12846133
+  },
+  "production": {
+    "time": 538,
+    "amount": "1",
+    "method": "default",
+    "name": "{20206,101}",
+    "primary": {
+      "ware": [
+        {
+          "ware": "energycells",
+          "amount": "2972"
+        },
+        {
+          "ware": "hullparts",
+          "amount": "10462"
+        }
+      ]
+    }
+  },
+  "manufacturer": "teladi"
+}

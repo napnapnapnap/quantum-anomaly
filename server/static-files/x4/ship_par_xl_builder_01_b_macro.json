@@ -1,1 +1,154 @@
-{"id":"ship_par_xl_builder_01_b_macro","class":"ship_xl","race":"par","name":"Heracles Sentinel","basename":"Heracles","description":"The Paranid Heracles is an enormous station-building ship, and as such, is the foundation of an economic empire.\\n\\nThe Sentinel model is a hardened version of the Heracles.","shortvariation":"ST","variation":"Sentinel","type":"builder","radarRange":"40000","docksize":"dock_xl","hull":178000,"shield":{"max":0,"rate":0,"delay":0},"speed":{"forward":0,"acceleration":0,"boost":0,"travel":0,"pitch":0,"roll":0,"yaw":0},"armaments":{"weapons":{"extralarge":0,"large":0,"medium":0,"small":0},"turrets":{"extralarge":0,"large":0,"medium":8,"small":0}},"storage":{"unit":154,"missile":40,"people":182,"countermeasure":40,"deployable":450,"capacity":50,"capacityType":"container"},"mass":1365.121,"inertia":{"pitch":853.149,"yaw":853.149,"roll":682.52},"drag":{"forward":264.768,"reverse":1059.073,"horizontal":536.47,"vertical":536.47,"pitch":973.024,"yaw":973.024,"roll":973.024},"thrusters":{"size":"extralarge"},"shipstorage":{"dock_m":10,"dock_s":40},"dlc":"base","turrets":[{"quantity":2,"size":"medium","standard":true,"missile":true,"shields":{"quantity":1,"size":"medium"}},{"quantity":2,"size":"medium","standard":true,"missile":true,"shields":{"quantity":1,"size":"medium"}},{"quantity":2,"size":"medium","standard":true,"missile":true,"shields":{"quantity":1,"size":"medium"}},{"quantity":2,"size":"medium","standard":true,"missile":true,"shields":{"quantity":1,"size":"medium"}}],"weapons":[],"shields":{"size":"extralarge","quantity":2},"engines":{"size":"extralarge","quantity":2,"shields":{"quantity":1,"size":"medium"}},"specialExit":false,"price":{"min":9306200,"average":10948470,"max":12590741},"production":{"time":527,"amount":"1","method":"default","name":"{20206,101}","primary":{"ware":[{"ware":"energycells","amount":"2913"},{"ware":"hullparts","amount":"10254"}]}},"manufacturer":"holyorder"}
+{
+  "id": "ship_par_xl_builder_01_b_macro",
+  "class": "ship_xl",
+  "race": "par",
+  "name": "Heracles Sentinel",
+  "basename": "Heracles",
+  "description": "The Paranid Heracles is an enormous station-building ship, and as such, is the foundation of an economic empire.\\n\\nThe Sentinel model is a hardened version of the Heracles.",
+  "shortvariation": "ST",
+  "variation": "Sentinel",
+  "type": "builder",
+  "radarRange": "40000",
+  "docksize": "dock_xl",
+  "hull": 178000,
+  "shield": {
+    "max": 0,
+    "rate": 0,
+    "delay": 0
+  },
+  "speed": {
+    "forward": 0,
+    "acceleration": 0,
+    "boost": 0,
+    "travel": 0,
+    "pitch": 0,
+    "roll": 0,
+    "yaw": 0
+  },
+  "armaments": {
+    "weapons": {
+      "extralarge": 0,
+      "large": 0,
+      "medium": 0,
+      "small": 0
+    },
+    "turrets": {
+      "extralarge": 0,
+      "large": 0,
+      "medium": 8,
+      "small": 0
+    }
+  },
+  "storage": {
+    "unit": 154,
+    "missile": 40,
+    "people": 182,
+    "countermeasure": 40,
+    "deployable": 450,
+    "capacity": 50,
+    "capacityType": "container"
+  },
+  "mass": 1365.121,
+  "inertia": {
+    "pitch": 853.149,
+    "yaw": 853.149,
+    "roll": 682.52
+  },
+  "drag": {
+    "forward": 264.768,
+    "reverse": 1059.073,
+    "horizontal": 536.47,
+    "vertical": 536.47,
+    "pitch": 973.024,
+    "yaw": 973.024,
+    "roll": 973.024
+  },
+  "thrusters": {
+    "size": "extralarge"
+  },
+  "shipstorage": {
+    "dock_m": 10,
+    "dock_s": 40
+  },
+  "dlc": "base",
+  "turrets": [
+    {
+      "quantity": 2,
+      "size": "medium",
+      "standard": true,
+      "missile": true,
+      "shields": {
+        "quantity": 1,
+        "size": "medium"
+      }
+    },
+    {
+      "quantity": 2,
+      "size": "medium",
+      "standard": true,
+      "missile": true,
+      "shields": {
+        "quantity": 1,
+        "size": "medium"
+      }
+    },
+    {
+      "quantity": 2,
+      "size": "medium",
+      "standard": true,
+      "missile": true,
+      "shields": {
+        "quantity": 1,
+        "size": "medium"
+      }
+    },
+    {
+      "quantity": 2,
+      "size": "medium",
+      "standard": true,
+      "missile": true,
+      "shields": {
+        "quantity": 1,
+        "size": "medium"
+      }
+    }
+  ],
+  "weapons": [],
+  "shields": {
+    "size": "extralarge",
+    "quantity": 2
+  },
+  "engines": {
+    "size": "extralarge",
+    "quantity": 2,
+    "shields": {
+      "quantity": 1,
+      "size": "medium"
+    }
+  },
+  "specialExit": false,
+  "price": {
+    "min": 9306200,
+    "average": 10948470,
+    "max": 12590741
+  },
+  "production": {
+    "time": 527,
+    "amount": "1",
+    "method": "default",
+    "name": "{20206,101}",
+    "primary": {
+      "ware": [
+        {
+          "ware": "energycells",
+          "amount": "2913"
+        },
+        {
+          "ware": "hullparts",
+          "amount": "10254"
+        }
+      ]
+    }
+  },
+  "manufacturer": "holyorder"
+}

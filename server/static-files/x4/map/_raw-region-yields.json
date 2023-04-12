@@ -1,1 +1,449 @@
-[{"ware":"ore","effect_r":"207","effect_g":"127","effect_b":"84","yield":[{"name":"lowest","resourcedensity":"0.026","replenishtime":"600","scaneffect":"scfx_dynamic_lowyield_01","scaneffectdensity":"0.01","scaneffectintensity":"0.1"},{"name":"verylow","resourcedensity":"0.06","replenishtime":"1200","scaneffect":"scfx_dynamic_lowyield_01","scaneffectdensity":"0.01","scaneffectintensity":"0.3"},{"name":"low","resourcedensity":"0.6","replenishtime":"1800","scaneffect":"scfx_dynamic_lowyield_01","scaneffectdensity":"0.01","scaneffectintensity":"1.0"},{"name":"medlow","resourcedensity":"4","replenishtime":"2000","scaneffect":"scfx_dynamic_normalyield_01","scaneffectdensity":"0.01","scaneffectintensity":"1.0"},{"name":"medium","resourcedensity":"6","replenishtime":"2400","scaneffect":"scfx_dynamic_normalyield_01","scaneffectdensity":"0.01","scaneffectintensity":"1.0"},{"name":"high","resourcedensity":"60","replenishtime":"3600","scaneffect":"scfx_dynamic_highyield_01","scaneffectdensity":"0.01","scaneffectintensity":"1.0"},{"name":"highplus","resourcedensity":"120","replenishtime":"3600","scaneffect":"scfx_dynamic_highyield_01","scaneffectdensity":"0.01","scaneffectintensity":"1.0"},{"name":"veryhigh","resourcedensity":"60000","replenishtime":"24000","scaneffect":"scfx_dynamic_highyield_01","scaneffectdensity":"0.01","scaneffectintensity":"1.0"}]},{"ware":"silicon","effect_r":"166","effect_g":"166","effect_b":"175","yield":[{"name":"lowest","resourcedensity":"0.026","replenishtime":"600","scaneffect":"scfx_dynamic_lowyield_01","scaneffectdensity":"0.01","scaneffectintensity":"0.1"},{"name":"verylow","resourcedensity":"0.06","replenishtime":"1200","scaneffect":"scfx_dynamic_lowyield_01","scaneffectdensity":"0.01","scaneffectintensity":"0.3"},{"name":"low","resourcedensity":"0.6","replenishtime":"1800","scaneffect":"scfx_dynamic_lowyield_01","scaneffectdensity":"0.01","scaneffectintensity":"1.0"},{"name":"medlow","resourcedensity":"4","replenishtime":"2000","scaneffect":"scfx_dynamic_normalyield_01","scaneffectdensity":"0.01","scaneffectintensity":"1.0"},{"name":"medium","resourcedensity":"6","replenishtime":"2400","scaneffect":"scfx_dynamic_normalyield_01","scaneffectdensity":"0.01","scaneffectintensity":"1.0"},{"name":"high","resourcedensity":"60","replenishtime":"3600","scaneffect":"scfx_dynamic_highyield_01","scaneffectdensity":"0.01","scaneffectintensity":"1.0"},{"name":"highplus","resourcedensity":"120","replenishtime":"3600","scaneffect":"scfx_dynamic_highyield_01","scaneffectdensity":"0.01","scaneffectintensity":"1.0"},{"name":"veryhigh","resourcedensity":"60000","replenishtime":"36000","scaneffect":"scfx_dynamic_highyield_01","scaneffectdensity":"0.01","scaneffectintensity":"1.0"}]},{"ware":"ice","effect_r":"208","effect_g":"208","effect_b":"215","yield":[{"name":"lowest","resourcedensity":"0.015","replenishtime":"180","scaneffect":"scfx_dynamic_lowyield_01","scaneffectdensity":"0.01","scaneffectintensity":"0.3"},{"name":"verylow","resourcedensity":"0.15","replenishtime":"180","scaneffect":"scfx_dynamic_lowyield_01","scaneffectdensity":"0.01","scaneffectintensity":"0.3"},{"name":"low","resourcedensity":"1.5","replenishtime":"300","scaneffect":"scfx_dynamic_lowyield_01","scaneffectdensity":"0.01","scaneffectintensity":"1.0"},{"name":"medium","resourcedensity":"15","replenishtime":"600","scaneffect":"scfx_dynamic_normalyield_01","scaneffectdensity":"0.01","scaneffectintensity":"1.0"},{"name":"medhigh","resourcedensity":"60","replenishtime":"600","scaneffect":"scfx_dynamic_normalyield_01","scaneffectdensity":"0.01","scaneffectintensity":"1.0"},{"name":"high","resourcedensity":"150","replenishtime":"1200","scaneffect":"scfx_dynamic_highyield_01","scaneffectdensity":"0.01","scaneffectintensity":"1.0"},{"name":"veryhigh","resourcedensity":"1500","replenishtime":"2400","scaneffect":"scfx_dynamic_highyield_01","scaneffectdensity":"0.01","scaneffectintensity":"1.0"}]},{"ware":"nividium","effect_r":"230","effect_g":"150","effect_b":"230","yield":[{"name":"low","resourcedensity":"0.0001","replenishtime":"5040","scaneffect":"scfx_dynamic_lowyield_01","scaneffectdensity":"0.01","scaneffectintensity":"1.0"},{"name":"medium","resourcedensity":"0.001","replenishtime":"10080","scaneffect":"scfx_dynamic_normalyield_01","scaneffectdensity":"0.01","scaneffectintensity":"1.0"},{"name":"high","resourcedensity":"0.01","replenishtime":"20160","scaneffect":"scfx_dynamic_highyield_01","scaneffectdensity":"0.01","scaneffectintensity":"1.0"},{"name":"veryhigh","resourcedensity":"0.1","replenishtime":"40320","scaneffect":"scfx_dynamic_highyield_01","scaneffectdensity":"0.01","scaneffectintensity":"1.0"}]},{"ware":"hydrogen","effect_r":"204","effect_g":"155","effect_b":"204","yield":[{"name":"low","resourcedensity":"6600","replenishtime":"300","gatherspeedfactor":"1.0","scaneffect":"scfx_dynamic_lowyield_01","scaneffectdensity":"0.01","scaneffectintensity":"1.0"},{"name":"medium","resourcedensity":"49500","replenishtime":"600","gatherspeedfactor":"1.0","scaneffect":"scfx_dynamic_normalyield_01","scaneffectdensity":"0.01","scaneffectintensity":"1.0"},{"name":"medhigh","resourcedensity":"250000","replenishtime":"1800","gatherspeedfactor":"1.0","scaneffect":"scfx_dynamic_normalyield_01","scaneffectdensity":"0.01","scaneffectintensity":"1.0"},{"name":"high","resourcedensity":"450000","replenishtime":"4800","gatherspeedfactor":"4.0","scaneffect":"scfx_dynamic_highyield_01","scaneffectdensity":"0.01","scaneffectintensity":"1.0"},{"name":"veryhigh","resourcedensity":"20000000","replenishtime":"5400","gatherspeedfactor":"4.0","scaneffect":"scfx_dynamic_highyield_01","scaneffectdensity":"0.01","scaneffectintensity":"1.0"}]},{"ware":"helium","effect_r":"200","effect_g":"230","effect_b":"255","yield":[{"name":"low","resourcedensity":"3000","replenishtime":"300","gatherspeedfactor":"1.0","scaneffect":"scfx_dynamic_lowyield_01","scaneffectdensity":"0.01","scaneffectintensity":"1.0"},{"name":"medium","resourcedensity":"15000","replenishtime":"600","gatherspeedfactor":"1.0","scaneffect":"scfx_dynamic_normalyield_01","scaneffectdensity":"0.01","scaneffectintensity":"1.0"},{"name":"medhigh","resourcedensity":"50000","replenishtime":"1800","gatherspeedfactor":"1.0","scaneffect":"scfx_dynamic_normalyield_01","scaneffectdensity":"0.01","scaneffectintensity":"1.0"},{"name":"high","resourcedensity":"130000","replenishtime":"3600","gatherspeedfactor":"4.0","scaneffect":"scfx_dynamic_highyield_01","scaneffectdensity":"0.01","scaneffectintensity":"1.0"},{"name":"veryhigh","resourcedensity":"350000","replenishtime":"5400","gatherspeedfactor":"4.0","scaneffect":"scfx_dynamic_highyield_01","scaneffectdensity":"0.01","scaneffectintensity":"1.0"}]},{"ware":"methane","effect_r":"255","effect_g":"255","effect_b":"153","yield":[{"name":"low","resourcedensity":"2500","replenishtime":"300","gatherspeedfactor":"1.0","scaneffect":"scfx_dynamic_lowyield_01","scaneffectdensity":"0.01","scaneffectintensity":"1.0"},{"name":"medium","resourcedensity":"25000","replenishtime":"600","gatherspeedfactor":"1.0","scaneffect":"scfx_dynamic_normalyield_01","scaneffectdensity":"0.01","scaneffectintensity":"1.0"},{"name":"medhigh","resourcedensity":"125000","replenishtime":"1800","gatherspeedfactor":"1.0","scaneffect":"scfx_dynamic_normalyield_01","scaneffectdensity":"0.01","scaneffectintensity":"1.0"},{"name":"high","resourcedensity":"250000","replenishtime":"4800","gatherspeedfactor":"4.0","scaneffect":"scfx_dynamic_highyield_01","scaneffectdensity":"0.01","scaneffectintensity":"1.0"},{"name":"veryhigh","resourcedensity":"1250000","replenishtime":"5400","gatherspeedfactor":"4.0","scaneffect":"scfx_dynamic_highyield_01","scaneffectdensity":"0.01","scaneffectintensity":"1.0"}]},{"ware":"rawscrap","effect_r":"255","effect_g":"50","effect_b":"0","yield":[{"name":"low","resourcedensity":"0.75","replenishtime":"1200","scaneffect":"scfx_dynamic_lowyield_01","scaneffectdensity":"0.01","scaneffectintensity":"1.0"},{"name":"medium","resourcedensity":"1.5","replenishtime":"2400","scaneffect":"scfx_dynamic_normalyield_01","scaneffectdensity":"0.01","scaneffectintensity":"1.0"},{"name":"high","resourcedensity":"7.5","replenishtime":"4200","scaneffect":"scfx_dynamic_highyield_01","scaneffectdensity":"0.01","scaneffectintensity":"1.0"},{"name":"veryhigh","resourcedensity":"15","replenishtime":"5400","scaneffect":"scfx_dynamic_highyield_01","scaneffectdensity":"0.01","scaneffectintensity":"1.0"}]}]
+[
+  {
+    "ware": "ore",
+    "effect_r": "207",
+    "effect_g": "127",
+    "effect_b": "84",
+    "yield": [
+      {
+        "name": "lowest",
+        "resourcedensity": "0.026",
+        "replenishtime": "600",
+        "scaneffect": "scfx_dynamic_lowyield_01",
+        "scaneffectdensity": "0.01",
+        "scaneffectintensity": "0.1"
+      },
+      {
+        "name": "verylow",
+        "resourcedensity": "0.06",
+        "replenishtime": "1200",
+        "scaneffect": "scfx_dynamic_lowyield_01",
+        "scaneffectdensity": "0.01",
+        "scaneffectintensity": "0.3"
+      },
+      {
+        "name": "low",
+        "resourcedensity": "0.6",
+        "replenishtime": "1800",
+        "scaneffect": "scfx_dynamic_lowyield_01",
+        "scaneffectdensity": "0.01",
+        "scaneffectintensity": "1.0"
+      },
+      {
+        "name": "medlow",
+        "resourcedensity": "4",
+        "replenishtime": "2000",
+        "scaneffect": "scfx_dynamic_normalyield_01",
+        "scaneffectdensity": "0.01",
+        "scaneffectintensity": "1.0"
+      },
+      {
+        "name": "medium",
+        "resourcedensity": "6",
+        "replenishtime": "2400",
+        "scaneffect": "scfx_dynamic_normalyield_01",
+        "scaneffectdensity": "0.01",
+        "scaneffectintensity": "1.0"
+      },
+      {
+        "name": "high",
+        "resourcedensity": "60",
+        "replenishtime": "3600",
+        "scaneffect": "scfx_dynamic_highyield_01",
+        "scaneffectdensity": "0.01",
+        "scaneffectintensity": "1.0"
+      },
+      {
+        "name": "highplus",
+        "resourcedensity": "120",
+        "replenishtime": "3600",
+        "scaneffect": "scfx_dynamic_highyield_01",
+        "scaneffectdensity": "0.01",
+        "scaneffectintensity": "1.0"
+      },
+      {
+        "name": "veryhigh",
+        "resourcedensity": "60000",
+        "replenishtime": "24000",
+        "scaneffect": "scfx_dynamic_highyield_01",
+        "scaneffectdensity": "0.01",
+        "scaneffectintensity": "1.0"
+      }
+    ]
+  },
+  {
+    "ware": "silicon",
+    "effect_r": "166",
+    "effect_g": "166",
+    "effect_b": "175",
+    "yield": [
+      {
+        "name": "lowest",
+        "resourcedensity": "0.026",
+        "replenishtime": "600",
+        "scaneffect": "scfx_dynamic_lowyield_01",
+        "scaneffectdensity": "0.01",
+        "scaneffectintensity": "0.1"
+      },
+      {
+        "name": "verylow",
+        "resourcedensity": "0.06",
+        "replenishtime": "1200",
+        "scaneffect": "scfx_dynamic_lowyield_01",
+        "scaneffectdensity": "0.01",
+        "scaneffectintensity": "0.3"
+      },
+      {
+        "name": "low",
+        "resourcedensity": "0.6",
+        "replenishtime": "1800",
+        "scaneffect": "scfx_dynamic_lowyield_01",
+        "scaneffectdensity": "0.01",
+        "scaneffectintensity": "1.0"
+      },
+      {
+        "name": "medlow",
+        "resourcedensity": "4",
+        "replenishtime": "2000",
+        "scaneffect": "scfx_dynamic_normalyield_01",
+        "scaneffectdensity": "0.01",
+        "scaneffectintensity": "1.0"
+      },
+      {
+        "name": "medium",
+        "resourcedensity": "6",
+        "replenishtime": "2400",
+        "scaneffect": "scfx_dynamic_normalyield_01",
+        "scaneffectdensity": "0.01",
+        "scaneffectintensity": "1.0"
+      },
+      {
+        "name": "high",
+        "resourcedensity": "60",
+        "replenishtime": "3600",
+        "scaneffect": "scfx_dynamic_highyield_01",
+        "scaneffectdensity": "0.01",
+        "scaneffectintensity": "1.0"
+      },
+      {
+        "name": "highplus",
+        "resourcedensity": "120",
+        "replenishtime": "3600",
+        "scaneffect": "scfx_dynamic_highyield_01",
+        "scaneffectdensity": "0.01",
+        "scaneffectintensity": "1.0"
+      },
+      {
+        "name": "veryhigh",
+        "resourcedensity": "60000",
+        "replenishtime": "36000",
+        "scaneffect": "scfx_dynamic_highyield_01",
+        "scaneffectdensity": "0.01",
+        "scaneffectintensity": "1.0"
+      }
+    ]
+  },
+  {
+    "ware": "ice",
+    "effect_r": "208",
+    "effect_g": "208",
+    "effect_b": "215",
+    "yield": [
+      {
+        "name": "lowest",
+        "resourcedensity": "0.015",
+        "replenishtime": "180",
+        "scaneffect": "scfx_dynamic_lowyield_01",
+        "scaneffectdensity": "0.01",
+        "scaneffectintensity": "0.3"
+      },
+      {
+        "name": "verylow",
+        "resourcedensity": "0.15",
+        "replenishtime": "180",
+        "scaneffect": "scfx_dynamic_lowyield_01",
+        "scaneffectdensity": "0.01",
+        "scaneffectintensity": "0.3"
+      },
+      {
+        "name": "low",
+        "resourcedensity": "1.5",
+        "replenishtime": "300",
+        "scaneffect": "scfx_dynamic_lowyield_01",
+        "scaneffectdensity": "0.01",
+        "scaneffectintensity": "1.0"
+      },
+      {
+        "name": "medium",
+        "resourcedensity": "15",
+        "replenishtime": "600",
+        "scaneffect": "scfx_dynamic_normalyield_01",
+        "scaneffectdensity": "0.01",
+        "scaneffectintensity": "1.0"
+      },
+      {
+        "name": "medhigh",
+        "resourcedensity": "60",
+        "replenishtime": "600",
+        "scaneffect": "scfx_dynamic_normalyield_01",
+        "scaneffectdensity": "0.01",
+        "scaneffectintensity": "1.0"
+      },
+      {
+        "name": "high",
+        "resourcedensity": "150",
+        "replenishtime": "1200",
+        "scaneffect": "scfx_dynamic_highyield_01",
+        "scaneffectdensity": "0.01",
+        "scaneffectintensity": "1.0"
+      },
+      {
+        "name": "veryhigh",
+        "resourcedensity": "1500",
+        "replenishtime": "2400",
+        "scaneffect": "scfx_dynamic_highyield_01",
+        "scaneffectdensity": "0.01",
+        "scaneffectintensity": "1.0"
+      }
+    ]
+  },
+  {
+    "ware": "nividium",
+    "effect_r": "230",
+    "effect_g": "150",
+    "effect_b": "230",
+    "yield": [
+      {
+        "name": "low",
+        "resourcedensity": "0.0001",
+        "replenishtime": "5040",
+        "scaneffect": "scfx_dynamic_lowyield_01",
+        "scaneffectdensity": "0.01",
+        "scaneffectintensity": "1.0"
+      },
+      {
+        "name": "medium",
+        "resourcedensity": "0.001",
+        "replenishtime": "10080",
+        "scaneffect": "scfx_dynamic_normalyield_01",
+        "scaneffectdensity": "0.01",
+        "scaneffectintensity": "1.0"
+      },
+      {
+        "name": "high",
+        "resourcedensity": "0.01",
+        "replenishtime": "20160",
+        "scaneffect": "scfx_dynamic_highyield_01",
+        "scaneffectdensity": "0.01",
+        "scaneffectintensity": "1.0"
+      },
+      {
+        "name": "veryhigh",
+        "resourcedensity": "0.1",
+        "replenishtime": "40320",
+        "scaneffect": "scfx_dynamic_highyield_01",
+        "scaneffectdensity": "0.01",
+        "scaneffectintensity": "1.0"
+      }
+    ]
+  },
+  {
+    "ware": "hydrogen",
+    "effect_r": "204",
+    "effect_g": "155",
+    "effect_b": "204",
+    "yield": [
+      {
+        "name": "low",
+        "resourcedensity": "6600",
+        "replenishtime": "300",
+        "gatherspeedfactor": "1.0",
+        "scaneffect": "scfx_dynamic_lowyield_01",
+        "scaneffectdensity": "0.01",
+        "scaneffectintensity": "1.0"
+      },
+      {
+        "name": "medium",
+        "resourcedensity": "49500",
+        "replenishtime": "600",
+        "gatherspeedfactor": "1.0",
+        "scaneffect": "scfx_dynamic_normalyield_01",
+        "scaneffectdensity": "0.01",
+        "scaneffectintensity": "1.0"
+      },
+      {
+        "name": "medhigh",
+        "resourcedensity": "250000",
+        "replenishtime": "1800",
+        "gatherspeedfactor": "1.0",
+        "scaneffect": "scfx_dynamic_normalyield_01",
+        "scaneffectdensity": "0.01",
+        "scaneffectintensity": "1.0"
+      },
+      {
+        "name": "high",
+        "resourcedensity": "450000",
+        "replenishtime": "4800",
+        "gatherspeedfactor": "4.0",
+        "scaneffect": "scfx_dynamic_highyield_01",
+        "scaneffectdensity": "0.01",
+        "scaneffectintensity": "1.0"
+      },
+      {
+        "name": "veryhigh",
+        "resourcedensity": "20000000",
+        "replenishtime": "5400",
+        "gatherspeedfactor": "4.0",
+        "scaneffect": "scfx_dynamic_highyield_01",
+        "scaneffectdensity": "0.01",
+        "scaneffectintensity": "1.0"
+      }
+    ]
+  },
+  {
+    "ware": "helium",
+    "effect_r": "200",
+    "effect_g": "230",
+    "effect_b": "255",
+    "yield": [
+      {
+        "name": "low",
+        "resourcedensity": "3000",
+        "replenishtime": "300",
+        "gatherspeedfactor": "1.0",
+        "scaneffect": "scfx_dynamic_lowyield_01",
+        "scaneffectdensity": "0.01",
+        "scaneffectintensity": "1.0"
+      },
+      {
+        "name": "medium",
+        "resourcedensity": "15000",
+        "replenishtime": "600",
+        "gatherspeedfactor": "1.0",
+        "scaneffect": "scfx_dynamic_normalyield_01",
+        "scaneffectdensity": "0.01",
+        "scaneffectintensity": "1.0"
+      },
+      {
+        "name": "medhigh",
+        "resourcedensity": "50000",
+        "replenishtime": "1800",
+        "gatherspeedfactor": "1.0",
+        "scaneffect": "scfx_dynamic_normalyield_01",
+        "scaneffectdensity": "0.01",
+        "scaneffectintensity": "1.0"
+      },
+      {
+        "name": "high",
+        "resourcedensity": "130000",
+        "replenishtime": "3600",
+        "gatherspeedfactor": "4.0",
+        "scaneffect": "scfx_dynamic_highyield_01",
+        "scaneffectdensity": "0.01",
+        "scaneffectintensity": "1.0"
+      },
+      {
+        "name": "veryhigh",
+        "resourcedensity": "350000",
+        "replenishtime": "5400",
+        "gatherspeedfactor": "4.0",
+        "scaneffect": "scfx_dynamic_highyield_01",
+        "scaneffectdensity": "0.01",
+        "scaneffectintensity": "1.0"
+      }
+    ]
+  },
+  {
+    "ware": "methane",
+    "effect_r": "255",
+    "effect_g": "255",
+    "effect_b": "153",
+    "yield": [
+      {
+        "name": "low",
+        "resourcedensity": "2500",
+        "replenishtime": "300",
+        "gatherspeedfactor": "1.0",
+        "scaneffect": "scfx_dynamic_lowyield_01",
+        "scaneffectdensity": "0.01",
+        "scaneffectintensity": "1.0"
+      },
+      {
+        "name": "medium",
+        "resourcedensity": "25000",
+        "replenishtime": "600",
+        "gatherspeedfactor": "1.0",
+        "scaneffect": "scfx_dynamic_normalyield_01",
+        "scaneffectdensity": "0.01",
+        "scaneffectintensity": "1.0"
+      },
+      {
+        "name": "medhigh",
+        "resourcedensity": "125000",
+        "replenishtime": "1800",
+        "gatherspeedfactor": "1.0",
+        "scaneffect": "scfx_dynamic_normalyield_01",
+        "scaneffectdensity": "0.01",
+        "scaneffectintensity": "1.0"
+      },
+      {
+        "name": "high",
+        "resourcedensity": "250000",
+        "replenishtime": "4800",
+        "gatherspeedfactor": "4.0",
+        "scaneffect": "scfx_dynamic_highyield_01",
+        "scaneffectdensity": "0.01",
+        "scaneffectintensity": "1.0"
+      },
+      {
+        "name": "veryhigh",
+        "resourcedensity": "1250000",
+        "replenishtime": "5400",
+        "gatherspeedfactor": "4.0",
+        "scaneffect": "scfx_dynamic_highyield_01",
+        "scaneffectdensity": "0.01",
+        "scaneffectintensity": "1.0"
+      }
+    ]
+  },
+  {
+    "ware": "rawscrap",
+    "effect_r": "255",
+    "effect_g": "50",
+    "effect_b": "0",
+    "yield": [
+      {
+        "name": "low",
+        "resourcedensity": "0.75",
+        "replenishtime": "1200",
+        "scaneffect": "scfx_dynamic_lowyield_01",
+        "scaneffectdensity": "0.01",
+        "scaneffectintensity": "1.0"
+      },
+      {
+        "name": "medium",
+        "resourcedensity": "1.5",
+        "replenishtime": "2400",
+        "scaneffect": "scfx_dynamic_normalyield_01",
+        "scaneffectdensity": "0.01",
+        "scaneffectintensity": "1.0"
+      },
+      {
+        "name": "high",
+        "resourcedensity": "7.5",
+        "replenishtime": "4200",
+        "scaneffect": "scfx_dynamic_highyield_01",
+        "scaneffectdensity": "0.01",
+        "scaneffectintensity": "1.0"
+      },
+      {
+        "name": "veryhigh",
+        "resourcedensity": "15",
+        "replenishtime": "5400",
+        "scaneffect": "scfx_dynamic_highyield_01",
+        "scaneffectdensity": "0.01",
+        "scaneffectintensity": "1.0"
+      }
+    ]
+  }
+]

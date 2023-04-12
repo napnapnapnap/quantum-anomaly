@@ -1,1 +1,34 @@
-{"ship_xl":{"radarRange":"40000","docksize":"dock_xl","storage":{"countermeasure":"40","deployable":"450"}},"ship_l":{"radarRange":"40000","docksize":"dock_l","storage":{"countermeasure":"20","deployable":"250"}},"ship_m":{"radarRange":"40000","docksize":"dock_m","storage":{"countermeasure":"8","deployable":"100"}},"ship_s":{"radarRange":"40000","docksize":"dock_s","storage":{"countermeasure":"4","deployable":"50"}}}
+{
+  "ship_xl": {
+    "radarRange": "40000",
+    "docksize": "dock_xl",
+    "storage": {
+      "countermeasure": "40",
+      "deployable": "450"
+    }
+  },
+  "ship_l": {
+    "radarRange": "40000",
+    "docksize": "dock_l",
+    "storage": {
+      "countermeasure": "20",
+      "deployable": "250"
+    }
+  },
+  "ship_m": {
+    "radarRange": "40000",
+    "docksize": "dock_m",
+    "storage": {
+      "countermeasure": "8",
+      "deployable": "100"
+    }
+  },
+  "ship_s": {
+    "radarRange": "40000",
+    "docksize": "dock_s",
+    "storage": {
+      "countermeasure": "4",
+      "deployable": "50"
+    }
+  }
+}
