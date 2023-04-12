@@ -1,0 +1,178 @@
+{
+  "id": "ship_bor_xl_resupplier_01_a_macro",
+  "class": "ship_xl",
+  "race": "bor",
+  "name": "Orca",
+  "basename": null,
+  "description": ")(Menelaus Era Ship Building)",
+  "shortvariation": "BV",
+  "variation": "Base Variation",
+  "type": "resupplier",
+  "radarRange": "40000",
+  "docksize": "dock_xl",
+  "hull": 174000,
+  "shield": {
+    "max": 0,
+    "rate": 0,
+    "delay": 0
+  },
+  "speed": {
+    "forward": 0,
+    "acceleration": 0,
+    "boost": 0,
+    "travel": 0,
+    "pitch": 0,
+    "roll": 0,
+    "yaw": 0
+  },
+  "armaments": {
+    "weapons": {
+      "extralarge": 0,
+      "large": 0,
+      "medium": 0,
+      "small": 0
+    },
+    "turrets": {
+      "extralarge": 0,
+      "large": 0,
+      "medium": 12,
+      "small": 0
+    }
+  },
+  "storage": {
+    "unit": 100,
+    "missile": 268,
+    "people": 154,
+    "countermeasure": 40,
+    "deployable": 450,
+    "capacity": 40000,
+    "capacityType": "container"
+  },
+  "mass": 1569.585,
+  "inertia": {
+    "pitch": 629.542,
+    "yaw": 629.542,
+    "roll": 503.633
+  },
+  "drag": {
+    "forward": 344.677,
+    "reverse": 1378.709,
+    "horizontal": 750.951,
+    "vertical": 750.951,
+    "pitch": 750.584,
+    "yaw": 750.584,
+    "roll": 750.584
+  },
+  "thrusters": {
+    "size": "extralarge"
+  },
+  "shipstorage": {
+    "dock_m": 4,
+    "dock_s": 16
+  },
+  "dlc": "kingdomEnd",
+  "turrets": [
+    {
+      "quantity": 2,
+      "size": "medium",
+      "standard": false,
+      "missile": true,
+      "shields": {
+        "quantity": 1,
+        "size": "medium"
+      }
+    },
+    {
+      "quantity": 2,
+      "size": "medium",
+      "standard": false,
+      "missile": true,
+      "shields": {
+        "quantity": 1,
+        "size": "medium"
+      }
+    },
+    {
+      "quantity": 2,
+      "size": "medium",
+      "standard": false,
+      "missile": true,
+      "shields": {
+        "quantity": 1,
+        "size": "medium"
+      }
+    },
+    {
+      "quantity": 2,
+      "size": "medium",
+      "standard": false,
+      "missile": true,
+      "shields": {
+        "quantity": 1,
+        "size": "medium"
+      }
+    },
+    {
+      "quantity": 2,
+      "size": "medium",
+      "standard": false,
+      "missile": true,
+      "shields": {
+        "quantity": 1,
+        "size": "medium"
+      }
+    },
+    {
+      "quantity": 2,
+      "size": "medium",
+      "standard": false,
+      "missile": true,
+      "shields": {
+        "quantity": 1,
+        "size": "medium"
+      }
+    }
+  ],
+  "weapons": [],
+  "shields": {
+    "size": "extralarge",
+    "quantity": 3
+  },
+  "engines": {
+    "size": "extralarge",
+    "quantity": 3,
+    "shields": {
+      "quantity": 4,
+      "size": "medium"
+    }
+  },
+  "specialExit": false,
+  "price": {
+    "min": 14605352,
+    "average": 17596810,
+    "max": 20588268
+  },
+  "production": {
+    "time": 780,
+    "amount": "1",
+    "method": "default",
+    "name": "{20206,101}",
+    "primary": {
+      "ware": [
+        {
+          "ware": "energycells",
+          "amount": "3738"
+        },
+        {
+          "ware": "hullparts",
+          "amount": "15380"
+        },
+        {
+          "ware": "water",
+          "amount": "4560"
+        }
+      ]
+    }
+  },
+  "manufacturer": "boron"
+}

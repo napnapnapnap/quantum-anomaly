@@ -6,7 +6,7 @@ body {
   font-size: $font-size-base;
   line-height: $base-line-height;
   -webkit-font-smoothing: antialiased;
-  font-family: 'Helvetica', 'Arial', sans-serif;
+  font-family: 'Roboto', 'Arial', sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -138,6 +138,12 @@ h6, .h6 {
     letter-spacing: 0.01em;
   }
 
+  &--xs {
+    font-size: 0.675rem;
+    line-height: 0.675rem;
+    letter-spacing: 0.01em;
+  }
+
   &--bold {
     font-weight: bold;
   }
@@ -170,4 +176,17 @@ p, li, code, th, td {
   line-height: $base-line-height;
   margin-bottom: 0.5rem;
   color: var(--color-text);
+}
+
+.react-tooltip {
+  max-width: 40vw;
+  z-index: 50000;
+  background: var(--color-content-background) !important;
+  color: var(--color-text) !important;
+  opacity: 1 !important;
+  border-radius: 8px !important;
+  box-shadow: 0 0 10px 1px var(--color-text) !important;
+  border: 2px solid var(--color-border-light);
+  font-size: $font-size-base !important;
+  line-height: $base-line-height !important;
 }

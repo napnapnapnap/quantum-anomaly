@@ -282,6 +282,60 @@
         "Antigone tries to expand into Atiya's Misfortune and gets increased quotas for their military ships",
         "Antigone tries to build new Shipyard, with Atiya's Misfortune being most likely the system they built it in"
       ]
+    },
+    "ocean_of_fantasy": {
+      "system": "Ocean Of Fantasy",
+      "name": "Samsara",
+      "stats": {
+        "airpressure": 0,
+        "temperature": 9,
+        "oxygen": 0,
+        "toxicity": 1,
+        "carbondioxide": 0,
+        "methane": 0,
+        "humidity": 0,
+        "radioactivity": 1,
+        "seismicactivity": 2
+      },
+      "objectives": {
+        "population": 50000000,
+        "projects": [
+          "ter_jumpstart_currents",
+          "bio_reintroduce_megafauna",
+          "ame_pheromone_art_academy"
+        ]
+      },
+      "recommendedPath": [
+        "atm_toxin_cleanup",
+        "ter_radioactive_cleanup",
+        "tmp_cloudparticles",
+        "tmp_cloudparticles",
+        "tmp_cloudparticles",
+        "wat_import",
+        "wat_import",
+        "wat_import",
+        "wat_import",
+        "wat_import",
+        "bio_reconstruct_genes",
+        "ter_jumpstart_currents",
+        "bio_reintroduce_fauna",
+        "bio_reintroduce_megafauna",
+        "res_housing_ocean",
+        "res_housing_ocean",
+        "res_housing_ocean",
+        "res_housing_ocean",
+        "res_housing_ocean",
+        "res_housing_ocean",
+        "res_housing_ocean",
+        "res_housing_ocean",
+        "res_housing_ocean",
+        "res_housing_ocean",
+        "ame_pheromone_art_academy"
+      ],
+      "notes": "Still work in progress, still collecting damn ice...",
+      "rewards": [
+        "Special welfare building"
+      ]
     }
   }
 }

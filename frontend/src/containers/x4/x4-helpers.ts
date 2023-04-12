@@ -13,6 +13,7 @@ export const maps: {
   race: [
     { label: 'Argon', value: 'arg' },
     { label: 'ATF', value: 'atf' },
+    { label: 'Boron', value: 'bor' },
     { label: "Kha'ak", value: 'kha' },
     { label: 'Paranid', value: 'par' },
     { label: 'Split', value: 'spl' },
@@ -25,6 +26,7 @@ export const maps: {
   reverseRace: {
     atf: 'ATF',
     arg: 'Argon',
+    bor: 'Boron',
     kha: "Kha'ak",
     par: 'Paranid',
     spl: 'Split',
@@ -45,7 +47,7 @@ export const maps: {
     cradleOfHumanity: 'CoH',
     tidesOfAvarice: 'ToA',
     splitVendetta: 'SV',
-    kingdomsEnd: 'KE',
+    kingdomEnd: 'KE',
   },
   variations: {
     BV: 'Base',
@@ -57,6 +59,7 @@ export const maps: {
     argon: 'Argon Federation',
     antigone: 'Antigone Republic',
     alliance: 'Alliance of the Word',
+    boron: 'Queendom of Boron',
     holyorder: 'Holy Order',
     paranid: 'Paranid Godrealm',
     freesplit: 'Free Families',
@@ -73,6 +76,7 @@ export const maps: {
   },
   colors: {
     xenon: { color: '#880000', border: '#c90000' },
+    boron: { color: '#00BBBB', border: '#55cBcB' },
     paranid: { color: '#2d0050', border: '#8000ff' },
     alliance: { color: '#b03cca', border: '#b03cca' },
     split: { color: '#5e2204', border: '#ff691e' },
@@ -81,6 +85,7 @@ export const maps: {
     hatikvah: { color: '#147a70', border: '#20f6e1' },
     teladi: { color: '#6e7c2a', border: '#a9c22e' },
     ministry: { color: '#94bc92', border: '#94bc92' },
+    scaleplate: { color: '#8a8337', border: '#8a8337' },
     holyorder: { color: '#b45694', border: '#ff72ad' },
     freesplit: { color: '#a45525', border: '#ff8000' },
     pioneers: { color: '#41aa9a', border: '#66aa9a' },
@@ -117,6 +122,9 @@ export const separateWords = (arg: string) =>
     .replace('smart', 'smart ')
     .replace('antimatter', 'antimatter ')
     .replace('scanning', 'scanning ')
+    .replace('plasmaconductors', 'plasma conductors ')
+    .replace('refinedmetals', 'refined metals ')
+    .replace('sunriseflowers', 'sunrise flowers ')
     .replace('hullparts', 'hull parts');
 
 export const translateRace = (arg: string) => (maps.reverseRace[arg] ? maps.reverseRace[arg] : arg);

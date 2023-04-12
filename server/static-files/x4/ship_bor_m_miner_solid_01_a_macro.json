@@ -1,0 +1,127 @@
+{
+  "id": "ship_bor_m_miner_solid_01_a_macro",
+  "class": "ship_m",
+  "race": "bor",
+  "name": "Porpoise (Mineral)",
+  "basename": "Porpoise",
+  "description": "(Atreus Era Funding Increase)",
+  "shortvariation": "BV",
+  "variation": "Base Variation",
+  "type": "miner",
+  "radarRange": "40000",
+  "docksize": "dock_m",
+  "hull": 8000,
+  "shield": {
+    "max": 0,
+    "rate": 0,
+    "delay": 0
+  },
+  "speed": {
+    "forward": 0,
+    "acceleration": 0,
+    "boost": 0,
+    "travel": 0,
+    "pitch": 0,
+    "roll": 0,
+    "yaw": 0
+  },
+  "armaments": {
+    "weapons": {
+      "extralarge": 0,
+      "large": 0,
+      "medium": 1,
+      "small": 0
+    },
+    "turrets": {
+      "extralarge": 0,
+      "large": 0,
+      "medium": 2,
+      "small": 0
+    }
+  },
+  "storage": {
+    "unit": null,
+    "missile": 0,
+    "people": 7,
+    "countermeasure": 8,
+    "deployable": 100,
+    "capacity": 7800,
+    "capacityType": "solid"
+  },
+  "mass": 31.939,
+  "inertia": {
+    "pitch": 9.35,
+    "yaw": 9.35,
+    "roll": 7.48
+  },
+  "drag": {
+    "forward": 8.073,
+    "reverse": 46.133,
+    "horizontal": 12.966,
+    "vertical": 12.966,
+    "pitch": 10.485,
+    "yaw": 10.485,
+    "roll": 10.485
+  },
+  "thrusters": {
+    "size": "medium"
+  },
+  "shipstorage": {
+    "dock_m": 0,
+    "dock_s": 0
+  },
+  "dlc": "kingdomEnd",
+  "turrets": [
+    {
+      "quantity": 1,
+      "size": "medium"
+    },
+    {
+      "quantity": 1,
+      "size": "medium"
+    }
+  ],
+  "weapons": [
+    {
+      "quantity": 1,
+      "size": "medium"
+    }
+  ],
+  "shields": {
+    "size": "medium",
+    "quantity": 2
+  },
+  "engines": {
+    "size": "medium",
+    "quantity": 3
+  },
+  "specialExit": true,
+  "price": {
+    "min": 12142835,
+    "average": 172090,
+    "max": 201346
+  },
+  "production": {
+    "time": 25,
+    "amount": "1",
+    "method": "default",
+    "name": "{20206,101}",
+    "primary": {
+      "ware": [
+        {
+          "ware": "energycells",
+          "amount": "73"
+        },
+        {
+          "ware": "hullparts",
+          "amount": "145"
+        },
+        {
+          "ware": "water",
+          "amount": "55"
+        }
+      ]
+    }
+  },
+  "manufacturer": "boron"
+}

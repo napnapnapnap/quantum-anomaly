@@ -1,5 +1,7 @@
 import clsx from 'clsx';
 import React, { useEffect, useState } from 'react';
+import { Tooltip } from 'react-tooltip';
+import 'react-tooltip/dist/react-tooltip.css';
 
 import { seo } from '../../../helpers';
 import { useAppDispatch, useAppSelector } from '../../../hooks';
@@ -29,6 +31,7 @@ const LabelValuePair = ({
   info,
   capitalize,
   indent = false,
+  margin = false,
 }: {
   label: string;
   value: string | number;
@@ -36,18 +39,19 @@ const LabelValuePair = ({
   info?: string;
   capitalize?: boolean;
   indent?: boolean;
+  margin?: boolean;
 }) => (
-  <p className="x4-ships__label-value-pair">
-    <span className={clsx({ 'text--capitalize': capitalize })}>
-      {indent && <span>&raquo;</span>}
+  <p className={clsx('x4-ships__label-value-pair', { 'x4-ships__label-value-pair--marginated': margin })}>
+    <span className={clsx('text--smaller', { 'text--capitalize': capitalize })}>
+      {indent && <span className="text--smaller">&raquo;</span>}
       {info && (
-        <span className="x4-ships__info" title={info}>
+        <span className="x4-ships__info text--smaller" title={info}>
           ?
         </span>
       )}
       {label}:{' '}
     </span>
-    <span className={clsx({ 'text--capitalize': capitalize })}>
+    <span className={clsx('text--smaller', { 'text--capitalize': capitalize })}>
       {value} {unit}
     </span>
   </p>
@@ -139,6 +143,7 @@ const X4Ships = () => {
     <LayoutBase>
       <div className={clsx('x4-ships')}>
         <h1>X4 Ships</h1>
+        <Tooltip id="ship-description" events={['hover']} />
 
         <PreviewControls
           displayClass={displayClass}
@@ -165,19 +170,29 @@ const X4Ships = () => {
                 shipsToDisplay.map((ship) => (
                   <tr key={ship.id}>
                     <td>
-                      <img src={`/images/x4/${ship.id}.jpg`} alt={ship.name} />
+                      <img
+                        src={`/images/x4/large/${ship.id}.jpg`}
+                        alt={ship.name}
+                        data-tooltip-id="ship-description"
+                        data-tooltip-html={ship.race !== 'bor' ? ship.description.replace(/\\n/g, '<br />') : ''}
+                      />
                     </td>
                     <td>
-                      <h2 className="h6">{ship.name}</h2>
-                      <p>
+                      <span>
+                        <h2 className="h6">{ship.name}</h2>
+                      </span>
+                      <p className="text--smaller text--capitalize">
                         {getFaction(ship.manufacturer)} {separateWords(ship.type)}
                       </p>
-                      <p>Average price: {formatNumber(ship.price.average)} CR</p>
-                      <p>Ship Class: {separateWords(maps.shipClass[ship.class].replace('extralarge', 'XL'))}</p>
-                      <p>Mass: {formatNumber(ship.mass)}t</p>
-                      <br />
+                      <p className="text--smaller">Average price: {formatNumber(ship.price.average)} CR</p>
+                      <p className="text--smaller text--capitalize">
+                        Ship Class: {separateWords(maps.shipClass[ship.class].replace('extralarge', 'XL'))}
+                      </p>
+                      <p className="text--smaller text--capitalize">Ship Type: {separateWords(ship.type)}</p>
+
+                      <p className="text--smaller">Mass: {formatNumber(ship.mass)}t</p>
                       {Object.keys(ship.armaments.weapons).map(
-                        (weaponsKey) =>
+                        (weaponsKey, index) =>
                           ship.armaments.weapons[weaponsKey as keyof typeof ship.armaments.weapons] !== 0 && (
                             <LabelValuePair
                               label={`${weaponsKey.replace('extralarge', 'XL')} weapons`}
@@ -186,6 +201,7 @@ const X4Ships = () => {
                               )}
                               unit=""
                               capitalize
+                              margin={index === 0}
                               key={`${ship.id}-${weaponsKey}-weapon`}
                             />
                           )
@@ -204,8 +220,7 @@ const X4Ships = () => {
                             />
                           )
                       )}
-                      <br />
-                      <p className="x4-ships__outfit">
+                      <p className="x4-ships__outfit text--muted text--xs mt-1">
                         Currently applied: {equipment[ship.outfit!.thrusters].name},{' '}
                         {equipment[ship.outfit!.engines].name}, {equipment[ship.outfit!.shields].name}
                       </p>
@@ -217,8 +232,8 @@ const X4Ships = () => {
                       {ship.class === 'ship_s' && (
                         <LabelValuePair label="Delay" value={formatNumber(ship.shield.delay)} unit="s" indent />
                       )}
-                      <br />
-                      <LabelValuePair label="Speed" value={formatDecimal(ship.speed.forward)} unit="m/s" />
+
+                      <LabelValuePair label="Speed" value={formatDecimal(ship.speed.forward)} unit="m/s" margin />
                       <LabelValuePair
                         label="Acceleration"
                         value={formatDecimal(ship.speed.acceleration)}
@@ -269,8 +284,13 @@ const X4Ships = () => {
                         info="Distance that ship needs in order to reach it's maximum speed or to slow down to 0"
                         indent
                       />
-                      <br />
-                      <LabelValuePair label="Boost speed" value={formatNumber(ship.speed.boost.speed)} unit="m/s" />
+
+                      <LabelValuePair
+                        label="Boost speed"
+                        value={formatNumber(ship.speed.boost.speed)}
+                        unit="m/s"
+                        margin
+                      />
                       <LabelValuePair
                         label="Attack"
                         value={formatDecimal(ship.speed.boost.attack)}
@@ -307,8 +327,14 @@ const X4Ships = () => {
                         value={formatNumber(ship.storage.countermeasure)}
                         unit=""
                       />
-                      <br />
-                      <LabelValuePair label="Crew" value={formatNumber(ship.storage.people)} unit="" capitalize />
+
+                      <LabelValuePair
+                        label="Crew"
+                        value={formatNumber(ship.storage.people)}
+                        unit=""
+                        capitalize
+                        margin
+                      />
                       <LabelValuePair label="Items" value={formatNumber(ship.storage.deployable)} unit="" capitalize />
                       {ship.storage.capacityType && (
                         <LabelValuePair

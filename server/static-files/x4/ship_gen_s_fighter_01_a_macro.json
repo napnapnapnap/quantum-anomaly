@@ -1,7 +1,7 @@
 {
   "id": "ship_gen_s_fighter_01_a_macro",
   "class": "ship_s",
-  "race": "ter",
+  "race": "arg",
   "name": "Nodan Vanguard",
   "basename": "Nodan",
   "description": "Perhaps the most interesting thing about the Nodan fighter is the lack of information available regarding its existence. It is only known to be available from the Alliance of the Word, and the organisation has remained tight-lipped as to the vessel's inception and design.\\n\\nThe design is somewhat quirky, with no clear antecedence related to other faction architecture. However, the Nodan has earned itself plaudits from committed dogfighters, based on its impressive speed, agility and deceleration.\\n\\nFor those seeking additional speed, the Nodan Vanguard model is available.",

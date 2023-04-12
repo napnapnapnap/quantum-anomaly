@@ -50,6 +50,7 @@ export interface X4TerraformInterface {
   stats: X4TerraformStatInterface[];
   projects: { [key: string]: X4TerraformProjectInterface };
   planets: { [key: string]: X4TerraformPlanetInterface };
+  waresHighest: { [key: string]: { quantity: number; volume: number; project: string; projectCount: number } };
 }
 
 export const getX4Terraform = createAsyncThunk('x4Terraform/getTerraform', async () => {

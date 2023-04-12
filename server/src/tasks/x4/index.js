@@ -38,6 +38,11 @@ cd "C:\Program Files (x86)\Steam\steamapps\common\X4 Foundations"
 XRCatTool.exe -in extensions\ego_dlc_pirate\ext_01.cat -in extensions\ego_dlc_pirate\ext_02.cat -in extensions\ego_dlc_pirate\ext_03.cat -out "C:\X4\extensions\ego_dlc_pirate"
 pause
 
+For kingdom end
+cd "C:\Program Files (x86)\Steam\steamapps\common\X4 Foundations"
+XRCatTool.exe -in extensions\ego_dlc_boron\ext_01.cat -in extensions\ego_dlc_boron\ext_02.cat -in extensions\ego_dlc_boron\ext_03.cat -out "C:\X4\extensions\ego_dlc_boron"
+pause
+
 For now you can just copy paste manually files from split dlc into main unpackaged folder
 
 Cleanup for size:
@@ -84,6 +89,7 @@ async function composeIndexTree(type, dlc = null) {
   if (dlc === 'split') sourceIndexBasePath = path.join(sourceIndexBasePath, 'extensions', 'ego_dlc_split');
   if (dlc === 'terran') sourceIndexBasePath = path.join(sourceIndexBasePath, 'extensions', 'ego_dlc_terran');
   if (dlc === 'pirate') sourceIndexBasePath = path.join(sourceIndexBasePath, 'extensions', 'ego_dlc_pirate');
+  if (dlc === 'boron') sourceIndexBasePath = path.join(sourceIndexBasePath, 'extensions', 'ego_dlc_boron');
   sourceIndexBasePath = path.join(sourceIndexBasePath, 'index');
 
   let sourceFilePath;
@@ -130,6 +136,10 @@ async function start() {
     ...macrosIndex,
     ...(await composeIndexTree('macros', 'pirate')),
   };
+  macrosIndex = {
+    ...macrosIndex,
+    ...(await composeIndexTree('macros', 'boron')),
+  };
   await saveToFile(macrosIndex, '_macros-index', 'macro index');
 
   let componentsIndex = await composeIndexTree('components');
@@ -144,6 +154,10 @@ async function start() {
   componentsIndex = {
     ...componentsIndex,
     ...(await composeIndexTree('components', 'pirate')),
+  };
+  componentsIndex = {
+    ...componentsIndex,
+    ...(await composeIndexTree('components', 'boron')),
   };
   await saveToFile(componentsIndex, '_components-index', 'components index');
 

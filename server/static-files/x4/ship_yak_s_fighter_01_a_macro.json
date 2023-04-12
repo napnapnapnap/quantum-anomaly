@@ -1,7 +1,7 @@
 {
   "id": "ship_yak_s_fighter_01_a_macro",
   "class": "ship_s",
-  "race": "ter",
+  "race": "yak",
   "name": "Moreya",
   "basename": "Moreya",
   "description": "The Moreya-class fighter is a Yaki powerhouse. The initial design was based on hijacked Paranid Pegasus-class scouts, which were modified with temperamental Yaki technology to tailor it to their specific requirements. Frequently operating alone in enemy territory, and needing to withstand sustained enemy fire, they added reinforced hull plating for improved defence. Similarly, the Yaki made it possible for more weapons to be attached to the front of the ship, to ensure that they could execute their raids successfully.",

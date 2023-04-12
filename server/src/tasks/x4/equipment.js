@@ -34,6 +34,8 @@ const getContent = async (paths, type, translations, bullets) => {
     const data = parsed.macros.macro;
     const properties = parsed.macros.macro.properties;
 
+    if (!data.properties) return Promise.resolve();
+
     if (!result[size]) result[size] = {};
 
     // for some reason all shields are referring to Argon ones...
@@ -66,7 +68,7 @@ const getContent = async (paths, type, translations, bullets) => {
         class: data.class,
         //bullet: applyBulletInfo(bullets, properties.bullet.class),
         rotation: {
-          speed: properties.rotationspeed.max,
+          speed: properties.rotationspeed ? properties.rotationspeed.max : properties.rotationacceleration.max,
         },
         ammunition: properties.ammunition.tags.trim().split(' '),
         storage: properties.storage.capacity,

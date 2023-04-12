@@ -17,7 +17,7 @@ async function processShips(macroPath, translations, defaults, storage, shipstor
   if (macroPath.indexOf('dlc_terran') !== -1) ship.dlc = 'cradleOfHumanity';
   if (macroPath.indexOf('dlc_pirate') !== -1) ship.dlc = 'tidesOfAvarice';
   if (macroPath.indexOf('dlc_split') !== -1) ship.dlc = 'splitVendetta';
-  if (macroPath.indexOf('dlc_boron') !== -1) ship.dlc = 'kingdomsEnd';
+  if (macroPath.indexOf('dlc_boron') !== -1) ship.dlc = 'kingdomEnd';
 
   // from last step we have ships most specific information, now we look at the ref file which the
   // ship shares with other ships to get more information
@@ -69,6 +69,10 @@ export async function getShips(shipFileList, translations, defaults, equipment, 
     if (shipFile.indexOf('fightingdrone') !== -1) return Promise.resolve();
     if (shipFile.indexOf('tfm') !== -1) return Promise.resolve();
     if (shipFile.indexOf('ship_pir_l_scavenger_01_a_storyhighcapacity_macro') !== -1) return Promise.resolve();
+    if (shipFile.indexOf('ship_bor_xl_carrier_01_landmark_macro') !== -1) return Promise.resolve();
+    if (shipFile.indexOf('ship_bor_s_miner_solid_01_story_macro') !== -1) return Promise.resolve();
+    if (shipFile.indexOf('ship_arg_s_heavyfighter_01_b_macro') !== -1) return Promise.resolve();
+    if (shipFile.indexOf('ship_arg_s_heavyfighter_02_a_macro') !== -1) return Promise.resolve();
 
     const ship = await processShips(shipFile, translations, defaults, equipment.storage, equipment.shipstorage, wares);
     ships[ship.id] = ship;

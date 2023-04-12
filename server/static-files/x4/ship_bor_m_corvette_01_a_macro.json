@@ -1,0 +1,147 @@
+{
+  "id": "ship_bor_m_corvette_01_a_macro",
+  "class": "ship_m",
+  "race": "bor",
+  "name": "Hydra",
+  "basename": "Hydra",
+  "description": ")(Menelaus Era Ship Building)",
+  "shortvariation": "BV",
+  "variation": "Base Variation",
+  "type": "corvette",
+  "radarRange": "40000",
+  "docksize": "dock_m",
+  "hull": 7900,
+  "shield": {
+    "max": 0,
+    "rate": 0,
+    "delay": 0
+  },
+  "speed": {
+    "forward": 0,
+    "acceleration": 0,
+    "boost": 0,
+    "travel": 0,
+    "pitch": 0,
+    "roll": 0,
+    "yaw": 0
+  },
+  "armaments": {
+    "weapons": {
+      "extralarge": 0,
+      "large": 0,
+      "medium": 4,
+      "small": 0
+    },
+    "turrets": {
+      "extralarge": 0,
+      "large": 0,
+      "medium": 3,
+      "small": 0
+    }
+  },
+  "storage": {
+    "unit": null,
+    "missile": 41,
+    "people": 6,
+    "countermeasure": 8,
+    "deployable": 100,
+    "capacity": 400,
+    "capacityType": "container"
+  },
+  "mass": 23.782,
+  "inertia": {
+    "pitch": 3.533,
+    "yaw": 3.533,
+    "roll": 2.826
+  },
+  "drag": {
+    "forward": 6.968,
+    "reverse": 27.87,
+    "horizontal": 13.12,
+    "vertical": 13.12,
+    "pitch": 7.601,
+    "yaw": 7.601,
+    "roll": 7.601
+  },
+  "thrusters": {
+    "size": "medium"
+  },
+  "shipstorage": {
+    "dock_m": 0,
+    "dock_s": 0
+  },
+  "dlc": "kingdomEnd",
+  "turrets": [
+    {
+      "quantity": 1,
+      "size": "medium"
+    },
+    {
+      "quantity": 1,
+      "size": "medium"
+    },
+    {
+      "quantity": 1,
+      "size": "medium"
+    }
+  ],
+  "weapons": [
+    {
+      "quantity": 1,
+      "size": "medium",
+      "missile": true
+    },
+    {
+      "quantity": 1,
+      "size": "medium",
+      "missile": true
+    },
+    {
+      "quantity": 1,
+      "size": "medium",
+      "missile": true
+    },
+    {
+      "quantity": 1,
+      "size": "medium",
+      "missile": true
+    }
+  ],
+  "shields": {
+    "size": "medium",
+    "quantity": 3
+  },
+  "engines": {
+    "size": "medium",
+    "quantity": 3
+  },
+  "specialExit": true,
+  "price": {
+    "min": 529993,
+    "average": 638546,
+    "max": 747099
+  },
+  "production": {
+    "time": 35,
+    "amount": "1",
+    "method": "default",
+    "name": "{20206,101}",
+    "primary": {
+      "ware": [
+        {
+          "ware": "energycells",
+          "amount": "110"
+        },
+        {
+          "ware": "hullparts",
+          "amount": "540"
+        },
+        {
+          "ware": "water",
+          "amount": "245"
+        }
+      ]
+    }
+  },
+  "manufacturer": "boron"
+}

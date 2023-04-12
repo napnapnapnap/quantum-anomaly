@@ -6244,5 +6244,736 @@
         "description": "{20004,5040012}"
       }
     }
+  },
+  {
+    "macro": "Cluster_601_macro",
+    "properties": {
+      "identification": {
+        "name": "{20003,6010001}",
+        "description": "{20003,6010002}",
+        "image": "enc_cluster601",
+        "system": "601"
+      },
+      "sounds": {
+        "music": {
+          "ref": "music_dlc_boron_soundtrack_border"
+        }
+      },
+      "area": {
+        "sunlight": "0.41",
+        "economy": "0.25",
+        "security": "0.25",
+        "extensionexclusivejobs": "true",
+        "tags": "boronborder"
+      },
+      "system": {
+        "space": {
+          "environment": "{1042,12031}(Nebula)"
+        },
+        "suns": {
+          "sun": {
+            "class": "{1042,13051}(Blue Dwarf)"
+          }
+        }
+      }
+    }
+  },
+  {
+    "macro": "Cluster_601_Sector001_macro",
+    "properties": {
+      "identification": {
+        "name": "{20004,6010011}",
+        "description": "{20004,6010012}"
+      }
+    }
+  },
+  {
+    "macro": "Cluster_602_macro",
+    "properties": {
+      "identification": {
+        "name": "{20003,6020001}",
+        "description": "{20003,6020002}",
+        "image": "enc_cluster602",
+        "system": "602"
+      },
+      "sounds": {
+        "music": {
+          "ref": "music_dlc_boron_soundtrack_outer_bubble"
+        }
+      },
+      "area": {
+        "sunlight": "0.83",
+        "economy": "0.25",
+        "security": "0.50",
+        "extensionexclusivejobs": "true",
+        "tags": "boronborder"
+      },
+      "system": {
+        "space": {
+          "environment": "{1042,12011}(Clear Space)"
+        },
+        "suns": {
+          "sun": {
+            "class": "{1042,13111}(White Giant)"
+          }
+        },
+        "planets": {
+          "planet": {
+            "name": "{20005,9066}(Menehune)",
+            "class": "{1042,14031}(Terrestrial)",
+            "geology": "{1042,15141}(Ocean)",
+            "atmosphere": "{1042,11071}(Nitrogen/Oxygen)",
+            "population": "{1042,10021}",
+            "maxpopulation": "800000000",
+            "settlements": "{1042,16041}(Multiple Cities)",
+            "moons": {
+              "moon": [
+                {
+                  "name": "{20005,9068}(Yanva)",
+                  "geology": "{1042,15101}(Barren)",
+                  "atmosphere": "{1042,10011}(None)",
+                  "population": "{1042,10011}(None)",
+                  "settlements": "{1042,16011}(Uninhabited)"
+                },
+                {
+                  "name": "{20005,9067}(Urvasi)",
+                  "geology": "{1042,15111}(Desert)",
+                  "atmosphere": "{1042,10011}(None)",
+                  "population": "{1042,10011}(None)",
+                  "settlements": "{1042,16011}(Uninhabited)"
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "macro": "Cluster_602_Sector001_macro",
+    "properties": {
+      "identification": {
+        "name": "{20004,6020011}",
+        "description": "{20004,6020012}"
+      }
+    }
+  },
+  {
+    "macro": "Cluster_603_macro",
+    "properties": {
+      "identification": {
+        "name": "{20003,6030001}",
+        "description": "{20003,6030002}",
+        "image": "enc_cluster603",
+        "system": "603"
+      },
+      "sounds": {
+        "music": {
+          "ref": "music_dlc_boron_soundtrack_outer_bubble"
+        }
+      },
+      "area": {
+        "sunlight": "1.28",
+        "economy": "0.5",
+        "security": "0.75",
+        "extensionexclusivejobs": "true",
+        "tags": "boronborder"
+      },
+      "system": {
+        "space": {
+          "environment": "{1042,12031}(Nebula)"
+        },
+        "suns": {
+          "sun": {
+            "class": "{1042,13081}(Red Giant)"
+          }
+        },
+        "planets": {
+          "planet": [
+            {
+              "name": "{20005,9069}(Nakshatra)",
+              "class": "{1042,14031}(Terrestrial)",
+              "geology": "{1042,15141}(Ocean)",
+              "atmosphere": "{1042,11071}(Nitrogen/Oxygen)",
+              "population": "{1042,10021}",
+              "maxpopulation": "1200000000",
+              "settlements": "{1042,16041}(Multiple Cities)",
+              "moons": {
+                "moon": {
+                  "name": "{20005,9072}(Ghayyan)",
+                  "geology": "{1042,15101}(Barren)",
+                  "atmosphere": "{1042,10011}(None)",
+                  "population": "{1042,10011}(None)",
+                  "settlements": "{1042,16011}(Uninhabited)"
+                }
+              }
+            },
+            {
+              "name": "{20005,9070}(Dashamaa)",
+              "class": "{1042,14121}(Dwarf Planet)",
+              "geology": "{1042,15111}(Desert)",
+              "atmosphere": "{1042,11011}(Methane)",
+              "population": "{1042,10011}(None)",
+              "settlements": "{1042,16011}(Uninhabited)",
+              "moons": {
+                "moon": {
+                  "name": "{20005,9071}(Rajasanu)",
+                  "geology": "{1042,15081}(Ice)",
+                  "atmosphere": "{1042,10011}(None)",
+                  "population": "{1042,10011}(None)",
+                  "settlements": "{1042,16011}(Uninhabited)"
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "macro": "Cluster_603_Sector001_macro",
+    "properties": {
+      "identification": {
+        "name": "{20004,6030011}",
+        "description": "{20004,6030012}"
+      }
+    }
+  },
+  {
+    "macro": "Cluster_604_macro",
+    "properties": {
+      "identification": {
+        "name": "{20003,6040001}",
+        "description": "{20003,6040002}",
+        "image": "enc_cluster604",
+        "system": "604"
+      },
+      "sounds": {
+        "music": {
+          "ref": "music_dlc_boron_soundtrack_outer_bubble"
+        }
+      },
+      "area": {
+        "sunlight": "0.12",
+        "economy": "0.25",
+        "security": "0.25",
+        "extensionexclusivejobs": "true",
+        "tags": "boronborder"
+      },
+      "system": {
+        "space": {
+          "environment": "{1042,12011}(Clear Space)"
+        },
+        "suns": {
+          "sun": {
+            "class": "{1042,13081}(Red Giant)"
+          }
+        },
+        "planets": {
+          "planet": {
+            "name": "{20005,9073}(Samsara)",
+            "class": "{1042,14031}(Terrestrial)",
+            "geology": "{1042,15031}(Volcanic)",
+            "atmosphere": "{1042,11091}(Sulphur Dioxide)",
+            "population": "{1042,10011}(None)",
+            "settlements": "{1042,16011}(Uninhabited)",
+            "part": "part_oof_planet",
+            "atmopart": "part_oof_atmo",
+            "moons": {
+              "moon": {
+                "name": "{20005,9074}(Moksha)",
+                "geology": "{1042,15071}(Rocks)",
+                "atmosphere": "{1042,10011}(None)",
+                "population": "{1042,10011}(None)",
+                "settlements": "{1042,16011}(Uninhabited)"
+              }
+            },
+            "shaderparams": {
+              "shaderparam": [
+                {
+                  "name": "is_lava",
+                  "stat": "seismicactivity",
+                  "param": [
+                    {
+                      "position": "0",
+                      "value": "0"
+                    },
+                    {
+                      "position": "2",
+                      "value": "2.2"
+                    }
+                  ]
+                },
+                {
+                  "name": "lavalevel",
+                  "stat": "seismicactivity",
+                  "param": [
+                    {
+                      "position": "0",
+                      "value": "0"
+                    },
+                    {
+                      "position": "2",
+                      "value": "0.457"
+                    }
+                  ]
+                },
+                {
+                  "name": "waterlevel",
+                  "stat": "humidity",
+                  "param": [
+                    {
+                      "position": "3",
+                      "value": "0"
+                    },
+                    {
+                      "position": "6",
+                      "value": "0.557"
+                    }
+                  ]
+                },
+                {
+                  "name": "water_map",
+                  "stat": "seismicactivity",
+                  "type": "texture",
+                  "param": [
+                    {
+                      "position": "0",
+                      "texture": "assets\\textures\\fx\\white_01_diff"
+                    },
+                    {
+                      "position": "1",
+                      "texture": ""
+                    }
+                  ]
+                },
+                {
+                  "name": "color_atmo",
+                  "stat": "toxicity",
+                  "type": "color",
+                  "param": [
+                    {
+                      "position": "0",
+                      "r": "40",
+                      "g": "40",
+                      "b": "6",
+                      "a": "20"
+                    },
+                    {
+                      "position": "1",
+                      "r": "80",
+                      "g": "0",
+                      "b": "6",
+                      "a": "20"
+                    }
+                  ]
+                },
+                {
+                  "name": "color_water",
+                  "stat": "radioactivity",
+                  "type": "color",
+                  "param": [
+                    {
+                      "position": "0",
+                      "r": "10",
+                      "g": "70",
+                      "b": "50",
+                      "a": "255"
+                    },
+                    {
+                      "position": "1",
+                      "r": "250",
+                      "g": "30",
+                      "b": "13",
+                      "a": "255"
+                    }
+                  ]
+                },
+                {
+                  "name": "cloud_colorfactor",
+                  "stat": "methane",
+                  "param": [
+                    {
+                      "position": "0",
+                      "value": "0"
+                    },
+                    {
+                      "position": "1",
+                      "value": "0.125"
+                    }
+                  ]
+                },
+                {
+                  "name": "color_heightStr",
+                  "stat": "humidity",
+                  "param": [
+                    {
+                      "position": "3",
+                      "value": "0"
+                    },
+                    {
+                      "position": "6",
+                      "value": "0.1"
+                    }
+                  ]
+                },
+                {
+                  "name": "color_climateStr",
+                  "stat": "humidity",
+                  "param": [
+                    {
+                      "position": "3",
+                      "value": "0.25"
+                    },
+                    {
+                      "position": "6",
+                      "value": "0.75"
+                    }
+                  ]
+                },
+                {
+                  "name": "citylevel",
+                  "stat": "population",
+                  "param": [
+                    {
+                      "position": "0",
+                      "value": "0"
+                    },
+                    {
+                      "position": "10000000000",
+                      "value": "1"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "macro": "Cluster_604_Sector001_macro",
+    "properties": {
+      "identification": {
+        "name": "{20004,6040011}",
+        "description": "{20004,6040012}"
+      }
+    }
+  },
+  {
+    "macro": "Cluster_605_macro",
+    "properties": {
+      "identification": {
+        "name": "{20003,6050001}",
+        "description": "{20003,6050002}",
+        "image": "enc_cluster605",
+        "system": "605"
+      },
+      "sounds": {
+        "music": {
+          "ref": "music_dlc_boron_soundtrack_border"
+        }
+      },
+      "area": {
+        "sunlight": "1.74",
+        "economy": "0.25",
+        "security": "0.25",
+        "extensionexclusivejobs": "true"
+      },
+      "system": {
+        "space": {
+          "environment": "{1042,12061}(Heavy Radiation)"
+        },
+        "suns": {
+          "sun": {
+            "class": "{1042,13031}(Orange Dwarf)"
+          }
+        },
+        "planets": {
+          "planet": {
+            "name": "{20005,9075}(Narasimha)",
+            "class": "{1042,14031}(Terrestrial)",
+            "geology": "{1042,15101}(Barren)",
+            "atmosphere": "{1042,10011}(None)",
+            "population": "{1042,10011}(None)",
+            "settlements": "{1042,16011}(Uninhabited)",
+            "moons": {
+              "moon": {
+                "name": "{20005,9075}(Narasimha) {20402,1}(I)",
+                "geology": "{1042,15071}(Rocks)",
+                "atmosphere": "{1042,10011}(None)",
+                "population": "{1042,10011}(None)",
+                "settlements": "{1042,16011}(Uninhabited)"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "macro": "Cluster_605_Sector001_macro",
+    "properties": {
+      "identification": {
+        "name": "{20004,6050011}",
+        "description": "{20004,6050012}"
+      }
+    }
+  },
+  {
+    "macro": "Cluster_606_macro",
+    "properties": {
+      "identification": {
+        "name": "{20003,6060001}",
+        "description": "{20003,6060002}",
+        "image": "enc_cluster606",
+        "system": "606"
+      },
+      "sounds": {
+        "music": {
+          "ref": "music_dlc_boron_soundtrack_kingdom_end"
+        }
+      },
+      "area": {
+        "sunlight": "1.18",
+        "economy": "0.75",
+        "security": "0.75",
+        "extensionexclusivejobs": "true",
+        "tags": "boroncore"
+      },
+      "system": {
+        "space": {
+          "environment": "{1042,12031}(Nebula)"
+        },
+        "suns": {
+          "sun": {
+            "class": "{1042,13081}(Red Giant)"
+          }
+        },
+        "planets": {
+          "planet": {
+            "name": "{20005,9063}(Nishala)",
+            "class": "{1042,14031}(Terrestrial)",
+            "geology": "{1042,15141}(Ocean)",
+            "atmosphere": "{1042,11101}(Nitrogen/Hydrogen)",
+            "population": "{1042,10021}",
+            "maxpopulation": "37500000000",
+            "settlements": "{1042,16051}(Densely Populated)",
+            "moons": {
+              "moon": [
+                {
+                  "name": "{20005,9064}(Nidishani)",
+                  "geology": "{1042,15071}(Rocks)",
+                  "atmosphere": "{1042,10011}(None)",
+                  "population": "{1042,10011}(None)",
+                  "settlements": "{1042,16011}(Uninhabited)"
+                },
+                {
+                  "name": "{20005,9065}(Nimashani)",
+                  "geology": "{1042,15081}(Ice)",
+                  "atmosphere": "{1042,10011}(None)",
+                  "population": "{1042,10011}(None)",
+                  "settlements": "{1042,16011}(Uninhabited)"
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "macro": "Cluster_606_Sector001_macro",
+    "properties": {
+      "identification": {
+        "name": "{20004,6060011}",
+        "description": "{20004,6060012}"
+      }
+    }
+  },
+  {
+    "macro": "Cluster_606_Sector002_macro",
+    "properties": {
+      "identification": {
+        "name": "{20004,6060021}",
+        "description": "{20004,6060022}"
+      }
+    }
+  },
+  {
+    "macro": "Cluster_606_Sector003_macro",
+    "properties": {
+      "identification": {
+        "name": "{20004,6060031}",
+        "description": "{20004,6060032}"
+      }
+    }
+  },
+  {
+    "macro": "Cluster_607_macro",
+    "properties": {
+      "identification": {
+        "name": "{20003,6070001}",
+        "description": "{20003,6070002}",
+        "image": "enc_cluster607",
+        "system": "607"
+      },
+      "sounds": {
+        "music": {
+          "ref": "music_dlc_boron_soundtrack_inner_bubble"
+        }
+      },
+      "area": {
+        "sunlight": "0.15",
+        "economy": "0.25",
+        "security": "0.25",
+        "extensionexclusivejobs": "true",
+        "tags": "boroncore boronpirate"
+      },
+      "system": {
+        "space": {
+          "environment": "{1042,12011}(Clear Space)"
+        },
+        "suns": {
+          "sun": {
+            "class": "{1042,13061}(Brown Dwarf)"
+          }
+        }
+      }
+    }
+  },
+  {
+    "macro": "Cluster_607_Sector001_macro",
+    "properties": {
+      "identification": {
+        "name": "{20004,6070011}",
+        "description": "{20004,6070012}"
+      }
+    }
+  },
+  {
+    "macro": "Cluster_608_macro",
+    "properties": {
+      "identification": {
+        "name": "{20003,6080001}",
+        "description": "{20003,6080002}",
+        "image": "enc_cluster608",
+        "system": "608"
+      },
+      "sounds": {
+        "music": {
+          "ref": "music_dlc_boron_soundtrack_inner_bubble"
+        }
+      },
+      "area": {
+        "sunlight": "0.41",
+        "economy": "0.25",
+        "security": "0.25",
+        "extensionexclusivejobs": "true",
+        "tags": "boroncore boronpirate"
+      },
+      "system": {
+        "space": {
+          "environment": "{1042,12031}(Nebula)"
+        },
+        "suns": {
+          "sun": {
+            "class": "{1042,13111}(White Giant)"
+          }
+        },
+        "planets": {
+          "planet": {
+            "name": "{20005,9077}(Jamshala)",
+            "class": "{1042,14031}(Terrestrial)",
+            "geology": "{1042,15141}(Ocean)",
+            "atmosphere": "{1042,11071}(Nitrogen/Oxygen)",
+            "population": "{1042,10021}",
+            "maxpopulation": "4000000000",
+            "settlements": "{1042,16041}(Multiple Cities)",
+            "moons": {
+              "moon": [
+                {
+                  "name": "{20005,9079}(Jita)",
+                  "geology": "{1042,15071}(Rocks)",
+                  "atmosphere": "{1042,10011}(None)",
+                  "population": "{1042,10011}(None)",
+                  "settlements": "{1042,16011}(Uninhabited)"
+                },
+                {
+                  "name": "{20005,9078}(Pavana)",
+                  "geology": "{1042,15081}(Ice)",
+                  "atmosphere": "{1042,10011}(None)",
+                  "population": "{1042,10011}(None)",
+                  "settlements": "{1042,16011}(Uninhabited)"
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "macro": "Cluster_608_Sector001_macro",
+    "properties": {
+      "identification": {
+        "name": "{20004,6080011}",
+        "description": "{20004,6080012}"
+      }
+    }
+  },
+  {
+    "macro": "Cluster_609_macro",
+    "properties": {
+      "identification": {
+        "name": "{20003,6090001}",
+        "description": "{20003,6090002}",
+        "image": "enc_cluster609",
+        "system": "609"
+      },
+      "sounds": {
+        "music": {
+          "ref": "music_dlc_boron_soundtrack_inner_bubble"
+        }
+      },
+      "area": {
+        "sunlight": "2.71",
+        "economy": "0.5",
+        "security": "0.25",
+        "extensionexclusivejobs": "true",
+        "tags": "boroncore boronpirate"
+      },
+      "system": {
+        "space": {
+          "environment": "{1042,12031}(Nebula)"
+        },
+        "suns": {
+          "sun": {
+            "class": "{1042,13121}(Blue Giant)"
+          }
+        },
+        "planets": {
+          "planet": {
+            "name": "{20005,9076}(Ayeshma)",
+            "class": "{1042,14031}(Terrestrial)",
+            "geology": "{1042,15141}(Ocean)",
+            "atmosphere": "{1042,11061}(Methane/Hydrogen)",
+            "population": "{1042,10021}",
+            "maxpopulation": "300000000",
+            "settlements": "{1042,16041}(Multiple Cities)"
+          }
+        }
+      }
+    }
+  },
+  {
+    "macro": "Cluster_609_Sector001_macro",
+    "properties": {
+      "identification": {
+        "name": "{20004,6090011}",
+        "description": "{20004,6090012}"
+      }
+    }
   }
 ]

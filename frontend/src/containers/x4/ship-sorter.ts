@@ -34,7 +34,7 @@ export function sortShips(ships: X4ShipInterface[] | X4ShipInterfaceWithTradeAtt
       break;
     case 'pitch':
       shipCollection.sort((a, b) =>
-        a.inertia.pitch < b.inertia.pitch ? 1 : b.inertia.pitch < a.inertia.pitch ? -1 : 0
+        a.inertia.pitch > b.inertia.pitch ? 1 : b.inertia.pitch > a.inertia.pitch ? -1 : 0
       );
       break;
     case 'shield':

@@ -10,6 +10,7 @@ export enum X4ShipClassEnum {
 export interface X4ShipInterface {
   id: string;
   name: string;
+  description: string;
   race: string;
   type: string;
   manufacturer: string;

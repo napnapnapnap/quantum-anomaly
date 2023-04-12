@@ -1,0 +1,118 @@
+{
+  "id": "ship_bor_m_trans_container_01_a_macro",
+  "class": "ship_m",
+  "race": "bor",
+  "name": "Dolphin",
+  "basename": "Dolphin",
+  "description": "(Atreus Era Funding Increase)",
+  "shortvariation": "BV",
+  "variation": "Base Variation",
+  "type": "transporter",
+  "radarRange": "40000",
+  "docksize": "dock_m",
+  "hull": 9000,
+  "shield": {
+    "max": 0,
+    "rate": 0,
+    "delay": 0
+  },
+  "speed": {
+    "forward": 0,
+    "acceleration": 0,
+    "boost": 0,
+    "travel": 0,
+    "pitch": 0,
+    "roll": 0,
+    "yaw": 0
+  },
+  "armaments": {
+    "weapons": {
+      "extralarge": 0,
+      "large": 0,
+      "medium": 0,
+      "small": 0
+    },
+    "turrets": {
+      "extralarge": 0,
+      "large": 0,
+      "medium": 1,
+      "small": 0
+    }
+  },
+  "storage": {
+    "unit": null,
+    "missile": 0,
+    "people": 21,
+    "countermeasure": 8,
+    "deployable": 100,
+    "capacity": 9200,
+    "capacityType": "container"
+  },
+  "mass": 59.553,
+  "inertia": {
+    "pitch": 16.062,
+    "yaw": 16.062,
+    "roll": 12.85
+  },
+  "drag": {
+    "forward": 19.127,
+    "reverse": 76.508,
+    "horizontal": 22.373,
+    "vertical": 22.373,
+    "pitch": 17.388,
+    "yaw": 17.388,
+    "roll": 17.388
+  },
+  "thrusters": {
+    "size": "medium"
+  },
+  "shipstorage": {
+    "dock_m": 0,
+    "dock_s": 0
+  },
+  "dlc": "kingdomEnd",
+  "turrets": [
+    {
+      "quantity": 1,
+      "size": "medium"
+    }
+  ],
+  "weapons": [],
+  "shields": {
+    "size": "medium",
+    "quantity": 2
+  },
+  "engines": {
+    "size": "medium",
+    "quantity": 3
+  },
+  "specialExit": true,
+  "price": {
+    "min": 212164,
+    "average": 255620,
+    "max": 299075
+  },
+  "production": {
+    "time": 18,
+    "amount": "1",
+    "method": "default",
+    "name": "{20206,101}",
+    "primary": {
+      "ware": [
+        {
+          "ware": "energycells",
+          "amount": "92"
+        },
+        {
+          "ware": "hullparts",
+          "amount": "210"
+        },
+        {
+          "ware": "water",
+          "amount": "108"
+        }
+      ]
+    }
+  },
+  "manufacturer": "boron"
+}

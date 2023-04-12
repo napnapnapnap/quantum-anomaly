@@ -49,10 +49,10 @@ const Resources = ({ sector }: { sector: X4MapSector }) => {
         <React.Fragment>
           <rect
             x={sector.adjusted.x + offsets.sun.x - 9}
-            y={-sector.adjusted.z + offsets.sun.z - 9}
+            y={-sector.adjusted.z + offsets.sun.z - 8}
             width="25"
-            height="9"
-            fill={maps.resourceColors['sun']}
+            height="8"
+            fill="black"
             stroke={maps.resourceColors['sun']}
             strokeWidth="0"
             rx="3px"
@@ -60,7 +60,7 @@ const Resources = ({ sector }: { sector: X4MapSector }) => {
           <text
             textAnchor="middle"
             fontSize="8px"
-            fill="black"
+            fill={maps.resourceColors['sun']}
             fontWeight="bold"
             x={sector.adjusted.x + offsets.sun.x + 4}
             y={-sector.adjusted.z + offsets.sun.z - 1}

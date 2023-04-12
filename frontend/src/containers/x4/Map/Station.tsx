@@ -49,8 +49,17 @@ const Wharf = ({ color }: { color: string }) => (
 const Shipyard = ({ color }: { color: string }) => (
   <React.Fragment>
     <polyline fill={color} stroke={color} points="6,7.5 8,6.5 10,7.5 8,3.5 6,7.5 8,6.5" />
-    <rect x="5.5" y="8.5" width="5px" height="1.5px" fill={color} />
-    <rect x="5.5" y="10.5" width="5px" height="1.5px" fill={color} />
+    <rect x="5.25" y="9" width="5.5px" height="1.2px" fill={color} />
+    <rect x="5.25" y="10.5" width="5.5px" height="1.2px" fill={color} />
+  </React.Fragment>
+);
+
+const Pirate = ({ color }: { color: string }) => (
+  <React.Fragment>
+    <line x1="5" y1="11" x2="10" y2="3" stroke={color} strokeWidth="1px" />
+    <line x1="11" y1="11" x2="6" y2="3" stroke={color} strokeWidth="1px" />
+    <line x1="4.75" y1="8" x2="7.5" y2="10" stroke={color} strokeWidth="1px" />
+    <line x1="11.75" y1="8" x2="8.5" y2="10" stroke={color} strokeWidth="1px" />
   </React.Fragment>
 );
 
@@ -59,7 +68,8 @@ const Station = ({ station, stationScale }: { station: X4Station; stationScale: 
     station.tags !== 'tradestation' &&
     station.tags !== 'equipmentdock' &&
     station.tags !== 'wharf' &&
-    station.tags !== 'shipyard'
+    station.tags !== 'shipyard' &&
+    station.tags !== 'piratebase'
   )
     return <></>;
 
@@ -68,12 +78,21 @@ const Station = ({ station, stationScale }: { station: X4Station; stationScale: 
   const translateY = (-station.position.z - 8 * stationScale) / stationScale;
 
   return (
-    <g transform={`${scale} translate(${translateX}, ${translateY})`} id={station.id}>
-      <polyline stroke={maps.colors[station.owner].border} fill="none" points="5,1 11,1 14.5,7 11,13 5,13 1.5,7 5,1" />
+    <g
+      transform={` ${scale} translate(${translateX - 5.5 / stationScale}, ${translateY - 6.5 / stationScale})`}
+      id={station.id}
+    >
+      <polyline
+        strokeWidth={0.5}
+        stroke={maps.colors[station.owner].border}
+        fill="black"
+        points="5,1 11,1 14.5,7 11,13 5,13 1.5,7 5,1"
+      />
       {station.tags === 'tradestation' && <TradeStation color={maps.colors[station.owner].border} />}
       {station.tags === 'equipmentdock' && <EquipmentDock color={maps.colors[station.owner].border} />}
       {station.tags === 'wharf' && <Wharf color={maps.colors[station.owner].border} />}
       {station.tags === 'shipyard' && <Shipyard color={maps.colors[station.owner].border} />}
+      {station.tags === 'piratebase' && <Pirate color={maps.colors[station.owner].border} />}
     </g>
   );
 };

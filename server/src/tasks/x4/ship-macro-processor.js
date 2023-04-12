@@ -1,16 +1,18 @@
 import { translate, translateRecursive } from './translations';
 
 const getRace = (name) => {
-  if (name.indexOf('arg') !== -1) return 'arg';
-  if (name.indexOf('par') !== -1) return 'par';
-  if (name.indexOf('spl') !== -1) return 'spl';
-  if (name.indexOf('tel') !== -1) return 'tel';
-  if (name.indexOf('xen') !== -1) return 'xen';
-  if (name.indexOf('kha') !== -1) return 'kha';
-  if (name.indexOf('ter') !== -1) return 'ter';
-  if (name.indexOf('yak') !== -1) return 'yak';
-  if (name.indexOf('atf') !== -1) return 'atf';
-  if (name.indexOf('ship_gen_s_fighter_01') !== -1) return 'arg';
+  if (name.indexOf('ship_arg') !== -1) return 'arg';
+  else if (name.indexOf('ship_par') !== -1) return 'par';
+  else if (name.indexOf('ship_spl') !== -1) return 'spl';
+  else if (name.indexOf('ship_tel') !== -1) return 'tel';
+  else if (name.indexOf('ship_xen') !== -1) return 'xen';
+  else if (name.indexOf('ship_kha') !== -1) return 'kha';
+  else if (name.indexOf('ship_ter') !== -1) return 'ter';
+  else if (name.indexOf('ship_yak') !== -1) return 'yak';
+  else if (name.indexOf('ship_atf') !== -1) return 'atf';
+  else if (name.indexOf('ship_bor') !== -1) return 'bor';
+  else if (name.indexOf('ship_gen_s_fighter_01') !== -1) return 'arg';
+  else return 'unk';
 };
 
 export function addDataFromMacroFile(data, translations, defaults, storage, shipstorage) {
@@ -26,14 +28,8 @@ export function addDataFromMacroFile(data, translations, defaults, storage, ship
     basename: translateRecursive(properties.identification.basename, translations),
     description: translateRecursive(properties.identification.description, translations)
       .replace(/\(same(.*?)\)/g, '')
-      .replace('(The E-model ...)The E-model("E" same as E)', 'E-model')
-      .replace('\\(NT\\)', '')
-      .replace('(Prometheus)', '')
-      .replace('(Avarice Ship Building Situation)', '')
-      .replace('(Raleigh Condensate)', '')
-      .replace('(Raleigh Container)', '')
-      .replace('(Raven)', '')
-      .replace('(Windfall Ship Building Situation)(NT same as NT)', ''),
+      .replace(/\(.* same as .*?\)/g, '')
+      .replace('(The E-model ...)', ''),
     shortvariation: translateRecursive(properties.identification.shortvariation, translations),
     variation: translateRecursive(properties.identification.variation, translations),
     type: properties.ship.type,

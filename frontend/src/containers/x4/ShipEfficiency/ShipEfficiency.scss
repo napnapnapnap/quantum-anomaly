@@ -1,4 +1,4 @@
-@import 'src/styles/mixins/typography';
+@import '../../../../src/styles/mixins/typography';
 
 .x4-efficiency {
   &__table-wrapper {
@@ -24,10 +24,18 @@
     }
   }
 
+  .input-radio-group {
+    display: inline-block;
+  }
+
   .input-control__radio-text {
     text-transform: capitalize;
     display: inline-block;
     width: 55px;
+  }
+
+  .input-control--checkbox {
+    margin-right: 0.25rem;
   }
 
   table {

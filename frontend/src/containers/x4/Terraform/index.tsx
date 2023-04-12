@@ -18,8 +18,9 @@ import {
 import { formatDecimal, formatNumber, separateWords } from '../x4-helpers';
 import './Terraform.scss';
 import initialSeo from './initialSeo.json';
+import { calculateRecommendedPathCost } from './planet-helpers';
 
-interface ProjectsWithCost {
+export interface ProjectsWithCost {
   id: string;
   name: string;
   description: string;
@@ -30,7 +31,7 @@ interface ProjectsWithCost {
   projectQuantity: number;
 }
 
-interface PlanetTotals {
+export interface PlanetTotals {
   [key: string]: {
     quantity: number;
     discountedQuantity: number;
@@ -52,6 +53,8 @@ const Terraform = () => {
   const [planetTotals, setPlanetTotals] = useState<PlanetTotals>({});
   const [globalQuantity, setGlobalQuantity] = useState(0);
   const [globalPrice, setGlobalPrice] = useState(0);
+
+  const [highestTotals, setHighestTotals] = useState<PlanetTotals>({});
 
   const getStat = (arg: string) => {
     if (terraform) return terraform.stats.filter((stat) => stat.id === arg)[0];
@@ -76,107 +79,12 @@ const Terraform = () => {
   }, [dispatch, terraform]);
 
   useEffect(() => {
-    let projectsWithCost: ProjectsWithCost[] = [];
-    let planetTotals: PlanetTotals = {};
-    let globalQuantity = 0;
-    let globalPrice = 0;
+    const recommendedPathCost = calculateRecommendedPathCost(terraform, extraProjects, planet);
 
-    const rebates: { fromIndex: number; waregroup: string; value: number }[] = [];
-
-    if (terraform && planet && terraform.planets[planet]) {
-      extraProjects.forEach((extraProject) => {
-        if (terraform.planets[planet].recommendedPath.indexOf(extraProject) !== -1) {
-          const projectRebate = terraform.projects[extraProject].rebates;
-          if (projectRebate)
-            projectRebate.forEach((rebate) =>
-              rebates.push({
-                fromIndex: terraform.planets[planet].recommendedPath.indexOf(extraProject),
-                waregroup: rebate.waregroup,
-                value: parseInt(rebate.value),
-              })
-            );
-        }
-      });
-
-      rebates.sort((a, b) => a.fromIndex - b.fromIndex);
-
-      terraform.planets[planet].recommendedPath.forEach((project, projectIndex) => {
-        let needsDiscount = false;
-        let discountedResources: { [key: string]: X4TerraformProjectWare } | null = null;
-        let rebatedWares: string[] = [];
-        let projectQuantity: number = 0;
-        let projectPrice: number = 0;
-
-        terraform.projects[project].resources.wares.forEach((ware) => {
-          rebates.forEach((rebate) => {
-            if (ware.group === rebate.waregroup && projectIndex > rebate.fromIndex) needsDiscount = true;
-          });
-
-          if (!planetTotals[ware.ware])
-            planetTotals[ware.ware] = {
-              quantity: 0,
-              discountedQuantity: 0,
-              price: 0,
-              discountedPrice: 0,
-              volume: ware.volume,
-            };
-
-          planetTotals[ware.ware].quantity += ware.quantity;
-          planetTotals[ware.ware].price += ware.totalCost;
-          planetTotals[ware.ware].discountedQuantity += ware.quantity;
-          planetTotals[ware.ware].discountedPrice += ware.totalCost;
-
-          projectQuantity += ware.quantity * ware.volume;
-          projectPrice += ware.totalCost;
-          globalQuantity += ware.quantity * ware.volume;
-          globalPrice += ware.totalCost;
-        });
-
-        if (needsDiscount) {
-          discountedResources = {};
-          terraform.projects[project].resources.wares.forEach((ware) =>
-            rebates.forEach((rebate) => {
-              if (ware.group === rebate.waregroup) {
-                if (!discountedResources) discountedResources = {};
-                rebatedWares.push(ware.ware);
-                const discountedQuantity = ware.quantity * (1 - rebate.value / 100);
-                const discountedPrice = ware.totalCost * (1 - rebate.value / 100);
-
-                discountedResources[ware.ware] = {
-                  ...ware,
-                  quantity: discountedQuantity,
-                  totalCost: discountedPrice,
-                };
-                projectQuantity += discountedQuantity - ware.quantity;
-                projectPrice += discountedPrice - ware.totalCost;
-
-                planetTotals[ware.ware].discountedQuantity += discountedQuantity - ware.quantity;
-                planetTotals[ware.ware].discountedPrice += discountedPrice - ware.totalCost;
-
-                globalQuantity += discountedQuantity - ware.quantity;
-                globalPrice += discountedPrice - ware.totalCost;
-              }
-            })
-          );
-        }
-
-        projectsWithCost.push({
-          id: terraform.projects[project].id,
-          name: terraform.projects[project].name,
-          description: terraform.projects[project].description,
-          rebatedWares,
-          resources: terraform.projects[project].resources,
-          discountedResources,
-          projectPrice,
-          projectQuantity,
-        });
-      });
-    }
-
-    setProjectsWithCost(projectsWithCost);
-    setPlanetTotals(planetTotals);
-    setGlobalPrice(globalPrice);
-    setGlobalQuantity(globalQuantity);
+    setProjectsWithCost(recommendedPathCost.projectsWithCost);
+    setPlanetTotals(recommendedPathCost.planetTotals);
+    setGlobalPrice(recommendedPathCost.globalPrice);
+    setGlobalQuantity(recommendedPathCost.globalQuantity);
   }, [terraform, planet]);
 
   return (
@@ -207,6 +115,33 @@ const Terraform = () => {
                 ships from PHQ in order to conserve your resources for the actual terraforming.
               </p>
               <p>Choose a project and have fun!</p>
+
+              <h3>Maximums needed</h3>
+              <p>
+                In case you want to start stockpiling resources ahead of time and have enough storage space, here is
+                maximums that you might need to have in storage for any given project on any planets. Keep in mind that
+                some of them might be repeatable. This list also doesn't take potential discounts into consideration.
+              </p>
+
+              {Object.keys(terraform.waresHighest)
+                .sort()
+                .map((wareKey) => (
+                  <div className="x4-terraform__project-stats" key={wareKey}>
+                    <span className="x4-terraform__ware-quantity text--right text--small">
+                      {formatNumber(terraform.waresHighest[wareKey].quantity)}
+                    </span>
+                    <span className="x4-terraform__ware-name text--capitalize text--small">
+                      × {separateWords(wareKey)}
+                    </span>
+                    <span className="x4-terraform__ware-volume text--right text--smaller">
+                      {formatNumber(terraform.waresHighest[wareKey].quantity * terraform.waresHighest[wareKey].volume)}{' '}
+                      m3
+                    </span>
+                    <span className="x4-terraform__ware-price text--right text--smaller text--muted">
+                      Needed × {terraform.waresHighest[wareKey].projectCount}
+                    </span>
+                  </div>
+                ))}
             </div>
           )}
 
@@ -261,6 +196,7 @@ const Terraform = () => {
                         name={project}
                         checked={activePlanet.recommendedPath.indexOf(project) !== -1}
                         handleInputChange={() => dispatch(toggleProjectInPlanet({ planet, project }))}
+                        isDisabled={planet === 'ocean_of_fantasy'}
                       />
                     </div>
                   ))}

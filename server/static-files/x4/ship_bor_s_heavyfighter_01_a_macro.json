@@ -1,0 +1,129 @@
+{
+  "id": "ship_bor_s_heavyfighter_01_a_macro",
+  "class": "ship_s",
+  "race": "bor",
+  "name": "Barracuda",
+  "basename": "Barracuda",
+  "description": ")(Menelaus Era Ship Building)",
+  "shortvariation": "BV",
+  "variation": "Base Variation",
+  "type": "heavyfighter",
+  "radarRange": "40000",
+  "docksize": "dock_s",
+  "hull": 3700,
+  "shield": {
+    "max": 0,
+    "rate": 0,
+    "delay": 0
+  },
+  "speed": {
+    "forward": 0,
+    "acceleration": 0,
+    "boost": 0,
+    "travel": 0,
+    "pitch": 0,
+    "roll": 0,
+    "yaw": 0
+  },
+  "armaments": {
+    "weapons": {
+      "extralarge": 0,
+      "large": 0,
+      "medium": 0,
+      "small": 3
+    },
+    "turrets": {
+      "extralarge": 0,
+      "large": 0,
+      "medium": 0,
+      "small": 0
+    }
+  },
+  "storage": {
+    "unit": null,
+    "missile": 34,
+    "people": 2,
+    "countermeasure": 4,
+    "deployable": 50,
+    "capacity": 330,
+    "capacityType": "container"
+  },
+  "mass": 7.791,
+  "inertia": {
+    "pitch": 0.893,
+    "yaw": 0.893,
+    "roll": 0.714
+  },
+  "drag": {
+    "forward": 2.398,
+    "reverse": 9.593,
+    "horizontal": 4.048,
+    "vertical": 4.048,
+    "pitch": 2.361,
+    "yaw": 2.361,
+    "roll": 2.361
+  },
+  "thrusters": {
+    "size": "small"
+  },
+  "shipstorage": {
+    "dock_m": 0,
+    "dock_s": 0
+  },
+  "dlc": "kingdomEnd",
+  "turrets": [],
+  "weapons": [
+    {
+      "quantity": 1,
+      "size": "small",
+      "missile": true
+    },
+    {
+      "quantity": 1,
+      "size": "small",
+      "missile": true
+    },
+    {
+      "quantity": 1,
+      "size": "small",
+      "missile": true
+    }
+  ],
+  "shields": {
+    "size": "small",
+    "quantity": 3
+  },
+  "engines": {
+    "size": "small",
+    "quantity": 1
+  },
+  "specialExit": false,
+  "price": {
+    "min": 203922,
+    "average": 245690,
+    "max": 287457
+  },
+  "production": {
+    "time": 15,
+    "amount": "1",
+    "method": "default",
+    "name": "{20206,101}",
+    "primary": {
+      "ware": [
+        {
+          "ware": "energycells",
+          "amount": "79"
+        },
+        {
+          "ware": "hullparts",
+          "amount": "201"
+        },
+        {
+          "ware": "water",
+          "amount": "110"
+        }
+      ]
+    }
+  },
+  "manufacturer": "boron"
+}

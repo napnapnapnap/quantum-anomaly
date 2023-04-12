@@ -2961,6 +2961,9 @@
       "11355": "Online server update. Please restart the game to continue online play.",
       "11356": "Online server update",
       "11357": "Save & Exit to Desktop",
+      "11358": "Go to Online Features, enable Venture Extension downloads and restart the game",
+      "11359": "Venture Extension Downloads",
+      "11360": "Do you want to enable Venture Extension downloads? This will enable the Multiverse Team Seasons for you. Requires a restart.",
       "11380": "Convert %s($WARE_NAME$)",
       "11381": "Convert",
       "11382": "(Store Item)Conversion failed!",
@@ -3125,6 +3128,7 @@
       "11645": "Showing entries from your logbook relating to this ownerless object.",
       "11646": "Showing entries from your logbook relating to this sector owned by %s($FACTION_NAME$).",
       "11647": "Showing entries from your logbook relating to this ownerless sector.",
+      "11648": "Team Chat",
       "11700": "(Options menu range 26xx, 48xx, 72xx and 89xx continued)",
       "11701": "Save offline",
       "11702": "Overwrite offline save",
@@ -3188,6 +3192,8 @@
       "11760": "You disabled Start Menu News in the past, but connected to our servers now. Do you want to enable Start Menu News again to receive current information?",
       "11761": "Start Menu Background Scene",
       "11762": "Random",
+      "11763": "Accept Invitations",
+      "11764": "This option blocks invitations from all other players.",
       "11800": "(online range 113xx and 115xx continued)",
       "11801": "Multiverse Patron",
       "11802": "Multiverse Patron Information",
@@ -8266,6 +8272,9 @@
       "201401": "Cotopaxi",
       "201501": "Mayon",
       "201601": "Taal",
+      "201602": "(Taal Mk1){20101,201601} {20111,101}",
+      "201603": "(Taal Mk2){20101,201601} {20111,201}",
+      "201604": "(Taal Mk3){20101,201601} {20111,301}",
       "201611": "The sweeping, yet pragmatic, design of this s-class fighter is immediately apparent. Engineers mounted two extensions alongside the cockpit in an attempt to stabilise the ship for prolonged travel between branes. With its front-facing weapons, it is a fierce but practical ship, allowing a well-trained combat pilot to deal with any encounter, no matter what situation they find themselves in. It is unsurprising, therefore, that the design has been adapted by several factions vying for power and influence across the Multiverse.",
       "201701": "Pinatubo",
       "201801": "Bromo",
@@ -8275,6 +8284,9 @@
       "202201": "Villarica",
       "202301": "Colima",
       "202401": "Yasur",
+      "202402": "(Yasur Mk1){20101,202401} {20111,101}",
+      "202403": "(Yasur Mk2){20101,202401} {20111,201}",
+      "202404": "(Yasur Mk3){20101,202401} {20111,301}",
       "202411": "The hyper-aggressive, technologically advanced Yasur-class brane ship was built to withstand all crossbrane-travel induced turbulence. This extraordinary stability was achieved with the help of hull plating reinforced with Brane-Bismuth. Notably, it took a lot of effort on the part of the Coalition Engineers to assemble these ships at scale at the Coalition Headquarters. The four front-mounted guns, and its agile nature, make this ship a fearsome dogfighter, and its sleek design makes it hard to hit by any enemies who dare to engage."
     }
   },
@@ -14724,6 +14736,21 @@
       "3051": "The volcanoes go extinct, eliminating destructive seismic activity, but in the process they evaporate a large quantity of water into the atmosphere.",
       "3060": "Salinisation",
       "3061": "There is enough loose sediment that the process of salinisation, i.e. making the water saltier, is a lot faster than it would normally be. It still takes some time and there is no practical means of artificially accelerating the process."
+    }
+  },
+  "20233": {
+    "title": "Glossary",
+    "translations": {
+      "1000": "(Corporations / Organisations)",
+      "1001": "Royal Boron Navy(Boron Military)",
+      "1011": "Royal Academy of Space Engineering(Boron University)",
+      "1021": "Royal Boron Military Defence(RBMD Government Military Research based in Depths of Silence)",
+      "1031": "Atreus Shipbuilding Currents(Boron Shipbuilding Company named after historic Queen Atreus)",
+      "1041": "Eleius Astrosecurity(Boron Military Shipbuilding Company named after historic Queen Eleius)",
+      "1051": "Faded Dreams Defences(Boron Military Shipbuilding Company located in Faded Dreams, an X3TC system)",
+      "1061": "Stellar Shores Shipping(Boron Shipbuilding Company, founded in 785 NT by Royal Academy students)",
+      "1071": "Deepwater Drilling Industries(Boron Mining and Shipbuilding Company)",
+      "1081": "Lucky Planets Construction Enterprises(Boron Construction, Shipping and Shipbuilding Company based in Lucky Planets)(Lucky Planets same as {20005,2011})"
     }
   },
   "20299": {

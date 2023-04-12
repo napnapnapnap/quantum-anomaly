@@ -1,0 +1,113 @@
+{
+  "id": "ship_bor_s_trans_container_01_a_macro",
+  "class": "ship_s",
+  "race": "bor",
+  "name": "Terrapin",
+  "basename": "Terrapin",
+  "description": ")(Ship Frame Development)",
+  "shortvariation": "BV",
+  "variation": "Base Variation",
+  "type": "courier",
+  "radarRange": "40000",
+  "docksize": "dock_s",
+  "hull": 4000,
+  "shield": {
+    "max": 0,
+    "rate": 0,
+    "delay": 0
+  },
+  "speed": {
+    "forward": 0,
+    "acceleration": 0,
+    "boost": 0,
+    "travel": 0,
+    "pitch": 0,
+    "roll": 0,
+    "yaw": 0
+  },
+  "armaments": {
+    "weapons": {
+      "extralarge": 0,
+      "large": 0,
+      "medium": 0,
+      "small": 0
+    },
+    "turrets": {
+      "extralarge": 0,
+      "large": 0,
+      "medium": 0,
+      "small": 0
+    }
+  },
+  "storage": {
+    "unit": null,
+    "missile": 0,
+    "people": 4,
+    "countermeasure": 4,
+    "deployable": 50,
+    "capacity": 2230,
+    "capacityType": "container"
+  },
+  "mass": 15.639,
+  "inertia": {
+    "pitch": 5.012,
+    "yaw": 5.012,
+    "roll": 4.01
+  },
+  "drag": {
+    "forward": 5.253,
+    "reverse": 20.889,
+    "horizontal": 6.81,
+    "vertical": 6.81,
+    "pitch": 5.825,
+    "yaw": 5.825,
+    "roll": 5.825
+  },
+  "thrusters": {
+    "size": "small"
+  },
+  "shipstorage": {
+    "dock_m": 0,
+    "dock_s": 0
+  },
+  "dlc": "kingdomEnd",
+  "turrets": [],
+  "weapons": [],
+  "shields": {
+    "size": "small",
+    "quantity": 1
+  },
+  "engines": {
+    "size": "small",
+    "quantity": 2
+  },
+  "specialExit": false,
+  "price": {
+    "min": 164834,
+    "average": 198595,
+    "max": 232356
+  },
+  "production": {
+    "time": 15,
+    "amount": "1",
+    "method": "default",
+    "name": "{20206,101}",
+    "primary": {
+      "ware": [
+        {
+          "ware": "energycells",
+          "amount": "62"
+        },
+        {
+          "ware": "hullparts",
+          "amount": "180"
+        },
+        {
+          "ware": "water",
+          "amount": "20"
+        }
+      ]
+    }
+  },
+  "manufacturer": "boron"
+}

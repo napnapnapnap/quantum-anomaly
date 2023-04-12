@@ -1,0 +1,119 @@
+{
+  "id": "ship_bor_s_miner_solid_01_a_macro",
+  "class": "ship_s",
+  "race": "bor",
+  "name": "Grouper (Mineral)",
+  "basename": "Grouper",
+  "description": "(Atreus Era Ship Building)",
+  "shortvariation": "BV",
+  "variation": "Base Variation",
+  "type": "miner",
+  "radarRange": "40000",
+  "docksize": "dock_s",
+  "hull": 4000,
+  "shield": {
+    "max": 0,
+    "rate": 0,
+    "delay": 0
+  },
+  "speed": {
+    "forward": 0,
+    "acceleration": 0,
+    "boost": 0,
+    "travel": 0,
+    "pitch": 0,
+    "roll": 0,
+    "yaw": 0
+  },
+  "armaments": {
+    "weapons": {
+      "extralarge": 0,
+      "large": 0,
+      "medium": 0,
+      "small": 1
+    },
+    "turrets": {
+      "extralarge": 0,
+      "large": 0,
+      "medium": 0,
+      "small": 0
+    }
+  },
+  "storage": {
+    "unit": null,
+    "missile": 0,
+    "people": 2,
+    "countermeasure": 4,
+    "deployable": 50,
+    "capacity": 2560,
+    "capacityType": "solid"
+  },
+  "mass": 8.688,
+  "inertia": {
+    "pitch": 3.143,
+    "yaw": 3.143,
+    "roll": 2.515
+  },
+  "drag": {
+    "forward": 4.457,
+    "reverse": 19.912,
+    "horizontal": 3.784,
+    "vertical": 3.784,
+    "pitch": 3.653,
+    "yaw": 3.653,
+    "roll": 3.653
+  },
+  "thrusters": {
+    "size": "small"
+  },
+  "shipstorage": {
+    "dock_m": 0,
+    "dock_s": 0
+  },
+  "dlc": "kingdomEnd",
+  "turrets": [],
+  "weapons": [
+    {
+      "quantity": 1,
+      "size": "small",
+      "missile": true
+    }
+  ],
+  "shields": {
+    "size": "small",
+    "quantity": 1
+  },
+  "engines": {
+    "size": "small",
+    "quantity": 2
+  },
+  "specialExit": false,
+  "price": {
+    "min": 69490,
+    "average": 83723,
+    "max": 97955
+  },
+  "production": {
+    "time": 10,
+    "amount": "1",
+    "method": "default",
+    "name": "{20206,101}",
+    "primary": {
+      "ware": [
+        {
+          "ware": "energycells",
+          "amount": "39"
+        },
+        {
+          "ware": "hullparts",
+          "amount": "74"
+        },
+        {
+          "ware": "water",
+          "amount": "12"
+        }
+      ]
+    }
+  },
+  "manufacturer": "boron"
+}

@@ -11,6 +11,7 @@ export const initialStateDisplayRaces: { [key: string]: boolean } = {
   xen: true,
   kha: true,
   pir: true,
+  bor: true,
 };
 
 export const initialStateDisplayDlcs: { [key: string]: boolean } = {
@@ -18,7 +19,7 @@ export const initialStateDisplayDlcs: { [key: string]: boolean } = {
   cradleOfHumanity: true,
   tidesOfAvarice: true,
   splitVendetta: true,
-  kingdomsEnd: false,
+  kingdomEnd: true,
 };
 
 export const initialStateDisplayVariations = { BV: true, VA: true, ST: true, RD: true };
@@ -57,11 +58,18 @@ export const getHighestAvailableThrusterId = (ship: X4ShipInterface, activeEquip
 export const getHighestAvailableEngineId = (ship: X4ShipInterface, activeEquipment: ActiveEquipment) => {
   const engineBaseId = activeEquipment.engine.split('_');
   engineBaseId[1] = activeEquipment.engineRace;
+  if (ship.race === 'bor') engineBaseId[1] = 'bor';
+
   engineBaseId[2] = ship.class.replace('ship_', '');
   if ((ship.class === 'ship_xl' || ship.class === 'ship_l') && engineBaseId[3] === 'combat')
     engineBaseId[3] = 'allround';
 
   if (ship.class === 'ship_xl' || ship.class === 'ship_l') engineBaseId[5] = 'mk1';
+
+  if (ship.race === 'bor' && (ship.class === 'ship_xl' || ship.class === 'ship_l')) engineBaseId[3] = 'travel';
+  if (ship.race === 'bor' && (ship.class === 'ship_m' || ship.class === 'ship_s')) engineBaseId[3] = 'allround';
+
+  if (engineBaseId[1] === 'bor' && engineBaseId[5] === 'mk4') engineBaseId[5] = 'mk3';
 
   let engineId = engineBaseId.join('_');
   // special cases for ships with their own versions
@@ -78,6 +86,8 @@ export const getHighestAvailableShieldId = (
 ) => {
   const shieldBaseId = activeEquipment.shield.split('_');
   shieldBaseId[1] = activeEquipment.shieldRace;
+  if (ship.race === 'bor') shieldBaseId[1] = 'bor';
+
   shieldBaseId[2] = ship.class.replace('ship_', '');
   if ((ship.class === 'ship_xl' || ship.class === 'ship_l') && activeEquipment.shieldRace !== 'ter')
     shieldBaseId[5] = 'mk1';

@@ -46,6 +46,29 @@
         "release": "37.5"
       }
     },
+    "engine_bor_xl_travel_01_mk1": {
+      "id": "engine_bor_xl_travel_01_mk1",
+      "name": "BOR XL All-round Engine Mk1",
+      "mk": "1",
+      "class": "engine",
+      "makerrace": "boron",
+      "thrust": {
+        "forward": "7912",
+        "reverse": "7120"
+      },
+      "boost": {
+        "duration": "34",
+        "thrust": "2",
+        "attack": "14",
+        "release": "0.04"
+      },
+      "travel": {
+        "charge": "0",
+        "thrust": "45",
+        "attack": "178.5",
+        "release": "1.25"
+      }
+    },
     "engine_par_xl_allround_01_mk1": {
       "id": "engine_par_xl_allround_01_mk1",
       "name": "PAR XL All-round Engine Mk1",
@@ -264,6 +287,34 @@
       "recharge": {
         "max": "129481",
         "rate": "492",
+        "delay": "0"
+      }
+    },
+    "shield_bor_xl_standard_01_mk1": {
+      "id": "shield_bor_xl_standard_01_mk1",
+      "name": "BOR XL Shield Generator Mk1",
+      "description": "Shield Mk1",
+      "hull": "6000",
+      "mk": "1",
+      "class": "shield",
+      "makerrace": "boron",
+      "recharge": {
+        "max": "133766",
+        "rate": "517",
+        "delay": "0"
+      }
+    },
+    "shield_bor_xl_standard_01_mk2": {
+      "id": "shield_bor_xl_standard_01_mk2",
+      "name": "BOR XL Shield Generator Mk2",
+      "description": "Shield Mk2",
+      "hull": "6000",
+      "mk": "2",
+      "class": "shield",
+      "makerrace": "boron",
+      "recharge": {
+        "max": "159937",
+        "rate": "670",
         "delay": "0"
       }
     },
@@ -513,6 +564,29 @@
         "release": "37.5"
       }
     },
+    "engine_bor_l_travel_01_mk1": {
+      "id": "engine_bor_l_travel_01_mk1",
+      "name": "BOR L All-round Engine Mk1",
+      "mk": "1",
+      "class": "engine",
+      "makerrace": "boron",
+      "thrust": {
+        "forward": "3004",
+        "reverse": "2704"
+      },
+      "boost": {
+        "duration": "34",
+        "thrust": "2",
+        "attack": "14",
+        "release": "0.04"
+      },
+      "travel": {
+        "charge": "0",
+        "thrust": "45",
+        "attack": "178.5",
+        "release": "1.25"
+      }
+    },
     "engine_par_l_allround_01_mk1": {
       "id": "engine_par_l_allround_01_mk1",
       "name": "PAR L All-round Engine Mk1",
@@ -722,6 +796,48 @@
       "recharge": {
         "max": "46282",
         "rate": "268",
+        "delay": "0"
+      }
+    },
+    "shield_bor_l_standard_01_mk1": {
+      "id": "shield_bor_l_standard_01_mk1",
+      "name": "BOR L Shield Generator Mk1",
+      "description": "Shield Mk1",
+      "hull": "2000",
+      "mk": "1",
+      "class": "shield",
+      "makerrace": "boron",
+      "recharge": {
+        "max": "40045",
+        "rate": "190",
+        "delay": "0"
+      }
+    },
+    "shield_bor_l_standard_01_mk2": {
+      "id": "shield_bor_l_standard_01_mk2",
+      "name": "BOR L Shield Generator Mk2",
+      "description": "Shield Mk2",
+      "hull": "2000",
+      "mk": "2",
+      "class": "shield",
+      "makerrace": "boron",
+      "recharge": {
+        "max": "47879",
+        "rate": "246",
+        "delay": "0"
+      }
+    },
+    "shield_bor_l_standard_01_mk3": {
+      "id": "shield_bor_l_standard_01_mk3",
+      "name": "BOR L Shield Generator Mk3",
+      "description": "Shield Mk3",
+      "hull": "2000",
+      "mk": "3",
+      "class": "shield",
+      "makerrace": "boron",
+      "recharge": {
+        "max": "68399",
+        "rate": "422",
         "delay": "0"
       }
     },
@@ -1065,6 +1181,168 @@
         "time": "1"
       },
       "hull": "2300"
+    },
+    "turret_bor_l_disruptor_01_mk1": {
+      "name": "BOR L Ion Net Launcher Mk1",
+      "makerrace": "boron",
+      "mk": "1",
+      "class": "turret",
+      "bullet": {
+        "properties": {
+          "speed": "7100",
+          "lifetime": "1.5",
+          "barrelamount": "1",
+          "icon": "weapon_bor_disruptor_mk1",
+          "timediff": "0.008",
+          "angle": "2",
+          "maxhits": "1",
+          "ricochet": "0",
+          "restitution": "1",
+          "scale": "0",
+          "attach": "0",
+          "selfdestruct": "1",
+          "plannedselfdestruct": "1",
+          "selfdestructtimediff": "0.15",
+          "selfdestructmintime": "0.2",
+          "influencelist": "heavy_mam_thruster_disrupt"
+        },
+        "damage": {
+          "value": "400",
+          "repair": "0"
+        },
+        "reload": {
+          "rate": "2.5"
+        },
+        "system": "turret_midrange"
+      },
+      "rotation": {
+        "speed": "25"
+      },
+      "reload": {
+        "rate": "1",
+        "time": "0.5"
+      },
+      "hull": "2100"
+    },
+    "turret_bor_l_flak_01_mk1": {
+      "name": "BOR L Ion Flak Turret Mk1",
+      "makerrace": "boron",
+      "mk": "1",
+      "class": "turret",
+      "bullet": {
+        "properties": {
+          "speed": "4660",
+          "lifetime": "1.25",
+          "barrelamount": "1",
+          "icon": "weapon_bor_flak_mk1",
+          "timediff": "0.001",
+          "angle": "2.1",
+          "maxhits": "1",
+          "ricochet": "0",
+          "restitution": "1",
+          "scale": "0",
+          "attach": "0",
+          "selfdestruct": "1",
+          "plannedselfdestruct": "1",
+          "selfdestructtimediff": "0.06",
+          "selfdestructmintime": "0.15",
+          "influencelist": "light_drive_disrupt_flak"
+        },
+        "damage": {
+          "value": "50",
+          "shield": "200",
+          "repair": "0"
+        },
+        "reload": {
+          "rate": "0.4"
+        },
+        "system": "turret_midrange"
+      },
+      "rotation": {
+        "speed": "50"
+      },
+      "reload": {},
+      "hull": "2100"
+    },
+    "turret_bor_l_laser_01_mk1": {
+      "name": "BOR L Phase Turret Mk1",
+      "makerrace": "boron",
+      "mk": "1",
+      "class": "turret",
+      "bullet": {
+        "properties": {
+          "speed": "3000",
+          "lifetime": "2.4",
+          "barrelamount": "1",
+          "icon": "weapon_laser_mk1",
+          "timediff": "0.003",
+          "angle": "0.25",
+          "mass": "300",
+          "maxhits": "1",
+          "ricochet": "0",
+          "restitution": "0",
+          "scale": "0",
+          "attach": "0"
+        },
+        "damage": {
+          "value": "200",
+          "noshield": "350",
+          "repair": "0"
+        },
+        "reload": {
+          "rate": "0.8"
+        },
+        "system": "turret_midrange"
+      },
+      "rotation": {
+        "speed": "25"
+      },
+      "reload": {
+        "rate": "0.3",
+        "time": "1"
+      },
+      "hull": "2100"
+    },
+    "turret_bor_l_mining_01_mk1": {
+      "name": "BOR L Mining Turret Mk1",
+      "makerrace": "boron",
+      "mk": "1",
+      "class": "turret",
+      "bullet": {
+        "properties": {
+          "speed": "7000",
+          "lifetime": "4",
+          "range": "7000",
+          "amount": "1",
+          "barrelamount": "1",
+          "icon": "weapon_mining_mk1",
+          "maxhits": "1",
+          "ricochet": "0",
+          "scale": "1",
+          "attach": "1"
+        },
+        "damage": {
+          "value": "2",
+          "hull": "1",
+          "delay": "1",
+          "repair": "0",
+          "multiplier": {
+            "mining": "450"
+          }
+        },
+        "reload": {
+          "time": "4"
+        },
+        "system": "weapon_mining"
+      },
+      "rotation": {
+        "speed": "40"
+      },
+      "reload": {
+        "rate": "1",
+        "time": "1"
+      },
+      "hull": "2100"
     },
     "turret_par_l_beam_01_mk1": {
       "name": "PAR L Beam Turret Mk1",
@@ -1921,6 +2199,52 @@
       },
       "hull": "8000"
     },
+    "weapon_bor_l_beam_01_mk1": {
+      "name": "BOR Ray Ion Projector",
+      "heat": {
+        "overheat": "10000",
+        "cooldelay": "2",
+        "coolrate": "2000",
+        "reenable": "1"
+      },
+      "mk": "1",
+      "class": "weapon",
+      "bullet": {
+        "properties": {
+          "speed": "20000",
+          "lifetime": "4",
+          "range": "11000",
+          "amount": "1",
+          "barrelamount": "1",
+          "icon": "weapon_beam_mk1",
+          "angle": "0",
+          "maxhits": "1",
+          "ricochet": "0",
+          "restitution": "1",
+          "scale": "1",
+          "attach": "1",
+          "chargetime": "4",
+          "heatwhilecharging": "0",
+          "requirefullcharge": "1",
+          "firewhenfullcharge": "1",
+          "influencelist": "heavy_drive_disrupt"
+        },
+        "damage": {
+          "value": "4000",
+          "shield": "3300",
+          "repair": "0"
+        },
+        "reload": {
+          "time": "4.1"
+        },
+        "system": "weapon_standard"
+      },
+      "rotation": {
+        "speed": "10",
+        "acceleration": "3"
+      },
+      "hull": "10000"
+    },
     "weapon_par_l_destroyer_01_mk1": {
       "name": "PAR Odysseus Main Battery",
       "heat": {
@@ -2284,6 +2608,75 @@
         "thrust": "12",
         "attack": "45",
         "release": "30"
+      }
+    },
+    "engine_bor_m_allround_01_mk1": {
+      "id": "engine_bor_m_allround_01_mk1",
+      "name": "BOR M All-round Engine Mk1",
+      "mk": "1",
+      "class": "engine",
+      "makerrace": "boron",
+      "thrust": {
+        "forward": "751",
+        "reverse": "714"
+      },
+      "boost": {
+        "duration": "9",
+        "thrust": "11.2",
+        "attack": "0.35",
+        "release": "0.04"
+      },
+      "travel": {
+        "charge": "0",
+        "thrust": "13",
+        "attack": "42",
+        "release": "1"
+      }
+    },
+    "engine_bor_m_allround_01_mk2": {
+      "id": "engine_bor_m_allround_01_mk2",
+      "name": "BOR M All-round Engine Mk2",
+      "mk": "2",
+      "class": "engine",
+      "makerrace": "boron",
+      "thrust": {
+        "forward": "909",
+        "reverse": "921"
+      },
+      "boost": {
+        "duration": "9",
+        "thrust": "11.2",
+        "attack": "0.35",
+        "release": "0.04"
+      },
+      "travel": {
+        "charge": "0",
+        "thrust": "13",
+        "attack": "42",
+        "release": "1"
+      }
+    },
+    "engine_bor_m_allround_01_mk3": {
+      "id": "engine_bor_m_allround_01_mk3",
+      "name": "BOR M All-round Engine Mk3",
+      "mk": "3",
+      "class": "engine",
+      "makerrace": "boron",
+      "thrust": {
+        "forward": "1015",
+        "reverse": "1060"
+      },
+      "boost": {
+        "duration": "9",
+        "thrust": "11.2",
+        "attack": "0.35",
+        "release": "0.04"
+      },
+      "travel": {
+        "charge": "0",
+        "thrust": "13",
+        "attack": "42",
+        "release": "1"
       }
     },
     "engine_gen_m_yacht_01_mk1": {
@@ -3188,6 +3581,48 @@
         "delay": "0.5"
       }
     },
+    "shield_bor_m_standard_02_mk1": {
+      "id": "shield_bor_m_standard_02_mk1",
+      "name": "BOR M Shield Generator Mk1",
+      "description": "Shield Mk1",
+      "hull": "500",
+      "mk": "1",
+      "class": "shield",
+      "makerrace": "boron",
+      "recharge": {
+        "max": "5197",
+        "rate": "31",
+        "delay": "0.43"
+      }
+    },
+    "shield_bor_m_standard_02_mk2": {
+      "id": "shield_bor_m_standard_02_mk2",
+      "name": "BOR M Shield Generator Mk2",
+      "description": "Shield Mk2",
+      "hull": "500",
+      "mk": "2",
+      "class": "shield",
+      "makerrace": "boron",
+      "recharge": {
+        "max": "6214",
+        "rate": "40",
+        "delay": "0.4"
+      }
+    },
+    "shield_bor_m_standard_02_mk3": {
+      "id": "shield_bor_m_standard_02_mk3",
+      "name": "BOR M Shield Generator Mk3",
+      "description": "Shield Mk3",
+      "hull": "500",
+      "mk": "3",
+      "class": "shield",
+      "makerrace": "boron",
+      "recharge": {
+        "max": "8877",
+        "rate": "68",
+        "delay": "0.33"
+      }
+    },
     "shield_par_m_standard_02_mk1": {
       "id": "shield_par_m_standard_02_mk1",
       "name": "PAR M Shield Generator Mk1",
@@ -3958,6 +4393,346 @@
         "time": "1"
       },
       "hull": "500"
+    },
+    "turret_bor_m_arc_01_mk1": {
+      "name": "BOR M Arc Turret Mk1",
+      "makerrace": "boron",
+      "mk": "1",
+      "class": "turret",
+      "bullet": {
+        "properties": {
+          "speed": "3300",
+          "lifetime": "0.72",
+          "amount": "1",
+          "barrelamount": "1",
+          "icon": "weapon_bor_arc_mk1",
+          "timediff": "0.003",
+          "angle": "0.05",
+          "maxhits": "1",
+          "ricochet": "0",
+          "restitution": "1",
+          "scale": "0",
+          "attach": "0",
+          "influencelist": "light_thruster_disrupt"
+        },
+        "damage": {
+          "value": "90",
+          "shield": "110",
+          "repair": "0"
+        },
+        "reload": {
+          "rate": "1.1"
+        },
+        "system": "turret_midrange"
+      },
+      "rotation": {
+        "speed": "120"
+      },
+      "reload": {
+        "rate": "1",
+        "time": "1"
+      }
+    },
+    "turret_bor_m_arc_02_mk1": {
+      "name": "BOR M Arc Turret Mk1",
+      "makerrace": "boron",
+      "mk": "1",
+      "class": "turret",
+      "bullet": {
+        "properties": {
+          "speed": "3300",
+          "lifetime": "0.72",
+          "amount": "1",
+          "barrelamount": "1",
+          "icon": "weapon_bor_arc_mk1",
+          "timediff": "0.003",
+          "angle": "0.05",
+          "maxhits": "1",
+          "ricochet": "0",
+          "restitution": "1",
+          "scale": "0",
+          "attach": "0",
+          "influencelist": "light_thruster_disrupt"
+        },
+        "damage": {
+          "value": "90",
+          "shield": "110",
+          "repair": "0"
+        },
+        "reload": {
+          "rate": "1.1"
+        },
+        "system": "turret_midrange"
+      },
+      "rotation": {
+        "speed": "120"
+      },
+      "reload": {
+        "rate": "1",
+        "time": "1"
+      },
+      "hull": "600"
+    },
+    "turret_bor_m_dumbfire_01_mk1": {
+      "name": "BOR M Dumbfire Turret Mk1",
+      "makerrace": "boron",
+      "mk": "1",
+      "class": "missileturret",
+      "rotation": {
+        "speed": "120"
+      },
+      "ammunition": [
+        "dumbfire"
+      ],
+      "storage": "30",
+      "hull": "600"
+    },
+    "turret_bor_m_guided_01_mk1": {
+      "name": "BOR M Tracking Turret Mk1",
+      "makerrace": "boron",
+      "mk": "1",
+      "class": "missileturret",
+      "rotation": {
+        "speed": "120"
+      },
+      "ammunition": [
+        "guided"
+      ],
+      "storage": "15",
+      "hull": "600"
+    },
+    "turret_bor_m_laser_01_mk1": {
+      "name": "BOR M Phase Turret Mk1",
+      "makerrace": "boron",
+      "mk": "1",
+      "class": "turret",
+      "bullet": {
+        "properties": {
+          "speed": "2100",
+          "lifetime": "1.5",
+          "amount": "1",
+          "barrelamount": "1",
+          "icon": "weapon_laser_mk1",
+          "angle": "0.25",
+          "maxhits": "1",
+          "ricochet": "0",
+          "restitution": "1",
+          "scale": "0",
+          "attach": "0",
+          "selfdestructtimediff": "0.0008"
+        },
+        "damage": {
+          "value": "45",
+          "noshield": "65",
+          "repair": "0"
+        },
+        "reload": {
+          "rate": "2.5"
+        },
+        "system": "turret_midrange"
+      },
+      "rotation": {
+        "speed": "100"
+      },
+      "reload": {
+        "rate": "1",
+        "time": "1"
+      }
+    },
+    "turret_bor_m_laser_02_mk1": {
+      "name": "BOR M Phase Turret Mk1",
+      "makerrace": "boron",
+      "mk": "1",
+      "class": "turret",
+      "bullet": {
+        "properties": {
+          "speed": "2100",
+          "lifetime": "1.5",
+          "amount": "1",
+          "barrelamount": "1",
+          "icon": "weapon_laser_mk1",
+          "angle": "0.25",
+          "maxhits": "1",
+          "ricochet": "0",
+          "restitution": "1",
+          "scale": "0",
+          "attach": "0",
+          "selfdestructtimediff": "0.0008"
+        },
+        "damage": {
+          "value": "45",
+          "noshield": "65",
+          "repair": "0"
+        },
+        "reload": {
+          "rate": "2.5"
+        },
+        "system": "turret_midrange"
+      },
+      "rotation": {
+        "speed": "100"
+      },
+      "reload": {
+        "rate": "1",
+        "time": "1"
+      },
+      "hull": "600"
+    },
+    "turret_bor_m_mining_01_mk1": {
+      "name": "BOR M Mining Turret Mk1",
+      "makerrace": "boron",
+      "mk": "1",
+      "class": "turret",
+      "bullet": {
+        "properties": {
+          "speed": "7000",
+          "lifetime": "4",
+          "range": "2700",
+          "amount": "1",
+          "barrelamount": "1",
+          "icon": "weapon_mining_mk1",
+          "maxhits": "1",
+          "ricochet": "0",
+          "restitution": "1",
+          "scale": "1",
+          "attach": "1"
+        },
+        "damage": {
+          "value": "1",
+          "repair": "0",
+          "multiplier": {
+            "mining": "300"
+          }
+        },
+        "reload": {
+          "time": "4"
+        },
+        "system": "weapon_mining"
+      },
+      "rotation": {
+        "speed": "120"
+      },
+      "reload": {
+        "rate": "1",
+        "time": "1"
+      }
+    },
+    "turret_bor_m_mining_02_mk1": {
+      "name": "BOR M Mining Turret Mk1",
+      "makerrace": "boron",
+      "mk": "1",
+      "class": "turret",
+      "bullet": {
+        "properties": {
+          "speed": "7000",
+          "lifetime": "4",
+          "range": "2700",
+          "amount": "1",
+          "barrelamount": "1",
+          "icon": "weapon_mining_mk1",
+          "maxhits": "1",
+          "ricochet": "0",
+          "restitution": "1",
+          "scale": "1",
+          "attach": "1"
+        },
+        "damage": {
+          "value": "1",
+          "repair": "0",
+          "multiplier": {
+            "mining": "300"
+          }
+        },
+        "reload": {
+          "time": "4"
+        },
+        "system": "weapon_mining"
+      },
+      "rotation": {
+        "speed": "120"
+      },
+      "reload": {
+        "rate": "1",
+        "time": "1"
+      },
+      "hull": "600"
+    },
+    "turret_bor_m_railgun_01_mk1": {
+      "name": "BOR M Ion Pulse Turret Mk1",
+      "makerrace": "boron",
+      "mk": "1",
+      "class": "turret",
+      "bullet": {
+        "properties": {
+          "speed": "5500",
+          "lifetime": "0.85",
+          "amount": "1",
+          "barrelamount": "1",
+          "icon": "weapon_bor_railgun_mk1",
+          "timediff": "0.001",
+          "angle": "0.5",
+          "maxhits": "1",
+          "ricochet": "0",
+          "restitution": "1",
+          "scale": "0",
+          "attach": "0"
+        },
+        "damage": {
+          "value": "300",
+          "shield": "350",
+          "repair": "0"
+        },
+        "reload": {
+          "rate": "0.3"
+        },
+        "system": "turret_midrange"
+      },
+      "rotation": {
+        "speed": "30"
+      },
+      "reload": {
+        "rate": "1",
+        "time": "1"
+      }
+    },
+    "turret_bor_m_railgun_02_mk1": {
+      "name": "BOR M Ion Pulse Turret Mk1",
+      "makerrace": "boron",
+      "mk": "1",
+      "class": "turret",
+      "bullet": {
+        "properties": {
+          "speed": "5500",
+          "lifetime": "0.85",
+          "amount": "1",
+          "barrelamount": "1",
+          "icon": "weapon_bor_railgun_mk1",
+          "timediff": "0.001",
+          "angle": "0.5",
+          "maxhits": "1",
+          "ricochet": "0",
+          "restitution": "1",
+          "scale": "0",
+          "attach": "0"
+        },
+        "damage": {
+          "value": "300",
+          "shield": "350",
+          "repair": "0"
+        },
+        "reload": {
+          "rate": "0.3"
+        },
+        "system": "turret_midrange"
+      },
+      "rotation": {
+        "speed": "30"
+      },
+      "reload": {
+        "rate": "1",
+        "time": "1"
+      },
+      "hull": "600"
     },
     "turret_gen_m_scrapbeam_01_mk1": {
       "name": "Scrap Tractor",
@@ -6248,6 +7023,195 @@
       },
       "hull": "1001"
     },
+    "weapon_bor_m_dumbfire_01_mk1": {
+      "name": "BOR M Dumbfire Launcher Mk1",
+      "mk": "1",
+      "class": "missilelauncher",
+      "ammunition": [
+        "dumbfire"
+      ],
+      "hull": "1000"
+    },
+    "weapon_bor_m_flak_01_mk1": {
+      "name": "BOR M Ion Atomiser Mk1",
+      "heat": {
+        "overheat": "10000",
+        "cooldelay": "1.13",
+        "coolrate": "2000",
+        "reenable": "9500"
+      },
+      "mk": "1",
+      "class": "weapon",
+      "bullet": {
+        "properties": {
+          "speed": "1500",
+          "lifetime": "3.1",
+          "barrelamount": "1",
+          "icon": "weapon_bor_flak_mk1",
+          "timediff": "0.004",
+          "angle": "1",
+          "maxhits": "1",
+          "ricochet": "0",
+          "restitution": "1",
+          "scale": "0",
+          "attach": "0",
+          "selfdestruct": "1",
+          "plannedselfdestruct": "1",
+          "selfdestructtimediff": "0.12",
+          "selfdestructmintime": "0.2",
+          "influencelist": "medium_drive_disrupt"
+        },
+        "damage": {
+          "value": "100",
+          "shield": "100",
+          "repair": "0"
+        },
+        "reload": {
+          "rate": "1"
+        },
+        "system": "weapon_standard"
+      },
+      "rotation": {
+        "speed": "106",
+        "acceleration": "212"
+      },
+      "hull": "1001"
+    },
+    "weapon_bor_m_guided_01_mk1": {
+      "name": "BOR M Tracking Launcher Mk1",
+      "mk": "1",
+      "class": "missilelauncher",
+      "ammunition": [
+        "guided"
+      ],
+      "hull": "1000"
+    },
+    "weapon_bor_m_laser_01_mk1": {
+      "name": "BOR M Phase Cannon Mk1",
+      "heat": {
+        "overheat": "10000",
+        "cooldelay": "1.13",
+        "coolrate": "2000",
+        "reenable": "9500"
+      },
+      "mk": "1",
+      "class": "weapon",
+      "bullet": {
+        "properties": {
+          "speed": "3250",
+          "lifetime": "1.5",
+          "barrelamount": "1",
+          "icon": "weapon_laser_mk1",
+          "timediff": "0.002",
+          "angle": "0.2",
+          "mass": "400",
+          "maxhits": "1",
+          "ricochet": "0",
+          "restitution": "1",
+          "scale": "0",
+          "attach": "0"
+        },
+        "damage": {
+          "value": "170",
+          "noshield": "310",
+          "repair": "0"
+        },
+        "reload": {
+          "rate": "0.75"
+        },
+        "system": "weapon_standard"
+      },
+      "rotation": {
+        "speed": "100",
+        "acceleration": "200"
+      },
+      "hull": "1000"
+    },
+    "weapon_bor_m_mining_01_mk1": {
+      "name": "BOR M Mining Drill Mk1",
+      "mk": "1",
+      "class": "weapon",
+      "bullet": {
+        "properties": {
+          "speed": "7000",
+          "lifetime": "4",
+          "range": "4364",
+          "amount": "1",
+          "barrelamount": "1",
+          "icon": "weapon_mining_mk1",
+          "maxhits": "1",
+          "scale": "1",
+          "attach": "1"
+        },
+        "damage": {
+          "value": "4",
+          "repair": "0",
+          "multiplier": {
+            "mining": "300"
+          }
+        },
+        "reload": {
+          "time": "4"
+        },
+        "system": "weapon_mining"
+      },
+      "rotation": {
+        "speed": "90",
+        "acceleration": "180"
+      },
+      "hull": "500"
+    },
+    "weapon_bor_m_railgun_01_mk1": {
+      "name": "BOR M Ion Pulse Railgun Mk1",
+      "heat": {
+        "overheat": "10000",
+        "cooldelay": "2",
+        "coolrate": "2000",
+        "reenable": "4000"
+      },
+      "mk": "1",
+      "class": "weapon",
+      "bullet": {
+        "properties": {
+          "speed": "8000",
+          "lifetime": "1.1",
+          "icon": "weapon_bor_railgun_mk1",
+          "timediff": "0.001",
+          "angle": "0.1",
+          "mass": "700",
+          "maxhits": "1",
+          "ricochet": "0",
+          "restitution": "1",
+          "scale": "0",
+          "attach": "0",
+          "heatwhilecharging": "0",
+          "requirefullcharge": "1"
+        },
+        "damage": {
+          "value": "920",
+          "shield": "500",
+          "repair": "0"
+        },
+        "reload": {
+          "rate": "0.333"
+        },
+        "system": "weapon_standard"
+      },
+      "rotation": {
+        "speed": "20",
+        "acceleration": "30"
+      },
+      "hull": "1001"
+    },
+    "weapon_bor_m_torpedo_01_mk1": {
+      "name": "BOR M Torpedo Launcher Mk1",
+      "mk": "1",
+      "class": "missilelauncher",
+      "ammunition": [
+        "torpedo"
+      ],
+      "hull": "1000"
+    },
     "weapon_gen_m_beam_01_mk1": {
       "name": "M Beam Emitter Mk1",
       "heat": {
@@ -7869,6 +8833,75 @@
         "release": "30"
       }
     },
+    "engine_bor_s_allround_01_mk1": {
+      "id": "engine_bor_s_allround_01_mk1",
+      "name": "BOR S All-round Engine Mk1",
+      "mk": "1",
+      "class": "engine",
+      "makerrace": "boron",
+      "thrust": {
+        "forward": "297",
+        "reverse": "312"
+      },
+      "boost": {
+        "duration": "9",
+        "thrust": "11.2",
+        "attack": "0.35",
+        "release": "0.04"
+      },
+      "travel": {
+        "charge": "0",
+        "thrust": "20",
+        "attack": "42",
+        "release": "1"
+      }
+    },
+    "engine_bor_s_allround_01_mk2": {
+      "id": "engine_bor_s_allround_01_mk2",
+      "name": "BOR S All-round Engine Mk2",
+      "mk": "2",
+      "class": "engine",
+      "makerrace": "boron",
+      "thrust": {
+        "forward": "359",
+        "reverse": "430"
+      },
+      "boost": {
+        "duration": "9",
+        "thrust": "11.2",
+        "attack": "0.35",
+        "release": "0.04"
+      },
+      "travel": {
+        "charge": "0",
+        "thrust": "20",
+        "attack": "42",
+        "release": "1"
+      }
+    },
+    "engine_bor_s_allround_01_mk3": {
+      "id": "engine_bor_s_allround_01_mk3",
+      "name": "BOR S All-round Engine Mk3",
+      "mk": "3",
+      "class": "engine",
+      "makerrace": "boron",
+      "thrust": {
+        "forward": "401",
+        "reverse": "509"
+      },
+      "boost": {
+        "duration": "9",
+        "thrust": "11.2",
+        "attack": "0.35",
+        "release": "0.04"
+      },
+      "travel": {
+        "charge": "0",
+        "thrust": "20",
+        "attack": "42",
+        "release": "1"
+      }
+    },
     "engine_par_s_allround_01_mk1": {
       "id": "engine_par_s_allround_01_mk1",
       "name": "PAR S All-round Engine Mk1",
@@ -8759,6 +9792,45 @@
         "delay": "12.1"
       }
     },
+    "shield_bor_s_standard_01_mk1": {
+      "id": "shield_bor_s_standard_01_mk1",
+      "name": "BOR S Shield Generator Mk1",
+      "description": "Shield Mk1",
+      "mk": "1",
+      "class": "shield",
+      "makerrace": "boron",
+      "recharge": {
+        "max": "852",
+        "rate": "86",
+        "delay": "12.5"
+      }
+    },
+    "shield_bor_s_standard_01_mk2": {
+      "id": "shield_bor_s_standard_01_mk2",
+      "name": "BOR S Shield Generator Mk2",
+      "description": "Shield Mk2",
+      "mk": "2",
+      "class": "shield",
+      "makerrace": "boron",
+      "recharge": {
+        "max": "1019",
+        "rate": "134",
+        "delay": "9.6"
+      }
+    },
+    "shield_bor_s_standard_01_mk3": {
+      "id": "shield_bor_s_standard_01_mk3",
+      "name": "BOR S Shield Generator Mk3",
+      "description": "Shield Mk3",
+      "mk": "3",
+      "class": "shield",
+      "makerrace": "boron",
+      "recharge": {
+        "max": "1455",
+        "rate": "229",
+        "delay": "8"
+      }
+    },
     "shield_par_s_standard_01_mk1": {
       "id": "shield_par_s_standard_01_mk1",
       "name": "PAR S Shield Generator Mk1",
@@ -9065,6 +10137,191 @@
         "speed": "109.6",
         "acceleration": "219.2"
       },
+      "hull": "500"
+    },
+    "weapon_bor_s_arc_01_mk1": {
+      "name": "BOR S Arc Gun Mk1",
+      "heat": {
+        "overheat": "10000",
+        "cooldelay": "1",
+        "coolrate": "2000",
+        "reenable": "9500"
+      },
+      "mk": "1",
+      "class": "weapon",
+      "bullet": {
+        "properties": {
+          "speed": "4000",
+          "lifetime": "0.52",
+          "barrelamount": "1",
+          "icon": "weapon_bor_arc_mk1",
+          "angle": "0.02",
+          "maxhits": "1",
+          "ricochet": "0",
+          "restitution": "1",
+          "scale": "0",
+          "attach": "0",
+          "influencelist": "light_thruster_disrupt"
+        },
+        "damage": {
+          "value": "120",
+          "shield": "30",
+          "repair": "0"
+        },
+        "reload": {
+          "rate": "1.5"
+        },
+        "system": "weapon_standard"
+      },
+      "rotation": {
+        "speed": "100",
+        "acceleration": "200"
+      },
+      "hull": "500"
+    },
+    "weapon_bor_s_dumbfire_01_mk1": {
+      "name": "BOR S Dumbfire Launcher Mk1",
+      "mk": "1",
+      "class": "missilelauncher",
+      "ammunition": [
+        "dumbfire"
+      ],
+      "hull": "1000"
+    },
+    "weapon_bor_s_gatling_01_mk1": {
+      "name": "BOR S Ion Gatling Mk1",
+      "heat": {
+        "overheat": "10000",
+        "cooldelay": "1.13",
+        "coolrate": "2000",
+        "reenable": "9500"
+      },
+      "mk": "1",
+      "class": "weapon",
+      "bullet": {
+        "properties": {
+          "speed": "3200",
+          "lifetime": "1",
+          "amount": "1",
+          "barrelamount": "1",
+          "icon": "weapon_gatling_mk1",
+          "timediff": "0.023",
+          "angle": "0.2",
+          "maxhits": "1",
+          "ricochet": "0",
+          "restitution": "1",
+          "scale": "0",
+          "attach": "0",
+          "influencelist": "light_drive_disrupt"
+        },
+        "damage": {
+          "value": "14",
+          "shield": "26",
+          "repair": "0"
+        },
+        "reload": {
+          "rate": "9"
+        },
+        "system": "weapon_standard"
+      },
+      "rotation": {
+        "speed": "125",
+        "acceleration": "245"
+      },
+      "hull": "500"
+    },
+    "weapon_bor_s_guided_01_mk1": {
+      "name": "BOR S Tracking Launcher Mk1",
+      "mk": "1",
+      "class": "missilelauncher",
+      "ammunition": [
+        "guided"
+      ],
+      "hull": "500"
+    },
+    "weapon_bor_s_laser_01_mk1": {
+      "name": "BOR S Phase Gun Mk1",
+      "heat": {
+        "overheat": "10000",
+        "cooldelay": "1",
+        "coolrate": "2000",
+        "reenable": "9500"
+      },
+      "mk": "1",
+      "class": "weapon",
+      "bullet": {
+        "properties": {
+          "speed": "2800",
+          "lifetime": "1.14",
+          "amount": "1",
+          "barrelamount": "1",
+          "icon": "weapon_laser_mk1",
+          "timediff": "0.01",
+          "angle": "0.15",
+          "maxhits": "1",
+          "ricochet": "0",
+          "restitution": "1",
+          "scale": "0",
+          "attach": "0"
+        },
+        "damage": {
+          "value": "64",
+          "noshield": "80",
+          "repair": "0"
+        },
+        "reload": {
+          "rate": "2"
+        },
+        "system": "weapon_standard"
+      },
+      "rotation": {
+        "speed": "165",
+        "acceleration": "330"
+      },
+      "hull": "500"
+    },
+    "weapon_bor_s_mining_01_mk1": {
+      "name": "BOR S Mining Drill Mk1",
+      "mk": "1",
+      "class": "weapon",
+      "bullet": {
+        "properties": {
+          "speed": "7000",
+          "lifetime": "4",
+          "range": "3000",
+          "amount": "1",
+          "barrelamount": "1",
+          "icon": "weapon_mining_mk1",
+          "maxhits": "1",
+          "ricochet": "0",
+          "scale": "1",
+          "attach": "1"
+        },
+        "damage": {
+          "value": "2",
+          "repair": "0",
+          "multiplier": {
+            "mining": "300"
+          }
+        },
+        "reload": {
+          "time": "4"
+        },
+        "system": "weapon_mining"
+      },
+      "rotation": {
+        "speed": "90",
+        "acceleration": "180"
+      },
+      "hull": "500"
+    },
+    "weapon_bor_s_torpedo_01_mk1": {
+      "name": "BOR S Torpedo Launcher Mk1",
+      "mk": "1",
+      "class": "missilelauncher",
+      "ammunition": [
+        "torpedo"
+      ],
       "hull": "500"
     },
     "weapon_gen_s_beam_01_mk1": {

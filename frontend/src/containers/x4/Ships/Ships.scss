@@ -1,9 +1,9 @@
-@import 'src/styles/variables';
-@import 'src/styles/mixins/breakpoints';
+@import "../../../styles/variables";
+@import "../../../styles/mixins/breakpoints";
 
 .x4-ships {
-  $image-cell-width: 64px;
-  $cell-width: 240px;
+  $image-cell-width: 128px;
+  $cell-width: 220px;
 
   &__wrapper {
     padding-top: 1rem;
@@ -25,10 +25,9 @@
 
         > img {
           display: block;
-          width: 64px;
-          height: 59px;
-          filter: brightness(2) contrast(1.1) saturate(1.2);
-          border-radius: 10px;
+          width: 128px;
+          height: 80px;
+          border-radius: 4px;
         }
       }
 
@@ -43,7 +42,6 @@
     }
 
     h2, p, span {
-      font-size: 13px;
       line-height: 1.1;
       margin: 0;
     }
@@ -63,8 +61,6 @@
   }
 
   &__outfit {
-    font-size: 12px !important;
-    opacity: 0.6;
     position: absolute;
     width: calc(#{$cell-width} * 4);
     bottom: 0.25rem;
@@ -105,6 +101,10 @@
         text-align: left;
         flex: 0 1 auto;
       }
+    }
+
+    &--marginated {
+      margin-top: 13.64px !important;
     }
   }
 

@@ -1,0 +1,198 @@
+{
+  "id": "ship_bor_l_carrier_01_a_macro",
+  "class": "ship_l",
+  "race": "bor",
+  "name": "Guppy",
+  "basename": "Guppy",
+  "description": ")(Menelaus Era Ship Building)",
+  "shortvariation": "BV",
+  "variation": "Base Variation",
+  "type": "carrier",
+  "radarRange": "40000",
+  "docksize": "dock_l",
+  "hull": 117000,
+  "shield": {
+    "max": 0,
+    "rate": 0,
+    "delay": 0
+  },
+  "speed": {
+    "forward": 0,
+    "acceleration": 0,
+    "boost": 0,
+    "travel": 0,
+    "pitch": 0,
+    "roll": 0,
+    "yaw": 0
+  },
+  "armaments": {
+    "weapons": {
+      "extralarge": 0,
+      "large": 0,
+      "medium": 0,
+      "small": 0
+    },
+    "turrets": {
+      "extralarge": 0,
+      "large": 0,
+      "medium": 16,
+      "small": 0
+    }
+  },
+  "storage": {
+    "unit": 20,
+    "missile": 310,
+    "people": 60,
+    "countermeasure": 20,
+    "deployable": 250,
+    "capacity": 8000,
+    "capacityType": "container"
+  },
+  "mass": 341.545,
+  "inertia": {
+    "pitch": 118.961,
+    "yaw": 118.961,
+    "roll": 95.169
+  },
+  "drag": {
+    "forward": 141.833,
+    "reverse": 540.317,
+    "horizontal": 84.116,
+    "vertical": 84.116,
+    "pitch": 112.976,
+    "yaw": 112.976,
+    "roll": 112.976
+  },
+  "thrusters": {
+    "size": "large"
+  },
+  "shipstorage": {
+    "dock_m": 0,
+    "dock_s": 8
+  },
+  "dlc": "kingdomEnd",
+  "turrets": [
+    {
+      "quantity": 2,
+      "size": "medium",
+      "standard": false,
+      "missile": true,
+      "shields": {
+        "quantity": 1,
+        "size": "medium"
+      }
+    },
+    {
+      "quantity": 2,
+      "size": "medium",
+      "standard": false,
+      "missile": true,
+      "shields": {
+        "quantity": 1,
+        "size": "medium"
+      }
+    },
+    {
+      "quantity": 2,
+      "size": "medium",
+      "standard": false,
+      "missile": true,
+      "shields": {
+        "quantity": 1,
+        "size": "medium"
+      }
+    },
+    {
+      "quantity": 2,
+      "size": "medium",
+      "standard": false,
+      "missile": true,
+      "shields": {
+        "quantity": 1,
+        "size": "medium"
+      }
+    },
+    {
+      "quantity": 2,
+      "size": "medium",
+      "standard": false,
+      "missile": true,
+      "shields": {
+        "quantity": 1,
+        "size": "medium"
+      }
+    },
+    {
+      "quantity": 2,
+      "size": "medium",
+      "standard": false,
+      "missile": true,
+      "shields": {
+        "quantity": 1,
+        "size": "medium"
+      }
+    },
+    {
+      "quantity": 2,
+      "size": "medium",
+      "standard": false,
+      "missile": true,
+      "shields": {
+        "quantity": 1,
+        "size": "medium"
+      }
+    },
+    {
+      "quantity": 2,
+      "size": "medium",
+      "standard": false,
+      "missile": true,
+      "shields": {
+        "quantity": 1,
+        "size": "medium"
+      }
+    }
+  ],
+  "weapons": [],
+  "shields": {
+    "size": "large",
+    "quantity": 4
+  },
+  "engines": {
+    "size": "large",
+    "quantity": 7,
+    "shields": {
+      "quantity": 6,
+      "size": "medium"
+    }
+  },
+  "specialExit": false,
+  "price": {
+    "min": 5405973,
+    "average": 6513220,
+    "max": 7620468
+  },
+  "production": {
+    "time": 175,
+    "amount": "1",
+    "method": "default",
+    "name": "{20206,101}",
+    "primary": {
+      "ware": [
+        {
+          "ware": "energycells",
+          "amount": "1320"
+        },
+        {
+          "ware": "hullparts",
+          "amount": "5200"
+        },
+        {
+          "ware": "water",
+          "amount": "3660"
+        }
+      ]
+    }
+  },
+  "manufacturer": "boron"
+}

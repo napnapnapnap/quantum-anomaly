@@ -1,5 +1,5 @@
-@import 'src/styles/variables';
-@import 'src/styles/mixins/breakpoints';
+@import '../../../../src/styles/variables';
+@import '../../../../src/styles/mixins/breakpoints';
 
 .x4-terraform {
   &__header {
@@ -27,6 +27,7 @@
 
   &__projects {
     flex: 0 0 100%;
+    overflow-x: auto;
   }
 
   &__project-inner {

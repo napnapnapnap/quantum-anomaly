@@ -1,0 +1,119 @@
+{
+  "id": "ship_bor_s_scout_02_a_macro",
+  "class": "ship_s",
+  "race": "bor",
+  "name": "Irukandji",
+  "basename": "Irukandji",
+  "description": ")(Menelaus Era Ship Building)",
+  "shortvariation": "BV",
+  "variation": "Base Variation",
+  "type": "scout",
+  "radarRange": "40000",
+  "docksize": "dock_s",
+  "hull": 2600,
+  "shield": {
+    "max": 0,
+    "rate": 0,
+    "delay": 0
+  },
+  "speed": {
+    "forward": 0,
+    "acceleration": 0,
+    "boost": 0,
+    "travel": 0,
+    "pitch": 0,
+    "roll": 0,
+    "yaw": 0
+  },
+  "armaments": {
+    "weapons": {
+      "extralarge": 0,
+      "large": 0,
+      "medium": 0,
+      "small": 1
+    },
+    "turrets": {
+      "extralarge": 0,
+      "large": 0,
+      "medium": 0,
+      "small": 0
+    }
+  },
+  "storage": {
+    "unit": null,
+    "missile": 17,
+    "people": 1,
+    "countermeasure": 4,
+    "deployable": 50,
+    "capacity": 530,
+    "capacityType": "container"
+  },
+  "mass": 5.582,
+  "inertia": {
+    "pitch": 0.458,
+    "yaw": 0.458,
+    "roll": 0.352
+  },
+  "drag": {
+    "forward": 2.245,
+    "reverse": 8.98,
+    "horizontal": 3.732,
+    "vertical": 3.732,
+    "pitch": 1.69,
+    "yaw": 1.69,
+    "roll": 1.69
+  },
+  "thrusters": {
+    "size": "small"
+  },
+  "shipstorage": {
+    "dock_m": 0,
+    "dock_s": 0
+  },
+  "dlc": "kingdomEnd",
+  "turrets": [],
+  "weapons": [
+    {
+      "quantity": 1,
+      "size": "small",
+      "missile": true
+    }
+  ],
+  "shields": {
+    "size": "small",
+    "quantity": 1
+  },
+  "engines": {
+    "size": "small",
+    "quantity": 3
+  },
+  "specialExit": false,
+  "price": {
+    "min": 99353,
+    "average": 119702,
+    "max": 140052
+  },
+  "production": {
+    "time": 10,
+    "amount": "1",
+    "method": "default",
+    "name": "{20206,101}",
+    "primary": {
+      "ware": [
+        {
+          "ware": "energycells",
+          "amount": "40"
+        },
+        {
+          "ware": "hullparts",
+          "amount": "102"
+        },
+        {
+          "ware": "water",
+          "amount": "37"
+        }
+      ]
+    }
+  },
+  "manufacturer": "boron"
+}

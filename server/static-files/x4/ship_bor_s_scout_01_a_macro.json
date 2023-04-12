@@ -1,0 +1,119 @@
+{
+  "id": "ship_bor_s_scout_01_a_macro",
+  "class": "ship_s",
+  "race": "bor",
+  "name": "Piranha",
+  "basename": "Piranha",
+  "description": "(Atreus Era Ship Building)",
+  "shortvariation": "BV",
+  "variation": "Base Variation",
+  "type": "scout",
+  "radarRange": "40000",
+  "docksize": "dock_s",
+  "hull": 4000,
+  "shield": {
+    "max": 0,
+    "rate": 0,
+    "delay": 0
+  },
+  "speed": {
+    "forward": 0,
+    "acceleration": 0,
+    "boost": 0,
+    "travel": 0,
+    "pitch": 0,
+    "roll": 0,
+    "yaw": 0
+  },
+  "armaments": {
+    "weapons": {
+      "extralarge": 0,
+      "large": 0,
+      "medium": 0,
+      "small": 1
+    },
+    "turrets": {
+      "extralarge": 0,
+      "large": 0,
+      "medium": 0,
+      "small": 0
+    }
+  },
+  "storage": {
+    "unit": null,
+    "missile": 26,
+    "people": 2,
+    "countermeasure": 4,
+    "deployable": 50,
+    "capacity": 790,
+    "capacityType": "container"
+  },
+  "mass": 8.581,
+  "inertia": {
+    "pitch": 2.316,
+    "yaw": 2.316,
+    "roll": 1.853
+  },
+  "drag": {
+    "forward": 2.614,
+    "reverse": 10.456,
+    "horizontal": 3.823,
+    "vertical": 3.823,
+    "pitch": 4.088,
+    "yaw": 4.088,
+    "roll": 4.088
+  },
+  "thrusters": {
+    "size": "small"
+  },
+  "shipstorage": {
+    "dock_m": 0,
+    "dock_s": 0
+  },
+  "dlc": "kingdomEnd",
+  "turrets": [],
+  "weapons": [
+    {
+      "quantity": 1,
+      "size": "small",
+      "missile": true
+    }
+  ],
+  "shields": {
+    "size": "small",
+    "quantity": 1
+  },
+  "engines": {
+    "size": "small",
+    "quantity": 2
+  },
+  "specialExit": false,
+  "price": {
+    "min": 85205,
+    "average": 102657,
+    "max": 120109
+  },
+  "production": {
+    "time": 10,
+    "amount": "1",
+    "method": "default",
+    "name": "{20206,101}",
+    "primary": {
+      "ware": [
+        {
+          "ware": "energycells",
+          "amount": "40"
+        },
+        {
+          "ware": "hullparts",
+          "amount": "90"
+        },
+        {
+          "ware": "water",
+          "amount": "20"
+        }
+      ]
+    }
+  },
+  "manufacturer": "boron"
+}

@@ -11,9 +11,11 @@ export async function getWares(resourcesPath) {
   const pathToSplitWare = path.join(resourcesPath, 'extensions', 'ego_dlc_split', 'libraries', 'wares.xml');
   const pathToTerranWare = path.join(resourcesPath, 'extensions', 'ego_dlc_terran', 'libraries', 'wares.xml');
   const pathToPirateWare = path.join(resourcesPath, 'extensions', 'ego_dlc_pirate', 'libraries', 'wares.xml');
+  const pathToBoronWare = path.join(resourcesPath, 'extensions', 'ego_dlc_boron', 'libraries', 'wares.xml');
   const splitParsed = await parser.parseStringPromise(await fs.readFile(pathToSplitWare));
   const terranParsed = await parser.parseStringPromise(await fs.readFile(pathToTerranWare));
   const pirateParsed = await parser.parseStringPromise(await fs.readFile(pathToPirateWare));
+  const boronParsed = await parser.parseStringPromise(await fs.readFile(pathToBoronWare));
 
   // this is diff file, so it will have add array and each item will be selection where to add and other key of what
   // to add, later we can do this dynamically, but for now let's just hardcode it since there is only 2 items
@@ -30,6 +32,12 @@ export async function getWares(resourcesPath) {
   });
 
   pirateParsed.diff.add.forEach((item) => {
+    if (item.sel === '/wares/production')
+      parsed.wares.production.method = parsed.wares.production.method.concat(item.method);
+    else if (item.sel === '/wares') parsed.wares.ware = parsed.wares.ware.concat(item.ware);
+  });
+
+  boronParsed.diff.add.forEach((item) => {
     if (item.sel === '/wares/production')
       parsed.wares.production.method = parsed.wares.production.method.concat(item.method);
     else if (item.sel === '/wares') parsed.wares.ware = parsed.wares.ware.concat(item.ware);

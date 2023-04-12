@@ -2,7 +2,8 @@ import React from 'react';
 
 const Description = () => (
   <div className="text--long">
-    <h5>Notice</h5>
+    <br />
+    <br />
     <h3>Large Transport Ships</h3>
     <p>
       For large ships there are three things to consider. First obvious thing is if it can dock at the station you want

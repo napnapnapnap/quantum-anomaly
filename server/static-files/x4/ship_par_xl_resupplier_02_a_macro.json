@@ -4,7 +4,7 @@
   "race": "par",
   "name": "Atlas E",
   "basename": null,
-  "description": "The Paranid Atlas is a large spaceship, specifically designed to repair and resupply fleets. This advanced vessel is equipped with cutting-edge robotics technology, and capacity for an ample supply of materials and resources. It can travel throughout space, effectively operating as a limited, but mobile, Equipment Dock.\\n\\nThe E-model(\"E\" same as E) variation was introduced at a later date, and updated the superficial design to bring it up to par with Commonwealth standards that were established during the period of disconnection. The precursor version is slowly being phased out, but will remain available for interested third parties.(The E-model ...)",
+  "description": "The Paranid Atlas is a large spaceship, specifically designed to repair and resupply fleets. This advanced vessel is equipped with cutting-edge robotics technology, and capacity for an ample supply of materials and resources. It can travel throughout space, effectively operating as a limited, but mobile, Equipment Dock.\\n\\nThe E-model variation was introduced at a later date, and updated the superficial design to bring it up to par with Commonwealth standards that were established during the period of disconnection. The precursor version is slowly being phased out, but will remain available for interested third parties.",
   "shortvariation": "BV",
   "variation": "Base Variation",
   "type": "resupplier",

@@ -5394,8 +5394,12 @@
         "wares": [
           {
             "ware": "Credits",
+            "group": "",
             "amount": 1,
-            "quantity": "0.1% of your account"
+            "quantity": 0.1,
+            "volume": 0,
+            "totalCost": 0.1,
+            "pricePerUnit": 1
           }
         ]
       }
@@ -6039,6 +6043,942 @@
           }
         ]
       }
+    },
+    "ter_jumpstart_currents": {
+      "id": "ter_jumpstart_currents",
+      "group": "special",
+      "name": "Jumpstart Ocean Currents",
+      "description": "Using a network of biomechanical jets, and massive amounts of energy, we can jumpstart global ocean currents, which are vital to a healthy ecosystem. Once flowing, these currents sustain themselves by means of gradients in temperature and salinity.",
+      "duration": "600",
+      "conditions": {
+        "condition": {
+          "stat": "humidity",
+          "min": "2"
+        }
+      },
+      "resources": {
+        "price": 100000000,
+        "wares": [
+          {
+            "ware": "dronecomponents",
+            "amount": 20,
+            "quantity": 86220,
+            "group": "shiptech",
+            "pricePerUnit": 1142,
+            "volume": 30,
+            "totalCost": 98463240
+          },
+          {
+            "ware": "plankton",
+            "amount": 10,
+            "quantity": 43110,
+            "group": "agricultural",
+            "pricePerUnit": 25,
+            "volume": 1,
+            "totalCost": 1077750
+          },
+          {
+            "ware": "bogas",
+            "amount": 1,
+            "quantity": 4311,
+            "group": "refined",
+            "pricePerUnit": 102,
+            "volume": 4,
+            "totalCost": 439722
+          }
+        ]
+      },
+      "deliveries": {
+        "ship": [
+          {
+            "macro": "ship_gen_m_transdrone_container_01_a_macro",
+            "amount": "85",
+            "buildduration": "30"
+          },
+          {
+            "macro": "ship_gen_s_transdrone_container_01_a_macro",
+            "amount": "450",
+            "buildduration": "15"
+          }
+        ]
+      }
+    },
+    "pwr_hydro": {
+      "id": "pwr_hydro",
+      "group": "power",
+      "name": "Hydro Power",
+      "description": "We can repurpose the biomechanical jets, used to jumpstart the ocean currents, into power-generating turbines.",
+      "conditions": {
+        "condition": {
+          "stat": "humidity",
+          "min": "1"
+        }
+      },
+      "rebates": [
+        {
+          "waregroup": "energy",
+          "value": "50"
+        }
+      ],
+      "resources": {
+        "price": 10000000,
+        "wares": [
+          {
+            "ware": "advancedcomposites",
+            "amount": 10,
+            "quantity": 14810,
+            "group": "hightech",
+            "pricePerUnit": 648,
+            "volume": 32,
+            "totalCost": 9596880
+          },
+          {
+            "ware": "hullparts",
+            "amount": 1,
+            "quantity": 1481,
+            "group": "hightech",
+            "pricePerUnit": 272,
+            "volume": 12,
+            "totalCost": 402832
+          }
+        ]
+      },
+      "deliveries": {
+        "ship": [
+          {
+            "macro": "ship_gen_m_transdrone_container_01_a_macro",
+            "amount": "5",
+            "buildduration": "30"
+          },
+          {
+            "macro": "ship_gen_s_transdrone_container_01_a_macro",
+            "amount": "25",
+            "buildduration": "15"
+          }
+        ]
+      }
+    },
+    "bio_reconstruct_genes": {
+      "id": "bio_reconstruct_genes",
+      "group": "biosphere",
+      "name": "Reconstruct Gene Sequences",
+      "description": "Before we can begin reintroducing native life, we first need to be able to create it. While we have some genetic records, and even a few precious living samples in zoos, there are large gaps that need to be filled. This massive research undertaking is going to require equally massive funding.",
+      "duration": "600",
+      "resources": {
+        "price": 500000000,
+        "wares": [
+          {
+            "ware": "Credits",
+            "group": "",
+            "amount": 1,
+            "quantity": 500000000,
+            "volume": 0,
+            "totalCost": 500000000,
+            "pricePerUnit": 1
+          }
+        ]
+      }
+    },
+    "bio_reintroduce_microbes": {
+      "id": "bio_reintroduce_microbes",
+      "group": "biosphere",
+      "name": "Reintroduce Native Microbiome",
+      "description": "A global system of adaptive incubators continually clones millions of species of microbes, reacting to local developments in an effort to reach a final equilibrium. Once the incubators have done their job, we will send a signal for them to decompose.",
+      "duration": "600",
+      "conditions": {
+        "condition": [
+          {
+            "stat": "temperature",
+            "min": "1",
+            "max": "3"
+          },
+          {
+            "stat": "humidity",
+            "min": "2"
+          }
+        ]
+      },
+      "effects": [
+        {
+          "stat": "oxygen",
+          "change": "2"
+        }
+      ],
+      "resources": {
+        "price": 50000000,
+        "wares": [
+          {
+            "ware": "methane",
+            "amount": 40,
+            "quantity": 416480,
+            "group": "gases",
+            "pricePerUnit": 55,
+            "volume": 6,
+            "totalCost": 22906400
+          },
+          {
+            "ware": "plankton",
+            "amount": 100,
+            "quantity": 1041200,
+            "group": "agricultural",
+            "pricePerUnit": 25,
+            "volume": 1,
+            "totalCost": 26030000
+          },
+          {
+            "ware": "bogas",
+            "amount": 1,
+            "quantity": 10412,
+            "group": "refined",
+            "pricePerUnit": 102,
+            "volume": 4,
+            "totalCost": 1062024
+          }
+        ]
+      },
+      "deliveries": {
+        "ship": [
+          {
+            "macro": "ship_gen_m_transdrone_container_01_a_macro",
+            "amount": "7",
+            "buildduration": "30"
+          },
+          {
+            "macro": "ship_gen_s_transdrone_container_01_a_macro",
+            "amount": "35",
+            "buildduration": "15"
+          }
+        ]
+      }
+    },
+    "bio_reintroduce_flora": {
+      "id": "bio_reintroduce_flora",
+      "group": "biosphere",
+      "name": "Reintroduce Native Flora",
+      "description": "While the seeds of many plants can simply be dropped into appropriate areas, some require special attention and equipment to take root. Experts will be continuously monitoring their development over the duration of this project to ensure a stable outcome.",
+      "duration": "600",
+      "conditions": {
+        "condition": [
+          {
+            "stat": "temperature",
+            "min": "1",
+            "max": "3"
+          },
+          {
+            "stat": "humidity",
+            "min": "2"
+          }
+        ]
+      },
+      "effects": [
+        {
+          "stat": "oxygen",
+          "change": "2"
+        }
+      ],
+      "resources": {
+        "price": 150000000,
+        "wares": [
+          {
+            "ware": "methane",
+            "amount": 40,
+            "quantity": 1249480,
+            "group": "gases",
+            "pricePerUnit": 55,
+            "volume": 6,
+            "totalCost": 68721400
+          },
+          {
+            "ware": "plankton",
+            "amount": 100,
+            "quantity": 3123700,
+            "group": "agricultural",
+            "pricePerUnit": 25,
+            "volume": 1,
+            "totalCost": 78092500
+          },
+          {
+            "ware": "bogas",
+            "amount": 1,
+            "quantity": 31236,
+            "group": "refined",
+            "pricePerUnit": 102,
+            "volume": 4,
+            "totalCost": 3186072
+          }
+        ]
+      },
+      "deliveries": {
+        "ship": [
+          {
+            "macro": "ship_gen_m_transdrone_container_01_a_macro",
+            "amount": "7",
+            "buildduration": "30"
+          },
+          {
+            "macro": "ship_gen_s_transdrone_container_01_a_macro",
+            "amount": "35",
+            "buildduration": "15"
+          }
+        ]
+      }
+    },
+    "bio_reintroduce_fauna": {
+      "id": "bio_reintroduce_fauna",
+      "group": "biosphere",
+      "name": "Reintroduce Native Fauna",
+      "description": "We gradually introduce groups of interconnected species, letting their populations stabilise before moving on to the next group. This is a slow process, to be sure, but one that mitigates most risks and all but guarantees the desired outcome.",
+      "duration": "600",
+      "conditions": {
+        "condition": [
+          {
+            "stat": "temperature",
+            "min": "1",
+            "max": "3"
+          },
+          {
+            "stat": "humidity",
+            "min": "2"
+          }
+        ]
+      },
+      "effects": [
+        {
+          "stat": "oxygen",
+          "change": "2"
+        }
+      ],
+      "resources": {
+        "price": 150000000,
+        "wares": [
+          {
+            "ware": "methane",
+            "amount": 40,
+            "quantity": 1249480,
+            "group": "gases",
+            "pricePerUnit": 55,
+            "volume": 6,
+            "totalCost": 68721400
+          },
+          {
+            "ware": "plankton",
+            "amount": 100,
+            "quantity": 3123700,
+            "group": "agricultural",
+            "pricePerUnit": 25,
+            "volume": 1,
+            "totalCost": 78092500
+          },
+          {
+            "ware": "bogas",
+            "amount": 1,
+            "quantity": 31236,
+            "group": "refined",
+            "pricePerUnit": 102,
+            "volume": 4,
+            "totalCost": 3186072
+          }
+        ]
+      },
+      "deliveries": {
+        "ship": [
+          {
+            "macro": "ship_gen_m_transdrone_container_01_a_macro",
+            "amount": "7",
+            "buildduration": "30"
+          },
+          {
+            "macro": "ship_gen_s_transdrone_container_01_a_macro",
+            "amount": "35",
+            "buildduration": "15"
+          }
+        ]
+      }
+    },
+    "bio_reintroduce_megafauna": {
+      "id": "bio_reintroduce_megafauna",
+      "group": "biosphere",
+      "name": "Reintroduce Native Megafauna",
+      "description": "While all animals deserve equal respect, the giant native ray-like creatures with their translucent and bioluminescent skin are unrivalled in their resplendence. Bringing them back will be costly and time-consuming, but we have the technology. Seeing them gracefully glide through the oceans again will make the effort more than worth it.",
+      "duration": "600",
+      "conditions": {
+        "condition": [
+          {
+            "stat": "temperature",
+            "min": "1",
+            "max": "3"
+          },
+          {
+            "stat": "humidity",
+            "min": "2"
+          }
+        ]
+      },
+      "effects": [
+        {
+          "stat": "oxygen",
+          "change": "2"
+        }
+      ],
+      "resources": {
+        "price": 250000000,
+        "wares": [
+          {
+            "ware": "methane",
+            "amount": 40,
+            "quantity": 2082480,
+            "group": "gases",
+            "pricePerUnit": 55,
+            "volume": 6,
+            "totalCost": 114536400
+          },
+          {
+            "ware": "plankton",
+            "amount": 100,
+            "quantity": 5206100,
+            "group": "agricultural",
+            "pricePerUnit": 25,
+            "volume": 1,
+            "totalCost": 130152500
+          },
+          {
+            "ware": "bogas",
+            "amount": 1,
+            "quantity": 52061,
+            "group": "refined",
+            "pricePerUnit": 102,
+            "volume": 4,
+            "totalCost": 5310222
+          }
+        ]
+      },
+      "deliveries": {
+        "ship": [
+          {
+            "macro": "ship_gen_m_transdrone_container_01_a_macro",
+            "amount": "7",
+            "buildduration": "30"
+          },
+          {
+            "macro": "ship_gen_s_transdrone_container_01_a_macro",
+            "amount": "35",
+            "buildduration": "15"
+          }
+        ]
+      }
+    },
+    "agr_fields_plankton": {
+      "id": "agr_fields_plankton",
+      "group": "food_staple",
+      "name": "Plankton Fields",
+      "description": "While these plants can have a beneficial effect on the global ecology, their main purpose is, of course, to feed the Boron population.",
+      "conditions": {
+        "condition": [
+          {
+            "stat": "temperature",
+            "min": "1",
+            "max": "3"
+          },
+          {
+            "stat": "humidity",
+            "min": "2"
+          }
+        ]
+      },
+      "effects": [
+        {
+          "stat": "oxygen",
+          "change": "1"
+        },
+        {
+          "stat": "carbondioxide",
+          "change": "-1"
+        }
+      ],
+      "rebates": [
+        {
+          "waregroup": "food",
+          "value": "10"
+        }
+      ],
+      "resources": {
+        "price": 25000000,
+        "wares": [
+          {
+            "ware": "dronecomponents",
+            "amount": 2,
+            "quantity": 10234,
+            "group": "shiptech",
+            "pricePerUnit": 1142,
+            "volume": 30,
+            "totalCost": 11687228
+          },
+          {
+            "ware": "plankton",
+            "amount": 100,
+            "quantity": 511600,
+            "group": "agricultural",
+            "pricePerUnit": 25,
+            "volume": 1,
+            "totalCost": 12790000
+          },
+          {
+            "ware": "bogas",
+            "amount": 1,
+            "quantity": 5116,
+            "group": "refined",
+            "pricePerUnit": 102,
+            "volume": 4,
+            "totalCost": 521832
+          }
+        ]
+      },
+      "deliveries": {
+        "ship": [
+          {
+            "macro": "ship_gen_m_transdrone_container_01_a_macro",
+            "amount": "20",
+            "buildduration": "30"
+          },
+          {
+            "macro": "ship_gen_s_transdrone_container_01_a_macro",
+            "amount": "100",
+            "buildduration": "15"
+          }
+        ]
+      }
+    },
+    "res_housing_ocean": {
+      "id": "res_housing_ocean",
+      "group": "housing",
+      "name": "Oceanic Dwellings",
+      "description": "Built in the open, communal style that Boron prefer, these dwellings provide everything one needs for ones daily life within comfortable swimming distance, without needlessly obstructing the view of the wide ocean.",
+      "repeatcooldown": "0",
+      "version": "1",
+      "conditions": {
+        "condition": [
+          {
+            "stat": "methane",
+            "min": "1"
+          },
+          {
+            "stat": "temperature",
+            "min": "1",
+            "max": "3"
+          },
+          {
+            "stat": "toxicity",
+            "max": "0"
+          },
+          {
+            "stat": "radioactivity",
+            "max": "0"
+          }
+        ]
+      },
+      "effects": [
+        {
+          "stat": "population",
+          "change": "5000000"
+        }
+      ],
+      "resources": {
+        "price": 50000000,
+        "wares": [
+          {
+            "ware": "claytronics",
+            "amount": 1,
+            "quantity": 4837,
+            "group": "shiptech",
+            "pricePerUnit": 2346,
+            "volume": 24,
+            "totalCost": 11347602
+          },
+          {
+            "ware": "advancedelectronics",
+            "amount": 4,
+            "quantity": 19344,
+            "group": "shiptech",
+            "pricePerUnit": 1318,
+            "volume": 30,
+            "totalCost": 25495392
+          },
+          {
+            "ware": "hullparts",
+            "amount": 10,
+            "quantity": 48360,
+            "group": "hightech",
+            "pricePerUnit": 272,
+            "volume": 12,
+            "totalCost": 13153920
+          }
+        ]
+      },
+      "deliveries": {
+        "ship": [
+          {
+            "macro": "ship_gen_m_transdrone_container_01_a_macro",
+            "amount": "4",
+            "buildduration": "30"
+          },
+          {
+            "macro": "ship_gen_s_transdrone_container_01_a_macro",
+            "amount": "20",
+            "buildduration": "15"
+          }
+        ]
+      }
+    },
+    "ame_pheromone_art_academy": {
+      "id": "ame_pheromone_art_academy",
+      "group": "amenities",
+      "name": "Pheromone Art Academy",
+      "description": "Welcome to the newly endowed Royal Commune for Pheromonal Artistry and Applied Tasting, the pre-eminent venue for the practice, discussion and experience of all the piquant and delectable art forms that have to be smelled to be believed!",
+      "conditions": {
+        "condition": [
+          {
+            "stat": "methane",
+            "minvalue": "1"
+          },
+          {
+            "stat": "temperature",
+            "min": "1",
+            "max": "3"
+          },
+          {
+            "stat": "toxicity",
+            "max": "0"
+          },
+          {
+            "stat": "radioactivity",
+            "max": "0"
+          },
+          {
+            "stat": "population",
+            "minvalue": "10000"
+          }
+        ]
+      },
+      "resources": {
+        "price": 50000000,
+        "wares": [
+          {
+            "ware": "advancedelectronics",
+            "amount": 2,
+            "quantity": 7430,
+            "group": "shiptech",
+            "pricePerUnit": 1318,
+            "volume": 30,
+            "totalCost": 9792740
+          },
+          {
+            "ware": "claytronics",
+            "amount": 1,
+            "quantity": 3715,
+            "group": "shiptech",
+            "pricePerUnit": 2346,
+            "volume": 24,
+            "totalCost": 8715390
+          },
+          {
+            "ware": "dronecomponents",
+            "amount": 2,
+            "quantity": 7430,
+            "group": "shiptech",
+            "pricePerUnit": 1142,
+            "volume": 30,
+            "totalCost": 8485060
+          },
+          {
+            "ware": "energycells",
+            "amount": 133,
+            "quantity": 493962,
+            "group": "energy",
+            "pricePerUnit": 22,
+            "volume": 1,
+            "totalCost": 10867164
+          },
+          {
+            "ware": "hullparts",
+            "amount": 4,
+            "quantity": 14856,
+            "group": "hightech",
+            "pricePerUnit": 272,
+            "volume": 12,
+            "totalCost": 4040832
+          },
+          {
+            "ware": "microchips",
+            "amount": 2,
+            "quantity": 7428,
+            "group": "hightech",
+            "pricePerUnit": 1090,
+            "volume": 22,
+            "totalCost": 8096520
+          }
+        ]
+      },
+      "deliveries": {
+        "ship": [
+          {
+            "macro": "ship_gen_m_transdrone_container_01_a_macro",
+            "amount": "18",
+            "buildduration": "30"
+          },
+          {
+            "macro": "ship_gen_s_transdrone_container_01_a_macro",
+            "amount": "90",
+            "buildduration": "15"
+          }
+        ]
+      }
+    },
+    "evt_solidify_crust": {
+      "id": "evt_solidify_crust",
+      "group": "events",
+      "name": "Outer Crust Solidifies",
+      "description": "The global temperature has been lowered enough for the outer crust to solidify, reducing seismic activity significantly. This also has the effect of binding large amounts of water underground.",
+      "duration": "60",
+      "showalways": "true",
+      "version": "1",
+      "conditions": {
+        "condition": [
+          {
+            "stat": "temperature",
+            "maxvalue": "7"
+          },
+          {
+            "stat": "seismicactivity",
+            "min": "2",
+            "max": "2"
+          }
+        ]
+      },
+      "effects": [
+        {
+          "stat": "seismicactivity",
+          "change": "-1"
+        },
+        {
+          "stat": "humidity",
+          "change": "-2"
+        }
+      ]
+    },
+    "evt_volcano_extinction": {
+      "id": "evt_volcano_extinction",
+      "group": "events",
+      "name": "Major Volcano Extinction",
+      "description": "The volcanoes go extinct, eliminating destructive seismic activity, but in the process they evaporate a large quantity of water into the atmosphere.",
+      "duration": "60",
+      "showalways": "true",
+      "version": "1",
+      "conditions": {
+        "condition": [
+          {
+            "stat": "temperature",
+            "maxvalue": "6"
+          },
+          {
+            "stat": "seismicactivity",
+            "min": "1",
+            "max": "1"
+          }
+        ]
+      },
+      "effects": [
+        {
+          "stat": "seismicactivity",
+          "change": "-1"
+        },
+        {
+          "stat": "humidity",
+          "change": "-1"
+        }
+      ]
+    },
+    "evt_salinization": {
+      "id": "evt_salinization",
+      "group": "events",
+      "name": "Salinisation",
+      "description": "There is enough loose sediment that the process of salinisation, i.e. making the water saltier, is a lot faster than it would normally be. It still takes some time and there is no practical means of artificially accelerating the process.",
+      "duration": "600",
+      "conditions": {
+        "condition": [
+          {
+            "stat": "salinity",
+            "max": "2"
+          },
+          {
+            "stat": "humidity",
+            "min": "2"
+          }
+        ]
+      },
+      "effects": [
+        {
+          "stat": "salinity",
+          "change": "1"
+        }
+      ]
+    }
+  },
+  "waresHighest": {
+    "graphene": {
+      "quantity": 429184,
+      "volume": 20,
+      "project": "tmp_cloudparticles",
+      "projectCount": 5
+    },
+    "ice": {
+      "quantity": 2857142,
+      "volume": 8,
+      "project": "wat_import",
+      "projectCount": 9
+    },
+    "hullparts": {
+      "quantity": 193460,
+      "volume": 12,
+      "project": "res_arcology",
+      "projectCount": 10
+    },
+    "claytronics": {
+      "quantity": 69281,
+      "volume": 24,
+      "project": "atm_methane_oxidizers",
+      "projectCount": 2
+    },
+    "microchips": {
+      "quantity": 138562,
+      "volume": 22,
+      "project": "atm_methane_oxidizers",
+      "projectCount": 2
+    },
+    "refinedmetals": {
+      "quantity": 900640,
+      "volume": 14,
+      "project": "atm_methane_oxidizers",
+      "projectCount": 2
+    },
+    "energycells": {
+      "quantity": 3299065,
+      "volume": 1,
+      "project": "bio_cyanobacteria",
+      "projectCount": 3
+    },
+    "advancedelectronics": {
+      "quantity": 130328,
+      "volume": 30,
+      "project": "atm_carbon_mineralizers",
+      "projectCount": 1
+    },
+    "advancedcomposites": {
+      "quantity": 72492,
+      "volume": 32,
+      "project": "atm_carbon_mineralize",
+      "projectCount": 2
+    },
+    "dronecomponents": {
+      "quantity": 86220,
+      "volume": 30,
+      "project": "ter_jumpstart_currents",
+      "projectCount": 1
+    },
+    "shieldcomponents": {
+      "quantity": 20300,
+      "volume": 10,
+      "project": "atm_toxin_cleanup",
+      "projectCount": 4
+    },
+    "scanningarrays": {
+      "quantity": 26552,
+      "volume": 38,
+      "project": "ter_radioactive_cleanup",
+      "projectCount": 4
+    },
+    "medicalsupplies": {
+      "quantity": 818532,
+      "volume": 2,
+      "project": "bio_cyanobacteria",
+      "projectCount": 3
+    },
+    "methane": {
+      "quantity": 2082480,
+      "volume": 6,
+      "project": "bio_reintroduce_megafauna",
+      "projectCount": 1
+    },
+    "smartchips": {
+      "quantity": 104115,
+      "volume": 2,
+      "project": "ind_factories",
+      "projectCount": 4
+    },
+    "wheat": {
+      "quantity": 370900,
+      "volume": 4,
+      "project": "agr_fields_wheat",
+      "projectCount": 4
+    },
+    "sunriseflowers": {
+      "quantity": 184600,
+      "volume": 5,
+      "project": "agr_fields_sunrise",
+      "projectCount": 2
+    },
+    "water": {
+      "quantity": 25520,
+      "volume": 6,
+      "project": "res_bubblecity",
+      "projectCount": 1
+    },
+    "teladianium": {
+      "quantity": 42270,
+      "volume": 16,
+      "project": "ame_art_college",
+      "projectCount": 1
+    },
+    "nividium": {
+      "quantity": 2572,
+      "volume": 10,
+      "project": "eco_nividium",
+      "projectCount": 1
+    },
+    "plasmaconductors": {
+      "quantity": 1286,
+      "volume": 32,
+      "project": "eco_nividium",
+      "projectCount": 1
+    },
+    "computronicsubstrate": {
+      "quantity": 31351,
+      "volume": 50,
+      "project": "ter_tectonic_scaffolding",
+      "projectCount": 1
+    },
+    "metallicmicrolattice": {
+      "quantity": 6270200,
+      "volume": 1,
+      "project": "ter_tectonic_scaffolding",
+      "projectCount": 1
+    },
+    "siliconcarbide": {
+      "quantity": 219450,
+      "volume": 20,
+      "project": "ter_tectonic_scaffolding",
+      "projectCount": 1
+    },
+    "plankton": {
+      "quantity": 5206100,
+      "volume": 1,
+      "project": "bio_reintroduce_megafauna",
+      "projectCount": 1
+    },
+    "bogas": {
+      "quantity": 52061,
+      "volume": 4,
+      "project": "bio_reintroduce_megafauna",
+      "projectCount": 1
     }
   },
   "planets": {
@@ -6323,6 +7263,60 @@
       "rewards": [
         "Antigone tries to expand into Atiya's Misfortune and gets increased quotas for their military ships",
         "Antigone tries to build new Shipyard, with Atiya's Misfortune being most likely the system they built it in"
+      ]
+    },
+    "ocean_of_fantasy": {
+      "system": "Ocean Of Fantasy",
+      "name": "Samsara",
+      "stats": {
+        "airpressure": 0,
+        "temperature": 9,
+        "oxygen": 0,
+        "toxicity": 1,
+        "carbondioxide": 0,
+        "methane": 0,
+        "humidity": 0,
+        "radioactivity": 1,
+        "seismicactivity": 2
+      },
+      "objectives": {
+        "population": 50000000,
+        "projects": [
+          "ter_jumpstart_currents",
+          "bio_reintroduce_megafauna",
+          "ame_pheromone_art_academy"
+        ]
+      },
+      "recommendedPath": [
+        "atm_toxin_cleanup",
+        "ter_radioactive_cleanup",
+        "tmp_cloudparticles",
+        "tmp_cloudparticles",
+        "tmp_cloudparticles",
+        "wat_import",
+        "wat_import",
+        "wat_import",
+        "wat_import",
+        "wat_import",
+        "bio_reconstruct_genes",
+        "ter_jumpstart_currents",
+        "bio_reintroduce_fauna",
+        "bio_reintroduce_megafauna",
+        "res_housing_ocean",
+        "res_housing_ocean",
+        "res_housing_ocean",
+        "res_housing_ocean",
+        "res_housing_ocean",
+        "res_housing_ocean",
+        "res_housing_ocean",
+        "res_housing_ocean",
+        "res_housing_ocean",
+        "res_housing_ocean",
+        "ame_pheromone_art_academy"
+      ],
+      "notes": "Still work in progress, still collecting damn ice...",
+      "rewards": [
+        "Special welfare building"
       ]
     }
   }

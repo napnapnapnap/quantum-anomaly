@@ -20,10 +20,12 @@ const X4Map = () => {
   const [showLegend, setShowLegend] = useState(false);
   const [width, setWidth] = useState('100%');
 
-  const [cradleOfHumanity, setCradleOfHumanity] = useState(true);
-  const [splitVendetta, setSplitVendetta] = useState(true);
-  const [tidesOfAvarice, setTidesOfAvarice] = useState(true);
-  const [kingdomsEnd, setKingdomsEnd] = useState(false);
+  const [displayCradleOfHumanity, setDisplayCradleOfHumanity] = useState(true);
+  const [displaySplitVendetta, setDisplaySplitVendetta] = useState(true);
+  const [displayTidesOfAvarice, setDisplayTidesOfAvarice] = useState(true);
+  const [displaykingdomEnd, setDisplaykingdomEnd] = useState(true);
+  const [displayStations, setDisplayStations] = useState(true);
+  const [displayResources, setDisplayResources] = useState(true);
 
   const svg = useRef<SVGSVGElement>(null);
   const wrapper = useRef<HTMLDivElement>(null);
@@ -49,14 +51,14 @@ const X4Map = () => {
 
   const shouldDisplay = (dlc: string[]) => {
     return !(
-      (dlc.includes('cradleOfHumanity') && !cradleOfHumanity) ||
-      (dlc.includes('tidesOfAvarice') && !tidesOfAvarice) ||
-      (dlc.includes('splitVendetta') && !splitVendetta) ||
-      (dlc.includes('kingdomsEnd') && !kingdomsEnd)
+      (dlc.includes('cradleOfHumanity') && !displayCradleOfHumanity) ||
+      (dlc.includes('tidesOfAvarice') && !displayTidesOfAvarice) ||
+      (dlc.includes('splitVendetta') && !displaySplitVendetta) ||
+      (dlc.includes('kingdomEnd') && !displaykingdomEnd)
     );
   };
 
-  const mouseDownHandler = (e: MouseEvent) => {
+  const mouseDownHandler = (e: MouseEvent | TouchEvent) => {
     if (wrapper.current && svg.current) {
       const tag = (e.target as HTMLElement).tagName;
       const isWrapper = (e.target as HTMLElement).className === 'x4__map-wrapper';
@@ -69,14 +71,35 @@ const X4Map = () => {
       if (currentTransform === '0px') currentTransform = '0px, 0px'; // firefox being special
       // snowflake here
       currentPosition = currentTransform.replace(/px/g, '').split(', ');
-      startPosition = { x: e.clientX, y: e.clientY };
+
+      let x = 0;
+      let y = 0;
+      if ('touches' in e) {
+        x = e.touches[0].pageX;
+        y = e.touches[0].pageY;
+      } else {
+        x = e.clientX;
+        y = e.clientY;
+      }
+
+      startPosition = { x, y };
     }
   };
 
-  const mouseMoveHandler = (e: MouseEvent) => {
+  const mouseMoveHandler = (e: MouseEvent | TouchEvent) => {
     if (moving) {
-      dx = (e.clientX - startPosition.x) / scale;
-      dy = (e.clientY - startPosition.y) / scale;
+      let x = 0;
+      let y = 0;
+      if ('touches' in e) {
+        x = e.touches[0].pageX;
+        y = e.touches[0].pageY;
+      } else {
+        x = e.clientX;
+        y = e.clientY;
+      }
+
+      dx = (x - startPosition.x) / scale;
+      dy = (y - startPosition.y) / scale;
       setMoved({ x: parseFloat(currentPosition[0]) + dx, y: parseFloat(currentPosition[1]) + dy });
     }
   };
@@ -91,12 +114,11 @@ const X4Map = () => {
   };
 
   const wheelHandler = (e: WheelEvent) => {
-    e.preventDefault();
     if (e.deltaY < 0 && scale > 10) return null;
     if (e.deltaY > 0 && scale < 1.25) return null;
     e.deltaY < 0
-      ? setScale((prevScale) => (prevScale < 8 ? prevScale + 0.5 : 10))
-      : setScale((prevScale) => (prevScale > 1 ? prevScale - 0.5 : 1));
+      ? setScale((prevScale) => (prevScale < 8 ? prevScale + 0.8 : 12))
+      : setScale((prevScale) => (prevScale > 1 ? prevScale - 0.8 : 1));
   };
 
   const downloadSvgFile = () => {
@@ -113,18 +135,26 @@ const X4Map = () => {
 
   useEffect(() => {
     if (!map) return;
-    if (wrapper.current) {
-      wrapper.current.addEventListener('mousedown', mouseDownHandler);
-      wrapper.current.addEventListener('mousemove', mouseMoveHandler);
-      wrapper.current.addEventListener('mouseup', mouseUpHandler);
-      wrapper.current.addEventListener('wheel', wheelHandler);
+    const current = wrapper.current;
+
+    if (current) {
+      current.addEventListener('mousedown', mouseDownHandler, { passive: true });
+      current.addEventListener('mousemove', mouseMoveHandler, { passive: true });
+      current.addEventListener('mouseup', mouseUpHandler, { passive: true });
+      current.addEventListener('touchstart', mouseDownHandler, { passive: true });
+      current.addEventListener('touchmove', mouseMoveHandler, { passive: true });
+      current.addEventListener('touchend', mouseUpHandler, { passive: true });
+      current.addEventListener('wheel', wheelHandler, { passive: true });
     }
     return () => {
-      if (wrapper.current) {
-        wrapper.current.removeEventListener('mousedown', mouseDownHandler);
-        wrapper.current.removeEventListener('mousemove', mouseMoveHandler);
-        wrapper.current.removeEventListener('mouseup', mouseUpHandler);
-        wrapper.current.removeEventListener('wheel', wheelHandler);
+      if (current) {
+        current.removeEventListener('mousedown', mouseDownHandler);
+        current.removeEventListener('mousemove', mouseMoveHandler);
+        current.removeEventListener('mouseup', mouseUpHandler);
+        current.removeEventListener('touchstart', mouseDownHandler);
+        current.removeEventListener('touchmove', mouseMoveHandler);
+        current.removeEventListener('touchend', mouseUpHandler);
+        current.removeEventListener('wheel', wheelHandler);
       }
     };
   }, [map, scale]);
@@ -161,8 +191,9 @@ const X4Map = () => {
                 xmlns="http://www.w3.org/2000/svg"
                 style={{ transform: `scale(${scale}) translate(${moved.x}px, ${moved.y}px)` }}
               >
-                {map.clusters.map((cluster) =>
-                  shouldDisplay(cluster.dlc) ? (
+                {map.clusters
+                  .filter((cluster) => shouldDisplay(cluster.dlc))
+                  .map((cluster) =>
                     cluster.sectors.map((sector) => (
                       <polyline
                         key={sector.name}
@@ -179,26 +210,23 @@ const X4Map = () => {
                         )}
                       />
                     ))
-                  ) : (
-                    <></>
-                  )
-                )}
+                  )}
 
-                {map.clusters.map((cluster) => {
-                  if (!shouldDisplay(cluster.dlc)) return <></>;
-                  let color = cluster.sectors[0].owner ? maps.colors[cluster.sectors[0].owner].border : 'gray';
-                  if (cluster.name === 'Cluster_29_macro') color = maps.colors['argon'].border;
-                  return (
-                    <React.Fragment key={cluster.name}>
-                      <polyline
-                        fill="none"
-                        stroke={color}
-                        strokeWidth="2"
-                        points={getHexagonPointsV2({ x: cluster.position.x, y: -cluster.position.z })}
-                      />
-                      {cluster.sectors.map((sector) => (
-                        <React.Fragment key={sector.name}>
-                          {sector.zones.map((zone) =>
+                {map.clusters
+                  .filter((cluster) => shouldDisplay(cluster.dlc))
+                  .map((cluster) => {
+                    let color = cluster.sectors[0].owner ? maps.colors[cluster.sectors[0].owner].border : 'gray';
+                    if (cluster.name === 'Cluster_29_macro') color = maps.colors['argon'].border;
+                    return (
+                      <React.Fragment key={cluster.name}>
+                        <polyline
+                          fill="none"
+                          stroke={color}
+                          strokeWidth="2"
+                          points={getHexagonPointsV2({ x: cluster.position.x, y: -cluster.position.z })}
+                        />
+                        {cluster.sectors.map((sector) =>
+                          sector.zones.map((zone) =>
                             zone.gates.map((gate, index) => (
                               <circle
                                 key={`${zone.zoneReference}-${index}`}
@@ -210,15 +238,11 @@ const X4Map = () => {
                                 r="5"
                               />
                             ))
-                          )}
-                          {sector.stations.map((station, index) => (
-                            <Station key={station.id} station={station} stationScale={scale === 1 ? 2.5 : 1.5} />
-                          ))}
-                        </React.Fragment>
-                      ))}
-                    </React.Fragment>
-                  );
-                })}
+                          )
+                        )}
+                      </React.Fragment>
+                    );
+                  })}
 
                 {Object.values(map.gates).map(
                   (gate) =>
@@ -246,55 +270,64 @@ const X4Map = () => {
                     )
                 )}
 
-                {map.sectorHighways.map(
-                  (highway) =>
-                    shouldDisplay(highway.dlc) && (
-                      <React.Fragment key={Math.random()}>
-                        <circle
-                          cx={highway.origin.x}
-                          cy={highway.origin.y}
-                          fill="blue"
-                          stroke="white"
-                          strokeWidth="1"
-                          r="3"
-                        />
-                        <circle
-                          cx={highway.destination.x}
-                          cy={highway.destination.y}
-                          fill="blue"
-                          stroke="white"
-                          strokeWidth="1"
-                          r="3"
-                        />
-                        <line
-                          x1={highway.origin.x}
-                          y1={highway.origin.y}
-                          x2={highway.destination.x}
-                          y2={highway.destination.y}
-                          stroke="gray"
-                          strokeWidth="3"
-                        />
-                        <line
-                          x1={highway.origin.x}
-                          y1={highway.origin.y}
-                          x2={highway.destination.x}
-                          y2={highway.destination.y}
-                          stroke="blue"
-                          strokeDasharray="1"
-                        />
-                      </React.Fragment>
-                    )
-                )}
+                {map.sectorHighways
+                  .filter((highway) => shouldDisplay(highway.dlc))
+                  .map((highway) => (
+                    <React.Fragment key={Math.random()}>
+                      <circle
+                        cx={highway.origin.x}
+                        cy={highway.origin.y}
+                        fill="blue"
+                        stroke="white"
+                        strokeWidth="1"
+                        r="3"
+                      />
+                      <circle
+                        cx={highway.destination.x}
+                        cy={highway.destination.y}
+                        fill="blue"
+                        stroke="white"
+                        strokeWidth="1"
+                        r="3"
+                      />
+                      <line
+                        x1={highway.origin.x}
+                        y1={highway.origin.y}
+                        x2={highway.destination.x}
+                        y2={highway.destination.y}
+                        stroke="gray"
+                        strokeWidth="3"
+                      />
+                      <line
+                        x1={highway.origin.x}
+                        y1={highway.origin.y}
+                        x2={highway.destination.x}
+                        y2={highway.destination.y}
+                        stroke="blue"
+                        strokeDasharray="1"
+                      />
+                    </React.Fragment>
+                  ))}
 
-                {map.clusters.map(
-                  (cluster) =>
-                    shouldDisplay(cluster.dlc) &&
-                    cluster.sectors.map((sector) => <Resources sector={sector} key={sector.name} />)
-                )}
+                {displayResources &&
+                  map.clusters
+                    .filter((cluster) => shouldDisplay(cluster.dlc))
+                    .map((cluster) => cluster.sectors.map((sector) => <Resources sector={sector} key={sector.name} />))}
 
-                {map.clusters.map(
-                  (cluster) =>
-                    shouldDisplay(cluster.dlc) &&
+                {displayStations &&
+                  map.clusters
+                    .filter((cluster) => shouldDisplay(cluster.dlc))
+                    .map((cluster) =>
+                      cluster.sectors.map((sector) =>
+                        sector.stations.map((station) => (
+                          <Station key={station.id} station={station} stationScale={1.5} />
+                        ))
+                      )
+                    )}
+
+                {map.clusters
+                  .filter((cluster) => shouldDisplay(cluster.dlc))
+                  .map((cluster) =>
                     cluster.sectors.map((sector) => {
                       const backgroundWidth = sector.label.length * 3 - backgroundLabelRectWidth(sector.label) + 5;
                       const verticalOffset = sector.transformation ? 45 : 95;
@@ -311,7 +344,7 @@ const X4Map = () => {
                           />
                           <text
                             x={sector.adjusted.x}
-                            y={-sector.adjusted.z - verticalOffset + 10}
+                            y={-sector.adjusted.z - verticalOffset + 10.5}
                             fontSize="12px"
                             textAnchor="middle"
                             fill="white"
@@ -321,7 +354,7 @@ const X4Map = () => {
                         </React.Fragment>
                       );
                     })
-                )}
+                  )}
               </svg>
             </div>
 
@@ -334,29 +367,40 @@ const X4Map = () => {
             <div className="x4__map-filters">
               <div>
                 <Checkbox
+                  label="Stations"
+                  name="displayStations"
+                  checked={displayStations}
+                  handleInputChange={() => setDisplayStations(!displayStations)}
+                />
+                <Checkbox
+                  label="Resources"
+                  name="displayResouces"
+                  checked={displayResources}
+                  handleInputChange={() => setDisplayResources(!displayResources)}
+                />
+                <Checkbox
                   label="Split Vendetta"
-                  name="splitVendetta"
-                  checked={splitVendetta}
-                  handleInputChange={() => setSplitVendetta(!splitVendetta)}
+                  name="displaySplitVendetta"
+                  checked={displaySplitVendetta}
+                  handleInputChange={() => setDisplaySplitVendetta(!displaySplitVendetta)}
                 />
                 <Checkbox
                   label="Cradle Of Humanity"
                   name="displayRace"
-                  checked={cradleOfHumanity}
-                  handleInputChange={() => setCradleOfHumanity(!cradleOfHumanity)}
+                  checked={displayCradleOfHumanity}
+                  handleInputChange={() => setDisplayCradleOfHumanity(!displayCradleOfHumanity)}
                 />
                 <Checkbox
                   label="Tides Of Avarice"
                   name="displayRace"
-                  checked={tidesOfAvarice}
-                  handleInputChange={() => setTidesOfAvarice(!tidesOfAvarice)}
+                  checked={displayTidesOfAvarice}
+                  handleInputChange={() => setDisplayTidesOfAvarice(!displayTidesOfAvarice)}
                 />
                 <Checkbox
-                  label="Kingdoms End"
+                  label="Kingdom End"
                   name="displayRace"
-                  checked={kingdomsEnd}
-                  isDisabled
-                  handleInputChange={() => setKingdomsEnd(!kingdomsEnd)}
+                  checked={displaykingdomEnd}
+                  handleInputChange={() => setDisplaykingdomEnd(!displaykingdomEnd)}
                 />
               </div>
               <button onClick={downloadSvgFile} className="btn btn--cta">

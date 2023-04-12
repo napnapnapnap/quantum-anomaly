@@ -9,8 +9,10 @@ import { translateRecursiveTrim } from './translations';
 const ORE_SILICON_CAP = 1000000000;
 const ICE_CAP = 200000000;
 const NIVIDIUM_CAP = 8000000;
-const HYDROGEN_HELIUM_CAP = 2000000;
-const METHANE_CAP = 8000000;
+const HYDROGEN_HELIUM_CAP = 4500000;
+const METHANE_CAP = 10000000;
+
+const SAVE_RAW = false;
 
 async function parseFile(pathToFile) {
   const parser = new xml2js.Parser({ mergeAttrs: true, explicitArray: false });
@@ -23,10 +25,16 @@ function scaleDown(item, factor = 1) {
   else if (item.offset && !item.offset.position) item.offset = { position: { x: 0, y: 0, z: 0 } };
   else
     item.offset.position = {
-      x: Math.round((parseInt(item.offset.position.x, 10) / factor) * 100) / 100,
-      y: Math.round((parseInt(item.offset.position.y, 10) / factor) * 100) / 100,
-      z: Math.round((parseInt(item.offset.position.z, 10) / factor) * 100) / 100,
+      x: parseFloat(item.offset.position.x) / factor,
+      y: parseFloat(item.offset.position.y) / factor,
+      z: parseFloat(item.offset.position.z) / factor,
     };
+
+  item.offset.position = {
+    x: Math.round(item.offset.position.x * 1000) / 1000,
+    y: Math.round(item.offset.position.y * 1000) / 1000,
+    z: Math.round(item.offset.position.z * 1000) / 1000,
+  };
 }
 
 function applyCrazySectorTransformations(cluster) {
@@ -54,8 +62,7 @@ function applyCrazySectorTransformations(cluster) {
    */
 
   if (cluster.sectors.length === 1) cluster.sectors[0].adjusted = cluster.position;
-
-  if (cluster.sectors.length === 2) {
+  else if (cluster.sectors.length === 2) {
     cluster.sectors[0].adjusted = { ...cluster.position };
     cluster.sectors[1].adjusted = { ...cluster.position };
     // It is very very tempting to group these, but due to all the factors it gets really tricky
@@ -128,8 +135,7 @@ function applyCrazySectorTransformations(cluster) {
         cluster.sectors[1].transformation = 'I';
       }
     }
-  }
-  if (cluster.sectors.length === 3) {
+  } else if (cluster.sectors.length === 3) {
     cluster.sectors[0].adjusted = cluster.position;
     cluster.sectors[1].adjusted = cluster.position;
     cluster.sectors[2].adjusted = cluster.position;
@@ -144,7 +150,7 @@ function applyCrazySectorTransformations(cluster) {
     }
 
     // special flake2
-    if (cluster.name === 'Cluster_108_macro') {
+    else if (cluster.name === 'Cluster_108_macro') {
       cluster.sectors[0].adjusted = { x: cluster.position.x + 62, z: cluster.position.z };
       cluster.sectors[1].adjusted = { x: cluster.position.x - 32, z: cluster.position.z - 54 };
       cluster.sectors[2].adjusted = { x: cluster.position.x - 32, z: cluster.position.z + 54 };
@@ -154,13 +160,23 @@ function applyCrazySectorTransformations(cluster) {
     }
 
     // special flake3
-    if (cluster.name === 'Cluster_500_macro') {
+    else if (cluster.name === 'Cluster_500_macro') {
       cluster.sectors[0].adjusted = { x: cluster.position.x + 32, z: cluster.position.z + 54 };
       cluster.sectors[1].adjusted = { x: cluster.position.x + 32, z: cluster.position.z - 54 };
       cluster.sectors[2].adjusted = { x: cluster.position.x - 62, z: cluster.position.z };
       cluster.sectors[0].transformation = 'AV';
       cluster.sectors[1].transformation = 'AV';
       cluster.sectors[2].transformation = 'AV';
+    }
+
+    // special flake4
+    else if (cluster.name === 'Cluster_606_macro') {
+      cluster.sectors[0].adjusted = { x: cluster.position.x - 32, z: cluster.position.z + 54 };
+      cluster.sectors[1].adjusted = { x: cluster.position.x - 32, z: cluster.position.z - 54 };
+      cluster.sectors[2].adjusted = { x: cluster.position.x + 62, z: cluster.position.z };
+      cluster.sectors[0].transformation = 'KE';
+      cluster.sectors[1].transformation = 'KE';
+      cluster.sectors[2].transformation = 'KE';
     }
   }
 
@@ -197,6 +213,11 @@ function applyCrazySectorTransformations(cluster) {
           z: sector.adjusted.z + station.position.z / inSectorDivider,
         };
 
+      station.position = {
+        x: Math.round(station.position.x * 1000) / 1000,
+        z: Math.round(station.position.z * 1000) / 1000,
+      };
+
       // since some of these things are literally on top of each other, do some "adjustment"
       if (station.id === 'shipyard_holyorder') station.position.x -= 20;
       else if (station.id === 'shipyard_antigone' || station.id === 'tradestation_antigone') station.position.z -= 10;
@@ -231,100 +252,130 @@ export async function getMap(sourceBasePath, translations) {
   // of building the map. This code has loops within loops within loops within loops..., but it logically
   // builds a map and it's easier to follow. Also this tasks runs only locally to generate map once, so
   // performance is not an issue.
-  let base, split, terran, pirate;
+  let base, split, terran, pirate, boron;
   let map = [];
 
   const baseSP = sourceBasePath;
   const splitSP = path.join(sourceBasePath, 'extensions', 'ego_dlc_split');
   const terranSP = path.join(sourceBasePath, 'extensions', 'ego_dlc_terran');
   const pirateSP = path.join(sourceBasePath, 'extensions', 'ego_dlc_pirate');
+  const boronSP = path.join(sourceBasePath, 'extensions', 'ego_dlc_boron');
 
   // Contains ref to clusters and destinations
   base = await parseFile(path.join(baseSP, 'maps', 'xu_ep2_universe', 'galaxy.xml'));
   split = await parseFile(path.join(splitSP, 'maps', 'xu_ep2_universe', 'galaxy.xml'));
   terran = await parseFile(path.join(terranSP, 'maps', 'xu_ep2_universe', 'galaxy.xml'));
   pirate = await parseFile(path.join(pirateSP, 'maps', 'xu_ep2_universe', 'galaxy.xml'));
+  boron = await parseFile(path.join(boronSP, 'maps', 'xu_ep2_universe', 'galaxy.xml'));
   const galaxy = [
     ...base.macros.macro.connections.connection,
     ...split.diff.add.connection,
     ...terran.diff.add.connection,
     ...pirate.diff.add.connection,
+    ...boron.diff.add.connection,
   ];
-  await saveToFile(galaxy, '_raw-galaxy', 'raw galaxy', 'map');
+  if (SAVE_RAW) await saveToFile(galaxy, '_raw-galaxy', 'raw galaxy', 'map');
 
   // Contains ref to sectors
   base = await parseFile(path.join(baseSP, 'maps', 'xu_ep2_universe', 'clusters.xml'));
   split = await parseFile(path.join(splitSP, 'maps', 'xu_ep2_universe', 'dlc4_clusters.xml'));
   terran = await parseFile(path.join(terranSP, 'maps', 'xu_ep2_universe', 'dlc_terran_clusters.xml'));
   pirate = await parseFile(path.join(pirateSP, 'maps', 'xu_ep2_universe', 'dlc_pirate_clusters.xml'));
-  const clusters = [...base.macros.macro, ...split.macros.macro, ...terran.macros.macro, ...pirate.macros.macro];
-  await saveToFile(clusters, '_raw-clusters', 'raw clusters', 'map');
+  boron = await parseFile(path.join(boronSP, 'maps', 'xu_ep2_universe', 'dlc_boron_clusters.xml'));
+  const clusters = [
+    ...base.macros.macro,
+    ...split.macros.macro,
+    ...terran.macros.macro,
+    ...pirate.macros.macro,
+    ...boron.macros.macro,
+  ];
+  if (SAVE_RAW) await saveToFile(clusters, '_raw-clusters', 'raw clusters', 'map');
 
   // Contains ref to zones
   base = await parseFile(path.join(baseSP, 'maps', 'xu_ep2_universe', 'sectors.xml'));
   split = await parseFile(path.join(splitSP, 'maps', 'xu_ep2_universe', 'dlc4_sectors.xml'));
   terran = await parseFile(path.join(terranSP, 'maps', 'xu_ep2_universe', 'dlc_terran_sectors.xml'));
   pirate = await parseFile(path.join(pirateSP, 'maps', 'xu_ep2_universe', 'dlc_pirate_sectors.xml'));
-  const sectors = [...base.macros.macro, ...split.macros.macro, ...terran.macros.macro, ...pirate.macros.macro];
-  await saveToFile(sectors, '_raw-sectors', 'raw sectors', 'map');
+  boron = await parseFile(path.join(boronSP, 'maps', 'xu_ep2_universe', 'dlc_boron_sectors.xml'));
+  const sectors = [
+    ...base.macros.macro,
+    ...split.macros.macro,
+    ...terran.macros.macro,
+    ...pirate.macros.macro,
+    ...boron.macros.macro,
+  ];
+  if (SAVE_RAW) await saveToFile(sectors, '_raw-sectors', 'raw sectors', 'map');
 
   // Contains possible refs to gates
   base = await parseFile(path.join(baseSP, 'maps', 'xu_ep2_universe', 'zones.xml'));
   split = await parseFile(path.join(splitSP, 'maps', 'xu_ep2_universe', 'dlc4_zones.xml'));
   terran = await parseFile(path.join(terranSP, 'maps', 'xu_ep2_universe', 'dlc_terran_zones.xml'));
   pirate = await parseFile(path.join(pirateSP, 'maps', 'xu_ep2_universe', 'dlc_pirate_zones.xml'));
-  const zones = [...base.macros.macro, ...split.macros.macro, ...terran.macros.macro, ...pirate.macros.macro];
-  await saveToFile(zones, '_raw-zones', 'raw zones', 'map');
+  boron = await parseFile(path.join(boronSP, 'maps', 'xu_ep2_universe', 'dlc_boron_zones.xml'));
+  const zones = [
+    ...base.macros.macro,
+    ...split.macros.macro,
+    ...terran.macros.macro,
+    ...pirate.macros.macro,
+    ...boron.macros.macro,
+  ];
+  if (SAVE_RAW) await saveToFile(zones, '_raw-zones', 'raw zones', 'map');
 
   // Contains last pieces of info for sector -> zones -> gate
   base = await parseFile(path.join(baseSP, 'libraries', 'component.xml'));
   const components = [...base.components.component.filter((component) => component.name === 'standardzone')];
-  await saveToFile(components, '_raw-components', 'raw components', 'map');
+  if (SAVE_RAW) await saveToFile(components, '_raw-components', 'raw components', 'map');
 
   // Contains region definitions (boundary sizes, density, and resources) for asteroid fields
   base = await parseFile(path.join(baseSP, 'libraries', 'region_definitions.xml'));
   split = await parseFile(path.join(splitSP, 'libraries', 'region_definitions.xml'));
   terran = await parseFile(path.join(terranSP, 'libraries', 'region_definitions.xml'));
   pirate = await parseFile(path.join(pirateSP, 'libraries', 'region_definitions.xml'));
+  boron = await parseFile(path.join(boronSP, 'libraries', 'region_definitions.xml'));
   const regionDefinitions = [
     ...base.regions.region,
     ...split.regions.region,
     ...terran.regions.region,
     ...pirate.regions.region,
+    ...boron.regions.region,
   ];
-  await saveToFile(regionDefinitions, '_raw-region-definitions', 'region definitions', 'map');
+  if (SAVE_RAW) await saveToFile(regionDefinitions, '_raw-region-definitions', 'region definitions', 'map');
 
   // Contains actual yield definitions for asteroids inside fields
   let regionObjectGroups = await parseFile(path.join(baseSP, 'libraries', 'regionobjectgroups.xml'));
   regionObjectGroups = regionObjectGroups.groups.group;
-  await saveToFile(regionObjectGroups, '_raw-region-object-groups', 'region object groups', 'map');
+  if (SAVE_RAW) await saveToFile(regionObjectGroups, '_raw-region-object-groups', 'region object groups', 'map');
 
   // Contains yield modifiers for asteroids and nebulas
   let regionYields = await parseFile(path.join(baseSP, 'libraries', 'regionyields.xml'));
   regionYields = regionYields.regionyields.resource;
-  await saveToFile(regionYields, '_raw-region-yields', 'region yields', 'map');
+  if (SAVE_RAW) await saveToFile(regionYields, '_raw-region-yields', 'region yields', 'map');
 
   base = await parseFile(path.join(baseSP, 'libraries', 'mapdefaults.xml'));
   split = await parseFile(path.join(splitSP, 'libraries', 'mapdefaults.xml'));
   terran = await parseFile(path.join(terranSP, 'libraries', 'mapdefaults.xml'));
   pirate = await parseFile(path.join(pirateSP, 'libraries', 'mapdefaults.xml'));
+  boron = await parseFile(path.join(boronSP, 'libraries', 'mapdefaults.xml'));
 
   const mapDefaults = [
     ...base.defaults.dataset,
     ...split.defaults.dataset,
     ...terran.defaults.dataset,
     ...pirate.defaults.dataset,
+    ...boron.defaults.dataset,
   ];
-  await saveToFile(mapDefaults, '_raw-map-defaults', 'map defaults', 'map');
+  if (SAVE_RAW) await saveToFile(mapDefaults, '_raw-map-defaults', 'map defaults', 'map');
 
   // Contains stations
   base = await parseFile(path.join(baseSP, 'libraries', 'god.xml'));
   split = await parseFile(path.join(splitSP, 'libraries', 'god.xml'));
   terran = await parseFile(path.join(terranSP, 'libraries', 'god.xml'));
   pirate = await parseFile(path.join(pirateSP, 'libraries', 'god.xml'));
+  boron = await parseFile(path.join(boronSP, 'libraries', 'god.xml'));
   const splitDlcStations = split.diff.add.filter((item) => item.sel === '/god/stations');
   const terranDlcStations = terran.diff.add.filter((item) => item.sel === '/god/stations');
   const pirateDlcStations = pirate.diff.add.filter((item) => item.sel === '/god/stations');
+  const boronDlcStations = boron.diff.add.filter((item) => item.sel === '/god/stations');
 
   // Position refers to position inside zone?
   const stations = [
@@ -332,8 +383,9 @@ export async function getMap(sourceBasePath, translations) {
     ...splitDlcStations[0].station,
     ...terranDlcStations[0].station,
     ...pirateDlcStations[0].station,
+    ...boronDlcStations[0].station,
   ];
-  await saveToFile(stations, '_raw-map-stations', 'raw stations', 'map');
+  if (SAVE_RAW) await saveToFile(stations, '_raw-map-stations', 'raw stations', 'map');
 
   // First pass will just build stuff in correct nesting order and adjust positions to be smaller scale
   // Once this is done, result will be normalized object that we can loop again and actually calculate
@@ -352,14 +404,14 @@ export async function getMap(sourceBasePath, translations) {
           cluster.sechighways = [];
           cluster.position = galaxyItem.offset.position;
 
-          cluster.dlc = [];
+          cluster.dlc = new Set();
 
           const dlc = parseInt(/^[^\d]*(\d+)/.exec(cluster.name)[1]);
-          if (dlc < 100) cluster.dlc.push('base');
-          if (dlc >= 400 && dlc < 500) cluster.dlc.push('splitVendetta');
-          if (dlc >= 100 && dlc < 200) cluster.dlc.push('cradleOfHumanity');
-          if (dlc >= 500 && dlc < 600) cluster.dlc.push('tidesOfAvarice');
-          if (dlc >= 700 && dlc < 700) cluster.dlc.push('kingdomsEnd');
+          if (dlc < 100) cluster.dlc.add('base');
+          if (dlc >= 400 && dlc < 500) cluster.dlc.add('splitVendetta');
+          if (dlc >= 100 && dlc < 200) cluster.dlc.add('cradleOfHumanity');
+          if (dlc >= 500 && dlc < 600) cluster.dlc.add('tidesOfAvarice');
+          if (dlc >= 600 && dlc < 700) cluster.dlc.add('kingdomEnd');
 
           cluster.connections.connection.forEach((clusterConnection) => {
             // Attach sectors
@@ -557,11 +609,7 @@ export async function getMap(sourceBasePath, translations) {
               if (
                 clusterConnection.macro.properties.region.ref.indexOf('audio') === -1 &&
                 clusterConnection.macro.properties.region.ref.indexOf('mine_field') === -1 &&
-                clusterConnection.macro.properties.region.ref !== 'wave_active' &&
-                clusterConnection.macro.properties.region.ref !== 'region504wave_active' &&
-                clusterConnection.macro.properties.region.ref !== 'region_cluster_33_sector_001' &&
-                clusterConnection.macro.properties.region.ref !== 'cluster113_region02' &&
-                clusterConnection.macro.properties.region.ref !== 'region_c503s01_casino2' &&
+                clusterConnection.macro.properties.region.ref.indexOf('wave_active') === -1 &&
                 clusterConnection.macro.properties.region.ref.indexOf('torus') === -1
               ) {
                 regionDefinitions.forEach((regionDefinitionItem) => {
@@ -570,6 +618,15 @@ export async function getMap(sourceBasePath, translations) {
                     const regionDefinition = { ...regionDefinitionItem };
                     regionDefinition.position = clusterConnection.offset.position;
                     regionDefinition.locationReference = clusterConnection.macro.name;
+
+                    if (!regionDefinition.resources) {
+                      clusterConnection.skipped = true;
+                      return;
+                    }
+                    if (!regionDefinition.resources.resource) {
+                      clusterConnection.skipped = true;
+                      return;
+                    }
 
                     // ERROR CORRECTING: Not sure how game figures this out, but there are few
                     //                   non-existing cluster sector references in regions.
@@ -605,31 +662,38 @@ export async function getMap(sourceBasePath, translations) {
                       );
                     }
 
+                    regionDefinition.miningRegionVolume = 0;
+                    if (regionDefinition.boundaries) {
+                      regionDefinition.boundary = regionDefinition.boundaries.boundary;
+                      delete regionDefinition.boundaries.boundary;
+                    }
+                    if (!Array.isArray(regionDefinition.boundary))
+                      regionDefinition.boundary = [regionDefinition.boundary];
+
                     // Calculate size of mining region volume in approximate km3
-                    if (regionDefinition.boundary.class === 'cylinder')
-                      regionDefinition.miningRegionVolume =
-                        3.14 *
-                        Math.pow(regionDefinition.boundary.size.r / 1000, 2) *
-                        (regionDefinition.boundary.size.linear / 1000);
-                    else if (regionDefinition.boundary.class === 'box')
-                      regionDefinition.miningRegionVolume =
-                        (regionDefinition.boundary.size.x / 1000) *
-                        (regionDefinition.boundary.size.y / 1000) *
-                        (regionDefinition.boundary.size.z / 1000);
-                    else if (regionDefinition.boundary.class === 'sphere')
-                      regionDefinition.miningRegionVolume =
-                        (4 / 3) * 3.14 * Math.pow(regionDefinition.boundary.size.r / 1000, 3);
-                    else if (regionDefinition.boundary.class === 'splinetube')
-                      regionDefinition.miningRegionVolume =
-                        3.14 *
-                        Math.pow(regionDefinition.boundary.size.r / 1000, 2) *
-                        regionDefinition.boundary.splineposition.reduce((acc, currentValue, index) => {
-                          const x = Math.pow(currentValue.x - regionDefinition.boundary.splineposition[index - 1].x, 2);
-                          const y = Math.pow(currentValue.y - regionDefinition.boundary.splineposition[index - 1].y, 2);
-                          const z = Math.pow(currentValue.z - regionDefinition.boundary.splineposition[index - 1].z, 2);
-                          return Math.sqrt(x + y + z);
-                        });
-                    else appWarning(`${regionDefinition.name} has unknown size`);
+                    regionDefinition.boundary.forEach((boundary) => {
+                      if (boundary.class === 'cylinder')
+                        regionDefinition.miningRegionVolume +=
+                          3.14 * Math.pow(boundary.size.r / 1000, 2) * (boundary.size.linear / 1000);
+                      else if (boundary.class === 'box')
+                        regionDefinition.miningRegionVolume +=
+                          (boundary.size.x / 1000) * (boundary.size.y / 1000) * (boundary.size.z / 1000);
+                      else if (boundary.class === 'sphere')
+                        regionDefinition.miningRegionVolume += (4 / 3) * 3.14 * Math.pow(boundary.size.r / 1000, 3);
+                      else if (boundary.class === 'splinetube')
+                        regionDefinition.miningRegionVolume +=
+                          3.14 *
+                          Math.pow(boundary.size.r / 1000, 2) *
+                          boundary.splineposition.reduce((acc, currentValue, index) => {
+                            const x = Math.pow(currentValue.x - boundary.splineposition[index - 1].x, 2);
+                            const y = Math.pow(currentValue.y - boundary.splineposition[index - 1].y, 2);
+                            const z = Math.pow(currentValue.z - boundary.splineposition[index - 1].z, 2);
+                            return Math.sqrt(x + y + z);
+                          });
+                    });
+
+                    if (regionDefinition.miningRegionVolume === 0)
+                      appWarning(`${regionDefinition.name} has unknown size`);
 
                     // Limit size to something usable, let's say max of 200km x 200km x 100km
                     if (regionDefinition.miningRegionVolume > 200 * 200 * 100)
@@ -685,8 +749,7 @@ export async function getMap(sourceBasePath, translations) {
                         regionDefinition.fields.nebula.forEach((nebula) => {
                           nebula.resources.split(' ').forEach((nebulaResource) => {
                             if (nebulaResource === resource.ware) {
-                              const nebulaProps = parseFloat(nebula.uniformdensity);
-                              regionDefinition.resourceQuantities[resource.ware] += nebulaProps;
+                              regionDefinition.resourceQuantities[resource.ware] += 1;
                             }
                           });
                         });
@@ -883,24 +946,35 @@ export async function getMap(sourceBasePath, translations) {
   map.forEach((cluster) => {
     cluster.sectors.forEach((sector) =>
       sector.zones.forEach((zone) => {
+        zone.position = {
+          x: Math.round(zone.position.x * 1000) / 1000,
+          z: Math.round(zone.position.z * 1000) / 1000,
+        };
+
         zone.gates.forEach((gate) => {
           const connectionBetween = gate.name.toLowerCase().replace('connection_clustergate', '');
           const oneSide = connectionBetween.split('to')[0];
           const otherSide = connectionBetween.split('to')[1] || '666';
 
-          gate.dlc = [];
+          gate.dlc = new Set();
 
-          if (parseInt(oneSide) < 100) cluster.dlc.push('base');
-          if (parseInt(oneSide) >= 400 && parseInt(oneSide) < 500) gate.dlc.push('splitVendetta');
-          if (parseInt(oneSide) >= 100 && parseInt(oneSide) < 200) gate.dlc.push('cradleOfHumanity');
-          if (parseInt(oneSide) >= 500 && parseInt(oneSide) < 600) gate.dlc.push('tidesOfAvarice');
-          if (parseInt(oneSide) >= 700 && parseInt(oneSide) < 700) gate.dlc.push('kingdomsEnd');
+          if (parseInt(oneSide) < 100) cluster.dlc.add('base');
+          if (parseInt(oneSide) >= 400 && parseInt(oneSide) < 500) gate.dlc.add('splitVendetta');
+          if (parseInt(oneSide) >= 100 && parseInt(oneSide) < 200) gate.dlc.add('cradleOfHumanity');
+          if (parseInt(oneSide) >= 500 && parseInt(oneSide) < 600) gate.dlc.add('tidesOfAvarice');
+          if (parseInt(oneSide) >= 600 && parseInt(oneSide) < 700) gate.dlc.add('kingdomEnd');
 
-          if (parseInt(otherSide) < 100) cluster.dlc.push('base');
-          if (parseInt(otherSide) >= 400 && parseInt(otherSide) < 500) gate.dlc.push('splitVendetta');
-          if (parseInt(otherSide) >= 100 && parseInt(otherSide) < 200) gate.dlc.push('cradleOfHumanity');
-          if (parseInt(otherSide) >= 500 && parseInt(otherSide) < 600) gate.dlc.push('tidesOfAvarice');
-          if (parseInt(otherSide) >= 700 && parseInt(otherSide) < 700) gate.dlc.push('kingdomsEnd');
+          if (parseInt(otherSide) < 100) cluster.dlc.add('base');
+          if (parseInt(otherSide) >= 400 && parseInt(otherSide) < 500) gate.dlc.add('splitVendetta');
+          if (parseInt(otherSide) >= 100 && parseInt(otherSide) < 200) gate.dlc.add('cradleOfHumanity');
+          if (parseInt(otherSide) >= 500 && parseInt(otherSide) < 600) gate.dlc.add('tidesOfAvarice');
+          if (parseInt(otherSide) >= 600 && parseInt(otherSide) < 700) gate.dlc.add('kingdomEnd');
+
+          gate.dlc = Array.from(gate.dlc);
+          gate.position = {
+            x: Math.round(parseInt(gate.position.x * 1000, 10)) / 1000,
+            z: Math.round(parseInt(gate.position.z * 1000, 10)) / 1000,
+          };
 
           if (!gates[`${oneSide}${otherSide}`] && !gates[`${otherSide}${oneSide}`]) {
             gates[`${oneSide}${otherSide}`] = {
@@ -917,10 +991,16 @@ export async function getMap(sourceBasePath, translations) {
   });
 
   map.forEach((cluster) => {
+    cluster.dlc = Array.from(cluster.dlc);
+
     cluster.sectors.forEach((sector) =>
       sector.zones.forEach((zone) => {
         zone.gates.forEach((gate) => {
-          const connectionBetween = gate.name.toLowerCase().replace('connection_clustergate', '');
+          let connectionBetween = gate.name.toLowerCase().replace('connection_clustergate', '');
+
+          // special case for heretics end gate
+          connectionBetween = connectionBetween.replace('601b', '601');
+
           const oneSide = connectionBetween.split('to')[1] || '666';
           const otherSide = connectionBetween.split('to')[0];
 

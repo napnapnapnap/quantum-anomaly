@@ -128,7 +128,6 @@ const PreviewControls = ({
         checked={displayDlcs[dlcKey]}
         key={dlcKey}
         className="x4-ships__dlc-checkbox"
-        isDisabled={dlcKey === 'kingdomsEnd'}
         handleInputChange={(e) =>
           setDisplayDlcs({
             ...displayDlcs,

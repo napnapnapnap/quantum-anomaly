@@ -19,8 +19,10 @@ export async function getTerraforming(resourcesPath, translations, wares) {
     'libraries',
     'terraforming.xml'
   );
+  const pathToBoronTerraform = path.join(resourcesPath, 'extensions', 'ego_dlc_boron', 'libraries', 'terraforming.xml');
   const splitParsed = await parser.parseStringPromise(await fs.readFile(pathToSplitTerraform));
   const terranParsed = await parser.parseStringPromise(await fs.readFile(pathToTerranTerraform));
+  const boronParsed = await parser.parseStringPromise(await fs.readFile(pathToBoronTerraform));
 
   if (splitParsed.diff.add.sel === '/terraforming/projects')
     parsed.terraforming.projects.project = parsed.terraforming.projects.project.concat(splitParsed.diff.add.project);
@@ -28,11 +30,22 @@ export async function getTerraforming(resourcesPath, translations, wares) {
   if (terranParsed.diff.add.sel === '/terraforming/projects')
     parsed.terraforming.projects.project = parsed.terraforming.projects.project.concat(terranParsed.diff.add.project);
 
+  if (boronParsed.diff.add[1].sel === '/terraforming/projects')
+    parsed.terraforming.projects.project = parsed.terraforming.projects.project.concat(boronParsed.diff.add[1].project);
+
   const result = {
     stats: parsed.terraforming.stats.stat,
     projectgroups: parsed.terraforming.projectgroups.projectgroup,
     projects: parsed.terraforming.projects.project,
+    waresHighest: {},
+    planets: terraform.planets,
   };
+
+  const recommendedProjectsSet = new Set();
+  Object.values(result.planets).forEach((planet) =>
+    planet.recommendedPath.forEach((project) => recommendedProjectsSet.add(project))
+  );
+  const recommendedProjects = [...recommendedProjectsSet];
 
   result.stats = result.stats.map((stat) => {
     stat.name = translateRecursive(stat.name, translations);
@@ -82,7 +95,12 @@ export async function getTerraforming(resourcesPath, translations, wares) {
     }
 
     // Calculate actual quantities needed, fill each ware amount until you reach price, use max price per ware
-    if (project.name !== 'Fund Start-Up' && project.group !== 'events' && project.group !== 'xenon') {
+    if (
+      project.id !== 'eco_bank_supply' &&
+      project.id !== 'bio_reconstruct_genes' &&
+      project.group !== 'events' &&
+      project.group !== 'xenon'
+    ) {
       let price = project.resources.price;
       while (price > 0) {
         project.resources.wares.forEach((ware) => {
@@ -96,25 +114,64 @@ export async function getTerraforming(resourcesPath, translations, wares) {
           ware.totalCost = wares.ware[ware.ware].price.max * ware.quantity;
         });
       }
-    } else if (project.name === 'Fund Start-Up') {
+    } else if (project.id === 'eco_bank_supply' || project.id === 'bio_reconstruct_genes') {
       project.resources.wares = [
         {
           ware: 'Credits',
+          group: '',
           amount: 1,
-          quantity: '0.1% of your account',
+          quantity: project.resources.price,
+          volume: 0,
+          totalCost: project.resources.price,
+          pricePerUnit: 1,
         },
       ];
+    }
+
+    if (
+      project.id !== 'eco_bank_supply' &&
+      project.id !== 'bio_reconstruct_genes' &&
+      project.group !== 'events' &&
+      project.group !== 'xenon' &&
+      recommendedProjects.indexOf(project.id) !== -1
+    ) {
+      project.resources.wares.forEach((ware) => {
+        if (!result.waresHighest[ware.ware])
+          result.waresHighest[ware.ware] = {
+            quantity: ware.quantity,
+            volume: ware.volume,
+            project: project.id,
+          };
+        else {
+          if (result.waresHighest[ware.ware].quantity < ware.quantity) {
+            result.waresHighest[ware.ware] = {
+              quantity: ware.quantity,
+              volume: ware.volume,
+              project: project.id,
+            };
+          }
+        }
+      });
     }
 
     return project;
   });
 
   const projects = result.projects;
+
   result.projects = {};
   projects.forEach((project) => {
     result.projects[project.id] = project;
   });
 
-  result.planets = terraform.planets;
+  const recommendedProjectsTotal = [];
+  Object.values(result.planets).forEach((planet) =>
+    planet.recommendedPath.forEach((project) => recommendedProjectsTotal.push(project))
+  );
+
+  Object.values(result.waresHighest).forEach((ware) => {
+    ware.projectCount = recommendedProjectsTotal.filter((project) => project === ware.project).length;
+  });
+
   return result;
 }

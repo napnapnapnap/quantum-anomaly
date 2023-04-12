@@ -1,0 +1,124 @@
+{
+  "id": "ship_bor_s_fighter_01_a_macro",
+  "class": "ship_s",
+  "race": "bor",
+  "name": "Mako",
+  "basename": "Mako",
+  "description": ")(Menelaus Era Ship Building)",
+  "shortvariation": "BV",
+  "variation": "Base Variation",
+  "type": "fighter",
+  "radarRange": "40000",
+  "docksize": "dock_s",
+  "hull": 3100,
+  "shield": {
+    "max": 0,
+    "rate": 0,
+    "delay": 0
+  },
+  "speed": {
+    "forward": 0,
+    "acceleration": 0,
+    "boost": 0,
+    "travel": 0,
+    "pitch": 0,
+    "roll": 0,
+    "yaw": 0
+  },
+  "armaments": {
+    "weapons": {
+      "extralarge": 0,
+      "large": 0,
+      "medium": 0,
+      "small": 2
+    },
+    "turrets": {
+      "extralarge": 0,
+      "large": 0,
+      "medium": 0,
+      "small": 0
+    }
+  },
+  "storage": {
+    "unit": null,
+    "missile": 26,
+    "people": 2,
+    "countermeasure": 4,
+    "deployable": 50,
+    "capacity": 270,
+    "capacityType": "container"
+  },
+  "mass": 6.672,
+  "inertia": {
+    "pitch": 0.617,
+    "yaw": 0.617,
+    "roll": 0.475
+  },
+  "drag": {
+    "forward": 2.543,
+    "reverse": 10.172,
+    "horizontal": 3.703,
+    "vertical": 3.703,
+    "pitch": 1.904,
+    "yaw": 1.904,
+    "roll": 1.904
+  },
+  "thrusters": {
+    "size": "small"
+  },
+  "shipstorage": {
+    "dock_m": 0,
+    "dock_s": 0
+  },
+  "dlc": "kingdomEnd",
+  "turrets": [],
+  "weapons": [
+    {
+      "quantity": 1,
+      "size": "small",
+      "missile": true
+    },
+    {
+      "quantity": 1,
+      "size": "small",
+      "missile": true
+    }
+  ],
+  "shields": {
+    "size": "small",
+    "quantity": 1
+  },
+  "engines": {
+    "size": "small",
+    "quantity": 2
+  },
+  "specialExit": false,
+  "price": {
+    "min": 110527,
+    "average": 133165,
+    "max": 155803
+  },
+  "production": {
+    "time": 12,
+    "amount": "1",
+    "method": "default",
+    "name": "{20206,101}",
+    "primary": {
+      "ware": [
+        {
+          "ware": "energycells",
+          "amount": "65"
+        },
+        {
+          "ware": "hullparts",
+          "amount": "118"
+        },
+        {
+          "ware": "water",
+          "amount": "25"
+        }
+      ]
+    }
+  },
+  "manufacturer": "boron"
+}

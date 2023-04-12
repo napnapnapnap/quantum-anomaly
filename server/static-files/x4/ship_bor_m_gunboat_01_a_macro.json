@@ -1,0 +1,152 @@
+{
+  "id": "ship_bor_m_gunboat_01_a_macro",
+  "class": "ship_m",
+  "race": "bor",
+  "name": "Thresher",
+  "basename": "Thresher",
+  "description": ")(Menelaus Era Ship Building)",
+  "shortvariation": "BV",
+  "variation": "Base Variation",
+  "type": "gunboat",
+  "radarRange": "40000",
+  "docksize": "dock_m",
+  "hull": 10900,
+  "shield": {
+    "max": 0,
+    "rate": 0,
+    "delay": 0
+  },
+  "speed": {
+    "forward": 0,
+    "acceleration": 0,
+    "boost": 0,
+    "travel": 0,
+    "pitch": 0,
+    "roll": 0,
+    "yaw": 0
+  },
+  "armaments": {
+    "weapons": {
+      "extralarge": 0,
+      "large": 0,
+      "medium": 1,
+      "small": 0
+    },
+    "turrets": {
+      "extralarge": 0,
+      "large": 0,
+      "medium": 8,
+      "small": 0
+    }
+  },
+  "storage": {
+    "unit": null,
+    "missile": 88,
+    "people": 8,
+    "countermeasure": 8,
+    "deployable": 100,
+    "capacity": 850,
+    "capacityType": "container"
+  },
+  "mass": 32.713,
+  "inertia": {
+    "pitch": 6.827,
+    "yaw": 6.827,
+    "roll": 5.461
+  },
+  "drag": {
+    "forward": 4.405,
+    "reverse": 17.619,
+    "horizontal": 12.611,
+    "vertical": 12.611,
+    "pitch": 10.678,
+    "yaw": 10.678,
+    "roll": 10.678
+  },
+  "thrusters": {
+    "size": "medium"
+  },
+  "shipstorage": {
+    "dock_m": 0,
+    "dock_s": 0
+  },
+  "dlc": "kingdomEnd",
+  "turrets": [
+    {
+      "quantity": 1,
+      "size": "medium"
+    },
+    {
+      "quantity": 1,
+      "size": "medium"
+    },
+    {
+      "quantity": 1,
+      "size": "medium"
+    },
+    {
+      "quantity": 1,
+      "size": "medium"
+    },
+    {
+      "quantity": 1,
+      "size": "medium"
+    },
+    {
+      "quantity": 1,
+      "size": "medium"
+    },
+    {
+      "quantity": 1,
+      "size": "medium"
+    },
+    {
+      "quantity": 1,
+      "size": "medium"
+    }
+  ],
+  "weapons": [
+    {
+      "quantity": 1,
+      "size": "medium",
+      "missile": true
+    }
+  ],
+  "shields": {
+    "size": "medium",
+    "quantity": 2
+  },
+  "engines": {
+    "size": "medium",
+    "quantity": 2
+  },
+  "specialExit": true,
+  "price": {
+    "min": 519734,
+    "average": 626185,
+    "max": 732637
+  },
+  "production": {
+    "time": 35,
+    "amount": "1",
+    "method": "default",
+    "name": "{20206,101}",
+    "primary": {
+      "ware": [
+        {
+          "ware": "energycells",
+          "amount": "140"
+        },
+        {
+          "ware": "hullparts",
+          "amount": "510"
+        },
+        {
+          "ware": "water",
+          "amount": "308"
+        }
+      ]
+    }
+  },
+  "manufacturer": "boron"
+}
