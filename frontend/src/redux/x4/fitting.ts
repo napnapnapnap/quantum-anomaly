@@ -21,9 +21,11 @@ export interface X4ShipInterface {
   dlc: string;
   engines: {
     quantity: number;
+    size: string;
   };
   shields: {
     quantity: number;
+    size: string;
   };
   inertia: {
     pitch: number;
@@ -98,6 +100,8 @@ export interface X4ShipInterface {
     max: number;
   };
   shipstorage: {
+    pads_m: number;
+    pads_s: number;
     dock_m: number;
     dock_s: number;
   };
@@ -107,10 +111,14 @@ export interface X4ShipInterfaceWithTradeAttributes extends X4ShipInterface {
   tradeIndex: number;
   accelerationTime: number;
   distanceToMaxTravelSpeed: number;
+  runsOutOfDistance: boolean;
   travelTime: number;
   tradeScore: number;
   isTrader: boolean;
-  isMiner: boolean;
+  isTraderExpanded: boolean;
+  isSolidMiner: boolean;
+  isLiquidMiner: boolean;
+  creditsPerHour: number;
 }
 
 export interface X4ShipsInterface {

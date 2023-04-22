@@ -47,6 +47,14 @@ export async function getTranslations(resourcesPath) {
     20227: pages[20227],
     20208: pages[20208],
     20233: pages[20233],
+    20115: pages[20115],
+    20113: pages[20113],
+    20226: pages[20226],
+    20007: pages[20007],
+    20114: pages[20114],
+    20216: pages[20216],
+    20108: pages[20108],
+    30251: pages[30251],
   };
 }
 
@@ -82,5 +90,13 @@ export function translateRecursive(string, translations) {
 }
 
 export function translateRecursiveTrim(string, translations) {
-  return translateRecursive(string, translations).replace(/\((.*?)\)/g, '');
+  return (
+    translateRecursive(string, translations)
+      .replace(/\\\(NT\\\)/g, 'NT')
+      .replace(/\)\)/g, ')')
+      .replace(/\((.*?)\)/g, '')
+      .replace(/\\\\ /g, '')
+      .replace(/\\\\\./g, '')
+      .replace(/undefined/, '') || null
+  );
 }

@@ -20,6 +20,7 @@ interface InputProps {
   iconName?: string | null;
   isRequired?: boolean | null;
   isDisabled?: boolean;
+  isInlineLabel?: boolean;
 }
 
 export default function Input({
@@ -39,6 +40,7 @@ export default function Input({
   iconName,
   isRequired,
   isDisabled,
+  isInlineLabel,
 }: InputProps) {
   const [showPassword] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -50,6 +52,7 @@ export default function Input({
         'input-control--with-icon': iconName,
         'input-control--error': formError,
         'input-control--disabled': isDisabled,
+        'input-control--inline-label': isInlineLabel,
       })}
     >
       {label && <span className="input-control__text">{label}</span>}

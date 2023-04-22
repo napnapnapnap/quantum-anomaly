@@ -4,7 +4,7 @@
   "race": "bor",
   "name": "Thresher",
   "basename": "Thresher",
-  "description": ")(Menelaus Era Ship Building)",
+  "description": "Developed by Faded Dreams Defences as their last ship of the Menelaus Era, the Thresher gunboat saw its maiden voyage in 795 NT. Even while production was still ramping up, the ship had already proved itself on various battlefields, defending convoys and mining operations against Split, Xenon and sometimes pirate incursions. The Royal Boron Navy, as well as various transport and mining corporations, soon valued the Thresher as a competent escort ship, and increasingly deployed it throughout the Queendom.\\n\\nMenelaus Era ships were built between 785 NT and 798 NT as a second wave of more autonomous ships in preparation for the Jump Gate shutdowns. To reduce flight mass, the ships are mostly filled with air, requiring Boron crew to wear protective suits. The new Menelaus cabinet allowed corporations, working under a government contract, access to various classified technological advancements made by Royal Boron Military Defence research facilities. The ships designed with those technologies are less sturdy than the first wave of Atreus Era ships, but more manoeuvrable.",
   "shortvariation": "BV",
   "variation": "Base Variation",
   "type": "gunboat",
@@ -67,6 +67,8 @@
     "size": "medium"
   },
   "shipstorage": {
+    "pads_m": 0,
+    "pads_s": 0,
     "dock_m": 0,
     "dock_s": 0
   },

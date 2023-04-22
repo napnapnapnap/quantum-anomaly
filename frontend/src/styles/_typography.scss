@@ -25,6 +25,10 @@ ul {
   margin-top: 1rem;
 }
 
+.mb-1 {
+  margin-bottom: 1rem;
+}
+
 .bold {
   font-weight: bold;
 }
@@ -185,7 +189,7 @@ p, li, code, th, td {
   color: var(--color-text) !important;
   opacity: 1 !important;
   border-radius: 8px !important;
-  box-shadow: 0 0 10px 1px var(--color-text) !important;
+  box-shadow: 0 0 3px 1px var(--color-text) !important;
   border: 2px solid var(--color-border-light);
   font-size: $font-size-base !important;
   line-height: $base-line-height !important;

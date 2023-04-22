@@ -19,6 +19,8 @@ body {
   --color-content-background: #FFFFFF;
   --color-content-background-hover: #EEEEEE;
 
+  --color-action: #000051;
+
   --color-text: #000000;
   --color-mutted: #999;
   --color-link: #1957d8;
@@ -26,10 +28,16 @@ body {
   --color-link-secondary: #999;
   --color-link-secondary-hover: #999;
   --color-border-light: #ddd;
+  --color-border-dark: #999;
 
+  --color-table-header-background: #DDD;
   --color-table-background: #FFFFFF;
-  --color-table-background-alternate: #EEE;
-  --color-table-background-hover: #DDD;
+  --color-table-background-alternate: #F6F6F6;
+  --color-table-background-hover: #F0F0FF;
+  --color-table-background-active: #E0E0FF;
+
+  --color-overlay-background-light: rgba(250, 250, 250, 0.9);
+  --color-overlay-background-dark: rgba(50, 50, 50, 0.9);
 
   --gradient-primary: linear-gradient(to bottom left, #FFF 0%, rgba(204, 204, 204, 0.2) 50%, #FFF 100%);
 }
@@ -40,20 +48,31 @@ body {
     --color-content-background: #0e1116;
     --color-content-background-hover: #333333;
 
+    --color-action: #000051;
+
     --color-text: #cad1d8;
     --color-mutted: #999;
     --color-link: #69a7f8;
     --color-link-hover: #69a7f8;
     --color-link-secondary: #999;
     --color-link-secondary-hover: #999;
-    --color-border-light: #ddd;
+    --color-border-light: #999;
+    --color-border-dark: #666;
 
-
+    --color-table-header-background: #000;
     --color-table-background: #121212;
     --color-table-background-alternate: #222222;
-    --color-table-background-hover: #2f2f2f;
+    --color-table-background-hover: #30303F;
+    --color-table-background-active: #45454F;
+
+    --color-overlay-background-light: rgba(50, 50, 50, 0.9);
+    --color-overlay-background-dark: rgba(50, 50, 50, 0.9);
 
     --gradient-primary: linear-gradient(to bottom left, #222 0%, rgba(204, 204, 204, 0.2) 50%, #222 100%);
+
+    .checkbox, .radio {
+      filter: grayscale(0.8);
+    }
   }
 }
 
@@ -91,7 +110,7 @@ body {
   cursor: pointer;
 
   &--hidden {
-    left: -4px;
+    left: -14px;
     padding: 4px 8px;
   }
 
@@ -179,4 +198,8 @@ img {
   max-width: 100%;
   max-height: 100%;
   width: 100%;
+}
+
+b {
+  font-weight: bold;
 }

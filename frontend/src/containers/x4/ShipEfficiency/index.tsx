@@ -1,5 +1,7 @@
+import clsx from 'clsx';
 import React, { useEffect, useState } from 'react';
 
+import { SortIndicator } from '../../../components/Helpers';
 import Checkbox from '../../../components/Inputs/Checkbox';
 import Input from '../../../components/Inputs/Input';
 import Radio from '../../../components/Inputs/Radio';
@@ -14,125 +16,190 @@ import {
   getX4Equipment,
   getX4Ships,
 } from '../../../redux/x4/fitting';
+import { getX4Wares } from '../../../redux/x4/wares';
 import {
   ActiveEquipment,
   getHighestAvailableEngineId,
   initialActiveEquipment,
   initialStateDisplayClass,
 } from '../Ships/x4-ship-helpers';
-import { applyEngineToTheShip } from '../ship-fitting-tool';
+import { applyEngineToTheShip, timeToCoverDistance } from '../ship-fitting-tool';
 import { sortShips } from '../ship-sorter';
-import { formatDecimal, formatNumber, maps, separateWords, translateRace } from '../x4-helpers';
+import {
+  formatDecimal,
+  formatNumber,
+  isLargeShip,
+  isLiquidMiner,
+  isSolidMiner,
+  isTradingShip,
+  isTradingShipExpanded,
+  maps,
+  separateWords,
+  translateRace,
+} from '../x4-helpers';
 import Description from './Description';
 import './ShipEfficiency.scss';
 
-const LARGE_SHIP_EXTRA_TRAVEL = 10;
+const LARGE_SHIP_EXTRA_TRAVEL_DISTANCE_WITHOUT_TRAVEL_DRIVE = 10000; // in meters
+
+interface TripProfileInterface {
+  distance: number;
+  gates: number;
+  percentOfHighway: number;
+  highwaySpeed: number;
+  wareId: string;
+  shipType: 'trade' | 'trade-exp' | 'solid' | 'liquid' | string;
+}
 
 const X4ShipEfficiency = () => {
   const dispatch = useAppDispatch();
   const { ships, equipment } = useAppSelector((state) => state.x4Fitting);
+  const { wares } = useAppSelector((state) => state.x4Wares);
+
+  const [tripProfile, setTripProfile] = useState<TripProfileInterface>({
+    distance: 1000, // in km
+    gates: 4,
+    percentOfHighway: 85,
+    highwaySpeed: 13500, // in meters/s
+    wareId: 'none',
+    shipType: 'container',
+  });
 
   const [shipsToDisplay, setShipsToDisplay] = useState<X4ShipInterfaceWithTradeAttributes[]>([]);
   const [displayClass, setDisplayClass] = useState<{ [key in X4ShipClassEnum]: boolean }>(initialStateDisplayClass);
-  const [distance, setDistance] = useState(1000);
-  const [jumpGates, setJumpGates] = useState(4);
-  const [percentHighway, setPercentHighway] = useState(80);
-  const [highwaySpeed, setHighwaySpeed] = useState(13500);
-  const [highestScore, setHighestScore] = useState(0);
-  const [fastestTrip, setFastestTrip] = useState(0);
+  const [selectedShip, setSelectedShip] = useState<X4ShipInterfaceWithTradeAttributes | null>(null);
   const [sort, setSort] = useState('tradeScore');
-  const [type, setType] = useState('traders');
+  const [chassisMod, setChassisMod] = useState('none');
+  const [travelMod, setTravelMod] = useState('none');
 
   const [activeEquipment, setActiveEquipment] = useState<ActiveEquipment>(initialActiveEquipment);
 
   const sortBy = (arg: string) => setSort(arg === sort ? `-${arg}` : arg);
 
   useEffect(() => {
-    if (!ships) dispatch(getX4Ships()).then(() => dispatch(getX4Equipment()));
-  }, [dispatch, ships]);
+    if (!ships) dispatch(getX4Ships());
+    if (ships && !equipment) dispatch(getX4Equipment());
+    if (ships && equipment && !wares) dispatch(getX4Wares());
+  }, [dispatch, ships, equipment, wares]);
 
   useEffect(() => {
-    if (ships && equipment) {
-      let shipCollection: X4ShipInterfaceWithTradeAttributes[] = [];
-      let fastestTrip = 10000000;
+    setTripProfile({
+      ...tripProfile,
+      wareId: 'none',
+    });
+  }, [tripProfile.shipType]);
 
-      const extraNormalTravelDistance = jumpGates * LARGE_SHIP_EXTRA_TRAVEL;
-      const highwayDistance = (distance * percentHighway) / 100;
+  useEffect(() => {
+    if (ships && equipment && wares) {
+      const accelerationCounts = tripProfile.gates + 1;
+
+      let shipCollection: X4ShipInterfaceWithTradeAttributes[] = [];
+      let fastestTripInSeconds = 10000000;
+      let bestTradeScore = 0;
+      let selectedShip: X4ShipInterfaceWithTradeAttributes | null = null;
 
       Object.values(ships).forEach((ship: X4ShipInterface, index) => {
         const modifiedShip: X4ShipInterfaceWithTradeAttributes = {
           ...ship,
+          name: ship.name.replace(/ \(Solid\)/, ' Solid').replace(/ \(Gas\)/, ' Gas'),
           accelerationTime: 0,
           distanceToMaxTravelSpeed: 0,
+          runsOutOfDistance: false,
           travelTime: 0,
           tradeScore: 0,
           tradeIndex: 0,
-          isTrader: false,
-          isMiner: false,
+          isTrader: isTradingShip(ship),
+          isTraderExpanded: isTradingShipExpanded(ship),
+          isSolidMiner: isSolidMiner(ship),
+          isLiquidMiner: isLiquidMiner(ship),
+          creditsPerHour: 0,
         };
 
-        if (
-          modifiedShip.type === 'freighter' ||
-          modifiedShip.type === 'transporter' ||
-          modifiedShip.type === 'courier' ||
-          modifiedShip.type === 'resupplier' ||
-          modifiedShip.type === 'carrier' ||
-          modifiedShip.type === 'scavenger' ||
-          modifiedShip.type === 'tug' ||
-          modifiedShip.type === 'compactor'
-        ) {
-          modifiedShip.isTrader = true;
-        }
-        if (modifiedShip.type === 'largeminer' || modifiedShip.type === 'miner') {
-          modifiedShip.isMiner = true;
-        }
-
-        if (!modifiedShip.isTrader && !modifiedShip.isMiner) return;
-        if (!modifiedShip.isTrader && !modifiedShip.isMiner) return;
         if (!displayClass[modifiedShip.class]) return;
+        else if (
+          !modifiedShip.isTrader &&
+          !modifiedShip.isTraderExpanded &&
+          !modifiedShip.isSolidMiner &&
+          !modifiedShip.isLiquidMiner
+        )
+          return;
+        else if (!modifiedShip.isSolidMiner && tripProfile.shipType === 'solid') return;
+        else if (!modifiedShip.isLiquidMiner && tripProfile.shipType === 'liquid') return;
+        else if (!modifiedShip.isTrader && tripProfile.shipType === 'container') return;
+        else if (!modifiedShip.isTraderExpanded && tripProfile.shipType === 'container-exp') return;
 
-        if (modifiedShip.isMiner && modifiedShip.storage.capacityType === 'solid' && type !== 'mineral') return;
-        if (modifiedShip.isMiner && modifiedShip.storage.capacityType === 'liquid' && type !== 'gas') return;
-        if (modifiedShip.isTrader && type !== 'traders') return;
-
-        const isLargeShip = modifiedShip.class === 'ship_xl' || modifiedShip.class === 'ship_l';
+        if (tripProfile.shipType === 'container') {
+          if (ship.id === 'ship_gen_m_yacht_01_a_macro') return;
+          else if (ship.id === 'ship_par_m_trans_container_03_a_macro') return;
+          else if (ship.id === 'ship_pir_s_trans_condensate_01_a_macro') return;
+        }
 
         const engineId = getHighestAvailableEngineId(modifiedShip, activeEquipment);
-        applyEngineToTheShip(modifiedShip, equipment, engineId);
+        applyEngineToTheShip(modifiedShip, equipment, engineId, [travelMod, chassisMod]);
         modifiedShip.outfit = { engines: engineId, thrusters: '', shields: '' };
-
         modifiedShip.accelerationTime = modifiedShip.speed.forward / modifiedShip.speed.acceleration;
 
+        const normalSpeed = modifiedShip.speed.forward;
+        const travelSpeed = modifiedShip.speed.travel.speed;
         const timeToChargeTravelDrive = modifiedShip.speed.travel.charge;
         const timeToAccelerateToTravelSpeed = modifiedShip.speed.travel.attack;
         const travelAcceleration = modifiedShip.speed.travel.speed / timeToAccelerateToTravelSpeed;
 
-        const distanceCoveredWhileAccelerating =
+        const distanceNeededToAccelerateToFullSpeed =
           (1 / 2) * travelAcceleration * Math.pow(timeToAccelerateToTravelSpeed, 2);
+        let distanceNeededToTravel = (tripProfile.distance * 1000) / (tripProfile.gates + 1);
 
-        // Remove highways for small ships. Remove distance spent accelerating at each gate
-        const adjustedDistance =
-          (isLargeShip ? distance * 1000 : (distance - highwayDistance) * 1000) -
-          distanceCoveredWhileAccelerating * jumpGates;
-        const travelSpeed = modifiedShip.speed.travel.speed;
-        const normalSpeed = modifiedShip.speed.forward;
+        // Start by setting total trip time as minimum time needed to active travel drive
+        let totalTripTime = timeToChargeTravelDrive * accelerationCounts;
 
-        // Large ships have to move around the gate.
-        // Small ships still need to use the highway that was removed in adjusted distance
-        const extraDistance = isLargeShip ? extraNormalTravelDistance * 1000 : highwayDistance * 1000;
-        const extraDistanceTime = isLargeShip ? extraDistance / normalSpeed : extraDistance / highwaySpeed;
+        // Remove the highways from distance on small and medium ships and add time that would be spent on highways
+        if (!isLargeShip(ship)) {
+          distanceNeededToTravel =
+            (tripProfile.distance * 1000) / (tripProfile.gates + 1) -
+            ((tripProfile.distance * 1000) / (tripProfile.gates + 1)) * (tripProfile.percentOfHighway / 100);
+          totalTripTime +=
+            (((tripProfile.distance * 1000) / (tripProfile.gates + 1)) * (tripProfile.percentOfHighway / 100)) /
+            tripProfile.highwaySpeed;
+        }
 
-        modifiedShip.travelTime = adjustedDistance / travelSpeed + extraDistanceTime;
+        // Large ships need extra time around gates
+        if (isLargeShip(ship))
+          totalTripTime += (tripProfile.gates * LARGE_SHIP_EXTRA_TRAVEL_DISTANCE_WITHOUT_TRAVEL_DRIVE) / normalSpeed;
 
-        // At the end, we need to add the time that all ships spent trying to reach their max speed
-        modifiedShip.travelTime =
-          modifiedShip.travelTime + (timeToChargeTravelDrive + timeToAccelerateToTravelSpeed) * jumpGates;
+        // If the segment is smaller than distance needed to accelerate to full speed, calculate how much time
+        // ship will need to actually cover that distance
+        // Otherwise just reuse already calculated time needed to reach full speed and take away the distance covered
+        if (distanceNeededToTravel < distanceNeededToAccelerateToFullSpeed) {
+          totalTripTime += timeToCoverDistance(distanceNeededToTravel, travelAcceleration) * accelerationCounts;
+          modifiedShip.runsOutOfDistance = true;
+        } else
+          totalTripTime +=
+            (timeToAccelerateToTravelSpeed +
+              (distanceNeededToTravel - distanceNeededToAccelerateToFullSpeed) / travelSpeed) *
+            accelerationCounts;
 
+        modifiedShip.travelTime = totalTripTime;
         modifiedShip.tradeScore = modifiedShip.storage.capacity / modifiedShip.travelTime;
-        modifiedShip.distanceToMaxTravelSpeed = distanceCoveredWhileAccelerating;
+        modifiedShip.distanceToMaxTravelSpeed = distanceNeededToAccelerateToFullSpeed;
         modifiedShip.tradeIndex = index;
 
-        if (modifiedShip.travelTime < fastestTrip) fastestTrip = modifiedShip.travelTime;
+        if (tripProfile.wareId !== 'none') {
+          const profitPerUnit =
+            parseInt(wares.transport[tripProfile.wareId].price.average) * 1.25 -
+            parseInt(wares.transport[tripProfile.wareId].price.average) * 0.75;
+
+          const unitsMovedPerHour =
+            (modifiedShip.tradeScore * 60 * 60) / parseInt(wares.transport[tripProfile.wareId].volume);
+
+          modifiedShip.creditsPerHour = unitsMovedPerHour * profitPerUnit;
+        }
+
+        if (modifiedShip.travelTime < fastestTripInSeconds) fastestTripInSeconds = modifiedShip.travelTime;
+
+        if (modifiedShip.tradeScore > bestTradeScore) {
+          bestTradeScore = modifiedShip.tradeScore;
+          selectedShip = modifiedShip;
+        }
 
         shipCollection.push(modifiedShip);
       });
@@ -141,8 +208,7 @@ const X4ShipEfficiency = () => {
       shipCollection.forEach((ship, index) => (ship.tradeIndex = index + 1));
 
       if (shipCollection.length > 0) {
-        setHighestScore(shipCollection[0].tradeScore);
-        setFastestTrip(fastestTrip);
+        setSelectedShip(selectedShip);
       }
 
       setShipsToDisplay(sortShips(shipCollection, sort) as X4ShipInterfaceWithTradeAttributes[]);
@@ -158,113 +224,128 @@ const X4ShipEfficiency = () => {
         keywords: [...new Set(shipNames)],
       });
     }
-  }, [ships, equipment, displayClass, activeEquipment, distance, jumpGates, percentHighway, highwaySpeed, sort, type]);
+  }, [
+    ships,
+    tripProfile.distance,
+    tripProfile.gates,
+    tripProfile.percentOfHighway,
+    tripProfile.shipType,
+    tripProfile.wareId,
+    equipment,
+    displayClass,
+    activeEquipment,
+    sort,
+    wares,
+    travelMod,
+    chassisMod,
+  ]);
 
   return (
     <LayoutBase>
       <div className="x4-efficiency">
         <h1>X4 Ship Efficiency</h1>
-        <p className="text--small text--muted">Explanation of values is under the table</p>
-
-        <div className="flex">
-          <div className="x4-efficiency__inputs">
-            <p className="text--bold">Variables used for calculations</p>
+        <div className="x4-efficiency__controls">
+          <div>
+            <p className="text--bold">Trip profile settings to use</p>
             <Input
               name="distance"
               type="number"
-              value={distance}
+              value={tripProfile.distance}
               min={10}
-              max={10000}
-              label="km of total whole trip"
-              handleInputChange={(e) => setDistance(parseInt(e.target.value, 10))}
+              max={5000}
+              label="Total trip lenght:"
+              isInlineLabel
+              handleInputChange={(e) => setTripProfile({ ...tripProfile, distance: parseInt(e.target.value, 10) })}
             />
             <Input
               name="jumpGates"
               type="number"
-              value={jumpGates}
+              value={tripProfile.gates}
               min={0}
               max={15}
-              label="jump gates"
-              handleInputChange={(e) => setJumpGates(parseInt(e.target.value, 10))}
+              label="Jump gates:"
+              isInlineLabel
+              handleInputChange={(e) => setTripProfile({ ...tripProfile, gates: parseInt(e.target.value, 10) })}
             />
             <Input
               name="percentHighway"
               type="number"
-              value={percentHighway}
+              value={tripProfile.percentOfHighway}
               min={0}
               max={100}
-              label="percent of travel on highway"
-              handleInputChange={(e) => setPercentHighway(parseInt(e.target.value, 10))}
+              label="Highway percentage:"
+              isInlineLabel
+              handleInputChange={(e) =>
+                setTripProfile({ ...tripProfile, percentOfHighway: parseInt(e.target.value, 10) })
+              }
             />
-            <Input
-              name="highwaySpeed"
-              type="number"
-              value={highwaySpeed}
-              min={10000}
-              max={15000}
-              label="m/s highway speed"
-              handleInputChange={(e) => setHighwaySpeed(parseInt(e.target.value, 10))}
-            />
+            {wares && (
+              <>
+                <Select
+                  value={tripProfile.wareId}
+                  options={[
+                    { label: 'Empty cargohold', value: 'none' },
+                    ...Object.values(wares.transport)
+                      .filter((ware) => {
+                        return ware.transport === tripProfile.shipType.replace('-exp', '');
+                      })
+                      .map((ware) => ({ label: ware.name, value: ware.id })),
+                  ]}
+                  name="wareSelect"
+                  handleInputChange={(e) => setTripProfile({ ...tripProfile, wareId: e.target.value })}
+                />
+                <p className="text--bold text--xs text--muted">Buy at average -25%, sell at average +25%</p>
+              </>
+            )}
           </div>
           <div>
-            <p className="text--bold">Travel engines you want to use (when possible)</p>
+            <p className="text--bold">Ship engines to use</p>
             <Select
               value={activeEquipment.engine}
-              options={[
-                { value: 'engine_RACE_SIZE_allround_01_mk1', label: 'All-round Mk.1' },
-                { value: 'engine_RACE_SIZE_allround_01_mk2', label: 'All-round Mk.2' },
-                { value: 'engine_RACE_SIZE_allround_01_mk3', label: 'All-round Mk.3' },
-                { value: 'engine_RACE_SIZE_travel_01_mk1', label: 'Travel Mk.1' },
-                { value: 'engine_RACE_SIZE_travel_01_mk2', label: 'Travel Mk.2' },
-                { value: 'engine_RACE_SIZE_travel_01_mk3', label: 'Travel Mk.3' },
-                { value: 'engine_RACE_SIZE_combat_01_mk1', label: 'Combat Mk.1' },
-                { value: 'engine_RACE_SIZE_combat_01_mk2', label: 'Combat Mk.2' },
-                { value: 'engine_RACE_SIZE_combat_01_mk3', label: 'Combat Mk.3' },
-                { value: 'engine_RACE_SIZE_combat_01_mk4', label: 'Combat Mk.4' },
-              ]}
+              options={maps.engineOptions}
               name="engine-type"
-              label="Engine type"
               handleInputChange={(e) =>
                 setActiveEquipment({
                   ...activeEquipment,
-                  engineRace: e.target.value === 'engine_RACE_SIZE_combat_01_mk4' ? 'spl' : activeEquipment.engineRace,
                   engine: e.target.value,
                 })
               }
-            />{' '}
+            />
             <Select
               value={activeEquipment.engineRace}
-              options={[
-                { value: 'arg', label: 'Argon' },
-                { value: 'par', label: 'Paranid' },
-                { value: 'spl', label: 'Split' },
-                { value: 'tel', label: 'Teladi' },
-                { value: 'ter', label: 'Terran' },
-              ]}
+              options={maps.raceOptions}
               name="engine-race"
-              label="Engine race"
               handleInputChange={(e) =>
                 setActiveEquipment({
                   ...activeEquipment,
                   engineRace: e.target.value,
-                  engine:
-                    e.target.value !== 'spl' ? activeEquipment.engine.replace('mk4', 'mk3') : activeEquipment.engine,
                 })
               }
             />
-            <p className="text--bold mt-1">Traders or miners?</p>
-            <Radio
-              name="type"
-              value={type}
-              options={['traders', 'mineral', 'gas'].map((type) => ({ label: type, value: type }))}
-              handleInputChange={(e) => setType(e.target.value)}
+            <p className="text--xs text--muted text--bold">
+              If a given ship can't use requested configuration, it will use closest alternative available.
+            </p>
+          </div>
+          <div>
+            <p className="text--bold">Ship function and sizes</p>
+            <Select
+              value={tripProfile.shipType}
+              options={[
+                { label: 'Trading ships', value: 'container' },
+                { label: 'Trading ships expanded', value: 'container-exp' },
+                { label: 'Solid mining ships', value: 'solid' },
+                { label: 'Liquid mining ships', value: 'liquid' },
+              ]}
+              name="shipType"
+              handleInputChange={(e) => setTripProfile({ ...tripProfile, shipType: e.target.value })}
             />
-            <span className="text--capitalize">
+            <div className="x4-efficiency__ship-size">
               {Object.keys(maps.shipClass).map((shipClassKey) => (
                 <Checkbox
                   label={maps.shipClass[shipClassKey as keyof typeof displayClass].replace('extralarge', 'XL')}
                   name="shipClass"
                   checked={displayClass[shipClassKey as keyof typeof displayClass]}
+                  className="text--capitalize"
                   key={shipClassKey}
                   handleInputChange={(e) =>
                     setDisplayClass({
@@ -274,10 +355,68 @@ const X4ShipEfficiency = () => {
                   }
                 />
               ))}
-            </span>
-            <p className="text--bold text--smaller text--muted">
-              NOTICE: Miners are looked at as hauling ships, time to fill up is not considered
+            </div>
+            <p className="text--xs text--muted text--bold">
+              Miners are looked at only from hauling aspect, time to find field and fill up is not considered.
             </p>
+          </div>
+          <div>
+            <p className="text--bold">Mods (Experimental)</p>
+            <Radio
+              name="chassisMod"
+              value={chassisMod}
+              options={[
+                { value: 'none', label: 'No chassis modifications' },
+                { value: 'polisher', label: 'Polisher (-14% ship drag)' },
+              ]}
+              handleInputChange={(e) => setChassisMod(e.target.value)}
+            />
+            <Radio
+              name="travelMod"
+              value={travelMod}
+              labelClassName="mt-1"
+              options={[
+                { value: 'none', label: 'No engine modifications' },
+                { value: 'reaver', label: 'Reaver (+40% Engine travel thrust)' },
+              ]}
+              handleInputChange={(e) => setTravelMod(e.target.value)}
+            />
+            <p className="text--xs text--muted text--bold">
+              For the moment, you can only choose predefined "good" rolls.
+            </p>
+          </div>
+          <div className="mt-1">
+            <p className="text--bold">Per sector:</p>
+            <ul className="ul--packed">
+              <li className="text--smaller">
+                Small and medium ships will spend{' '}
+                <b>
+                  {formatNumber(
+                    (tripProfile.distance * 1000) / (tripProfile.gates + 1) / 1000 -
+                      (((tripProfile.distance * 1000) / (tripProfile.gates + 1)) *
+                        (tripProfile.percentOfHighway / 100)) /
+                        1000
+                  )}{' '}
+                  kilometers
+                </b>{' '}
+                to travel using their own engine power.
+              </li>
+              <li className="text--smaller">
+                Large ships will spend{' '}
+                <b>{formatNumber((tripProfile.distance * 1000) / (tripProfile.gates + 1) / 1000)} kilometers</b> to
+                travel using their own engine power.
+              </li>
+              <li className="text--smaller">
+                Rows with red distance value means that ship ran out of distance to accelerate fully.
+              </li>
+              <li className="text--smaller">
+                {selectedShip && (
+                  <>
+                    All values are compared against <b>{selectedShip.name}</b>.
+                  </>
+                )}
+              </li>
+            </ul>
           </div>
         </div>
 
@@ -286,46 +425,87 @@ const X4ShipEfficiency = () => {
             <thead>
               <tr>
                 <th onClick={() => sortBy('tradeScore')} className="number">
-                  #
+                  Rank
                 </th>
-                <th onClick={() => sortBy('name')}>Ship</th>
-                <th onClick={() => sortBy('class')} className="number">
-                  Size
+                <th onClick={() => sortBy('name')}>
+                  Ship <SortIndicator attribute="name" activeAttribute={sort} />
+                </th>
+                <th onClick={() => sortBy('class')}>
+                  Size <SortIndicator attribute="class" activeAttribute={sort} />
                 </th>
                 <th onClick={() => sortBy('storage')} className="number">
-                  Storage
+                  Storage <SortIndicator attribute="storage" activeAttribute={sort} />
                 </th>
                 <th onClick={() => sortBy('speed')} className="number">
-                  Speed
+                  Speed <SortIndicator attribute="speed" activeAttribute={sort} />
                   <br />
-                  <span className="text--smaller text--muted">Time to reach</span>
+                  <span className="text--xs text--muted">Time to reach</span>
                 </th>
                 <th onClick={() => sortBy('travelSpeed')} className="number">
-                  Travel
+                  Travel <SortIndicator attribute="travelSpeed" activeAttribute={sort} />
                   <br />
-                  <span className="text--smaller text--muted">Time to reach</span>
+                  <span className="text--xs text--muted">Time to reach</span>
                 </th>
                 <th onClick={() => sortBy('travelTime')} className="number">
-                  Time
+                  Time <SortIndicator attribute="travelTime" activeAttribute={sort} />
+                  <br />
+                  <span className="text--xs text--muted">VS. active</span>
                 </th>
                 <th onClick={() => sortBy('tradeScore')} className="number">
-                  Throughput
+                  Score <SortIndicator attribute="tradeScore" activeAttribute={sort} />
+                  <br />
+                  <span className="text--xs text--muted">VS. active</span>
                 </th>
               </tr>
             </thead>
             <tbody>
               {shipsToDisplay.map((ship) => (
-                <tr key={Math.random()}>
+                <tr
+                  key={Math.random()}
+                  className={selectedShip && ship.id === selectedShip.id ? 'active' : ''}
+                  onClick={() => setSelectedShip(ship)}
+                >
                   <td className="number">{ship.tradeIndex}.</td>
                   <td className="text--smaller text--capitalize">
-                    <h2 className="text text--bold">{ship.name}</h2>
-                    {translateRace(ship.race)} {separateWords(ship.type)} <br />
-                    <span className="text--xs text--muted">{equipment[ship.outfit!.engines].name}</span>
+                    <h2 className="text text--bold" style={{ borderColor: maps.colors[ship.manufacturer].color }}>
+                      {ship.name}
+                    </h2>
+                    <span
+                      className="text--smaller x4-efficiency__race"
+                      style={{ borderColor: maps.colors[ship.manufacturer].color }}
+                    >
+                      {translateRace(ship.race)} {separateWords(ship.type)}
+                    </span>{' '}
+                    <br />
+                    <span
+                      className="text--smaller text--muted text--bold x4-efficiency__engine"
+                      style={{
+                        borderColor:
+                          maps.colors[
+                            maps.reverseRace[
+                              equipment[ship.outfit!.engines].name.split(' ')[0].toLowerCase()
+                            ].toLowerCase()
+                          ].color,
+                      }}
+                    >
+                      {equipment[ship.outfit!.engines].name}
+                    </span>
                   </td>
-                  <td className="text--small number text--capitalize">
+                  <td className="text--small text--capitalize">
                     {separateWords(maps.shipClass[ship.class].replace('extralarge', 'XL'))}
                   </td>
-                  <td className="text--small number">{formatNumber(ship.storage.capacity)}m³</td>
+                  <td className="text--small number">
+                    {formatNumber(ship.storage.capacity)}m³
+                    {wares && tripProfile.wareId !== 'none' && (
+                      <>
+                        <br />
+                        <span className="text--xs">
+                          {formatNumber(ship.storage.capacity / parseInt(wares.transport[tripProfile.wareId].volume))}{' '}
+                          units
+                        </span>
+                      </>
+                    )}
+                  </td>
                   <td className="text--small number">
                     {formatNumber(ship.speed.forward)}m/s
                     <br />
@@ -335,20 +515,46 @@ const X4ShipEfficiency = () => {
                     {formatNumber(ship.speed.travel.speed)}m/s
                     <br />
                     <span className="text--smaller text--muted">
-                      {formatNumber(ship.speed.travel.attack)}s / {formatNumber(ship.distanceToMaxTravelSpeed / 1000)}km
+                      {formatNumber(ship.speed.travel.attack)}s /{' '}
+                      <span
+                        className={clsx('text--smaller text--muted', {
+                          'x4-efficiency__value--worse': ship.runsOutOfDistance,
+                        })}
+                      >
+                        {formatNumber(ship.distanceToMaxTravelSpeed / 1000)}km
+                      </span>
                     </span>
                   </td>
                   <td className="text--small number">
-                    {formatNumber(ship.travelTime)}s <br />
-                    <span className="text--smaller text--muted">
-                      {formatDecimal((1 - ship.travelTime / fastestTrip) * 100)}%
+                    <span className="text--small text--bold">
+                      {formatNumber(ship.travelTime)}s <br />
                     </span>
+                    {selectedShip && (
+                      <span
+                        className={clsx('text--xs', {
+                          'x4-efficiency__value--worse': (1 - ship.travelTime / selectedShip.travelTime) * 100 < 0,
+                          'x4-efficiency__value--better': (1 - ship.travelTime / selectedShip.travelTime) * 100 > 0,
+                        })}
+                      >
+                        {formatDecimal((1 - ship.travelTime / selectedShip.travelTime) * 100)}%
+                      </span>
+                    )}
                   </td>
-                  <td className="text--small number text--bold">
-                    {formatDecimal(ship.tradeScore)}m³/s <br />
-                    <span className="text--smaller text--muted">
-                      -{formatDecimal((1 - ship.tradeScore / highestScore) * 100)}%
-                    </span>
+                  <td className="text--small number ">
+                    <p className="text--small number text--bold">{formatDecimal(ship.tradeScore)} m³/s</p>
+                    {ship.creditsPerHour !== 0 && (
+                      <p className="text--xs m">{formatNumber(ship.creditsPerHour)} CR/h</p>
+                    )}
+                    {selectedShip && (
+                      <p
+                        className={clsx('text--xs', {
+                          'x4-efficiency__value--worse': (1 - ship.tradeScore / selectedShip.tradeScore) * 100 > 0,
+                          'x4-efficiency__value--better': (1 - ship.tradeScore / selectedShip.tradeScore) * 100 < 0,
+                        })}
+                      >
+                        {formatDecimal((1 - ship.tradeScore / selectedShip.tradeScore) * 100)}%
+                      </p>
+                    )}
                   </td>
                 </tr>
               ))}

@@ -1,7 +1,8 @@
 import { promises as fs } from 'fs';
 import xml2js from 'xml2js';
 
-import { translate } from './translations';
+import { inspect } from '../../../helpers/logger';
+import { translate } from '../translations';
 
 const applyBulletInfo = (bullets, bullet) => {
   bullet = bullet.trim().replace('_macro', '');
@@ -99,9 +100,6 @@ const getContent = async (paths, type, translations, bullets) => {
       };
     } else if (type === 'engine') {
       if (data.name.replace('_macro', '').indexOf('_video') !== -1) return;
-      if (data.name.replace('_macro', '').indexOf('xen') !== -1) return;
-      if (data.name.replace('_macro', '').indexOf('kha') !== -1) return;
-      if (data.name.replace('_macro', '').indexOf('tfm') !== -1) return;
 
       result[size][data.name.replace('_macro', '')] = {
         id: data.name.replace('_macro', ''),
@@ -124,14 +122,11 @@ const getContent = async (paths, type, translations, bullets) => {
     } else if (type === 'shield') {
       if (data.name.replace('_macro', '').indexOf('shield_gen_m_yacht_01_mk1') !== -1) return;
       if (data.name.replace('_macro', '').indexOf('m_standard_01') !== -1) return;
-      if (data.name.replace('_macro', '').indexOf('xen') !== -1) return;
-      if (data.name.replace('_macro', '').indexOf('kha') !== -1) return;
 
       result[size][data.name.replace('_macro', '')] = {
         id: data.name.replace('_macro', ''),
         name: translate(properties.identification.name, translations, true),
         description: translate(properties.identification.shortname, translations, true),
-        hull: properties.hull.max,
         mk: properties.identification.mk,
         class: type,
         makerrace: properties.identification.makerrace,
@@ -161,6 +156,22 @@ const getContent = async (paths, type, translations, bullets) => {
         name: translate(properties.identification.name, translations, true),
         capacity: properties.dock.capacity,
         type: properties.docksize.tags.trim(),
+      };
+    } else if (type === 'dockarea') {
+      let pads_m = 0;
+      let pads_s = 0;
+
+      if (!Array.isArray(parsed.macros.macro.connections.connection))
+        parsed.macros.macro.connections.connection = [parsed.macros.macro.connections.connection];
+      parsed.macros.macro.connections.connection.forEach((connection) => {
+        if (connection.ref.indexOf('_s_') !== -1) pads_s += 1;
+        if (connection.ref.indexOf('_m_') !== -1) pads_m += 1;
+      });
+
+      result[parsed.macros.macro.name] = {
+        name: translate(properties.identification.name, translations, true),
+        pads_m,
+        pads_s,
       };
     }
   }, Promise.resolve());
@@ -208,6 +219,7 @@ export async function getEquipment(fileLists, translations) {
     ...orderedResults,
     shipstorage: await getContent(fileLists.shipstorage, 'shipstorage', translations),
     storage: await getContent(fileLists.storage, 'storage', translations),
+    dockarea: await getContent(fileLists.dockarea, 'dockarea', translations),
   };
 
   return results;

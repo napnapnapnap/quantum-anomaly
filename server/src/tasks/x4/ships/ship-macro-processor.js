@@ -1,4 +1,4 @@
-import { translate, translateRecursive } from './translations';
+import { translate, translateRecursive, translateRecursiveTrim } from '../translations';
 
 const getRace = (name) => {
   if (name.indexOf('ship_arg') !== -1) return 'arg';
@@ -15,7 +15,7 @@ const getRace = (name) => {
   else return 'unk';
 };
 
-export function addDataFromMacroFile(data, translations, defaults, storage, shipstorage) {
+export function addDataFromMacroFile(data, translations, defaults, equipment) {
   const properties = data.macros.macro.properties;
   const connections = data.macros.macro.connections.connection;
   const classOfShip = data.macros.macro.class;
@@ -26,10 +26,7 @@ export function addDataFromMacroFile(data, translations, defaults, storage, ship
     race: getRace(data.macros.macro.name),
     name: translate(properties.identification.name, translations, true).replace(/\\/g, ''),
     basename: translateRecursive(properties.identification.basename, translations),
-    description: translateRecursive(properties.identification.description, translations)
-      .replace(/\(same(.*?)\)/g, '')
-      .replace(/\(.* same as .*?\)/g, '')
-      .replace('(The E-model ...)', ''),
+    description: translateRecursiveTrim(properties.identification.description, translations),
     shortvariation: translateRecursive(properties.identification.shortvariation, translations),
     variation: translateRecursive(properties.identification.variation, translations),
     type: properties.ship.type,
@@ -67,6 +64,8 @@ export function addDataFromMacroFile(data, translations, defaults, storage, ship
       size: properties.thruster.tags,
     },
     shipstorage: {
+      pads_m: 0,
+      pads_s: 0,
       dock_m: 0,
       dock_s: 0,
     },
@@ -76,13 +75,17 @@ export function addDataFromMacroFile(data, translations, defaults, storage, ship
     connections.forEach((connection) => {
       if (connection.ref.indexOf('_shipstorage') !== -1) {
         if (connection.macro.ref.indexOf('xs') !== -1) return;
-        const shipstorageType = shipstorage[connection.macro.ref].type;
-        const shipstorageCapacity = parseInt(shipstorage[connection.macro.ref].capacity, 10);
+        const shipstorageType = equipment.shipstorage[connection.macro.ref].type;
+        const shipstorageCapacity = parseInt(equipment.shipstorage[connection.macro.ref].capacity, 10);
         ship.shipstorage[shipstorageType] += shipstorageCapacity;
       }
       if (connection.ref.indexOf('_storage') !== -1) {
-        ship.storage.capacity = parseFloat(storage[connection.macro.ref].cargo);
-        ship.storage.capacityType = storage[connection.macro.ref].type;
+        ship.storage.capacity = parseFloat(equipment.storage[connection.macro.ref].cargo);
+        ship.storage.capacityType = equipment.storage[connection.macro.ref].type;
+      }
+      if (connection.ref.indexOf('dockarea') !== -1) {
+        ship.shipstorage.pads_m += parseInt(equipment.dockarea[connection.macro.ref].pads_m, 10);
+        ship.shipstorage.pads_s += parseInt(equipment.dockarea[connection.macro.ref].pads_s, 10);
       }
     });
 

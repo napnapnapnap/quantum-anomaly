@@ -1,4 +1,4 @@
-import { checkSizeUniformity, getSizeFromTags, getWeaponTypesFromTags } from './helpers';
+import { checkSizeUniformity, getSizeFromTags, getWeaponTypesFromTags } from '../helpers';
 
 export function addDataFromDataFile(data) {
   const connections = data.components.component.connections.connection;

@@ -4,7 +4,7 @@
   "race": "bor",
   "name": "Ray",
   "basename": "Ray",
-  "description": ")(Menelaus Era Ship Building)",
+  "description": "With the Ray destroyer, Eleius Astrosecurity developed their largest and last Menelaus Era ship. The first Ray departed in 798 NT from the Depths of Silence Shipyard. Soon after entering service the ship's iconic frame became associated with the Royal Boron Navy. The Ray was deployed on major battlefields against both Split and Xenon fleets, where it proved itself to be a reliable and effective destroyer.\\n\\nMenelaus Era ships were built between 785 NT and 798 NT as a second wave of more autonomous ships in preparation for the Jump Gate shutdowns. To reduce flight mass, the ships are mostly filled with air, requiring Boron crew to wear protective suits. The new Menelaus cabinet allowed corporations, working under a government contract, access to various classified technological advancements made by Royal Boron Military Defence research facilities. The ships designed with those technologies are less sturdy than the first wave of Atreus Era ships, but more manoeuvrable.",
   "shortvariation": "BV",
   "variation": "Base Variation",
   "type": "destroyer",
@@ -67,6 +67,8 @@
     "size": "large"
   },
   "shipstorage": {
+    "pads_m": 0,
+    "pads_s": 2,
     "dock_m": 0,
     "dock_s": 4
   },

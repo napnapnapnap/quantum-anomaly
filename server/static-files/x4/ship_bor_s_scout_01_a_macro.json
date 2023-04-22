@@ -4,7 +4,7 @@
   "race": "bor",
   "name": "Piranha",
   "basename": "Piranha",
-  "description": "(Atreus Era Ship Building)",
+  "description": "When Atreus Shipbuilding Currents was tasked with pioneering this design paradigm shift, their first project would be the development of a new ship frame to be used in three configurations: prospecting, mining and transportation. During the two years of development, the corporation would pave the way for future ship development through great advances in component miniaturisation and improvements to the travel mode. In 780 NT Atreus Shipbuilding Currents released their new ship frame with the Piranha scout, Grouper miner and Terrapin transporter.\\n\\nAtreus Era ships were the first ships built in response to the beginning of the Jump Gate shutdowns of 778 NT. Fearing that systems might be cut off, they were designed to operate more autonomously in contrast to earlier ships which specialised in combined usage. To reduce flight mass, the ships are mostly filled with air, requiring Boron crew to wear protective suits. The Atreus Era ships are sturdier than the later Menelaus Era ships, but not as manoeuvrable.",
   "shortvariation": "BV",
   "variation": "Base Variation",
   "type": "scout",
@@ -67,6 +67,8 @@
     "size": "small"
   },
   "shipstorage": {
+    "pads_m": 0,
+    "pads_s": 0,
     "dock_m": 0,
     "dock_s": 0
   },

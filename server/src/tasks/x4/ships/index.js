@@ -1,17 +1,17 @@
 import { promises as fs } from 'fs';
 import xml2js from 'xml2js';
 
-import { saveToFile } from './helpers';
+import { saveToFile } from '../helpers';
 import { addDataFromDataFile } from './ship-data-processor';
 import { addDataFromMacroFile } from './ship-macro-processor';
 import { normalizeShip } from './ship-normalizer';
 
-async function processShips(macroPath, translations, defaults, storage, shipstorage, wares) {
+async function processShips(macroPath, translations, defaults, equipment, wares) {
   // get macro data, this is our first entry into EgoSoft ship details
   let parser = new xml2js.Parser({ mergeAttrs: true, explicitArray: false });
   const macroData = await parser.parseStringPromise(await fs.readFile(macroPath));
 
-  let ship = addDataFromMacroFile(macroData, translations, defaults, storage, shipstorage);
+  let ship = addDataFromMacroFile(macroData, translations, defaults, equipment);
 
   ship.dlc = 'base';
   if (macroPath.indexOf('dlc_terran') !== -1) ship.dlc = 'cradleOfHumanity';
@@ -71,10 +71,10 @@ export async function getShips(shipFileList, translations, defaults, equipment, 
     if (shipFile.indexOf('ship_pir_l_scavenger_01_a_storyhighcapacity_macro') !== -1) return Promise.resolve();
     if (shipFile.indexOf('ship_bor_xl_carrier_01_landmark_macro') !== -1) return Promise.resolve();
     if (shipFile.indexOf('ship_bor_s_miner_solid_01_story_macro') !== -1) return Promise.resolve();
+    if (shipFile.indexOf('ship_arg_s_heavyfighter_01_a_macro') !== -1) return Promise.resolve();
     if (shipFile.indexOf('ship_arg_s_heavyfighter_01_b_macro') !== -1) return Promise.resolve();
-    if (shipFile.indexOf('ship_arg_s_heavyfighter_02_a_macro') !== -1) return Promise.resolve();
 
-    const ship = await processShips(shipFile, translations, defaults, equipment.storage, equipment.shipstorage, wares);
+    const ship = await processShips(shipFile, translations, defaults, equipment, wares);
     ships[ship.id] = ship;
   }, Promise.resolve());
 

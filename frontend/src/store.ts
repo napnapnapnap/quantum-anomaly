@@ -6,6 +6,7 @@ import x4FittingReducer from './redux/x4/fitting';
 import x4MapReducer from './redux/x4/map';
 import x4ModificationsReducer from './redux/x4/modifications';
 import X4TerraformReducer from './redux/x4/terraform';
+import X4WaresReducer from './redux/x4/wares';
 
 const rootReducer = combineReducers({
   eveEpicArcs: eveEpicArcsReducer,
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   x4Modifications: x4ModificationsReducer,
   x4Map: x4MapReducer,
   x4Terraform: X4TerraformReducer,
+  x4Wares: X4WaresReducer,
 });
 
 export const store = configureStore({

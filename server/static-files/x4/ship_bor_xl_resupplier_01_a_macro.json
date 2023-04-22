@@ -4,7 +4,7 @@
   "race": "bor",
   "name": "Orca",
   "basename": null,
-  "description": ")(Menelaus Era Ship Building)",
+  "description": "After their long history of manufacturing exclusively civilian construction and service ships, in 789 NT Lucky Planets Construction Enterprises accepted a government contract to develop an XL resupplier for the Royal Boron Navy. While some of their competitors suspected that the contract was acquired through foul play, the company's recent success with the builder, the Walrus, qualified it to develop their second XL sized ship. As one of the last ships to be developed in the Menelaus Era, the Orca saw its maiden voyage when it deployed from the Lucky Planets Shipyard in 798 NT., Walrus same as Walrus)\\n\\nMenelaus Era ships were built between 785 NT and 798 NT as a second wave of more autonomous ships in preparation for the Jump Gate shutdowns. To reduce flight mass, the ships are mostly filled with air, requiring Boron crew to wear protective suits. The new Menelaus cabinet allowed corporations, working under a government contract, access to various classified technological advancements made by Royal Boron Military Defence research facilities. The ships designed with those technologies are less sturdy than the first wave of Atreus Era ships, but more manoeuvrable.",
   "shortvariation": "BV",
   "variation": "Base Variation",
   "type": "resupplier",
@@ -67,6 +67,8 @@
     "size": "extralarge"
   },
   "shipstorage": {
+    "pads_m": 2,
+    "pads_s": 8,
     "dock_m": 4,
     "dock_s": 16
   },

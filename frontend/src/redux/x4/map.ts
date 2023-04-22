@@ -8,12 +8,12 @@ export interface X4Station {
   position: { x: number; z: number };
 }
 
-export interface X4MapSector {
-  adjusted: { x: number; y: number; z: number };
+export interface X4MapSectorInterface {
   description: string;
   label: string;
   name: string;
   owner: string;
+  potentialHive: string;
   position: { x: number; y: number; z: number };
   resourcePints: { [key: string]: number };
   resources: {
@@ -30,49 +30,43 @@ export interface X4MapSector {
   stations: X4Station[];
   zones: {
     zoneReference: string;
-    gates: {
-      position: { x: number; y: number; z: number };
-    }[];
+    gates: { name: string; position: { x: number; y: number; z: number } }[];
   }[];
 }
 
-export interface X4MapInterface {
-  clusters: {
-    name: string;
-    position: { x: number; y: number; z: number };
-    dlc: string[];
-    sechighways: {
-      assigned: boolean;
-      macro: {
-        ref: string;
-        connection: string;
-        connections: {
-          connection: {
-            macro: {
-              connection: string;
-              path: string;
-              ref: string;
-            };
-          }[];
-        };
-      };
-      name: string;
-      offset: { x: number; y: number; z: number };
+export interface X4MapClusterInterface {
+  name: string;
+  position: { x: number; y: number; z: number };
+  dlc: string[];
+  sechighways: {
+    assigned: boolean;
+    macro: {
       ref: string;
-    }[];
-    sectors: X4MapSector[];
-  }[];
-  gates: {
-    [key: number]: {
-      dlc: string[];
-      start: { x: number; z: number };
-      end: { x: number; z: number };
+      connection: string;
+      connections: {
+        connection: {
+          macro: {
+            connection: string;
+            path: string;
+            ref: string;
+          };
+        }[];
+      };
     };
+    name: string;
+    offset: { x: number; y: number; z: number };
+    ref: string;
   };
+  sectors: X4MapSectorInterface[];
+}
+
+export interface X4MapInterface {
+  clusters: X4MapClusterInterface[];
+  gateConnections: { dlc: string[]; start: { x: number; z: number }; exit: { x: number; z: number }; id: string }[];
   sectorHighways: {
     dlc: string[];
-    origin: { x: number; y: number };
-    destination: { x: number; y: number };
+    start: { x: number; z: number };
+    exit: { x: number; z: number };
   }[];
 }
 

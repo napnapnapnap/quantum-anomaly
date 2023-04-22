@@ -2,7 +2,7 @@ import { promises as fs } from 'fs';
 import path from 'path';
 import xml2js from 'xml2js';
 
-import { translateRecursive } from './translations';
+import { translateRecursive } from '../translations';
 
 export async function getModifications(sourceBasePath, wares, translations) {
   const parser = new xml2js.Parser({ mergeAttrs: true, explicitArray: false });

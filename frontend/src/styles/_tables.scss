@@ -5,7 +5,7 @@ table {
   overflow: hidden;
 
   td, th {
-    padding: 0.3rem;
+    padding: 0.5rem 0.5rem;
 
     &.number {
       text-align: right;
@@ -18,7 +18,7 @@ table {
 
   thead {
     tr {
-      background-color: var(--color-table-background-hover);
+      background-color: var(--color-table-header-background);
     }
 
     th {
@@ -30,22 +30,31 @@ table {
   tbody {
     tr {
       background-color: var(--color-table-background);
+      border-bottom: 1px solid var(--color-border-light);
 
       &:hover {
         background: var(--color-table-background-hover);
       }
 
-      &:nth-of-type(even) {
+      &:nth-of-type(odd) {
         background-color: var(--color-table-background-alternate);
 
         &:hover {
           background: var(--color-table-background-hover);
         }
       }
+
+      &.active {
+        background-color: var(--color-table-background-active);
+
+        &:hover {
+          background-color: var(--color-table-background-active);
+        }
+      }
     }
 
     td {
-      vertical-align: top;
+      vertical-align: middle;
     }
   }
 }

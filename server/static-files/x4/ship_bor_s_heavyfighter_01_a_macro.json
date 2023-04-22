@@ -4,7 +4,7 @@
   "race": "bor",
   "name": "Barracuda",
   "basename": "Barracuda",
-  "description": ")(Menelaus Era Ship Building)",
+  "description": "In 785 NT Eleius Astrosecurity competed with Faded Dreams Defences for the contract to develop a Heavy Fighter for the Royal Boron Navy. The Eleius Astrosecurity plans for the Barracuda won this competition and secured the necessary government funding, along with access to Royal Boron Military Defence technologies. The first Barracudas soon entered service in 788 NT, but required subsequent system updates to overcome initial design flaws in their software.\\n\\nMenelaus Era ships were built between 785 NT and 798 NT as a second wave of more autonomous ships in preparation for the Jump Gate shutdowns. To reduce flight mass, the ships are mostly filled with air, requiring Boron crew to wear protective suits. The new Menelaus cabinet allowed corporations, working under a government contract, access to various classified technological advancements made by Royal Boron Military Defence research facilities. The ships designed with those technologies are less sturdy than the first wave of Atreus Era ships, but more manoeuvrable.",
   "shortvariation": "BV",
   "variation": "Base Variation",
   "type": "heavyfighter",
@@ -67,6 +67,8 @@
     "size": "small"
   },
   "shipstorage": {
+    "pads_m": 0,
+    "pads_s": 0,
     "dock_m": 0,
     "dock_s": 0
   },

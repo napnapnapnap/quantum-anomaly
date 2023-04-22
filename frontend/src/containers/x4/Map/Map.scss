@@ -1,17 +1,16 @@
-.x4 {
-  &__map {
-    position: relative;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
+.x4-map {
+  position: relative;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 
-  &__map-wrapper {
+
+  &__wrapper {
     overflow: hidden;
-    background: #111115;
+    background: black;
     cursor: grab;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -19,9 +18,29 @@
     user-select: none;
     height: calc(100vh - 110px);
     margin-bottom: -3rem;
+    border-radius: 8px;
   }
 
-  &__map-controls {
+  &__zoom {
+    position: absolute;
+    bottom: 3.5rem;
+    left: -2.5rem;
+    width: 120px;
+    z-index: 100;
+    background: var(--color-overlay-background-light);
+    box-shadow: black 1px 1px 10px 5px;
+    padding: 4px 8px 0;
+    border-radius: 8px;
+    transform: rotate(-90deg);
+
+    > * {
+      width: 100%;
+      margin: 0 auto;
+      accent-color: var(--color-action);
+    }
+  }
+
+  &__controls {
     padding: 5px;
     cursor: pointer;
     display: flex;
@@ -34,45 +53,117 @@
 
     .link, > span {
       color: white !important;
+      background: black;
+      padding: 2px 5px;
+      border-radius: 4px;
     }
   }
 
-  &__map-filters {
-    display: flex;
-    align-content: center;
-    justify-content: space-between;
-    padding: 0.2rem 0 0;
+  &__legend-close {
     position: absolute;
-    bottom: 0;
-    width: 100%;
-    background: var(--color-content-background);
+    right: 5px;
+    top: 2px;
+    background: rgba(250, 250, 250, 0.2);
+    color: white;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 0.7rem;
   }
 
   &__legend {
     font-size: 12px;
     position: absolute;
-    color: white;
     right: 10px;
-    top: 80px;
-    width: 230px;
+    top: 55px;
+    width: 290px;
     padding: 5px;
-    z-index: 1000;
-    background: rgba(#051238, 0.9);
+    z-index: 100;
+    background: var(--color-overlay-background-dark);
+    border-radius: 8px;
+    cursor: initial;
+    box-shadow: black 1px 1px 10px 5px;
 
-    .x4__resources {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      color: black;
+    span {
+      color: white;
+      font-size: 0.7rem;
+    }
+  }
 
-      > p {
-        flex: 0 0 30%;
-        text-align: center;
-        padding: 3px;
-        border-radius: 3px;
-        line-height: 0.8;
-        margin: 3px;
+  &__resources {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    color: black;
+
+    > p {
+      flex: 0 0 calc(25% - 6px);
+      text-align: center;
+      padding: 3px;
+      border-radius: 3px;
+      line-height: 0.55;
+      margin: 3px;
+      font-size: 0.7rem;
+      letter-spacing: 0.01rem;
+      font-family: monospace;
+      font-weight: bold;
+      color: var(--color-black);
+    }
+  }
+
+  &__toggler {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    width: 135px;
+    background: var(--color-overlay-background-light);
+    box-shadow: black 1px 1px 10px 5px;
+    padding: 5px;
+    z-index: 100;
+    border-radius: 8px;
+
+    .input-control {
+      margin-bottom: 0;
+
+      &__checkbox-text {
+        font-size: 11px;
       }
     }
+
+    .btn {
+      width: 100%;
+      padding: 2px;
+      margin-top: 6px;
+      font-size: 10px;
+    }
+  }
+
+  &__interaction {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 200px;
+    background: var(--color-content-background);
+    padding: 5px;
+    z-index: 100;
+    border-radius: 8px;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    animation: notifyMap 5s;
+    box-shadow: black 1px 1px 10px 5px;
+  }
+}
+
+@keyframes notifyMap {
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }

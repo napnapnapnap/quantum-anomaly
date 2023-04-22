@@ -2,12 +2,12 @@
 
   &__controls {
     display: flex;
-    align-items: flex-end;
+    align-items: flex-start;
+    flex-wrap: wrap;
 
-    > div:last-of-type {
-      .checkbox {
-        margin-left: 12px;
-      }
+    > div {
+      margin: 0 1rem 1rem 0;
+      flex: 0 0 180px;
     }
   }
 
@@ -16,30 +16,65 @@
     overflow-x: auto;
   }
 
+  &__quality {
+    margin-left: 0.5rem;
+    position: relative;
+    top: -1px;
+
+    &--basic {
+      color: #1c9341;
+    }
+
+    &--enhanced {
+      color: #008fbf;
+    }
+
+    &--exceptional {
+      color: #9370db;
+    }
+  }
+
   &__table {
-    width: 850px;
+    width: 800px;
     overflow: scroll;
 
-    td:nth-of-type(1) {
-      width: 180px;
+    td {
+      vertical-align: top;
+      padding: 1rem;
     }
-    td:nth-of-type(2) {
-      width: 280px;
+
+    th {
+      padding: 0.5rem 1rem;
     }
-    td:nth-of-type(3) {
-      width: 350px;
 
-      div {
-        display: flex;
-        align-items: center;
+    tbody {
+      td:nth-of-type(1) {
+        width: 250px;
 
-        > span:first-of-type {
-          width: 220px;
+        .mt-1 {
+          margin-top: 0.5rem;
+        }
+      }
+      td:nth-of-type(2) {
+        width: 330px;
+        padding-top: 2.2rem;
+
+        .mt-1 {
+          margin-top: 0.5rem;
+        }
+      }
+      td:nth-of-type(3) {
+        width: 230px;
+        padding-top: 2.5rem;
+
+        .mt-1 {
+          margin-top: 0.4rem;
         }
       }
     }
-    td:nth-of-type(4) {
-      width: 250px;
+
+    p {
+      margin-bottom: 0.2rem;
     }
   }
 }

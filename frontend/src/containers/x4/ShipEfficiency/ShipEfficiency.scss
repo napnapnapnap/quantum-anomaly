@@ -6,40 +6,78 @@
     margin-top: 1rem;
   }
 
-  &__inputs {
-    margin: 0 1rem 1rem 0;
+  &__controls {
+    display: flex;
+    flex-wrap: wrap;
 
-    .input-control {
-      display: flex;
-      align-items: center;
+    > div {
+      flex: 0 0 250px;
+      margin: 0 2rem 1rem 0;
 
-      input {
-        width: 70px;
-        margin-right: 4px;
+      .input-control--inline-label {
+        margin-bottom: 0.2rem;
+        height: 27px;
+
+        .input-control__text {
+          width: 135px;
+        }
       }
 
-      &__text {
-        order: 2;
+      .input-control {
+        .select {
+          margin-bottom: 0.2rem;
+        }
+      }
+
+      > p {
+        margin-bottom: 0.2rem;
+      }
+
+      .text--xs {
+        margin-top: 0.4rem;
+      }
+
+      &:last-of-type {
+        flex: 0 0 100%;
+        margin: 0;
       }
     }
   }
 
-  .input-radio-group {
-    display: inline-block;
+  &__ship-size {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    height: 27px;
+    align-items: flex-end;
+    margin-bottom: 0.2rem;
+
+    .input-control {
+      margin-bottom: 0.2rem;
+    }
   }
 
-  .input-control__radio-text {
-    text-transform: capitalize;
-    display: inline-block;
-    width: 55px;
+  &__value {
+    &--worse {
+      color: #FF4040 !important;
+    }
+    &--better {
+      color: #4BB543 !important;
+    }
   }
 
-  .input-control--checkbox {
-    margin-right: 0.25rem;
+  &__race, &__engine, h2 {
+    border-left: 6px solid black;
+    padding: 0 4px;
   }
 
   table {
-    width: 800px;
+    width: 900px;
+
+    th {
+      position: sticky;
+      top: 0;
+    }
   }
 
   tr {
@@ -48,19 +86,29 @@
     }
 
     td {
-      width: 80px;
+      width: 100px;
+      cursor: pointer;
 
       > * {
         margin: 0;
       }
 
       &:nth-of-type(2) {
-        width: 190px;
+        width: 220px;
       }
 
       &:first-of-type {
-        width: 24px;
+        width: 50px;
+        padding-right: 1rem;
       }
+
+      &:last-of-type {
+        width: 130px;
+      }
+    }
+
+    .m {
+      margin: 0.2rem 0 !important;
     }
   }
 }

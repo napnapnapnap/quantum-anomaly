@@ -4,7 +4,7 @@
   "race": "par",
   "name": "Helios E",
   "basename": null,
-  "description": "The reasonably fast Helios freighter is a staple of Paranid logistics operations. While it cannot be said to be best-in-class on any single performance metric, it remains a sound choice overall.\\n\\nThe enduring popularity of this heavy freighter is believed to be founded on its sleek lines and attractive profile. Freighter captains are no rock stars, but the Helios does turn heads. It is not uncommon for youngsters to seek out berthing Helios vessels, begging for a ship tour.\\n\\nundefined",
+  "description": "The reasonably fast Helios freighter is a staple of Paranid logistics operations. While it cannot be said to be best-in-class on any single performance metric, it remains a sound choice overall.\\n\\nThe enduring popularity of this heavy freighter is believed to be founded on its sleek lines and attractive profile. Freighter captains are no rock stars, but the Helios does turn heads. It is not uncommon for youngsters to seek out berthing Helios vessels, begging for a ship tour.\\n\\n",
   "shortvariation": "BV",
   "variation": "Base Variation",
   "type": "freighter",
@@ -67,6 +67,8 @@
     "size": "large"
   },
   "shipstorage": {
+    "pads_m": 0,
+    "pads_s": 1,
     "dock_m": 0,
     "dock_s": 2
   },

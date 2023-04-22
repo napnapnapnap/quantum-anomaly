@@ -42,6 +42,7 @@ export default function (app) {
   router.get('/api/x4/modifications', x4.getModifications);
   router.get('/api/x4/terraform', x4.getTerraform);
   router.get('/api/x4/resources', x4.getResourcesInField);
+  router.get('/api/x4/wares', x4.getWares);
 
   router.use('/api/get-incursions', incursions.getIncursions);
   router.use('/api/scrape', scrapeCategories);

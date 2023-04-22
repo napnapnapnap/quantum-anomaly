@@ -4,7 +4,7 @@
   "race": "bor",
   "name": "Rorqual (Mineral)",
   "basename": "Rorqual",
-  "description": ")(Menelaus Era Ship Building)",
+  "description": "Developed by Deepwater Drilling Industries, the Rorqual turned out to be an ambitious project. After several setbacks, the company managed to release their first capital ship when the first Rorqual departed from the Kingdom End Shipyard in 793 NT. The ship turned out to be barely serviceable and would require multiple overhauls. While Deepwater Drilling Industries managed to rectify all flaws with the design, and salvaged their reputation by recalling and updating ships that had already been sold, the disastrous release brought the company to the brink of bankruptcy.\\n\\nMenelaus Era ships were built between 785 NT and 798 NT as a second wave of more autonomous ships in preparation for the Jump Gate shutdowns. To reduce flight mass, the ships are mostly filled with air, requiring Boron crew to wear protective suits. The new Menelaus cabinet allowed corporations, working under a government contract, access to various classified technological advancements made by Royal Boron Military Defence research facilities. The ships designed with those technologies are less sturdy than the first wave of Atreus Era ships, but more manoeuvrable.",
   "shortvariation": "BV",
   "variation": "Base Variation",
   "type": "largeminer",
@@ -67,6 +67,8 @@
     "size": "large"
   },
   "shipstorage": {
+    "pads_m": 0,
+    "pads_s": 2,
     "dock_m": 0,
     "dock_s": 2
   },

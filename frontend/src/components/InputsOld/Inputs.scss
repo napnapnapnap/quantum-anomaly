@@ -1,0 +1,50 @@
+@import "../../styles/variables";
+@import "../../styles/mixins/breakpoints";
+
+@mixin placeholder {
+  &::placeholder {
+    @content;
+  }
+  &::-webkit-input-placeholder {
+    @content;
+  }
+  &:-moz-placeholder {
+    @content;
+  }
+  &::-moz-placeholder {
+    @content;
+  }
+  &:-ms-input-placeholder {
+    @content;
+  }
+}
+
+.old-input-control {
+  $block: '.old-input-control';
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
+  user-select: none;
+  color: var(--color-text);
+
+  .select, .input {
+    color: var(--color-text);
+    background: var(--color-input-background);
+    border: 1px solid var(--color-border-light);
+    border-radius: 4px;
+    padding: 4px 0;
+    display: block;
+    width: 100%;
+  }
+
+  .input {
+    padding: 4px;
+  }
+
+  .checkbox, .radio {
+    height: 14px;
+    position: relative;
+    top: 2px;
+    margin: -2px 4px;
+  }
+}

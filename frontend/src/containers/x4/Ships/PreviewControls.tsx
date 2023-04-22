@@ -35,227 +35,226 @@ const PreviewControls = ({
   setDisplayDlcs: (arg: any) => void;
 }) => (
   <div className="x4-ships__controls">
-    <p className="">Ship class and types</p>
-    {Object.keys(maps.shipClass).map((shipClassKey) => (
-      <Checkbox
-        label={`${maps.shipClass[shipClassKey as keyof typeof displayClass].replace('extralarge', 'XL')} Ships`}
-        name="shipClass"
-        checked={displayClass[shipClassKey as keyof typeof displayClass]}
-        key={shipClassKey}
+    <div className="x4-ships__control-section">
+      <p className="text--bold">Applied Equipment</p>
+
+      <Select
+        value={activeEquipment.thruster}
+        options={[
+          { value: 'thruster_gen_SIZE_allround_01_mk1', label: 'All-round Mk.1 Thruster' },
+          { value: 'thruster_gen_SIZE_allround_01_mk2', label: 'All-round Mk.2 Thruster' },
+          { value: 'thruster_gen_SIZE_allround_01_mk3', label: 'All-round Mk.3 Thruster' },
+          { value: 'thruster_gen_SIZE_combat_01_mk1', label: 'Combat Mk.1 Thruster' },
+          { value: 'thruster_gen_SIZE_combat_01_mk2', label: 'Combat Mk.2 Thruster' },
+          { value: 'thruster_gen_SIZE_combat_01_mk3', label: 'Combat Mk.3 Thruster' },
+        ]}
+        name="thrusters"
+        label=""
+        className="x4-ships__control x4-ships__control--mb"
+        handleInputChange={(e) => setActiveEquipment({ ...activeEquipment, thruster: e.target.value })}
+      />
+
+      <Select
+        value={activeEquipment.engineRace}
+        options={[
+          { value: 'arg', label: 'Argon Engines' },
+          { value: 'par', label: 'Paranid Engines' },
+          { value: 'spl', label: 'Split Engines' },
+          { value: 'tel', label: 'Teladi Engines' },
+          { value: 'ter', label: 'Terran Engines' },
+          { value: 'native', label: 'Native Engines' },
+        ]}
+        name="engine-race"
         handleInputChange={(e) =>
-          setDisplayClass({
-            ...displayClass,
-            [shipClassKey]: e.target.checked,
+          setActiveEquipment({
+            ...activeEquipment,
+            engineRace: e.target.value,
           })
         }
       />
-    ))}
-    {Object.keys(maps.variations).map((displayVariationKey) => (
-      <Checkbox
-        label={maps.variations[displayVariationKey]}
-        name="displayVariations"
-        checked={displayVariations[displayVariationKey]}
-        key={displayVariationKey}
+
+      <Select
+        value={activeEquipment.engine}
+        options={[
+          { value: 'engine_RACE_SIZE_allround_01_mk1', label: 'All-round Mk.1 Engines' },
+          { value: 'engine_RACE_SIZE_allround_01_mk2', label: 'All-round Mk.2 Engines' },
+          { value: 'engine_RACE_SIZE_allround_01_mk3', label: 'All-round Mk.3 Engines' },
+          { value: 'engine_RACE_SIZE_travel_01_mk1', label: 'Travel Mk.1 Engines' },
+          { value: 'engine_RACE_SIZE_travel_01_mk2', label: 'Travel Mk.2 Engines' },
+          { value: 'engine_RACE_SIZE_travel_01_mk3', label: 'Travel Mk.3 Engines' },
+          { value: 'engine_RACE_SIZE_combat_01_mk1', label: 'Combat Mk.1 Engines' },
+          { value: 'engine_RACE_SIZE_combat_01_mk2', label: 'Combat Mk.2 Engines' },
+          { value: 'engine_RACE_SIZE_combat_01_mk3', label: 'Combat Mk.3 Engines' },
+          { value: 'engine_RACE_SIZE_combat_01_mk4', label: 'Combat Mk.4 Engines' },
+        ]}
+        name="engine-type"
         handleInputChange={(e) =>
-          setDisplayVariations({
-            ...displayVariations,
-            [displayVariationKey]: e.target.checked,
+          setActiveEquipment({
+            ...activeEquipment,
+            engine: e.target.value,
           })
         }
+        className="x4-ships__control x4-ships__control--mb"
       />
-    ))}
-    <p className="mt-1">
-      Faction{' '}
-      <button
-        onClick={() => {
-          setDisplayRace(Object.fromEntries(Object.keys(displayRace).map((key) => [key, false])));
-        }}
-        className="link link--secondary text--smaller"
-      >
-        Uncheck all
-      </button>
-    </p>
-    {Object.keys(maps.reverseRace)
-      .sort()
-      .map((raceKey) => (
+
+      <Select
+        value={activeEquipment.shieldRace}
+        options={[
+          { value: 'arg', label: 'Argon Shields' },
+          { value: 'par', label: 'Paranid Shields' },
+          { value: 'spl', label: 'Split Shields' },
+          { value: 'tel', label: 'Teladi Shields' },
+          { value: 'ter', label: 'Terran Shields' },
+          { value: 'native', label: 'Native Shields' },
+        ]}
+        name="shield-race"
+        handleInputChange={(e) => setActiveEquipment({ ...activeEquipment, shieldRace: e.target.value })}
+      />
+
+      <Select
+        value={activeEquipment.shield}
+        options={[
+          { value: 'shield_RACE_SIZE_standard_01_mk1', label: 'Standard Mk.1 Shields' },
+          { value: 'shield_RACE_SIZE_standard_01_mk2', label: 'Standard Mk.2 Shields' },
+          { value: 'shield_RACE_SIZE_standard_01_mk3', label: 'Standard Mk.3 Shields' },
+        ]}
+        name="shield-type"
+        handleInputChange={(e) =>
+          setActiveEquipment({
+            ...activeEquipment,
+            shield: e.target.value,
+          })
+        }
+        className="x4-ships__control x4-ships__control--mb"
+      />
+
+      <Select
+        value={sort}
+        options={[
+          { value: 'name', label: 'Sort by name' },
+          { value: 'shield', label: 'Sort by shield capacity' },
+          { value: 'speed', label: 'Sort by speed' },
+          { value: 'boostSpeed', label: 'Sort by speed boost' },
+          { value: 'travelSpeed', label: 'Sort by speed travel' },
+          { value: 'weapons', label: 'Sort by weapon hardpoints' },
+          { value: 'turrets', label: 'Sort by turret hardpoints' },
+          { value: 'missiles', label: 'Sort by missiles' },
+          { value: 'drones', label: 'Sort by drones' },
+          { value: 'crew', label: 'Sort by crew' },
+          { value: 'storage', label: 'Sort by storage' },
+        ]}
+        name="sort"
+        handleInputChange={(e) => setSort(e.target.value)}
+      />
+    </div>
+
+    <div className="x4-ships__control-section">
+      <p className="text--bold">Ship class</p>
+      {Object.keys(maps.shipClass).map((shipClassKey) => (
         <Checkbox
-          label={maps.reverseRace[raceKey]}
-          name="displayRace"
-          checked={displayRace[raceKey]}
-          key={raceKey}
+          label={`${maps.shipClass[shipClassKey as keyof typeof displayClass].replace('extralarge', 'XL')} Ships`}
+          name="shipClass"
+          checked={displayClass[shipClassKey as keyof typeof displayClass]}
+          key={shipClassKey}
           handleInputChange={(e) =>
-            setDisplayRace({
-              ...displayRace,
-              [raceKey]: e.target.checked,
+            setDisplayClass({
+              ...displayClass,
+              [shipClassKey]: e.target.checked,
             })
           }
         />
       ))}
-
-    <p className="mt-1">
-      Types
-      <button
-        onClick={() => {
-          setDisplayTypes(Object.fromEntries(Object.keys(displayTypes).map((key) => [key, false])));
-        }}
-        className="link link--secondary text--smaller"
-      >
-        Uncheck all
-      </button>
-    </p>
-    {Object.keys(displayTypes)
-      .sort()
-      .map((displayTypeKey) => (
+      {Object.keys(maps.variations).map((displayVariationKey) => (
         <Checkbox
-          label={separateWords(displayTypeKey)}
+          label={maps.variations[displayVariationKey]}
+          name="displayVariations"
+          checked={displayVariations[displayVariationKey]}
+          key={displayVariationKey}
+          handleInputChange={(e) =>
+            setDisplayVariations({
+              ...displayVariations,
+              [displayVariationKey]: e.target.checked,
+            })
+          }
+        />
+      ))}
+    </div>
+    <div className="x4-ships__control-section x4-ships__control-section--types">
+      <p className="text--bold">Types</p>
+      <div>
+        <Checkbox
+          label="All Types"
           name="displayTypes"
-          checked={displayTypes[displayTypeKey]}
-          key={displayTypeKey}
+          checked={Object.entries(displayTypes).filter((type) => !type[1]).length === 0}
+          handleInputChange={(e) => {
+            const isAllSelected = Object.entries(displayTypes).filter((type) => !type[1]).length === 0;
+            setDisplayTypes(Object.fromEntries(Object.keys(displayTypes).map((key) => [key, !isAllSelected])));
+          }}
+        />
+        {Object.keys(displayTypes)
+          .sort()
+          .map((displayTypeKey) => (
+            <Checkbox
+              label={separateWords(displayTypeKey)}
+              name="displayTypes"
+              checked={displayTypes[displayTypeKey]}
+              key={displayTypeKey}
+              handleInputChange={(e) =>
+                setDisplayTypes({
+                  ...displayTypes,
+                  [displayTypeKey]: e.target.checked,
+                })
+              }
+            />
+          ))}
+      </div>
+    </div>
+    <div className="x4-ships__control-section">
+      <p className="text--bold">Factions</p>
+      <Checkbox
+        label="All races"
+        name="displayRace"
+        checked={Object.entries(displayRace).filter((race) => !race[1]).length === 0}
+        handleInputChange={(e) => {
+          const isAllSelected = Object.entries(displayRace).filter((race) => !race[1]).length === 0;
+          setDisplayRace(Object.fromEntries(Object.keys(displayRace).map((key) => [key, !isAllSelected])));
+        }}
+      />
+      {Object.keys(maps.reverseRace)
+        .sort()
+        .map((raceKey) => (
+          <Checkbox
+            label={maps.reverseRace[raceKey]}
+            name="displayRace"
+            checked={displayRace[raceKey]}
+            key={raceKey}
+            handleInputChange={(e) =>
+              setDisplayRace({
+                ...displayRace,
+                [raceKey]: e.target.checked,
+              })
+            }
+          />
+        ))}
+    </div>
+    <div className="x4-ships__control-section">
+      <p className="text--bold">DLCs</p>
+      {Object.keys(maps.dlcs).map((dlcKey) => (
+        <Checkbox
+          label={maps.dlcs[dlcKey]}
+          name="displayDlcs"
+          checked={displayDlcs[dlcKey]}
+          key={dlcKey}
+          className="x4-ships__dlc-checkbox"
           handleInputChange={(e) =>
-            setDisplayTypes({
-              ...displayTypes,
-              [displayTypeKey]: e.target.checked,
+            setDisplayDlcs({
+              ...displayDlcs,
+              [dlcKey]: e.target.checked,
             })
           }
         />
       ))}
-
-    <p className="mt-1">DLC</p>
-    {Object.keys(maps.dlcs).map((dlcKey) => (
-      <Checkbox
-        label={maps.dlcs[dlcKey]}
-        name="displayDlcs"
-        checked={displayDlcs[dlcKey]}
-        key={dlcKey}
-        className="x4-ships__dlc-checkbox"
-        handleInputChange={(e) =>
-          setDisplayDlcs({
-            ...displayDlcs,
-            [dlcKey]: e.target.checked,
-          })
-        }
-      />
-    ))}
-
-    <br />
-    <br />
-    <Select
-      value={sort}
-      options={[
-        { value: 'name', label: 'Name' },
-        { value: 'shield', label: 'Shield Capacity' },
-        { value: 'speed', label: 'Speed' },
-        { value: 'boostSpeed', label: 'Speed Boost' },
-        { value: 'travelSpeed', label: 'Speed Travel' },
-        { value: 'weapons', label: 'Weapon hardpoints' },
-        { value: 'turrets', label: 'Turret hardpoints' },
-        { value: 'missiles', label: 'Missiles' },
-        { value: 'drones', label: 'Drones' },
-        { value: 'crew', label: 'Crew' },
-        { value: 'storage', label: 'Storage' },
-      ]}
-      name="sort"
-      label="Sort by"
-      handleInputChange={(e) => setSort(e.target.value)}
-    />
-
-    <Select
-      value={activeEquipment.thruster}
-      options={[
-        { value: 'thruster_gen_SIZE_allround_01_mk1', label: 'All-round Mk.1' },
-        { value: 'thruster_gen_SIZE_allround_01_mk2', label: 'All-round Mk.2' },
-        { value: 'thruster_gen_SIZE_allround_01_mk3', label: 'All-round Mk.3' },
-        { value: 'thruster_gen_SIZE_combat_01_mk1', label: 'Combat Mk.1' },
-        { value: 'thruster_gen_SIZE_combat_01_mk2', label: 'Combat Mk.2' },
-        { value: 'thruster_gen_SIZE_combat_01_mk3', label: 'Combat Mk.3' },
-      ]}
-      name="thrusters"
-      label="Thrusters"
-      handleInputChange={(e) => setActiveEquipment({ ...activeEquipment, thruster: e.target.value })}
-    />
-
-    <Select
-      value={activeEquipment.engine}
-      options={[
-        { value: 'engine_RACE_SIZE_allround_01_mk1', label: 'All-round Mk.1' },
-        { value: 'engine_RACE_SIZE_allround_01_mk2', label: 'All-round Mk.2' },
-        { value: 'engine_RACE_SIZE_allround_01_mk3', label: 'All-round Mk.3' },
-        { value: 'engine_RACE_SIZE_travel_01_mk1', label: 'Travel Mk.1' },
-        { value: 'engine_RACE_SIZE_travel_01_mk2', label: 'Travel Mk.2' },
-        { value: 'engine_RACE_SIZE_travel_01_mk3', label: 'Travel Mk.3' },
-        { value: 'engine_RACE_SIZE_combat_01_mk1', label: 'Combat Mk.1' },
-        { value: 'engine_RACE_SIZE_combat_01_mk2', label: 'Combat Mk.2' },
-        { value: 'engine_RACE_SIZE_combat_01_mk3', label: 'Combat Mk.3' },
-        { value: 'engine_RACE_SIZE_combat_01_mk4', label: 'Combat Mk.4' },
-      ]}
-      name="engine-type"
-      label="Engine type"
-      handleInputChange={(e) =>
-        setActiveEquipment({
-          ...activeEquipment,
-          engineRace: e.target.value === 'engine_RACE_SIZE_combat_01_mk4' ? 'spl' : activeEquipment.engineRace,
-          engine: e.target.value,
-        })
-      }
-    />
-
-    <Select
-      value={activeEquipment.engineRace}
-      options={[
-        { value: 'arg', label: 'Argon' },
-        { value: 'par', label: 'Paranid' },
-        { value: 'spl', label: 'Split' },
-        { value: 'tel', label: 'Teladi' },
-        { value: 'ter', label: 'Terran' },
-      ]}
-      name="engine-race"
-      label="Engine race"
-      handleInputChange={(e) =>
-        setActiveEquipment({
-          ...activeEquipment,
-          engineRace: e.target.value,
-          engine: e.target.value !== 'spl' ? activeEquipment.engine.replace('mk4', 'mk3') : activeEquipment.engine,
-        })
-      }
-    />
-
-    <Select
-      value={activeEquipment.shield}
-      options={[
-        { value: 'shield_RACE_SIZE_standard_01_mk1', label: 'Standard Mk.1' },
-        { value: 'shield_RACE_SIZE_standard_01_mk2', label: 'Standard Mk.2' },
-        { value: 'shield_RACE_SIZE_standard_01_mk3', label: 'Standard Mk.3' },
-      ]}
-      name="shield-type"
-      label="Shield type"
-      handleInputChange={(e) =>
-        setActiveEquipment({
-          ...activeEquipment,
-          shield: e.target.value,
-        })
-      }
-    />
-
-    <Select
-      value={activeEquipment.shieldRace}
-      options={[
-        { value: 'arg', label: 'Argon' },
-        { value: 'par', label: 'Paranid' },
-        { value: 'spl', label: 'Split' },
-        { value: 'tel', label: 'Teladi' },
-        { value: 'ter', label: 'Terran' },
-      ]}
-      name="shield-race"
-      label="Shield race"
-      handleInputChange={(e) => setActiveEquipment({ ...activeEquipment, shieldRace: e.target.value })}
-    />
-
-    <p className="text--small text--muted text--long">
-      If selected is not available for a given ship, it will use the next best thing. For example, Mk.4 engines are only
-      available to Split in small and medium size. Selecting these engines will equip split Mk.1 versions on large
-      ships. Combat engines do not exist on capitals, they will be translated into all-round engines. Under each ship
-      there is a list of actually equipped modules.
-    </p>
+    </div>
   </div>
 );
 

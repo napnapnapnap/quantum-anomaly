@@ -2,8 +2,8 @@ import clsx from 'clsx';
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import Checkbox from '../../../components/Inputs/Checkbox';
-import Select from '../../../components/Inputs/Select';
+import Checkbox from '../../../components/InputsOld/Checkbox';
+import Select from '../../../components/InputsOld/Select';
 import { seo } from '../../../helpers';
 import { useAppDispatch, useAppSelector } from '../../../hooks';
 import LayoutBase from '../../../layouts/Base';

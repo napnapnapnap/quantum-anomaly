@@ -21,11 +21,12 @@
 
 .input-control {
   $block: '.input-control';
-  display: inline-block;
+  display: block;
   vertical-align: top;
   position: relative;
   user-select: none;
   color: var(--color-text);
+  margin-bottom: 0.25rem;
 
   .select, .input {
     color: var(--color-text);
@@ -35,6 +36,21 @@
     padding: 4px 0;
     display: block;
     width: 100%;
+    margin-bottom: 0.5rem;
+    transition: all ease-out 0.1s;
+
+    outline: none;
+
+    &:active {
+      border: 1px solid var(--color-border-light);
+      outline: none;
+    }
+
+    &:hover {
+      border: 1px solid var(--color-border-dark);
+      cursor: pointer;
+      outline: none;
+    }
   }
 
   .input {
@@ -46,5 +62,36 @@
     position: relative;
     top: 2px;
     margin: -2px 4px;
+  }
+
+  &--checkbox, &--radio {
+    display: block;
+    transition: all ease-out 0.1s;
+
+    &:hover {
+      background: var(--color-content-background-hover);
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  }
+
+  &--inline-label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+
+    #{$block}__text {
+      display: inline-block;
+      line-height: 1.5;
+      margin-right: 4px;
+    }
+
+    #{$block}__inner {
+      flex: 1 0 auto;
+
+      .input {
+        margin-bottom: 0;
+      }
+    }
   }
 }

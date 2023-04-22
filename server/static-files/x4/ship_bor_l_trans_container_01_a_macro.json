@@ -4,7 +4,7 @@
   "race": "bor",
   "name": "Sturgeon",
   "basename": "Sturgeon",
-  "description": ")(Menelaus Era Ship Building)",
+  "description": "Stellar Shores Shipping was founded in 785 NT by graduates of the Royal Academy of Space Engineering. The former students brought with them their engineering experience, from working with Atreus Shipbuilding Currents on the smaller Dolphin transporter, but underestimated the difficulties of founding and running a new company. Various setbacks and delays lead to the company publicly accusing competitors of sabotage, as a project failure would lead to a retraction and reassignment of the government contract. Ultimately the company pulled itself together, and with its departure from the Great Reef Shipyard, the Sturgeon saw its successful release in 794 NT.\\n\\nMenelaus Era ships were built between 785 NT and 798 NT as a second wave of more autonomous ships in preparation for the Jump Gate shutdowns. To reduce flight mass, the ships are mostly filled with air, requiring Boron crew to wear protective suits. The new Menelaus cabinet allowed corporations, working under a government contract, access to various classified technological advancements made by Royal Boron Military Defence research facilities. The ships designed with those technologies are less sturdy than the first wave of Atreus Era ships, but more manoeuvrable.",
   "shortvariation": "BV",
   "variation": "Base Variation",
   "type": "freighter",
@@ -67,6 +67,8 @@
     "size": "large"
   },
   "shipstorage": {
+    "pads_m": 0,
+    "pads_s": 1,
     "dock_m": 0,
     "dock_s": 2
   },

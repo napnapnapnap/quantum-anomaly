@@ -1,23 +1,28 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import Checkbox from '../../../components/Inputs/Checkbox';
 import { seo } from '../../../helpers';
 import { useAppDispatch, useAppSelector } from '../../../hooks';
+import AppContext from '../../../hooks/app-context';
 import LayoutBase from '../../../layouts/Base';
 import { getX4Map } from '../../../redux/x4/map';
-import { backgroundLabelRectWidth, getHexagonPointsV2, maps } from '../x4-helpers';
+import { getHexagonPointsV2, maps } from '../x4-helpers';
+import { Border } from './Border';
+import { Gate, GateConnection } from './Gates';
 import './Map.scss';
 import Resources from './Resources';
+import { Sector } from './Sector';
+import { SectorNameTag } from './SectorNameTag';
 import Station from './Station';
 
 const X4Map = () => {
   const dispatch = useAppDispatch();
+  const context = useContext(AppContext);
   const { map } = useAppSelector((state) => state.x4Map);
 
-  const [scale, setScale] = useState(1.5);
+  const [scale, setScale] = useState(1);
   const [moved, setMoved] = useState({ x: 0, y: 0 });
-  const [showLegend, setShowLegend] = useState(false);
   const [width, setWidth] = useState('100%');
 
   const [displayCradleOfHumanity, setDisplayCradleOfHumanity] = useState(true);
@@ -26,6 +31,9 @@ const X4Map = () => {
   const [displaykingdomEnd, setDisplaykingdomEnd] = useState(true);
   const [displayStations, setDisplayStations] = useState(true);
   const [displayResources, setDisplayResources] = useState(true);
+  const [hideLegend, setHideLegend] = useState(false);
+  const [displayInteraction, setDisplayInteraction] = useState(true);
+  const [displayKhaak, setDisplayKhaah] = useState(false);
 
   const svg = useRef<SVGSVGElement>(null);
   const wrapper = useRef<HTMLDivElement>(null);
@@ -36,10 +44,19 @@ const X4Map = () => {
     else {
       seo({
         title: 'X4 Foundations Map',
-        metaDescription: 'X4 Foundations, Split Vendetta, Cradle of Humanity map and Tides of Avarice.',
+        metaDescription:
+          'X4 Foundations interactive map, includes Split Vendetta, Cradle of Humanity, Tides of Avarice and Kingdom' +
+          ' end.',
         keywords: map.clusters.map((cluster) => cluster.sectors.map((sector) => sector.label).join(', ')),
       });
-      setMoved({ x: 30, y: 150 });
+      setMoved({ x: 0, y: 0 });
+      setTimeout(() => {
+        context.setNavOpen(false);
+      }, 100);
+
+      setTimeout(() => {
+        setDisplayInteraction(false);
+      }, 5000);
     }
   }, [dispatch, map]);
 
@@ -161,223 +178,30 @@ const X4Map = () => {
 
   return (
     <LayoutBase>
-      <div className="x4__map">
+      <div className="x4-map">
         <h1>X4 Foundations Map</h1>
         {map && (
           <React.Fragment>
-            <div ref={wrapper} className="x4__map-wrapper">
-              {showLegend && (
-                <div className="x4__legend">
-                  All locations are approximate <br />
-                  Use mouse to move and zoom <br />
-                  Resource numbers are explained in resource table
-                  <div className="x4__resources">
+            <div ref={wrapper} className="x4-map__wrapper">
+              {displayResources && !hideLegend && (
+                <div className="x4-map__legend">
+                  <span className="x4-map__legend-close" onClick={() => setHideLegend(true)}>
+                    X
+                  </span>
+                  <span>Legend:</span>
+                  <div className="x4-map__resources">
                     <p style={{ background: maps.resourceColors.ore }}>Ore</p>
                     <p style={{ background: maps.resourceColors.silicon }}>Silicon</p>
                     <p style={{ background: maps.resourceColors.ice }}>Ice</p>
+                    <p style={{ background: maps.resourceColors.nividium }}>Nividium</p>
                     <p style={{ background: maps.resourceColors.hydrogen }}>Hydrogen</p>
                     <p style={{ background: maps.resourceColors.helium }}>Helium</p>
                     <p style={{ background: maps.resourceColors.methane }}>Methane</p>
-                    <p style={{ background: maps.resourceColors.nividium }}>Nividium</p>
+                    <p style={{ background: maps.resourceColors.rawscrap }}>Scrap</p>
                   </div>
                 </div>
               )}
-              <svg
-                ref={svg}
-                width={width}
-                height="100%"
-                viewBox="-2800 -1800 5300 5000"
-                version="1.1"
-                xmlns="http://www.w3.org/2000/svg"
-                style={{ transform: `scale(${scale}) translate(${moved.x}px, ${moved.y}px)` }}
-              >
-                {map.clusters
-                  .filter((cluster) => shouldDisplay(cluster.dlc))
-                  .map((cluster) =>
-                    cluster.sectors.map((sector) => (
-                      <polyline
-                        key={sector.name}
-                        stroke={sector.owner ? maps.colors[sector.owner].border : 'gray'}
-                        strokeWidth="2"
-                        fill={sector.owner ? maps.colors[sector.owner].border : 'gray'}
-                        fillOpacity="0.2"
-                        points={getHexagonPointsV2(
-                          {
-                            x: sector.adjusted.x,
-                            y: -sector.adjusted.z,
-                          },
-                          cluster.sectors.length < 2 ? 1 : 2
-                        )}
-                      />
-                    ))
-                  )}
-
-                {map.clusters
-                  .filter((cluster) => shouldDisplay(cluster.dlc))
-                  .map((cluster) => {
-                    let color = cluster.sectors[0].owner ? maps.colors[cluster.sectors[0].owner].border : 'gray';
-                    if (cluster.name === 'Cluster_29_macro') color = maps.colors['argon'].border;
-                    return (
-                      <React.Fragment key={cluster.name}>
-                        <polyline
-                          fill="none"
-                          stroke={color}
-                          strokeWidth="2"
-                          points={getHexagonPointsV2({ x: cluster.position.x, y: -cluster.position.z })}
-                        />
-                        {cluster.sectors.map((sector) =>
-                          sector.zones.map((zone) =>
-                            zone.gates.map((gate, index) => (
-                              <circle
-                                key={`${zone.zoneReference}-${index}`}
-                                cx={gate.position.x}
-                                cy={-gate.position.z}
-                                fill="gray"
-                                stroke="white"
-                                strokeWidth="1"
-                                r="5"
-                              />
-                            ))
-                          )
-                        )}
-                      </React.Fragment>
-                    );
-                  })}
-
-                {Object.values(map.gates).map(
-                  (gate) =>
-                    gate.end &&
-                    shouldDisplay(gate.dlc) && (
-                      <React.Fragment key={Math.random()}>
-                        <line
-                          x1={gate.start.x}
-                          y1={-gate.start.z}
-                          x2={gate.end.x}
-                          y2={-gate.end.z}
-                          stroke="black"
-                          strokeWidth="5"
-                        />
-                        <line
-                          x1={gate.start.x}
-                          y1={-gate.start.z}
-                          x2={gate.end.x}
-                          y2={-gate.end.z}
-                          stroke="white"
-                          strokeWidth="3"
-                          strokeDasharray="2"
-                        />
-                      </React.Fragment>
-                    )
-                )}
-
-                {map.sectorHighways
-                  .filter((highway) => shouldDisplay(highway.dlc))
-                  .map((highway) => (
-                    <React.Fragment key={Math.random()}>
-                      <circle
-                        cx={highway.origin.x}
-                        cy={highway.origin.y}
-                        fill="blue"
-                        stroke="white"
-                        strokeWidth="1"
-                        r="3"
-                      />
-                      <circle
-                        cx={highway.destination.x}
-                        cy={highway.destination.y}
-                        fill="blue"
-                        stroke="white"
-                        strokeWidth="1"
-                        r="3"
-                      />
-                      <line
-                        x1={highway.origin.x}
-                        y1={highway.origin.y}
-                        x2={highway.destination.x}
-                        y2={highway.destination.y}
-                        stroke="gray"
-                        strokeWidth="3"
-                      />
-                      <line
-                        x1={highway.origin.x}
-                        y1={highway.origin.y}
-                        x2={highway.destination.x}
-                        y2={highway.destination.y}
-                        stroke="blue"
-                        strokeDasharray="1"
-                      />
-                    </React.Fragment>
-                  ))}
-
-                {displayResources &&
-                  map.clusters
-                    .filter((cluster) => shouldDisplay(cluster.dlc))
-                    .map((cluster) => cluster.sectors.map((sector) => <Resources sector={sector} key={sector.name} />))}
-
-                {displayStations &&
-                  map.clusters
-                    .filter((cluster) => shouldDisplay(cluster.dlc))
-                    .map((cluster) =>
-                      cluster.sectors.map((sector) =>
-                        sector.stations.map((station) => (
-                          <Station key={station.id} station={station} stationScale={1.5} />
-                        ))
-                      )
-                    )}
-
-                {map.clusters
-                  .filter((cluster) => shouldDisplay(cluster.dlc))
-                  .map((cluster) =>
-                    cluster.sectors.map((sector) => {
-                      const backgroundWidth = sector.label.length * 3 - backgroundLabelRectWidth(sector.label) + 5;
-                      const verticalOffset = sector.transformation ? 45 : 95;
-                      return (
-                        <React.Fragment key={sector.label}>
-                          <rect
-                            x={sector.adjusted.x - backgroundWidth}
-                            y={-sector.adjusted.z - verticalOffset}
-                            width={backgroundWidth * 2}
-                            height="13"
-                            fill="black"
-                            stroke={sector.owner ? maps.colors[sector.owner].border : 'white'}
-                            strokeWidth="1"
-                          />
-                          <text
-                            x={sector.adjusted.x}
-                            y={-sector.adjusted.z - verticalOffset + 10.5}
-                            fontSize="12px"
-                            textAnchor="middle"
-                            fill="white"
-                          >
-                            {sector.label}
-                          </text>
-                        </React.Fragment>
-                      );
-                    })
-                  )}
-              </svg>
-            </div>
-
-            <div className="x4__map-controls">
-              <Link to={'/x4/resources'} className="link">
-                Go to resource table
-              </Link>
-              <span onClick={() => setShowLegend(!showLegend)}>{showLegend ? 'Hide' : 'Show'} legend</span>
-            </div>
-            <div className="x4__map-filters">
-              <div>
-                <Checkbox
-                  label="Stations"
-                  name="displayStations"
-                  checked={displayStations}
-                  handleInputChange={() => setDisplayStations(!displayStations)}
-                />
-                <Checkbox
-                  label="Resources"
-                  name="displayResouces"
-                  checked={displayResources}
-                  handleInputChange={() => setDisplayResources(!displayResources)}
-                />
+              <div className="x4-map__toggler">
                 <Checkbox
                   label="Split Vendetta"
                   name="displaySplitVendetta"
@@ -402,10 +226,155 @@ const X4Map = () => {
                   checked={displaykingdomEnd}
                   handleInputChange={() => setDisplaykingdomEnd(!displaykingdomEnd)}
                 />
+                <Checkbox
+                  label="Stations"
+                  name="displayStations"
+                  checked={displayStations}
+                  handleInputChange={() => setDisplayStations(!displayStations)}
+                />
+                <Checkbox
+                  label="Resources"
+                  name="displayResouces"
+                  checked={displayResources}
+                  handleInputChange={() => {
+                    setDisplayResources(!displayResources);
+                    setHideLegend(false);
+                  }}
+                />
+                <Checkbox
+                  label="Potential Khaak"
+                  name="displayKhaak"
+                  checked={displayKhaak}
+                  handleInputChange={() => setDisplayKhaah(!displayKhaak)}
+                />
+                <button onClick={downloadSvgFile} className="btn btn--cta">
+                  Download
+                </button>
               </div>
-              <button onClick={downloadSvgFile} className="btn btn--cta">
-                Click here to download as svg
-              </button>
+              {displayInteraction && (
+                <div className="x4__interaction">
+                  <span>Click and drag to move</span>
+                  <br />
+                  <span>Zoom with mouse wheel</span>
+                </div>
+              )}
+              <div className="x4-map__zoom">
+                <input
+                  type="range"
+                  name="volume"
+                  min="1"
+                  max="12"
+                  step="0.25"
+                  value={scale || 1}
+                  onChange={(e) => {
+                    setScale(parseInt(e.target.value));
+                  }}
+                />
+              </div>
+              <svg
+                ref={svg}
+                width={width}
+                height="100%"
+                viewBox="-2800 -1800 5250 3000"
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+                style={{ transform: `scale(${scale}) translate(${moved.x}px, ${moved.y}px)` }}
+              >
+                <rect x="-2800" y="-1800" width="5250" height="2800" fill="black"></rect>
+                {/*Renders sectors*/}
+                {map.clusters
+                  .filter((cluster) => shouldDisplay(cluster.dlc))
+                  .map((cluster) =>
+                    cluster.sectors.map((sector) => <Sector cluster={cluster} sector={sector} key={sector.name} />)
+                  )}
+
+                {/*Renders cluster border of multiple sectors, reuse loop to render gates in ALL sectors */}
+                {map.clusters
+                  .filter((cluster) => shouldDisplay(cluster.dlc))
+                  .map((cluster) => (
+                    <React.Fragment key={cluster.name}>
+                      {cluster.sectors.length !== 1 && <Border cluster={cluster} />}
+                      {cluster.sectors.map((sector) =>
+                        sector.zones.map((zone) => zone.gates.map((gate) => <Gate gate={gate} key={gate.name} />))
+                      )}
+                      {cluster.sectors.map(
+                        (sector) =>
+                          sector.potentialHive &&
+                          displayKhaak && (
+                            <polyline
+                              fill="none"
+                              stroke="red"
+                              strokeWidth="8"
+                              key={sector.name}
+                              points={getHexagonPointsV2(
+                                {
+                                  x: cluster.position.x,
+                                  y: -cluster.position.z,
+                                },
+                                1,
+                                true
+                              )}
+                            />
+                          )
+                      )}
+                    </React.Fragment>
+                  ))}
+
+                {/*Renders lines between gates*/}
+                {map.gateConnections
+                  .filter((gate) => shouldDisplay(gate.dlc))
+                  .map((gate) => (
+                    <GateConnection gateConnection={gate} key={Math.random()} />
+                  ))}
+
+                {/*Renders both superhighways gate pairs and lines between them*/}
+                {map.sectorHighways
+                  .filter((highwayGate) => shouldDisplay(highwayGate.dlc))
+                  .map((highwayGate) => (
+                    <React.Fragment key={Math.random()}>
+                      <Gate gate={{ position: { x: highwayGate.start.x, z: -highwayGate.start.z } }} isHighwayGate />
+                      <Gate gate={{ position: { x: highwayGate.exit.x, z: -highwayGate.exit.z } }} isHighwayGate />
+                      <GateConnection
+                        gateConnection={{
+                          start: { x: highwayGate.start.x, z: -highwayGate.start.z },
+                          exit: { x: highwayGate.exit.x, z: -highwayGate.exit.z },
+                        }}
+                        isHighwayGate
+                      />
+                    </React.Fragment>
+                  ))}
+
+                {/*Renders resource boxes and sunlight*/}
+                {displayResources &&
+                  map.clusters
+                    .filter((cluster) => shouldDisplay(cluster.dlc))
+                    .map((cluster) => cluster.sectors.map((sector) => <Resources sector={sector} key={sector.name} />))}
+
+                {/*Renders stations */}
+                {displayStations &&
+                  map.clusters
+                    .filter((cluster) => shouldDisplay(cluster.dlc))
+                    .map((cluster) =>
+                      cluster.sectors.map((sector) =>
+                        sector.stations.map((station) => (
+                          <Station key={station.id} station={station} stationScale={1.5} />
+                        ))
+                      )
+                    )}
+
+                {/*Renders sector name tag and box around it */}
+                {map.clusters
+                  .filter((cluster) => shouldDisplay(cluster.dlc))
+                  .map((cluster) =>
+                    cluster.sectors.map((sector) => <SectorNameTag sector={sector} key={sector.label} />)
+                  )}
+              </svg>
+            </div>
+
+            <div className="x4-map__controls">
+              <Link to={'/x4/resources'} className="link">
+                Resource table
+              </Link>
             </div>
           </React.Fragment>
         )}

@@ -2,7 +2,9 @@ import { promises as fs } from 'fs';
 import path from 'path';
 import xml2js from 'xml2js';
 
-export async function getWares(resourcesPath) {
+import { translateRecursiveTrim } from '../translations';
+
+export async function getWares(resourcesPath, translations) {
   let parser = new xml2js.Parser({ mergeAttrs: true, explicitArray: false });
   const pathToFile = path.join(resourcesPath, 'libraries', 'wares.xml');
   const parsed = await parser.parseStringPromise(await fs.readFile(pathToFile));
@@ -47,6 +49,12 @@ export async function getWares(resourcesPath) {
   // information any time by knowing id
   const objectifiedWares = {};
   parsed.wares.ware.forEach((ware) => {
+    if (ware.id === 'inv_agidevice_02') return;
+    if (ware.tags && ware.tags.indexOf('deprecated') !== -1) return;
+
+    ware.name = translateRecursiveTrim(ware.name, translations);
+    if (ware.description) ware.description = translateRecursiveTrim(ware.description, translations);
+    if (ware.factoryname) ware.factoryname = translateRecursiveTrim(ware.factoryname, translations);
     objectifiedWares[ware.id] = ware;
   });
 

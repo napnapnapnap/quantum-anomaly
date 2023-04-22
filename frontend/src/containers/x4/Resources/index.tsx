@@ -11,8 +11,9 @@ import './Resources.scss';
 const ORE_SILICON_CAP = 1000000000;
 const ICE_CAP = 200000000;
 const NIVIDIUM_CAP = 8000000;
-const HYDROGEN_HELIUM_CAP = 2000000;
-const METHANE_CAP = 8000000;
+const HYDROGEN_HELIUM_CAP = 4500000;
+const METHANE_CAP = 10000000;
+const RAWSCRAP_CAP = 20000000000;
 
 interface SectorInterface {
   name: string;
@@ -25,6 +26,7 @@ interface SectorInterface {
   helium: number | null;
   methane: number | null;
   nividium: number | null;
+  rawscrap: number | null;
   numberOfFields: number;
   fields: string[] | null;
   empty: boolean;
@@ -41,7 +43,7 @@ export const X4ResourcesTable = () => {
 
   useEffect(() => {
     setSectors([...sectors].sort(dynamicSortMultiple(sort, 'name', 'owner')));
-  }, [sort, sectors]);
+  }, [sort]);
 
   useEffect(() => {
     if (!map) dispatch(getX4Map());
@@ -60,6 +62,8 @@ export const X4ResourcesTable = () => {
               sector.resourcePoints && sector.resourcePoints.hydrogen > 0 ? sector.resourcePoints.hydrogen : null,
             helium: sector.resourcePoints && sector.resourcePoints.helium > 0 ? sector.resourcePoints.helium : null,
             methane: sector.resourcePoints && sector.resourcePoints.methane > 0 ? sector.resourcePoints.methane : null,
+            rawscrap:
+              sector.resourcePoints && sector.resourcePoints.rawscrap > 0 ? sector.resourcePoints.rawscrap : null,
             nividium:
               sector.resourcePoints && sector.resourcePoints.nividium > 0 ? sector.resourcePoints.nividium : null,
             numberOfFields: sector.resources ? sector.resources.length : 0,
@@ -83,7 +87,7 @@ export const X4ResourcesTable = () => {
   return (
     <LayoutBase>
       <div className="x4-resources-table">
-        <h1>X4 Resource table v5.0</h1>
+        <h1>X4 Resource table</h1>
         {map && (
           <React.Fragment>
             <div className="x4-resources-table__wrapper">
@@ -120,6 +124,9 @@ export const X4ResourcesTable = () => {
                     <th onClick={() => sortBy('nividium')} className="number">
                       Nividium
                     </th>
+                    <th onClick={() => sortBy('rawscrap')} className="number">
+                      Scrap
+                    </th>
                     <th onClick={() => sortBy('numberOfFields')} className="number">
                       Number of fields
                     </th>
@@ -133,31 +140,35 @@ export const X4ResourcesTable = () => {
                           <td title={sector.name}>{sector.label}</td>
                           <td>{sector.owner !== 'neutral' ? maps.factions[sector.owner] : 'Neutral'}</td>
 
-                          {['ore', 'silicon', 'ice', 'hydrogen', 'helium', 'methane', 'nividium'].map((resource) => {
-                            let title =
-                              sector[resource as keyof SectorInterface] === 1 ? 'Up to maximum of ' : 'At least ';
+                          {['ore', 'silicon', 'ice', 'hydrogen', 'helium', 'methane', 'nividium', 'rawscrap'].map(
+                            (resource) => {
+                              let title =
+                                sector[resource as keyof SectorInterface] === 1 ? 'Up to maximum of ' : 'At least ';
 
-                            if (resource === 'ore' || resource === 'silicon')
-                              title += `${formatNumber((sector[resource]! / 100) * ORE_SILICON_CAP)} ${resource}`;
-                            if (resource === 'ice')
-                              title += `${formatNumber((sector[resource]! / 100) * ICE_CAP)} ${resource}`;
-                            if (resource === 'nividium')
-                              title += `${formatNumber((sector[resource]! / 100) * NIVIDIUM_CAP)} ${resource}`;
-                            if (resource === 'hydrogen' || resource === 'helium')
-                              title += `${formatNumber((sector[resource]! / 100) * HYDROGEN_HELIUM_CAP)} ${resource}`;
-                            if (resource === 'methane')
-                              title += `${formatNumber((sector[resource]! / 100) * METHANE_CAP)} ${resource}`;
+                              if (resource === 'ore' || resource === 'silicon')
+                                title += `${formatNumber((sector[resource]! / 100) * ORE_SILICON_CAP)} ${resource}`;
+                              if (resource === 'ice')
+                                title += `${formatNumber((sector[resource]! / 100) * ICE_CAP)} ${resource}`;
+                              if (resource === 'nividium')
+                                title += `${formatNumber((sector[resource]! / 100) * NIVIDIUM_CAP)} ${resource}`;
+                              if (resource === 'hydrogen' || resource === 'helium')
+                                title += `${formatNumber((sector[resource]! / 100) * HYDROGEN_HELIUM_CAP)} ${resource}`;
+                              if (resource === 'methane')
+                                title += `${formatNumber((sector[resource]! / 100) * METHANE_CAP)} ${resource}`;
+                              if (resource === 'rawscrap')
+                                title += `${formatNumber((sector[resource]! / 100) * RAWSCRAP_CAP)} ${resource}`;
 
-                            return (
-                              <td className="number" key={`${sector.name}${resource}`}>
-                                {sector[resource as keyof SectorInterface] && (
-                                  <span title={title} style={{ borderColor: maps.resourceColors[resource] }}>
-                                    {sector[resource as keyof SectorInterface]}
-                                  </span>
-                                )}
-                              </td>
-                            );
-                          })}
+                              return (
+                                <td className="number" key={`${sector.name}${resource}`}>
+                                  {sector[resource as keyof SectorInterface] && (
+                                    <span title={title} style={{ borderColor: maps.resourceColors[resource] }}>
+                                      {sector[resource as keyof SectorInterface]}
+                                    </span>
+                                  )}
+                                </td>
+                              );
+                            }
+                          )}
                           <td
                             title={
                               sector.numberOfFields !== 0 && sector.fields

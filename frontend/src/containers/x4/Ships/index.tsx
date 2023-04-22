@@ -24,39 +24,6 @@ import {
   initialStateDisplayVariations,
 } from './x4-ship-helpers';
 
-const LabelValuePair = ({
-  label,
-  value,
-  unit,
-  info,
-  capitalize,
-  indent = false,
-  margin = false,
-}: {
-  label: string;
-  value: string | number;
-  unit?: string;
-  info?: string;
-  capitalize?: boolean;
-  indent?: boolean;
-  margin?: boolean;
-}) => (
-  <p className={clsx('x4-ships__label-value-pair', { 'x4-ships__label-value-pair--marginated': margin })}>
-    <span className={clsx('text--smaller', { 'text--capitalize': capitalize })}>
-      {indent && <span className="text--smaller">&raquo;</span>}
-      {info && (
-        <span className="x4-ships__info text--smaller" title={info}>
-          ?
-        </span>
-      )}
-      {label}:{' '}
-    </span>
-    <span className={clsx('text--smaller', { 'text--capitalize': capitalize })}>
-      {value} {unit}
-    </span>
-  </p>
-);
-
 const X4Ships = () => {
   const dispatch = useAppDispatch();
   const { ships, equipment } = useAppSelector((state) => state.x4Fitting);
@@ -69,6 +36,8 @@ const X4Ships = () => {
   const [displayVariations, setDisplayVariations] = useState<{ [key: string]: boolean }>(initialStateDisplayVariations);
   const [activeEquipment, setActiveEquipment] = useState<ActiveEquipment>(initialActiveEquipment);
   const [sort, setSort] = useState('class');
+  const [native, setNative] = useState(false);
+  const [alwaysKeep, setAlwaysKeep] = useState<string[]>([]);
 
   useEffect(() => {
     if (ships && equipment) {
@@ -76,13 +45,14 @@ const X4Ships = () => {
 
       // filter out ships
       Object.values(ships).forEach((ship) => {
-        if (!displayClass[ship.class]) return;
-        if (!displayRace[ship.race]) return;
-        if (!displayTypes[ship.type]) return;
-        if (!displayVariations[ship.shortvariation]) return;
-        if (!displayDlcs[ship.dlc]) return;
+        if (!displayClass[ship.class] && !alwaysKeep.includes(ship.id)) return;
+        if (!displayRace[ship.race] && !alwaysKeep.includes(ship.id)) return;
+        if (!displayTypes[ship.type] && !alwaysKeep.includes(ship.id)) return;
+        if (!displayVariations[ship.shortvariation] && !alwaysKeep.includes(ship.id)) return;
+        if (!displayDlcs[ship.dlc] && !alwaysKeep.includes(ship.id)) return;
 
         const modifiedShip = { ...ship };
+
         const thrusterId = getHighestAvailableThrusterId(modifiedShip, activeEquipment);
         const engineId = getHighestAvailableEngineId(modifiedShip, activeEquipment);
         const shieldId = getHighestAvailableShieldId(modifiedShip, activeEquipment, equipment);
@@ -112,6 +82,8 @@ const X4Ships = () => {
     sort,
     activeEquipment,
     displayDlcs,
+    native,
+    alwaysKeep,
   ]);
 
   useEffect(() => {
@@ -144,6 +116,7 @@ const X4Ships = () => {
       <div className={clsx('x4-ships')}>
         <h1>X4 Ships</h1>
         <Tooltip id="ship-description" events={['hover']} />
+        <Tooltip id="ship-values" events={['hover']} />
 
         <PreviewControls
           displayClass={displayClass}
@@ -162,8 +135,15 @@ const X4Ships = () => {
           setDisplayDlcs={setDisplayDlcs}
         />
 
+        <p className="text--xs text--muted text--long x4-ships__notice">
+          If selected is not available for a given ship, it will use the next best thing. For example, Mk.4 engines are
+          only available to Split in small and medium size. Selecting these engines will equip split Mk.1 versions on
+          large ships. Combat engines do not exist on capitals, they will be translated into all-round engines. Under
+          each ship there is a list of actually equipped modules.
+        </p>
+
         <div className="x4-ships__wrapper">
-          <p className="text--smaller text--muted">Displayed {shipsToDisplay.length} ships</p>
+          <p className="text--xs text--muted">Displayed {shipsToDisplay.length} ships</p>
           <table className="x4-ships__table">
             <tbody>
               {shipsToDisplay &&
@@ -174,185 +154,285 @@ const X4Ships = () => {
                         src={`/images/x4/large/${ship.id}.jpg`}
                         alt={ship.name}
                         data-tooltip-id="ship-description"
-                        data-tooltip-html={ship.race !== 'bor' ? ship.description.replace(/\\n/g, '<br />') : ''}
+                        data-tooltip-html={ship.description ? ship.description.replace(/\\n/g, '<br />') : ''}
                       />
+                      <div className="x4-ships__quick-controls"></div>
                     </td>
                     <td>
-                      <span>
-                        <h2 className="h6">{ship.name}</h2>
-                      </span>
-                      <p className="text--smaller text--capitalize">
-                        {getFaction(ship.manufacturer)} {separateWords(ship.type)}
+                      <h2 className="h6">{ship.name}</h2>
+                      <p className="x4-ships__value text--capitalize">
+                        {separateWords(maps.shipClass[ship.class].replace('extralarge', 'XL'))}{' '}
+                        {separateWords(ship.type)}
                       </p>
-                      <p className="text--smaller">Average price: {formatNumber(ship.price.average)} CR</p>
-                      <p className="text--smaller text--capitalize">
-                        Ship Class: {separateWords(maps.shipClass[ship.class].replace('extralarge', 'XL'))}
-                      </p>
-                      <p className="text--smaller text--capitalize">Ship Type: {separateWords(ship.type)}</p>
+                      <p className="x4-ships__value text--capitalize">{getFaction(ship.manufacturer)}</p>
+                      <p className="x4-ships__value">Average price: {formatNumber(ship.price.average)} CR</p>
 
-                      <p className="text--smaller">Mass: {formatNumber(ship.mass)}t</p>
+                      <p className="x4-ships__value text--capitalize mt-1">
+                        <span>{equipment[ship.outfit!.thrusters].name}</span>
+                      </p>
+
+                      <p className="x4-ships__value text--capitalize">
+                        <span>
+                          {formatNumber(ship.shields.quantity)}&#215; {equipment[ship.outfit!.shields].name}
+                        </span>
+                      </p>
+
+                      <p className="x4-ships__value text--capitalize mb-1">
+                        <span>
+                          {formatNumber(ship.engines.quantity)}&#215; {equipment[ship.outfit!.engines].name}
+                        </span>
+                      </p>
+
                       {Object.keys(ship.armaments.weapons).map(
                         (weaponsKey, index) =>
                           ship.armaments.weapons[weaponsKey as keyof typeof ship.armaments.weapons] !== 0 && (
-                            <LabelValuePair
-                              label={`${weaponsKey.replace('extralarge', 'XL')} weapons`}
-                              value={formatNumber(
-                                ship.armaments.weapons[weaponsKey as keyof typeof ship.armaments.weapons]
-                              )}
-                              unit=""
-                              capitalize
-                              margin={index === 0}
-                              key={`${ship.id}-${weaponsKey}-weapon`}
-                            />
+                            <p className="x4-ships__value text--capitalize" key={`${ship.id}-${weaponsKey}-weapon`}>
+                              <span>{`${weaponsKey.replace('extralarge', 'XL')} weapons`}:</span>
+                              <span>
+                                {formatNumber(
+                                  ship.armaments.weapons[weaponsKey as keyof typeof ship.armaments.weapons]
+                                )}
+                              </span>
+                            </p>
                           )
                       )}
                       {Object.keys(ship.armaments.turrets).map(
-                        (turretsKey) =>
+                        (turretsKey, index) =>
                           ship.armaments.turrets[turretsKey as keyof typeof ship.armaments.turrets] !== 0 && (
-                            <LabelValuePair
-                              label={`${turretsKey.replace('extralarge', 'XL')} turrets`}
-                              value={formatNumber(
-                                ship.armaments.turrets[turretsKey as keyof typeof ship.armaments.turrets]
-                              )}
-                              unit=""
-                              capitalize
-                              key={`${ship.id}-${turretsKey}-turret`}
-                            />
+                            <p className="x4-ships__value text--capitalize" key={`${ship.id}-${turretsKey}-weapon`}>
+                              <span>{`${turretsKey.replace('extralarge', 'XL')} turrets`}:</span>
+                              <span>
+                                {formatNumber(
+                                  ship.armaments.turrets[turretsKey as keyof typeof ship.armaments.turrets]
+                                )}
+                              </span>
+                            </p>
                           )
                       )}
-                      <p className="x4-ships__outfit text--muted text--xs mt-1">
-                        Currently applied: {equipment[ship.outfit!.thrusters].name},{' '}
-                        {equipment[ship.outfit!.engines].name}, {equipment[ship.outfit!.shields].name}
+                    </td>
+
+                    <td>
+                      <p className="x4-ships__value">
+                        <span>Hull:</span> <span>{formatNumber(ship.hull)} MJ</span>
+                      </p>
+                      <p className="x4-ships__value">
+                        <span>Shield:</span> <span>{formatNumber(ship.shield.max)} MJ</span>
+                      </p>
+                      <p className="x4-ships__value x4-ships__value--indent">
+                        <span>Recharge:</span> <span>{formatNumber(ship.shield.rate)} MJ/s</span>
+                      </p>
+                      {(ship.class === 'ship_s' || ship.class === 'ship_m') && (
+                        <p
+                          className="x4-ships__value x4-ships__value--indent"
+                          data-tooltip-id="ship-values"
+                          data-tooltip-html="Time needed for shields to start recharging after taking damage"
+                        >
+                          <span>Delay:</span> <span>{formatNumber(ship.shield.delay)} s</span>
+                        </p>
+                      )}
+
+                      <p className="x4-ships__value mt-1">
+                        <span>Speed:</span> <span>{formatDecimal(ship.speed.forward)} m/s</span>
+                      </p>
+                      <p className="x4-ships__value x4-ships__value--indent">
+                        <span>Acceleration:</span> <span>{formatDecimal(ship.speed.acceleration)} m/s²</span>
+                      </p>
+
+                      <p className="x4-ships__value mt-1">
+                        <span>Pitch:</span> <span>{formatDecimal(ship.speed.pitch)} °/s</span>
+                      </p>
+                      <p className="x4-ships__value">
+                        <span>Roll:</span> <span>{formatDecimal(ship.speed.roll)} °/s</span>
+                      </p>
+                      <p className="x4-ships__value">
+                        <span>Yaw:</span> <span>{formatDecimal(ship.speed.yaw)} °/s</span>
+                      </p>
+                      <p className="x4-ships__value">
+                        <span>Mass:</span> <span>{formatNumber(ship.mass)} Tons</span>
                       </p>
                     </td>
                     <td>
-                      <LabelValuePair label="Hull" value={formatNumber(ship.hull)} unit="MJ" />
-                      <LabelValuePair label="Shield" value={formatNumber(ship.shield.max)} unit="MJ" />
-                      <LabelValuePair label="Recharge" value={formatNumber(ship.shield.rate)} unit="MJ/s" indent />
-                      {ship.class === 'ship_s' && (
-                        <LabelValuePair label="Delay" value={formatNumber(ship.shield.delay)} unit="s" indent />
-                      )}
+                      <p className="x4-ships__value">
+                        <span>Travel speed:</span> <span>{formatNumber(ship.speed.travel.speed)} m/s</span>
+                      </p>
+                      <p
+                        className="x4-ships__value x4-ships__value--indent"
+                        data-tooltip-id="ship-values"
+                        data-tooltip-html="Time needed to engage travel drive"
+                      >
+                        <span>Charge:</span> <span>{formatDecimal(ship.speed.travel.charge)} s</span>
+                      </p>
+                      <p
+                        className="x4-ships__value x4-ships__value--indent"
+                        data-tooltip-id="ship-values"
+                        data-tooltip-html="Distance / time needed to reach full travel speed once the travel drive is engaged"
+                      >
+                        <span>Attack:</span>
+                        <span>
+                          {formatNumber(
+                            ((1 / 2) *
+                              (ship.speed.travel.speed / ship.speed.travel.attack) *
+                              Math.pow(ship.speed.travel.attack, 2)) /
+                              1000
+                          )}{' '}
+                          km, {formatDecimal(ship.speed.travel.attack)} s
+                        </span>
+                      </p>
+                      <p
+                        className="x4-ships__value x4-ships__value--indent"
+                        data-tooltip-id="ship-values"
+                        data-tooltip-html="Distance / time needed to decelerate back to normal speed after travel drive is dissenaged"
+                      >
+                        <span>Release:</span>
+                        <span>
+                          {formatNumber(
+                            ((1 / 2) *
+                              (ship.speed.travel.speed / ship.speed.travel.release) *
+                              Math.pow(ship.speed.travel.release, 2)) /
+                              1000
+                          )}{' '}
+                          km, {formatDecimal(ship.speed.travel.release)} s
+                        </span>
+                      </p>
 
-                      <LabelValuePair label="Speed" value={formatDecimal(ship.speed.forward)} unit="m/s" margin />
-                      <LabelValuePair
-                        label="Acceleration"
-                        value={formatDecimal(ship.speed.acceleration)}
-                        unit="m/s²"
-                        indent
-                      />
-                      <LabelValuePair label="Pitch" value={formatDecimal(ship.speed.pitch)} unit="°/s" />
-                      <LabelValuePair label="Roll" value={formatDecimal(ship.speed.roll)} unit="°/s" />
-                      <LabelValuePair label="Yaw" value={formatDecimal(ship.speed.yaw)} unit="°/s" />
+                      <p className="x4-ships__value mt-1">
+                        <span>Boost Speed:</span> <span>{formatNumber(ship.speed.boost.speed)} m/s</span>
+                      </p>
+                      <p
+                        className="x4-ships__value x4-ships__value--indent"
+                        data-tooltip-id="ship-values"
+                        data-tooltip-html="Time until shields are depleted as result of boosting"
+                      >
+                        <span>Duration:</span>
+                        <span>{formatDecimal(ship.speed.boost.duration)} s</span>
+                      </p>
+                      <p
+                        className="x4-ships__value x4-ships__value--indent"
+                        data-tooltip-id="ship-values"
+                        data-tooltip-html="Distance / time needed to reach full boost speed once the boost is engaged"
+                      >
+                        <span>Attack:</span>
+                        <span>
+                          {formatDecimal(
+                            ((1 / 2) *
+                              (ship.speed.boost.speed / ship.speed.boost.attack) *
+                              Math.pow(ship.speed.boost.attack, 2)) /
+                              1000
+                          )}{' '}
+                          km, {formatDecimal(ship.speed.boost.attack)} s
+                        </span>
+                      </p>
+                      <p
+                        className="x4-ships__value x4-ships__value--indent"
+                        data-tooltip-id="ship-values"
+                        data-tooltip-html="Distance / time decelerate back to normal speed once the boost is disengaged"
+                      >
+                        <span>Release:</span>
+                        <span>
+                          {formatDecimal(
+                            ((1 / 2) *
+                              (ship.speed.boost.speed / ship.speed.boost.release) *
+                              Math.pow(ship.speed.boost.release, 2)) /
+                              1000
+                          )}{' '}
+                          km, {formatDecimal(ship.speed.boost.release)} s
+                        </span>
+                      </p>
                     </td>
                     <td>
-                      <LabelValuePair label="Travel speed" value={formatNumber(ship.speed.travel.speed)} unit="m/s" />
-                      <LabelValuePair
-                        label="Attack"
-                        value={formatDecimal(ship.speed.travel.attack)}
-                        unit="s"
-                        info="Time to reach full speed"
-                        indent
-                      />
-                      <LabelValuePair
-                        label="Charge"
-                        value={formatDecimal(ship.speed.travel.charge)}
-                        unit="s"
-                        info="Time needed to activate travel drive"
-                        indent
-                      />
-                      <LabelValuePair
-                        label="Release"
-                        value={formatDecimal(ship.speed.travel.release)}
-                        unit="s"
-                        info="Time to slow down to normal speed"
-                        indent
-                      />
-                      <LabelValuePair
-                        label="Reach / Stop"
-                        value={`${formatNumber(
-                          ((1 / 2) *
-                            (ship.speed.travel.speed / ship.speed.travel.attack) *
-                            Math.pow(ship.speed.travel.attack, 2)) /
-                            1000
-                        )} / ${formatNumber(
-                          ((1 / 2) *
-                            (ship.speed.travel.speed / ship.speed.travel.release) *
-                            Math.pow(ship.speed.travel.release, 2)) /
-                            1000
-                        )}`}
-                        unit="km"
-                        info="Distance that ship needs in order to reach it's maximum speed or to slow down to 0"
-                        indent
-                      />
+                      {ship.shipstorage.pads_m !== 0 && (
+                        <p className="x4-ships__value">
+                          <span>Medium Landing Pads:</span> <span>{formatNumber(ship.shipstorage.pads_m)}</span>
+                        </p>
+                      )}
+                      {ship.shipstorage.pads_m !== 0 && (
+                        <p className="x4-ships__value x4-ships__value--indent mb-1">
+                          <span>Storage:</span> <span>{formatNumber(ship.shipstorage.dock_m)}</span>
+                        </p>
+                      )}
 
-                      <LabelValuePair
-                        label="Boost speed"
-                        value={formatNumber(ship.speed.boost.speed)}
-                        unit="m/s"
-                        margin
-                      />
-                      <LabelValuePair
-                        label="Attack"
-                        value={formatDecimal(ship.speed.boost.attack)}
-                        unit="s"
-                        info="Time to reach full speed"
-                        indent
-                      />
-                      <LabelValuePair
-                        label="Duration"
-                        value={formatDecimal(ship.speed.boost.duration)}
-                        unit="s"
-                        info="Time until shields are depleted"
-                        indent
-                      />
-                      <LabelValuePair
-                        label="Release"
-                        value={formatDecimal(ship.speed.boost.release)}
-                        unit="s"
-                        info="Time to slow down to normal speed"
-                        indent
-                      />
+                      {ship.shipstorage.pads_s !== 0 && (
+                        <p className="x4-ships__value">
+                          <span>Small Landing Pads:</span> <span>{formatNumber(ship.shipstorage.pads_s)}</span>
+                        </p>
+                      )}
+                      {ship.shipstorage.pads_s !== 0 && (
+                        <p className="x4-ships__value x4-ships__value--indent mb-1">
+                          <span>Storage:</span> <span>{formatNumber(ship.shipstorage.dock_s)}</span>
+                        </p>
+                      )}
+
+                      <p className="x4-ships__value">
+                        <span>Drones:</span> <span>{formatNumber(ship.storage.unit)}</span>
+                      </p>
+                      <p className="x4-ships__value">
+                        <span>Missiles:</span> <span>{formatNumber(ship.storage.missile)}</span>
+                      </p>
+                      <p className="x4-ships__value">
+                        <span>Countermeasures:</span> <span>{formatNumber(ship.storage.countermeasure)}</span>
+                      </p>
+
+                      <p className="x4-ships__value mt-1">
+                        <span>Crew:</span> <span>{formatNumber(ship.storage.people)}</span>
+                      </p>
+                      <p className="x4-ships__value mb-1">
+                        <span>Deployable Items:</span> <span>{formatNumber(ship.storage.deployable)}</span>
+                      </p>
+                      {ship.storage.capacityType ? (
+                        <p className="x4-ships__value text--capitalize">
+                          <span>Storage Type:</span>
+                          <span>
+                            {ship.storage.capacityType
+                              .replace('container solid liquid', 'any')
+                              .replace('container condensate', 'container')}
+                          </span>
+                        </p>
+                      ) : (
+                        <p className="x4-ships__value text--capitalize">
+                          {' '}
+                          <span>Storage Type:</span>
+                          <span>-</span>
+                        </p>
+                      )}
+                      <p className="x4-ships__value x4-ships__value--indent">
+                        <span>Capacity:</span> <span>{formatNumber(ship.storage.capacity)} m³</span>
+                      </p>
                     </td>
                     <td>
-                      {ship.shipstorage.dock_m !== 0 && (
-                        <LabelValuePair label="Medium dock" value={formatNumber(ship.shipstorage.dock_m)} unit="" />
+                      {alwaysKeep.includes(ship.id) ? (
+                        <button
+                          className="btn btn--cta btn--delete"
+                          onClick={() => setAlwaysKeep(alwaysKeep.filter((id) => id !== ship.id))}
+                        >
+                          Remove always keep
+                        </button>
+                      ) : (
+                        <button className="btn btn--cta" onClick={() => setAlwaysKeep([...alwaysKeep, ship.id])}>
+                          Always keep
+                        </button>
                       )}
-                      {ship.shipstorage.dock_s !== 0 && (
-                        <LabelValuePair label="Small dock" value={formatNumber(ship.shipstorage.dock_s)} unit="" />
-                      )}
-                      <LabelValuePair label="Drones" value={formatNumber(ship.storage.unit)} unit="" />
-                      <LabelValuePair label="Missiles" value={formatNumber(ship.storage.missile)} unit="" />
-                      <LabelValuePair
-                        label="Countermeasures"
-                        value={formatNumber(ship.storage.countermeasure)}
-                        unit=""
-                      />
-
-                      <LabelValuePair
-                        label="Crew"
-                        value={formatNumber(ship.storage.people)}
-                        unit=""
-                        capitalize
-                        margin
-                      />
-                      <LabelValuePair label="Items" value={formatNumber(ship.storage.deployable)} unit="" capitalize />
-                      {ship.storage.capacityType && (
-                        <LabelValuePair
-                          label="Storage"
-                          value={ship.storage.capacityType
-                            .replace('container solid liquid', 'any')
-                            .replace('container condensate', 'container')}
-                          unit=""
-                          capitalize
-                        />
-                      )}
-                      <LabelValuePair
-                        label="Capacity"
-                        value={formatNumber(ship.storage.capacity)}
-                        unit="m³"
-                        capitalize
-                        indent
-                      />
+                      <button
+                        className="btn btn--cta btn--delete mt"
+                        onClick={() =>
+                          setDisplayRace({
+                            ...displayRace,
+                            [ship.race]: false,
+                          })
+                        }
+                      >
+                        Remove {maps.reverseRace[ship.race]} ships
+                      </button>
+                      <button
+                        className="btn btn--cta btn--delete"
+                        onClick={() =>
+                          setDisplayTypes({
+                            ...displayTypes,
+                            [ship.type]: false,
+                          })
+                        }
+                      >
+                        Remove {separateWords(ship.type)}s
+                      </button>
                     </td>
                   </tr>
                 ))}

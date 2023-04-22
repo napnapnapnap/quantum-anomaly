@@ -1,4 +1,4 @@
-import { X4ShipClassEnum } from '../../redux/x4/fitting';
+import { X4ShipClassEnum, X4ShipInterface } from '../../redux/x4/fitting';
 
 export const maps: {
   race: { label: string; value: string }[];
@@ -9,6 +9,8 @@ export const maps: {
   factions: { [key: string]: string };
   colors: { [key: string]: { color: string; border: string } };
   resourceColors: { [key: string]: string };
+  engineOptions: { label: string; value: string }[];
+  raceOptions: { label: string; value: string }[];
 } = {
   race: [
     { label: 'Argon', value: 'arg' },
@@ -35,6 +37,7 @@ export const maps: {
     yak: 'Yaki',
     xen: 'Xenon',
     pir: 'Pirate',
+    astrid: 'Pirate',
   },
   shipClass: {
     ship_xl: 'extralarge',
@@ -44,14 +47,14 @@ export const maps: {
   },
   dlcs: {
     base: 'Base Game',
-    cradleOfHumanity: 'CoH',
-    tidesOfAvarice: 'ToA',
-    splitVendetta: 'SV',
-    kingdomEnd: 'KE',
+    cradleOfHumanity: 'Cradle of Humanity',
+    tidesOfAvarice: 'Tides of Avarice',
+    splitVendetta: 'Split Vendetta',
+    kingdomEnd: 'Kingdom End',
   },
   variations: {
     BV: 'Base',
-    VA: 'Vangaurd',
+    VA: 'Vanguard',
     ST: 'Sentinel',
     RD: 'Raider',
   },
@@ -78,6 +81,7 @@ export const maps: {
     xenon: { color: '#880000', border: '#c90000' },
     boron: { color: '#00BBBB', border: '#55cBcB' },
     paranid: { color: '#2d0050', border: '#8000ff' },
+    buccaneers: { color: '#2d0050', border: '#8000ff' },
     alliance: { color: '#b03cca', border: '#b03cca' },
     split: { color: '#5e2204', border: '#ff691e' },
     argon: { color: '#00256e', border: '#0055ff' },
@@ -94,6 +98,7 @@ export const maps: {
     none: { color: '#666', border: '#aaa' },
     scavenger: { color: '#5480a0', border: '#7480a0' },
     loanshark: { color: '#978296', border: '#aa8296' },
+    pirate: { color: '#978296', border: '#aa8296' },
   },
   resourceColors: {
     ore: '#ff8c00',
@@ -103,8 +108,29 @@ export const maps: {
     hydrogen: '#c5ffff',
     helium: '#ffeec1',
     methane: '#367ca2',
+    rawscrap: '#fc3d39',
     sun: '#FFFF00',
   },
+  raceOptions: [
+    { value: 'arg', label: 'Argon' },
+    { value: 'par', label: 'Paranid' },
+    { value: 'spl', label: 'Split' },
+    { value: 'tel', label: 'Teladi' },
+    { value: 'ter', label: 'Terran' },
+    { value: 'native', label: 'Native' },
+  ],
+  engineOptions: [
+    { value: 'engine_RACE_SIZE_allround_01_mk1', label: 'All-round Mk.1 Engine' },
+    { value: 'engine_RACE_SIZE_allround_01_mk2', label: 'All-round Mk.2 Engine' },
+    { value: 'engine_RACE_SIZE_allround_01_mk3', label: 'All-round Mk.3 Engine' },
+    { value: 'engine_RACE_SIZE_travel_01_mk1', label: 'Travel Mk.1 Engine' },
+    { value: 'engine_RACE_SIZE_travel_01_mk2', label: 'Travel Mk.2 Engine' },
+    { value: 'engine_RACE_SIZE_travel_01_mk3', label: 'Travel Mk.3 Engine' },
+    { value: 'engine_RACE_SIZE_combat_01_mk1', label: 'Combat Mk.1 Engine' },
+    { value: 'engine_RACE_SIZE_combat_01_mk2', label: 'Combat Mk.2 Engine' },
+    { value: 'engine_RACE_SIZE_combat_01_mk3', label: 'Combat Mk.3 Engine' },
+    { value: 'engine_RACE_SIZE_combat_01_mk4', label: 'Combat Mk.4 Engine' },
+  ],
 };
 
 export const separateWords = (arg: string) =>
@@ -144,10 +170,16 @@ export const formatDecimal = (arg: string | number) =>
       })
     : '0.00';
 
-export const getHexagonPointsV2 = (props: { x: number; y: number }, divider: number = 1) => {
+export const getHexagonPointsV2 = (props: { x: number; y: number }, divider: number = 1, inset = false) => {
   const { x, y } = props;
-  const hx = 62 / divider;
-  const hy = 108 / divider;
+  let hx = 62 / divider;
+  let hy = 108 / divider;
+
+  if (inset) {
+    hx -= 3.5;
+    hy -= 5.5;
+  }
+
   return `${x - hx},${y - hy} ${x + hx},${y - hy} ${x + hx * 2},${y} ${x + hx},${y + hy} ${x - hx},${y + hy} ${
     x - hx * 2
   },${y} ${x - hx},${y - hy}`;
@@ -165,3 +197,29 @@ export const backgroundLabelRectWidth = (label: string) => {
 
   return numberOfShortLetters;
 };
+
+export const isTradingShip = (ship: X4ShipInterface) =>
+  ship.type === 'freighter' ||
+  ship.type === 'transporter' ||
+  ship.type === 'courier' ||
+  ship.type === 'resupplier' ||
+  ship.type === 'carrier' ||
+  ship.type === 'scavenger';
+
+export const isTradingShipExpanded = (ship: X4ShipInterface) =>
+  ship.type === 'freighter' ||
+  ship.type === 'transporter' ||
+  ship.type === 'courier' ||
+  ship.type === 'resupplier' ||
+  ship.type === 'carrier' ||
+  ship.type === 'scavenger' ||
+  ship.type === 'tug' ||
+  ship.type === 'compactor';
+
+export const isSolidMiner = (ship: X4ShipInterface) =>
+  (ship.type === 'largeminer' || ship.type === 'miner') && ship.storage.capacityType === 'solid';
+
+export const isLiquidMiner = (ship: X4ShipInterface) =>
+  (ship.type === 'largeminer' || ship.type === 'miner') && ship.storage.capacityType === 'liquid';
+
+export const isLargeShip = (ship: X4ShipInterface) => ship.class === 'ship_xl' || ship.class === 'ship_l';

@@ -2,8 +2,8 @@ import { promises as fs } from 'fs';
 import path from 'path';
 import xml2js from 'xml2js';
 
-import terraform from '../../../static-files/x4-manual-input/_terraforming.json';
-import { translateRecursive } from './translations';
+import { translateRecursive } from '../translations';
+import terraform from './_terraforming.json';
 
 export async function getTerraforming(resourcesPath, translations, wares) {
   let parser = new xml2js.Parser({ mergeAttrs: true, explicitArray: false });

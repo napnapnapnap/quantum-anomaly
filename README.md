@@ -1,11 +1,60 @@
 # Quantum Anomaly Website
 
-## Prerequesites to run locally and develop
+## Prerequisites to run locally and develop short version
 
-[Node](https://nodejs.org/en/) and [Nodemon](https://www.npmjs.com/package/nodemon) globally installed and postgres
-database.  
-Node version min `6.11.x`  
-NPM version min `5.3.x`
+### Running Frontend
+
+Requirements:
+
+* Node installed, min version `6.11.x`
+* Backend running [optional]
+
+To run frontend simply navigate to frontend folder, npm install and run the start task
+
+```
+  cd frontend/
+  npm install
+  npm run start
+```
+
+In order to run frontend without backend server running locally, simply update proxy line in `./frontend/package.json`
+
+```
+   "proxy": "https://quantum-anomaly.herokuapp.com/",
+```
+
+This will run local version of frontend which will consume real API from the deployed version.
+
+### Running Tasks
+
+Requirements:
+
+* Node installed, min version `6.11.x`
+
+Tasks are small npm scripts which generate database entries or files that are later served via backend. For example,
+
+```
+  cd server/
+  npm install
+  npm run x4
+```
+
+will run the x4 tasks which looks for the unpackaged EgoSoft source code of the X4 Foundations on your hard drive and
+then generates files for further consumption by server.
+
+There is no need to run server or the frontend in order to run tasks, they are standalone and usually have README file
+attached to explain what they need on their own
+
+### Running Server
+
+Requirements:
+
+* Node installed, min version `6.11.x`
+* Postgres database
+
+If you just want to serve files that are precompiled, you can write your own fast server and just copy the endpoints,
+most of them just serve statically generated files from tasks. However, in order to run endpoints required for EVE Online
+part of the page, you will need to figure out and start the server.
 
 On your local, you need to create `.env` file in `server` folder of project. Content of the file is supposed to be
 
@@ -34,26 +83,15 @@ WARFRAME_EMAILS=ComaSeparetedEmails
 * Email client can be skipped if there is no need to send out emails. It is also disabled on development mode.
 * ESI updated enable mounting of the routes which populate EVE database
 
-#### NPM tasks
+```
+cd server/
+npm install
+npm run start
 
-Currently there are 3 `package.json` files because this is technically 2 projects.
+visit http://localhost:3000/tasks/update-all
+wait for 30 minutes till all the eve online api calls finish
 
-`/server` folder handles `node` code. It has following scripts:
-
-- `npm run start` runs `express` server which starts your backend (uses `Nodemon`)
-- `npm run build` builds files in `server` with babel and outputs to `/build` folder (production task)
-
-`/frontend` folder handles `react` code. It has following scripts:
-
-- `npm run start` starts react dev server and compiles assets, also starts `sass` watchers
-- `npm run build` builds react file for production ready environment and outputs to `/frontend/build`
-
-To run project you need to run both `npm run start` scripts.  
-Keep in mind that `react` frontend is running inside webpack development server which is set to proxy to port 3000. If
-you are using some other port for your server you will need to update `package.json` in `/frontend` folder.
-
-Last `package.json` is there just for Heroku, it sets the proper node and npm versions and triggers build tasks for both
-frontend and backend. It is located in root of the project.
+```
 
 ### Populate database
 

@@ -3,23 +3,134 @@
 
 .x4-ships {
   $image-cell-width: 128px;
-  $cell-width: 220px;
+  $cell-width: 230px;
+  $cell-controls-width: 140px;
+  $control-width: 150px;
 
-  &__wrapper {
-    padding-top: 1rem;
-    width: 100%;
-    overflow-x: auto;
+  &__controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+
+    .input-control {
+      width: $control-width;
+    }
   }
 
+  &__control-section {
+    flex: 0 0 $control-width;
+    order: 2;
+    margin: 0 1rem 1rem 0;
+
+    label {
+      text-transform: capitalize;
+    }
+
+    select {
+      font-size: 11px;
+    }
+
+    &--types {
+      flex: 0 0 calc(#{$control-width} * 2 + 5px);
+
+      > div {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+
+      .input-control {
+        width: $control-width - 10px;
+      }
+    }
+  }
+
+  &__control {
+    &--mb {
+      margin-bottom: 1rem !important;
+    }
+  }
+
+  .btn--cta {
+    font-size: 10px;
+    text-transform: capitalize;
+    padding: 3px 5px;
+    width: 100%;
+
+    &.mt {
+      margin-top: 0.5rem;
+    }
+  }
+
+  .btn--delete {
+    background: darkred;
+  }
+
+  &__notice {
+    @include media-breakpoint-up(xl) {
+      position: relative;
+      top: -3rem;
+      width: calc(#{$control-width} * 3 + 3rem);
+    }
+  }
+
+  &__wrapper {
+    width: 100%;
+    overflow-x: auto;
+
+    @include media-breakpoint-up(xl) {
+      margin-top: -2.5rem;
+    }
+  }
+
+  &__value {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+
+    font-size: 0.775rem;
+    line-height: 0.775rem;
+    letter-spacing: 0.01em;
+    margin-bottom: 0.1rem;
+
+    &.mt-1 {
+      margin-top: 0.8rem;
+    }
+
+    &.mb-1 {
+      margin-bottom: 0.8rem;
+    }
+
+    span {
+      font-size: 0.775rem;
+      line-height: 0.775rem;
+      letter-spacing: 0.01em;
+    }
+
+    &--indent {
+      padding-left: 0.8rem;
+      font-weight: normal;
+
+      &:before {
+        content: '\2BA1';
+        display: inline-block;
+        width: 10px;
+        left: 0;
+        top: 1px;
+        position: absolute;
+      }
+    }
+  }
+
+
   &__table {
-    width: calc(#{$image-cell-width} + #{$cell-width} * 4);
+    width: calc(#{$image-cell-width} + #{$cell-width} * 4 + #{$cell-controls-width});
 
     td {
       vertical-align: top;
       position: relative;
 
       &:first-of-type {
-        border-radius: 8px 0 0 8px;
         padding: 1rem 0 0 1rem;
         width: calc(#{$image-cell-width} + 1rem);
 
@@ -33,15 +144,16 @@
 
       &:nth-of-type(2), &:nth-of-type(3), &:nth-of-type(4), &:nth-of-type(5) {
         width: $cell-width;
-        padding: 1rem 1rem 2rem;
+        padding: 1rem 1rem 2.5rem;
       }
 
       &:last-of-type {
-        border-radius: 0 8px 8px 0;
+        width: $cell-controls-width;
+        vertical-align: bottom;
       }
     }
 
-    h2, p, span {
+    h2 {
       line-height: 1.1;
       margin: 0;
     }
@@ -52,82 +164,16 @@
     }
   }
 
-  &__controls {
-    max-width: 1200px;
+  #ship-values {
+    transform: translate(-60px, 0);
+    box-shadow: none !important;
+    background: var(--color-content-background) !important;
+    padding: 5px 8px;
 
-    > p {
-      margin-bottom: 0.2rem;
+    span {
+      font-size: 0.775rem !important;
+      line-height: 0.775rem !important;
+      letter-spacing: 0.01em !important;
     }
-  }
-
-  &__outfit {
-    position: absolute;
-    width: calc(#{$cell-width} * 4);
-    bottom: 0.25rem;
-  }
-
-  &__info {
-    background: #333;
-    display: inline-block;
-    color: white;
-    font-weight: bold;
-    border-radius: 50%;
-    margin: 0 0.2rem !important;
-    padding: 2px !important;
-    cursor: pointer;
-    width: 9px;
-    font-size: 8px !important;
-    line-height: 7px !important;
-    text-align: center;
-    position: relative;
-    top: -2px;
-  }
-
-  &__values {
-    width: 150px;
-    margin: 0 1rem 1rem;
-  }
-
-  &__label-value-pair {
-    display: flex;
-    justify-content: flex-end;
-    width: 100%;
-
-    > span {
-      flex: 1 0 auto;
-      text-align: right;
-
-      &:first-of-type {
-        text-align: left;
-        flex: 0 1 auto;
-      }
-    }
-
-    &--marginated {
-      margin-top: 13.64px !important;
-    }
-  }
-
-  .input-control {
-    &__checkbox-text {
-      font-size: 12px;
-      line-height: 1.2;
-    }
-
-    &--checkbox {
-      width: 120px;
-      text-transform: capitalize;
-      margin-bottom: 4px;
-    }
-
-    &--select {
-      margin-bottom: 1rem;
-      margin-right: 5px;
-      width: 160px;
-    }
-  }
-
-  .mt-1 {
-    margin-top: 0.5rem;
   }
 }

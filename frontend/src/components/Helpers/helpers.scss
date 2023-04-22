@@ -1,0 +1,13 @@
+.helper {
+  &__sort {
+    position: relative;
+    font-size: 10px;
+    top: -1px;
+
+    &--active {
+      font-weight: bold;
+      top: -1px;
+      color: var(--color-link-hover);
+    }
+  }
+}

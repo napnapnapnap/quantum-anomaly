@@ -67,6 +67,8 @@
     "size": "large"
   },
   "shipstorage": {
+    "pads_m": 0,
+    "pads_s": 3,
     "dock_m": 0,
     "dock_s": 40
   },

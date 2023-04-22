@@ -276,11 +276,56 @@
         "release": "2.5"
       }
     },
+    "engine_tfm_xl_allround_01_mk1": {
+      "id": "engine_tfm_xl_allround_01_mk1",
+      "name": "XEN XL All-round Engine Mk1",
+      "mk": "1",
+      "class": "engine",
+      "makerrace": "xenon",
+      "thrust": {
+        "forward": "24979",
+        "reverse": "22481"
+      },
+      "boost": {
+        "duration": "33",
+        "thrust": "2",
+        "attack": "10",
+        "release": "1"
+      },
+      "travel": {
+        "charge": "30",
+        "thrust": "18",
+        "attack": "25",
+        "release": "25"
+      }
+    },
+    "engine_xen_xl_allround_01_mk1": {
+      "id": "engine_xen_xl_allround_01_mk1",
+      "name": "XEN XL All-round Engine Mk1",
+      "mk": "1",
+      "class": "engine",
+      "makerrace": "xenon",
+      "thrust": {
+        "forward": "11076",
+        "reverse": "12184"
+      },
+      "boost": {
+        "duration": "33",
+        "thrust": "2",
+        "attack": "10",
+        "release": "1"
+      },
+      "travel": {
+        "charge": "30",
+        "thrust": "25",
+        "attack": "49",
+        "release": "15"
+      }
+    },
     "shield_arg_xl_standard_01_mk1": {
       "id": "shield_arg_xl_standard_01_mk1",
       "name": "ARG XL Shield Generator Mk1",
       "description": "Shield Mk1",
-      "hull": "6000",
       "mk": "1",
       "class": "shield",
       "makerrace": "argon",
@@ -294,7 +339,6 @@
       "id": "shield_bor_xl_standard_01_mk1",
       "name": "BOR XL Shield Generator Mk1",
       "description": "Shield Mk1",
-      "hull": "6000",
       "mk": "1",
       "class": "shield",
       "makerrace": "boron",
@@ -308,7 +352,6 @@
       "id": "shield_bor_xl_standard_01_mk2",
       "name": "BOR XL Shield Generator Mk2",
       "description": "Shield Mk2",
-      "hull": "6000",
       "mk": "2",
       "class": "shield",
       "makerrace": "boron",
@@ -322,7 +365,6 @@
       "id": "shield_par_xl_standard_01_mk1",
       "name": "PAR XL Shield Generator Mk1",
       "description": "Shield Mk1",
-      "hull": "6000",
       "mk": "1",
       "class": "shield",
       "makerrace": "paranid",
@@ -336,7 +378,6 @@
       "id": "shield_pir_xl_battleship_01_standard_01_mk1",
       "name": "Erlking XL Shield Generator",
       "description": "Erlking Shield",
-      "hull": "8100",
       "mk": "1",
       "class": "shield",
       "makerrace": "argon",
@@ -350,7 +391,6 @@
       "id": "shield_spl_xl_standard_01_mk1",
       "name": "SPL XL Shield Generator Mk1",
       "description": "Shield Mk1",
-      "hull": "9000",
       "mk": "1",
       "class": "shield",
       "makerrace": "split",
@@ -364,7 +404,6 @@
       "id": "shield_tel_xl_standard_01_mk1",
       "name": "TEL XL Shield Generator Mk1",
       "description": "Shield Mk1",
-      "hull": "6000",
       "mk": "1",
       "class": "shield",
       "makerrace": "teladi",
@@ -378,7 +417,6 @@
       "id": "shield_ter_xl_standard_01_mk1",
       "name": "TER XL Shield Generator Mk1",
       "description": "Shield Mk1",
-      "hull": "6000",
       "mk": "1",
       "class": "shield",
       "makerrace": "terran",
@@ -392,13 +430,25 @@
       "id": "shield_ter_xl_standard_01_mk2",
       "name": "TER XL Shield Generator Mk2",
       "description": "Shield Mk2",
-      "hull": "8000",
       "mk": "2",
       "class": "shield",
       "makerrace": "terran",
       "recharge": {
         "max": "161988",
         "rate": "842",
+        "delay": "0"
+      }
+    },
+    "shield_xen_xl_standard_01_mk1": {
+      "id": "shield_xen_xl_standard_01_mk1",
+      "name": "XEN XL Shield Generator Mk1",
+      "description": "Shield Mk1",
+      "mk": "1",
+      "class": "shield",
+      "makerrace": "xenon",
+      "recharge": {
+        "max": "123007",
+        "rate": "550",
         "delay": "0"
       }
     },
@@ -771,11 +821,33 @@
         "release": "2.5"
       }
     },
+    "engine_xen_l_allround_01_mk1": {
+      "id": "engine_xen_l_allround_01_mk1",
+      "name": "XEN L All-round Engine Mk1",
+      "mk": "1",
+      "class": "engine",
+      "makerrace": "xenon",
+      "thrust": {
+        "forward": "4206",
+        "reverse": "4627"
+      },
+      "boost": {
+        "duration": "33",
+        "thrust": "2",
+        "attack": "10",
+        "release": "1"
+      },
+      "travel": {
+        "charge": "20",
+        "thrust": "25",
+        "attack": "49",
+        "release": "15"
+      }
+    },
     "shield_arg_l_standard_01_mk1": {
       "id": "shield_arg_l_standard_01_mk1",
       "name": "ARG L Shield Generator Mk1",
       "description": "L Shield Mk1",
-      "hull": "2000",
       "mk": "1",
       "class": "shield",
       "makerrace": "argon",
@@ -789,7 +861,6 @@
       "id": "shield_arg_l_standard_01_mk2",
       "name": "ARG L Shield Generator Mk2",
       "description": "L Shield Mk2",
-      "hull": "2000",
       "mk": "2",
       "class": "shield",
       "makerrace": "argon",
@@ -803,7 +874,6 @@
       "id": "shield_bor_l_standard_01_mk1",
       "name": "BOR L Shield Generator Mk1",
       "description": "Shield Mk1",
-      "hull": "2000",
       "mk": "1",
       "class": "shield",
       "makerrace": "boron",
@@ -817,7 +887,6 @@
       "id": "shield_bor_l_standard_01_mk2",
       "name": "BOR L Shield Generator Mk2",
       "description": "Shield Mk2",
-      "hull": "2000",
       "mk": "2",
       "class": "shield",
       "makerrace": "boron",
@@ -831,7 +900,6 @@
       "id": "shield_bor_l_standard_01_mk3",
       "name": "BOR L Shield Generator Mk3",
       "description": "Shield Mk3",
-      "hull": "2000",
       "mk": "3",
       "class": "shield",
       "makerrace": "boron",
@@ -845,7 +913,6 @@
       "id": "shield_par_l_standard_01_mk1",
       "name": "PAR L Shield Generator Mk1",
       "description": "L Shield Mk1",
-      "hull": "2000",
       "mk": "1",
       "class": "shield",
       "makerrace": "paranid",
@@ -859,7 +926,6 @@
       "id": "shield_par_l_standard_01_mk2",
       "name": "PAR L Shield Generator Mk2",
       "description": "Shield Mk2",
-      "hull": "2000",
       "mk": "2",
       "class": "shield",
       "makerrace": "paranid",
@@ -873,7 +939,6 @@
       "id": "shield_spl_l_standard_01_mk1",
       "name": "SPL L Shield Generator Mk1",
       "description": "Shield Mk1",
-      "hull": "3000",
       "mk": "1",
       "class": "shield",
       "makerrace": "split",
@@ -887,7 +952,6 @@
       "id": "shield_spl_l_standard_01_mk2",
       "name": "SPL L Shield Generator Mk2",
       "description": "Shield Mk2",
-      "hull": "3000",
       "mk": "2",
       "class": "shield",
       "makerrace": "split",
@@ -901,7 +965,6 @@
       "id": "shield_tel_l_standard_01_mk1",
       "name": "TEL L Shield Generator Mk1",
       "description": "Shield Mk1",
-      "hull": "2000",
       "mk": "1",
       "class": "shield",
       "makerrace": "teladi",
@@ -915,7 +978,6 @@
       "id": "shield_tel_l_standard_01_mk2",
       "name": "TEL L Shield Generator Mk2",
       "description": "Shield Mk2",
-      "hull": "2000",
       "mk": "2",
       "class": "shield",
       "makerrace": "teladi",
@@ -929,7 +991,6 @@
       "id": "shield_ter_l_standard_01_mk1",
       "name": "TER L Shield Generator Mk1",
       "description": "Shield Mk1",
-      "hull": "2000",
       "mk": "1",
       "class": "shield",
       "makerrace": "terran",
@@ -943,7 +1004,6 @@
       "id": "shield_ter_l_standard_01_mk2",
       "name": "TER L Shield Generator Mk2",
       "description": "Shield Mk2",
-      "hull": "2000",
       "mk": "2",
       "class": "shield",
       "makerrace": "terran",
@@ -957,13 +1017,38 @@
       "id": "shield_ter_l_standard_01_mk3",
       "name": "TER L Shield Generator Mk3",
       "description": "Shield Mk3",
-      "hull": "2000",
       "mk": "3",
       "class": "shield",
       "makerrace": "terran",
       "recharge": {
         "max": "69424",
         "rate": "424",
+        "delay": "0"
+      }
+    },
+    "shield_xen_l_standard_01_mk1": {
+      "id": "shield_xen_l_standard_01_mk1",
+      "name": "XEN L Shield Generator Mk1",
+      "description": "Shield Mk1",
+      "mk": "1",
+      "class": "shield",
+      "makerrace": "xenon",
+      "recharge": {
+        "max": "36902",
+        "rate": "194",
+        "delay": "0"
+      }
+    },
+    "shield_xen_l_standard_01_mk2": {
+      "id": "shield_xen_l_standard_01_mk2",
+      "name": "XEN L Shield Generator Mk2",
+      "description": "Shield Mk2",
+      "mk": "2",
+      "class": "shield",
+      "makerrace": "xenon",
+      "recharge": {
+        "max": "43968",
+        "rate": "300",
         "delay": "0"
       }
     },
@@ -2702,6 +2787,52 @@
         "release": "15"
       }
     },
+    "engine_kha_m_combat_01_mk1": {
+      "id": "engine_kha_m_combat_01_mk1",
+      "name": "KHA M Combat Engine Mk1",
+      "mk": "1",
+      "class": "engine",
+      "makerrace": "khaak",
+      "thrust": {
+        "forward": "1400",
+        "reverse": "1600"
+      },
+      "boost": {
+        "duration": "6",
+        "thrust": "4",
+        "attack": "0.25",
+        "release": "1"
+      },
+      "travel": {
+        "charge": "3",
+        "thrust": "7",
+        "attack": "10",
+        "release": "10"
+      }
+    },
+    "engine_kha_m_combat_02_mk1": {
+      "id": "engine_kha_m_combat_02_mk1",
+      "name": "KHA M Combat Engine Array Mk1",
+      "mk": "1",
+      "class": "engine",
+      "makerrace": "khaak",
+      "thrust": {
+        "forward": "1400",
+        "reverse": "1662"
+      },
+      "boost": {
+        "duration": "4",
+        "thrust": "5",
+        "attack": "0.25",
+        "release": "1"
+      },
+      "travel": {
+        "charge": "3",
+        "thrust": "7",
+        "attack": "10",
+        "release": "10"
+      }
+    },
     "engine_par_m_allround_01_mk1": {
       "id": "engine_par_m_allround_01_mk1",
       "name": "PAR M All-round Engine Mk1",
@@ -3553,11 +3684,56 @@
         "release": "3"
       }
     },
+    "engine_xen_m_combat_01_mk1": {
+      "id": "engine_xen_m_combat_01_mk1",
+      "name": "XEN M Combat Engine Mk1",
+      "mk": "1",
+      "class": "engine",
+      "makerrace": "xenon",
+      "thrust": {
+        "forward": "1286",
+        "reverse": "1486"
+      },
+      "boost": {
+        "duration": "8",
+        "thrust": "8",
+        "attack": "0.25",
+        "release": "1"
+      },
+      "travel": {
+        "charge": "0",
+        "thrust": "8",
+        "attack": "15",
+        "release": "10"
+      }
+    },
+    "engine_xen_m_travel_01_mk1": {
+      "id": "engine_xen_m_travel_01_mk1",
+      "name": "XEN M Travel Engine Mk1",
+      "mk": "1",
+      "class": "engine",
+      "makerrace": "xenon",
+      "thrust": {
+        "forward": "1224",
+        "reverse": "1102"
+      },
+      "boost": {
+        "duration": "2",
+        "thrust": "6",
+        "attack": "0.25",
+        "release": "1"
+      },
+      "travel": {
+        "charge": "3",
+        "thrust": "12",
+        "attack": "45",
+        "release": "30"
+      }
+    },
     "shield_arg_m_standard_02_mk1": {
       "id": "shield_arg_m_standard_02_mk1",
       "name": "ARG M Shield Generator Mk1",
       "description": "Shield Mk1",
-      "hull": "500",
       "mk": "1",
       "class": "shield",
       "makerrace": "argon",
@@ -3571,7 +3747,6 @@
       "id": "shield_arg_m_standard_02_mk2",
       "name": "ARG M Shield Generator Mk2",
       "description": "Shield Mk2",
-      "hull": "500",
       "mk": "2",
       "class": "shield",
       "makerrace": "argon",
@@ -3585,7 +3760,6 @@
       "id": "shield_bor_m_standard_02_mk1",
       "name": "BOR M Shield Generator Mk1",
       "description": "Shield Mk1",
-      "hull": "500",
       "mk": "1",
       "class": "shield",
       "makerrace": "boron",
@@ -3599,7 +3773,6 @@
       "id": "shield_bor_m_standard_02_mk2",
       "name": "BOR M Shield Generator Mk2",
       "description": "Shield Mk2",
-      "hull": "500",
       "mk": "2",
       "class": "shield",
       "makerrace": "boron",
@@ -3613,7 +3786,6 @@
       "id": "shield_bor_m_standard_02_mk3",
       "name": "BOR M Shield Generator Mk3",
       "description": "Shield Mk3",
-      "hull": "500",
       "mk": "3",
       "class": "shield",
       "makerrace": "boron",
@@ -3623,11 +3795,23 @@
         "delay": "0.33"
       }
     },
+    "shield_kha_m_standard_02_mk1": {
+      "id": "shield_kha_m_standard_02_mk1",
+      "name": "KHA M Shield Generator Mk1",
+      "description": "Shield Mk1",
+      "mk": "1",
+      "class": "shield",
+      "makerrace": "khaak",
+      "recharge": {
+        "max": "4632",
+        "rate": "25",
+        "delay": "0.57"
+      }
+    },
     "shield_par_m_standard_02_mk1": {
       "id": "shield_par_m_standard_02_mk1",
       "name": "PAR M Shield Generator Mk1",
       "description": "Shield Mk1",
-      "hull": "500",
       "mk": "1",
       "class": "shield",
       "makerrace": "paranid",
@@ -3641,7 +3825,6 @@
       "id": "shield_par_m_standard_02_mk2",
       "name": "PAR M Shield Generator Mk2",
       "description": "Shield Mk2",
-      "hull": "500",
       "mk": "2",
       "class": "shield",
       "makerrace": "paranid",
@@ -3655,7 +3838,6 @@
       "id": "shield_spl_m_standard_02_mk1",
       "name": "SPL M Shield Generator Mk1",
       "description": "Shield Mk1",
-      "hull": "500",
       "mk": "1",
       "class": "shield",
       "makerrace": "split",
@@ -3669,7 +3851,6 @@
       "id": "shield_spl_m_standard_02_mk2",
       "name": "SPL M Shield Generator Mk2",
       "description": "Shield Mk2",
-      "hull": "500",
       "mk": "2",
       "class": "shield",
       "makerrace": "split",
@@ -3683,7 +3864,6 @@
       "id": "shield_tel_m_standard_02_mk1",
       "name": "TEL M Shield Generator Mk1",
       "description": "Shield Mk1",
-      "hull": "500",
       "mk": "1",
       "class": "shield",
       "makerrace": "teladi",
@@ -3697,7 +3877,6 @@
       "id": "shield_tel_m_standard_02_mk2",
       "name": "TEL M Shield Generator Mk2",
       "description": "Shield Mk2",
-      "hull": "500",
       "mk": "2",
       "class": "shield",
       "makerrace": "teladi",
@@ -3711,7 +3890,6 @@
       "id": "shield_ter_m_standard_02_mk1",
       "name": "TER M Shield Generator Mk1",
       "description": "Shield Mk1",
-      "hull": "500",
       "mk": "1",
       "class": "shield",
       "makerrace": "terran",
@@ -3725,7 +3903,6 @@
       "id": "shield_ter_m_standard_02_mk2",
       "name": "TER M Shield Generator Mk2",
       "description": "Shield Mk2",
-      "hull": "500",
       "mk": "2",
       "class": "shield",
       "makerrace": "terran",
@@ -3739,7 +3916,6 @@
       "id": "shield_ter_m_standard_02_mk3",
       "name": "TER M Shield Generator Mk3",
       "description": "Shield Mk3",
-      "hull": "500",
       "mk": "3",
       "class": "shield",
       "makerrace": "terran",
@@ -3747,6 +3923,32 @@
         "max": "9199",
         "rate": "77",
         "delay": "0.47"
+      }
+    },
+    "shield_xen_m_standard_02_mk1": {
+      "id": "shield_xen_m_standard_02_mk1",
+      "name": "XEN M Shield Generator Mk1",
+      "description": "M Shield Mk1",
+      "mk": "1",
+      "class": "shield",
+      "makerrace": "xenon",
+      "recharge": {
+        "max": "4890",
+        "rate": "29",
+        "delay": "0.55"
+      }
+    },
+    "shield_xen_m_standard_02_mk2": {
+      "id": "shield_xen_m_standard_02_mk2",
+      "name": "XEN M Shield Generator Mk2",
+      "description": "Shield Mk2",
+      "mk": "2",
+      "class": "shield",
+      "makerrace": "xenon",
+      "recharge": {
+        "max": "5826",
+        "rate": "45",
+        "delay": "0.55"
       }
     },
     "thruster_gen_m_allround_01_mk1": {
@@ -8902,6 +9104,29 @@
         "release": "1"
       }
     },
+    "engine_kha_s_combat_01_mk1": {
+      "id": "engine_kha_s_combat_01_mk1",
+      "name": "KHA S Combat Engine Mk1",
+      "mk": "1",
+      "class": "engine",
+      "makerrace": "khaak",
+      "thrust": {
+        "forward": "500",
+        "reverse": "770"
+      },
+      "boost": {
+        "duration": "10",
+        "thrust": "4",
+        "attack": "0.25",
+        "release": "1"
+      },
+      "travel": {
+        "charge": "2",
+        "thrust": "7",
+        "attack": "10",
+        "release": "10"
+      }
+    },
     "engine_par_s_allround_01_mk1": {
       "id": "engine_par_s_allround_01_mk1",
       "name": "PAR S All-round Engine Mk1",
@@ -9753,6 +9978,29 @@
         "release": "3"
       }
     },
+    "engine_xen_s_combat_01_mk1": {
+      "id": "engine_xen_s_combat_01_mk1",
+      "name": "XEN S Combat Engine Mk1",
+      "mk": "1",
+      "class": "engine",
+      "makerrace": "xenon",
+      "thrust": {
+        "forward": "503",
+        "reverse": "768"
+      },
+      "boost": {
+        "duration": "8",
+        "thrust": "8",
+        "attack": "0.25",
+        "release": "1"
+      },
+      "travel": {
+        "charge": "0",
+        "thrust": "18",
+        "attack": "15",
+        "release": "10"
+      }
+    },
     "shield_arg_s_standard_01_mk1": {
       "id": "shield_arg_s_standard_01_mk1",
       "name": "ARG S Shield Generator Mk1",
@@ -9829,6 +10077,19 @@
         "max": "1455",
         "rate": "229",
         "delay": "8"
+      }
+    },
+    "shield_kha_s_standard_01_mk1": {
+      "id": "shield_kha_s_standard_01_mk1",
+      "name": "KHA S Shield Generator Mk1",
+      "description": "Shield Mk1",
+      "mk": "1",
+      "class": "shield",
+      "makerrace": "khaak",
+      "recharge": {
+        "max": "745",
+        "rate": "79",
+        "delay": "13.9"
       }
     },
     "shield_par_s_standard_01_mk1": {
@@ -9985,6 +10246,32 @@
         "max": "1482",
         "rate": "242",
         "delay": "11.5"
+      }
+    },
+    "shield_xen_s_standard_01_mk1": {
+      "id": "shield_xen_s_standard_01_mk1",
+      "name": "XEN S Shield Generator Mk1",
+      "description": "Shield Mk1",
+      "mk": "1",
+      "class": "shield",
+      "makerrace": "xenon",
+      "recharge": {
+        "max": "786",
+        "rate": "92",
+        "delay": "13.3"
+      }
+    },
+    "shield_xen_s_standard_01_mk2": {
+      "id": "shield_xen_s_standard_01_mk2",
+      "name": "XEN S Shield Generator Mk2",
+      "description": "Shield Mk2",
+      "mk": "2",
+      "class": "shield",
+      "makerrace": "xenon",
+      "recharge": {
+        "max": "938",
+        "rate": "143",
+        "delay": "13.3"
       }
     },
     "thruster_gen_s_allround_01_mk1": {

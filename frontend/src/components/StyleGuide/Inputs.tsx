@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
-import Checkbox from '../Inputs/Checkbox';
-import Input from '../Inputs/Input';
-import Radio from '../Inputs/Radio';
-import Select from '../Inputs/Select';
+import Checkbox from '../InputsOld/Checkbox';
+import Input from '../InputsOld/Input';
+import Radio from '../InputsOld/Radio';
+import Select from '../InputsOld/Select';
 
 const Inputs = () => {
   const radioOptions = [

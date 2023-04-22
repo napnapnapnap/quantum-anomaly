@@ -4,7 +4,7 @@
   "race": "tel",
   "name": "Raven",
   "basename": null,
-  "description": ")",
+  "description": "The Raven is a recent, classified Ministry of Finance Science Division prototype for a new high security Courier. Its development was the Ministry's attempt at a cheap and technological solution to the Syndicate piracy problem introduced by the reconnection of Windfall to the Gate network. Developed in a department on Woodworm Scrubs, the Raven was the first ship to be suited for experimental cargo spoofing technology. Attempted scan readings present the cargo hold as filled with worthless wares, which should deter piracy attempts or make them less likely. While originally the Raven was required to develop this technology, it can now be applied more universally, and might protect ships not only from pirates, but also from police looking for illicit goods.",
   "shortvariation": "BV",
   "variation": "Base Variation",
   "type": "courier",
@@ -67,6 +67,8 @@
     "size": "small"
   },
   "shipstorage": {
+    "pads_m": 0,
+    "pads_s": 0,
     "dock_m": 0,
     "dock_s": 0
   },
